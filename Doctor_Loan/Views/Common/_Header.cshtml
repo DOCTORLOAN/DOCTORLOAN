@@ -1,0 +1,123 @@
+﻿
+<div class="container">
+    <div class="nav-header">
+        <div id="logo">
+            <a href="@Url.Action("Index","Home")" class="scrollto">
+                <picture>
+                    <source media="(max-width:991px)" srcset="~/Assets/img/logo/logo-mobile.svg">
+                    <img src="~/Assets/img/logo/logo-header.svg">
+                </picture>
+            </a>
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                <li><a href="@Url.Action("Index","About")">Giới thiệu</a></li>
+                <li><a href="@Url.Action("Index","Clinic")">Đức Phúc DoctorLoan</a></li>
+                <li><a href="@Url.Action("Index","ShowRoom")">Showroom</a></li>
+                <li class="dropdown">
+                    <a href="@Url.Action("Index","Products")">Sản phẩm</a>
+                    <div class="mega-menu">
+                        <div class="list-menu">
+                            <div class="container">
+                                <div class="swiper menuProductSwiper">
+                                    <div class="swiper-wrapper">
+                                        @for (int i = 1; i <= 10; i++)
+                                        {
+                                            <div class="swiper-slide">
+                                                <a href="@Url.Action("ProductDetail","Products")"><img src="~/Assets/img/common/menu-product-@(i).png" /></a>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+                <li class="dropdown menu-dropdown">
+                    <a href="@Url.Action("Index","News")"><span>Tin tức</span></a>
+                    <div class="sub-menu">
+                        <ul>
+                            <li><a href="@Url.Action("NewsGroup","News")">Thời sự</a></li>
+                            <li><a href="@Url.Action("NewsGroup","News")">Nguyên nhân gây bệnh cột sống</a></li>
+                            <li><a href="@Url.Action("NewsGroup","News")">Thực trạng xã hội và y học</a></li>
+                            <li><a href="@Url.Action("NewsGroup","News")">Giải pháp phòng bệnh</a></li>
+                            <li><a href="@Url.Action("NewsGroup","News")">Câu chuyện của những bệnh nhân</a></li>
+                            <li><a href="@Url.Action("NewsGroup","News")">Hoạt động xã hội</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="@Url.Action("Index","Contact")">Liên hệ</a></li>
+                <li class="only-mb"><a href="@Url.Action("Login","Auth")">Đăng nhập</a></li>
+                <li class="only-mb"><a href="@Url.Action("Register","Auth")">Đăng ký</a></li>
+            </ul>
+        </nav>
+
+        <img class="slogan-mobile" src="~/Assets/img/logo/slogan-mobile.svg" />
+
+        <div class="header-info">
+            <div class="auth-frm">
+                <a href="@Url.Action("Index","Cart")" class="shopping-cart"><img src="~/Assets/img/icon/shopping-cart.svg" /> <span>2</span> </a>
+                <div class="not-logged">
+                    <a href="@Url.Action("Login","Auth")" class="btn btn-login">Đăng nhập</a>
+                    <a href="@Url.Action("Register","Auth")" class="btn btn-register">Đăng ký</a>
+                </div>
+                <div class="nav-profile" style="display: none;">
+                    <button id="ProfileFunc" class="profile-icon" data-menu-expanded="false"><img src="~/Assets/img/home/avatar-3.png" /></button>
+                    <div class="dropdown-profile" hidden>
+                        <div class="dropdown-content">
+                            <div class="menu-profile-header">
+                                <img src="~/Assets/img/home/avatar-3.png" />
+                                <p><strong>Ngô Thành Công</strong> <span>ngothanhcong@doctorloan.vn</span></p>
+                            </div>
+                            <div class="menu-profile-body">
+                                <a class="item-menu-profile" href="javascript:void(0)"><img src="~/Assets/img/icon/icon-profile.svg" /> Hồ sơ sức khỏe</a>
+                                <a class="item-menu-profile" href="javascript:void(0)"><img src="~/Assets/img/icon/icon-medical-history.svg" /> Lịch khám bệnh</a>
+                                <a class="item-menu-profile" href="javascript:void(0)"><img src="~/Assets/img/icon/icon-setting.svg" /> Cài đặt</a>
+                            </div>
+                            <div class="menu-profile-footer">
+                                <a class="item-menu-profile" href="javascript:void(0)"><img src="~/Assets/img/icon/icon-logout.svg" /> Đăng xuất</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).on("click", "#ProfileFunc", function (e) {
+        e.preventDefault();
+        var getactive = $(this).attr("data-menu-expanded");
+        var parentPF = $(this).parents(".nav-profile");
+        if (getactive == 'false') {
+            getactive = 'true';
+            $(this).addClass("active");
+            $(this).attr('data-menu-expanded', getactive);
+            parentPF.find(".dropdown-profile").removeAttr('hidden');
+        } else {
+            getactive = 'false';
+            $(this).removeClass("active");
+            $(this).attr('data-menu-expanded', getactive);
+            parentPF.find(".dropdown-profile").attr('hidden', true);
+        }
+    });
+
+    $(window).on('load', function () {
+        var swiper2 = new Swiper(".menuProductSwiper", {
+            slidesPerView: 7,
+            loop: true,
+            spaceBetween: 24,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            }
+        });
+    });
+</script>
+

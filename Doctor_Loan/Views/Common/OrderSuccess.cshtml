@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "OrderSuccess";
+}
+
+<section id="OrderSuccess">
+    <div class="container">
+        <div class="main-success">
+            <div class="success-checkmark">
+                <div class="check-icon">
+                    <span class="icon-line line-tip"></span>
+                    <span class="icon-line line-long"></span>
+                    <div class="icon-circle"></div>
+                    <div class="icon-fix"></div>
+                </div>
+            </div>
+
+            <div class="title-success">Bạn đã đặt hàng thành công!</div>
+            <div class="order-code">Mã đơn hàng: <strong>0823GN12546</strong></div>
+            <hr class="hr-order" />
+            <div class="info-order">
+                Thông tin giao hàng: <br />
+                Họ tên: <strong>Nguyễn Văn A</strong> <br />
+                Điện Thoại: <strong>0909555666</strong> <br />
+                Địa chỉ: <strong>9A, Tôn Thất Tùng, P. Phạm Ngũ Lão, Q.1, TP. Hồ Chí Minh</strong>
+            </div>
+            <a href="@Url.Action("Index","Home")" class="btn btn-confrm">Trang chủ</a>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script type="text/javascript">
+
+    </script>
+}
+

@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "Assets/css/auth.css",
+    "inputFile": "Assets/css/auth.less"
+  },
+  {
+    "outputFile": "Assets/auth/auth.css",
+    "inputFile": "Assets/auth/auth.less"
+  },
+  {
+    "outputFile": "Assets/css/styles.css",
+    "inputFile": "Assets/css/styles.less"
+  },
+  {
+    "outputFile": "Assets/css/menu-header.css",
+    "inputFile": "Assets/css/menu-header.less"
+  }
+]

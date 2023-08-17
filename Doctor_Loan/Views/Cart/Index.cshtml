@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<section id="Cart" class="cart-payment">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="cart-wrapper">
+                    <div class="title-cart">Giỏ hàng <small>(3)</small></div>
+                    <div class="shopping-cart-main">
+                        <div class="column-labels">
+                            <label class="product-image">Hình ảnh</label>
+                            <label class="product-details">Sản phẩm</label>
+                            <label class="product-price notd">Giá tiền</label>
+                            <label class="product-quantity">Số lượng</label>
+                            <label class="product-line-price notd">Thành tiền</label>
+                            <label class="product-removal">Xóa</label>
+                        </div>
+
+                        <div class="product">
+                            <div class="product-image">
+                                <div class="checkbox-dl">
+                                    <label>
+                                        <input type="checkbox" value="">
+                                        <span class="icon-check-ok"></span>
+                                    </label>
+                                </div>
+                                <img src="~/Assets/img/products/img-product-detail-1.png" />
+                            </div>
+                            <div class="product-details">
+                                <div class="product-title">Ghế ngồi sáng chế DOCTORLOAN 95 VIP</div>
+                                <p class="product-description">
+                                    Màu: Nâu
+                                </p>
+                            </div>
+                            <div class="product-price">27,300,000</div>
+                            <div class="product-quantity">
+                                <input type="number" value="1" min="1">
+                            </div>
+                            <div class="product-line-price">27,300,000</div>
+                            <div class="product-removal">
+                                <button class="remove-product">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product">
+                            <div class="product-image">
+                                <div class="checkbox-dl">
+                                    <label>
+                                        <input type="checkbox" value="">
+                                        <span class="icon-check-ok"></span>
+                                    </label>
+                                </div>
+                                <img src="~/Assets/img/products/img-product-banner.png" />
+                            </div>
+                            <div class="product-details">
+                                <div class="product-title">Ghế nằm sáng chế DOCTORLOAN 135</div>
+                                <p class="product-description">
+                                    Màu: Nâu
+                                </p>
+                            </div>
+                            <div class="product-price">37,400,000</div>
+                            <div class="product-quantity">
+                                <input type="number" value="1" min="1">
+                            </div>
+                            <div class="product-line-price">37,400,000</div>
+                            <div class="product-removal">
+                                <button class="remove-product">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product">
+                            <div class="product-image">
+                                <div class="checkbox-dl">
+                                    <label>
+                                        <input type="checkbox" value="">
+                                        <span class="icon-check-ok"></span>
+                                    </label>
+                                </div>
+                                <img src="~/Assets/img/showroom/cushion-2.png" />
+                            </div>
+                            <div class="product-details">
+                                <div class="product-title">Đệm thiền sáng chế DOCTORLOAN</div>
+                                <p class="product-description">
+                                    Size: Lớn
+                                </p>
+                            </div>
+                            <div class="product-price">6,800,000</div>
+                            <div class="product-quantity">
+                                <input type="number" value="1" min="1">
+                            </div>
+                            <div class="product-line-price">6,800,000</div>
+                            <div class="product-removal">
+                                <button class="remove-product">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="cart-wrapper">
+                    <div class="total-cart">
+                        <div class="total-info">
+                            <span>Tạm tính</span>
+                            <span id="cart-subtotal" class="totals-value">71,500,000</span>
+                        </div>
+                        <div class="total-info">
+                            <span>Giảm giá (0%)</span>
+                            <span id="cart-tax" class="totals-value">0</span>
+                        </div>
+                        <div class="total-info">
+                            <span>Phí vận chuyển</span>
+                            <span id="cart-shipping" class="totals-value">200,000</span>
+                        </div>
+                        <div class="total-info totals-item-total">
+                            <span>Tổng cộng</span>
+                            <span id="cart-total" class="totals-value">71,700,000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="@Url.Action("Payment","Cart")" class="btn checkout">Mua hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        var taxRate = 1;
+        var shippingRate = 1;
+        var fadeTime = 300;
+
+        /* Assign actions */
+        $('.product-quantity input').change(function () {
+            updateQuantity(this);
+        });
+
+        $('.product-removal button').click(function () {
+            removeItem(this);
+        });
+
+        /* Recalculate cart */
+        function recalculateCart() {
+            var subtotal = 0;
+
+            /* Sum up row totals */
+            $('.product').each(function () {
+                subtotal += parseFloat($(this).children('.product-line-price').text());
+            });
+
+            /* Calculate totals */
+            var tax = subtotal * taxRate;
+            var shipping = (subtotal > 0 ? shippingRate : 0);
+            var total = subtotal + tax + shipping;
+
+            /* Update totals display */
+            $('.totals-value').fadeOut(fadeTime, function () {
+                $('#cart-subtotal').html(subtotal);
+                $('#cart-tax').html(tax);
+                $('#cart-shipping').html(shipping);
+                $('#cart-total').html(total);
+                if (total == 0) {
+                    $('.checkout').fadeOut(fadeTime);
+                } else {
+                    $('.checkout').fadeIn(fadeTime);
+                }
+                $('.totals-value').fadeIn(fadeTime);
+            });
+        }
+
+        /* Update quantity */
+        function updateQuantity(quantityInput) {
+            /* Calculate line price */
+            var productRow = $(quantityInput).parent().parent();
+            var price = parseFloat(productRow.children('.product-price').text());
+            var quantity = $(quantityInput).val();
+            var linePrice = price * quantity;
+
+            /* Update line price display and recalc cart totals */
+            productRow.children('.product-line-price').each(function () {
+                $(this).fadeOut(fadeTime, function () {
+                    $(this).text(linePrice);
+                    recalculateCart();
+                    $(this).fadeIn(fadeTime);
+                });
+            });
+        }
+
+        /* Remove item from cart */
+        function removeItem(removeButton) {
+            /* Remove row from DOM and recalc cart total */
+            var productRow = $(removeButton).parent().parent();
+            productRow.slideUp(fadeTime, function () {
+                productRow.remove();
+                recalculateCart();
+            });
+        }
+
+        function formatCurrency(number) {
+            var n = number.split('').reverse().join("");
+            var n2 = n.replace(/\d\d\d(?!$)/g, "$&,");
+            return n2.split('').reverse().join('') + 'VNĐ';
+        }
+    </script>
+}

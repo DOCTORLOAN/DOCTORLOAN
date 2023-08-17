@@ -1,0 +1,980 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AFFD54AE-5625-423C-B506-76FAC3D80225}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Doctor_Loan</RootNamespace>
+    <AssemblyName>Doctor_Loan</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44325</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ClinicController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShowRoomController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\auth\auth.css">
+      <DependentUpon>auth.less</DependentUpon>
+    </Content>
+    <Content Include="Assets\auth\auth.min.css">
+      <DependentUpon>auth.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\auth\icomoon\fonts\icomoon.svg" />
+    <Content Include="Assets\auth\icomoon\style.css" />
+    <Content Include="Assets\auth\img\auth-img-main.svg" />
+    <Content Include="Assets\auth\img\bg_1.jpg" />
+    <Content Include="Assets\auth\img\bottom-left.svg" />
+    <Content Include="Assets\auth\img\logo-single.svg" />
+    <Content Include="Assets\auth\img\top-right.svg" />
+    <Content Include="Assets\auth\jquery-3.3.1.min.js" />
+    <Content Include="Assets\auth\main.js" />
+    <Content Include="Assets\css\menu-header.css">
+      <DependentUpon>menu-header.less</DependentUpon>
+    </Content>
+    <Content Include="Assets\css\menu-header.min.css">
+      <DependentUpon>menu-header.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\css\styles.css">
+      <DependentUpon>styles.less</DependentUpon>
+    </Content>
+    <Content Include="Assets\css\styles.min.css">
+      <DependentUpon>styles.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\img\about\ab-desc-1.jpg" />
+    <Content Include="Assets\img\about\ab-desc-2.jpg" />
+    <Content Include="Assets\img\about\ab-desc-3.jpg" />
+    <Content Include="Assets\img\about\ab-desc-4.jpg" />
+    <Content Include="Assets\img\about\ab-desc-5.jpg" />
+    <Content Include="Assets\img\about\ab-desc-6.jpg" />
+    <Content Include="Assets\img\about\ab-desc-7.jpg" />
+    <Content Include="Assets\img\about\about-bac-si.png" />
+    <Content Include="Assets\img\about\activate-img.png" />
+    <Content Include="Assets\img\about\activities-share-1.jpg" />
+    <Content Include="Assets\img\about\activities-share-2.jpg" />
+    <Content Include="Assets\img\about\bg-about-banner.jpg" />
+    <Content Include="Assets\img\about\distinctive-1.jpg" />
+    <Content Include="Assets\img\about\distinctive-2.jpg" />
+    <Content Include="Assets\img\about\doctor-info.jpg" />
+    <Content Include="Assets\img\about\doctor-vector.png" />
+    <Content Include="Assets\img\about\img-story-1.jpg" />
+    <Content Include="Assets\img\about\img-story-2.jpg" />
+    <Content Include="Assets\img\about\mv-logo-1.png" />
+    <Content Include="Assets\img\about\mv-logo-2.png" />
+    <Content Include="Assets\img\about\mv-logo-3.png" />
+    <Content Include="Assets\img\about\opinion-img.png" />
+    <Content Include="Assets\img\about\rndiprs.png" />
+    <Content Include="Assets\img\clinic\bg-banner-clinic.jpg" />
+    <Content Include="Assets\img\clinic\bg-clinic-second.jpg" />
+    <Content Include="Assets\img\clinic\clinic-bac-si.png" />
+    <Content Include="Assets\img\clinic\curved.svg" />
+    <Content Include="Assets\img\clinic\img-doctor-clinic-banner.jpg" />
+    <Content Include="Assets\img\clinic\img-signal-1.jpg" />
+    <Content Include="Assets\img\clinic\img-signal-2.jpg" />
+    <Content Include="Assets\img\clinic\img-signal-3.jpg" />
+    <Content Include="Assets\img\clinic\img-signal-4.jpg" />
+    <Content Include="Assets\img\clinic\method-1.jpg" />
+    <Content Include="Assets\img\clinic\method-10.jpg" />
+    <Content Include="Assets\img\clinic\method-11.jpg" />
+    <Content Include="Assets\img\clinic\method-12.jpg" />
+    <Content Include="Assets\img\clinic\method-13.jpg" />
+    <Content Include="Assets\img\clinic\method-14.jpg" />
+    <Content Include="Assets\img\clinic\method-15.jpg" />
+    <Content Include="Assets\img\clinic\method-16.jpg" />
+    <Content Include="Assets\img\clinic\method-2.jpg" />
+    <Content Include="Assets\img\clinic\method-3.jpg" />
+    <Content Include="Assets\img\clinic\method-4.jpg" />
+    <Content Include="Assets\img\clinic\method-5.jpg" />
+    <Content Include="Assets\img\clinic\method-6.jpg" />
+    <Content Include="Assets\img\clinic\method-7.jpg" />
+    <Content Include="Assets\img\clinic\method-8.jpg" />
+    <Content Include="Assets\img\clinic\method-9.jpg" />
+    <Content Include="Assets\img\clinic\method-main-1.jpg" />
+    <Content Include="Assets\img\clinic\method-main-2.jpg" />
+    <Content Include="Assets\img\clinic\method-main-3.jpg" />
+    <Content Include="Assets\img\clinic\method-main-4.jpg" />
+    <Content Include="Assets\img\common\menu-product-1.png" />
+    <Content Include="Assets\img\common\menu-product-10.png" />
+    <Content Include="Assets\img\common\menu-product-2.png" />
+    <Content Include="Assets\img\common\menu-product-3.png" />
+    <Content Include="Assets\img\common\menu-product-4.png" />
+    <Content Include="Assets\img\common\menu-product-5.png" />
+    <Content Include="Assets\img\common\menu-product-6.png" />
+    <Content Include="Assets\img\common\menu-product-7.png" />
+    <Content Include="Assets\img\common\menu-product-8.png" />
+    <Content Include="Assets\img\common\menu-product-9.png" />
+    <Content Include="Assets\img\flag\new-zeland.jpg" />
+    <Content Include="Assets\img\flag\panam.jpg" />
+    <Content Include="Assets\img\flag\singapore.jpg" />
+    <Content Include="Assets\img\flag\south-africa.jpg" />
+    <Content Include="Assets\img\flag\sudan.jpg" />
+    <Content Include="Assets\img\flag\sweden.jpg" />
+    <Content Include="Assets\img\flag\tanzania.jpg" />
+    <Content Include="Assets\img\flag\ukraine.jpg" />
+    <Content Include="Assets\img\flag\viet-nam.svg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-1.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-10.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-11.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-12.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-13.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-14.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-15.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-16.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-2.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-3.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-4.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-5.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-6.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-7.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-8.jpg" />
+    <Content Include="Assets\img\home\174-nguyen-van-thu-9.jpg" />
+    <Content Include="Assets\img\home\38-tu-xuong-1.jpg" />
+    <Content Include="Assets\img\home\38-tu-xuong-2.jpg" />
+    <Content Include="Assets\img\home\38-tu-xuong-3.jpg" />
+    <Content Include="Assets\img\home\38-tu-xuong-4.jpg" />
+    <Content Include="Assets\img\home\38-tu-xuong-5.jpg" />
+    <Content Include="Assets\img\home\38-tu-xuong-6.jpg" />
+    <Content Include="Assets\img\home\38-tu-xuong-7.jpg" />
+    <Content Include="Assets\img\home\38-tu-xuong-8.jpg" />
+    <Content Include="Assets\img\home\9a-ton-that-tung-1.jpg" />
+    <Content Include="Assets\img\home\9a-ton-that-tung-10.jpg" />
+    <Content Include="Assets\img\home\9a-ton-that-tung-2.jpg" />
+    <Content Include="Assets\img\home\9a-ton-that-tung-3.jpg" />
+    <Content Include="Assets\img\home\9a-ton-that-tung-4.jpg" />
+    <Content Include="Assets\img\home\9a-ton-that-tung-5.jpg" />
+    <Content Include="Assets\img\home\9a-ton-that-tung-6.jpg" />
+    <Content Include="Assets\img\home\9a-ton-that-tung-7.jpg" />
+    <Content Include="Assets\img\home\9a-ton-that-tung-8.jpg" />
+    <Content Include="Assets\img\home\9a-ton-that-tung-9.jpg" />
+    <Content Include="Assets\img\home\after-img.jpg" />
+    <Content Include="Assets\img\home\australia.jpg" />
+    <Content Include="Assets\img\home\avatar-1.png" />
+    <Content Include="Assets\img\home\avatar-2.png" />
+    <Content Include="Assets\img\home\avatar-3.png" />
+    <Content Include="Assets\img\home\avatar-4.png" />
+    <Content Include="Assets\img\home\bac-si.png" />
+    <Content Include="Assets\img\home\before-img.jpg" />
+    <Content Include="Assets\img\home\benh-nhan-nguoi-thai.jpg" />
+    <Content Include="Assets\img\home\bg-achievement.jpg" />
+    <Content Include="Assets\img\home\bg-banner.jpg" />
+    <Content Include="Assets\img\home\bg-content-factory.jpg" />
+    <Content Include="Assets\img\home\bg-event.jpg" />
+    <Content Include="Assets\img\home\bg-feature-product.jpg" />
+    <Content Include="Assets\img\home\bg-header-factory.jpg" />
+    <Content Include="Assets\img\home\bg-heritage.png" />
+    <Content Include="Assets\img\home\bg-png.png" />
+    <Content Include="Assets\img\home\bg-solution.jpg" />
+    <Content Include="Assets\img\home\bg-space.jpg" />
+    <Content Include="Assets\img\home\canada.jpg" />
+    <Content Include="Assets\img\home\chu-hao.jpg" />
+    <Content Include="Assets\img\home\clap.png" />
+    <Content Include="Assets\img\home\clock.png" />
+    <Content Include="Assets\img\home\cong-the-phong.jpg" />
+    <Content Include="Assets\img\home\count.svg" />
+    <Content Include="Assets\img\home\dang-dinh-tien.jpg" />
+    <Content Include="Assets\img\home\dang-duc-ngan.jpg" />
+    <Content Include="Assets\img\home\di-san-1.jpg" />
+    <Content Include="Assets\img\home\di-san-2.jpg" />
+    <Content Include="Assets\img\home\di-san-3.jpg" />
+    <Content Include="Assets\img\home\ding-quang-thanh.jpg" />
+    <Content Include="Assets\img\home\dinh-thi-nga.jpg" />
+    <Content Include="Assets\img\home\do-yen-xuan-hue.jpg" />
+    <Content Include="Assets\img\home\du-an-demo.png" />
+    <Content Include="Assets\img\home\education-1.jpg" />
+    <Content Include="Assets\img\home\education-10.jpg" />
+    <Content Include="Assets\img\home\education-11.jpg" />
+    <Content Include="Assets\img\home\education-12.jpg" />
+    <Content Include="Assets\img\home\education-13.jpg" />
+    <Content Include="Assets\img\home\education-14.jpg" />
+    <Content Include="Assets\img\home\education-2.jpg" />
+    <Content Include="Assets\img\home\education-3.jpg" />
+    <Content Include="Assets\img\home\education-4.jpg" />
+    <Content Include="Assets\img\home\education-5.jpg" />
+    <Content Include="Assets\img\home\education-6.jpg" />
+    <Content Include="Assets\img\home\education-7.jpg" />
+    <Content Include="Assets\img\home\education-8.jpg" />
+    <Content Include="Assets\img\home\education-9.jpg" />
+    <Content Include="Assets\img\home\education.jpg" />
+    <Content Include="Assets\img\home\euro-patent.jpg" />
+    <Content Include="Assets\img\home\event-img-1.jpg" />
+    <Content Include="Assets\img\home\event-img-2.jpg" />
+    <Content Include="Assets\img\home\event-img-center.jpg" />
+    <Content Include="Assets\img\home\event-main-1.jpg" />
+    <Content Include="Assets\img\home\event-main-2.jpg" />
+    <Content Include="Assets\img\home\event-main-3.jpg" />
+    <Content Include="Assets\img\home\event-main-4.jpg" />
+    <Content Include="Assets\img\home\experience-1.jpg" />
+    <Content Include="Assets\img\home\experience-2.jpg" />
+    <Content Include="Assets\img\home\experience-3.jpg" />
+    <Content Include="Assets\img\home\experience-4.jpg" />
+    <Content Include="Assets\img\home\experience-5.jpg" />
+    <Content Include="Assets\img\home\experience-6.jpg" />
+    <Content Include="Assets\img\home\experience-7.jpg" />
+    <Content Include="Assets\img\home\experience-8.jpg" />
+    <Content Include="Assets\img\home\fb-at.jpg" />
+    <Content Include="Assets\img\home\fb-bf.jpg" />
+    <Content Include="Assets\img\home\feature-product-1.png" />
+    <Content Include="Assets\img\home\feature-product-2.png" />
+    <Content Include="Assets\img\home\feature-product-3.png" />
+    <Content Include="Assets\img\home\feature-product-4.jpg" />
+    <Content Include="Assets\img\home\feature-product-4.png" />
+    <Content Include="Assets\img\home\feature-product-5.jpg" />
+    <Content Include="Assets\img\home\feature-product-6.jpg" />
+    <Content Include="Assets\img\home\feature-product-5.png" />
+    <Content Include="Assets\img\home\feature-product-6.png" />
+    <Content Include="Assets\img\home\feedback-project.jpg" />
+    <Content Include="Assets\img\home\ghe-135.png" />
+    <Content Include="Assets\img\home\ghe-90-mong.png" />
+    <Content Include="Assets\img\home\ghe-n85.png" />
+    <Content Include="Assets\img\home\heritage-1.jpg" />
+    <Content Include="Assets\img\home\heritage-2.jpg" />
+    <Content Include="Assets\img\home\heritage-3.jpg" />
+    <Content Include="Assets\img\home\ho-dat.jpg" />
+    <Content Include="Assets\img\home\ho-si-hieu.jpg" />
+    <Content Include="Assets\img\home\hoang-kim-dan.jpg" />
+    <Content Include="Assets\img\home\home-product-1.jpg" />
+    <Content Include="Assets\img\home\home-product-2.jpg" />
+    <Content Include="Assets\img\home\home-product-3.jpg" />
+    <Content Include="Assets\img\home\home-product-4.jpg" />
+    <Content Include="Assets\img\home\home-product-5.jpg" />
+    <Content Include="Assets\img\home\home-product-6.jpg" />
+    <Content Include="Assets\img\home\home-product-7.jpg" />
+    <Content Include="Assets\img\home\home-product-8.jpg" />
+    <Content Include="Assets\img\home\home-product.jpg" />
+    <Content Include="Assets\img\home\hongkong-patent.jpg" />
+    <Content Include="Assets\img\home\india-patent.jpg" />
+    <Content Include="Assets\img\home\indonesia-patent.jpg" />
+    <Content Include="Assets\img\home\israel-patent.jpg" />
+    <Content Include="Assets\img\home\japan-patent.jpg" />
+    <Content Include="Assets\img\home\korea-patent.jpg" />
+    <Content Include="Assets\img\home\letter.jpg" />
+    <Content Include="Assets\img\home\linh-muc-michael-yathu.jpg" />
+    <Content Include="Assets\img\home\linh-muc-nguyen-duc-muoi.jpg" />
+    <Content Include="Assets\img\home\linh-muc-tran-dang-tuan.jpg" />
+    <Content Include="Assets\img\home\linh-muc-tran-van-toan.jpg" />
+    <Content Include="Assets\img\home\logo-doctor-loan.png" />
+    <Content Include="Assets\img\home\logo-duc-phuc.png" />
+    <Content Include="Assets\img\home\logo-gia-thai.png" />
+    <Content Include="Assets\img\home\ly-quan-hai.jpg" />
+    <Content Include="Assets\img\home\nguyen-minh-phan.jpg" />
+    <Content Include="Assets\img\home\nguyen-thi-do.jpg" />
+    <Content Include="Assets\img\home\nguyen-thi-hai.jpg" />
+    <Content Include="Assets\img\home\nguyen-thien-phuc.jpg" />
+    <Content Include="Assets\img\home\nguyen-truong-thi-tuan-anh.jpg" />
+    <Content Include="Assets\img\home\package.png" />
+    <Content Include="Assets\img\home\pham-van-trong.jpg" />
+    <Content Include="Assets\img\home\phone-icon.png" />
+    <Content Include="Assets\img\home\rnd.png" />
+    <Content Include="Assets\img\home\settings.png" />
+    <Content Include="Assets\img\home\solution-1.jpg" />
+    <Content Include="Assets\img\home\solution-2.jpg" />
+    <Content Include="Assets\img\home\solution-3.jpg" />
+    <Content Include="Assets\img\home\space-1.jpg" />
+    <Content Include="Assets\img\home\space-10.jpg" />
+    <Content Include="Assets\img\home\space-11.jpg" />
+    <Content Include="Assets\img\home\space-12.jpg" />
+    <Content Include="Assets\img\home\space-2.jpg" />
+    <Content Include="Assets\img\home\space-3.jpg" />
+    <Content Include="Assets\img\home\space-4.jpg" />
+    <Content Include="Assets\img\home\space-5.jpg" />
+    <Content Include="Assets\img\home\space-6.jpg" />
+    <Content Include="Assets\img\home\space-7.jpg" />
+    <Content Include="Assets\img\home\space-8.jpg" />
+    <Content Include="Assets\img\home\space-9.jpg" />
+    <Content Include="Assets\img\home\tang-ngoc-diep.jpg" />
+    <Content Include="Assets\img\home\thanh-lieu.jpg" />
+    <Content Include="Assets\img\home\tran-nghiem-vinh-thanh.jpg" />
+    <Content Include="Assets\img\home\tran-thi-hang.jpg" />
+    <Content Include="Assets\img\home\united-arab-emirates.jpg" />
+    <Content Include="Assets\img\home\user-group.png" />
+    <Content Include="Assets\img\home\viet-nam.jpg" />
+    <Content Include="Assets\img\icon\check-mark-orange.svg" />
+    <Content Include="Assets\img\icon\check-mark-white.svg" />
+    <Content Include="Assets\img\icon\facebook-icon.svg" />
+    <Content Include="Assets\img\icon\icon-call-center.svg" />
+    <Content Include="Assets\img\icon\icon-chat.svg" />
+    <Content Include="Assets\img\icon\icon-eye-empty.svg" />
+    <Content Include="Assets\img\icon\icon-facebook.svg" />
+    <Content Include="Assets\img\icon\icon-logout.svg" />
+    <Content Include="Assets\img\icon\icon-medical-history.svg" />
+    <Content Include="Assets\img\icon\icon-profile.svg" />
+    <Content Include="Assets\img\icon\icon-setting.svg" />
+    <Content Include="Assets\img\icon\icon-twitter.svg" />
+    <Content Include="Assets\img\icon\bo-cong-thuong.png" />
+    <Content Include="Assets\img\icon\call-center.svg" />
+    <Content Include="Assets\img\icon\chart-icon.svg" />
+    <Content Include="Assets\img\icon\clinic-icon.svg" />
+    <Content Include="Assets\img\icon\clock-icon.svg" />
+    <Content Include="Assets\img\icon\cog-icon.svg" />
+    <Content Include="Assets\img\icon\contact-email.svg" />
+    <Content Include="Assets\img\icon\contact-factory.svg" />
+    <Content Include="Assets\img\icon\contact-headquarter.svg" />
+    <Content Include="Assets\img\icon\contact-icon-1.svg" />
+    <Content Include="Assets\img\icon\contact-icon-2.svg" />
+    <Content Include="Assets\img\icon\contact-map.svg" />
+    <Content Include="Assets\img\icon\contact-showroom.svg" />
+    <Content Include="Assets\img\icon\contact-telephone.svg" />
+    <Content Include="Assets\img\icon\curved.svg" />
+    <Content Include="Assets\img\icon\Delivery.svg" />
+    <Content Include="Assets\img\icon\dmca.png" />
+    <Content Include="Assets\img\icon\email.svg" />
+    <Content Include="Assets\img\icon\facebook-v1.svg" />
+    <Content Include="Assets\img\icon\health-insurance-1.svg" />
+    <Content Include="Assets\img\icon\health-insurance-2.svg" />
+    <Content Include="Assets\img\icon\health-insurance.svg" />
+    <Content Include="Assets\img\icon\home.svg" />
+    <Content Include="Assets\img\icon\hospital.svg" />
+    <Content Include="Assets\img\icon\icon-wallet.svg" />
+    <Content Include="Assets\img\icon\instagram-icon.svg" />
+    <Content Include="Assets\img\icon\instagram.svg" />
+    <Content Include="Assets\img\icon\jcb.png" />
+    <Content Include="Assets\img\icon\jcb.svg" />
+    <Content Include="Assets\img\icon\light-check-amark.svg" />
+    <Content Include="Assets\img\icon\light-check-mark.svg" />
+    <Content Include="Assets\img\icon\light-icon.svg" />
+    <Content Include="Assets\img\icon\like-gray.png" />
+    <Content Include="Assets\img\icon\like.png" />
+    <Content Include="Assets\img\icon\mastercard.png" />
+    <Content Include="Assets\img\icon\mastercard.svg" />
+    <Content Include="Assets\img\icon\medical-consultant.svg" />
+    <Content Include="Assets\img\icon\ncsc.png" />
+    <Content Include="Assets\img\icon\newspaper-icon.svg" />
+    <Content Include="Assets\img\icon\newspaper.svg" />
+    <Content Include="Assets\img\icon\no-drugs-icon.svg" />
+    <Content Include="Assets\img\icon\office.svg" />
+    <Content Include="Assets\img\icon\p-box-iso.svg" />
+    <Content Include="Assets\img\icon\p-delivery-truck.svg" />
+    <Content Include="Assets\img\icon\p-setting.svg" />
+    <Content Include="Assets\img\icon\p-shield.svg" />
+    <Content Include="Assets\img\icon\paypal.png" />
+    <Content Include="Assets\img\icon\paypal.svg" />
+    <Content Include="Assets\img\icon\restaurant.svg" />
+    <Content Include="Assets\img\icon\ruler-dark-icon.svg" />
+    <Content Include="Assets\img\icon\ruler-icon.svg" />
+    <Content Include="Assets\img\icon\settings.svg" />
+    <Content Include="Assets\img\icon\share-gray.png" />
+    <Content Include="Assets\img\icon\share.png" />
+    <Content Include="Assets\img\icon\shopping-bag.png" />
+    <Content Include="Assets\img\icon\shopping-bag.svg" />
+    <Content Include="Assets\img\icon\shopping-cart.svg" />
+    <Content Include="Assets\img\icon\social-distancing-icon.svg" />
+    <Content Include="Assets\img\icon\spine-icon.svg" />
+    <Content Include="Assets\img\icon\spine-s.svg" />
+    <Content Include="Assets\img\icon\spine-straight.svg" />
+    <Content Include="Assets\img\icon\spine.svg" />
+    <Content Include="Assets\img\icon\stethoscope-icon.svg" />
+    <Content Include="Assets\img\icon\strong-dark-icon.svg" />
+    <Content Include="Assets\img\icon\strong-icon.svg" />
+    <Content Include="Assets\img\icon\telephone.svg" />
+    <Content Include="Assets\img\icon\temple.svg" />
+    <Content Include="Assets\img\icon\tiktok.svg" />
+    <Content Include="Assets\img\icon\twitter.svg" />
+    <Content Include="Assets\img\icon\verify.svg" />
+    <Content Include="Assets\img\icon\visa.png" />
+    <Content Include="Assets\img\icon\visa.svg" />
+    <Content Include="Assets\img\icon\Wallet.svg" />
+    <Content Include="Assets\img\icon\website.svg" />
+    <Content Include="Assets\img\icon\weight-icon.svg" />
+    <Content Include="Assets\img\icon\weight-idark-con.svg" />
+    <Content Include="Assets\img\icon\x-rays.svg" />
+    <Content Include="Assets\img\icon\yoga.svg" />
+    <Content Include="Assets\img\icon\youtube-round.svg" />
+    <Content Include="Assets\img\icon\zalo-icon.svg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-1.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-10.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-11.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-12.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-13.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-14.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-15.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-16.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-2.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-3.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-4.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-5.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-6.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-7.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-8.jpg" />
+    <Content Include="Assets\img\large\home\174-nguyen-van-thu-large-9.jpg" />
+    <Content Include="Assets\img\large\home\38-tu-xuong-large-1.jpg" />
+    <Content Include="Assets\img\large\home\38-tu-xuong-large-2.jpg" />
+    <Content Include="Assets\img\large\home\38-tu-xuong-large-3.jpg" />
+    <Content Include="Assets\img\large\home\38-tu-xuong-large-4.jpg" />
+    <Content Include="Assets\img\large\home\38-tu-xuong-large-5.jpg" />
+    <Content Include="Assets\img\large\home\38-tu-xuong-large-6.jpg" />
+    <Content Include="Assets\img\large\home\38-tu-xuong-large-7.jpg" />
+    <Content Include="Assets\img\large\home\38-tu-xuong-large-8.jpg" />
+    <Content Include="Assets\img\large\home\9a-ton-that-tung-large-1.jpg" />
+    <Content Include="Assets\img\large\home\9a-ton-that-tung-large-10.jpg" />
+    <Content Include="Assets\img\large\home\9a-ton-that-tung-large-2.jpg" />
+    <Content Include="Assets\img\large\home\9a-ton-that-tung-large-3.jpg" />
+    <Content Include="Assets\img\large\home\9a-ton-that-tung-large-4.jpg" />
+    <Content Include="Assets\img\large\home\9a-ton-that-tung-large-5.jpg" />
+    <Content Include="Assets\img\large\home\9a-ton-that-tung-large-6.jpg" />
+    <Content Include="Assets\img\large\home\9a-ton-that-tung-large-7.jpg" />
+    <Content Include="Assets\img\large\home\9a-ton-that-tung-large-8.jpg" />
+    <Content Include="Assets\img\large\home\9a-ton-that-tung-large-9.jpg" />
+    <Content Include="Assets\img\large\home\education-large-1.jpg" />
+    <Content Include="Assets\img\large\home\education-large-10.jpg" />
+    <Content Include="Assets\img\large\home\education-large-11.jpg" />
+    <Content Include="Assets\img\large\home\education-large-12.jpg" />
+    <Content Include="Assets\img\large\home\education-large-13.jpg" />
+    <Content Include="Assets\img\large\home\education-large-14.jpg" />
+    <Content Include="Assets\img\large\home\education-large-2.jpg" />
+    <Content Include="Assets\img\large\home\education-large-3.jpg" />
+    <Content Include="Assets\img\large\home\education-large-4.jpg" />
+    <Content Include="Assets\img\large\home\education-large-5.jpg" />
+    <Content Include="Assets\img\large\home\education-large-6.jpg" />
+    <Content Include="Assets\img\large\home\education-large-7.jpg" />
+    <Content Include="Assets\img\large\home\education-large-8.jpg" />
+    <Content Include="Assets\img\large\home\education-large-9.jpg" />
+    <Content Include="Assets\img\large\home\space-large-1.jpg" />
+    <Content Include="Assets\img\large\home\space-large-10.jpg" />
+    <Content Include="Assets\img\large\home\space-large-11.jpg" />
+    <Content Include="Assets\img\large\home\space-large-12.jpg" />
+    <Content Include="Assets\img\large\home\space-large-2.jpg" />
+    <Content Include="Assets\img\large\home\space-large-3.jpg" />
+    <Content Include="Assets\img\large\home\space-large-4.jpg" />
+    <Content Include="Assets\img\large\home\space-large-5.jpg" />
+    <Content Include="Assets\img\large\home\space-large-6.jpg" />
+    <Content Include="Assets\img\large\home\space-large-7.jpg" />
+    <Content Include="Assets\img\large\home\space-large-8.jpg" />
+    <Content Include="Assets\img\large\home\space-large-9.jpg" />
+    <Content Include="Assets\img\license\australia.jpg" />
+    <Content Include="Assets\img\license\canada.jpg" />
+    <Content Include="Assets\img\license\euro-patent.jpg" />
+    <Content Include="Assets\img\license\hongkong-patent.jpg" />
+    <Content Include="Assets\img\license\india-patent.jpg" />
+    <Content Include="Assets\img\license\indonesia-patent.jpg" />
+    <Content Include="Assets\img\license\israel-patent.jpg" />
+    <Content Include="Assets\img\license\japan-patent.jpg" />
+    <Content Include="Assets\img\license\korea-patent.jpg" />
+    <Content Include="Assets\img\license\united-arab-emirates.jpg" />
+    <Content Include="Assets\img\license\viet-nam.jpg" />
+    <Content Include="Assets\img\logo\logo-doctorloan.svg" />
+    <Content Include="Assets\img\logo\logo-footer.png" />
+    <Content Include="Assets\img\logo\logo-header.svg" />
+    <Content Include="Assets\img\logo\logo-mobile.svg" />
+    <Content Include="Assets\img\logo\logo-single.svg" />
+    <Content Include="Assets\img\logo\slogan-mobile.svg" />
+    <Content Include="Assets\img\news\back-pain.jpg" />
+    <Content Include="Assets\img\news\bg-news-info.jpg" />
+    <Content Include="Assets\img\news\card-news-fb.jpg" />
+    <Content Include="Assets\img\news\giai-phap-news.jpg" />
+    <Content Include="Assets\img\news\hoat-dong-xa-hoi-1.jpg" />
+    <Content Include="Assets\img\news\hoat-dong-xa-hoi-2.jpg" />
+    <Content Include="Assets\img\news\hoat-dong-xa-hoi-3.jpg" />
+    <Content Include="Assets\img\news\hoat-dong-xa-hoi-4.jpg" />
+    <Content Include="Assets\img\news\img-ins-1.jpg" />
+    <Content Include="Assets\img\news\img-ins-2.jpg" />
+    <Content Include="Assets\img\news\img-ins-3.jpg" />
+    <Content Include="Assets\img\news\img-ins-4.jpg" />
+    <Content Include="Assets\img\news\img-ins-5.jpg" />
+    <Content Include="Assets\img\news\img-ins-6.jpg" />
+    <Content Include="Assets\img\news\news-arizona.jpg" />
+    <Content Include="Assets\img\news\news-australia.jpg" />
+    <Content Include="Assets\img\news\news-bali.jpg" />
+    <Content Include="Assets\img\news\news-china.jpg" />
+    <Content Include="Assets\img\news\news-detail.jpg" />
+    <Content Include="Assets\img\news\news-greece.jpg" />
+    <Content Include="Assets\img\news\news-iceland.jpg" />
+    <Content Include="Assets\img\news\news-img-1.jpg" />
+    <Content Include="Assets\img\news\news-img-2.jpg" />
+    <Content Include="Assets\img\news\news-img-3.jpg" />
+    <Content Include="Assets\img\news\news-img-4.jpg" />
+    <Content Include="Assets\img\news\news-img-5.jpg" />
+    <Content Include="Assets\img\news\news-img-6.jpg" />
+    <Content Include="Assets\img\news\news-img-7.jpg" />
+    <Content Include="Assets\img\news\news-kenya.jpg" />
+    <Content Include="Assets\img\news\news-main-img.jpg" />
+    <Content Include="Assets\img\news\news-maldives.jpg" />
+    <Content Include="Assets\img\news\news-singapore.jpg" />
+    <Content Include="Assets\img\news\news-story-1.jpg" />
+    <Content Include="Assets\img\news\news-story-2.jpg" />
+    <Content Include="Assets\img\news\nguyen-nhan-1.jpg" />
+    <Content Include="Assets\img\news\nguyen-nhan-2.jpg" />
+    <Content Include="Assets\img\news\nguyen-nhan-3.jpg" />
+    <Content Include="Assets\img\news\nguyen-nhan-4.jpg" />
+    <Content Include="Assets\img\news\poster-news.png" />
+    <Content Include="Assets\img\news\social-activities-img.jpg" />
+    <Content Include="Assets\img\news\thuc-trang-1.jpg" />
+    <Content Include="Assets\img\news\thuc-trang-2.jpg" />
+    <Content Include="Assets\img\news\thuc-trang-3.jpg" />
+    <Content Include="Assets\img\products\collection-1.jpg" />
+    <Content Include="Assets\img\products\collection-2.jpg" />
+    <Content Include="Assets\img\products\collection-3.jpg" />
+    <Content Include="Assets\img\products\collection-4.jpg" />
+    <Content Include="Assets\img\products\collection-5.jpg" />
+    <Content Include="Assets\img\products\img-product-banner.png" />
+    <Content Include="Assets\img\products\img-product-detail-1.png" />
+    <Content Include="Assets\img\products\img-product-detail-2.png" />
+    <Content Include="Assets\img\products\img-product-detail-3.png" />
+    <Content Include="Assets\img\products\img-product-detail-4.png" />
+    <Content Include="Assets\img\products\img-product-detail-5.png" />
+    <Content Include="Assets\img\products\img-product-detail-thumb-1.png" />
+    <Content Include="Assets\img\products\img-product-detail-thumb-2.png" />
+    <Content Include="Assets\img\products\img-product-detail-thumb-3.png" />
+    <Content Include="Assets\img\products\img-product-detail-thumb-4.png" />
+    <Content Include="Assets\img\products\img-product-detail-thumb-5.png" />
+    <Content Include="Assets\img\products\product-95vip.png" />
+    <Content Include="Assets\img\products\product-detail-img-0.jpg" />
+    <Content Include="Assets\img\products\product-detail-img-1.jpg" />
+    <Content Include="Assets\img\products\product-detail-img-2.jpg" />
+    <Content Include="Assets\img\products\product-detail-img-3.jpg" />
+    <Content Include="Assets\img\products\product-detail-img-4.jpg" />
+    <Content Include="Assets\img\products\product-detail-img-5.jpg" />
+    <Content Include="Assets\img\products\product-detail\img-pd-black-1.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-black-2.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-black-3.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-black-4.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-black-5.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-grape-1.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-grape-2.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-grape-3.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-grape-4.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-grape-5.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-green-1.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-green-2.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-green-3.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-green-4.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-green-5.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-yellow-1.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-yellow-2.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-yellow-3.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-yellow-4.png" />
+    <Content Include="Assets\img\products\product-detail\img-pd-yellow-5.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-black-1.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-black-2.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-black-3.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-black-4.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-black-5.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-grape-1.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-grape-2.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-grape-3.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-grape-4.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-grape-5.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-green-1.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-green-2.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-green-3.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-green-4.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-green-5.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-yellow-1.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-yellow-2.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-yellow-3.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-yellow-4.png" />
+    <Content Include="Assets\img\products\product-detail\img-pdt-yellow-5.png" />
+    <Content Include="Assets\img\products\product-n85-pink.png" />
+    <Content Include="Assets\img\products\product-png-1.png" />
+    <Content Include="Assets\img\products\product-png-10.png" />
+    <Content Include="Assets\img\products\product-png-2.png" />
+    <Content Include="Assets\img\products\product-png-3.png" />
+    <Content Include="Assets\img\products\product-png-4.png" />
+    <Content Include="Assets\img\products\product-png-5.png" />
+    <Content Include="Assets\img\products\product-png-6.png" />
+    <Content Include="Assets\img\products\product-png-7.png" />
+    <Content Include="Assets\img\products\product-png-8.png" />
+    <Content Include="Assets\img\products\product-png-9.png" />
+    <Content Include="Assets\img\products\promo-product-1.png" />
+    <Content Include="Assets\img\products\promo-product-2.png" />
+    <Content Include="Assets\img\products\promo-product-3.png" />
+    <Content Include="Assets\img\products\review-1.jpg" />
+    <Content Include="Assets\img\products\review-2.jpg" />
+    <Content Include="Assets\img\products\review-3.jpg" />
+    <Content Include="Assets\img\products\review-4.jpg" />
+    <Content Include="Assets\img\products\review-5.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room-1.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room-2.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room-3.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room-4.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room-5.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room-mb-1.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room-mb-2.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room-mb-3.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room-mb-4.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room-mb-5.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room-mb.jpg" />
+    <Content Include="Assets\img\showroom\chair-1.jpg" />
+    <Content Include="Assets\img\showroom\chair-2.jpg" />
+    <Content Include="Assets\img\showroom\chair-3.jpg" />
+    <Content Include="Assets\img\showroom\chair-4.jpg" />
+    <Content Include="Assets\img\showroom\chair-5.jpg" />
+    <Content Include="Assets\img\showroom\chair-main.png" />
+    <Content Include="Assets\img\showroom\chair-oder-1.png" />
+    <Content Include="Assets\img\showroom\chair-oder-2.png" />
+    <Content Include="Assets\img\showroom\chair-oder-3.png" />
+    <Content Include="Assets\img\showroom\chair-oder-4.png" />
+    <Content Include="Assets\img\showroom\chair-oder-5.png" />
+    <Content Include="Assets\img\showroom\chair-oder-6.png" />
+    <Content Include="Assets\img\showroom\chair-product-n85.png" />
+    <Content Include="Assets\img\showroom\chair-slide-1.png" />
+    <Content Include="Assets\img\showroom\chair-slide-2.png" />
+    <Content Include="Assets\img\showroom\chair-slide-3.png" />
+    <Content Include="Assets\img\showroom\chair-slide-4.png" />
+    <Content Include="Assets\img\showroom\chair-slide-5.png" />
+    <Content Include="Assets\img\showroom\cushion-1.png" />
+    <Content Include="Assets\img\showroom\cushion-2.png" />
+    <Content Include="Assets\img\showroom\cushion-3.png" />
+    <Content Include="Assets\img\showroom\cushion-4.png" />
+    <Content Include="Assets\img\showroom\goi-co-f4.png" />
+    <Content Include="Assets\img\showroom\goi-co-f5.png" />
+    <Content Include="Assets\img\showroom\goi-co-f6.png" />
+    <Content Include="Assets\img\showroom\goi-co-nguoi-lon-khong-loi.png" />
+    <Content Include="Assets\img\showroom\goi-co-tre-em-size-lon.png" />
+    <Content Include="Assets\img\showroom\goi-co-tre-em-size-nho.png" />
+    <Content Include="Assets\img\showroom\goi-lung-f1-dai.png" />
+    <Content Include="Assets\img\showroom\goi-lung-f1-ngan.png" />
+    <Content Include="Assets\img\showroom\goi-lung-f3.png" />
+    <Content Include="Assets\img\showroom\history-1.jpg" />
+    <Content Include="Assets\img\showroom\history-1.png" />
+    <Content Include="Assets\img\showroom\history-2.jpg" />
+    <Content Include="Assets\img\showroom\history-2.png" />
+    <Content Include="Assets\img\showroom\history-3.jpg" />
+    <Content Include="Assets\img\showroom\history-3.png" />
+    <Content Include="Assets\img\showroom\history-4.jpg" />
+    <Content Include="Assets\img\showroom\history-4.png" />
+    <Content Include="Assets\img\showroom\history-5.jpg" />
+    <Content Include="Assets\img\products\product-1.jpg" />
+    <Content Include="Assets\img\products\product-2.jpg" />
+    <Content Include="Assets\img\products\product-3.jpg" />
+    <Content Include="Assets\img\products\product-4.jpg" />
+    <Content Include="Assets\img\products\product-5.jpg" />
+    <Content Include="Assets\img\products\product-6.jpg" />
+    <Content Include="Assets\img\products\product-7.jpg" />
+    <Content Include="Assets\img\products\product-8.jpg" />
+    <Content Include="Assets\img\products\product-9.jpg" />
+    <Content Include="Assets\img\showroom\banner-show-room.jpg" />
+    <Content Include="Assets\img\showroom\bg-history.jpg" />
+    <Content Include="Assets\img\showroom\history-5.png" />
+    <Content Include="Assets\img\showroom\pillow-1.png" />
+    <Content Include="Assets\img\showroom\pillow-2.png" />
+    <Content Include="Assets\img\showroom\pillow-3.png" />
+    <Content Include="Assets\img\showroom\pillow-4.png" />
+    <Content Include="Assets\img\showroom\pillow-main-1.png" />
+    <Content Include="Assets\img\showroom\pillow-main-2.png" />
+    <Content Include="Assets\img\showroom\pillow-main-3.png" />
+    <Content Include="Assets\img\showroom\product-option-1.png" />
+    <Content Include="Assets\img\showroom\product-option-2.png" />
+    <Content Include="Assets\img\showroom\product-option-3.png" />
+    <Content Include="Assets\img\showroom\product-option-4.png" />
+    <Content Include="Assets\img\showroom\product-option-5.png" />
+    <Content Include="Assets\img\showroom\product-option-6.png" />
+    <Content Include="Assets\img\showroom\sr-product-1.png" />
+    <Content Include="Assets\img\showroom\sr-product-2.png" />
+    <Content Include="Assets\img\showroom\sr-product-3.png" />
+    <Content Include="Assets\img\showroom\sr-product-4.png" />
+    <Content Include="Assets\img\showroom\video-review.jpg" />
+    <Content Include="Assets\img\x-quang\bui-pham-minh-khue-ca.jpg" />
+    <Content Include="Assets\img\x-quang\bui-pham-minh-khue-cb.jpg" />
+    <Content Include="Assets\img\x-quang\bui-pham-minh-khue-la.jpg" />
+    <Content Include="Assets\img\x-quang\bui-pham-minh-khue-lb.jpg" />
+    <Content Include="Assets\img\x-quang\bui-thi-minh-thu-ca.jpg" />
+    <Content Include="Assets\img\x-quang\bui-thi-minh-thu-cb.jpg" />
+    <Content Include="Assets\img\x-quang\davis-bobbyg-ca.jpg" />
+    <Content Include="Assets\img\x-quang\davis-bobbyg-cb.jpg" />
+    <Content Include="Assets\img\x-quang\davis-bobbyg-la.jpg" />
+    <Content Include="Assets\img\x-quang\davis-bobbyg-lb.jpg" />
+    <Content Include="Assets\img\x-quang\hussin-la.jpg" />
+    <Content Include="Assets\img\x-quang\hussin-lb.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-huu-loc-ca.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-huu-loc-cb.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-huu-loc-la.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-huu-loc-lb.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-minh-tung-ca.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-minh-tung-cb.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-minh-tung-la.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-minh-tung-lb.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-thi-thanh-thanh-la.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-thi-thanh-thanh-lb.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-thi-thu-loan-ca.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-thi-thu-loan-cb.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-thi-thu-loan-la.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-thi-thu-loan-lb.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-thi-tuyet-ca.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-thi-tuyet-cb.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-van-tai-ca.jpg" />
+    <Content Include="Assets\img\x-quang\nguyen-van-tai-cb.jpg" />
+    <Content Include="Assets\img\x-quang\pham-thanh-khuong-la.jpg" />
+    <Content Include="Assets\img\x-quang\pham-thanh-khuong-lb.jpg" />
+    <Content Include="Assets\img\x-quang\tran-thi-thu-ba-ca.jpg" />
+    <Content Include="Assets\img\x-quang\tran-thi-thu-ba-cb.jpg" />
+    <Content Include="Assets\img\x-quang\tran-vinh-nguyen-ca.jpg" />
+    <Content Include="Assets\img\x-quang\tran-vinh-nguyen-cb.jpg" />
+    <Content Include="Assets\img\x-quang\tran-vinh-nguyen-la.jpg" />
+    <Content Include="Assets\img\x-quang\tran-vinh-nguyen-lb.jpg" />
+    <Content Include="Assets\img\x-quang\truong-thi-dien-la.jpg" />
+    <Content Include="Assets\img\x-quang\truong-thi-dien-lb.jpg" />
+    <Content Include="Assets\js\common.js" />
+    <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\libs\Bootstrap\bootstrap-datepicker.css" />
+    <Content Include="Assets\libs\Bootstrap\bootstrap-datepicker.js" />
+    <Content Include="Assets\libs\Bootstrap\bootstrap-datepicker.vi.min.js" />
+    <Content Include="Assets\libs\Bootstrap\bootstrap-datepicker3.css" />
+    <Content Include="Assets\libs\Bootstrap\bootstrap-datetimepicker.js" />
+    <Content Include="Assets\libs\Bootstrap\bootstrap-datetimepicker.min.css" />
+    <Content Include="Assets\libs\Bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="Assets\libs\Bootstrap\bootstrap.min.css" />
+    <Content Include="Assets\libs\Bootstrap\bootstrap.min.js" />
+    <Content Include="Assets\libs\Bootstrap\popper.min.js" />
+    <Content Include="Assets\libs\flag\flag.css" />
+    <Content Include="Assets\libs\flag\flags.png" />
+    <Content Include="Assets\libs\glightbox\glightbox.css" />
+    <Content Include="Assets\libs\glightbox\glightbox.js" />
+    <Content Include="Assets\libs\glightbox\glightbox.min.css" />
+    <Content Include="Assets\libs\glightbox\glightbox.min.js" />
+    <Content Include="Assets\libs\jquery\jquery-3.7.0.min.js" />
+    <Content Include="Assets\libs\OwlCarousel\owl.carousel.css" />
+    <Content Include="Assets\libs\OwlCarousel\owl.carousel.js" />
+    <Content Include="Assets\libs\OwlCarousel\owl.carousel.min.css" />
+    <Content Include="Assets\libs\OwlCarousel\owl.carousel.min.js" />
+    <Content Include="Assets\libs\SuperFish\hoverIntent.js" />
+    <Content Include="Assets\libs\SuperFish\superfish.js" />
+    <Content Include="Assets\libs\SuperFish\superfish.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\css\variables.less" />
+    <Content Include="Assets\css\styles.less" />
+    <Content Include="Assets\css\common.less" />
+    <Content Include="Assets\font\SVN-Gotham-Black.otf" />
+    <Content Include="Assets\font\SVN-Gotham-Bold.otf" />
+    <Content Include="Assets\font\SVN-Gotham-Book.otf" />
+    <Content Include="Assets\font\SVN-Gotham-Light.otf" />
+    <Content Include="Assets\font\SVN-Gotham-Regular.otf" />
+    <Content Include="Assets\font\SVN-Gotham-Thin.otf" />
+    <Content Include="Assets\font\SVN-Gotham-Ultra.otf" />
+    <Content Include="Assets\font\SVN-Gotham-XLight.otf" />
+    <Content Include="Assets\css\home.less" />
+    <Content Include="Assets\css\about.less" />
+    <Content Include="Assets\font\helvetica-neue-regular.ttf" />
+    <Content Include="Assets\font\helveticaneue.ttf" />
+    <Content Include="Assets\font\helveticaneuebold.ttf" />
+    <Content Include="Assets\font\helveticaneuecondensedblack.ttf" />
+    <Content Include="Assets\font\helveticaneuecondensedbold.ttf" />
+    <Content Include="Assets\font\helveticaneuelight.ttf" />
+    <Content Include="Assets\font\helveticaneuemedium.ttf" />
+    <Content Include="Assets\font\helveticaneueultralight.ttf" />
+    <Content Include="Assets\css\clinic.less" />
+    <Content Include="Assets\font\SVN-Signatrue.otf" />
+    <Content Include="Assets\font\FzPhotograph.ttf" />
+    <Content Include="Assets\css\show-room.less" />
+    <Content Include="Assets\css\products.less" />
+    <Content Include="Assets\css\news.less" />
+    <Content Include="Assets\css\contact.less" />
+    <Content Include="Assets\css\product-detail.less" />
+    <Content Include="Assets\css\news-detail.less" />
+    <Content Include="Assets\auth\auth.less" />
+    <Content Include="Assets\auth\icomoon\fonts\icomoon.eot" />
+    <Content Include="Assets\auth\icomoon\fonts\icomoon.ttf" />
+    <Content Include="Assets\auth\icomoon\fonts\icomoon.woff" />
+    <Content Include="Assets\css\cart.less" />
+    <Content Include="Assets\css\menu-header.less" />
+    <Content Include="Assets\pdf\HDSD-demo.pdf" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <Content Include="Views\Common\_Header.cshtml" />
+    <Content Include="Views\Common\_Footer.cshtml" />
+    <Content Include="Views\Common\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Clinic\Index.cshtml" />
+    <Content Include="Views\ShowRoom\Index.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\MedicalRegister.cshtml" />
+    <Content Include="Views\Contact\HealthAdvice.cshtml" />
+    <Content Include="Views\Contact\ProductConsultation.cshtml" />
+    <Content Include="Views\Products\ProductDetail.cshtml" />
+    <Content Include="Views\News\NewsDetail.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Auth\Register.cshtml" />
+    <Content Include="Views\Auth\ForgotPassword.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\News\NewsGroup.cshtml" />
+    <Content Include="Views\Common\WarrantyPolicy.cshtml" />
+    <Content Include="Views\Common\_Experience.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
+    <Content Include="Views\Common\OrderSuccess.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58816</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44325/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công ty TNHH Gia Thái DOCTORLOAN</title>
+    <link href="~/Assets/css/menu-header.min.css" rel="stylesheet" />
+    @Styles.Render("~/Contents/CoreStyle")
+    @Styles.Render("~/Styles/OwlCarousel")
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    @RenderSection("styles", false)
+    @Scripts.Render("~/Scripts/Jquery")
+    <link href="~/Assets/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        @Html.Action("Header", "Common")
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        @Html.Action("Footer", "Common")
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="~/Assets/libs/Bootstrap/popper.min.js"></script>
+    <script src="~/Assets/libs/Bootstrap/bootstrap.min.js"></script>
+    @Scripts.Render("~/Scripts/CoreScripts")
+    @Scripts.Render("~/Scripts/OwlCarousel")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

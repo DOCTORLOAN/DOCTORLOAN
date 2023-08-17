@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewBag.Title = "NewsGroup";
+}
+
+<section id="MenuNews" class="margin-none">
+    <div class="container">
+        <div class="list-menu-news">
+            <div class="menu-news-item">
+                <a href="@Url.Action("NewsGroup","News")">
+                    <img src="~/Assets/img/icon/newspaper-icon.svg" />
+                    <div class="content-menu">
+                        Thời sự <br />
+                        (Tin tức - sự kiện)
+                    </div>
+                </a>
+            </div>
+            <div class="menu-news-item">
+                <a href="@Url.Action("NewsGroup","News")">
+                    <img src="~/Assets/img/icon/spine-icon.svg" />
+                    <div class="content-menu">
+                        Nguyên nhân gây bệnh cột sống
+                    </div>
+                </a>
+            </div>
+            <div class="menu-news-item @*active*@">
+                <a href="@Url.Action("NewsGroup","News")">
+                    <img src="~/Assets/img/icon/no-drugs-icon.svg" />
+                    <div class="content-menu">
+                        Thực trạng xã hội và y học về bệnh cột sống
+                    </div>
+                </a>
+            </div>
+            <div class="menu-news-item">
+                <a href="@Url.Action("NewsGroup","News")">
+                    <img src="~/Assets/img/icon/health-insurance.svg" />
+                    <div class="content-menu">
+                        Giải pháp phòng và điều trị bệnh cột sống
+                    </div>
+                </a>
+            </div>
+            <div class="menu-news-item">
+                <a href="@Url.Action("NewsGroup","News")">
+                    <img src="~/Assets/img/icon/health-insurance-1.svg" />
+                    <div class="content-menu">
+                        Câu chuyện của những bệnh nhân khỏi bệnh cột sống
+                    </div>
+                </a>
+            </div>
+            <div class="menu-news-item">
+                <a href="@Url.Action("NewsGroup","News")">
+                    <img src="~/Assets/img/icon/health-insurance-2.svg" />
+                    <div class="content-menu">
+                        Hoạt động xã hội
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="NewsGroup" class="news-group-page">
+    <div class="container">
+        <div class="title-news">
+            <strong><img src="~/Assets/img/icon/no-drugs-icon.svg" />Thực trạng xã hội và y học về bệnh cột sống</strong>
+            <span class="text-black">Từ 30 tuổi trở đi, nhiều người đã bắt đầu bước vào thời kỳ lão hoá, xương và các khớp xương bắt đầu  thoái hoá với nhiều chứng bệnh liên quan đến xương khớp…</span>
+        </div>
+
+        <div class="list-news-reality">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="news-reality-main">
+                        <div class="img-reality-main">
+                            <img src="~/Assets/img/news/thuc-trang-1.jpg" />
+                        </div>
+                        <div class="content-news-reality">
+                            <div class="center-thing">
+                                <div>
+                                    <h5 class="title-desc-news">Bệnh do những thói quen xấu</h5>
+                                    <p class="desc-news">Ngồi, đứng hoặc làm việc với tư thế cúi đầu, nghiêng hoặc xoay đầu thường xuyên qua một bên; khiêng vật nặng với tư thế uốn cong lưng và cổ; ngồi bắt tréo chân khiến khung chậu bị bẻ vẹo và lực ép tập trung một bên khung chậu…</p>
+                                    <a href="@Url.Action("NewsDetail","News")">Xem chi tiết >>></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="news-reality-main">
+                        <div class="img-reality-main">
+                            <img src="~/Assets/img/news/thuc-trang-2.jpg" />
+                        </div>
+                        <div class="content-news-reality">
+                            <div class="center-thing">
+                                <div>
+                                    <h5 class="title-desc-news">Đau cột sống cổ do chấn thương</h5>
+                                    <p class="desc-news">Do vị trí và đặc điểm sinh – cơ học cột sống cổ là bộ phận nối tiếp giữa đầu và thân nên dễ bị tổn thương. Nếu một trong hai phần của cơ thể, đầu hoặc thân bị tăng tốc hoặc hãm đột ngột thì cột sống cổ phải chịu sức căng rất lớn…</p>
+                                    <a href="@Url.Action("NewsDetail","News")">Xem chi tiết >>></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="news-reality-main">
+                        <div class="img-reality-main">
+                            <img src="~/Assets/img/news/thuc-trang-3.jpg" />
+                        </div>
+                        <div class="content-news-reality">
+                            <div class="center-thing">
+                                <div>
+                                    <h5 class="title-desc-news">Tư thế ngồi lý tưởng</h5>
+                                    <p class="desc-news">Ngồi không đúng tư thế sẽ dẫn đến những bệnh liên quan đến cột sống. Đối với những người làm việc văn phòng, học sinh, sinh viên… cần có tư thế ngồi lý tưởng để giữ cho cột sống luôn được nâng đỡ tốt…</p>
+                                    <a href="@Url.Action("NewsDetail","News")">Xem chi tiết >>></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="news-reality-main">
+                        <div class="img-reality-main">
+                            <img src="~/Assets/img/news/nguyen-nhan-1.jpg" />
+                        </div>
+                        <div class="content-news-reality">
+                            <div class="center-thing">
+                                <div>
+                                    <h5 class="title-desc-news">Đơ cứng cổ  không rõ nguyên nhân</h5>
+                                    <p class="desc-news">Góc “Trò chuyện cùng nhà chuyên môn” cung cấp những kiến thức cần thiết về y tế, dinh dưỡng. Để giúp bạn có thể nhận biết, phòng, chống và tự chăm sóc bản thân, gia đình…</p>
+                                    <a href="@Url.Action("NewsDetail","News")">Xem chi tiết >>></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="news-reality-main">
+                        <div class="img-reality-main">
+                            <img src="~/Assets/img/news/nguyen-nhan-3.jpg" />
+                        </div>
+                        <div class="content-news-reality">
+                            <div class="center-thing">
+                                <div>
+                                    <h5 class="title-desc-news">Đau lưng do sai tư thế</h5>
+                                    <p class="desc-news">Nhiều người, nhất là phụ nữ, bị đau lưng thường xuyên, tê cứng tay chân… do đi, đứng, nằm, ngồi không đứng tư thế. Trong sinh hoạt thường ngày, do tính chất công việc hoặc do không hiểu biết nên đi, đứng, ngồi sai tư thế…</p>
+                                    <a href="@Url.Action("NewsDetail","News")">Xem chi tiết >>></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="news-reality-main">
+                        <div class="img-reality-main">
+                            <img src="~/Assets/img/news/giai-phap-news.jpg" />
+                        </div>
+                        <div class="content-news-reality">
+                            <div class="center-thing">
+                                <div>
+                                    <h5 class="title-desc-news">Phụ nữ và bệnh thoái hóa khớp</h5>
+                                    <p class="desc-news">Môi trường công việc dù ở ngồi văn phòng hay phải di chuyển thường xuyên, ngay cả những việc tưởng chừng giản đơn như đi chợ, nấu ăn, dọn dẹp nhà cửa…</p>
+                                    <a href="@Url.Action("NewsDetail","News")">Xem chi tiết >>></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#nav-menu-container ul li").removeClass("menu-active");
+            $("#nav-menu-container ul li").eq(5).addClass("menu-active");
+        });
+    </script>
+}

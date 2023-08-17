@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "Payment";
+}
+
+<section id="CartPayment" class="cart-payment">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="cart-wrapper">
+                    <div class="title-cart">Thông tin đơn hàng</div>
+                    <div class="cart-form">
+                        <div class="cart-link">Đã có tài khoản?&nbsp; <a href="@Url.Action("Login","Auth")">Đăng nhập</a></div>
+                        <form class="row needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="username" class="req">Tên người nhận</label>
+                                <input type="text" class="form-control" placeholder="Nhập tên người nhận" id="username" required />
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập họ tên.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="userphone" class="req">Số điện thoại</label>
+                                <input type="text" class="form-control" placeholder="Nhập số điện thoại" id="userphone" required />
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập số điện thoại.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="useraddress" class="req">Địa chỉ</label>
+                                <input type="text" class="form-control" placeholder="Nhập địa chỉ" id="useraddress" required />
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập số điện thoại.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="usernote">Ghi chú</label>
+                                <textarea class="form-control" id="usernote" placeholder="Nhập ghi chú" rows="3"></textarea>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="title-cart">Thông tin thanh toán <span>Vui lòng chọn một hình thức thanh toán.</span></div>
+                    <div class="info-payment">
+                        <a href="javascript:void(0)" class="btn btn-payment active" data-payment="transfer">Chuyển khoản</a>
+                        <a href="javascript:void(0)" class="btn btn-payment" data-payment="cod">Thanh toán khi nhận hàng</a>
+                        <hr class="hr-payment" />
+                        <div class="payment-content transfer active">
+                            <p>Thông tin chuyển khoản</p>
+                            <p>
+                                <strong>
+                                    CÔNG TY TNHH GIA THÁI DOCTORLOAN <br />
+                                    Số tài khoản: 6899136899 <br />
+                                    Ngân hàng: TMCP Ngoại Thương Việt Nam (VIETCOMBANK - VCB) <br />
+                                    Nội dung chuyển khoản: Tên + Mã đơn hàng
+                                </strong>
+                            </p>
+                        </div>
+
+                        <div class="payment-content cod">
+                            <p><strong>Đơn hàng sẽ được gửi đến bạn trong thời gian sớm nhất!</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="cart-wrapper">
+                    <div class="title-cart">Đơn hàng <small>(3 sản phẩm)</small></div>
+                    <hr class="hr-payment" />
+                    <div class="list-product-payment">
+                        <div class="pp-item">
+                            <div class="pp-info">
+                                <img src="~/Assets/img/products/img-product-detail-1.png" />
+                                <div class="pp-desc">
+                                    <strong>Ghế ngồi sáng chế DOCTORLOAN 95 VIP</strong>
+                                    <span>1SP x Nâu</span>
+                                </div>
+                            </div>
+                            <div class="product-price">27,300,000</div>
+                        </div>
+                        <div class="pp-item">
+                            <div class="pp-info">
+                                <img src="~/Assets/img/products/img-product-banner.png" />
+                                <div class="pp-desc">
+                                    <strong>Ghế nằm sáng chế DOCTORLOAN 135</strong>
+                                    <span>1SP x Nâu</span>
+                                </div>
+                            </div>
+                            <div class="product-price">37,400,000</div>
+                        </div>
+                        <div class="pp-item">
+                            <div class="pp-info">
+                                <img src="~/Assets/img/showroom/cushion-2.png" />
+                                <div class="pp-desc">
+                                    <strong>Đệm thiền sáng chế DOCTORLOAN</strong>
+                                    <span>1SP x Lớn</span>
+                                </div>
+                            </div>
+                            <div class="product-price">6,800,000</div>
+                        </div>
+                    </div>
+                    <div class="total-cart">
+                        <div class="total-info">
+                            <span>Tạm tính</span>
+                            <span id="cart-subtotal" class="totals-value">71,500,000</span>
+                        </div>
+                        <div class="total-info">
+                            <span>Giảm giá (0%)</span>
+                            <span id="cart-tax" class="totals-value">0</span>
+                        </div>
+                        <div class="total-info">
+                            <span>Phí vận chuyển</span>
+                            <span id="cart-shipping" class="totals-value">200,000</span>
+                        </div>
+                        <div class="total-info totals-item-total">
+                            <span>Tổng cộng</span>
+                            <span id="cart-total" class="totals-value">71,700,000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="javascript:void(0)" class="btn checkout">Đặt hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+
+        $(document).on('click', '.btn-payment', function () {
+            $('.btn-payment').removeClass("active");
+            $(this).addClass("active");
+            var getdatapayment = $(this).attr("data-payment");
+            $('.payment-content').removeClass("active");
+            $('.payment-content.' + getdatapayment).addClass("active");
+        });
+    </script>
+    }
