@@ -1,0 +1,1544 @@
+@import "variables";
+
+#AboutBanner {
+    padding-top: 3rem;
+    background-image: url(../img/about/bg-about-banner.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+
+    .img-banner-about {
+        width: 75%;
+        max-width: 450px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    h4 {
+        color: @white;
+        text-transform: uppercase;
+        font-size: 2.25rem;
+        font-family: @font-helveticaneue-blod;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        color: @white;
+        font-size: 1.125rem;
+        margin-bottom: 2rem;
+
+        &.font-regular {
+            font-family: @font-helveticaneue-medium;
+            margin: 0;
+        }
+    }
+
+    ul {
+        li {
+            color: @white;
+        }
+    }
+
+    .banner-action {
+        margin-top: 2rem;
+    }
+}
+
+.more-group {
+    .moretext {
+        overflow: hidden;
+        height: 0;
+        font-size: 1rem;
+        transition: all 0.4s;
+
+        &.more-active {
+            margin: 0;
+            padding: 1rem 0;
+            height: auto;
+        }
+    }
+
+    .more-action {
+        display: block;
+        margin-top: .75rem;
+        text-align: left;
+    }
+
+    .moreless-button {
+        cursor: pointer;
+        color: @white;
+        margin-top: 1rem;
+
+        &:hover {
+            color: @white;
+            text-decoration: underline;
+        }
+    }
+}
+
+#DoctorInfo {
+    .more-group .moreless-button {
+        color: @black;
+    }
+
+    .doctor-wrapper {
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    .doctor-image {
+        position: relative;
+        margin-top: -3rem;
+
+        img {
+            position: relative;
+            z-index: 2;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -7vh;
+            right: -7vw;
+            width: 70%;
+            height: 70%;
+            background: url(../img/about/doctor-vector.png) no-repeat center / cover;
+            z-index: 1;
+        }
+    }
+
+    .doctor-desc {
+        width: 70%;
+        display: block;
+        margin: 0 auto;
+
+        h4 {
+            font-size: 1.75rem;
+            color: @main-orange;
+            font-family: @font-helveticaneue-blod;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 2.25rem;
+            text-transform: uppercase;
+            color: @main-orange;
+            font-family: @font-helveticaneue-blod;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+
+    .doctor-about-last {
+        margin-top: 7vh;
+    }
+
+    .container {
+        position: relative;
+    }
+
+    .about-text-first {
+        position: absolute;
+        top: calc(175px + 5rem);
+        left: 1.5rem;
+        text-transform: uppercase;
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+        color: @main-orange;
+        padding-left: 5.25rem;
+        width: 350px;
+        -moz-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        transform: translateX(-50%) translateY(-50%) rotate(90deg);
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 5rem;
+            height: .125rem;
+            background-color: @main-orange;
+            transform: translate(0%, -50%);
+        }
+    }
+
+    .about-text-last {
+        position: absolute;
+        top: calc(175px + 5rem);
+        right: calc(-350px + 1.5rem);
+        text-transform: uppercase;
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+        color: @main-orange;
+        padding-left: 5.25rem;
+        width: 350px;
+        -moz-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        transform: translateX(-50%) translateY(-50%) rotate(90deg);
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 5rem;
+            height: .125rem;
+            background-color: @main-orange;
+            transform: translate(0%, -50%);
+        }
+    }
+}
+
+#About {
+    .about-order {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    .about-sub-title {
+        font-size: 1.25rem;
+    }
+
+    .about-action {
+        margin-top: 2rem;
+    }
+}
+
+#AboutDescription {
+    padding: 5rem 0;
+    background-color: #F6F5F3;
+
+    .about-desc-wrapper {
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    .desc-first {
+        p {
+            font-family: @font-helveticaneue-medium;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+            margin: 0;
+            text-align: right;
+        }
+    }
+
+    .list-about-img {
+        display: flex;
+        flex-direction: row;
+
+        img {
+            width: 100px;
+            flex-grow: 1;
+        }
+    }
+
+    .about-solution {
+        margin-top: 3rem;
+
+        img {
+            margin-bottom: 1.5rem;
+        }
+
+        .ab-s-title {
+            color: @main-orange;
+            font-size: 1.75rem;
+            font-family: @font-helveticaneue-blod;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+    }
+
+    .about-mission-vision {
+        .mv-item {
+            margin: 1rem 0;
+
+            img {
+                width: 75px;
+            }
+
+            h5 {
+                text-transform: uppercase;
+                margin-bottom: .5rem;
+                font-family: @font-helveticaneue-blod;
+                transition: color .25s ease-out 100ms
+            }
+
+            p {
+                margin: 0;
+                font-size: .875rem;
+                text-align: justify;
+                transition: color .25s ease-out 100ms
+            }
+
+            &:hover {
+
+                img {
+                    filter: invert(43%) sepia(93%) saturate(1751%) hue-rotate(2deg) brightness(106%) contrast(103%);
+                }
+
+                h5, p {
+                    color: @main-orange;
+                }
+            }
+        }
+
+        .mv-title {
+            color: @main-orange;
+            font-size: 2rem;
+            text-transform: uppercase;
+            line-height: 1.35;
+            font-family: @font-helveticaneue-blod;
+
+            strong {
+                font-size: 2.5rem;
+                font-family: @font-helveticaneue-black;
+            }
+        }
+
+        .mv-sub-title {
+            font-family: @font-helveticaneue-medium;
+            text-align: center;
+            text-transform: uppercase;
+            color: @main-orange;
+            margin: .5rem 0;
+            font-size: 1.25rem;
+        }
+
+        ul {
+            margin: 1rem 0;
+            font-size: .875rem;
+            list-style-type: disc;
+            padding-left: 1.25rem;
+
+            li {
+                position: relative;
+                padding: .25rem;
+            }
+        }
+
+        .rnd-group {
+            .img-rnd {
+                margin: .5rem 0;
+            }
+        }
+
+        .mv-flex {
+            display: flex;
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+            font-size: .875rem;
+            margin-top: 1.5rem;
+
+            &.mv-border {
+                height: 100%;
+                align-items: flex-end;
+                margin-top: 0;
+                margin-left: -.5rem;
+                margin-right: -.5rem;
+
+                .mv-flex-item {
+                    padding-left: .5rem;
+                    padding-right: .5rem;
+                    border-right: 2px solid rgba(1, 60, 116, .5);
+
+                    p {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        line-height: 22px;
+                        -webkit-line-clamp: 5;
+                        height: 110px;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        margin-bottom: 0;
+                    }
+
+                    &:hover {
+                        p {
+                            color: @main-orange;
+                            text-overflow: unset;
+                            -webkit-line-clamp: unset;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+
+            h5 {
+                color: @main-orange;
+                font-size: 1.5rem;
+                font-family: @font-helveticaneue-blod;
+                margin-bottom: 1rem;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .mv-flex-item {
+                flex-grow: 1;
+                width: 100px;
+            }
+
+            .img-mv-flex {
+                width: 7rem;
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                text-align: center;
+                margin: .5rem 0;
+            }
+        }
+    }
+}
+
+#Activities {
+    .activities-content {
+        padding: 1rem;
+    }
+
+    .activities-title {
+        color: @main-orange;
+        text-transform: uppercase;
+        font-family: @font-helveticaneue-blod;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .activities-activate {
+        background: #F6F5F3;
+        background-image: linear-gradient(to right, rgba(201,201,201,.1) 35%, @main-orange 30%), url(../img/home/bg-heritage.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        position: relative;
+        padding-top: 2rem;
+
+        .doctor-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 15vw;
+            height: 100%;
+            background-color: #DA6100;
+
+            span {
+                position: absolute;
+                top: calc(162px + 2rem);
+                left: 1.5rem;
+                text-transform: uppercase;
+                font-size: 1rem;
+                line-height: 1.5rem;
+                color: #ff7500;
+                padding-left: 3.25rem;
+                padding-right: 3.25rem;
+                width: 325px;
+                -moz-transform: rotate(-90deg);
+                -webkit-transform: rotate(-90deg);
+                transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+                color: @white;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    width: 3rem;
+                    height: 0.125rem;
+                    background-color: @white;
+                    transform: translate(0%,-50%);
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    width: 3rem;
+                    height: 0.125rem;
+                    background-color: @white;
+                    transform: translate(0%,-50%);
+                }
+            }
+        }
+
+        .activate-content {
+            color: @white;
+            padding: 0 2.5rem;
+            width: 80%;
+
+            h5 {
+                font-size: 2rem;
+                text-transform: uppercase;
+                font-family: @font-helveticaneue-blod;
+                margin-bottom: 1.5rem;
+            }
+
+            p {
+                text-align: justify;
+
+                &:last-child {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .activities-story {
+        .activities-story-body{
+            padding: 0 1rem;
+            width: 75%;
+            margin: 0 auto;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    .activities-share {
+        p {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    .activities-opinion {
+        background: linear-gradient(to right, @main-orange 50%, @white 50%);
+        position: relative;
+
+        .opinion-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .opinion-desc {
+            width: 75%;
+            margin: 0 auto;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+    }
+}
+
+#Distinctive {
+    .distinctive-content {
+        padding-right: 4rem;
+
+        &.distinctive-right {
+            padding-left: 4rem;
+            padding-right: 0;
+        }
+    }
+
+    h4 {
+        font-family: @font-helveticaneue-blod;
+        text-transform: uppercase;
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+        color: @main-orange;
+    }
+
+    p {
+        text-align: justify;
+        margin: 0;
+    }
+
+    .distinctive-action {
+        margin-top: 2rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399.8px) {
+    #AboutBanner {
+        padding-top: 2rem;
+
+        h4 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .banner-action {
+            margin-top: 1.5rem;
+        }
+    }
+
+    #DoctorInfo {
+        .doctor-wrapper {
+            width: 85%;
+        }
+
+        .doctor-image {
+            margin-top: -3rem;
+        }
+
+        .doctor-desc {
+            width: 85%;
+
+            h4 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            h3 {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    #About {
+        .about-sub-title {
+            font-size: 1.125rem;
+        }
+
+        .about-action {
+            margin-top: 1.5rem;
+        }
+    }
+
+    #AboutDescription {
+        padding: 3rem 0;
+
+        .about-desc-wrapper {
+            width: 90%;
+        }
+
+        .desc-first {
+            p {
+                font-size: 1.125rem;
+            }
+        }
+
+        .about-solution {
+            margin-top: 2rem;
+
+            .ab-s-title {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .about-mission-vision {
+            .mv-item {
+                margin: .75rem 0;
+
+                h5 {
+                    margin-bottom: .5rem;
+                }
+
+                p {
+                    font-size: .875rem;
+                }
+            }
+
+            .mv-title {
+                font-size: 1.5rem;
+
+                strong {
+                    font-size: 2rem;
+                }
+            }
+
+            .mv-sub-title {
+                font-size: 1.125rem;
+            }
+
+            ul {
+                padding-left: 1.125rem;
+            }
+
+            .mv-flex {
+
+                h5 {
+                    font-size: 1.25rem;
+                }
+
+                .img-mv-flex {
+                    width: 6rem;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+
+    #Activities {
+        .activities-content {
+            padding: 1rem;
+        }
+
+        .activities-title {
+            font-size: 1.375rem;
+            margin-bottom: 1rem;
+        }
+
+        .activities-activate {
+            padding-top: 1.5rem;
+
+            .activate-content {
+                padding-right: 2.5rem;
+                padding-left: 1.5rem;
+
+                h5 {
+                    font-size: 1.5rem;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+
+        .activities-story {
+            p {
+                margin-bottom: 1rem;
+                width: 85%;
+            }
+        }
+
+        .activities-share {
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .activities-opinion {
+            .opinion-desc {
+                width: 85%;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    #Distinctive {
+        .distinctive-content {
+            padding-right: 2.5rem;
+
+            &.distinctive-right {
+                padding-left: 2.5rem;
+            }
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .distinctive-action {
+            margin-top: 1rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199.8px) {
+    #AboutBanner {
+        padding-top: 1.5rem;
+
+        h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .banner-action {
+            margin-top: 1rem;
+        }
+    }
+
+    #DoctorInfo {
+        .doctor-wrapper {
+            width: 85%;
+        }
+
+        .doctor-image {
+            margin-top: -2.5rem;
+        }
+
+        .doctor-desc {
+            width: 85%;
+
+            h4 {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    #About {
+        .about-order {
+            width: 100%;
+        }
+
+        .about-sub-title {
+            font-size: 1.125rem;
+        }
+
+        .about-action {
+            margin-top: 1.5rem;
+        }
+    }
+
+    #AboutDescription {
+        padding: 2rem 0;
+        font-size: .875rem;
+
+        .about-desc-wrapper {
+            width: 90%;
+        }
+
+        .desc-first {
+            p {
+                font-size: 1.125rem;
+            }
+        }
+
+        .about-solution {
+            margin-top: 1.5rem;
+
+            .ab-s-title {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .about-mission-vision {
+            .mv-item {
+                margin: .75rem 0;
+
+                h5 {
+                    margin-bottom: .5rem;
+                    font-size: 1.125rem;
+                }
+
+                p {
+                    font-size: .8125rem;
+                }
+
+                img {
+                    width: 65px;
+                }
+
+                .ms-3 {
+                    margin-left: .5rem !important;
+                }
+            }
+
+            .mv-title {
+                font-size: 1.375rem;
+
+                strong {
+                    font-size: 1.75rem;
+                }
+            }
+
+            .mv-sub-title {
+                font-size: 1.125rem;
+            }
+
+            ul {
+                padding-left: 1rem;
+            }
+
+            .mv-flex {
+
+                h5 {
+                    font-size: 1.125rem;
+                }
+
+                .img-mv-flex {
+                    width: 5rem;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+
+    #Activities {
+        font-size: .875rem;
+
+        .activities-content {
+            padding: 1rem;
+        }
+
+        .activities-title {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .activities-activate {
+            padding-top: 1.5rem;
+
+            .activate-content {
+                padding-right: 2.75rem;
+                padding-left: 1rem;
+
+                h5 {
+                    font-size: 1.5rem;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+
+        .activities-story {
+            p {
+                margin-bottom: 1rem;
+                width: 85%;
+            }
+        }
+
+        .activities-share {
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .activities-opinion {
+            .opinion-desc {
+                width: 85%;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    #Distinctive {
+        font-size: .875rem;
+
+        .distinctive-content {
+            padding-right: 1.75rem;
+
+            &.distinctive-right {
+                padding-left: 1.75rem;
+            }
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .distinctive-action {
+            margin-top: 1rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    #AboutBanner {
+        padding-top: 1.5rem;
+
+        h4 {
+            font-size: 1.25rem;
+            margin-bottom: .5rem;
+        }
+
+        p {
+            font-size: .875rem;
+            margin-bottom: .5rem;
+        }
+
+        .banner-action {
+            margin-top: .5rem;
+        }
+    }
+
+    #DoctorInfo {
+        padding-top: 1.5rem;
+        font-size: .875rem;
+
+        .about-text-first, .about-text-last {
+            display: none;
+        }
+
+        .doctor-wrapper {
+            width: 85%;
+        }
+
+        .doctor-image {
+            margin-top: -2.5rem;
+        }
+
+        .doctor-desc {
+            width: 100%;
+
+            h4 {
+                font-size: 1.125rem;
+                margin-bottom: 1rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    #About {
+        text-align: center;
+
+        .about-title {
+            strong {
+                font-size: 1.375rem;
+            }
+        }
+
+        .about-order {
+            width: 100%;
+        }
+
+        .about-sub-title {
+            font-size: 1.125rem;
+        }
+
+        .about-text {
+            text-align: center;
+
+            &.mb-3 {
+                margin-bottom: .5rem !important;
+            }
+        }
+
+        .about-action {
+            margin-top: 1rem;
+        }
+    }
+
+    #AboutDescription {
+        padding: 2rem 0;
+        font-size: .875rem;
+
+        .about-desc-wrapper {
+            width: 90%;
+        }
+
+        .desc-first {
+            margin-top: .5rem;
+
+            p {
+                font-size: 1.125rem;
+                text-align: center;
+            }
+        }
+
+        .about-solution {
+            margin-top: 1rem;
+
+            .ab-s-title {
+                font-size: 1rem;
+                margin-bottom: .5rem;
+            }
+
+            p {
+                margin-bottom: .5rem;
+            }
+        }
+
+        .about-mission-vision {
+            .mv-item {
+                margin: 1.5rem 0;
+
+                h5 {
+                    margin-bottom: .5rem;
+                    font-size: 1.125rem;
+                }
+
+                p {
+                    font-size: .8125rem;
+                }
+
+                img {
+                    width: 65px;
+                }
+
+                .ms-3 {
+                    margin-left: .5rem !important;
+                }
+            }
+
+            .mv-title {
+                font-size: 1.25rem;
+
+                strong {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .mv-sub-title {
+                font-size: 1.125rem;
+            }
+
+            ul {
+                padding-left: 1rem;
+                margin: .5rem 0;
+            }
+
+            .mv-flex {
+                margin-top: 0;
+                margin-bottom: 1rem;
+
+                h5 {
+                    font-size: 1.125rem;
+                }
+
+                .img-mv-flex {
+                    width: 5rem;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+
+    #Activities {
+        font-size: .875rem;
+
+        .doctor-right {
+            display: none;
+        }
+
+        .activities-content {
+            padding: 1rem;
+        }
+
+        .activities-title {
+            font-size: 1.125rem;
+            margin-bottom: .5rem;
+        }
+
+        .activities-activate {
+            padding-top: 1.5rem;
+
+            .activate-content {
+                width: 100%;
+                padding: 0 1rem;
+
+                h5 {
+                    font-size: 1.25rem;
+                    margin-bottom: .5rem;
+                }
+
+                p {
+                    margin-bottom: .5rem;
+                }
+            }
+        }
+
+        .activities-story {
+            .activities-story-body {
+                padding: 1.5rem 0;
+            }
+
+            p {
+                margin-bottom: .5rem;
+                width: 100%;
+            }
+        }
+
+        .activities-share {
+            padding: 1.5rem 0;
+
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .activities-opinion {
+            img {
+                margin-top: 1.5rem;
+            }
+
+            .opinion-desc {
+                width: 100%;
+                padding-left: 1rem;
+            }
+
+            p {
+                margin-bottom: .5rem;
+            }
+        }
+    }
+
+    #Distinctive {
+        font-size: .875rem;
+
+        .distinctive-content {
+            padding-right: 1.25rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+
+            &.distinctive-right {
+                padding-left: 1.25rem;
+            }
+        }
+
+        h4 {
+            font-size: 1.125rem;
+            margin-bottom: .5rem;
+        }
+
+        .distinctive-action {
+            margin-top: .5rem;
+        }
+    }
+}
+
+@media only screen and (max-width:767.98px) {
+    #AboutBanner {
+        padding: 1.5rem 0;
+        text-align: center;
+
+        .img-banner-about {
+            width: 50%;
+        }
+
+        h4 {
+            font-size: 1.125rem;
+            margin: .5rem 0;
+            text-align: center;
+        }
+
+        p {
+            font-size: .875rem;
+            margin-bottom: .5rem;
+        }
+
+        .banner-action {
+            margin-top: .5rem;
+        }
+    }
+
+    #DoctorInfo {
+        padding: 1.5rem 0;
+        font-size: .875rem;
+        overflow: hidden;
+
+        .about-text-first, .about-text-last {
+            display: none;
+        }
+
+        .doctor-wrapper {
+            width: 100%;
+        }
+
+        .doctor-image {
+            margin-top: 0;
+        }
+
+        img {
+            width: 65%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .doctor-desc {
+            width: 100%;
+            margin-top: 1rem !important;
+
+            h4 {
+                font-size: 1rem;
+                margin-bottom: .5rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+                margin-bottom: .5rem;
+            }
+
+            p {
+                margin-bottom: .5rem;
+            }
+        }
+    }
+
+    #About {
+        text-align: center;
+
+        .about-title {
+            strong {
+                font-size: 1.125rem;
+            }
+        }
+
+        .about-order {
+            width: 100%;
+        }
+
+        .about-sub-title {
+            font-size: .875rem;
+        }
+
+        .about-text {
+            text-align: center;
+
+            &.mb-3 {
+                margin-bottom: .5rem !important;
+            }
+        }
+
+        .about-action {
+            margin-top: 1rem;
+        }
+    }
+
+    #AboutDescription {
+        padding: 2rem 0;
+        font-size: .875rem;
+
+        .about-desc-wrapper {
+            width: 100%;
+        }
+
+        .desc-first {
+            margin-top: .5rem;
+
+            p {
+                font-size: 1rem;
+                text-align: center;
+            }
+        }
+
+        .about-solution {
+            margin: 1rem 0;
+
+            .ab-s-title {
+                font-size: 1rem;
+                margin-bottom: .5rem;
+            }
+
+            p {
+                margin-bottom: .5rem;
+            }
+
+            img {
+                margin-bottom: 1rem;
+            }
+
+            .ab-action {
+                text-align: center;
+            }
+        }
+
+        .about-mission-vision {
+            .mv-item {
+                margin: 1rem 0;
+
+                h5 {
+                    margin-bottom: .5rem;
+                    font-size: 1rem;
+                }
+
+                p {
+                    font-size: .8125rem;
+                }
+
+                img {
+                    width: 65px;
+                }
+
+                .ms-3 {
+                    margin-left: .5rem !important;
+                }
+            }
+
+            .mv-title {
+                font-size: 1.125rem;
+
+                strong {
+                    font-size: 1.375rem;
+                }
+            }
+
+            .mv-sub-title {
+                font-size: 1rem;
+            }
+
+            ul {
+                padding-left: 1rem;
+                margin: .25rem 0;
+            }
+
+            .mv-flex {
+                margin-top: 0;
+                margin-bottom: .5rem;
+
+                h5 {
+                    font-size: 1rem;
+                }
+
+                .img-mv-flex {
+                    width: 4rem;
+                    margin-bottom: .5rem;
+                }
+            }
+        }
+    }
+
+    #Activities {
+
+        .doctor-right {
+            display: none;
+        }
+
+        .activities-content {
+            padding: 1rem;
+        }
+
+        .activities-title {
+            font-size: 1.125rem;
+            margin-bottom: .5rem;
+        }
+
+        .activities-activate {
+            padding-top: 1.5rem;
+            background-color: @main-orange;
+            background-image: none;
+
+            .activate-content {
+                width: 100%;
+                padding: 0;
+                margin-bottom: 1rem;
+
+                h5 {
+                    font-size: 1.25rem;
+                    margin-bottom: .5rem;
+                }
+
+                p {
+                    margin-bottom: .5rem;
+                }
+            }
+
+            img {
+                width: 65%;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        .activities-story {
+            .activities-story-body {
+                padding: 1.5rem 0;
+                text-align: center;
+            }
+
+            p {
+                margin-bottom: .5rem;
+                width: 100%;
+            }
+        }
+
+        .activities-share {
+            padding: 1rem 0;
+            text-align: center;
+
+            p {
+                margin-bottom: .5rem;
+            }
+        }
+
+        .activities-opinion {
+            text-align: center;
+            padding-top: 7.5rem;
+
+            img {
+                margin-top: 1.5rem;
+            }
+
+            .opinion-content {
+                background-color: rgba(0, 0, 0, .75);
+            }
+
+            .opinion-desc {
+                width: 100%;
+                padding-left: 1rem;
+            }
+
+            p {
+                margin-bottom: .5rem;
+                color: @white;
+            }
+        }
+    }
+
+    #Distinctive {
+        padding: 1.5rem 0;
+        text-align: center;
+        .distinctive-content {
+            padding-right: 0;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+
+            &.distinctive-right {
+                padding-left: 0;
+            }
+        }
+
+        h4 {
+            font-size: 1rem;
+            margin-bottom: .5rem;
+        }
+
+        .distinctive-action {
+            margin-top: .5rem;
+        }
+    }
+}

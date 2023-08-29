@@ -1,0 +1,235 @@
+﻿@{
+    ViewData["Title"] = "Liên hệ";
+}
+
+<section id="ContactForm">
+    <div class="container">
+        <div class="contact-main-section">
+            @*<div class="title-contact">Lorem ipsum dolor sit amet</div>*@
+            <div class="row rowlg">
+                <div class="col-lg-6 col-12 collg">
+                    <div class="contact-select">
+                        <img src="~/img/icon/contact-icon-1.svg" />
+                        <h5>Đặt lịch khám</h5>
+                        <p style="color: #FFF;"></p>
+                        <div class="action-contact">
+                            <a class="btn btn-dtl" asp-controller="Contact" asp-action="MedicalRegister">Đặt lịch</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 collg">
+                    <div class="contact-select">
+                        <img src="~/img/icon/contact-icon-2.svg" />
+                        <h5>Đăng ký tư vấn</h5>
+                        <div class="frm-check">
+                            <div class="check-item">
+                                <input type="radio" name="optionsRadios" id="HealthCheck" checked />
+                                <label for="HealthCheck">Tư vấn sức khỏe</label>
+                            </div>
+
+                            <div class="check-item">
+                                <input type="radio" name="optionsRadios" id="ProductCheck" />
+                                <label for="ProductCheck">Tư vấn sản phẩm</label>
+                            </div>
+                        </div>
+                        <div class="action-contact">
+                            <a class="btn btn-dtl" asp-controller="Contact" asp-action="HealthAdvice">Đặt lịch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="ContactAddress">
+    <div class="container">
+        <div class="contact-main-section">
+            <div class="row">
+                <div class="col-lg-5 col-12">
+                    <div class="frm-address">
+                        <div class="frm-title">Chọn địa chỉ liên hệ với chúng tôi</div>
+                        <div class="frm-content">
+                            <div class="item-frm-content active" data-address="tru-so-doanh-nghiep">
+                                <div class="title-frm">
+                                    <img src="~/img/icon/contact-headquarter.svg" />
+                                    <div class="content-title">Trụ sở doanh nghiệp khoa học và công nghệ Gia Thái DOCTORLOAN </div>
+                                </div>
+                                <ul class="desc-frm-contact">
+                                    <li>
+                                        <img src="~/img/icon/contact-map.svg" /> <span>9A, Tôn Thất Tùng, P. Phạm Ngũ Lão, Q.1, HCM</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/img/icon/contact-telephone.svg" /> <span><a href="tel:0366022678">0366 022 678</a></span>
+                                    </li>
+                                    <li>
+                                        <img src="~/img/icon/contact-email.svg" /> <span><a href="mailto:cskh@gmail.com">cskh@gmail.com</a></span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="item-frm-content" data-address="show-room">
+                                <div class="title-frm">
+                                    <img src="~/img/icon/contact-showroom.svg" />
+                                    <div class="content-title">
+                                        Showroom DOCTORLOAN
+                                    </div>
+                                </div>
+                                <ul class="desc-frm-contact">
+                                    <li>
+                                        <img src="~/img/icon/contact-map.svg" /> <span>9A, Tôn Thất Tùng, P. Phạm Ngũ Lão, Q.1, HCM</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/img/icon/contact-telephone.svg" /> <span><a href="tel:0366022678">0366 022 678</a></span>
+                                    </li>
+                                    <li>
+                                        <img src="~/img/icon/contact-email.svg" /> <span><a href="mailto:cskh@gmail.com">cskh@gmail.com</a></span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="item-frm-content" data-address="xuong-san-xuat">
+                                <div class="title-frm">
+                                    <img src="~/img/icon/contact-factory.svg" />
+                                    <div class="content-title">Nhà máy sản xuất sản phẩm DOCTORLOAN</div>
+                                </div>
+                                <ul class="desc-frm-contact">
+                                    <li>
+                                        <img src="~/img/icon/contact-map.svg" /> <span>Thửa đất số 4786, Tờ bản đồ số 19, Khu phố Đông Chiêu, Phường Tân Đông Hiệp, Thành phố Dĩ An, Tỉnh Bình Dương</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/img/icon/contact-telephone.svg" /> <span><a href="tel:0366022678">0366 022 678</a></span>
+                                    </li>
+                                    <li>
+                                        <img src="~/img/icon/contact-email.svg" /> <span><a href="mailto:cskh@gmail.com">cskh@gmail.com</a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-12">
+                    <div id="MapContactIframe" class="contact-map">
+                        <iframe class="tru-so-doanh-nghiep active" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.7616700560212!2d106.68782848877501!3d10.76996723606792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3d2d233975%3A0x2d41ad8b4e102d26!2zOUEgVMO0biBUaOG6pXQgVMO5bmcsIFBoxrDhu51uZyBQaOG6oW0gTmfFqSBMw6NvLCBRdeG6rW4gMSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1689911772646!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe class="show-room" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d744.7616700560212!2d106.68782848877501!3d10.76996723606792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3d2d233975%3A0x2d41ad8b4e102d26!2zOUEgVMO0biBUaOG6pXQgVMO5bmcsIFBoxrDhu51uZyBQaOG6oW0gTmfFqSBMw6NvLCBRdeG6rW4gMSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1689911772646!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe class="xuong-san-xuat" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1588.7446497159433!2d106.75906074452867!3d10.917880876475767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d91386d47eaf%3A0xd0fa5158f07f2e19!2sC%C3%B4ng%20Ty%20TNHH%20Gia%20Th%C3%A1i!5e0!3m2!1svi!2s!4v1689913816804!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ContactQuestion">
+    <div class="container">
+        <div class="contact-main-section">
+            <div class="title-contact">Những câu hỏi thường gặp</div>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Tôi cần tạo tài khoản để mua hàng không?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Không nhất thiết, việc tạo tài khoản sẽ mang lại cho bạn nhiều ưu đãi hơn như chương trình khuyến mãi độc quyền và dịch vụ chăm sóc khách hàng tốt hơn. Tuy nhiên, bạn vẫn có thể mua hàng bình thường mà không cần tạo tài khoản.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Làm thế nào để đăng nhập vào tài khoản của mình?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Để đăng nhập vào tài khoản của bạn trên website doctorloan.vn mua hàng, bạn có thể thực hiện các bước sau: <br />
+                            1. Truy cập trang chính của website mua hàng bằng trình duyệt web. <br />
+                            2. Tìm kiếm và nhấp vào liên kết "Đăng nhập" hoặc "Login". Liên kết này được đặt ở góc trên cùng. <br />
+                            3. Một trang đăng nhập sẽ xuất hiện. Trên trang này, bạn sẽ thấy các ô nhập thông tin như địa chỉ, số điện thoại hoặc tên tài khoản và mật khẩu. <br />
+                            4. Nhập thông tin đăng nhập của bạn vào các ô tương ứng. <br />
+                            5. Sau khi đã nhập đúng thông tin, nhấn nút "Đăng nhập" hoặc "Login". <br />
+                            6. Nếu thông tin đăng nhập chính xác, bạn sẽ được chuyển đến tài khoản của mình trên trang web. Tại đây, bạn có thể kiểm tra lịch sử đơn hàng, chỉnh sửa thông tin cá nhân, thêm sản phẩm vào giỏ hàng, và thực hiện các hoạt động mua sắm khác.
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Làm thế nào để liên hệ với bộ phận hỗ trợ khách hàng nếu tôi có vấn đề?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            1. Tìm kiếm liên kết "Liên hệ", "Hỗ trợ khách hàng" hoặc tương tự trên trang web. Liên kết này sẽ được đặt ở phần đầu hoặc phần chân trang (footer). <br />
+                            2. Nhấp vào liên kết "Liên hệ" để mở trang hoặc giao diện liên hệ hỗ trợ khách hàng. <br />
+                            3. Trang liên hệ hỗ trợ khách hàng sẽ cung cấp thông tin liên hệ như số điện thoại, địa chỉ, email, biểu mẫu liên hệ trực tuyến hoặc thậm chí chat trực tiếp, bạn có thể lựa chọn phương thức mà bạn cảm thấy thoải mái nhất. <br />
+                            4. Theo dõi hướng dẫn trên trang để gửi thông điệp hoặc liên hệ với bộ phận hỗ trợ khách hàng. <br />
+                            5. Nếu có thể, cung cấp thông tin chi tiết về vấn đề mà bạn gặp phải để bộ phận hỗ trợ khách hàng có thể giúp bạn nhanh chóng.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Làm thế nào để đảm bảo rằng thông tin cá nhân của tôi được bảo mật?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            1.Kiểm tra chính sách bảo mật: Trước khi cung cấp thông tin cá nhân, đảm bảo bạn đã đọc và hiểu chính sách bảo mật của trang web. Chính sách này thường mô tả cách thông tin cá nhân của bạn sẽ được sử dụng, bảo vệ và chia sẻ. <br />
+                            2. Sử dụng kết nối bảo mật: Kiểm tra xem trang web có sử dụng kết nối SSL/TLS hay không. Bạn có thể nhận biết điều này qua biểu tượng ổ khóa ở thanh địa chỉ trình duyệt hoặc địa chỉ bắt đầu bằng "https://" thay vì "http://". Kết nối bảo mật sẽ mã hóa thông tin giữa bạn và trang web, giúp ngăn chặn việc lộ thông tin khi bạn truyền tải dữ liệu. <br />
+                            3. Mật khẩu mạnh và duy nhất: Sử dụng mật khẩu mạnh và không sử dụng chung mật khẩu giữa các trang web khác nhau. Mật khẩu nên có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt.
+                            4. Bảo mật tài khoản: Khuyến nghị kích hoạt xác thực hai yếu tố (2FA) nếu có sẵn. Điều này yêu cầu bạn cung cấp thông tin xác thực bổ sung sau khi nhập mật khẩu, tăng cường bảo mật tài khoản.<br />
+                            5. Không chia sẻ thông tin cá nhân: Không bao giờ chia sẻ thông tin cá nhân như mật khẩu, số thẻ tín dụng, số xác minh hoặc mã bảo mật với bất kỳ ai thông qua email, tin nhắn hoặc cuộc gọi điện thoại không xác định.<br />
+                            6. Cập nhật phần mềm và trình duyệt: Đảm bảo hệ thống và trình duyệt của bạn luôn được cập nhật phiên bản mới nhất, với các bản vá bảo mật và cập nhật tích hợp.<br />
+                            7. Kiểm tra hoạt động tài khoản: Theo dõi hoạt động trong tài khoản của bạn để phát hiện sớm các hoạt động không xác định hoặc bất thường.<br />
+                            8. Sử dụng các phương tiện thanh toán an toàn: Khi thanh toán trực tuyến, ưu tiên sử dụng các phương tiện thanh toán an toàn như PayPal, thẻ ảo hoặc các phương thức thanh toán đã được xác minh.<br />
+                            9. Tắt thông tin tự động điền: Không để trình duyệt tự động điền thông tin cá nhân, đặc biệt là thông tin nhạy cảm như số thẻ tín dụng.<br />
+                            10. Xóa thông tin cá nhân cũ không cần thiết: Thường xuyên xem xét và xóa thông tin cá nhân đã lưu trên các trang web mua hàng mà bạn không sử dụng nữa.<br />
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Tôi có thể đặt lịch khám bệnh cột sống ở phòng khám Đức Phúc DOCTORLOAN bằng cách nào?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            1. Truy cập trang web hoặc liên hệ trực tiếp: Tìm thông tin liên hệ hoặc truy cập trang web của phòng khám Đức Phúc DOCTORLOAN. <br />
+                            2. Liên hệ qua điện thoại: Gọi đến số điện thoại được cung cấp trên trang web hoặc trong thông tin liên hệ để đặt lịch khám. Thông qua cuộc gọi, bạn có thể hỏi về thời gian khám, bác sĩ chuyên khoa và các thông tin cần thiết khác.<br />
+                            3. Sử dụng hệ thống đặt lịch trực tuyến: Phòng khám cung cấp dịch vụ đặt lịch khám trực tuyến thông qua trang web hoặc ứng dụng di động. Nếu có sẵn hệ thống đặt lịch trực tuyến, bạn có thể dễ dàng chọn thời gian và ngày khám phù hợp với bạn.<br />
+                            4. Tin nhắn: Bạn có thể gửi yêu cầu đặt lịch khám qua email hoặc tin nhắn, kèm theo thông tin liên hệ của bạn.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#nav-menu-container ul li").removeClass("menu-active");
+            $("#nav-menu-container ul li").eq(6).addClass("menu-active");
+        });
+
+        $('.item-frm-content').click(function () {
+            var parentbtn = $(this).parents(".frm-content");
+            parentbtn.find('.item-frm-content').removeClass("active");
+            $(this).addClass("active");
+
+            var dataAddress = $(this).data("address");
+            var addressMap = $("#MapContactIframe");
+            addressMap.find("iframe").removeClass("active");
+            addressMap.find("iframe." + dataAddress).addClass("active");
+        });
+    </script>
+}

@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Liên hệ";
+}
+
+<link href="~/libs/Bootstrap/bootstrap-datepicker3.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+<section id="ResForm">
+    <div class="container">
+        <div class="contact-main-section">
+            <div class="bread-crumb-dtl"><a asp-controller="Contact" asp-action="Index"><i class="fas fa-arrow-left"></i>&nbsp; Quay lại</a></div>
+            <div class="row rowlg">
+                <div class="col-lg-8 col-12 collg">
+                    <div class="frm-common">
+                        <h4>Đặt lịch khám</h4>
+                        <form class="needs-validation" novalidate>
+                            <h5>Thông tin cá nhân</h5>
+                            <div class="mb-3">
+                                <label for="txtName" class="form-label req">Họ và tên</label>
+                                <input type="text" class="form-control" id="txtName" placeholder="Họ và tên" required />
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập họ tên.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="txtPhone" class="form-label req">Số điện thoại</label>
+                                <input type="text" class="form-control" id="txtPhone" placeholder="Số điện thoại" required />
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập số điện thoại.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="txtAddress" class="form-label">Địa chỉ</label>
+                                <input type="text" class="form-control" id="txtAddress" placeholder="Địa chỉ" />
+                            </div>
+                            <h5>Thông tin đặt lịch</h5>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="txtDate" class="form-label req">Chọn ngày khám</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="far fa-calendar-alt"></i></span>
+                                        <input type="text" class="form-control datepicker" placeholder="Chọn ngày khám" required />
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Vui lòng chọn ngày khám.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="txtDate" class="form-label req">Chọn giờ khám</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="far fa-clock"></i></span>
+                                        <input type="text" class="form-control timepicker" placeholder="Chọn giờ khám">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Vui lòng chọn giờ khám.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 text-end">
+                                <button class="btn btn-dtl" type="submit">Đặt lịch</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12 collg">
+                    <div class="frm-common">
+                        <h4>Đăng ký tài khoản</h4>
+                        <p>Mời quý vị đăng ký thành viên để được hưởng nhiều lợi ích và hỗ trợ từ chúng tôi!</p>
+                        <a href="javascript:void(0)" class="btn btn-outline-dtl">Đăng ký tài khoản</a>
+                        <div class="action-res">
+                            <span>Đã có tài khoản?</span>
+                            <a href="javascript:void(0)">Đăng nhập</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="~/libs/Bootstrap/bootstrap-datepicker.js"></script>
+    <script src="~/libs/Bootstrap/bootstrap-datepicker.vi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#nav-menu-container ul li").removeClass("menu-active");
+            $("#nav-menu-container ul li").eq(6).addClass("menu-active");
+        });
+
+        $('.datepicker').datepicker({
+            todayBtn: true,
+            language: "vi",
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        var firstOpen = true;
+        var time;
+        $('.timepicker').datetimepicker({
+            useCurrent: false,
+            format: "hh:mm A"
+        }).on('dp.show', function () {
+            if (firstOpen) {
+                time = moment().startOf('day');
+                firstOpen = false;
+            } else {
+                time = "01:00 PM"
+            }
+            $(this).data('DateTimePicker').date(time);
+        });
+
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+}
+
+

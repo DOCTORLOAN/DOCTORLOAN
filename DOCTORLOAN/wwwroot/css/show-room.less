@@ -1,0 +1,1630 @@
+@import "variables";
+
+#BannerShowRoom {
+    .banner-show-room {
+        position: relative;
+        z-index: 1;
+    }
+
+    .content-banner-sr {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        color: @white;
+        background-color: rgba(0,0,0,0.3);
+
+        h4 {
+            text-transform: uppercase;
+            font-size: 2.75rem;
+            font-family: @font-helveticaneue-blod;
+            line-height: 1.35;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+
+        .banner-action {
+            margin-bottom: 10rem;
+        }
+    }
+
+    .showRoomSwiper {
+        .swiper-pagination-bullet {
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+            margin: 0 .5rem;
+            border: 1px solid @white;
+            border-radius: 50%;
+
+            &.swiper-pagination-bullet-active {
+                background-color: @white;
+            }
+
+            &:hover {
+                background-color: @main-orange;
+            }
+        }
+    }
+}
+
+#HistoryShowRoom {
+    padding: 5rem 0;
+    background-color: @white;
+
+    .img-white {
+        width: 75%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .history-item {
+        background-color: @light-grey;
+        border-radius: 1.5rem;
+        padding: 1.5rem 1rem;
+        width: 100%;
+        margin: 1rem 0;
+
+        h4 {
+            font-family: @font-helveticaneue-blod;
+            color: @main-blue;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: .25rem;
+            font-size: 1.75rem;
+        }
+
+        p {
+            font-family: @font-helveticaneue-medium;
+            color: @main-blue;
+            margin: 0;
+        }
+
+        h5 {
+            color: @main-orange;
+            text-transform: uppercase;
+            font-family: @font-helveticaneue-medium;
+            font-size: .9375rem;
+            margin-top: .5rem;
+            margin-bottom: 0;
+        }
+    }
+
+    .history-content {
+        margin-top: -5rem;
+
+        h4 {
+            color: @main-blue;
+            text-transform: uppercase;
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.35;
+            font-family: @font-helveticaneue-blod;
+        }
+
+        p {
+            width: 87.5%;
+            margin: 0;
+            text-align: justify;
+        }
+    }
+}
+
+.title-product-showroom {
+    font-size: 2.25rem;
+    color: @main-orange;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+    font-family: @font-helveticaneue-blod;
+    text-transform: uppercase;
+}
+
+.product-option {
+    .parameter-product {
+        margin-top: 2rem;
+    }
+
+    .pfirst-item {
+        background-color: @white;
+        padding: .75rem;
+        border-radius: 1rem;
+
+        .title-pfirst {
+            text-align: center;
+            font-family: @font-helveticaneue-medium;
+            margin-top: .5rem;
+            font-size: .8125rem;
+
+            span {
+                text-transform: uppercase;
+                color: @main-orange;
+                font-family: @font-helveticaneue-blod;
+                display: block;
+                font-size: .875rem;
+                line-height: 1.25;
+            }
+        }
+    }
+
+    .productSwiper3 {
+        width: 100%;
+        height: 655px;
+        padding: 60px 0;
+        padding-left: 4rem;
+        --sp-nav-size: 40px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            top: 0;
+            right: 0;
+            background-color: @light-grey;
+            z-index: 2;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            bottom: 0;
+            right: 0;
+            background-color: @light-grey;
+            z-index: 2;
+        }
+
+        &.bg-w {
+            &:before {
+                content: "";
+                background-color: @white;
+            }
+
+            &:after {
+                content: "";
+                background-color: @white;
+            }
+        }
+
+        .swiper-button-prev, .swiper-button-next {
+            width: var(--sp-nav-size);
+            height: var(--sp-nav-size);
+            margin-top: 0;
+            color: @white;
+            background-color: @main-orange;
+            border-radius: 50%;
+            opacity: 0.25;
+
+            &:after {
+                font-size: 1rem;
+            }
+        }
+
+        .swiper-button-prev {
+            top: .5rem;
+            bottom: unset;
+            left: calc(50% - 20px + 2rem);
+            transform: rotate(90deg);
+        }
+
+        .swiper-button-next {
+            top: unset;
+            bottom: .5rem;
+            left: calc(50% - 20px + 2rem);
+            transform: rotate(90deg);
+        }
+
+        &:hover {
+            .swiper-button-prev, .swiper-button-next {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+#ProductFirst {
+    padding: 5rem 0;
+    background-color: @light-grey;
+}
+
+.parameter-product {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+
+    .prm-p-title {
+        font-family: @font-helveticaneue-blod;
+        font-size: 1.125rem;
+        margin: .25rem 0;
+    }
+
+    .list-parameter {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .parameter-item {
+        width: 45%;
+        display: flex;
+        align-items: center;
+        margin: .375rem 0;
+        margin-right: 1rem;
+        font-size: .875rem;
+
+        img {
+            width: 45px;
+            margin-right: .5rem;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        span {
+            font-family: @font-helveticaneue-medium;
+        }
+    }
+}
+
+#PillowProduct {
+    padding: 5rem 0;
+
+    &.product-option .pfirst-item {
+        background-color: @light-grey;
+    }
+}
+
+#ChairProduct {
+    background-color: #F5F5F7;
+    padding: 5rem 0;
+
+    .chair-item {
+        background-color: @white;
+        padding: 1rem;
+        border-radius: 1rem;
+
+        img {
+            width: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .title-chair {
+            text-align: center;
+            font-family: @font-helveticaneue-medium;
+            margin-top: .5rem;
+            font-size: .875rem;
+
+            span {
+                text-transform: uppercase;
+                color: @main-orange;
+                font-family: @font-helveticaneue-blod;
+                display: block;
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .text-tt-p {
+        font-family: @font-helveticaneue-blod;
+        margin-bottom: .5rem;
+        font-size: 1.125rem;
+    }
+
+    .product-chair-item {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+    }
+
+    .productChairSwiper {
+        width: 100%;
+        height: 880px;
+        padding: 60px 0;
+        padding-left: 3rem;
+        --sp-nav-size: 40px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            top: 0;
+            right: 0;
+            background-color: @light-grey;
+            z-index: 2;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            bottom: 0;
+            right: 0;
+            background-color: @light-grey;
+            z-index: 2;
+        }
+
+        .swiper-button-prev, .swiper-button-next {
+            width: var(--sp-nav-size);
+            height: var(--sp-nav-size);
+            margin-top: 0;
+            color: @white;
+            background-color: @main-orange;
+            border-radius: 50%;
+            opacity: 0.1;
+
+            &:after {
+                font-size: 1rem;
+            }
+        }
+
+        .swiper-button-prev {
+            top: .5rem;
+            bottom: unset;
+            left: calc(50% - 20px + 1.5rem);
+            transform: rotate(90deg);
+        }
+
+        .swiper-button-next {
+            top: unset;
+            bottom: .5rem;
+            left: calc(50% - 20px + 1.5rem);
+            transform: rotate(90deg);
+        }
+
+        &:hover {
+            .swiper-button-prev, .swiper-button-next {
+                opacity: 1;
+            }
+        }
+    }
+
+    .chair-main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 100%;
+
+        .avatar-group {
+            margin-top: 1rem;
+        }
+
+        .img-product {
+            width: 72.5%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .title-chair-info {
+            color: @main-orange;
+            font-family: @font-helveticaneue-blod;
+            font-size: 1.25rem;
+            margin: 0;
+
+            span {
+                font-size: 1rem;
+                margin-top: .25rem;
+                display: block;
+                color: @black;
+                font-family: @font-helveticaneue-light;
+            }
+        }
+
+        p {
+            margin: .5rem 0;
+        }
+    }
+
+    .chair-main-head {
+        margin-top: 25%;
+    }
+
+    .count-chair {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .chair-parameter {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+
+        .parameter-item {
+            width: 100px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            margin: .375rem 0;
+            margin-right: 1rem;
+            font-size: .875rem;
+
+            &:last-child {
+                margin: 0;
+            }
+
+            img {
+                width: 45px;
+                margin-right: .5rem;
+            }
+
+            p {
+                margin: 0;
+            }
+
+            span {
+                font-family: @font-helveticaneue-medium;
+            }
+        }
+    }
+
+    .chair-main-foot {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        width: 100%;
+
+        img {
+            width: 100px;
+            flex-grow: 1;
+        }
+
+        .title-chair-foot {
+            width: 100px;
+            flex-grow: 6;
+            margin-bottom: 2rem;
+            padding: 0 1.5rem 0 2rem;
+
+
+            span {
+                display: block;
+                font-family: @font-helveticaneue-blod;
+                font-size: 1.125rem;
+                color: @main-orange;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.title-small {
+    font-family: @font-helveticaneue-blod;
+    font-size: 1.125rem;
+    margin: 0.25rem 0;
+}
+
+.p-list-color {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0;
+
+    span {
+        display: inline-block;
+    }
+
+    a.color-item {
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 50%;
+        margin-left: .5rem;
+
+        &.yellow {
+            background-color: #A45031;
+        }
+
+        &.grape {
+            background-color: #311432;
+        }
+
+        &.black {
+            background-color: @black;
+        }
+
+        &.green {
+            background-color: #759A77;
+        }
+
+        &.active {
+            border: 2px solid @main-orange;
+        }
+    }
+}
+
+.p-list-size {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0;
+
+    span {
+        display: inline-block;
+    }
+
+    a.size-item {
+        padding: .25rem 1.5rem;
+        background-color: @light-grey;
+        border-radius: .25rem;
+        margin-left: .75rem;
+        /*&.active {
+            border-color: @main-orange;
+            background-color: @white;
+        }*/
+    }
+}
+
+.chair-oder {
+    padding: 5rem 0 2rem;
+
+    .chair-slide {
+        background-color: @light-grey;
+        border-radius: 1rem;
+        height: 100%;
+        padding: 4rem 0 2rem;
+    }
+
+    .swiperOrder {
+        padding-bottom: 3rem;
+
+        .img-order {
+            margin: 2rem 0;
+            transition: all .2s linear;
+        }
+
+        .swiper-slide {
+            position: relative;
+
+            .show-room-logo {
+                opacity: 0;
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(247, 247, 247, .6);
+            }
+        }
+
+        .swiper-slide-active {
+            .show-room-logo {
+                opacity: 1;
+            }
+
+            .img-order {
+                transform: scale(1.1);
+            }
+
+            &:before {
+                content: "";
+                display: none;
+            }
+        }
+
+        .swiper-pagination-bullet {
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+            margin: 0 0.5rem;
+            border: 1px solid @main-orange;
+            border-radius: 50%;
+
+            &.swiper-pagination-bullet-active {
+                background-color: @main-orange;
+            }
+
+            &:hover:not(.swiper-pagination-bullet-active) {
+                opacity: 1;
+                background-color: @main-orange-second;
+            }
+        }
+    }
+
+    .location-use {
+        margin-top: 1.5rem;
+
+        p {
+            font-family: @font-helveticaneue-medium;
+            margin-bottom: .5rem;
+        }
+
+        .list-location {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            .col-location {
+                width: 33.333333334%;
+                margin: .25rem 0;
+            }
+        }
+
+        .location-item {
+            text-align: center;
+            width: 7rem;
+            padding: .5rem 1rem;
+            background-color: #EAEBEE;
+            border-radius: .5rem;
+            transition: all .25s linear;
+
+            img {
+                filter: invert(69%) sepia(8%) saturate(394%) hue-rotate(179deg) brightness(95%) contrast(90%);
+                width: 3rem;
+            }
+
+            span {
+                display: block;
+                margin-top: .25rem;
+                font-family: @font-helveticaneue-medium;
+            }
+
+            &:hover {
+                background-color: @main-orange-second;
+
+                img {
+                    filter: invert(54%) sepia(89%) saturate(3060%) hue-rotate(359deg) brightness(101%) contrast(109%);
+                }
+
+                span {
+                    color: @main-orange;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399.8px) {
+    #BannerShowRoom {
+        .content-banner-sr {
+            h4 {
+                font-size: 2rem;
+                margin-bottom: .5rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+                max-width: 500px;
+            }
+
+            .banner-action {
+                margin-bottom: 5rem;
+            }
+        }
+
+        .showRoomSwiper {
+            .swiper-pagination-bullet {
+                width: .875rem;
+                height: .875rem;
+                margin: 0 0.375rem;
+            }
+        }
+    }
+
+    #HistoryShowRoom {
+        padding: 3rem 0;
+
+        .history-item {
+            border-radius: 1rem;
+            padding: 1.25rem .75rem;
+            margin: .75rem 0;
+
+            h4 {
+                font-size: 1.5rem;
+            }
+
+            h5 {
+                font-size: .8125rem;
+            }
+        }
+
+        .history-content {
+
+            h4 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                width: 90%;
+            }
+        }
+    }
+
+    .title-product-showroom {
+        font-size: 2rem;
+    }
+
+    .product-option {
+        .parameter-product {
+            margin-top: 1rem;
+        }
+
+        .productSwiper3 {
+            height: 652px;
+            padding: 60px 0;
+            padding-left: 1rem;
+
+            .swiper-button-prev {
+                left: calc(50% - 20px + .5rem);
+            }
+
+            .swiper-button-next {
+                left: calc(50% - 20px + .5rem);
+            }
+        }
+    }
+
+    .parameter-product {
+
+        .prm-p-title {
+            font-size: 1rem;
+        }
+
+        .parameter-item {
+            width: 50%;
+            margin-right: 0;
+            font-size: .875rem;
+
+            img {
+                width: 40px;
+            }
+        }
+    }
+
+    #ProductFirst, #PillowProduct {
+        padding: 3rem 0;
+    }
+
+    #ChairProduct {
+        padding: 3rem 0;
+
+        .productChairSwiper {
+            padding: 60px 0;
+            padding-left: 0;
+
+            .swiper-button-prev {
+                left: calc(50% - 20px);
+            }
+
+            .swiper-button-next {
+                left: calc(50% - 20px);
+            }
+        }
+
+        .chair-main {
+            .title-chair-info {
+                font-size: 1.125rem;
+            }
+        }
+
+        .chair-parameter {
+            flex-wrap: wrap;
+
+            .prm-p-title {
+                font-size: 1rem;
+            }
+
+            .parameter-item {
+                width: 50%;
+                margin-right: 0;
+                font-size: .875rem;
+                flex-grow: unset;
+
+                img {
+                    width: 40px;
+                }
+            }
+        }
+
+        .chair-main-foot {
+            .title-chair-foot {
+                margin-bottom: 2rem;
+                padding: 0 1rem;
+
+                span {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    .title-small {
+        font-size: 1rem;
+    }
+
+    .chair-oder {
+        padding: 3rem 0 1rem;
+
+        .chair-slide {
+            padding: 3rem 0 2rem;
+        }
+
+        .swiperOrder {
+            padding-bottom: 2rem;
+
+            .swiper-pagination-bullet {
+                width: .875rem;
+                height: .875rem;
+                margin: 0 0.375rem;
+            }
+        }
+
+        .location-use {
+            margin-top: 1rem;
+
+            .location-item {
+                width: 6rem;
+                font-size: .875rem;
+                padding: .5rem;
+
+                img {
+                    width: 2.25rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199.8px) {
+    #BannerShowRoom {
+        .content-banner-sr {
+            h4 {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+                max-width: 450px;
+            }
+
+            .banner-action {
+                margin-bottom: 2.5rem;
+            }
+        }
+
+        .showRoomSwiper {
+            .swiper-pagination-bullet {
+                width: .875rem;
+                height: .875rem;
+                margin: 0 0.375rem;
+            }
+        }
+    }
+
+    #HistoryShowRoom {
+        padding: 3rem 0;
+
+        .history-item {
+            border-radius: 1rem;
+            padding: 1rem .75rem;
+            margin: .75rem 0;
+
+            h4 {
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: .875rem;
+            }
+
+            h5 {
+                font-size: .75rem;
+                letter-spacing: -.5px;
+                text-align: center;
+            }
+        }
+
+        .history-content {
+            h4 {
+                font-size: 1.625rem;
+                margin-bottom: .5rem;
+            }
+
+            p {
+                width: 90%;
+            }
+        }
+    }
+
+    .title-product-showroom {
+        font-size: 1.5rem;
+        margin-bottom: .5rem;
+    }
+
+    .product-option {
+        .parameter-product {
+            margin-top: 1rem;
+        }
+
+        .productSwiper3 {
+            height: 619px;
+            padding-left: 0;
+
+            .swiper-button-prev {
+                left: calc(50% - 20px);
+            }
+
+            .swiper-button-next {
+                left: calc(50% - 20px);
+            }
+        }
+    }
+
+    .parameter-product {
+        .prm-p-title {
+            font-size: 1rem;
+        }
+
+        .parameter-item {
+            width: 50%;
+            margin-right: 0;
+            font-size: .75rem;
+
+            img {
+                width: 35px;
+            }
+        }
+    }
+
+    #ProductFirst, #PillowProduct {
+        padding: 2rem 0;
+    }
+
+    #ChairProduct {
+        padding: 2rem 0;
+        font-size: .875rem;
+
+        .chair-item {
+            padding: .75rem;
+
+            .title-chair {
+                font-size: .8125rem;
+
+                span {
+                    font-size: .875rem;
+                }
+            }
+        }
+
+        .productChairSwiper {
+            padding: 60px 0;
+            padding-left: 0;
+            height: 770px;
+
+            .swiper-button-prev {
+                left: calc(50% - 20px);
+            }
+
+            .swiper-button-next {
+                left: calc(50% - 20px);
+            }
+        }
+
+        .chair-main {
+            .img-product {
+                width: 70%;
+            }
+
+            .title-chair-info {
+                font-size: 1rem;
+
+                span {
+                    font-size: .875rem;
+                }
+            }
+        }
+
+        .chair-parameter {
+            flex-wrap: wrap;
+
+            .prm-p-title {
+                font-size: 1rem;
+            }
+
+            .parameter-item {
+                width: 50%;
+                margin-right: 0;
+                font-size: .75rem;
+                flex-grow: unset;
+
+                img {
+                    width: 35px;
+                }
+            }
+        }
+
+        .chair-main-foot {
+            .title-chair-foot {
+                margin: 0;
+                padding: 0 1.5rem;
+                padding-right: 0;
+
+                span {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    .title-small {
+        font-size: 1rem;
+    }
+
+    .chair-oder {
+        padding: 2rem 0 1rem;
+
+        .chair-slide {
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .swiperOrder {
+            padding-bottom: 2rem;
+
+            .swiper-pagination-bullet {
+                width: .875rem;
+                height: .875rem;
+                margin: 0 0.375rem;
+            }
+        }
+
+        .location-use {
+            margin-top: 1rem;
+
+            p {
+                font-size: .9375rem;
+            }
+
+            .location-item {
+                width: 6rem;
+                font-size: .875rem;
+                padding: .5rem;
+
+                img {
+                    width: 2.25rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    #BannerShowRoom {
+        .content-banner-sr {
+            h4 {
+                font-size: 1.5rem;
+                margin-bottom: .5rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+                max-width: 400px;
+            }
+
+            .banner-action {
+                margin-bottom: 2rem;
+            }
+        }
+
+        .showRoomSwiper {
+            .swiper-pagination-bullet {
+                width: .875rem;
+                height: .875rem;
+                margin: 0 0.375rem;
+            }
+        }
+    }
+
+    #HistoryShowRoom {
+        padding: 2rem 0;
+
+        .history-item {
+            border-radius: 1rem;
+            padding: 1rem .75rem;
+            margin: .75rem 0;
+
+            h4 {
+                font-size: 1.375rem;
+            }
+
+            h5 {
+                text-align: center;
+            }
+        }
+
+        .img-white {
+            width: 60%;
+            margin-bottom: 1.5rem;
+        }
+
+        .history-content {
+            margin-top: -1.5rem;
+
+            h4 {
+                font-size: 1.5rem;
+                margin-bottom: .5rem;
+            }
+
+            p {
+                width: 90%;
+            }
+        }
+    }
+
+    .title-product-showroom {
+        font-size: 1.5rem;
+        margin-bottom: .5rem;
+    }
+
+    .product-option {
+        .parameter-product {
+            margin-top: 1rem;
+        }
+
+        .img-product-main {
+            margin: 1.5rem auto;
+            max-width: 450px;
+        }
+    }
+
+    .parameter-product {
+        margin: 1rem 0;
+
+        .prm-p-title {
+            font-size: 1rem;
+        }
+
+        .parameter-item {
+            width: 50%;
+            margin-right: 0;
+            font-size: .875rem;
+
+            img {
+                width: 40px;
+            }
+        }
+    }
+
+    #ProductFirst, #PillowProduct {
+        padding: 2rem 0;
+    }
+
+    #ChairProduct {
+        padding: 2rem 0;
+        font-size: .875rem;
+
+        .chair-item {
+            padding: .5rem;
+
+            .title-chair {
+                font-size: .875rem;
+
+                span {
+                    font-size: .875rem;
+                }
+            }
+        }
+
+        .chair-main {
+            .img-product {
+                width: 70%;
+            }
+
+            .title-chair-info {
+                font-size: 1rem;
+
+                span {
+                    font-size: .875rem;
+                }
+            }
+        }
+
+        .chair-main-head {
+            .text-chair {
+                width: 100%;
+                margin: .5rem auto;
+            }
+        }
+
+        .chair-parameter {
+            margin: .5rem 0;
+            flex-wrap: wrap;
+
+            .parameter-item {
+                margin: .5rem 0;
+                margin-right: .25rem;
+                font-size: .875rem;
+                width: 45%;
+                flex-grow: unset;
+
+                img {
+                    width: 26px;
+                }
+            }
+        }
+
+        .chair-main-foot {
+            img {
+                width: 115px;
+                flex-grow: unset;
+            }
+
+            .title-chair-foot {
+                width: calc(100% - 115px - 1rem);
+                padding: 0;
+                margin: 0;
+                flex-grow: unset;
+
+                span {
+                    font-size: .875rem;
+                }
+            }
+        }
+    }
+
+    .title-small {
+        font-size: 1rem;
+    }
+
+    .chair-oder {
+        padding: 2rem 0 1rem;
+        font-size: .875rem;
+
+        .chair-slide {
+            padding: 1rem 0;
+        }
+
+        .swiperOrder {
+            padding-bottom: 2rem;
+
+            .swiper-pagination-bullet {
+                width: .875rem;
+                height: .875rem;
+                margin: 0 0.375rem;
+            }
+        }
+
+        .chair-order-info {
+            padding: 1rem 0 0;
+        }
+
+        .location-use {
+            margin-top: 1rem;
+
+            .location-item {
+                width: 6rem;
+                font-size: .875rem;
+                padding: .5rem;
+
+                img {
+                    width: 2.25rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:991.98px) {
+    .product-option {
+        .productSwiper3 {
+            height: auto;
+            padding: 0;
+            --sp-nav-size: 30px;
+
+            &:before, &:after {
+                content: "";
+                display: none;
+            }
+
+            .swiper-button-prev, .swiper-button-next {
+                width: var(--sp-nav-size);
+                height: var(--sp-nav-size);
+            }
+
+            .swiper-button-prev {
+                left: 0;
+                top: 50%;
+                transform: translate(0%, -50%);
+            }
+
+            .swiper-button-next {
+                left: unset;
+                right: 0;
+                top: 50%;
+                transform: translate(0%, -50%);
+            }
+        }
+    }
+
+    #ChairProduct {
+        .productChairSwiper {
+            margin-top: 1rem;
+            padding: 0;
+            width: 100%;
+            height: auto;
+            --sp-nav-size: 30px;
+
+            &:before, &:after {
+                content: "";
+                display: none;
+            }
+
+            .swiper-button-prev, .swiper-button-next {
+                width: var(--sp-nav-size);
+                height: var(--sp-nav-size);
+            }
+
+            .swiper-button-prev {
+                top: 50%;
+                bottom: unset;
+                left: .5rem;
+                transform: translate(0%, -50%);
+            }
+
+            .swiper-button-next {
+                top: 50%;
+                bottom: unset;
+                left: unset;
+                right: .5rem;
+                transform: translate(0%, -50%);
+            }
+
+            &:hover {
+                .swiper-button-prev, .swiper-button-next {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:767.98px) {
+    #BannerShowRoom {
+        .content-banner-sr {
+            &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .container {
+                position: relative;
+                z-index: 2;
+            }
+
+            h4 {
+                font-size: 1.25rem;
+                margin-bottom: .5rem;
+            }
+
+            p {
+                margin-bottom: .5rem;
+                max-width: 100%;
+            }
+
+            .banner-action {
+                margin-bottom: 2rem;
+            }
+        }
+
+        .showRoomSwiper {
+            .swiper-pagination-bullet {
+                width: .75rem;
+                height: .75rem;
+                margin: 0 0.25rem;
+            }
+        }
+    }
+
+    #HistoryShowRoom {
+        padding: 1.5rem 0;
+
+        .history-item {
+            border-radius: 1rem;
+            padding: .75rem;
+            margin: .75rem 0;
+
+            h4 {
+                font-size: 1.125rem;
+            }
+
+            h5 {
+                text-align: center;
+                font-size: .875rem;
+            }
+        }
+
+        .img-white {
+            width: 40%;
+            max-width: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .history-content {
+            margin-top: 0;
+
+            h4 {
+                font-size: 1.125rem;
+                margin-bottom: .5rem;
+                text-align: center;
+            }
+
+            p {
+                width: 100%;
+            }
+        }
+    }
+
+    .title-product-showroom {
+        font-size: 1.25rem;
+        margin-bottom: .5rem;
+    }
+
+    .product-option {
+        .img-product-main {
+            margin: 1rem auto;
+            max-width: 350px;
+        }
+    }
+
+    .parameter-product {
+        margin: 1rem 0 !important;
+
+        .prm-p-title {
+            font-size: .875rem;
+        }
+
+        .parameter-item {
+            width: 50%;
+            margin: .25rem 0;
+            font-size: .6875rem;
+
+            img {
+                width: 37px;
+            }
+        }
+    }
+
+    #ProductFirst, #PillowProduct {
+        padding: 1.5rem 0;
+    }
+
+    #ChairProduct {
+        padding: 1rem 0;
+        font-size: .875rem;
+
+        .text-tt-p {
+            font-size: .875rem;
+            margin: 0;
+        }
+
+        .chair-item {
+            padding: .5rem;
+
+            .title-chair {
+                font-size: .875rem;
+
+                span {
+                    font-size: .875rem;
+                }
+            }
+        }
+
+        .chair-main {
+            height: auto;
+
+            .img-product {
+                width: 50%;
+                margin: .5rem auto;
+            }
+
+            .title-chair-info {
+                font-size: 1rem;
+
+                span {
+                    font-size: .875rem;
+                }
+            }
+        }
+
+        .chair-main-head {
+            margin: 0;
+
+            .text-chair {
+                width: 100%;
+                margin: .5rem auto;
+            }
+        }
+
+        .chair-parameter {
+            margin: .5rem 0;
+            flex-wrap: wrap;
+
+            .parameter-item {
+                width: 50%;
+                margin: 0.25rem 0;
+                font-size: 0.6875rem;
+
+                img {
+                    width: 37px;
+                }
+            }
+        }
+
+        .chair-main-foot, .chair-info {
+            display: none;
+        }
+    }
+
+    .p-list-color{
+        margin: .5rem 0;
+    }
+
+    .title-small {
+        font-size: .875rem;
+    }
+
+    .chair-oder {
+        padding: 1rem 0;
+        font-size: .875rem;
+
+        .chair-slide {
+            padding: 1rem 0;
+        }
+
+        .swiperOrder {
+            padding-bottom: 2rem;
+
+            .swiper-pagination-bullet {
+                width: .875rem;
+                height: .875rem;
+                margin: 0 0.375rem;
+            }
+        }
+
+        .chair-order-info {
+            padding: 1rem 0 0;
+        }
+
+        .location-use {
+            margin-top: 1rem;
+
+            .location-item {
+                width: 6rem;
+                font-size: .875rem;
+                padding: .5rem;
+
+                img {
+                    width: 2.25rem;
+                }
+            }
+        }
+    }
+}

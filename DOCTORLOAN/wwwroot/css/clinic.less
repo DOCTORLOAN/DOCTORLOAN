@@ -1,0 +1,1097 @@
+@import "variables";
+
+#BannerClinic {
+    .banner-book {
+        position: relative;
+        z-index: 1;
+
+        .banner-clinic-second {
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bg-clinic-curve {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+        }
+    }
+
+    h5 {
+        color: @white;
+        text-transform: uppercase;
+        font-size: 1.75rem;
+        font-family: @font-helveticaneue-medium;
+        margin-bottom: 1.5rem;
+    }
+
+    .mb-frm {
+        margin-bottom: 1.5rem;
+    }
+
+    .banner-second {
+        background-color: @white;
+        padding-bottom: 3rem;
+        position: relative;
+        z-index: 1;
+
+        .img-second-banner {
+            margin: 1.5rem 0;
+        }
+
+        h5 {
+            color: @main-orange;
+        }
+
+        .left-second{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            height: 100%;
+            padding-top: 4vw;
+            .btn{
+                width: 100%;
+            }
+        }
+    }
+
+    .solution-header {
+        position: relative;
+        .logo-solution {
+            width: 100%;
+            text-align: right;
+
+            img {
+                max-width: 150px;
+            }
+        }
+
+        .title-solution {
+            h4 {
+                color: @main-blue;
+                text-transform: uppercase;
+                font-size: 2.25rem;
+                font-family: @font-helveticaneue-blod;
+            }
+
+            p {
+                text-align: justify;
+                margin: 0;
+            }
+        }
+    }
+
+    .content-solution {
+        margin-top: 1.5rem;
+        padding-left: 2rem;
+
+        .content-info {
+            text-align: right;
+            width: 100%;
+            padding: 0 1.5rem;
+
+            .date-info {
+                color: @main-orange;
+                font-size: 1.5rem;
+                font-family: @font-helveticaneue-blod;
+                line-height: 1.25;
+                text-transform: uppercase;
+            }
+
+            .address-info {
+                font-size: .9375rem;
+            }
+        }
+    }
+
+    .solution-swiper {
+        margin: 1rem 0;
+
+        .swiper-slide {
+            position: relative;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: rgba(255,255,255, .5);
+            }
+
+            &.swiper-slide-active:before {
+                content: "";
+                display: none;
+            }
+        }
+    }
+}
+
+#Reason {
+    padding: 5rem 0;
+    background-image: linear-gradient(rgba(255,247,140,.95) 20%, rgba(255,117,0,.95) 90%), url(../img/home/bg-solution.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    .reason-item {
+        background-color: @white;
+        border-radius: 1.5rem;
+        padding: 2.5rem 1.5rem;
+        margin-top: 5rem;
+    }
+
+    h4 {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        color: @main-blue;
+        text-align: center;
+        font-family: @font-helveticaneue-blod;
+        width: 75%;
+        margin: 0 auto;
+        margin-bottom: 1.5rem;
+    }
+
+    .dtl-progress {
+        .progress-info {
+            font-size: .875rem;
+            font-family: @font-helveticaneue-blod;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: .25rem;
+        }
+
+        .progress-bar {
+            background-color: @main-orange;
+        }
+    }
+
+    .reason-footer {
+        margin-top: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .btn-dtl {
+            font-size: .875rem;
+            padding: .375rem .75rem;
+            min-width: auto;
+            text-transform: unset;
+        }
+    }
+}
+
+#ClinicDoctor {
+    padding: 5rem 0;
+
+    .img-clinic-doctor {
+        width: 85%;
+        display: block;
+        margin: 0 auto;
+
+        img {
+            margin-left: -2rem;
+        }
+    }
+
+    .content-clinic-doctor {
+        font-family: @font-signatrue;
+        color: @main-orange;
+        text-align: center;
+        font-size: 3rem;
+        line-height: 1.25;
+        position: relative;
+        margin-top: -3rem;
+
+        strong {
+            display: block;
+            font-weight: unset;
+            font-size: 4rem;
+        }
+
+        * {
+            font-family: inherit;
+        }
+    }
+
+    .clinic-doctor-detail {
+        text-align: center;
+        margin-top: 2rem;
+
+        h5 {
+            text-transform: uppercase;
+            color: #7B6637;
+            line-height: 1.3;
+            margin: 0;
+            font-size: 1.5rem;
+            font-family: @font-helveticaneue-blod;
+        }
+
+        h4 {
+            text-transform: uppercase;
+            color: @main-orange;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-family: @font-helveticaneue-blod;
+        }
+
+        p {
+            max-width: 650px;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .logo-duc-phuc {
+            display: block;
+            margin: 0 auto;
+            max-width: 175px;
+            margin-top: 1rem;
+        }
+    }
+}
+
+#Signal {
+    padding: 5rem 0;
+    background-image: linear-gradient(rgba(255,117,0,.95) 20%, rgba(255,117,0,.95) 90%), url(../img/home/bg-solution.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    .signal-item {
+        background-color: @white;
+        padding: 2rem 1.5rem;
+        border-radius: .5rem;
+    }
+
+    .list-signal {
+        margin-top: 5rem;
+        text-align: center;
+    }
+
+    .img-signal {
+        width: 60%;
+        margin: 0 auto;
+        display: block;
+        margin-bottom: 1rem;
+
+        img {
+            border: 1px solid @main-orange;
+            border-radius: 50%;
+        }
+    }
+
+    .title-signal {
+        text-transform: uppercase;
+        color: @main-orange;
+        font-size: 1.25rem;
+        font-family: @font-helveticaneue-blod;
+        margin: 1rem 0;
+        line-height: 1;
+    }
+
+    .content-signal {
+        margin-bottom: 1rem;
+        line-height: 1.75;
+    }
+}
+
+#Technology {
+    padding: 5rem 0;
+    background-color: #F8F8F8;
+
+    .technology-content {
+        margin-top: 5rem;
+    }
+
+    .technology-item {
+        background-color: @white;
+        border-radius: 1rem;
+        -webkit-box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.25);
+        -moz-box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.25);
+        box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.25);
+        width: 90%;
+        margin: 0 auto;
+        padding: 1.5rem;
+        text-align: center;
+
+        img {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 1.5rem;
+            max-width: 150px;
+        }
+
+        h5 {
+            font-family: @font-helveticaneue-blod;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        hr {
+            border-color: @main-orange;
+            opacity: 1;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+#Method {
+    padding: 5rem 0;
+    background-color: @main-orange;
+
+
+    .content-method {
+        margin: 0 auto;
+        margin-top: 5rem;
+        width: 85%;
+    }
+
+    .item-method {
+        background-color: @white;
+        margin: 3rem 0;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-section {
+            flex-grow: 3;
+            width: 1px;
+
+            &:first-child {
+                flex-grow: 2;
+            }
+
+            &:last-child {
+                flex-grow: 4;
+            }
+        }
+    }
+
+    .list-content-method {
+        padding: 0 2rem;
+        box-sizing: content-box;
+
+        h5 {
+            font-size: 1.5rem;
+            font-family: @font-helveticaneue-blod;
+            color: @main-orange;
+            margin-bottom: 1.5rem;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border-color: @main-orange;
+            opacity: 1;
+        }
+
+        ul {
+            li {
+                position: relative;
+                margin-bottom: 1rem;
+                padding-left: 1rem;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: .75rem;
+                    left: 0;
+                    transform: translate(-0%, -50%);
+                    width: .375rem;
+                    height: .375rem;
+                    border-radius: 50%;
+                    background-color: @black;
+                }
+            }
+        }
+
+        .method-action {
+            text-align: right;
+
+            a {
+                color: @main-orange;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399.8px) {
+    #BannerClinic {
+
+        h5 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .mb-frm {
+            margin-bottom: 1rem;
+        }
+
+        .banner-second {
+            padding-bottom: 2rem;
+
+            .img-second-banner {
+                margin: 1rem 0;
+            }
+        }
+
+        .solution-header {
+            margin-top: -2.5rem;
+
+            .title-solution {
+                h4 {
+                    font-size: 1.75rem;
+                }
+            }
+        }
+
+        .content-solution {
+            margin-top: 2rem;
+
+            .content-info {
+                padding: 0 1rem;
+
+                .date-info {
+                    font-size: 1.375rem;
+                }
+            }
+        }
+
+        .solution-swiper {
+            margin: 1rem 0;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1399.8px) {
+    #Reason {
+        padding: 3rem 0;
+
+        .reason-item {
+            border-radius: 1.25rem;
+            padding: 2rem 1.25rem;
+            margin-top: 3rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .reason-footer {
+            margin-top: 1.25rem;
+        }
+    }
+
+    #ClinicDoctor {
+        padding: 3rem 0;
+
+        .clinic-doctor-detail {
+            margin-top: 1.5rem;
+
+            h5 {
+                font-size: 1.25rem;
+            }
+
+            h4 {
+                font-size: 1.75rem;
+            }
+
+            p {
+                max-width: 600px;
+            }
+
+            .logo-duc-phuc {
+                max-width: 150px;
+            }
+        }
+    }
+
+    #Signal {
+        padding: 3rem 0;
+
+        .signal-item {
+            padding: 1.5rem 1rem;
+        }
+
+        .list-signal {
+            margin-top: 4rem;
+        }
+
+        .img-signal {
+            width: 70%;
+        }
+
+        .content-signal {
+            margin-bottom: .75rem;
+        }
+    }
+
+    #Technology {
+        padding: 3rem 0;
+
+        .technology-content {
+            margin-top: 3rem;
+        }
+
+        .technology-item {
+            padding: 1.25rem;
+
+            img {
+                margin-bottom: 1.25rem;
+                max-width: 125px;
+            }
+
+            h5 {
+                font-size: 1.25rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+    }
+
+    #Method {
+        padding: 3rem 0;
+
+        .content-method {
+            margin-top: 3rem;
+        }
+
+        .item-method {
+            margin: 3rem 0;
+        }
+
+        .list-content-method {
+            padding: 0 1.5rem;
+
+            h5 {
+                font-size: 1.25rem;
+                margin-bottom: 1.25rem;
+            }
+
+            hr {
+                margin: .5rem 0;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199.8px) {
+    #BannerClinic {
+        h5 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .mb-frm {
+            margin-bottom: 1rem;
+        }
+
+        .banner-second {
+            padding-bottom: 2rem;
+
+            .img-second-banner {
+                margin: 1rem 0;
+            }
+        }
+
+        .solution-header {
+            margin-top: -1.5rem;
+
+            .title-solution {
+                h4 {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .logo-solution img {
+                max-width: 125px;
+            }
+        }
+
+        .content-solution {
+            margin-top: 2rem;
+
+            .content-info {
+                padding: 0 1rem;
+
+                .date-info {
+                    font-size: 1.25rem;
+                }
+            }
+        }
+
+        .solution-swiper {
+            margin: 1rem 0;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    #BannerClinic {
+        h5 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .mb-frm {
+            margin-bottom: 1rem;
+        }
+
+        .banner-second {
+            padding-bottom: 1.5rem;
+
+            .img-second-banner {
+                margin: 1rem auto;
+                max-width: 350px;
+                display: block;
+            }
+
+            h5 {
+                text-align: center;
+            }
+        }
+
+        .solution-header {
+            margin-top: 1rem;
+
+            .title-solution {
+                h4 {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .logo-solution img {
+                max-width: 125px;
+            }
+        }
+
+        .content-solution {
+            margin-top: 1.5rem;
+            padding: 0;
+
+            .content-info {
+                padding: 0;
+                font-size: .875rem;
+
+                .date-info {
+                    font-size: 1.25rem;
+                }
+            }
+        }
+
+        .solution-swiper {
+            margin: .5rem 0;
+        }
+    }
+
+    #Reason {
+        padding: 2rem 0;
+
+        .reason-item {
+            border-radius: 1rem;
+            padding: 2rem 1rem;
+            margin-top: 2.5rem;
+        }
+
+        h4 {
+            font-size: 1.125rem;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .dtl-progress .progress-info {
+            font-size: .6875rem;
+        }
+
+        .reason-footer {
+            margin-top: 1rem;
+
+            .btn-dtl {
+                font-size: .75rem;
+                padding: .25rem .5rem;
+            }
+        }
+    }
+
+    #ClinicDoctor {
+        padding: 2rem 0;
+
+        .clinic-doctor-detail {
+            margin-top: 1.25rem;
+
+            h5 {
+                font-size: 1.125rem;
+            }
+
+            h4 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                max-width: 600px;
+            }
+
+            .logo-duc-phuc {
+                max-width: 125px;
+            }
+        }
+    }
+
+    #Signal {
+        padding: 2rem 0;
+
+        .signal-item {
+            padding: 1.5rem 1rem;
+            margin: .75rem 0;
+        }
+
+        .list-signal {
+            margin-top: 2rem;
+        }
+
+        .img-signal {
+            width: 50%;
+        }
+
+        .content-signal {
+            margin-bottom: .75rem;
+        }
+    }
+
+    #Technology {
+        padding: 2rem 0;
+
+        .technology-content {
+            margin-top: 2rem;
+        }
+
+        .technology-item {
+            padding: 1rem;
+            margin: .75rem 0;
+
+            img {
+                margin-bottom: 1.25rem;
+                max-width: 125px;
+            }
+
+            h5 {
+                font-size: 1.25rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+    }
+
+    #Method {
+        padding: 2rem 0;
+
+        .content-method {
+            margin-top: 3rem;
+            width: 100%;
+        }
+
+        .item-method {
+            margin: 2rem 0;
+        }
+
+        .list-content-method {
+            padding: 0 1.5rem;
+
+            h5 {
+                font-size: 1.125rem;
+                margin-bottom: 1rem;
+            }
+
+            hr {
+                margin: .5rem 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:767.98px) {
+    #BannerClinic {
+        .banner-book {
+            .btn-dtl {
+                width: 100%;
+            }
+        }
+
+        h5 {
+            text-align: center;
+            font-size: 1.125rem;
+            margin-bottom: .5rem;
+        }
+
+        .mb-frm {
+            margin-bottom: 1rem;
+        }
+
+        .banner-second {
+            padding-bottom: 1.5rem;
+
+            .img-second-banner {
+                margin: 1rem auto;
+                max-width: 300px;
+                display: block;
+            }
+        }
+
+        .solution-header {
+            margin-top: 0;
+
+            .title-solution {
+                h4 {
+                    font-size: 1.25rem;
+                    text-align: center;
+                }
+            }
+
+            .logo-solution {
+                text-align: center;
+                margin-bottom: 1rem;
+
+                img {
+                    max-width: 125px;
+                }
+            }
+        }
+
+        .content-solution {
+            margin-top: 1rem;
+            padding-left: 0;
+
+            .content-info {
+                padding: 0;
+                text-align: center;
+
+                .address-info {
+                    font-size: .875rem;
+                }
+
+                .date-info {
+                    font-size: 1.25rem;
+                }
+            }
+        }
+
+        .solution-swiper {
+            margin-top: .5rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-action {
+            .btn-dtl {
+                width: 100%;
+            }
+        }
+    }
+
+    #Reason {
+        padding: 1.5rem 0;
+
+        .title-drloan {
+            br {
+                display: none;
+            }
+        }
+
+        .reason-item {
+            border-radius: 1rem;
+            padding: 2rem 1rem;
+            margin: 0 auto;
+            margin-top: 1.5rem;
+            width: 75%;
+        }
+
+        h4 {
+            font-size: 1rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .dtl-progress .progress-info {
+            font-size: .875rem;
+        }
+
+        .reason-footer {
+            margin-top: 1.5rem;
+
+            .btn-dtl {
+                font-size: .875rem;
+                padding: .25rem .5rem;
+            }
+        }
+    }
+
+    #ClinicDoctor {
+        padding: 1.5rem 0;
+
+        .img-clinic-doctor {
+            width: 100%;
+
+            img {
+                margin: 0;
+            }
+        }
+
+        .content-clinic-doctor {
+            font-size: 2.25rem;
+            margin-top: -1.5rem;
+
+            strong {
+                font-size: 2.5rem;
+            }
+        }
+
+        .clinic-doctor-detail {
+            margin-top: 1.25rem;
+
+            h5 {
+                font-size: 1rem;
+            }
+
+            h4 {
+                font-size: 1.125rem;
+            }
+
+            p {
+                max-width: unset;
+            }
+
+            .logo-duc-phuc {
+                max-width: 125px;
+            }
+        }
+    }
+
+    #Signal {
+        padding: 1.5rem 0;
+
+        .title-signal {
+            font-size: 1.125rem;
+            margin-bottom: .5rem;
+        }
+
+        .signal-item {
+            padding: 1.5rem 1rem;
+            margin: .75rem auto;
+            max-width: 300px;
+        }
+
+        .list-signal {
+            margin-top: 2rem;
+        }
+
+        .img-signal {
+            width: 50%;
+        }
+
+        .content-signal {
+            margin-bottom: .75rem;
+        }
+    }
+
+    #Technology {
+        padding: 1.5rem 0;
+
+        .technology-content {
+            margin-top: 2rem;
+        }
+
+        .technology-item {
+            padding: 1rem;
+            margin: .75rem auto;
+            max-width: 350px;
+
+            img {
+                margin-bottom: 1rem;
+                max-width: 85px;
+            }
+
+            h5 {
+                font-size: 1rem;
+                margin-bottom: .5rem;
+            }
+        }
+    }
+
+    #Method {
+        padding: 2rem 0;
+
+        .content-method {
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .item-method {
+            margin: 1rem 0;
+            flex-wrap: wrap;
+
+            .item-section {
+                width: 100%;
+            }
+        }
+
+        .list-img-method {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            order: 2;
+
+            img {
+                width: 10px;
+                flex-grow: 1;
+            }
+        }
+
+        .list-content-method {
+            padding: 1rem;
+            order: 3;
+
+            h5 {
+                font-size: 1rem;
+                margin-bottom: .5rem;
+            }
+
+            hr {
+                margin: .5rem 0;
+            }
+
+            ul li {
+                margin-bottom: .5rem;
+            }
+        }
+
+        .img-content-method {
+            order: 1;
+            margin: 1rem 0;
+
+            img {
+                display: block;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    }
+}

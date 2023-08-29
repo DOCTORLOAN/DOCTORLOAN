@@ -1,0 +1,868 @@
+﻿@{
+    ViewData["Title"] = "Tin tức";
+}
+
+<section id="NewsSlide">
+    <div class="container-fluid">
+        <div class="title-news">
+            <a asp-controller="News" asp-action="NewsGroup"><strong><img src="~/img/icon/newspaper-icon.svg" />Thời sự</strong></a>
+            <span>Thông tin cập nhật mới nhất về những vấn đề liên quan đến bệnh cột sống</span>
+        </div>
+        <div id="NewsSwiper" class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="news-item">
+                        <img src="~/img/news/news-img-1.jpg" />
+                        <div class="content-news">
+                            <div class="news-group">
+                                <div class="date-ns">21/02/2021</div>
+                                <div class="title-ns">Đơ cứng cổ không rõ nguyên nhân</div>
+                                <div class="action-ns"><a asp-controller="News" asp-action="NewsDetail" class="btn btn-news">Xem chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-item">
+                        <img src="~/img/news/news-img-2.jpg" />
+                        <div class="content-news">
+                            <div class="news-group">
+                                <div class="date-ns">04/07/2022</div>
+                                <div class="title-ns">Gối đỡ lưng</div>
+                                <div class="action-ns"><a asp-controller="News" asp-action="NewsDetail" class="btn btn-news">Xem chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-item">
+                        <img src="~/img/news/news-img-3.jpg" />
+                        <div class="content-news">
+                            <div class="news-group">
+                                <div class="date-ns">03/09/2022</div>
+                                <div class="title-ns">Nhức đầu - bệnh chớ coi thường</div>
+                                <div class="action-ns"><a asp-controller="News" asp-action="NewsDetail" class="btn btn-news">Xem chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-item">
+                        <img src="~/img/news/news-img-4.jpg" />
+                        <div class="content-news">
+                            <div class="news-group">
+                                <div class="date-ns">15/09/2022</div>
+                                <div class="title-ns">Mang lại niềm vui cho phụ nữ</div>
+                                <div class="action-ns"><a asp-controller="News" asp-action="NewsDetail" class="btn btn-news">Xem chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-item">
+                        <img src="~/img/news/news-img-5.jpg" />
+                        <div class="content-news">
+                            <div class="news-group">
+                                <div class="date-ns">08/10/2022</div>
+                                <div class="title-ns">Gối giúp điều chỉnh cột sống cổ</div>
+                                <div class="action-ns"><a asp-controller="News" asp-action="NewsDetail" class="btn btn-news">Xem chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-item">
+                        <img src="~/img/news/news-img-6.jpg" />
+                        <div class="content-news">
+                            <div class="news-group">
+                                <div class="date-ns">09/11/2022</div>
+                                <div class="title-ns">Đau lưng do sai tư thế</div>
+                                <div class="action-ns"><a asp-controller="News" asp-action="NewsDetail" class="btn btn-news">Xem chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="news-item">
+                        <img src="~/img/news/news-img-7.jpg" />
+                        <div class="content-news">
+                            <div class="news-group">
+                                <div class="date-ns">05/02/2023</div>
+                                <div class="title-ns">Bệnh vẹo cổ (torticolis)</div>
+                                <div class="action-ns"><a asp-controller="News" asp-action="NewsDetail" class="btn btn-news">Xem chi tiết</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-news">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-12">
+                    <div class="center-thing">
+                        <div class="info-desc">
+                            <h5>Đúng tư thế giúp giữ dáng, phòng bệnh</h5>
+                            <a class="btn btn-news" asp-controller="News" asp-action="NewsDetail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8 col-12">
+                    <div class="center-thing">
+                        <div class="info-desc">
+                            <p>Rất nhiều người bị đau buốt hoặc tê bại cổ vai cánh tay, thắt lưng, đầu gối, chân, … nguyên nhân thường do thoát vị đĩa đệm cột sống cổ hay lưng. Do phải làm việc, đi lại đa số chúng ta hay có thói quen cúi đầu cổ, thắt lưng đột ngột, với tốc độ nhanh và nhiều lần trong ngày, từ đó các đĩa đệm lót giữa các đốt sống dù rất đàn hồi cũng sẽ bị chấn thương, vỡ rách màng bao nhân đệm, đưa đến bệnh lý thoát vị đĩa đệm.</p>
+                            <div class="user-review">
+                                <img src="~/img/home/avatar-2.png" />
+                                <strong>Mai Trúc</strong>
+                                <span>15/05/2023 22:47</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="MenuNews">
+    <div class="container">
+        <div class="list-menu-news">
+            <div class="menu-news-item">
+                <a asp-controller="News" asp-action="NewsGroup">
+                    <img src="~/img/icon/newspaper-icon.svg" />
+                    <div class="content-menu">
+                        Thời sự <br />
+                        (Tin tức - sự kiện)
+                    </div>
+                </a>
+            </div>
+            <div class="menu-news-item">
+                <a asp-controller="News" asp-action="NewsGroup">
+                    <img src="~/img/icon/spine-icon.svg" />
+                    <div class="content-menu">
+                        Nguyên nhân gây bệnh cột sống
+                    </div>
+                </a>
+            </div>
+            <div class="menu-news-item @*active*@">
+                <a asp-controller="News" asp-action="NewsGroup">
+                    <img src="~/img/icon/no-drugs-icon.svg" />
+                    <div class="content-menu">
+                        Thực trạng xã hội và y học về bệnh cột sống
+                    </div>
+                </a>
+            </div>
+            <div class="menu-news-item">
+                <a asp-controller="News" asp-action="NewsGroup">
+                    <img src="~/img/icon/health-insurance.svg" />
+                    <div class="content-menu">
+                        Giải pháp phòng và điều trị bệnh cột sống
+                    </div>
+                </a>
+            </div>
+            <div class="menu-news-item">
+                <a asp-controller="News" asp-action="NewsGroup">
+                    <img src="~/img/icon/health-insurance-1.svg" />
+                    <div class="content-menu">
+                        Câu chuyện của những bệnh nhân khỏi bệnh cột sống
+                    </div>
+                </a>
+            </div>
+            <div class="menu-news-item">
+                <a asp-controller="News" asp-action="NewsGroup">
+                    <img src="~/img/icon/health-insurance-2.svg" />
+                    <div class="content-menu">
+                        Hoạt động xã hội
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ContentNews">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12">
+                <div class="news-main">
+                    <img src="~/img/news/news-main-img.jpg" />
+                    <div class="news-text">
+                        <h5>Giải pháp phòng bệnh cột sống cho người ‘làm bạn’ với máy tính</h5>
+                        <p>Dù ở văn phòng hay tại nhà, chỉ cần thường xuyên làm việc trên máy tính, bạn sẽ có nguy cơ mắc bệnh về cột sống nếu không ngồi đúng tư thế. Hiểu được điều này, bác sĩ Phạm Thị Kim Loan (Chủ tịch HĐQT công ty Khoa học và Công nghệ Ngân Hà) đã sáng chế ghế chỉnh hình DOCTORLOAN nhằm giúp cộng đồng phòng ngừa các bệnh về cột sống.</p>
+                        <p>Ngồi làm việc thường xuyên trong thời gian dài sẽ khiến cột sống và đĩa đệm bị áp lực lớn, gây các chứng bệnh như gù, cong vẹo cột sống, trượt đốt sống, thoát vị đĩa đệm… Không chỉ làm người bệnh đau nhức, giảm năng suất làm việc, học tập mà còn tiêu tốn khá nhiều thời gian, tiền bạc để điều trị dứt điểm.</p>
+                        <p>Phòng chăm sóc sức khỏe là mong muốn của TGĐ FPT Bùi Quang Ngọc, do Công ty Ngân Hà phối hợp thực hiện và triển khai bằng phương pháp DOCTORLOAN. Theo đó, mỗi CBNV có thể tự điều trị cho bản thân bằng cách sử dụng các dịch vụ từ mô hình này, thay vì phải đển bệnh viện mà không cần dùng thuốc cũng như phẫu thuật.</p>
+                        <p>Với diện tích khoảng 82 m2, phòng chăm sóc sức khỏe đặt tại tầng 15, tòa nhà FPT Cầu Giấy (Hà Nội) sẽ được trang bị các sản phẩm ghế ngồi, gối nằm... của DOCTORLOAN. Các dịch vụ sẽ được cung cấp theo các gói thời gian từ 15 phút đến một giờ.</p>
+                        <p>
+                            hương pháp điều trị của DOCTORLOAN là nắn chỉnh cột sống bằng các sản phẩm được thiết kế chuẩn với cột sống của con người.<br />
+                            Phương pháp điều trị của DOCTORLOAN là nắn chỉnh cột sống bằng các sản phẩm được thiết kế chuẩn với cột sống của con người.
+                        </p>
+                        <p>Không gian của phòng chăm sóc sức khỏe được tách bạch với phòng y tế, hiện đang nằm ở tầng 14 của tòa nhà.</p>
+                        <p>
+                            Trong thời gian từ 19/9 đến tháng 10, Công ty Ngân Hà phối hợp với Công đoàn FPT triển khai chuỗi hội thảo tìm hiểu về phương pháp chữa bệnh DOCTORLOAN tại các đơn vị thành viên trên địa bàn Hà Nội. CBNV tham gia có thể tìm hiểu thông tin phòng tránh bệnh và trải nghiệm các sản phẩm.
+                        </p>
+                        <p>Cột sống là chìa khóa của sự sống. Chính từ đó mà dây thần kinh giao cảm đi ra để chỉ huy mọi cơ quan nội tạng. Các bệnh văn phòng do cột sống gây ra có thể kể tới như đau lưng cấp và mãn tính, đau thần kinh tọa, đau khớp gối, thoát vị đĩa đệm, đau thần kinh liên sườn… hoặc các bệnh mãn tính như thiểu năng tuần hoàn não, đau đầu, mất ngủ kinh niên, rối loạn tiền đình, hen phế quản, huyết áp, suy nhược thần kinh, suy nhược cơ thể…</p>
+                        <a class="hr-link" asp-controller="News" asp-action="NewsDetail">Xem chi tiết &gt;&gt;&gt;</a>
+                    </div>
+                </div>
+
+                <div class="news-feedback">
+                    <div class="feedback-main">
+                        <div class="title-news text-left">
+                            <a asp-controller="News" asp-action="NewsGroup"><strong><img src="~/img/icon/health-insurance-1.svg" />“Câu chuyện của những bệnh nhân khỏi bệnh cột sống”</strong></a>
+                        </div>
+                        <div class="list-feedback">
+                            <div class="item-fb">
+                                <a asp-controller="News" asp-action="NewsDetail">
+                                    <img class="avatar-fb" src="~/img/home/avatar-1.png" />
+                                    <span>Bệnh nhân Nguyễn Thị Độ</span>
+                                </a>
+                            </div>
+                            <div class="item-fb">
+                                <a asp-controller="News" asp-action="NewsDetail">
+                                    <img class="avatar-fb" src="~/img/home/avatar-3.png" />
+                                    <span>Bệnh nhân Công Thế Phong</span>
+                                </a>
+                            </div>
+                            <div class="item-fb">
+                                <a asp-controller="News" asp-action="NewsDetail">
+                                    <img class="avatar-fb" src="~/img/home/avatar-4.png" />
+                                    <span>Bệnh nhân Chu Hảo</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="info-feedback">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="card-info">
+                                    <img src="~/img/news/news-story-1.jpg" />
+                                    <div class="content-card-info">
+                                        <a asp-controller="News" asp-action="NewsDetail"><h5>Giám Mục Lạng Sơn <br /> Cha Đặng Đức Ngân</h5></a>
+                                        <p class="mb-0">Thật vui khi viết lời tâm sự lại bắt đầu ngày mới ngày 20/10, là ngày phụ nữ Viêt Nam. Qua Cha Trọng tại trung tâm mục vụ Sài Gòn, mà tôi được biết và giới thiệu đến bác sĩ và phòng khám…</p>
+                                        <a class="hr-link mb-3" asp-controller="News" asp-action="NewsDetail">Xem chi tiết &gt;&gt;&gt;</a>
+                                        <div class="action-fb">
+                                            <span><i class="fas fa-heart"></i> 360</span>
+                                            <span><i class="fas fa-share-alt"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="card-info">
+                                    <img src="~/img/news/news-story-2.jpg" />
+                                    <div class="content-card-info">
+                                        <a asp-controller="News" asp-action="NewsDetail"><h5>Linh Mục Giuse <br /> Phạm Văn Trọng</h5></a>
+                                        <p class="mb-0">Có lẽ không quá khi nói căn bệnh rối loạn tiền đình và đau nhức khó khăn trong đi đứng đã làm cho tôi bị suy sup sức khỏe rất nhiều. Sự suy sụp sức khỏe có lẽ vì tôi không biết nguyên nhân của chúng….</p>
+                                        <a class="hr-link mb-3" asp-controller="News" asp-action="NewsDetail">Xem chi tiết &gt;&gt;&gt;</a>
+                                        <div class="action-fb">
+                                            <span><i class="fas fa-heart"></i> 360</span>
+                                            <span><i class="fas fa-share-alt"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="news-between">
+                    <div class="box-news-info box-first">
+                        <h5>Danh mục</h5>
+                        <ul class="box-category">
+                            <li><a class="category-link" asp-controller="News" asp-action="NewsGroup">Thời sự</a></li>
+                            <li><a class="category-link" asp-controller="News" asp-action="NewsGroup">Nguyên nhân gây bệnh cột sống</a></li>
+                            <li><a class="category-link" asp-controller="News" asp-action="NewsGroup">Thực trạng xã hội và y học</a></li>
+                            <li><a class="category-link" asp-controller="News" asp-action="NewsGroup">Giải pháp phòng bệnh</a></li>
+                            <li><a class="category-link" asp-controller="News" asp-action="NewsGroup">Câu chuyện của bệnh nhân</a></li>
+                            <li><a class="category-link" asp-controller="News" asp-action="NewsGroup">Hoạt động xã hội</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="box-news-info box-last">
+                        <h5>Bài viết được yêu thích nhất</h5>
+                        <div class="box-post">
+                            <div class="post-item">
+                                <div class="num">1</div>
+                                <div class="content-post">
+                                    <a asp-controller="News" asp-action="NewsDetail">
+                                        <strong>Đơ cứng cổ  không rõ nguyên nhân</strong>
+                                    </a>
+                                    <div class="name-time">
+                                        <span>Vũ Hồng Đăng</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>11/05/2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-item">
+                                <div class="num">2</div>
+                                <div class="content-post">
+                                    <a asp-controller="News" asp-action="NewsDetail">
+                                        <strong>Gối đỡ lưng</strong>
+                                    </a>
+                                    <div class="name-time">
+                                        <span>Vũ Hồng Đăng</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>11/05/2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-item">
+                                <div class="num">3</div>
+                                <div class="content-post">
+                                    <a asp-controller="News" asp-action="NewsDetail">
+                                        <strong>Nhức đầu - bệnh chớ coi thường</strong>
+                                    </a>
+                                    <div class="name-time">
+                                        <span>Vũ Hồng Đăng</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>11/05/2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-item">
+                                <div class="num">4</div>
+                                <div class="content-post">
+                                    <a asp-controller="News" asp-action="NewsDetail">
+                                        <strong>Mang lại niềm vui cho phụ nữ</strong>
+                                    </a>
+                                    <div class="name-time">
+                                        <span>Vũ Hồng Đăng</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>11/05/2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-item">
+                                <div class="num">5</div>
+                                <div class="content-post">
+                                    <a asp-controller="News" asp-action="NewsDetail">
+                                        <strong>Gối giúp điều chỉnh cột sống cổ</strong>
+                                    </a>
+                                    <div class="name-time">
+                                        <span>Vũ Hồng Đăng</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>11/05/2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-item">
+                                <div class="num">6</div>
+                                <div class="content-post">
+                                    <a asp-controller="News" asp-action="NewsDetail">
+                                        <strong>Vinh danh Ghế Chỉnh hình DOCTORLOAN trong Sách vàng Sáng tạo</strong>
+                                    </a>
+                                    <div class="name-time">
+                                        <span>Vũ Hồng Đăng</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>11/05/2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="list-instargram">
+                        <div class="title-ins">Không gian phòng khám</div>
+                        <div class="img-ins">
+                            @for (int i = 1; i <= 12; i++)
+                            {
+                                <div class="img-ins-item">
+                                    <a href="~/img/large/home/space-large-@(i).jpg" class="glightbox" data-gallery="gallery-space">
+                                        <img src="~/img/home/space-@(i).jpg" />
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="product-info">
+    <div class="container">
+        <div class="product-info-main pink">
+            <div class="row">
+                <div class="col-xl-3 col-md-3 col-12">
+                    <div class="center-thing">
+                        <div class="title-pi">
+                            Ghế độc quyền sáng chế
+                            <span>DOCTORLOAN</span>
+                            <strong>N85</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-5 col-12">
+                    <div class="img-pi">
+                        <img src="~/img/products/product-n85-pink.png" />
+                    </div>
+                </div>
+                <div class="col-xl-5 col-md-4 col-12">
+                    <div class="center-thing">
+                        <div class="title-pi-r">
+                            Ghế ngồi sáng chế
+                            <strong>DOCTORLOAN N85</strong>
+                            <span>Ngồi làm việc thường xuyên trong thời gian dài sẽ khiến cột sống và đĩa đệm bị áp lực lớn.</span>
+                            <a class="btn btn-pink" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<section id="PosterNews">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 col-12"></div>
+            <div class="col-md-7 col-6">
+                <img src="~/img/news/poster-news.png" />
+            </div>
+            <div class="col-md-4 col-6">
+                <div class="center-thing">
+                    <div class="poster-content">
+                        <h5>Ghế độc quyền sáng chế <span>DOCTORLOAN</span> <strong>N85</strong></h5>
+                        <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-pink">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="poster-count-number">
+        <div class="container">
+            <div class="list-post-number">
+                <div class="post-number-item">
+                    <strong>98</strong> <span>Bài viết</span>
+                </div>
+                <div class="post-number-item">
+                    <strong>200</strong> <span>Bài viết</span>
+                </div>
+                <div class="post-number-item">
+                    <strong>150</strong> <span>Bài viết</span>
+                </div>
+                <div class="post-number-item">
+                    <strong>168</strong> <span>Bài viết</span>
+                </div>
+                <div class="post-number-item">
+                    <strong>286</strong> <span>Bài viết</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+
+<section id="RealityAndReason" class="news-group-page">
+    <div class="container">
+        <div class="title-news text-left">
+            <a asp-controller="News" asp-action="NewsGroup"><strong><img src="~/img/icon/no-drugs-icon.svg" />Thực trạng xã hội và y học về bệnh cột sống</strong></a>
+            <span class="text-black">Từ 30 tuổi trở đi, nhiều người đã bắt đầu bước vào thời kỳ lão hoá, xương và các khớp xương bắt đầu  thoái hoá với nhiều chứng bệnh liên quan đến xương khớp…</span>
+        </div>
+        <div class="list-news-reality">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="news-reality-main">
+                        <div class="img-reality-main">
+                            <img src="~/img/news/thuc-trang-1.jpg" />
+                        </div>
+                        <div class="content-news-reality">
+                            <div class="center-thing">
+                                <div>
+                                    <h5 class="title-desc-news">Bệnh do những thói quen xấu</h5>
+                                    <p class="desc-news">Ngồi, đứng hoặc làm việc với tư thế cúi đầu, nghiêng hoặc xoay đầu thường xuyên qua một bên; khiêng vật nặng với tư thế uốn cong lưng và cổ; ngồi bắt tréo chân khiến khung chậu bị bẻ vẹo và lực ép tập trung một bên khung chậu…</p>
+                                    <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="news-reality-main">
+                        <div class="img-reality-main">
+                            <img src="~/img/news/thuc-trang-2.jpg" />
+                        </div>
+                        <div class="content-news-reality">
+                            <div class="center-thing">
+                                <div>
+                                    <h5 class="title-desc-news">Đau cột sống cổ do chấn thương</h5>
+                                    <p class="desc-news">Do vị trí và đặc điểm sinh – cơ học cột sống cổ là bộ phận nối tiếp giữa đầu và thân nên dễ bị tổn thương. Nếu một trong hai phần của cơ thể, đầu hoặc thân bị tăng tốc hoặc hãm đột ngột thì cột sống cổ phải chịu sức căng rất lớn…</p>
+                                    <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="news-reality-main">
+                        <div class="img-reality-main">
+                            <img src="~/img/news/thuc-trang-3.jpg" />
+                        </div>
+                        <div class="content-news-reality">
+                            <div class="center-thing">
+                                <div>
+                                    <h5 class="title-desc-news">Tư thế ngồi lý tưởng</h5>
+                                    <p class="desc-news">Ngồi không đúng tư thế sẽ dẫn đến những bệnh liên quan đến cột sống. Đối với những người làm việc văn phòng, học sinh, sinh viên… cần có tư thế ngồi lý tưởng để giữ cho cột sống luôn được nâng đỡ tốt…</p>
+                                    <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-news-reason">
+            <div class="social-activities">
+                <div class="title-news text-left">
+                    <a asp-controller="News" asp-action="NewsGroup"><strong><img src="~/img/icon/spine-icon.svg" />Nguyên nhân gây bệnh cột sống</strong></a>
+                    <span class="text-black">Cột sống của con người rất mong manh, dễ bị tổn thương nhưng ít người quan tâm đúng mức.</span>
+                </div>
+
+                <div class="swiper socialActivities">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="social-activities-item">
+                                <div class="img-social-activities">
+                                    <img src="~/img/news/nguyen-nhan-1.jpg" />
+                                </div>
+                                <div class="content-social-activities">
+                                    <div class="center-thing">
+                                        <div>
+                                            <h5 class="title-desc-news two-row">Đơ cứng cổ  không rõ nguyên nhân</h5>
+                                            <div class="d-flex justify-content-between color-gray"><span>Vũ Hồng Đăng</span><span>11/05/2023</span></div>
+                                            <p class="desc-news">Góc “Trò chuyện cùng nhà chuyên môn” cung cấp những kiến thức cần thiết về y tế, dinh dưỡng. Để giúp bạn có thể nhận biết, phòng, chống và tự chăm sóc bản thân, gia đình…</p>
+                                            <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="social-activities-item">
+                                <div class="img-social-activities">
+                                    <img src="~/img/news/nguyen-nhan-2.jpg" />
+                                </div>
+                                <div class="content-social-activities">
+                                    <div class="center-thing">
+                                        <div>
+                                            <h5 class="title-desc-news two-row">Nhức đầu - bệnh chớ coi thường</h5>
+                                            <div class="d-flex justify-content-between color-gray"><span>Vũ Hồng Đăng</span><span>11/05/2023</span></div>
+                                            <p class="desc-news">Nhức đầu, đau đầu có nguyên nhân bắt đầu từ bệnh liên quan đến cột sống cổ, gây chèn ép mạch máu lên não... Các triệu chứng đau đầu có thể do đau dây thần kinh chẩm lớn, điểm đau ngay ở dưới da đầu,...</p>
+                                            <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="social-activities-item">
+                                <div class="img-social-activities">
+                                    <img src="~/img/news/nguyen-nhan-3.jpg" />
+                                </div>
+                                <div class="content-social-activities">
+                                    <div class="center-thing">
+                                        <div>
+                                            <h5 class="title-desc-news two-row">Đau lưng do sai tư thế</h5>
+                                            <div class="d-flex justify-content-between color-gray"><span>Vũ Hồng Đăng</span><span>11/05/2023</span></div>
+                                            <p class="desc-news">Nhiều người, nhất là phụ nữ, bị đau lưng thường xuyên, tê cứng tay chân… do đi, đứng, nằm, ngồi không đứng tư thế. Trong sinh hoạt thường ngày, do tính chất công việc hoặc do không hiểu biết nên đi, đứng, ngồi sai tư thế…</p>
+                                            <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="social-activities-item">
+                                <div class="img-social-activities">
+                                    <img src="~/img/news/nguyen-nhan-4.jpg" />
+                                </div>
+                                <div class="content-social-activities">
+                                    <div class="center-thing">
+                                        <div>
+                                            <h5 class="title-desc-news two-row">Bệnh vẹo cổ (torticolis)</h5>
+                                            <div class="d-flex justify-content-between color-gray"><span>Vũ Hồng Đăng</span><span>11/05/2023</span></div>
+                                            <p class="desc-news">Vẹo cổ là căn bệnh thường gặp ở cả người lớn và trẻ em nhưng ít ai chú ý mà thường cho rằng do bị trúng gió hay bị mắc bệnh cảm cúm gây ra…</p>
+                                            <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="NewsSolution">
+    <div class="container">
+        <div class="title-news text-left">
+            <a asp-controller="News" asp-action="NewsGroup"><strong><img src="~/img/icon/health-insurance.svg" />Giải pháp phòng và điều trị bệnh cột sống</strong></a>
+            <span class="text-black">Từ tuổi 30 trở đi, nhiều chị em phụ nữ đã bắt đầu bước vào thời kỳ lão hóa, làn da bắt đầu không còn tươi tắn, tóc bắt đầu có sợi phai màu, xương và các khớp xương bắt đầu bước vào thời kỳ thoái hóa với nhiều chứng bệnh liên quan đến xương khớp…</span>
+        </div>
+
+        <div class="list-solution">
+            <div class="solution-item">
+                <img src="~/img/icon/spine.svg" />
+                <div class="content-item">
+                    Huấn luyện phục hồi cột sống xương khớp
+                </div>
+            </div>
+            <div class="solution-item">
+                <img src="~/img/icon/spine-straight.svg" />
+                <div class="content-item">
+                    Chuyển giao giải pháp điều chỉnh cột sống
+                </div>
+            </div>
+            <div class="solution-item">
+                <img src="~/img/icon/x-rays.svg" />
+                <div class="content-item">
+                    X-quang chuẩn đoán chính xác
+                </div>
+            </div>
+            <div class="solution-item">
+                <img src="~/img/icon/medical-consultant.svg" />
+                <div class="content-item">
+                    Tư vấn chuyên sâu toàn diện
+                </div>
+            </div>
+            <div class="solution-item">
+                <img src="~/img/icon/spine-s.svg" />
+                <div class="content-item">
+                    Cải thiện tướng mạo vóc dáng
+                </div>
+            </div>
+        </div>
+
+        <div class="news-solution-content">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="sub-title-news">Thực trạng xã hội và y học về bệnh cột sống</div>
+                    <p>Theo bác sĩ Phạm Thị Kim Loan, từng tu nghiệp tại Pháp, Mỹ chuyên ngành về xương khớp, Trưởng Phòng khám Đức Phúc: Những bệnh về xương khớp thường âm thầm, ít có triệu chứng và rất khó phát hiện.</p>
+                    <p>Chỉ khi bệnh nặng khiến đi đứng khó khăn hay đau cổ, vai, lưng, gối… lúc đó người bệnh mới bắt đầu tìm đến các cơ sở điều trị.</p>
+                    <div class="title-small-news">Mức hài lòng của bệnh nhân</div>
+                    <div class="progress progress-news">
+                        <div class="progress-bar" role="progressbar" style="width: 76%;" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100">76%</div>
+                    </div>
+                    <div class="work-process">
+                        <div class="title-small-news">Work process</div>
+                        <div class="list-process">
+                            <div class="process-item">
+                                <div class="number-process">1</div>
+                                <div class="info-process">
+                                    Việt kiều từ Mỹ <strong>Bà Trương Lộc</strong>
+                                </div>
+                            </div>
+                            <div class="process-item">
+                                <div class="number-process">2</div>
+                                <div class="info-process">
+                                    Việt kiều từ Mỹ <strong>Bà Trương Lộc</strong>
+                                </div>
+                            </div>
+                            <div class="process-item">
+                                <div class="number-process">3</div>
+                                <div class="info-process">
+                                    Việt kiều từ Mỹ <strong>Bà Trương Lộc</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="news-solution-main">
+                        <div class="img-solution-main">
+                            <img src="~/img/news/giai-phap-news.jpg" />
+                        </div>
+                        <div class="content-news-solution">
+                            <div class="center-thing">
+                                <div>
+                                    <h5 class="title-desc-news">Phụ nữ và bệnh thoái hóa khớp</h5>
+                                    <p class="desc-news">Môi trường công việc dù ở ngồi văn phòng hay phải di chuyển thường xuyên, ngay cả những việc tưởng chừng giản đơn như đi chợ, nấu ăn, dọn dẹp nhà cửa…</p>
+                                    <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="SocialStatus">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <div class="img-left-social">
+                    <img src="~/img/news/back-pain.jpg" />
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <div class="center-thing">
+                    <div class="bg-right-social">
+                        <div>
+                            <h5>Đau cột sống cổ do chấn thương</h5>
+                            <p>Cột sống cổ rất dễ bị tặc, vẹo, tổn thương khi bạn có các tư thế không hợp lý trong cuộc sống. Cột sống cổ có thể bị tổn thương ở bất kỳ lứa tuổi nào: Ở trẻ em bệnh thường gặp do cúi vẹo cổ, tư thế cổ căng thẳng kéo dài do học tập…</p>
+                            <p>Đối với người trẻ tuổi do tư thế lao động, làm việc và đối với người ở vào độ tuổi trung niên càng không tránh khỏi bị bệnh cột sống cổ…</p>
+                            <a class="btn btn-orange" asp-controller="News" asp-action="NewsDetail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="NewsSocial">
+    <div class="container">
+        <div class="social-activities">
+            <div class="title-news text-left">
+                <a asp-controller="News" asp-action="NewsGroup"><strong><img src="~/img/icon/health-insurance-2.svg" />Hoạt động xã hội</strong></a>
+                <span class="text-black">Tại Phòng khám Đức Phúc đã có một loại gối có thể giúp điều chỉnh lấy lại độ cong cột sống cổ, hỗ trợ điều trị y khoa về thoát vị đĩa đệm cột sống cổ, đó là gối DoctorLoan</span>
+            </div>
+
+            <div class="swiper socialActivities">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="social-activities-item">
+                            <div class="img-social-activities">
+                                <img src="~/img/news/hoat-dong-xa-hoi-2.jpg" />
+                            </div>
+                            <div class="content-social-activities">
+                                <div class="center-thing">
+                                    <div>
+                                        <h5 class="title-desc-news two-row">Trung tâm  Phật Học Tỉnh Đồng Nai - Trường Tăng</h5>
+                                        <div class="d-flex justify-content-between color-gray"><span>Vũ Hồng Đăng</span><span>11/05/2023</span></div>
+                                        <p class="desc-news">Nhức đầu, đau đầu có nguyên nhân bắt đầu từ bệnh liên quan đến cột sống cổ, gây chèn ép mạch máu lên não... Các triệu chứng đau đầu có thể do đau dây thần kinh chẩm lớn, điểm đau ngay ở dưới da đầu,..</p>
+                                        <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="social-activities-item">
+                            <div class="img-social-activities">
+                                <img src="~/img/news/hoat-dong-xa-hoi-3.jpg" />
+                            </div>
+                            <div class="content-social-activities">
+                                <div class="center-thing">
+                                    <div>
+                                        <h5 class="title-desc-news two-row">Trung tâm  Phật Học Tỉnh Đồng Nai - Trường Ni</h5>
+                                        <div class="d-flex justify-content-between color-gray"><span>Vũ Hồng Đăng</span><span>11/05/2023</span></div>
+                                        <p class="desc-news">Nhiều người, nhất là phụ nữ, bị đau lưng thường xuyên, tê cứng tay chân… do đi, đứng, nằm, ngồi không đứng tư thế. Trong sinh hoạt thường ngày, do tính chất công việc hoặc do không hiểu biết nên đi, đứng, ngồi sai tư thế…</p>
+                                        <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="social-activities-item">
+                            <div class="img-social-activities">
+                                <img src="~/img/news/hoat-dong-xa-hoi-1.jpg" />
+                            </div>
+                            <div class="content-social-activities">
+                                <div class="center-thing">
+                                    <div>
+                                        <h5 class="title-desc-news two-row">Chùa Long Hương -  Lần 1</h5>
+                                        <div class="d-flex justify-content-between color-gray"><span>Vũ Hồng Đăng</span><span>11/05/2023</span></div>
+                                        <p class="desc-news">Góc “Trò chuyện cùng nhà chuyên môn” cung cấp những kiến thức cần thiết về y tế, dinh dưỡng… để giúp bạn có thể nhận biết, phòng, chống và tự chăm sóc bản thân, gia đình…</p>
+                                        <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="social-activities-item">
+                            <div class="img-social-activities">
+                                <img src="~/img/news/hoat-dong-xa-hoi-4.jpg" />
+                            </div>
+                            <div class="content-social-activities">
+                                <div class="center-thing">
+                                    <div>
+                                        <h5 class="title-desc-news two-row">Chùa Long Hương - lần 2</h5>
+                                        <div class="d-flex justify-content-between color-gray"><span>Vũ Hồng Đăng</span><span>11/05/2023</span></div>
+                                        <p class="desc-news">Vẹo cổ là căn bệnh thường gặp ở cả người lớn và trẻ em nhưng ít ai chú ý mà thường cho rằng do bị trúng gió hay bị mắc bệnh cảm cúm gây ra…</p>
+                                        <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#nav-menu-container ul li").removeClass("menu-active");
+            $("#nav-menu-container ul li").eq(5).addClass("menu-active");
+        });
+
+        var swiper = new Swiper("#NewsSwiper", {
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 2,
+            initialSlide: 2,
+            spaceBetween: 16,
+            effect: 'coverflow',
+            keyboard: true,
+            slideToClickedSlide: true,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2,
+                slideShadows: false,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                    initialSlide: 2,
+                    spaceBetween: 50,
+                    coverflowEffect: {
+                        depth: 100,
+                        modifier: 3,
+                    },
+                },
+                1200: {
+                    slidesPerView: 3,
+                    initialSlide: 2,
+                    spaceBetween: 100,
+                    coverflowEffect: {
+                        depth: 100,
+                        modifier: 3,
+                    },
+                }
+            },
+        });
+
+        var swiper2 = new Swiper(".socialActivities", {
+            spaceBetween: 0,
+            slidesPerView: 1,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                992: {
+                    spaceBetween: 10,
+                    slidesPerView: 2,
+                }
+            },
+        });
+    </script>
+}

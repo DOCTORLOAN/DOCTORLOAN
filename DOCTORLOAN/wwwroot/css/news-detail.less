@@ -1,0 +1,418 @@
+@import "variables";
+
+#NewsDetail {
+    padding: 2.5rem 0;
+
+    .news-content-detail {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    .tag-name {
+        color: @main-orange;
+        margin-bottom: 1rem;
+    }
+
+    .news-title {
+        font-size: 2.5rem;
+        font-family: @font-helveticaneue-blod;
+        margin-bottom: 1rem;
+    }
+
+    .meta-desc {
+        margin-bottom: 1rem;
+    }
+
+    .action-link {
+        padding-top: 1rem;
+        border-top: 1px solid @light-gray;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        .date-auth {
+            strong {
+                font-family: @font-helveticaneue-medium;
+                margin-bottom: .5rem;
+                display: block;
+            }
+        }
+
+        .link-view {
+            display: flex;
+            align-items: center;
+        }
+
+        .social-icon {
+            padding-right: .75rem;
+            position: relative;
+
+            &:after {
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 5px;
+                height: calc(100% - .5rem);
+                width: 1px;
+                background-color: @light-gray;
+            }
+
+            a {
+                margin-left: .25rem;
+            }
+        }
+
+        .detail-icon {
+            padding-left: .75rem;
+            display: flex;
+            align-items: center;
+
+            a {
+                display: flex;
+                align-items: center;
+                margin-right: .5rem;
+
+                &:last-child {
+                    margin: 0;
+                }
+
+                img {
+                    margin-right: .25rem;
+                }
+            }
+        }
+
+        img {
+            width: 1.5rem;
+        }
+    }
+
+    .news-content-wrapper {
+        margin-top: 2rem;
+        text-align: justify;
+
+        figure {
+            margin-bottom: 1rem;
+
+            figcaption {
+                text-align: center;
+                font-style: italic;
+                font-size: smaller;
+                margin-top: .5rem;
+            }
+        }
+
+        h5 {
+            font-family: @font-helveticaneue-blod;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        strong {
+            font-family: @font-helveticaneue-blod;
+            color: @main-orange;
+        }
+
+        b {
+            font-family: @font-helveticaneue-blod;
+        }
+    }
+
+    .interdepend-slide {
+        margin-top: 2.5rem;
+
+        h4 {
+            font-family: @font-helveticaneue-blod;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .interdepend-desc {
+            h5 {
+                font-size: 1.25rem;
+                font-family: @font-helveticaneue-blod;
+                margin-bottom: .5rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: 25px;
+                -webkit-line-clamp: 1;
+                height: 25px;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+            }
+
+            p {
+                font-size: .875rem;
+                margin: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: 20px;
+                -webkit-line-clamp: 4;
+                height: 80px;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+            }
+        }
+
+        .interdepend-info {
+            margin-top: 1rem;
+        }
+    }
+
+    .interdependSwiper {
+        --sp-nav-size: 40px;
+
+        .swiper-button-prev, .swiper-button-next {
+            width: var(--sp-nav-size);
+            height: var(--sp-nav-size);
+            margin-top: 0;
+            color: @white;
+            background-color: @main-orange;
+            border-radius: 50%;
+            opacity: 0.1;
+            top: 35%;
+
+            &:after {
+                font-size: 1rem;
+            }
+        }
+
+
+
+        &:hover {
+            .swiper-button-prev, .swiper-button-next {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399.8px) {
+    #NewsDetail {
+        padding: 1.5rem 0;
+
+        .news-content-detail {
+            max-width: 860px;
+        }
+
+        .tag-name {
+            margin-bottom: .5rem;
+        }
+
+        .news-title {
+            font-size: 1.75rem;
+            margin-bottom: .5rem;
+        }
+
+        .meta-desc {
+            margin-bottom: .5rem;
+        }
+
+        .news-content-wrapper {
+            margin-top: 1rem;
+
+            h5 {
+                font-size: 1.375rem;
+            }
+        }
+
+        .interdepend-slide {
+            margin-top: 2rem;
+
+            h4 {
+                font-size: 1.25rem;
+                margin-bottom: .75rem;
+            }
+
+            .interdepend-desc {
+                h5 {
+                    font-size: 1.125rem;
+                }
+            }
+
+            .interdepend-info {
+                margin-top: .75rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199.8px) {
+    #NewsDetail {
+        padding: 1.5rem 0;
+
+        .news-content-detail {
+            max-width: 750px;
+        }
+
+        .tag-name {
+            margin-bottom: .5rem;
+        }
+
+        .news-title {
+            font-size: 1.5rem;
+            margin-bottom: .5rem;
+        }
+
+        .meta-desc {
+            margin-bottom: .5rem;
+        }
+
+        .news-content-wrapper {
+            margin-top: 1rem;
+
+            h5 {
+                font-size: 1.375rem;
+            }
+        }
+
+        .interdepend-slide {
+            margin-top: 2rem;
+
+            h4 {
+                font-size: 1.25rem;
+                margin-bottom: .75rem;
+            }
+
+            .interdepend-desc {
+                h5 {
+                    font-size: 1.125rem;
+                }
+            }
+
+            .interdepend-info {
+                margin-top: .75rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    #NewsDetail {
+        padding: 1.25rem 0;
+
+        .news-content-detail {
+            max-width: 650px;
+        }
+
+        .tag-name {
+            margin-bottom: .5rem;
+        }
+
+        .news-title {
+            font-size: 1.375rem;
+            margin-bottom: .5rem;
+        }
+
+        .meta-desc {
+            margin-bottom: .5rem;
+        }
+
+        .news-content-wrapper {
+            margin-top: 1rem;
+
+            h5 {
+                font-size: 1.25rem;
+            }
+        }
+
+        .interdepend-slide {
+            margin-top: 2rem;
+
+            h4 {
+                font-size: 1.25rem;
+                margin-bottom: .75rem;
+            }
+
+            .interdepend-desc {
+                h5 {
+                    font-size: 1rem;
+                }
+            }
+
+            .interdepend-info {
+                margin-top: .75rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:767.98px) {
+    #NewsDetail {
+        padding: 1rem 0;
+
+        .news-content-detail {
+            max-width: 100%;
+        }
+
+        .tag-name {
+            margin-bottom: .5rem;
+        }
+
+        .news-title {
+            font-size: 1.125rem;
+            margin-bottom: .5rem;
+        }
+
+        .meta-desc {
+            margin-bottom: .5rem;
+        }
+
+        .action-link {
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: .75rem;
+            padding-top: .5rem;
+
+            .date-auth {
+                margin-bottom: .5rem;
+
+                strong {
+                    margin-bottom: .25rem;
+                    font-size: .8125rem;
+                }
+            }
+        }
+
+        .news-content-wrapper {
+            margin-top: 1rem;
+
+            h5 {
+                font-size: 1rem;
+                margin-bottom: .5rem;
+            }
+
+            p {
+                margin-bottom: .5rem;
+            }
+        }
+
+        .interdepend-slide {
+            margin-top: 1rem;
+
+            h4 {
+                font-size: 1.125rem;
+                margin-bottom: .75rem;
+            }
+
+            .interdepend-desc {
+                h5 {
+                    font-size: .875rem;
+                    line-height: 18px;
+                    -webkit-line-clamp: 2;
+                    height: 36px;
+                }
+
+                p {
+                    line-height: 18px;
+                    -webkit-line-clamp: 4;
+                    height: 72px;
+                }
+            }
+
+            .interdepend-info {
+                margin-top: .5rem;
+            }
+        }
+    }
+}
