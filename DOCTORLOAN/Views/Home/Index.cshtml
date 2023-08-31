@@ -1,0 +1,2143 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<link href="~/libs/flag/flag.css" rel="stylesheet" />
+<link href="~/libs/Bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+<section id="Home_Banner">
+    <div class="content-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-12">
+                    <div class="flex-end-thing">
+                        <img class="img-doctor" src="~/img/home/bac-si.png" />
+                    </div>
+                </div>
+                <div class="col-lg-8 col-12">
+                    <div class="center-thing">
+                        <div class="banner-info">
+                            <div class="title-banner">Giải pháp <br /> cho cột sống khỏe</div>
+                            <div class="desc-banner">
+                                Sáng chế của người Việt Nam <br /> mang tính đột phá cho sức khỏe cột sống <br /> được bảo hộ độc quyền trên 60 quốc gia
+                            </div>
+                            <div class="moretext">
+                                <p>
+                                    Các sản phẩm DOCTORLOAN chuyên biệt chăm sóc, phòng ngừa và hỗ trợ điều trị các bệnh cột sống, đã được áp dụng cho cộng đồng trong và ngoài nước.
+                                    DOCTORLOAN products specialize in the care, prevention and treatment of spinal diseases, which have been applied to the domestic and foreign communities.
+                                </p>
+                                <p>
+                                    Sản phẩm DOCTORLOAN được công bố bởi Tổ Chức Sở Hữu Trí Tuệ Thế Giới (WIPO/PCT) và được cấp bằng sáng chế độc quyền trên 60 Quốc gia.
+                                    DOCTORLOAN products are published by the World Intellectual Property Organization (WIPO/PCT) and patented in over 60 countries.
+                                </p>
+                                <p>
+                                    Bảo hộ sáng chế đóng một vai trò quan trọng trong việc thúc đẩy sự tiến bộ và sáng tạo trong xã hội loài người.
+                                    Bằng cách bảo vệ và khuyến khích sự sáng tạo, hệ thống bảo hộ sáng chế tạo điều kiện cho các nhà phát minh, nhà khoa học và nhà sáng tạo khám phá, phát triển và chia sẻ những ý tưởng mới.
+                                </p>
+                                <p>Vai trò của bảo hộ sáng chế là tạo ra một môi trường độc lập và an toàn cho người sáng tạo. Nhờ bảo hộ sáng chế, họ có thể bảo vệ công nghệ, sản phẩm, phương pháp và quy trình độc đáo mà họ đã tạo ra khỏi việc sao chép trái phép và lợi dụng.  Điều này khuyến khích những người sáng tạo đầu tư thời gian, công sức và tài nguyên vào nghiên cứu và phát triển, biết rằng họ sẽ được bảo vệ và hưởng lợi từ thành quả của mình.</p>
+                                <p>Ứng dụng sáng chế có ảnh hưởng sâu rộng đến xã hội loài người. Chúng đóng vai trò quan trọng trong việc thúc đẩy sự tiến bộ kỹ thuật, y tế, công nghệ, và các lĩnh vực khác. Những ý tưởng sáng chế tiên tiến được bảo hộ và ứng dụng mang lại những đổi mới và tiện ích cho cuộc sống hàng ngày. Chẳng hạn, các phát minh trong lĩnh vực y tế đã cứu sống hàng triệu người, trong khi các công nghệ mới trong lĩnh vực viễn thông, năng lượng và giao thông đã thay đổi cách chúng ta sống và làm việc.</p>
+                                <p>Đồng thời, bảo hộ sáng chế cũng thúc đẩy sự cạnh tranh lành mạnh và khuyến khích sự phát triển kinh tế. Việc bảo vệ sáng chế giúp tạo ra môi trường đầu tư ổn định và thu hút vốn đầu tư, đồng thời tạo ra cơ hội cho các doanh nghiệp và cá nhân để khai thác và phát triển ý tưởng sáng tạo của họ.</p>
+                            </div>
+                            <div class="more-action">
+                                <a class="moreless-button">Xem chi tiết >>></a>
+                            </div>
+                            <div class="dropdown select-country">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Chọn quốc gia để xem sáng chế độc quyền
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)">
+                                            <i class="flag-icon flag-vn"></i>
+                                            Viet Nam
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)">
+                                            <i class="flag-icon flag-us"></i>
+                                            United States
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)">
+                                            <i class="flag-icon flag-gb"></i>
+                                            United Kingdom
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)">
+                                            <i class="flag-icon flag-sg"></i>
+                                            Singapore
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)">
+                                            <i class="flag-icon flag-tl"></i>
+                                            Thailand
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="action-banner">
+                        <div class="action-item action-info">
+                            <div class="center-thing justify-content-center">
+                                <span>
+                                    Bác sĩ <strong>Phạm Thị Kim Loan</strong> <br />
+                                    <span>Nhà sáng lập - Chủ tịch</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="action-item action-company">
+                            <img src="~/img/home/logo-duc-phuc.png" />
+                            <div class="content-company"><a asp-controller="Clinic" asp-action="Index"> Phòng khám <br /> <span>Đức Phúc DoctorLoan</span></a></div>
+                        </div>
+                        <div class="action-item action-company">
+                            <img src="~/img/home/rnd.png" />
+                            <div class="content-company"><strong>R&D/IPRs</strong> <br /> <div class="small-text">Research and Development</div> <div class="small-text">Intellectual property rights</div></div>
+                        </div>
+                        <div class="action-item action-company">
+                            <img src="~/img/home/logo-doctor-loan.png" />
+                            <div class="content-company"><a asp-controller="Products" asp-action="Index"> Sản phẩm <br /> <strong>DoctorLoan</strong></a></div>
+                        </div>
+                        <div class="action-item action-company">
+                            <img src="~/img/home/logo-gia-thai.png" />
+                            <div class="content-company">Nhà máy sản xuất <br /> <strong>DoctorLoan</strong></div>
+                        </div>
+                        <div class="action-item action-company action-call">
+                            <img src="~/img/home/phone-icon.png" />
+                            <div class="content-company"><span>Tư vấn ngay</span> <br /> <a href="tel:0899136868"><strong>08 9913 6868</strong></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Heritage">
+    <div class="container">
+        <div class="title-drloan"><span>Di sản</span></div>
+        <div id="HeritageSwiper" class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="~/img/home/di-san-1.jpg" />
+                    <div class="heritage-content">
+                        <div class="title-heritage">Khởi nguồn từ chữa bệnh</div>
+                        <div class="desc-heritage">
+                            Cột sống đóng vai trò vô cùng quan trọng trong đời sống con người. Nó không chỉ là khung xương cho cơ thể mà còn chịu trách nhiệm giữ cho cơ thể thẳng đứng và cung cấp sự ổn định và hỗ trợ cho các hoạt động hàng ngày.
+                        </div>
+                        <div class="heritage-action">
+                            <a href="javascript:void(0)" class="btn btn-dtl">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/di-san-2.jpg" />
+                    <div class="heritage-content">
+                        <div class="title-heritage">Sở hữu trí tuệ</div>
+                        <div class="desc-heritage">
+                            Có một xu hướng mới đang xuất hiện trong lĩnh vựa chăm sóc và phòng ngừa bệnh cột sống, đó là giải pháp DOCTORLOAN- Giải pháp Chăm sóc Cột sống với sản phẩm công nghệ sáng chế đột phá-an toàn-hiệu quả.
+                        </div>
+                        <div class="heritage-action">
+                            <a href="javascript:void(0)" class="btn btn-dtl">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/di-san-3.jpg" />
+                    <div class="heritage-content">
+                        <div class="title-heritage">Sản xuất và thương mại</div>
+                        <div class="desc-heritage">
+                            Sản phẩm DOCTORLOAN đạt 5 Thương hiệu Quốc gia đã chứng minh và được công nhận là những sáng chế thiết thực phục vụ đời sống con người không những ở Việt Nam mà cho tất cả mọi người trên thế giới. Sản phẩm DOCTORLOAN chính là cuộc cách mạng trong chăm sóc cột sống cộng đồng của Y Khoa hiện đại.
+                        </div>
+                        <div class="heritage-action">
+                            <a href="javascript:void(0)" class="btn btn-dtl">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+    </div>
+</section>
+
+<section id="About">
+    <div class="container">
+        <div class="title-drloan tt-w"><span>Giới thiệu về DoctorLoan</span></div>
+        <div class="about-content">
+            <div class="row">
+                <div class="col-xl-6 col-12">
+                    @*qfZ0AOlPkbM*@
+                    <iframe class="drloan-video"
+                            src="https://www.youtube.com/embed/G9shqYO_L3M?autoplay=1"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+                            allowfullscreen></iframe>
+                </div>
+                <div class="col-xl-6 col-12">
+                    <div class="about-desc">
+                        <div class="about-text mb-3">DOCTORLOAN, thương hiệu hàng đầu về chăm sóc và phòng ngừa bệnh cột sống, cung cấp các sản phẩm và qui trình công nghệ tiên tiến chuy6en CHĂM SÓC CỘT SỐNG KHOẺ. Các sản phẩm sáng chế DOCTORLOAN được hình thành qua nghiên cứu và phát triển, DOCTORLOAN cam kết đáp ứng nhu cầu ngày càng tăng về CHĂM SÓC CỘT SỐNG KHOẺ của người bệnh và cộng đồng Toàn Cầu. Tầm nhìn mở rộng của thương hiệu DOCTORLOAN đang lan toả trên Toàn Thế gGiới, đồng thời đóng góp vào sự nghiên cứu và giáo dục các kiến thức thiết thực hàng ngày về Bảo Vệ Cột sống cho mọi lứa tuổi, mọi lúc, mọi nơi, đem lại chất lượng sống tốt đẹp.</div>
+                        <div class="about-title">DOCTORLOAN THƯƠNG CỘT SỐNG YÊU CUỘC SỐNG</div>
+                        <div class="about-text">Cột sống không chỉ là một trụ cột vật lý quan trọng cho cuộc sống con người, mà còn có ảnh hưởng sâu sắc đến sức khoè và trạng thái tinh thần của chúng ta. Việc duy trì cột sống khoẻ mạnh và chú trọng đến sự chăm sóc và tập luyện phù hợp là điều quan trọng để tận hưởng một Cuộc Sống Khoả Mạnh và Tự Do. <br /> DOCTORLOAN Thương hiệu hàng đầu đưa ra các giải pháp chữa lành cơ xương khớp một cách tự nhiên và an toàn, hạn chế tối đa nguyên nhân gây nên các bệnh lý về cột sống.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Achievement">
+    <div class="container">
+        <div class="title-drloan"><span>Thành tựu đạt được</span></div>
+        <div class="achievement">
+            <div class="achievement-item">
+                <div class="achievement-content">
+                    <h4>35+</h4>
+                    <p>Năm kinh nghiệm nghiên cứu và hoạt động trong lĩnh vực y tế</p>
+                </div>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-content">
+                    <h4>1,000,000+</h4>
+                    <p>Bệnh nhân được điều trị khỏi bệnh</p>
+                </div>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-content">
+                    <h4>5,000,000+</h4>
+                    <p>Sử dụng các sản phẩm chăm sóc cột sống DOCTORLOAN</p>
+                </div>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-content">
+                    <h4>60+</h4>
+                    <p>Được bảo hộ độc quyền trên các quốc gia và vùng lãnh thổ</p>
+                </div>
+            </div>
+            <div class="achievement-item">
+                <div class="achievement-content">
+                    <h4>255+</h4>
+                    <p>Bằng sáng chế độc quyền trên 60 quốc gia </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Solution">
+    <div class="container">
+        <div class="solution-module">
+            <div class="main-solution">
+                <div class="row">
+                    <div class="col-md-4 col-12">
+                        <div class="center-thing">
+                            <div class="logo-duc-phuc">
+                                <img src="~/img/home/logo-duc-phuc.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-12">
+                        <div class="center-thing">
+                            <div class="main-solution-info">
+                                <div class="title-solution">Đức Phúc DoctorLoan</div>
+                                <div class="sub-title-solution">Cung cấp giải pháp chăm sóc cột sống toàn diện</div>
+                                <p>Tiên phong nghiên cứu giải pháp phòng ngừa các bệnh về Cột Sống. Với mục tiêu huấn luyện và chuyển giao bí quyết TỰ CHỮA LÀNH, chúng tôi sẽ giúp khách hàng thấu hiểu nguyên lý điều chỉnh cột sống, từ đó cải thiện vóc dáng, thân – tâm – trí khỏe mạnh.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-solution">
+                <div class="row">
+                    <div class="col-md-4 col-12">
+                        <div class="center-thing">
+                            <div class="content-info">
+                                <div class="date-info">Năm 2008</div>
+                                <div class="address-info">Địa chỉ: 38 Tú Xương, Q.3, TP.HCM</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-12">
+                        <div class="swiper solution-swiper">
+                            <div class="swiper-wrapper">
+                                @for (int i = 1; i <= 8; i++)
+                                {
+                                    <div class="swiper-slide">
+                                        <a href="~/img/large/home/38-tu-xuong-large-@(i).jpg" class="glightbox" data-gallery="gallery-38-tuxuong">
+                                            <img src="~/img/home/38-tu-xuong-@(i).jpg" />
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-12">
+                        <div class="center-thing">
+                            <div class="content-info">
+                                <div class="date-info">Năm 2010</div>
+                                <div class="address-info">Địa chỉ: 174 Nguyễn Văn Thủ, <br /> P.Dakao, Q.3, TP.HCM</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-12">
+                        <div class="swiper solution-swiper">
+                            <div class="swiper-wrapper">
+                                @for (int i = 1; i <= 16; i++)
+                                {
+                                    <div class="swiper-slide">
+                                        <a href="~/img/large/home/174-nguyen-van-thu-large-@(i).jpg" class="glightbox" data-gallery="gallery-174-nvt">
+                                            <img src="~/img/home/174-nguyen-van-thu-@(i).jpg" />
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-12">
+                        <div class="center-thing">
+                            <div class="content-info">
+                                <div class="date-info">Năm 2018</div>
+                                <div class="address-info">Bác sĩ Phạm Thị Kim Loan làm việc và nghiên cứu tại Pháp, Mỹ…</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 col-12">
+                        <div class="swiper solution-swiper">
+                            <div class="swiper-wrapper">
+                                @for (int i = 1; i <= 14; i++)
+                                {
+                                    <div class="swiper-slide">
+                                        <a href="~/img/large/home/education-large-@(i).jpg" class="glightbox" data-gallery="gallery-education">
+                                            <img src="~/img/home/education-@(i).jpg" />
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-12">
+                        <div class="center-thing">
+                            <div class="content-info">
+                                <div class="date-info">Năm 2022</div>
+                                <div class="address-info">Địa chỉ: 9A Tôn Thất Tùng, <br /> P.Phạm Ngũ Lão, Q.1, TP.HCM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 col-12">
+                        <div class="swiper solution-swiper">
+                            <div class="swiper-wrapper">
+                                @for (int i = 1; i <= 10; i++)
+                                {
+                                    <div class="swiper-slide">
+                                        <a href="~/img/large/home/9a-ton-that-tung-large-@(i).jpg" class="glightbox" data-gallery="gallery-9a-ttt">
+                                            <img src="~/img/home/9a-ton-that-tung-@(i).jpg" />
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Space">
+    <div class="title-drloan"><span>Không gian tại Đức Phúc DoctorLoan</span></div>
+    <div id="SpaceSwiper" class="swiper">
+        <div class="swiper-wrapper">
+            @for (int i = 1; i <= 12; i++)
+            {
+                <div class="swiper-slide">
+                    <a href="~/img/large/home/space-large-@(i).jpg" class="glightbox" data-gallery="gallery-space">
+                        <img src="~/img/home/space-@(i).jpg" />
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+ 
+<section id="License">
+    <div class="container">
+        <div class="title-drloan tt-w"><span>Hơn 255 Bằng sáng chế độc quyền <br /> trên 60 quốc gia</span></div>
+        <div id="LicenseSwiper" class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="~/img/home/australia.jpg" />
+                    <div class="license-country">Australia</div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/canada.jpg" />
+                    <div class="license-country">Canada</div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/united-arab-emirates.jpg" />
+                    <div class="license-country">United arab emirates</div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/viet-nam.jpg" />
+                    <div class="license-country">Việt Nam</div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/euro-patent.jpg" />
+                    <div class="license-country">Euro Patent</div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/hongkong-patent.jpg" />
+                    <div class="license-country">Hongkong Patent</div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/india-patent.jpg" />
+                    <div class="license-country">India Patent</div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/indonesia-patent.jpg" />
+                    <div class="license-country">Indonesia Patent</div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/israel-patent.jpg" />
+                    <div class="license-country">Israel Patent</div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/japan-patent.jpg" />
+                    <div class="license-country">Japan Patent</div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/img/home/korea-patent.jpg" />
+                    <div class="license-country">Korea Patent</div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<section id="Product">
+    <div class="container">
+        <div id="ProductSwiper" class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    @*Gối cổ*@
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <img src="~/img/home/home-product-6.jpg" />
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="center-thing">
+                                <div class="main-product">
+                                    <div class="sub-title-product">Gối sáng chế độc quyền</div>
+                                    <div class="title-product">Gối cổ sáng chế <br /> DoctorLoan F6</div>
+                                    <div class="content-product">
+                                        Hỗ trợ điều trị bệnh vẹo cột sống cổ và thoát vị đĩa đệm cột sống cổ<br />
+                                        Tác dụng nắn đẩy cột sống cổ về dộ cong sinh lý bình thường <br />
+                                        Cho giấc ngủ sâu, giúp ngủ ngon không dùng thuốc đối với mất ngủ kéo dài lâu ngày <br />
+                                        Hiệu quả đối với các triệu chứng: <br /> Giảm nhức đầu, chóng mặt hoặc tê đau cổ vai tay sau do làm việc vi tính.
+                                        Làm mất mệt mỏi trong các trường hợp thoát vị đĩa đệm cột sống cổ.
+                                        Làm tăng khả năng tập trung và trí nhớ trong học tập, làm việc.
+                                        Làm tăng khả năng thích nghi với áp lực cao trong công việc. <br />
+                                        Trong các trường hợp khó khăn, không thể điều trị tại cơ sở y tế, có thể sử dụng gối DOCTORLOAN tại nhà để làm giảm các triệu chứng đau đớn khó chịu dưới sự hướng dẫn của bác sĩ.
+                                    </div>
+                                    <div class="action-product">
+                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    @*Gối lưng*@
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <img src="~/img/home/home-product-5.jpg" />
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="center-thing">
+                                <div class="main-product">
+                                    <div class="sub-title-product">Gối sáng chế độc quyền</div>
+                                    <div class="title-product">Gối lưng sáng chế <br /> DoctorLoan F4</div>
+                                    <div class="content-product">
+                                        Bệnh cột sống lưng có thể xảy ra với tất cả mọi người,bất kể ai cũng có đau lưng trong đời. Gù vẹo, thoát vị đĩa đệm, trượt hoặc gãy cột sống lưng là những bệnh hay gặp do sai tư thế trong sinh hoạt hằng ngày.<br />
+                                        Gối lưng DOCTORLOAN dành cho mọi đối tượng ngoại trừ người già bị loãng xương. Những trường hợp đặc biệt phải có chỉ định của bác sĩ.
+                                    </div>
+                                    <div class="action-product">
+                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    @*Ghế 95 dày*@
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <img src="~/img/home/home-product-2.jpg" />
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="center-thing">
+                                <div class="main-product">
+                                    <div class="sub-title-product">Ghế sáng chế độc quyền</div>
+                                    <div class="title-product">Ghế ngồi sáng chế <br /> DoctorLoan 90 dày</div>
+                                    <div class="content-product">
+                                        Ghế ngồi sáng chế DOCTORLOAN 90 dày được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương chậu và cột sống, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.<br />
+                                        Ghế ngồi DOCTORLOAN 90 dày nổi bật với cơ chế nâng đỡ vùng thắt lưng và xương chậu, điều chỉnh hiệu quả các trật vẹo cột sống lưng về lại cấu trúc bình thường, giúp duy trì trạng thái khỏe mạnh của cột sống mỗi ngày, mỗi giờ làm việc.
+                                    </div>
+                                    <div class="action-product">
+                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    @*Ghế 95 mỏng*@
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <img src="~/img/home/home-product-3.jpg" />
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="center-thing">
+                                <div class="main-product">
+                                    <div class="sub-title-product">Ghế sáng chế độc quyền</div>
+                                    <div class="title-product">Ghế ngồi sáng chế <br /> DoctorLoan 90 mỏng</div>
+                                    <div class="content-product">
+                                        Ghế ngồi sáng chế DOCTORLOAN 90 mỏng được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.<br />
+                                        Ghế ngồi DOCTORLOAN 90 mỏng nổi bật với cơ chế nâng đỡ vùng thắt lưng và xương chậu, điều chỉnh hiệu quả các trật vẹo cột sống lưng về lại cấu trúc bình thường, duy trì trạng thái khỏe mạnh của cột sống bằng việc sử dụng ghế DOCTORLOAN hằng ngày.
+                                    </div>
+                                    <div class="action-product">
+                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    @*Ghế 95 VIP*@
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <img src="~/img/home/home-product-4.jpg" />
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="center-thing">
+                                <div class="main-product">
+                                    <div class="sub-title-product">Ghế sáng chế độc quyền</div>
+                                    <div class="title-product">Ghế ngồi sáng chế <br /> DoctorLoan 95 VIP</div>
+                                    <div class="content-product">
+                                        Dựa trên mô phỏng đường cong cột sống sống, ghế sáng chế DOCTORLOAN 95 được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.<br />
+                                        Ghế sáng chế DOCTORLOAN 95 nổi bật với cơ chế nâng đỡ vùng thắt lưng và xương chậu, điều chỉnh hiệu quả các trật vẹo cột sống lưng về lại cấu trúc bình thường, duy trì trạng thái khoẻ mạnh của cột sống bằng việc sử dụng ghế DOCTORLOAN 95 hằng ngày.
+                                    </div>
+                                    <div class="action-product">
+                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    @*Ghế N85*@
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <img src="~/img/home/home-product-7.jpg" />
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="center-thing">
+                                <div class="main-product">
+                                    <div class="sub-title-product">Ghế sáng chế độc quyền</div>
+                                    <div class="title-product">Ghế ngồi sáng chế <br /> DoctorLoan N85</div>
+                                    <div class="content-product">
+                                        Ghế Sáng chế DOCTORLOAN N85 là GIẢI PHÁP CHĂM SÓC VÀ BẢO VỆ CỘT SỐNG KHỎE cho cộng đồng mọi lúc, mọi nơi.<br />
+                                        Ghế Sáng chế DOCTORLOAN N85 được thiết kế với các đường cong lồi phía trước và lõm phía sau mặt ghế, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” khung xương chậu và cột sống.<br />
+                                        Đem lại hiệu quả BẢO VỆ CỘT SỐNG, NGĂN CHẶN BIẾN DẠNG xương chậu và cột sống cho cộng đồng mọi lúc, mọi nơi.
+                                    </div>
+                                    <div class="action-product">
+                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    @*Ghế 135*@
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <img src="~/img/home/home-product-1.jpg" />
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="center-thing">
+                                <div class="main-product">
+                                    <div class="sub-title-product">Ghế sáng chế độc quyền</div>
+                                    <div class="title-product">Ghế nằm sáng chế <br /> DoctorLoan 135</div>
+                                    <div class="content-product">
+                                        Ghế nằm sáng chế DOCTORLOAN 135 được thiết kế đặc biệt với độ ngả 135˚, kết hợp với các đường cong lồi phía trước và lõm phía sau uốn theo cấu trúc cong tự nhiên của cột sống tạo nên chức năng “GIỮ CHUẨN – CHỐNG TRƯỢT – ĐIỀU CHỈNH” từng chi tiết của cấu trúc xương chậu – cột sống lưng – cột sống cổ, mang đến khả năng tự điều chỉnh các biến dạng cột sống dưới tác động của trọng lực cơ thể khi nằm trên ghế. Ghế nằm sáng chế DOCTORLOAN 135 đem lại hiệu quả BẢO VỆ CỘT SỐNG, phù hợp ngăn chặn bệnh lý cột sống do hoạt động sai tư thế hoặc diễn tiến nặng đối với các bệnh cột sống có sẵn. <br />
+                                        Dựa trên cơ chế đó, sản phẩm sẽ đặc biệt cần thiết cho những bệnh nhân đã bị biến dạng cột sống hoặc bệnh vẹo cột sống bẩm sinh.
+                                    </div>
+                                    <div class="action-product">
+                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    @*Đệm thiền*@
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <img src="~/img/home/home-product-8.jpg" />
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="center-thing">
+                                <div class="main-product">
+                                    <div class="sub-title-product">Đệm sáng chế độc quyền</div>
+                                    <div class="title-product">Đệm thiền sáng chế <br /> DoctorLoan</div>
+                                    <div class="content-product">
+                                        Đệm ngồi DOCTORLOAN được thiết kế “thấp trước cao sau” tạo nên chức năng “NÂNG ĐỠ - GIỮ CHUẨN – ĐIỀU CHỈNH” khung xương chậu và xương cùng trong tư thế ngồi khoanh chân.<br />
+                                        Đem lại hiệu quả BẢO VỆ CỘT SỐNG, NGĂN CHẶN BIẾN DẠNG xương chậu, xương cùng và cột sống của bạn khi thiền, tu tập và trong sinh hoạt hằng ngày ngay tại nhà.
+                                    </div>
+                                    <div class="action-product">
+                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+</section>
+
+<section id="ProductFeatures">
+    <div class="container">
+        <div class="title-drloan tt-w"><span>Đặc trưng sản phẩm DoctorLoan</span></div>
+        <div class="feature-content">
+            <div id="ProductFeaturesSwiper" class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="feature-slide">
+                            <div class="content-left">
+                                <h4>Ghế nằm sáng chế <br /> <span>DoctorLoan 135</span></h4>
+                                <p>Có tác dụng hỗ trợ điều trị các bệnh của cột sống, giảm nhanh các triệu chứng đau nhức, yếu, liệt của lưng, mông và chân. Đem lại hiệu quả rõ rệt, kéo dài trong phòng ngừa bệnh lý do tư thế ngồi sai của cột sống thắt lưng, cột sống ngực, cột sống cổ và không cân đối xương chậu.</p>
+                            </div>
+                            <div class="content-right">
+                                <img src="~/img/home/feature-product-2.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="feature-slide">
+                            <div class="content-left">
+                                <h4>Ghế ngồi sáng chế <br /> <span>DoctorLoan</span></h4>
+                                <p>Thiết kế mặt ghế ngắn kết hợp với chiều cao của trụ ghế có thể điều chỉnh lên xuống theo chiều cao của từng đối tượng sử dụng, giúp hai chân đặt vững trên mặt đất, tạo cảm giác thoải mái và vững vàng trong tư thế ngồi.</p>
+                            </div>
+                            <div class="content-right">
+                                <img src="~/img/home/feature-product-1.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="feature-slide">
+                            <div class="content-left">
+                                <h4>Ghế ngồi sáng chế <br /> <span>DoctorLoan N85</span></h4>
+                                <p>Có tác dụng hỗ trợ điều trị các bệnh của cột sống, giảm nhanh các triệu chứng đau nhức, yếu, liệt của lưng, mông và chân. Đem lại hiệu quả rõ rệt, kéo dài trong phòng ngừa bệnh lý do tư thế ngồi sai của cột sống thắt lưng, cột sống ngực, cột sống cổ và không cân đối xương chậu.</p>
+                            </div>
+                            <div class="content-right">
+                                <img src="~/img/home/feature-product-3.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="feature-slide">
+                            <div class="content-left">
+                                <h4>Gối cổ sáng chế <br /> <span>DOCTORLOAN</span></h4>
+                                <p>Gối cổ DOCTORLOAN là một giải pháp hỗ trợ điều trị an toàn và hiệu quả bệnh lý cột sống cổ, giảm nhanh và lâu dài.</p>
+                            </div>
+                            <div class="content-right">
+                                <img src="~/img/home/feature-product-4.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="feature-slide">
+                            <div class="content-left">
+                                <h4>Gối lưng sáng chế <br /> <span>DOCTORLOAN</span></h4>
+                                <p>Gối lưng DOCTORLOAN có tác dụng hỗ trợ điều trị các bệnh lý của cột sống lưng, ngực, thoát vị đĩa đệm, trượt đốt sống lưng, có thể xảy ra do sai tư thế trong sinh hoạt hằng ngày.</p>
+                            </div>
+                            <div class="content-right">
+                                <img src="~/img/home/feature-product-5.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="feature-slide">
+                            <div class="content-left">
+                                <h4>Đệm thiền sáng chế <br /> <span>DOCTORLOAN</span></h4>
+                                <p>Đem lại hiệu quả BẢO VỆ CỘT SỐNG, NGĂN CHẶN BIẾN DẠNG xương chậu, xương cùng và cột sống của bạn khi thiền, tu tập và trong sinh hoạt hằng ngày ngay tại nhà.</p>
+                            </div>
+                            <div class="content-right">
+                                <img src="~/img/home/feature-product-6.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="FormSubmit">
+    <div class="container">
+        <div class="form-content">
+            <div class="row">
+                <div class="col-md-6 col-12 pe-lg-5">
+                    <form class="row">
+                        <h4>Đăng ký tư vấn sức khỏe</h4>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" id="txtName" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="txtAddress" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" id="txtPhone" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Chọn thời gian khám bệnh</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1"><i class="far fa-calendar-alt"></i></span>
+                                <input type="text" class="form-control form_datetime">
+                            </div>
+                        </div>
+
+                        <div class="form-action">
+                            <a href="javascript:void(0)" class="btn btn-register">Đăng ký</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 col-12 ps-lg-5">
+                    <form class="row">
+                        <h4>Đăng ký tư vấn sản phẩm</h4>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" id="txtName" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="txtAddress" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" id="txtPhone" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Chọn Sản phẩm cần tư vấn</label>
+                            <select class="form-select" id="txtTime">
+                                <option selected disabled value="">Chọn...</option>
+                                <option>Ghế nằm</option>
+                                <option>Ghế ngồi</option>
+                                <option>Gối cổ</option>
+                                <option>Gối lưng</option>
+                                <option>Đệm thiền</option>
+                                <option>Gối đi xe</option>
+                                <option>Đai</option>
+                                <option>Vớ</option>
+                                <option>Ghế nhựa</option>
+                                <option>Dép</option>
+                            </select>
+                        </div>
+                        <div class="form-action">
+                            <a href="javascript:void(0)" class="btn btn-register">Đăng ký</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Experience">
+    @await Html.PartialAsync("/Views/Common/_ExperiencePartial.cshtml")
+</section>
+
+<section id="Project" class="demo-section">
+    <div class="container">
+        <div class="title-drloan">
+            <span>
+                R&D/IPR<b class="text-title-small">s</b> <br /> <small>Hành trình nghiên cứu và phát triển đi tới các sáng chế thiết thực đem lại ích lợi cho mọi người</small>
+            </span>
+        </div>
+
+        <div id="ProjectSwiper" class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="main-project">
+                        <div class="row">
+                            <div class="col-lg-7 col-12">
+                                <div class="project-info">
+                                    <div class="project-product">
+                                        <div class="product-desc">
+                                            <h4>Ghế Ngồi Sáng Chế DOCTORLOAN N85</h4>
+                                            <p>Sau khi được đọc về các công trình nghiên cứu về việc ngồi không đúng cách có nguy cơ khiến con người bị các bệnh về cột sống. Tôi hiểu được rằng thay đổi thói quen của con người rất khó nên phải tạo ra sản phẩm giúp thuận theo thói quen của con người nhưng vẫn đảm bảo giúp ngồi đúng cách. Tôi đã tạo ra chiếc ghế đầu tiên giúp khi ngồi không bị đổ ngừời về phía trước…</p>
+                                            <div class="text-end"><a href="javscript:void(0)">Xem chi tiết >>></a></div>
+                                        </div>
+                                        <div class="product-img"><img src="~/img/home/ghe-n85.png" /></div>
+                                    </div>
+                                </div>
+                                <div class="tile-project mg-prj"><span>Câu chuyện vì sao sản phẩm có tên trên được ra đời?</span> <a href="javascript:void(0)">Xem chi tiết &gt;&gt;&gt;</a></div>
+                                <div class="recital-project">
+                                    <div class="row">
+                                        <div class="col-md-4 col-12">
+                                            <div class="project-info">
+                                                <h5>Bảy bước ra đời của một sản phẩm</h5>
+                                                <p>Ghế phù hợp lắp ráp nhanh chóng. Sản phẩm có khả năng chịu tác động ngoại</p>
+                                                <div class="footer-recital">
+                                                    <div class="avatar-group">
+                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                    </div>
+                                                    <div class="count-clap">
+                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="project-info active-info">
+                                                <h5>Quá trình sản xuất</h5>
+                                                <p>Ghế phù hợp cho học sinh các cấp chống gù lưng và vẹo cột sống.</p>
+                                                <div class="footer-recital">
+                                                    <div class="avatar-group">
+                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                    </div>
+                                                    <div class="count-clap">
+                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="project-info">
+                                                <h5>Thương mại</h5>
+                                                <p>Sản phẩm được sử dụng nhiều tại khu vực chờ cảu bệnh nhân và người thân.</p>
+                                                <div class="footer-recital">
+                                                    <div class="avatar-group">
+                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                    </div>
+                                                    <div class="count-clap">
+                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <div class="chat-parent">
+                                        <div class="tile-project">
+                                            <span>Số người sử dụng sản phẩm </span>
+                                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                <button id="btnTuan" type="button" class="btn btn-gr-dtl btn-gr-active" data-chart="chart-tuan">Tuần</button>
+                                                <button id="btnThang" type="button" class="btn btn-gr-dtl" data-chart="chart-thang">Tháng</button>
+                                            </div>
+                                        </div>
+                                        <div class="project-chart chart-tuan chart-active-home">
+                                            <canvas id="myChart" height="85"></canvas>
+                                        </div>
+                                        <div class="project-chart chart-thang">
+                                            <canvas id="myChart2" height="85"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-12">
+                                <div class="project-info h-100">
+                                    <div class="project-number">
+                                        <div class="icon-number"><img src="~/img/home/clock.png" /></div>
+                                        <div class="body-number">
+                                            <div class="title-number">Thời gian nghiên cứu sản phẩm</div>
+                                            <div class="text-number">130 Giờ</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="project-number">
+                                        <div class="icon-number"><img src="~/img/home/package.png" /></div>
+                                        <div class="body-number">
+                                            <div class="title-number">Số lần cải tiến sản phẩm</div>
+                                            <div class="text-number">500 Lần</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="project-number">
+                                        <div class="icon-number"><img src="~/img/home/user-group.png" /></div>
+                                        <div class="body-number">
+                                            <div class="title-number">Số lượng khách hàng sử dụng sản phẩm</div>
+                                            <div class="text-number">500+ Người</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="project-feedback">
+                                        <div class="tile-project"><span>Ý kiến của 5 khách hàng</span> <a href="javascript:void(0)">Xem chi tiết >>></a></div>
+                                        <div id="ClientSwiper" class="swiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div class="client-info">
+                                                        <img src="~/img/home/dang-duc-ngan.jpg" />
+                                                        <div class="client-name">Cha Đặng Đức Ngân</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="client-info">
+                                                        <img src="~/img/home/pham-van-trong.jpg" />
+                                                        <div class="client-name">Giuse Phạm Văn Trọng</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="client-info">
+                                                        <img src="~/img/home/thanh-lieu.jpg" />
+                                                        <div class="client-name">Bệnh nhân Thanh Liễu</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="client-info">
+                                                        <img src="~/img/home/chu-hao.jpg" />
+                                                        <div class="client-name">Bệnh nhân Chu Hảo</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="client-info">
+                                                        <img src="~/img/home/hoang-kim-dan.jpg" />
+                                                        <div class="client-name">Sister M.JB Hoàng Kim Dâng</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-button-next"></div>
+                                            <div class="swiper-button-prev"></div>
+                                        </div>
+                                        <div class="feedback-content">
+                                            <p>"Người bác sĩ trong tương lai không kê toa cho thuốc, mà chú trọng đến cấu trúc cơ thể của bệnh nhân, đến dinh dưỡng, đến nguyên nhân phát sinh ra bệnh và phương pháp phòng ngừa"</p>
+                                            <a class="btn btn-outline-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="main-project">
+                        <div class="row">
+                            <div class="col-lg-7 col-12">
+                                <div class="project-info">
+                                    <div class="project-product">
+                                        <div class="product-desc">
+                                            <h4>Ghế ngồi Sáng Chế DOCTORLOAN 90 mỏng</h4>
+                                            <p>
+                                                Ghế ngồi sáng chế DOCTORLOAN 90 mỏng được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.
+                                            </p>
+                                            <div class="text-end"><a href="javscript:void(0)">Xem chi tiết >>></a></div>
+                                        </div>
+                                        <div class="product-img"><img src="~/img/home/ghe-90-mong.png" /></div>
+                                    </div>
+                                </div>
+                                <div class="tile-project mg-prj"><span>Câu chuyện vì sao sản phẩm có tên trên được ra đời?</span> <a href="javascript:void(0)">Xem chi tiết &gt;&gt;&gt;</a></div>
+                                <div class="recital-project">
+                                    <div class="row">
+                                        <div class="col-md-4 col-12">
+                                            <div class="project-info">
+                                                <h5>Bảy bước ra đời của một sản phẩm</h5>
+                                                <p>Ghế phù hợp lắp ráp nhanh chóng. Sản phẩm có khả năng chịu tác động ngoại</p>
+                                                <div class="footer-recital">
+                                                    <div class="avatar-group">
+                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                    </div>
+                                                    <div class="count-clap">
+                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="project-info active-info">
+                                                <h5>Quá trình sản xuất</h5>
+                                                <p>Ghế phù hợp cho học sinh các cấp chống gù lưng và vẹo cột sống.</p>
+                                                <div class="footer-recital">
+                                                    <div class="avatar-group">
+                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                    </div>
+                                                    <div class="count-clap">
+                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="project-info">
+                                                <h5>Thương mại</h5>
+                                                <p>Sản phẩm được sử dụng nhiều tại khu vực chờ cảu bệnh nhân và người thân.</p>
+                                                <div class="footer-recital">
+                                                    <div class="avatar-group">
+                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                    </div>
+                                                    <div class="count-clap">
+                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <div class="chat-parent">
+                                        <div class="tile-project">
+                                            <span>Số người sử dụng sản phẩm </span>
+                                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                <button id="btnTuan" type="button" class="btn btn-gr-dtl btn-gr-active" data-chart="chart-tuan">Tuần</button>
+                                                <button id="btnThang" type="button" class="btn btn-gr-dtl" data-chart="chart-thang">Tháng</button>
+                                            </div>
+                                        </div>
+                                        <div class="project-chart chart-tuan chart-active-home">
+                                            <canvas id="myChart3" height="85"></canvas>
+                                        </div>
+                                        <div class="project-chart chart-thang">
+                                            <canvas id="myChart4" height="85"></canvas>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-12">
+                                <div class="project-info h-100">
+                                    <div class="project-number">
+                                        <div class="icon-number"><img src="~/img/home/clock.png" /></div>
+                                        <div class="body-number">
+                                            <div class="title-number">Thời gian nghiên cứu sản phẩm</div>
+                                            <div class="text-number">80 Giờ</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="project-number">
+                                        <div class="icon-number"><img src="~/img/home/package.png" /></div>
+                                        <div class="body-number">
+                                            <div class="title-number">Số lần cải tiến sản phẩm</div>
+                                            <div class="text-number">20 Lần</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="project-number">
+                                        <div class="icon-number"><img src="~/img/home/user-group.png" /></div>
+                                        <div class="body-number">
+                                            <div class="title-number">Số lượng khách hàng sử dụng sản phẩm</div>
+                                            <div class="text-number">700+ Người</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="project-feedback">
+                                        <div class="tile-project"><span>Ý kiến của 5 khách hàng</span> <a href="javascript:void(0)">Xem chi tiết >>></a></div>
+                                        <div id="ClientSwiper" class="swiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <div class="client-info">
+                                                        <img src="~/img/home/dang-duc-ngan.jpg" />
+                                                        <div class="client-name">Cha Đặng Đức Ngân</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="client-info">
+                                                        <img src="~/img/home/pham-van-trong.jpg" />
+                                                        <div class="client-name">Giuse Phạm Văn Trọng</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="client-info">
+                                                        <img src="~/img/home/thanh-lieu.jpg" />
+                                                        <div class="client-name">Bệnh nhân Thanh Liễu</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="client-info">
+                                                        <img src="~/img/home/chu-hao.jpg" />
+                                                        <div class="client-name">Bệnh nhân Chu Hảo</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <div class="client-info">
+                                                        <img src="~/img/home/hoang-kim-dan.jpg" />
+                                                        <div class="client-name">Sister M.JB Hoàng Kim Dâng</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-button-next"></div>
+                                            <div class="swiper-button-prev"></div>
+                                        </div>
+                                        <div class="feedback-content">
+                                            <p>"Người bác sĩ trong tương lai không kê toa cho thuốc, mà chú trọng đến cấu trúc cơ thể của bệnh nhân, đến dinh dưỡng, đến nguyên nhân phát sinh ra bệnh và phương pháp phòng ngừa"</p>
+                                            <a class="btn btn-outline-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<section id="Events" class="bg-orange">
+    <div class="container">
+        <div class="event-main">
+            <div class="row">
+                <div class="col-lg-3 col-12 order-2 order-lg-1">
+                    <div class="event-item">
+                        <div class="event-time"><strong>Sự kiện</strong> <br /> <span>05/12/2022</span></div>
+                        <div class="event-title">Hướng dẫn chăm sóc đường thở trong dịch Covid</div>
+                        <div class="event-desc">Dựa trên cấu trúc giải phẫu học của cột sống và cơ chế tác động lực.</div>
+                        <div class="event-info">
+                            <img src="~/img/home/event-main-1.jpg" />
+                            <div class="event-detail">
+                                <div class="count-seen"><strong>700,520</strong> <br /> Người xem</div>
+                                <div class="event-share">
+                                    <a href="javascript:void(0)"><img src="~/img/icon/like.png" /></a>
+                                    <a href="javascript:void(0)"><img src="~/img/icon/share.png" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-time"><strong>Sự kiện</strong> <br /> <span>05/12/2022</span></div>
+                        <div class="event-title">Phụ nữ với sở hữu trí tuệ - Thúc đẩy đổi mới sáng tạo</div>
+                        <div class="event-desc">Dựa trên cấu trúc giải phẫu học của cột sống và cơ chế tác động lực.</div>
+                        <div class="event-info">
+                            <img src="~/img/home/event-main-2.jpg" />
+                            <div class="event-detail">
+                                <div class="count-seen"><strong>700,520</strong> <br /> Người xem</div>
+                                <div class="event-share">
+                                    <a href="javascript:void(0)"><img src="~/img/icon/like.png" /></a>
+                                    <a href="javascript:void(0)"><img src="~/img/icon/share.png" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12 order-1 order-lg-2">
+                    <div class="event-center">
+                        <div class="img-event-center">
+                            <img src="~/img/home/event-img-center.jpg" />
+                        </div>
+                        <div class="content-event-center">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="desc-event-center">
+                                        <div class="center-item">
+                                            <strong>Sự kiện</strong> <br /> <span>05/12/2022</span>
+                                        </div>
+                                        <div class="center-item">
+                                            <strong>Tags</strong> <br /> <span class="tags">#hoithao</span><br /> <span class="tags">#sukien</span><br /> <span class="tags">#tintuc</span>
+                                        </div>
+                                        <div class="center-item">
+                                            <strong>Bình luận mới</strong> <br /> <span>Lê Hồng Miên</span><br /> <span>Vũ Hồng Đăng</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-7">
+                                    <h4>Hội thảo hướng dẫn chăm sóc cột sống tại Myanmar</h4>
+                                    <p>Dựa trên cấu trúc giải phẫu học của cột sống và cơ chế tác động lực lên cột sống, ghế DOCTORLOAN được thiết kế đặc biệt với phần lưng cong và lõm, phù hợp với đường cong sinh lý của cột sống, xương chậu, từ đó giúp người dùng đưa cột sống trở về đúng cấu trúc bình thường.</p>
+                                    <p>Dựa trên cấu trúc giải phẫu học của cột sống và cơ chế tác động lực lên cột sống, ghế DOCTORLOAN được thiết kế đặc biệt với phần lưng cong và lõm, đúng cấu trúc bình thường.</p>
+                                </div>
+                                <div class="col-2">
+                                    <div class="desc-event-center fl-end">
+                                        <div class="center-item">
+                                            <div class="event-share-column">
+                                                <a href="javascript:void(0)"><img src="~/img/icon/like-gray.png" /></a>
+                                                <a href="javascript:void(0)"><img src="~/img/icon/share-gray.png" /></a>
+                                            </div>
+                                        </div>
+                                        <div class="center-item">
+                                            <div class="avatar-group-column">
+                                                <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                <div class="avatar"><img src="~/img/home/avatar-4.png" alt="Avatar" /></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-12 order-3">
+                    <div class="event-item">
+                        <div class="event-time"><strong>Sự kiện</strong> <br /> <span>05/12/2022</span></div>
+                        <div class="event-title">Tiếp đoàn sở hữu trí tuệ chính phủ Nhật Bản</div>
+                        <div class="event-desc">Dựa trên cấu trúc giải phẫu học của cột sống và cơ chế tác động lực.</div>
+                        <div class="event-info">
+                            <img src="~/img/home/event-main-3.jpg" />
+                            <div class="event-detail">
+                                <div class="count-seen"><strong>700,520</strong> <br /> Người xem</div>
+                                <div class="event-share">
+                                    <a href="javascript:void(0)"><img src="~/img/icon/like.png" /></a>
+                                    <a href="javascript:void(0)"><img src="~/img/icon/share.png" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-time"><strong>Sự kiện</strong> <br /> <span>05/12/2022</span></div>
+                        <div class="event-title">Lễ trao giải nhất sáng chế</div>
+                        <div class="event-desc">Dựa trên cấu trúc giải phẫu học của cột sống và cơ chế tác động lực.</div>
+                        <div class="event-info">
+                            <img src="~/img/home/event-main-4.jpg" />
+                            <div class="event-detail">
+                                <div class="count-seen"><strong>700,520</strong> <br /> Người xem</div>
+                                <div class="event-share">
+                                    <a href="javascript:void(0)"><img src="~/img/icon/like.png" /></a>
+                                    <a href="javascript:void(0)"><img src="~/img/icon/share.png" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Factory">
+    <div class="factory-header">
+        <div class="container">
+            <div class="tilte-head-factory">Nhà máy sản xuất <br /> DoctorLoan</div>
+            <div class="content-head-factory">Để duy trì và nâng cao chất lượng sản phẩm, những chiếc máy cắt phôi ghế, máy móc lõi, máy in 3D… đã được doanh nghiệp tự chế tạo nhằm gia tăng năng lực sản xuất và giảm chi phí.</div>
+        </div>
+    </div>
+    <div class="factory-content">
+        <div class="container-fluid p-0">
+            <div class="drl-row">
+                <div class="drl-item">
+                    <div class="factory-item">
+                        <div class="tilte-item">Liên tục cải tiến chất lượng sản phẩm</div>
+                        <div class="content-item">Mỗi ngày khi tình trạng các bệnh về xương khớp liên tục gia tăng do đó nhà máy DOCTORLOAN luôn nỗ lực vì sự phù hợp của sản phẩm với từng bệnh nhân. Cải tiến chất lượng sản phẩm sẽ là hướng phát triển bền vững nhất mà doanh nghiệp theo đuổi.</div>
+                    </div>
+                </div>
+                <div class="drl-item">
+                    <div class="factory-item dark-item">
+                        <div class="tilte-item">Gia tăng năng lực sản xuất mỗi ngày</div>
+                        <div class="content-item">Mỗi chiếc máy được dùng trong sản xuất đều được doanh nghiệp tự nghiên cứu chế tạo để đưa vào sử dụng. Với mục tiêu nỗ lực tốt hơn 1% mỗi ngày, nhà máy DOCTORLOAN luôn cố gắng gia tăng năng lực sản xuất và tính chính xác của sản phẩm.</div>
+                    </div>
+                </div>
+                <div class="drl-item">
+                    <div class="factory-item">
+                        <div class="tilte-item">Được bảo hộ tại tổ chức trí tuệ toàn cầu</div>
+                        <div class="content-item">Sản xuất các dòng sản phẩm chuyên sáng chế và đã được cấp bằng sáng chế là một thế mạnh của nhà máy tại thị trường trong nước, quốc tế.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Feedback">
+    <div class="container">
+        <div class="title-drloan">
+            <span>
+                DOCTORLOAN ĐÃ THÀNH CÔNG TRONG VIỆC ĐIỀU CHỈNH XƯƠNG KHỚP
+                VỀ ĐÚNG VỊ TRÍ TRONG MỘT THỜI GIAN NGẮN
+            </span>
+        </div>
+        <div class="main-feedback">
+            <div class="row">
+                <div class="col-xxl-9 col-xl-8 col-lg-7 col-12">
+                    <div class="row h-100">
+                        <div class="col-xxl-5 col-lg-6 col-12">
+                            <div class="space-between-item">
+                                <div class="video-group">
+                                    <div class="video-wrapper-vertical">
+                                        <div id="video-placeholder" class="bhoechie-tab-content active"></div>
+                                    </div>
+                                    <div class="list-group-video">
+                                        <a href="#" class="list-group-item active" data-video-id="-COiUhECCK0">1. Bệnh nhân Nguyễn Minh Đại</a>
+                                        <a href="#" class="list-group-item" data-video-id="h6hrb9QARmw">2. Bệnh nhân Trần Thị Thu Ba</a>
+                                        <a href="#" class="list-group-item" data-video-id="eh2hj5-cpYQ">3. Bệnh nhân Võ Đức Thành</a>
+                                        <a href="#" class="list-group-item" data-video-id="26ay_OjWHvU">4. Bệnh nhân Thầy Hồ Viết Tịnh</a>
+                                        <a href="#" class="list-group-item" data-video-id="hWbKyU4B-gQ">5. Bệnh nhân Nguyễn Thị Thanh Thanh</a>
+                                        <a href="#" class="list-group-item" data-video-id="uaGKUnAgNQs">6. Bệnh nhân Nguyễn Đình Trúc</a>
+                                    </div>
+                                </div>
+
+                                <div class="video-group">
+                                    <div class="video-wrapper-vertical">
+                                        <div id="video-placeholder2" class="bhoechie-tab-content video2 active"></div>
+                                    </div>
+                                    <div class="list-group-video video2">
+                                        <a href="#" class="list-group-item video2 active" data-video2-id="TvB_b7xcqBM">1. Bệnh nhân Nguyễn Văn Tài</a>
+                                        <a href="#" class="list-group-item video2" data-video2-id="hWbKyU4B-gQ">2. Bệnh nhân Nguyễn Thị Thanh Thanh</a>
+                                        <a href="#" class="list-group-item video2" data-video2-id="uaGKUnAgNQs">3. Bệnh nhân Nguyễn Đình Trúc</a>
+                                        <a href="#" class="list-group-item video2" data-video2-id="H9SVc21jxbw">4. Bệnh nhân Đoàn Khắc Hùng</a>
+                                        <a href="#" class="list-group-item video2" data-video2-id="h6hrb9QARmw">5. Bệnh nhân Trần Thị Thu Ba</a>
+                                        <a href="#" class="list-group-item video2" data-video2-id="eh2hj5-cpYQ">6. Bệnh nhân Võ Đức Thành</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-7 col-lg-6 col-12">
+                            <div class="image-group">
+                                <div class="accordion" id="accordionFeedback">
+                                    <div class="accordion-item">
+                                        <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/nguyen-thi-thu-loan-cb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/nguyen-thi-thu-loan-ca.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading1">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                1. Nguyễn Thị Thư Loan - X quang cổ
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/nguyen-thi-thu-loan-lb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/nguyen-thi-thu-loan-la.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading2">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                                2. Nguyễn Thị Thư Loan - X quang lưng
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/nguyen-huu-loc-cb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/nguyen-huu-loc-ca.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading3">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                                3. Nguyễn Hữu Lộc - X quang cổ
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/nguyen-huu-loc-lb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/nguyen-huu-loc-la.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading4">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                                4. Nguyễn Hữu Lộc - X quang lưng
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/bui-pham-minh-khue-cb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/bui-pham-minh-khue-ca.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading5">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                                5. Bùi Phạm Minh Khuê - X quang cổ
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/bui-pham-minh-khue-lb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/bui-pham-minh-khue-la.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading6">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                                6. Bùi Phạm Minh Khuê - X quang lưng
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/davis-bobbyg-cb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/davis-bobbyg-ca.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading7">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                                7. Davis Bobbyg - X quang cổ
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/davis-bobbyg-lb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/davis-bobbyg-la.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading8">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                                8. Davis Bobbyg - X quang lưng
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/nguyen-minh-tung-cb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/nguyen-minh-tung-ca.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading9">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                                                9. Nguyễn Minh Tùng - X quang cổ
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/nguyen-minh-tung-lb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/nguyen-minh-tung-la.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading10">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                                10. Nguyễn Minh Tùng - X quang lưng
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="heading11" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/nguyen-thi-thanh-thanh-lb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/nguyen-thi-thanh-thanh-la.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading11">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                                                11. Nguyễn Thị Thanh Thanh - X quang lưng
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse12" class="accordion-collapse collapse" aria-labelledby="heading12" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/tran-vinh-nguyen-cb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/tran-vinh-nguyen-ca.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading12">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                                12. Trần Vinh Nguyên - X quang cổ
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse13" class="accordion-collapse collapse" aria-labelledby="heading13" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/tran-vinh-nguyen-lb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/tran-vinh-nguyen-la.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading13">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                                13. Trần Vinh Nguyên - X quang lưng
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse14" class="accordion-collapse collapse" aria-labelledby="heading14" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/bui-thi-minh-thu-cb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/bui-thi-minh-thu-ca.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading14">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                                                14. Bùi Thị Minh Thư - X quang cổ
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse15" class="accordion-collapse collapse" aria-labelledby="heading15" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/hussin-lb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/hussin-la.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading15">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapse15">
+                                                15. Hussin - X quang lưng
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse16" class="accordion-collapse collapse" aria-labelledby="heading16" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/nguyen-thi-tuyet-cb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/nguyen-thi-tuyet-ca.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading16">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse16" aria-expanded="false" aria-controls="collapse16">
+                                                16. Nguyễn Thị Tuyết - X quang cổ
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse17" class="accordion-collapse collapse" aria-labelledby="heading17" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/pham-thanh-khuong-lb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/pham-thanh-khuong-la.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading17">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse17" aria-expanded="false" aria-controls="collapse17">
+                                                17. Phạm Thanh Khương - X quang lưng
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse18" class="accordion-collapse collapse" aria-labelledby="heading18" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/nguyen-van-tai-cb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/nguyen-van-tai-ca.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading18">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse18" aria-expanded="false" aria-controls="collapse18">
+                                                18. Nguyễn Văn Tài - X quang cổ
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse19" class="accordion-collapse collapse" aria-labelledby="heading19" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/tran-thi-thu-ba-cb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/tran-thi-thu-ba-ca.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading19">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse19" aria-expanded="false" aria-controls="collapse19">
+                                                19. Trần Thị Thu Ba - X quang cổ
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <div id="collapse20" class="accordion-collapse collapse" aria-labelledby="heading20" data-bs-parent="#accordionFeedback">
+                                            <div class="accordion-body">
+                                                <img src="~/img/x-quang/truong-thi-dien-lb.jpg" />
+                                                <p>Hình trước khi điều trị</p>
+                                                <img src="~/img/x-quang/truong-thi-dien-la.jpg" />
+                                                <p>Hình sau khi điều trị</p>
+                                            </div>
+                                        </div>
+                                        <h2 class="accordion-header" id="heading20">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse20" aria-expanded="false" aria-controls="collapse20">
+                                                20. Trương Thị Diên - X quang lưng
+                                            </button>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-3 col-xl-4 col-lg-5 col-12">
+                    <div class="list-iframe-fb">
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F998659321172937%2F&show_text=true&width=560&t=0" width="350" height="429" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F188832057356035%2F&show_text=true&width=560&t=0" width="350" height="410" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F1444016623104008%2F&show_text=true&width=560&t=0" width="350" height="310" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F842936447164251%2F&show_text=true&width=560&t=0" width="350" height="329" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F319354987187815%2F&show_text=true&width=560&t=0" width="560" height="329" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="~/libs/Bootstrap/bootstrap-datetimepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script type="text/javascript">
+        $('.moreless-button').click(function () {
+            $('.moretext').toggleClass("more-active");
+            if ($('.moreless-button').text() == "Xem chi tiết >>>") {
+                $(this).text("Thu nhỏ <<<")
+            } else {
+                $(this).text("Xem chi tiết >>>")
+            }
+        });
+
+        $('.btn-gr-dtl').click(function () {
+            var parentbtn = $(this).parents(".chat-parent");
+            parentbtn.find('.tile-project .btn-group .btn-gr-dtl').removeClass("btn-gr-active");
+            $(this).addClass("btn-gr-active");
+            var datachart = $(this).data("chart");
+
+            parentbtn.find(".project-chart").removeClass("chart-active-home");
+            parentbtn.find(".project-chart." + datachart).addClass("chart-active-home");
+        });
+
+        var swiper = new Swiper("#HeritageSwiper", {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                992: {
+                    slidesPerView: 2,
+                    spaceBetween: 24,
+                },
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+        var swiper4 = new Swiper(".solution-swiper", {
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 3,
+            initialSlide: 2,
+            spaceBetween: 0,
+            effect: 'coverflow',
+            keyboard: true,
+            slideToClickedSlide: true,
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 4,
+                slideShadows: false,
+            },
+        });
+
+        var swiper2 = new Swiper("#SpaceSwiper", {
+            slidesPerView: 4,
+            spaceBetween: 5,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                640: {
+                    spaceBetween: 10
+                },
+                992: {
+                    spaceBetween: 15
+                },
+                1200: {
+                    spaceBetween: 15
+                },
+            },
+        });
+
+        var swiper3 = new Swiper("#LicenseSwiper", {
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 3,
+            initialSlide: 3,
+            effect: 'coverflow',
+            keyboard: true,
+            slideToClickedSlide: true,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 4,
+                slideShadows: false,
+            },
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                640: {
+                    spaceBetween: 40
+                },
+                992: {
+                    spaceBetween: 80
+                },
+                1200: {
+                    spaceBetween: 120
+                },
+            },
+        });
+
+        var swiper5 = new Swiper("#ProductFeaturesSwiper", {
+            effect: "cards",
+            grabCursor: true,
+            initialSlide: 2,
+            slideToClickedSlide: true,
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+        });
+
+        var swiper6 = new Swiper("#ExperienceSwiper", {
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 2,
+            initialSlide: 1,
+            spaceBetween: 0,
+            effect: 'coverflow',
+            keyboard: true,
+            slideToClickedSlide: true,
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 50,
+                modifier: 6,
+                slideShadows: false,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                    initialSlide: 2,
+                    coverflowEffect: {
+                        rotate: 0,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 4,
+                        slideShadows: false,
+                    },
+                }
+            },
+        });
+
+        var swiper7 = new Swiper("#ProductSwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            }
+        });
+
+        var swiper9 = new Swiper("#ProjectSwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            }
+        });
+
+        var swiper8 = new Swiper("#ClientSwiper", {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                640: {
+                    spaceBetween: 10
+                },
+                992: {
+                    spaceBetween: 10
+                },
+                1200: {
+                    spaceBetween: 16
+                },
+            },
+        });
+
+        $(".form_datetime").datetimepicker({
+            format: "dd/mm/yyyy - hh:ii",
+            autoclose: true,
+            todayBtn: true,
+            minuteStep: 15
+        });
+
+        var ctx = document.getElementById('myChart').getContext("2d");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["", "", "", "", "", "", "", "", "", "", "", ""],
+                datasets: [{
+                    label: "",
+                    pointBorderWidth: 7,
+                    pointHoverRadius: 7,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: [100, 120, 150, 160, 165, 180, 190, 220, 250, 280, 290, 320],
+                    cubicInterpolationMode: 'monotone'
+                }]
+            },
+            options: {
+
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        displayColors: false,
+                        bodyAlign: 'center',
+                        callbacks: {
+                            title: () => null // or function () { return null; }
+                        },
+                        bodyFont: {
+                            size: 24
+                        },
+                        backgroundColor: '#FF7500',
+                        bodyColor: '#FFFFFF'
+                    }
+                },
+                scales: {
+                    x: {
+                        display: false
+                    },
+                    y: {
+                        display: false
+                    },
+                }
+            }
+        });
+
+        var ctx2 = document.getElementById('myChart2').getContext("2d");
+        var myChart2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ["", "", "", "", "", "", ""],
+                datasets: [{
+                    label: "",
+                    pointBorderWidth: 7,
+                    pointHoverRadius: 7,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: [100, 150, 180, 190, 220, 250, 290],
+                    cubicInterpolationMode: 'monotone'
+                }]
+            },
+            options: {
+
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        displayColors: false,
+                        bodyAlign: 'center',
+                        callbacks: {
+                            title: () => null // or function () { return null; }
+                        },
+                        bodyFont: {
+                            size: 24
+                        },
+                        backgroundColor: '#FF7500',
+                        bodyColor: '#FFFFFF'
+                    }
+                },
+                scales: {
+                    x: {
+                        display: false
+                    },
+                    y: {
+                        display: false
+                    },
+                }
+            }
+        });
+
+        var ctx3 = document.getElementById('myChart3').getContext("2d");
+        var myChart3 = new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: ["", "", "", "", "", "", "", "", "", ""],
+                datasets: [{
+                    label: "",
+                    pointBorderWidth: 7,
+                    pointHoverRadius: 7,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: [70, 80, 120, 130, 140, 200, 230, 250, 300, 320],
+                    cubicInterpolationMode: 'monotone'
+                }]
+            },
+            options: {
+
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        displayColors: false,
+                        bodyAlign: 'center',
+                        callbacks: {
+                            title: () => null // or function () { return null; }
+                        },
+                        bodyFont: {
+                            size: 24
+                        },
+                        backgroundColor: '#FF7500',
+                        bodyColor: '#FFFFFF'
+                    }
+                },
+                scales: {
+                    x: {
+                        display: false
+                    },
+                    y: {
+                        display: false
+                    },
+                }
+            }
+        });
+
+        var ctx4 = document.getElementById('myChart4').getContext("2d");
+        var myChart4 = new Chart(ctx4, {
+            type: 'line',
+            data: {
+                labels: ["", "", "", "", "", "", "", "", ""],
+                datasets: [{
+                    label: "",
+                    pointBorderWidth: 7,
+                    pointHoverRadius: 7,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: [50, 60, 70, 110, 140, 180, 190, 240, 250],
+                    cubicInterpolationMode: 'monotone'
+                }]
+            },
+            options: {
+
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        displayColors: false,
+                        bodyAlign: 'center',
+                        callbacks: {
+                            title: () => null // or function () { return null; }
+                        },
+                        bodyFont: {
+                            size: 24
+                        },
+                        backgroundColor: '#FF7500',
+                        bodyColor: '#FFFFFF'
+                    }
+                },
+                scales: {
+                    x: {
+                        display: false
+                    },
+                    y: {
+                        display: false
+                    },
+                }
+            }
+        });
+
+        $("div.list-group-video>a").click(function (e) {
+            e.preventDefault();
+            $(this).siblings('a.active').removeClass("active");
+            $(this).addClass("active");
+            var index = $(this).index();
+            $("div.bhoechie-tab-content").removeClass("active");
+            $("div.bhoechie-tab-content").eq(index).addClass("active");
+        });
+
+        $("div.list-group-video.video2>a").click(function (e) {
+            e.preventDefault();
+            $(this).siblings('a.active').removeClass("active");
+            $(this).addClass("active");
+            var index = $(this).index();
+            $("div.bhoechie-tab-content.video2").removeClass("active");
+            $("div.bhoechie-tab-content.video2").eq(index).addClass("active");
+        });
+
+        var player, player2;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('video-placeholder', {
+                videoId: '-COiUhECCK0',
+                playerVars: {
+                    color: 'white',
+                },
+            });
+
+            player2 = new YT.Player('video-placeholder2', {
+                videoId: 'TvB_b7xcqBM',
+                playerVars: {
+                    color: 'white',
+                },
+            });
+        }
+
+        $('.list-group-item').on('click', function () {
+            var url = $(this).attr('data-video-id');
+            player.cueVideoById(url);
+        });
+
+        $('.list-group-item.video2').on('click', function () {
+            var url = $(this).attr('data-video2-id');
+            player2.cueVideoById(url);
+        });
+
+    </script>
+}
+

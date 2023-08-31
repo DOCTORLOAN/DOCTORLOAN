@@ -1,0 +1,134 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\auth\auth.less" />
+    <None Include="wwwroot\auth\icomoon\fonts\icomoon.svg" />
+    <None Include="wwwroot\auth\img\auth-img-main.svg" />
+    <None Include="wwwroot\auth\img\bottom-left.svg" />
+    <None Include="wwwroot\auth\img\logo-single.svg" />
+    <None Include="wwwroot\auth\img\top-right.svg" />
+    <None Include="wwwroot\auth\jquery-3.3.1.min.js" />
+    <None Include="wwwroot\auth\main.js" />
+    <None Include="wwwroot\img\clinic\curved.svg" />
+    <None Include="wwwroot\img\flag\viet-nam.svg" />
+    <None Include="wwwroot\img\home\count.svg" />
+    <None Include="wwwroot\img\icon\call-center.svg" />
+    <None Include="wwwroot\img\icon\chart-icon.svg" />
+    <None Include="wwwroot\img\icon\check-mark-orange.svg" />
+    <None Include="wwwroot\img\icon\check-mark-white.svg" />
+    <None Include="wwwroot\img\icon\clinic-icon.svg" />
+    <None Include="wwwroot\img\icon\clock-icon.svg" />
+    <None Include="wwwroot\img\icon\cog-icon.svg" />
+    <None Include="wwwroot\img\icon\contact-email.svg" />
+    <None Include="wwwroot\img\icon\contact-factory.svg" />
+    <None Include="wwwroot\img\icon\contact-headquarter.svg" />
+    <None Include="wwwroot\img\icon\contact-icon-1.svg" />
+    <None Include="wwwroot\img\icon\contact-icon-2.svg" />
+    <None Include="wwwroot\img\icon\contact-map.svg" />
+    <None Include="wwwroot\img\icon\contact-showroom.svg" />
+    <None Include="wwwroot\img\icon\contact-telephone.svg" />
+    <None Include="wwwroot\img\icon\curved.svg" />
+    <None Include="wwwroot\img\icon\Delivery.svg" />
+    <None Include="wwwroot\img\icon\email.svg" />
+    <None Include="wwwroot\img\icon\facebook-icon.svg" />
+    <None Include="wwwroot\img\icon\facebook-v1.svg" />
+    <None Include="wwwroot\img\icon\health-insurance-1.svg" />
+    <None Include="wwwroot\img\icon\health-insurance-2.svg" />
+    <None Include="wwwroot\img\icon\health-insurance.svg" />
+    <None Include="wwwroot\img\icon\home.svg" />
+    <None Include="wwwroot\img\icon\hospital.svg" />
+    <None Include="wwwroot\img\icon\icon-call-center.svg" />
+    <None Include="wwwroot\img\icon\icon-chat.svg" />
+    <None Include="wwwroot\img\icon\icon-eye-empty.svg" />
+    <None Include="wwwroot\img\icon\icon-facebook.svg" />
+    <None Include="wwwroot\img\icon\icon-logout.svg" />
+    <None Include="wwwroot\img\icon\icon-medical-history.svg" />
+    <None Include="wwwroot\img\icon\icon-profile.svg" />
+    <None Include="wwwroot\img\icon\icon-setting.svg" />
+    <None Include="wwwroot\img\icon\icon-twitter.svg" />
+    <None Include="wwwroot\img\icon\icon-wallet.svg" />
+    <None Include="wwwroot\img\icon\instagram-icon.svg" />
+    <None Include="wwwroot\img\icon\instagram.svg" />
+    <None Include="wwwroot\img\icon\jcb.svg" />
+    <None Include="wwwroot\img\icon\light-check-amark.svg" />
+    <None Include="wwwroot\img\icon\light-check-mark.svg" />
+    <None Include="wwwroot\img\icon\light-icon.svg" />
+    <None Include="wwwroot\img\icon\mastercard.svg" />
+    <None Include="wwwroot\img\icon\medical-consultant.svg" />
+    <None Include="wwwroot\img\icon\newspaper-icon.svg" />
+    <None Include="wwwroot\img\icon\newspaper.svg" />
+    <None Include="wwwroot\img\icon\no-drugs-icon.svg" />
+    <None Include="wwwroot\img\icon\office.svg" />
+    <None Include="wwwroot\img\icon\p-box-iso.svg" />
+    <None Include="wwwroot\img\icon\p-delivery-truck.svg" />
+    <None Include="wwwroot\img\icon\p-setting.svg" />
+    <None Include="wwwroot\img\icon\p-shield.svg" />
+    <None Include="wwwroot\img\icon\paypal.svg" />
+    <None Include="wwwroot\img\icon\restaurant.svg" />
+    <None Include="wwwroot\img\icon\ruler-dark-icon.svg" />
+    <None Include="wwwroot\img\icon\ruler-icon.svg" />
+    <None Include="wwwroot\img\icon\settings.svg" />
+    <None Include="wwwroot\img\icon\shopping-bag.svg" />
+    <None Include="wwwroot\img\icon\shopping-cart.svg" />
+    <None Include="wwwroot\img\icon\social-distancing-icon.svg" />
+    <None Include="wwwroot\img\icon\spine-icon.svg" />
+    <None Include="wwwroot\img\icon\spine-s.svg" />
+    <None Include="wwwroot\img\icon\spine-straight.svg" />
+    <None Include="wwwroot\img\icon\spine.svg" />
+    <None Include="wwwroot\img\icon\stethoscope-icon.svg" />
+    <None Include="wwwroot\img\icon\strong-dark-icon.svg" />
+    <None Include="wwwroot\img\icon\strong-icon.svg" />
+    <None Include="wwwroot\img\icon\telephone.svg" />
+    <None Include="wwwroot\img\icon\temple.svg" />
+    <None Include="wwwroot\img\icon\tiktok.svg" />
+    <None Include="wwwroot\img\icon\twitter.svg" />
+    <None Include="wwwroot\img\icon\verify.svg" />
+    <None Include="wwwroot\img\icon\visa.svg" />
+    <None Include="wwwroot\img\icon\Wallet.svg" />
+    <None Include="wwwroot\img\icon\website.svg" />
+    <None Include="wwwroot\img\icon\weight-icon.svg" />
+    <None Include="wwwroot\img\icon\weight-idark-con.svg" />
+    <None Include="wwwroot\img\icon\x-rays.svg" />
+    <None Include="wwwroot\img\icon\yoga.svg" />
+    <None Include="wwwroot\img\icon\youtube-round.svg" />
+    <None Include="wwwroot\img\icon\zalo-icon.svg" />
+    <None Include="wwwroot\img\logo\logo-doctorloan.svg" />
+    <None Include="wwwroot\img\logo\logo-header.svg" />
+    <None Include="wwwroot\img\logo\logo-mobile.svg" />
+    <None Include="wwwroot\img\logo\logo-single.svg" />
+    <None Include="wwwroot\img\logo\slogan-mobile.svg" />
+    <None Include="wwwroot\libs\Bootstrap\bootstrap-datepicker.js" />
+    <None Include="wwwroot\libs\Bootstrap\bootstrap-datepicker.vi.min.js" />
+    <None Include="wwwroot\libs\Bootstrap\bootstrap-datetimepicker.js" />
+    <None Include="wwwroot\libs\Bootstrap\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\libs\Bootstrap\bootstrap.min.js" />
+    <None Include="wwwroot\libs\Bootstrap\popper.min.js" />
+    <None Include="wwwroot\libs\glightbox\glightbox.js" />
+    <None Include="wwwroot\libs\glightbox\glightbox.min.js" />
+    <None Include="wwwroot\libs\jquery\jquery-3.7.0.min.js" />
+    <None Include="wwwroot\libs\OwlCarousel\owl.carousel.js" />
+    <None Include="wwwroot\libs\OwlCarousel\owl.carousel.min.js" />
+    <None Include="wwwroot\libs\SuperFish\hoverIntent.js" />
+    <None Include="wwwroot\libs\SuperFish\superfish.js" />
+    <None Include="wwwroot\libs\SuperFish\superfish.min.js" />
+    <None Include="wwwroot\libs\swiperjs\swiper-bundle.min.js" />
+    <None Include="wwwroot\libs\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\libs\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\libs\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\libs\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\libs\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\libs\webfonts\fa-solid-900.woff2" />
+  </ItemGroup>
+
+</Project>
