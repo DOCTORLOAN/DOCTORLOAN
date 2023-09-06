@@ -114,9 +114,13 @@ strong {
   z-index: 30;
   border-radius: 50%;
 }
+.footer-after ::after {
+  content: "  SALE";
+  color: #fff;
+  background-color: #d26e4b;
+}
 .center-thing {
-  display: flex;
-  align-items: center;
+  text-align: center;
   height: 100%;
 }
 .flex-end-thing {
@@ -486,7 +490,12 @@ footer .footer-content {
   padding: 3rem 0 2rem;
 }
 footer .logo-footer {
-  width: 85%;
+  width: 70%;
+  margin: auto 25px;
+}
+footer .social-link {
+  margin: 5px 0 0 0;
+  text-align: center;
 }
 footer h5 {
   font-size: 1rem;
@@ -5965,7 +5974,6 @@ footer #OwlCountry img {
   background-color: #FF7500;
 }
 #HistoryShowRoom {
-  padding: 5rem 0;
   background-color: #FFF;
 }
 #HistoryShowRoom .img-white {
@@ -6116,6 +6124,22 @@ footer #OwlCountry img {
   padding: 5rem 0;
   background-color: #F7F7F7;
 }
+.center-thing-row {
+  position: relative;
+  height: 100%;
+}
+.center-thing-left {
+  position: absolute;
+  margin: 0;
+  left: 0;
+  top: 25%;
+}
+.center-thing-right {
+  position: absolute;
+  margin: 0;
+  right: 0;
+  top: 25%;
+}
 .parameter-product {
   width: 100%;
   display: block;
@@ -6150,9 +6174,11 @@ footer #OwlCountry img {
 .parameter-product .parameter-item span {
   font-family: helveticaneue-medium;
 }
+#ProductFirst,
 #PillowProduct {
   padding: 5rem 0;
 }
+#ProductFirst.product-option .pfirst-item,
 #PillowProduct.product-option .pfirst-item {
   background-color: #F7F7F7;
 }
@@ -6510,9 +6536,6 @@ footer #OwlCountry img {
     width: 0.875rem;
     height: 0.875rem;
     margin: 0 0.375rem;
-  }
-  #HistoryShowRoom {
-    padding: 3rem 0;
   }
   #HistoryShowRoom .history-item {
     border-radius: 1rem;
