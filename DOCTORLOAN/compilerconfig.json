@@ -1,14 +1,14 @@
 [
   {
-    "outputFile": "wwwroot/css/menu-header.css",
-    "inputFile": "wwwroot/css/menu-header.less"
-  },
-  {
     "outputFile": "wwwroot/css/styles.css",
-    "inputFile": "wwwroot/css/styles.less"
+    "inputFile": "wwwroot/css/styles.less",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "wwwroot/auth/auth.css",
-    "inputFile": "wwwroot/auth/auth.less"
+    "inputFile": "wwwroot/auth/auth.less",
+    "sourceMap": false,
+    "useNodeSass": false
   }
 ]
