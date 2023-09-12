@@ -52,7 +52,10 @@
                     </div>
                 </li>
                 <li><a asp-controller="Contact" asp-action="Index">Liên hệ</a></li>
-                <li class="only-mb"><a asp-controller="Auth" asp-action="Login">Đăng nhập</a></li>
+                <li class="only-mb">
+                    @*<a asp-controller="Auth" asp-action="Login">Đăng nhập</a>*@
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Đăng Xuất</a>
+                </li>
                 <li class="only-mb"><a asp-controller="Auth" asp-action="Register">Đăng ký</a></li>
             </ul>
         </nav>
