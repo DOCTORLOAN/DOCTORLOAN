@@ -16,7 +16,7 @@
                 <li><a asp-controller="About" asp-action="Index">Giới thiệu</a></li>
                 <li><a asp-controller="Clinic" asp-action="Index">Đức Phúc DoctorLoan</a></li>
                 <li><a asp-controller="ShowRoom" asp-action="Index">Showroom</a></li>
-                <li class="dropdown">
+                @*< li class="dropdown">
                     <a asp-controller="Products" asp-action="Index">Sản phẩm</a>
                     <div class="mega-menu">
                         <div class="list-menu">
@@ -37,7 +37,7 @@
                         </div>
 
                     </div>
-                </li>
+                </li> *@
                 <li class="dropdown menu-dropdown">
                     <a asp-controller="News" asp-action="Index"><span>Tin tức</span></a>
                     <div class="sub-menu">
@@ -51,18 +51,18 @@
                         </ul>
                     </div>
                 </li>
-                <li><a asp-controller="Contact" asp-action="Index">Liên hệ</a></li>
+                @* <li><a asp-controller="Contact" asp-action="Index">Liên hệ</a></li> *@
                 <li class="only-mb">
                     @*<a asp-controller="Auth" asp-action="Login">Đăng nhập</a>*@
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Đăng Xuất</a>
+                    @* <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Đăng Xuất</a> *@
                 </li>
-                <li class="only-mb"><a asp-controller="Auth" asp-action="Register">Đăng ký</a></li>
+                @* <li class="only-mb"><a asp-controller="Auth" asp-action="Register">Đăng ký</a></li> *@
             </ul>
         </nav>
 
         <img class="slogan-mobile" src="~/img/logo/slogan-mobile.svg" />
 
-        <div class="header-info">
+        @* <div class="header-info">
             <div class="auth-frm">
                 <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a>
                 <div class="not-logged">
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> *@
     </div>
 </div>
 

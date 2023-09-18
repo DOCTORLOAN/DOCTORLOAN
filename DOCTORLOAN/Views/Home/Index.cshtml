@@ -21,24 +21,42 @@
                             <div class="desc-banner">
                                 Sáng chế của người Việt Nam <br /> mang tính đột phá cho sức khỏe cột sống <br /> được bảo hộ độc quyền trên 60 quốc gia
                             </div>
-                            <div class="moretext">
-                                <p>
-                                    Các sản phẩm DOCTORLOAN chuyên biệt chăm sóc, phòng ngừa và hỗ trợ điều trị các bệnh cột sống, đã được áp dụng cho cộng đồng trong và ngoài nước.
-                                </p>
-                                <p>
-                                    Sản phẩm DOCTORLOAN được công bố bởi Tổ Chức Sở Hữu Trí Tuệ Thế Giới (WIPO/PCT) và được cấp bằng sáng chế độc quyền trên 60 Quốc gia.
-                                </p>
-                                <p>
-                                    Bảo hộ sáng chế đóng một vai trò quan trọng trong việc thúc đẩy sự tiến bộ và sáng tạo trong xã hội loài người.
-                                    Bằng cách bảo vệ và khuyến khích sự sáng tạo, hệ thống bảo hộ sáng chế tạo điều kiện cho các nhà phát minh, nhà khoa học và nhà sáng tạo khám phá, phát triển và chia sẻ những ý tưởng mới.
-                                </p>
-                                <p>Vai trò của bảo hộ sáng chế là tạo ra một môi trường độc lập và an toàn cho người sáng tạo. Nhờ bảo hộ sáng chế, họ có thể bảo vệ công nghệ, sản phẩm, phương pháp và quy trình độc đáo mà họ đã tạo ra khỏi việc sao chép trái phép và lợi dụng.  Điều này khuyến khích những người sáng tạo đầu tư thời gian, công sức và tài nguyên vào nghiên cứu và phát triển, biết rằng họ sẽ được bảo vệ và hưởng lợi từ thành quả của mình.</p>
-                                <p>Ứng dụng sáng chế có ảnh hưởng sâu rộng đến xã hội loài người. Chúng đóng vai trò quan trọng trong việc thúc đẩy sự tiến bộ kỹ thuật, y tế, công nghệ, và các lĩnh vực khác. Những ý tưởng sáng chế tiên tiến được bảo hộ và ứng dụng mang lại những đổi mới và tiện ích cho cuộc sống hàng ngày. Chẳng hạn, các phát minh trong lĩnh vực y tế đã cứu sống hàng triệu người, trong khi các công nghệ mới trong lĩnh vực viễn thông, năng lượng và giao thông đã thay đổi cách chúng ta sống và làm việc.</p>
-                                <p>Đồng thời, bảo hộ sáng chế cũng thúc đẩy sự cạnh tranh lành mạnh và khuyến khích sự phát triển kinh tế. Việc bảo vệ sáng chế giúp tạo ra môi trường đầu tư ổn định và thu hút vốn đầu tư, đồng thời tạo ra cơ hội cho các doanh nghiệp và cá nhân để khai thác và phát triển ý tưởng sáng tạo của họ.</p>
-                            </div>
+                            
                             <div class="more-action">
-                                <a class="moreless-button">Xem chi tiết >>></a>
+                                @* <a class="moreless-button" id="show-modal">Xem chi tiết</a> *@
                             </div>
+
+                            <div class="modal" tabindex="-1" role="dialog" style="display:none;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Thông tin chi tiết</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                Các sản phẩm DOCTORLOAN chuyên biệt chăm sóc, phòng ngừa và hỗ trợ điều trị các bệnh cột sống, đã được áp dụng cho cộng đồng trong và ngoài nước.
+                                            </p>
+                                            <p>
+                                                Sản phẩm DOCTORLOAN được công bố bởi Tổ Chức Sở Hữu Trí Tuệ Thế Giới (WIPO/PCT) và được cấp bằng sáng chế độc quyền trên 60 Quốc gia.
+                                            </p>
+                                            <p>
+                                                Bảo hộ sáng chế đóng một vai trò quan trọng trong việc thúc đẩy sự tiến bộ và sáng tạo trong xã hội loài người.
+                                                Bằng cách bảo vệ và khuyến khích sự sáng tạo, hệ thống bảo hộ sáng chế tạo điều kiện cho các nhà phát minh, nhà khoa học và nhà sáng tạo khám phá, phát triển và chia sẻ những ý tưởng mới.
+                                            </p>
+                                            <p>Vai trò của bảo hộ sáng chế là tạo ra một môi trường độc lập và an toàn cho người sáng tạo. Nhờ bảo hộ sáng chế, họ có thể bảo vệ công nghệ, sản phẩm, phương pháp và quy trình độc đáo mà họ đã tạo ra khỏi việc sao chép trái phép và lợi dụng.  Điều này khuyến khích những người sáng tạo đầu tư thời gian, công sức và tài nguyên vào nghiên cứu và phát triển, biết rằng họ sẽ được bảo vệ và hưởng lợi từ thành quả của mình.</p>
+                                            <p>Ứng dụng sáng chế có ảnh hưởng sâu rộng đến xã hội loài người. Chúng đóng vai trò quan trọng trong việc thúc đẩy sự tiến bộ kỹ thuật, y tế, công nghệ, và các lĩnh vực khác. Những ý tưởng sáng chế tiên tiến được bảo hộ và ứng dụng mang lại những đổi mới và tiện ích cho cuộc sống hàng ngày. Chẳng hạn, các phát minh trong lĩnh vực y tế đã cứu sống hàng triệu người, trong khi các công nghệ mới trong lĩnh vực viễn thông, năng lượng và giao thông đã thay đổi cách chúng ta sống và làm việc.</p>
+                                            <p>Đồng thời, bảo hộ sáng chế cũng thúc đẩy sự cạnh tranh lành mạnh và khuyến khích sự phát triển kinh tế. Việc bảo vệ sáng chế giúp tạo ra môi trường đầu tư ổn định và thu hút vốn đầu tư, đồng thời tạo ra cơ hội cho các doanh nghiệp và cá nhân để khai thác và phát triển ý tưởng sáng tạo của họ.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="dropdown select-country">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Chọn quốc gia để xem sáng chế độc quyền
@@ -128,9 +146,9 @@
                         <div class="desc-heritage">
                             Cột sống đóng vai trò vô cùng quan trọng trong đời sống con người. Nó không chỉ là khung xương cho cơ thể mà còn chịu trách nhiệm giữ cho cơ thể thẳng đứng và cung cấp sự ổn định và hỗ trợ cho các hoạt động hàng ngày.
                         </div>
-                        <div class="heritage-action">
+                        @* <div class="heritage-action">
                             <a href="javascript:void(0)" class="btn btn-dtl">Xem chi tiết</a>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -140,9 +158,9 @@
                         <div class="desc-heritage">
                             Có một xu hướng mới đang xuất hiện trong lĩnh vựa chăm sóc và phòng ngừa bệnh cột sống, đó là giải pháp DOCTORLOAN- Giải pháp Chăm sóc Cột sống với sản phẩm công nghệ sáng chế đột phá-an toàn-hiệu quả.
                         </div>
-                        <div class="heritage-action">
+                        @* <div class="heritage-action">
                             <a href="javascript:void(0)" class="btn btn-dtl">Xem chi tiết</a>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -152,9 +170,9 @@
                         <div class="desc-heritage">
                             Sản phẩm DOCTORLOAN đạt 5 Thương hiệu Quốc gia đã chứng minh và được công nhận là những sáng chế thiết thực phục vụ đời sống con người không những ở Việt Nam mà cho tất cả mọi người trên thế giới. Sản phẩm DOCTORLOAN chính là cuộc cách mạng trong chăm sóc cột sống cộng đồng của Y Khoa hiện đại.
                         </div>
-                        <div class="heritage-action">
+                        @* <div class="heritage-action">
                             <a href="javascript:void(0)" class="btn btn-dtl">Xem chi tiết</a>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
             </div>
@@ -453,9 +471,7 @@
                                         Làm tăng khả năng thích nghi với áp lực cao trong công việc. <br />
                                         Trong các trường hợp khó khăn, không thể điều trị tại cơ sở y tế, có thể sử dụng gối DOCTORLOAN tại nhà để làm giảm các triệu chứng đau đớn khó chịu dưới sự hướng dẫn của bác sĩ.
                                     </div>
-                                    <div class="action-product">
-                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
-                                    </div>
+                                    @* <div class="action-product"><a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a></div> *@
                                 </div>
                             </div>
                         </div>
@@ -476,9 +492,7 @@
                                         Bệnh cột sống lưng có thể xảy ra với tất cả mọi người,bất kể ai cũng có đau lưng trong đời. Gù vẹo, thoát vị đĩa đệm, trượt hoặc gãy cột sống lưng là những bệnh hay gặp do sai tư thế trong sinh hoạt hằng ngày.<br />
                                         Gối lưng DOCTORLOAN dành cho mọi đối tượng ngoại trừ người già bị loãng xương. Những trường hợp đặc biệt phải có chỉ định của bác sĩ.
                                     </div>
-                                    <div class="action-product">
-                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
-                                    </div>
+                                    @* <div class="action-product"><a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a></div> *@
                                 </div>
                             </div>
                         </div>
@@ -500,9 +514,9 @@
                                         Ghế ngồi sáng chế DOCTORLOAN 90 dày được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương chậu và cột sống, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.<br />
                                         Ghế ngồi DOCTORLOAN 90 dày nổi bật với cơ chế nâng đỡ vùng thắt lưng và xương chậu, điều chỉnh hiệu quả các trật vẹo cột sống lưng về lại cấu trúc bình thường, giúp duy trì trạng thái khỏe mạnh của cột sống mỗi ngày, mỗi giờ làm việc.
                                     </div>
-                                    <div class="action-product">
+                                    @* <div class="action-product">
                                         <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
-                                    </div>
+                                    </div> *@
                                 </div>
                             </div>
                         </div>
@@ -524,9 +538,9 @@
                                         Ghế ngồi sáng chế DOCTORLOAN 90 mỏng được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.<br />
                                         Ghế ngồi DOCTORLOAN 90 mỏng nổi bật với cơ chế nâng đỡ vùng thắt lưng và xương chậu, điều chỉnh hiệu quả các trật vẹo cột sống lưng về lại cấu trúc bình thường, duy trì trạng thái khỏe mạnh của cột sống bằng việc sử dụng ghế DOCTORLOAN hằng ngày.
                                     </div>
-                                    <div class="action-product">
+                                    @* <div class="action-product">
                                         <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
-                                    </div>
+                                    </div> *@
                                 </div>
                             </div>
                         </div>
@@ -548,9 +562,9 @@
                                         Dựa trên mô phỏng đường cong cột sống sống, ghế sáng chế DOCTORLOAN 95 được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.<br />
                                         Ghế sáng chế DOCTORLOAN 95 nổi bật với cơ chế nâng đỡ vùng thắt lưng và xương chậu, điều chỉnh hiệu quả các trật vẹo cột sống lưng về lại cấu trúc bình thường, duy trì trạng thái khoẻ mạnh của cột sống bằng việc sử dụng ghế DOCTORLOAN 95 hằng ngày.
                                     </div>
-                                    <div class="action-product">
+                                    @* <div class="action-product">
                                         <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
-                                    </div>
+                                    </div> *@
                                 </div>
                             </div>
                         </div>
@@ -573,9 +587,9 @@
                                         Ghế Sáng chế DOCTORLOAN N85 được thiết kế với các đường cong lồi phía trước và lõm phía sau mặt ghế, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” khung xương chậu và cột sống.<br />
                                         Đem lại hiệu quả BẢO VỆ CỘT SỐNG, NGĂN CHẶN BIẾN DẠNG xương chậu và cột sống cho cộng đồng mọi lúc, mọi nơi.
                                     </div>
-                                    <div class="action-product">
+                                    @* <div class="action-product">
                                         <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
-                                    </div>
+                                    </div> *@
                                 </div>
                             </div>
                         </div>
@@ -598,7 +612,7 @@
                                         Dựa trên cơ chế đó, sản phẩm sẽ đặc biệt cần thiết cho những bệnh nhân đã bị biến dạng cột sống hoặc bệnh vẹo cột sống bẩm sinh.
                                     </div>
                                     <div class="action-product">
-                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                        @* <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a> *@
                                     </div>
                                 </div>
                             </div>
@@ -621,8 +635,8 @@
                                         Đệm ngồi DOCTORLOAN được thiết kế “thấp trước cao sau” tạo nên chức năng “NÂNG ĐỠ - GIỮ CHUẨN – ĐIỀU CHỈNH” khung xương chậu và xương cùng trong tư thế ngồi khoanh chân.<br />
                                         Đem lại hiệu quả BẢO VỆ CỘT SỐNG, NGĂN CHẶN BIẾN DẠNG xương chậu, xương cùng và cột sống của bạn khi thiền, tu tập và trong sinh hoạt hằng ngày ngay tại nhà.
                                     </div>
-                                    <div class="action-product">
-                                        <a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                     <div class="action-product">
+                                        @*<a class="btn btn-dtl" href="javascript:void(0)">Xem chi tiết</a> *@
                                     </div>
                                 </div>
                             </div>
@@ -810,12 +824,15 @@
                                         <div class="product-desc">
                                             <h4>Ghế Ngồi Sáng Chế DOCTORLOAN N85</h4>
                                             <p>Sau khi được đọc về các công trình nghiên cứu về việc ngồi không đúng cách có nguy cơ khiến con người bị các bệnh về cột sống. Tôi hiểu được rằng thay đổi thói quen của con người rất khó nên phải tạo ra sản phẩm giúp thuận theo thói quen của con người nhưng vẫn đảm bảo giúp ngồi đúng cách. Tôi đã tạo ra chiếc ghế đầu tiên giúp khi ngồi không bị đổ ngừời về phía trước…</p>
-                                            <div class="text-end"><a href="javscript:void(0)">Xem chi tiết >>></a></div>
+                                            @* <div class="text-end"><a href="javscript:void(0)">Xem chi tiết >>></a></div> *@
                                         </div>
                                         <div class="product-img"><img src="~/img/home/ghe-n85.png" /></div>
                                     </div>
                                 </div>
-                                <div class="tile-project mg-prj"><span>Câu chuyện vì sao sản phẩm có tên trên được ra đời?</span> <a href="javascript:void(0)">Xem chi tiết &gt;&gt;&gt;</a></div>
+                                <div class="tile-project mg-prj">
+                                    <span>Câu chuyện vì sao sản phẩm có tên trên được ra đời?</span> 
+                                    @* <a href="javascript:void(0)">Xem chi tiết &gt;&gt;&gt;</a> *@
+                                </div>
                                 <div class="recital-project">
                                     <div class="row">
                                         <div class="col-md-4 col-12">
@@ -916,7 +933,10 @@
                                     </div>
 
                                     <div class="project-feedback">
-                                        <div class="tile-project"><span>Ý kiến của 5 khách hàng</span> <a href="javascript:void(0)">Xem chi tiết >>></a></div>
+                                        <div class="tile-project">
+                                            <span>Ý kiến của 5 khách hàng</span> 
+                                            @* <a href="javascript:void(0)">Xem chi tiết >>></a> *@
+                                        </div>
                                         <div id="ClientSwiper" class="swiper">
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide">
@@ -955,7 +975,7 @@
                                         </div>
                                         <div class="feedback-content">
                                             <p>"Người bác sĩ trong tương lai không kê toa cho thuốc, mà chú trọng đến cấu trúc cơ thể của bệnh nhân, đến dinh dưỡng, đến nguyên nhân phát sinh ra bệnh và phương pháp phòng ngừa"</p>
-                                            <a class="btn btn-outline-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                            @* <a class="btn btn-outline-dtl" href="javascript:void(0)">Xem chi tiết</a> *@
                                         </div>
                                     </div>
                                 </div>
@@ -975,12 +995,15 @@
                                             <p>
                                                 Ghế ngồi sáng chế DOCTORLOAN 90 mỏng được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.
                                             </p>
-                                            <div class="text-end"><a href="javscript:void(0)">Xem chi tiết >>></a></div>
+                                            @* <div class="text-end"><a href="javscript:void(0)">Xem chi tiết >>></a></div> *@
                                         </div>
                                         <div class="product-img"><img src="~/img/home/ghe-90-mong.png" /></div>
                                     </div>
                                 </div>
-                                <div class="tile-project mg-prj"><span>Câu chuyện vì sao sản phẩm có tên trên được ra đời?</span> <a href="javascript:void(0)">Xem chi tiết &gt;&gt;&gt;</a></div>
+                                <div class="tile-project mg-prj">
+                                    <span>Câu chuyện vì sao sản phẩm có tên trên được ra đời?</span> 
+                                    @* <a href="javascript:void(0)">Xem chi tiết &gt;&gt;&gt;</a> *@
+                                </div>
                                 <div class="recital-project">
                                     <div class="row">
                                         <div class="col-md-4 col-12">
@@ -1082,7 +1105,10 @@
                                     </div>
 
                                     <div class="project-feedback">
-                                        <div class="tile-project"><span>Ý kiến của 5 khách hàng</span> <a href="javascript:void(0)">Xem chi tiết >>></a></div>
+                                        <div class="tile-project">
+                                            <span>Ý kiến của 5 khách hàng</span> 
+                                            @* <a href="javascript:void(0)">Xem chi tiết >>></a> *@
+                                        </div>
                                         <div id="ClientSwiper" class="swiper">
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide">
@@ -1121,7 +1147,7 @@
                                         </div>
                                         <div class="feedback-content">
                                             <p>"Người bác sĩ trong tương lai không kê toa cho thuốc, mà chú trọng đến cấu trúc cơ thể của bệnh nhân, đến dinh dưỡng, đến nguyên nhân phát sinh ra bệnh và phương pháp phòng ngừa"</p>
-                                            <a class="btn btn-outline-dtl" href="javascript:void(0)">Xem chi tiết</a>
+                                            @* <a class="btn btn-outline-dtl" href="javascript:void(0)">Xem chi tiết</a> *@
                                         </div>
                                     </div>
                                 </div>
@@ -1338,12 +1364,12 @@
                                 <div class="accordion" id="accordionFeedback">
                                     <div class="accordion-item">
                                         <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/nguyen-thi-thu-loan-cb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/nguyen-thi-thu-loan-ca.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading1">
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
@@ -1354,12 +1380,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/nguyen-thi-thu-loan-lb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/nguyen-thi-thu-loan-la.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading2">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
@@ -1370,12 +1396,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/nguyen-huu-loc-cb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/nguyen-huu-loc-ca.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading3">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
@@ -1386,12 +1412,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/nguyen-huu-loc-lb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/nguyen-huu-loc-la.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading4">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
@@ -1402,12 +1428,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/bui-pham-minh-khue-cb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/bui-pham-minh-khue-ca.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading5">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
@@ -1418,12 +1444,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/bui-pham-minh-khue-lb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/bui-pham-minh-khue-la.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading6">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
@@ -1433,12 +1459,12 @@
                                     </div>
                                     <div class="accordion-item">
                                         <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/davis-bobbyg-cb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/davis-bobbyg-ca.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading7">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
@@ -1449,12 +1475,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/davis-bobbyg-lb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/davis-bobbyg-la.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading8">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
@@ -1465,12 +1491,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/nguyen-minh-tung-cb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/nguyen-minh-tung-ca.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading9">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
@@ -1481,12 +1507,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/nguyen-minh-tung-lb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/nguyen-minh-tung-la.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading10">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
@@ -1497,12 +1523,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="heading11" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/nguyen-thi-thanh-thanh-lb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/nguyen-thi-thanh-thanh-la.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading11">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
@@ -1513,12 +1539,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse12" class="accordion-collapse collapse" aria-labelledby="heading12" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/tran-vinh-nguyen-cb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/tran-vinh-nguyen-ca.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading12">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapse12">
@@ -1529,12 +1555,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse13" class="accordion-collapse collapse" aria-labelledby="heading13" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/tran-vinh-nguyen-lb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/tran-vinh-nguyen-la.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading13">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
@@ -1545,12 +1571,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse14" class="accordion-collapse collapse" aria-labelledby="heading14" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/bui-thi-minh-thu-cb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/bui-thi-minh-thu-ca.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading14">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse14" aria-expanded="false" aria-controls="collapse14">
@@ -1561,12 +1587,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse15" class="accordion-collapse collapse" aria-labelledby="heading15" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/hussin-lb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/hussin-la.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading15">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapse15">
@@ -1577,12 +1603,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse16" class="accordion-collapse collapse" aria-labelledby="heading16" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/nguyen-thi-tuyet-cb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/nguyen-thi-tuyet-ca.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading16">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse16" aria-expanded="false" aria-controls="collapse16">
@@ -1593,12 +1619,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse17" class="accordion-collapse collapse" aria-labelledby="heading17" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/pham-thanh-khuong-lb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/pham-thanh-khuong-la.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading17">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse17" aria-expanded="false" aria-controls="collapse17">
@@ -1609,12 +1635,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse18" class="accordion-collapse collapse" aria-labelledby="heading18" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/nguyen-van-tai-cb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/nguyen-van-tai-ca.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading18">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse18" aria-expanded="false" aria-controls="collapse18">
@@ -1625,12 +1651,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse19" class="accordion-collapse collapse" aria-labelledby="heading19" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/tran-thi-thu-ba-cb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/tran-thi-thu-ba-ca.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading19">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse19" aria-expanded="false" aria-controls="collapse19">
@@ -1641,12 +1667,12 @@
 
                                     <div class="accordion-item">
                                         <div id="collapse20" class="accordion-collapse collapse" aria-labelledby="heading20" data-bs-parent="#accordionFeedback">
-                                            <div class="accordion-body">
+                                            @* <div class="accordion-body">
                                                 <img src="~/img/x-quang/truong-thi-dien-lb.jpg" />
                                                 <p>Hình trước khi điều trị</p>
                                                 <img src="~/img/x-quang/truong-thi-dien-la.jpg" />
                                                 <p>Hình sau khi điều trị</p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <h2 class="accordion-header" id="heading20">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse20" aria-expanded="false" aria-controls="collapse20">
