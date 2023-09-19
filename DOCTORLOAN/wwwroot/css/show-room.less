@@ -4,35 +4,45 @@
     .banner-show-room {
         position: relative;
         z-index: 1;
+
+        .img-banner-showroom {
+            /*opacity: 0.8;*/
+        }
     }
 
     .content-banner-sr {
         position: absolute;
         top: 0;
-        left: 0;
-        width: 100%;
+        left: auto;
+        right: auto;
+        max-width: 100%;
         height: 100%;
         z-index: 1;
         display: flex;
         align-items: center;
         color: @white;
-        background-color: rgba(0,0,0,0.3);
+        /*background-color: rgba(0,0,0,0.3);*/
 
-        h4 {
-            text-transform: uppercase;
-            font-size: 2.75rem;
-            font-family: @font-helveticaneue-blod;
-            line-height: 1.35;
-            margin-bottom: 1.5rem;
-        }
+        .container {
+            max-width: 100%;
+            justify-content: center;
 
-        p {
-            margin-bottom: 1.5rem;
-            max-width: 650px;
-        }
+            h4 {
+                text-transform: uppercase;
+                font-size: 2.75rem;
+                font-family: @font-helveticaneue-blod;
+                line-height: 1.35;
+                margin-bottom: 1rem;
+            }
 
-        .banner-action {
-            margin-bottom: 10rem;
+            p {
+                margin-bottom: 1rem;
+                max-width: 650px;
+            }
+
+            .banner-action {
+                margin-bottom: 10rem;
+            }
         }
     }
 
@@ -57,12 +67,13 @@
 }
 
 #HistoryShowRoom {
+    padding-top: 25px;
     background-color: @white;
 
     .img-white {
         width: 75%;
         display: block;
-        margin: 0 auto;
+        margin: 4rem auto;
     }
 
     .history-item {
@@ -98,7 +109,7 @@
     }
 
     .history-content {
-        margin-top: -5rem;
+        margin-top: 8rem;
 
         h4 {
             color: @main-blue;
@@ -1177,7 +1188,7 @@
         }
 
         .history-content {
-            margin-top: -1.5rem;
+            margin-top: 2rem;
 
             h4 {
                 font-size: 1.5rem;
@@ -1226,6 +1237,10 @@
 
     #ProductFirst, #PillowProduct {
         padding: 2rem 0;
+
+        .img-goi-co-main, .img-goi-lung-main {
+            display: none;
+        }
     }
 
     #ChairProduct {
@@ -1531,6 +1546,10 @@
 
     #ProductFirst, #PillowProduct {
         padding: 1.5rem 0;
+
+        .img-goi-co-main, .img-goi-lung-main {
+            display: none;
+        }
     }
 
     #ChairProduct {

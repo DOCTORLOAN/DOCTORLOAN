@@ -23,22 +23,22 @@
                             </div>
                             
                             <div class="more-action">
-                                @* <a class="moreless-button" id="show-modal">Xem chi tiết</a> *@
+                                <a class="btn" id="btn-show-modal" data-bs-toggle="modal" data-bs-target="#myModal">Xem chi tiết</a>
                             </div>
 
-                            <div class="modal" tabindex="-1" role="dialog" style="display:none;">
-                                <div class="modal-dialog" role="document">
+                            <!-- Modal -->
+                            <div class="modal" id="myModal">
+                                <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">
+                                        <!-- Modal Header -->
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Thông tin chi tiết</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                                            <h5 class="modal-title fw-bold">Giải pháp cho cột sống khỏe</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>
+                                           @*  <p>
                                                 Các sản phẩm DOCTORLOAN chuyên biệt chăm sóc, phòng ngừa và hỗ trợ điều trị các bệnh cột sống, đã được áp dụng cho cộng đồng trong và ngoài nước.
-                                            </p>
+                                            </p> *@
                                             <p>
                                                 Sản phẩm DOCTORLOAN được công bố bởi Tổ Chức Sở Hữu Trí Tuệ Thế Giới (WIPO/PCT) và được cấp bằng sáng chế độc quyền trên 60 Quốc gia.
                                             </p>
@@ -46,18 +46,20 @@
                                                 Bảo hộ sáng chế đóng một vai trò quan trọng trong việc thúc đẩy sự tiến bộ và sáng tạo trong xã hội loài người.
                                                 Bằng cách bảo vệ và khuyến khích sự sáng tạo, hệ thống bảo hộ sáng chế tạo điều kiện cho các nhà phát minh, nhà khoa học và nhà sáng tạo khám phá, phát triển và chia sẻ những ý tưởng mới.
                                             </p>
-                                            <p>Vai trò của bảo hộ sáng chế là tạo ra một môi trường độc lập và an toàn cho người sáng tạo. Nhờ bảo hộ sáng chế, họ có thể bảo vệ công nghệ, sản phẩm, phương pháp và quy trình độc đáo mà họ đã tạo ra khỏi việc sao chép trái phép và lợi dụng.  Điều này khuyến khích những người sáng tạo đầu tư thời gian, công sức và tài nguyên vào nghiên cứu và phát triển, biết rằng họ sẽ được bảo vệ và hưởng lợi từ thành quả của mình.</p>
-                                            <p>Ứng dụng sáng chế có ảnh hưởng sâu rộng đến xã hội loài người. Chúng đóng vai trò quan trọng trong việc thúc đẩy sự tiến bộ kỹ thuật, y tế, công nghệ, và các lĩnh vực khác. Những ý tưởng sáng chế tiên tiến được bảo hộ và ứng dụng mang lại những đổi mới và tiện ích cho cuộc sống hàng ngày. Chẳng hạn, các phát minh trong lĩnh vực y tế đã cứu sống hàng triệu người, trong khi các công nghệ mới trong lĩnh vực viễn thông, năng lượng và giao thông đã thay đổi cách chúng ta sống và làm việc.</p>
+                                            <p>
+                                                Vai trò của bảo hộ sáng chế là tạo ra một môi trường độc lập và an toàn cho người sáng tạo. Nhờ bảo hộ sáng chế, họ có thể bảo vệ công nghệ, sản phẩm, phương pháp và quy trình độc đáo mà họ đã tạo ra khỏi việc sao chép trái phép và lợi dụng.  Điều này khuyến khích những người sáng tạo đầu tư thời gian, công sức và tài nguyên vào nghiên cứu và phát triển, biết rằng họ sẽ được bảo vệ và hưởng lợi từ thành quả của mình.</p>
+                                            <p>
+                                                Ứng dụng sáng chế có ảnh hưởng sâu rộng đến xã hội loài người. Chúng đóng vai trò quan trọng trong việc thúc đẩy sự tiến bộ kỹ thuật, y tế, công nghệ, và các lĩnh vực khác. Những ý tưởng sáng chế tiên tiến được bảo hộ và ứng dụng mang lại những đổi mới và tiện ích cho cuộc sống hàng ngày. Chẳng hạn, các phát minh trong lĩnh vực y tế đã cứu sống hàng triệu người, trong khi các công nghệ mới trong lĩnh vực viễn thông, năng lượng và giao thông đã thay đổi cách chúng ta sống và làm việc.</p>
                                             <p>Đồng thời, bảo hộ sáng chế cũng thúc đẩy sự cạnh tranh lành mạnh và khuyến khích sự phát triển kinh tế. Việc bảo vệ sáng chế giúp tạo ra môi trường đầu tư ổn định và thu hút vốn đầu tư, đồng thời tạo ra cơ hội cho các doanh nghiệp và cá nhân để khai thác và phát triển ý tưởng sáng tạo của họ.</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="dropdown select-country">
+                            @* <div class="dropdown select-country">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Chọn quốc gia để xem sáng chế độc quyền
                                 </button>
@@ -93,13 +95,13 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> *@
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="action-banner">
-                        <div class="action-item action-info">
+                        <div class="action-item custom-action-item action-info">
                             <div class="center-thing justify-content-center">
                                 <span>
                                     Bác sĩ <strong>Phạm Thị Kim Loan</strong> <br />
@@ -107,23 +109,23 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="action-item action-company">
+                        <div class="action-item custom-action-item action-company">
                             <img src="~/img/home/logo-duc-phuc.png" />
                             <div class="content-company"><a asp-controller="Clinic" asp-action="Index"> Phòng khám <br /> <span>Đức Phúc DoctorLoan</span></a></div>
                         </div>
-                        <div class="action-item action-company">
+                        <div class="action-item custom-action-item action-company">
                             <img src="~/img/home/rnd.png" />
                             <div class="content-company"><strong>R&D/IPRs</strong> <br /> <div class="small-text">Research and Development</div> <div class="small-text">Intellectual property rights</div></div>
                         </div>
-                        <div class="action-item action-company">
+                        <div class="action-item custom-action-item action-company">
                             <img src="~/img/home/logo-doctor-loan.png" />
                             <div class="content-company"><a asp-controller="Products" asp-action="Index"> Sản phẩm <br /> <strong>DoctorLoan</strong></a></div>
                         </div>
-                        <div class="action-item action-company">
+                        <div class="action-item custom-action-item action-company">
                             <img src="~/img/home/logo-gia-thai.png" />
                             <div class="content-company">Nhà máy sản xuất <br /> <strong>DoctorLoan</strong></div>
                         </div>
-                        <div class="action-item action-company action-call">
+                        <div class="action-item custom-action-item action-company action-call">
                             <img src="~/img/home/phone-icon.png" />
                             <div class="content-company"><span>Tư vấn ngay</span> <br /> <a href="tel:0899136868"><strong>08 9913 6868</strong></a></div>
                         </div>
@@ -156,7 +158,7 @@
                     <div class="heritage-content">
                         <div class="title-heritage">Sở hữu trí tuệ</div>
                         <div class="desc-heritage">
-                            Có một xu hướng mới đang xuất hiện trong lĩnh vựa chăm sóc và phòng ngừa bệnh cột sống, đó là giải pháp DOCTORLOAN- Giải pháp Chăm sóc Cột sống với sản phẩm công nghệ sáng chế đột phá-an toàn-hiệu quả.
+                            Có một xu hướng mới đang xuất hiện trong lĩnh vực chăm sóc và phòng ngừa bệnh cột sống, đó là giải pháp DOCTORLOAN- Giải pháp Chăm sóc Cột sống với sản phẩm công nghệ sáng chế đột phá-an toàn-hiệu quả.
                         </div>
                         @* <div class="heritage-action">
                             <a href="javascript:void(0)" class="btn btn-dtl">Xem chi tiết</a>
@@ -168,7 +170,7 @@
                     <div class="heritage-content">
                         <div class="title-heritage">Sản xuất và thương mại</div>
                         <div class="desc-heritage">
-                            Sản phẩm DOCTORLOAN đạt 5 Thương hiệu Quốc gia đã chứng minh và được công nhận là những sáng chế thiết thực phục vụ đời sống con người không những ở Việt Nam mà cho tất cả mọi người trên thế giới. Sản phẩm DOCTORLOAN chính là cuộc cách mạng trong chăm sóc cột sống cộng đồng của Y Khoa hiện đại.
+                            Sản phẩm DOCTORLOAN đạt 5 Thương hiệu Quốc gia đã chứng minh và được công nhận là những sáng chế thiết thực phục vụ đời sống con người không những ở Việt Nam mà cho tất cả mọi người trên thế giới.
                         </div>
                         @* <div class="heritage-action">
                             <a href="javascript:void(0)" class="btn btn-dtl">Xem chi tiết</a>
@@ -1705,14 +1707,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script type="text/javascript">
-        $('.moreless-button').click(function () {
-            $('.moretext').toggleClass("more-active");
-            if ($('.moreless-button').text() == "Xem chi tiết >>>") {
-                $(this).text("Thu nhỏ <<<")
-            } else {
-                $(this).text("Xem chi tiết >>>")
-            }
-        });
 
         $('.btn-gr-dtl').click(function () {
             var parentbtn = $(this).parents(".chat-parent");

@@ -1,5 +1,10 @@
 @import "variables";
 
+.modal-backdrop {
+    --bs-backdrop-zindex: none !important;
+    --bs-backdrop-bg: none !important;
+}
+
 #Home_Banner {
     position: relative;
     z-index: 1;
@@ -14,10 +19,25 @@
         }
     }
 
+    #btn-show-modal {
+        color: #ff7500;
+        font-weight: bold;
+        background-color: #fff;
+    }
+
+    #myModal {
+        top: 8%;
+        height: 60vh;
+    }
+
+    .modal-dialog {
+        overflow-y: initial !important;
+    }
+
     .banner-info {
         display: block;
         max-width: 750px;
-        margin: 0 auto;
+        margin: 35px auto;
 
         .title-banner {
             font-family: @font-helveticaneue-blod;
@@ -86,6 +106,10 @@
                 flex-grow: 3;
             }
         }
+
+        .custom-action-item {
+            min-height: 45px !important;
+        }
     }
 
     .action-info {
@@ -114,7 +138,7 @@
         padding: 1rem;
         line-height: 1.25;
 
-        a{
+        a {
             color: inherit;
         }
 
