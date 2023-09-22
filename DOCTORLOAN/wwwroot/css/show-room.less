@@ -129,12 +129,21 @@
     }
 }
 
-.img-goi-co-main-lg, .img-goi-lung-main-lg {
-    display: block;
+.row-thing-lg {
+    position: relative;
+    height: 100%;
 }
 
-.img-goi-co-main-mb, .img-goi-lung-main-mb {
-    display: none;
+.row-left {
+    position: absolute;
+    top: 25%;
+    left: 0;
+}
+
+.row-right {
+    position: absolute;
+    top: 25%;
+    right: 0;
 }
 
 .title-product-showroom {
@@ -529,7 +538,6 @@
             margin-bottom: 2rem;
             padding: 0 1.5rem 0 2rem;
 
-
             span {
                 display: block;
                 font-family: @font-helveticaneue-blod;
@@ -787,6 +795,23 @@
         }
     }
 
+    .row-thing-lg {
+        position: relative;
+        height: 100%;
+    }
+
+    .row-left {
+        position: absolute;
+        top: 25%;
+        left: 0;
+    }
+
+    .row-right {
+        position: absolute;
+        top: 25%;
+        right: 0;
+    }
+
     .title-product-showroom {
         font-size: 2rem;
     }
@@ -982,6 +1007,23 @@
                 width: 90%;
             }
         }
+    }
+
+    .row-thing-lg {
+        position: relative;
+        height: 100%;
+    }
+
+    .row-left {
+        position: absolute;
+        top: 25%;
+        left: 0;
+    }
+
+    .row-right {
+        position: absolute;
+        top: 25%;
+        right: 0;
     }
 
     .title-product-showroom {
@@ -1215,6 +1257,18 @@
         }
     }
 
+    .row-thing-lg {
+        position: unset;
+    }
+
+    .row-left {
+        position: unset;
+    }
+
+    .row-right {
+        position: unset;
+    }
+
     .title-product-showroom {
         font-size: 1.5rem;
         margin-bottom: .5rem;
@@ -1251,15 +1305,6 @@
 
     #ProductFirst, #PillowProduct {
         padding: 2rem 0;
-
-        .img-goi-co-main-lg, .img-goi-lung-main-lg {
-            display: none;
-        }
-
-        .img-goi-co-main-mb, .img-goi-lung-main-mb {
-            margin: 1rem auto;
-            display: block;
-        }
     }
 
     #ChairProduct {
@@ -1378,6 +1423,19 @@
 }
 
 @media only screen and (max-width:991.98px) {
+
+    .row-thing-lg {
+        position: unset;
+    }
+
+    .row-left {
+        position: unset;
+    }
+
+    .row-right {
+        position: unset;
+    }
+
     .product-option {
         .productSwiper3 {
             height: auto;
@@ -1538,6 +1596,18 @@
         }
     }
 
+    .row-thing-lg {
+        position: unset;
+    }
+
+    .row-left {
+        position: unset;
+    }
+
+    .row-right {
+        position: unset;
+    }
+
     .title-product-showroom {
         font-size: 1.25rem;
         margin-bottom: .5rem;
@@ -1570,15 +1640,6 @@
 
     #ProductFirst, #PillowProduct {
         padding: 1.5rem 0;
-
-        .img-goi-co-main-lg, .img-goi-lung-main-lg {
-            display: none;
-        }
-
-        .img-goi-co-main-mb, .img-goi-lung-main-mb {
-            margin: 1rem auto;
-            display: block;
-        }
     }
 
     #ChairProduct {
