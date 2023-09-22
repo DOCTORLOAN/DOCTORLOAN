@@ -6720,6 +6720,20 @@ main {
   margin: 0;
   text-align: justify;
 }
+.row-thing-lg {
+  position: relative;
+  height: 100%;
+}
+.row-left {
+  position: absolute;
+  top: 25%;
+  left: 0;
+}
+.row-right {
+  position: absolute;
+  top: 25%;
+  right: 0;
+}
 .title-product-showroom {
   font-size: 2.25rem;
   color: #FF7500;
@@ -7250,6 +7264,20 @@ main {
   #HistoryShowRoom .history-content p {
     width: 90%;
   }
+  .row-thing-lg {
+    position: relative;
+    height: 100%;
+  }
+  .row-left {
+    position: absolute;
+    top: 25%;
+    left: 0;
+  }
+  .row-right {
+    position: absolute;
+    top: 25%;
+    right: 0;
+  }
   .title-product-showroom {
     font-size: 2rem;
   }
@@ -7391,6 +7419,20 @@ main {
   }
   #HistoryShowRoom .history-content p {
     width: 90%;
+  }
+  .row-thing-lg {
+    position: relative;
+    height: 100%;
+  }
+  .row-left {
+    position: absolute;
+    top: 25%;
+    left: 0;
+  }
+  .row-right {
+    position: absolute;
+    top: 25%;
+    right: 0;
   }
   .title-product-showroom {
     font-size: 1.5rem;
@@ -7563,6 +7605,15 @@ main {
   #HistoryShowRoom .history-content p {
     width: 90%;
   }
+  .row-thing-lg {
+    position: unset;
+  }
+  .row-left {
+    position: unset;
+  }
+  .row-right {
+    position: unset;
+  }
   .title-product-showroom {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
@@ -7679,6 +7730,15 @@ main {
   }
 }
 @media only screen and (max-width: 991.98px) {
+  .row-thing-lg {
+    position: unset;
+  }
+  .row-left {
+    position: unset;
+  }
+  .row-right {
+    position: unset;
+  }
   .product-option .productSwiper3 {
     height: auto;
     padding: 0;
@@ -7805,6 +7865,15 @@ main {
   }
   #HistoryShowRoom .history-content p {
     width: 100%;
+  }
+  .row-thing-lg {
+    position: unset;
+  }
+  .row-left {
+    position: unset;
+  }
+  .row-right {
+    position: unset;
   }
   .title-product-showroom {
     font-size: 1.25rem;
