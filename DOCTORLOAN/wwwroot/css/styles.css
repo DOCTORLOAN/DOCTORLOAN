@@ -1585,10 +1585,8 @@ main {
   width: 85%;
   margin-left: 5%;
 }
-#Home_Banner #btn-show-modal {
-  color: #ff7500;
-  font-weight: bold;
-  background-color: #fff;
+#Home_Banner #btn-show-modal:hover {
+  background-color: #ff7500;
 }
 #Home_Banner #myModal {
   top: 8%;
@@ -6620,9 +6618,6 @@ main {
   position: relative;
   z-index: 1;
 }
-#BannerShowRoom .banner-show-room .img-banner-showroom {
-  /*opacity: 0.8;*/
-}
 #BannerShowRoom .content-banner-sr {
   position: absolute;
   top: 0;
@@ -6691,6 +6686,10 @@ main {
   line-height: 1.1;
   margin-bottom: 0.25rem;
   font-size: 1.75rem;
+}
+#HistoryShowRoom .history-item img {
+  width: 274px;
+  height: 274px;
 }
 #HistoryShowRoom .history-item p {
   font-family: helveticaneue-medium;
@@ -7543,6 +7542,10 @@ main {
   #HistoryShowRoom .history-item h4 {
     font-size: 1.375rem;
   }
+  #HistoryShowRoom .history-item img {
+    width: 312px;
+    height: 312px;
+  }
   #HistoryShowRoom .history-item h5 {
     text-align: center;
   }
@@ -7588,12 +7591,6 @@ main {
   #ProductFirst,
   #PillowProduct {
     padding: 2rem 0;
-  }
-  #ProductFirst .img-goi-co-main,
-  #PillowProduct .img-goi-co-main,
-  #ProductFirst .img-goi-lung-main,
-  #PillowProduct .img-goi-lung-main {
-    display: none;
   }
   #ChairProduct {
     padding: 2rem 0;
@@ -7785,6 +7782,10 @@ main {
   #HistoryShowRoom .history-item h4 {
     font-size: 1.125rem;
   }
+  #HistoryShowRoom .history-item img {
+    width: 147px;
+    height: 147px;
+  }
   #HistoryShowRoom .history-item h5 {
     text-align: center;
     font-size: 0.875rem;
@@ -7830,12 +7831,6 @@ main {
   #ProductFirst,
   #PillowProduct {
     padding: 1.5rem 0;
-  }
-  #ProductFirst .img-goi-co-main,
-  #PillowProduct .img-goi-co-main,
-  #ProductFirst .img-goi-lung-main,
-  #PillowProduct .img-goi-lung-main {
-    display: none;
   }
   #ChairProduct {
     padding: 1rem 0;
