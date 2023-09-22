@@ -9,30 +9,36 @@
     .content-banner-sr {
         position: absolute;
         top: 0;
-        left: 0;
-        width: 100%;
+        left: auto;
+        right: auto;
+        max-width: 100%;
         height: 100%;
         z-index: 1;
         display: flex;
         align-items: center;
         color: @white;
-        background-color: rgba(0,0,0,0.3);
+        /*background-color: rgba(0,0,0,0.3);*/
 
-        h4 {
-            text-transform: uppercase;
-            font-size: 2.75rem;
-            font-family: @font-helveticaneue-blod;
-            line-height: 1.35;
-            margin-bottom: 1.5rem;
-        }
+        .container {
+            max-width: 100%;
+            justify-content: center;
 
-        p {
-            margin-bottom: 1.5rem;
-            max-width: 650px;
-        }
+            h4 {
+                text-transform: uppercase;
+                font-size: 2.75rem;
+                font-family: @font-helveticaneue-blod;
+                line-height: 1.35;
+                margin-bottom: 1rem;
+            }
 
-        .banner-action {
-            margin-bottom: 10rem;
+            p {
+                margin-bottom: 1rem;
+                max-width: 650px;
+            }
+
+            .banner-action {
+                margin-bottom: 10rem;
+            }
         }
     }
 
@@ -57,12 +63,13 @@
 }
 
 #HistoryShowRoom {
+    padding-top: 25px;
     background-color: @white;
 
     .img-white {
         width: 75%;
         display: block;
-        margin: 0 auto;
+        margin: 4rem auto;
     }
 
     .history-item {
@@ -79,6 +86,11 @@
             line-height: 1.1;
             margin-bottom: .25rem;
             font-size: 1.75rem;
+        }
+
+        img {
+            width: 274px;
+            height: 274px;
         }
 
         p {
@@ -98,7 +110,7 @@
     }
 
     .history-content {
-        margin-top: -5rem;
+        margin-top: 8rem;
 
         h4 {
             color: @main-blue;
@@ -115,6 +127,14 @@
             text-align: justify;
         }
     }
+}
+
+.img-goi-co-main-lg, .img-goi-lung-main-lg {
+    display: block;
+}
+
+.img-goi-co-main-mb, .img-goi-lung-main-mb {
+    display: none;
 }
 
 .title-product-showroom {
@@ -296,7 +316,7 @@
 }
 
 #ProductFirst, #PillowProduct {
-    padding: 5rem 0;
+    padding: 0;
 
     &.product-option .pfirst-item {
         background-color: @light-grey;
@@ -305,7 +325,7 @@
 
 #ChairProduct {
     background-color: #F5F5F7;
-    padding: 5rem 0;
+    padding: 2rem 0;
 
     .chair-item {
         background-color: @white;
@@ -588,7 +608,7 @@
 }
 
 .chair-oder {
-    padding: 5rem 0 2rem;
+    padding: 2rem 0 2rem;
 
     .chair-slide {
         background-color: @light-grey;
@@ -1166,6 +1186,11 @@
                 font-size: 1.375rem;
             }
 
+            img {
+                width: 312px;
+                height: 312px;
+            }
+
             h5 {
                 text-align: center;
             }
@@ -1177,7 +1202,7 @@
         }
 
         .history-content {
-            margin-top: -1.5rem;
+            margin-top: 2rem;
 
             h4 {
                 font-size: 1.5rem;
@@ -1226,6 +1251,15 @@
 
     #ProductFirst, #PillowProduct {
         padding: 2rem 0;
+
+        .img-goi-co-main-lg, .img-goi-lung-main-lg {
+            display: none;
+        }
+
+        .img-goi-co-main-mb, .img-goi-lung-main-mb {
+            margin: 1rem auto;
+            display: block;
+        }
     }
 
     #ChairProduct {
@@ -1472,6 +1506,11 @@
                 font-size: 1.125rem;
             }
 
+            img {
+                width: 147px;
+                height: 147px;
+            }
+
             h5 {
                 text-align: center;
                 font-size: .875rem;
@@ -1531,6 +1570,15 @@
 
     #ProductFirst, #PillowProduct {
         padding: 1.5rem 0;
+
+        .img-goi-co-main-lg, .img-goi-lung-main-lg {
+            display: none;
+        }
+
+        .img-goi-co-main-mb, .img-goi-lung-main-mb {
+            margin: 1rem auto;
+            display: block;
+        }
     }
 
     #ChairProduct {

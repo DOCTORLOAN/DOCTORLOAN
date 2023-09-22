@@ -2,22 +2,21 @@
     ViewData["Title"] = "Showroom";
 }
 
-
 <section id="BannerShowRoom">
     <div class="swiper showRoomSwiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="banner-show-room">
-                    <picture>
-                        <source media="(max-width:767px)" srcset="~/img/showroom/banner-show-room-mb-5.jpg">
+                    <picture class="img-banner-showroom">
+                        <source media="(max-width:767px)" srcset="~/img/showroom/banner-show-room-mb-3.jpg" style="width: 746px; height: 746px;">
                         <img src="~/img/showroom/banner-show-room-1.jpg" alt="">
                     </picture>
                     <div class="content-banner-sr">
                         <div class="container">
-                            <h4>Showroom <br /> Giới thiệu sản phẩm</h4>
-                            <p>Chúng tôi sẽ chuyển hóa kiến thức Y khoa đến với mọi người để người dân sẽ không cần phải đến gặp bác sĩ nữa mà mỗi người đều có thể tự điều trị bệnh tại nhà.</p>
+                            @* <h4> DOCTORLOAN Showroom</h4>
+                            <p>Chúng tôi sẽ chuyển hóa kiến thức Y khoa đến với mọi người để người dân sẽ không cần phải đến gặp bác sĩ nữa mà mỗi người đều có thể tự điều trị bệnh tại nhà.</p> *@
                             <div class="banner-action">
-                                <a href="javascript:void(0)" class="btn btn-outline-w-trans">Xem chi tiết</a>
+                                @* <a href="javascript:void(0)" class="btn btn-outline-w-trans">Xem chi tiết</a> *@
                             </div>
                         </div>
                     </div>
@@ -25,16 +24,16 @@
             </div>
             <div class="swiper-slide">
                 <div class="banner-show-room">
-                    <picture>
-                        <source media="(max-width:767px)" srcset="~/img/showroom/banner-show-room-mb-1.jpg">
+                    <picture class="img-banner-showroom">
+                        <source media="(max-width:767px)" srcset="~/img/showroom/banner-show-room-mb-1.jpg" style="width: 746px; height: 746px;">
                         <img src="~/img/showroom/banner-show-room-2.jpg" alt="">
                     </picture>
                     <div class="content-banner-sr">
                         <div class="container">
-                            <h4>Showroom <br /> Giới thiệu sản phẩm</h4>
-                            <p>Chúng tôi sẽ chuyển hóa kiến thức Y khoa đến với mọi người để người dân sẽ không cần phải đến gặp bác sĩ nữa mà mỗi người đều có thể tự điều trị bệnh tại nhà.</p>
+                            @* <h4>DOCTORLOAN Showroom</h4>
+                            <p>Chúng tôi sẽ chuyển hóa kiến thức Y khoa đến với mọi người để người dân sẽ không cần phải đến gặp bác sĩ nữa mà mỗi người đều có thể tự điều trị bệnh tại nhà.</p> *@
                             <div class="banner-action">
-                                <a href="javascript:void(0)" class="btn btn-outline-w-trans">Xem chi tiết</a>
+                                @* <a href="javascript:void(0)" class="btn btn-outline-w-trans">Xem chi tiết</a> *@
                             </div>
                         </div>
                     </div>
@@ -42,16 +41,16 @@
             </div>
             <div class="swiper-slide">
                 <div class="banner-show-room">
-                    <picture>
-                        <source media="(max-width:767px)" srcset="~/img/showroom/banner-show-room-mb-2.jpg">
+                    <picture class="img-banner-showroom">
+                        <source media="(max-width:767px)" srcset="~/img/showroom/banner-show-room-mb-2.jpg" style="width: 746px; height: 746px;">
                         <img src="~/img/showroom/banner-show-room-3.jpg" alt="">
                     </picture>
                     <div class="content-banner-sr">
                         <div class="container">
-                            <h4>Showroom <br /> Giới thiệu sản phẩm</h4>
-                            <p>Chúng tôi sẽ chuyển hóa kiến thức Y khoa đến với mọi người để người dân sẽ không cần phải đến gặp bác sĩ nữa mà mỗi người đều có thể tự điều trị bệnh tại nhà.</p>
+                            @* <h4>DOCTORLOAN Showroom</h4>
+                            <p>Chúng tôi sẽ chuyển hóa kiến thức Y khoa đến với mọi người để người dân sẽ không cần phải đến gặp bác sĩ nữa mà mỗi người đều có thể tự điều trị bệnh tại nhà.</p> *@
                             <div class="banner-action">
-                                <a href="javascript:void(0)" class="btn btn-outline-w-trans">Xem chi tiết</a>
+                                @* <a href="javascript:void(0)" class="btn btn-outline-w-trans">Xem chi tiết</a> *@
                             </div>
                         </div>
                     </div>
@@ -68,7 +67,7 @@
             <div class="col-lg-3 col-md-4 col-12">
                 <img class="img-white" src="~/img/logo/logo-doctorloan.svg" />
             </div>
-            <div class="col-lg-6 col-md-8 col-12">
+            <div class="col-lg-3 col-md-8 col-12">
                 <div class="center-thing">
                     <div class="history-content">
                         <h4>Lịch sử ra đời và phát triển</h4>
@@ -111,6 +110,13 @@
                     <h5>Đệm thiền sáng chế độc quyền</h5>
                 </div>
             </div>
+            <div class="col-lg-3 col-6">
+                <div class="history-item">
+                    <h4>Năm 2023</h4>
+                    <img src="~/img/showroom/history-n85.png" />
+                    <h5>Ghế doctorloan n85</h5>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -118,11 +124,11 @@
 <section id="ProductFirst" class="product-option">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 col-12">
+            <div class="col-lg-10 col-12 img-goi-co-main-lg">
                 <div class="center-thing img-goi-co-main">
                     <div class="row rowlg center-thing-row">
                         <div class="col-lg-6 col-12 collg order-2 order-lg-1 center-thing-left">
-                            <div class="title-product-showroom">Gối cổ sáng chế F6</div>
+                            <div class="title-product-showroom">Gối cổ sáng chế</div>
                             <p>
                                 Mút được nhập từ chất liệu ngoại nhập đã được kiểm định chất lượng về độ an toàn trong quá trình sử dụng. <br /> Phần lõi được làm từ chất liệu có tỉ trọng cao, có khả năng chịu lực tốt.<br />
                                 Sợi vải được nhập ngoại và kiểm định về độ bền, an toàn cho người sử dụng.
@@ -157,7 +163,44 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-12">
+            <div class="col-lg-10 col-12 img-goi-co-main-mb">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="center-thing">
+                            <img class="img-product-main" src="~/img/showroom/sr-product-1.png" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="title-product-showroom">Gối cổ sáng chế</div>
+                        <p>
+                            Mút được nhập từ chất liệu ngoại nhập đã được kiểm định chất lượng về độ an toàn trong quá trình sử dụng. <br /> Phần lõi được làm từ chất liệu có tỉ trọng cao, có khả năng chịu lực tốt.<br />
+                            Sợi vải được nhập ngoại và kiểm định về độ bền, an toàn cho người sử dụng.
+                        </p>
+                        <div class="parameter-product">
+                            <h5 class="prm-p-title">Kích thước sản phẩm</h5>
+                            <div class="list-parameter">
+                                <div class="parameter-item">
+                                    <img src="~/img/icon/ruler-icon.svg" />
+                                    <p><span>9cm dành cho người cao</span> <br /> <=1m7</p>
+                                </div>
+                                <div class="parameter-item">
+                                    <img src="~/img/icon/weight-icon.svg" />
+                                    <p><span>Cân nặng</span> <br /> <=90Kg</p>
+                                </div>
+                                <div class="parameter-item">
+                                    <img src="~/img/icon/ruler-icon.svg" />
+                                    <p><span>12cm dành cho người cao</span> <br /> >=1m7</p>
+                                </div>
+                                <div class="parameter-item">
+                                    <img src="~/img/icon/strong-icon.svg" />
+                                    <p><span>Khối lượng tối đa</span> <br /> 120Kg</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-12 img-goi-co-main-lg">
                 <div class="swiper productSwiper3">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -165,8 +208,7 @@
                                 <div class="pfirst-item">
                                     <img src="~/img/showroom/goi-co-f4.png" />
                                     <div class="title-pfirst">
-                                        <span>DOCTORLOAN</span>
-                                        Gối cổ F4
+                                        <span>DOCTORLOAN</span> Gối cổ F4
                                     </div>
                                 </div>
                             </a>
@@ -176,8 +218,7 @@
                                 <div class="pfirst-item">
                                     <img src="~/img/showroom/goi-co-f5.png" />
                                     <div class="title-pfirst">
-                                        <span>DOCTORLOAN</span>
-                                        Gối cổ F5
+                                        <span>DOCTORLOAN</span> Gối cổ F5
                                     </div>
                                 </div>
                             </a>
@@ -187,8 +228,7 @@
                                 <div class="pfirst-item">
                                     <img src="~/img/showroom/goi-co-f6.png" />
                                     <div class="title-pfirst">
-                                        <span>DOCTORLOAN</span>
-                                        Gối cổ F6
+                                        <span>DOCTORLOAN</span> Gối cổ F6
                                     </div>
                                 </div>
                             </a>
@@ -198,8 +238,7 @@
                                 <div class="pfirst-item">
                                     <img src="~/img/showroom/goi-co-nguoi-lon-khong-loi.png" />
                                     <div class="title-pfirst">
-                                        <span>DOCTORLOAN</span>
-                                        Gối cổ người lớn
+                                        <span>DOCTORLOAN</span> Gối cổ người lớn
                                     </div>
                                 </div>
                             </a>
@@ -209,8 +248,7 @@
                                 <div class="pfirst-item">
                                     <img src="~/img/showroom/goi-co-tre-em-size-lon.png" />
                                     <div class="title-pfirst">
-                                        <span>DOCTORLOAN</span>
-                                        Gối cổ trẻ em lớn
+                                        <span>DOCTORLOAN</span> Gối cổ trẻ em lớn
                                     </div>
                                 </div>
                             </a>
@@ -220,8 +258,7 @@
                                 <div class="pfirst-item">
                                     <img src="~/img/showroom/goi-co-tre-em-size-nho.png" />
                                     <div class="title-pfirst">
-                                        <span>DOCTORLOAN</span>
-                                        Gối cổ trẻ em nhỏ
+                                        <span>DOCTORLOAN</span> Gối cổ trẻ em nhỏ
                                     </div>
                                 </div>
                             </a>
@@ -239,7 +276,7 @@
 <section id="PillowProduct" class="product-option">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 col-12 order-2 order-lg-1">
+            <div class="col-lg-2 col-12 order-2 order-lg-1 img-goi-lung-main-lg">
                 <div class="swiper productSwiper3 bg-w">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -247,8 +284,7 @@
                                 <div class="pfirst-item">
                                     <img src="~/img/showroom/goi-lung-f1-dai.png" />
                                     <div class="title-pfirst">
-                                        <span>DOCTORLOAN</span>
-                                        Gối lưng F1 dài
+                                        <span>DOCTORLOAN</span> Gối lưng F1 dài
                                     </div>
                                 </div>
                             </a>
@@ -258,8 +294,7 @@
                                 <div class="pfirst-item">
                                     <img src="~/img/showroom/goi-lung-f1-ngan.png" />
                                     <div class="title-pfirst">
-                                        <span>DOCTORLOAN</span>
-                                        Gối lưng F1 ngắn
+                                        <span>DOCTORLOAN</span> Gối lưng F1 ngắn
                                     </div>
                                 </div>
                             </a>
@@ -269,8 +304,7 @@
                                 <div class="pfirst-item">
                                     <img src="~/img/showroom/goi-lung-f3.png" />
                                     <div class="title-pfirst">
-                                        <span>DOCTORLOAN</span>
-                                        Gối lưng F3
+                                        <span>DOCTORLOAN</span> Gối lưng F3
                                     </div>
                                 </div>
                             </a>
@@ -280,8 +314,7 @@
                                 <div class="pfirst-item">
                                     <img src="~/img/showroom/goi-lung-f3.png" />
                                     <div class="title-pfirst">
-                                        <span>DOCTORLOAN</span>
-                                        Gối lưng F4
+                                        <span>DOCTORLOAN</span> Gối lưng F4
                                     </div>
                                 </div>
                             </a>
@@ -292,7 +325,7 @@
                     <div class="swiper-button-prev"></div>
                 </div>
             </div>
-            <div class="col-lg-10 col-12 order-1 order-lg-2">
+            <div class="col-lg-10 col-12 order-1 order-lg-2 img-goi-lung-main-lg">
                 <div class="center-thing img-goi-lung-main">
                     <div class="row rowlg center-thing-row">
                         <div class="col-lg-6 collg center-thing-left">
@@ -301,7 +334,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6 collg center-thing-right">
-                            <div class="title-product-showroom">Gối lưng sáng chế F4</div>
+                            <div class="title-product-showroom">Gối lưng sáng chế</div>
                             <p>
                                 Bệnh cột sống lưng có thể xảy ra với tất cả mọi người,bất kể ai cũng có đau lưng trong đời. Gù vẹo, thoát vị đĩa đệm, trượt hoặc gãy cột sống lưng là những bệnh hay gặp do sai tư thế trong sinh hoạt hằng ngày.<br />
                                 Gối lưng DOCTORLOAN dành cho mọi đối tượng ngoại trừ người già bị loãng xương. Những trường hợp đặc biệt phải có chỉ định của bác sĩ.
@@ -321,7 +354,35 @@
                                 </div>
                             </div>
                         </div>
-
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10 col-12 img-goi-lung-main-mb">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="center-thing">
+                            <img class="img-product-main" src="~/img/showroom/sr-product-4.png" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="title-product-showroom">Gối lưng sáng chế</div>
+                        <p>
+                            Bệnh cột sống lưng có thể xảy ra với tất cả mọi người,bất kể ai cũng có đau lưng trong đời. Gù vẹo, thoát vị đĩa đệm, trượt hoặc gãy cột sống lưng là những bệnh hay gặp do sai tư thế trong sinh hoạt hằng ngày.<br />
+                            Gối lưng DOCTORLOAN dành cho mọi đối tượng ngoại trừ người già bị loãng xương. Những trường hợp đặc biệt phải có chỉ định của bác sĩ.
+                        </p>
+                        <div class="parameter-product">
+                            <h5 class="prm-p-title">Kích thước sản phẩm</h5>
+                            <div class="list-parameter">
+                                <div class="parameter-item">
+                                    <img src="~/img/icon/weight-icon.svg" />
+                                    <p><span>Cân nặng</span> <br /> <=120Kg</p>
+                                </div>
+                                <div class="parameter-item">
+                                    <img src="~/img/icon/strong-icon.svg" />
+                                    <p><span>Khối lượng tối đa</span> <br /> 150Kg</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -332,12 +393,12 @@
 <section id="ChairProduct">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 col-12">
+            <div class="col-lg-9 col-12 ghe-ngoi-main">
                 <div class="row h-100 img-ghe-main">
                     <div class="col-md-6 col-12 order-2 order-md-1">
                         <div class="chair-main">
                             <div class="chair-main-head">
-                                <div class="title-product-showroom">ghế ngồi sáng chế 95 vip</div>
+                                <div class="title-product-showroom">ghế ngồi sáng chế</div>
                                 <p>
                                     Dựa trên mô phỏng đường cong cột sống sống, ghế sáng chế DOCTORLOAN 95 được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.
                                 </p>
@@ -400,14 +461,12 @@
             <div class="col-lg-2 col-12">
                 <div class="swiper productChairSwiper">
                     <div class="swiper-wrapper">
-
                         <div class="swiper-slide">
                             <a class="change-image" href="javascript:void(0)" data-image="chair-slide-1.png" data-group="img-ghe-main" data-title="Ghế ngồi sáng chế 90 dày">
                                 <div class="chair-item">
                                     <img src="~/img/showroom/chair-2.jpg" />
                                     <div class="title-chair">
-                                        <span>DOCTORLOAN</span>
-                                        Ghế ngồi 90 dày
+                                        <span>DOCTORLOAN</span> Ghế ngồi 90 dày
                                     </div>
                                 </div>
                             </a>
@@ -417,8 +476,7 @@
                                 <div class="chair-item">
                                     <img src="~/img/showroom/chair-1.jpg" />
                                     <div class="title-chair">
-                                        <span>DOCTORLOAN</span>
-                                        Ghế ngồi 90 mỏng
+                                        <span>DOCTORLOAN</span> Ghế ngồi 90 mỏng
                                     </div>
                                 </div>
                             </a>
@@ -428,8 +486,7 @@
                                 <div class="chair-item">
                                     <img src="~/img/showroom/chair-5.jpg" />
                                     <div class="title-chair">
-                                        <span>DOCTORLOAN</span>
-                                        Ghế ngồi 95 VIP
+                                        <span>DOCTORLOAN</span> Ghế ngồi 95 VIP
                                     </div>
                                 </div>
                             </a>
@@ -439,8 +496,7 @@
                                 <div class="chair-item">
                                     <img src="~/img/showroom/chair-4.jpg" />
                                     <div class="title-chair">
-                                        <span>DOCTORLOAN</span>
-                                        Ghế sơn
+                                        <span>DOCTORLOAN</span> Ghế sơn
                                     </div>
                                 </div>
                             </a>
@@ -450,8 +506,7 @@
                                 <div class="chair-item">
                                     <img src="~/img/showroom/chair-3.jpg" />
                                     <div class="title-chair">
-                                        <span>DOCTORLOAN</span>
-                                        Ghế ngồi N85
+                                        <span>DOCTORLOAN</span> Ghế ngồi N85
                                     </div>
                                 </div>
                             </a>
@@ -501,7 +556,7 @@
                         <a href="javascript:void(0)" class="color-item black"></a>
                         <a href="javascript:void(0)" class="color-item green"></a>
                     </div>
-                    <div class="title-product-showroom">ghế nằm sáng chế 135</div>
+                    <div class="title-product-showroom">ghế nằm sáng chế</div>
                     <p>
                         Ghế nằm DOCTORLOAN 135 đầu ngửa, đôn liền là sáng chế thiết thực phục vụ cộng đồng trong việc chăm sóc và bảo vệ toàn diện sức khoẻ cột sống cho gia đình bạn.<br />
                         Ghế nằm sáng chế DOCTORLOAN 135 đầu ngửa, đôn liền được thiết kế đặc biệt với độ ngả 135˚, kết hợp với các đường cong lồi phía trước và lõm phía sau uốn theo cấu trúc cong tự nhiên của cột sống giúp giảm sâu áp lực trên cột sống, đĩa đệm, khung xương.

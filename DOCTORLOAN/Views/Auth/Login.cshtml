@@ -1,4 +1,5 @@
-﻿@{
+﻿@model DOCTORLOAN.Models.VMAuth.Signin;
+@{
     ViewData["Title"] = "Đăng nhập";
 }
 
@@ -26,17 +27,17 @@
                     <div class="col-12 frm-body">
                         <h3>Đăng nhập tài khoản</h3>
                         <div class="sub-tt">Vui lòng nhập thông tin đăng nhập</div>
-                        <form class="row needs-validation" novalidate>
+                        <form asp-controller="Auth" asp-action="Login" class="row needs-validation" novalidate method="post">
                             <div class="mb-3">
                                 <label for="username" class="req">Email/ Số điện thoại</label>
-                                <input type="text" class="form-control" placeholder="Nhập số điện thoại hoặc email" id="username" required />
+                                <input type="text" class="form-control" placeholder="Nhập số điện thoại hoặc email" asp-for="UserName" id="username" required />
                                 <div class="invalid-feedback">
                                     Vui lòng nhập email hoặc số điện thoại.
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="req">Mật khẩu</label>
-                                <input type="password" class="form-control" placeholder="Nhập mật khẩu" id="password" required />
+                                <input type="password" class="form-control" placeholder="Nhập mật khẩu" asp-for="Password" id="password" required />
                                 <div class="invalid-feedback">
                                     Vui lòng nhập mật khẩu.
                                 </div>
@@ -45,7 +46,7 @@
                                 <div class="list-control">
                                     <label class="control control--checkbox">
                                         <span class="caption">Ghi nhớ đăng nhập</span>
-                                        <input type="checkbox" checked="checked" />
+                                        <input type="checkbox" asp-for="KeepLoggedIn" checked="checked" />
                                         <span class="control__indicator"></span>
                                     </label>
                                     <a href="javascript:void(0)" class="forgot-pass">Quên mật khẩu?</a>
@@ -54,6 +55,13 @@
                             <div class="">
                                 <button type="submit" class="btn btn-submit">Đăng nhập</button>
                             </div>
+
+                            @if (ViewData["ValidateMessage"] != null)
+                            {
+                                <br />
+                                <br />
+                                <label>@ViewData["ValidateMessage"]</label>
+                            }
                         </form>
 
                         <div class="frm-different">

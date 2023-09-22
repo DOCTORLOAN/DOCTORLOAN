@@ -5,7 +5,7 @@
             <a asp-controller="Home" asp-action="Index" class="scrollto">
                 <picture>
                     <source media="(max-width:991px)" srcset="~/img/logo/logo-mobile.svg">
-                    <img src="~/img/logo/logo-header.svg">
+                    <img src="~/img/logo/logo-header.svg"/>
                 </picture>
             </a>
         </div>
@@ -16,7 +16,7 @@
                 <li><a asp-controller="About" asp-action="Index">Giới thiệu</a></li>
                 <li><a asp-controller="Clinic" asp-action="Index">Đức Phúc DoctorLoan</a></li>
                 <li><a asp-controller="ShowRoom" asp-action="Index">Showroom</a></li>
-                <li class="dropdown">
+                @*< li class="dropdown">
                     <a asp-controller="Products" asp-action="Index">Sản phẩm</a>
                     <div class="mega-menu">
                         <div class="list-menu">
@@ -37,29 +37,32 @@
                         </div>
 
                     </div>
-                </li>
+                </li> *@
                 <li class="dropdown menu-dropdown">
                     <a asp-controller="News" asp-action="Index"><span>Tin tức</span></a>
                     <div class="sub-menu">
                         <ul>
                             <li><a asp-controller="News" asp-action="NewsGroup">Thời sự</a></li>
-                            <li><a asp-controller="News" asp-action="NewsGroup">Nguyên nhân gây bệnh cột sống</a></li>
+                            @* <li><a asp-controller="News" asp-action="NewsGroup">Nguyên nhân gây bệnh cột sống</a></li>
                             <li><a asp-controller="News" asp-action="NewsGroup">Thực trạng xã hội và y học</a></li>
                             <li><a asp-controller="News" asp-action="NewsGroup">Giải pháp phòng bệnh</a></li>
                             <li><a asp-controller="News" asp-action="NewsGroup">Câu chuyện của những bệnh nhân</a></li>
-                            <li><a asp-controller="News" asp-action="NewsGroup">Hoạt động xã hội</a></li>
+                            <li><a asp-controller="News" asp-action="NewsGroup">Hoạt động xã hội</a></li> *@
                         </ul>
                     </div>
                 </li>
-                <li><a asp-controller="Contact" asp-action="Index">Liên hệ</a></li>
-                <li class="only-mb"><a asp-controller="Auth" asp-action="Login">Đăng nhập</a></li>
-                <li class="only-mb"><a asp-controller="Auth" asp-action="Register">Đăng ký</a></li>
+                @* <li><a asp-controller="Contact" asp-action="Index">Liên hệ</a></li> *@
+                <li class="only-mb">
+                    @*<a asp-controller="Auth" asp-action="Login">Đăng nhập</a>*@
+                    @* <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Đăng Xuất</a> *@
+                </li>
+                @* <li class="only-mb"><a asp-controller="Auth" asp-action="Register">Đăng ký</a></li> *@
             </ul>
         </nav>
 
         <img class="slogan-mobile" src="~/img/logo/slogan-mobile.svg" />
 
-        <div class="header-info">
+        @* <div class="header-info">
             <div class="auth-frm">
                 <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a>
                 <div class="not-logged">
@@ -86,7 +89,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> *@
     </div>
 </div>
 

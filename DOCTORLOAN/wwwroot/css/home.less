@@ -1,5 +1,10 @@
 @import "variables";
 
+.modal-backdrop {
+    --bs-backdrop-zindex: none !important;
+    --bs-backdrop-bg: none !important;
+}
+
 #Home_Banner {
     position: relative;
     z-index: 1;
@@ -14,10 +19,23 @@
         }
     }
 
+    #btn-show-modal:hover {
+        background-color: #ff7500;
+    }
+
+    #myModal {
+        top: 8%;
+        height: 60vh;
+    }
+
+    .modal-dialog {
+        overflow-y: initial !important;
+    }
+
     .banner-info {
         display: block;
         max-width: 750px;
-        margin: 0 auto;
+        margin: 35px auto;
 
         .title-banner {
             font-family: @font-helveticaneue-blod;
@@ -86,6 +104,10 @@
                 flex-grow: 3;
             }
         }
+
+        .custom-action-item {
+            min-height: 45px !important;
+        }
     }
 
     .action-info {
@@ -114,7 +136,7 @@
         padding: 1rem;
         line-height: 1.25;
 
-        a{
+        a {
             color: inherit;
         }
 
@@ -1119,7 +1141,8 @@
 #Factory {
     .factory-header {
         padding: 15vh 0;
-        background-image: linear-gradient(0, rgba(0,0,0,.1), rgba(0,0,0,.1)), url(../img/home/bg-header-factory.jpg);
+        /*background-image: linear-gradient(0, rgba(0,0,0,.1), rgba(0,0,0,.1)), url(../img/home/bg-header-factory.jpg);*/
+        background-color: #ff7500;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
