@@ -1585,10 +1585,8 @@ main {
   width: 85%;
   margin-left: 5%;
 }
-#Home_Banner #btn-show-modal {
-  color: #ff7500;
-  font-weight: bold;
-  background-color: #fff;
+#Home_Banner #btn-show-modal:hover {
+  background-color: #ff7500;
 }
 #Home_Banner #myModal {
   top: 8%;
@@ -6620,9 +6618,6 @@ main {
   position: relative;
   z-index: 1;
 }
-#BannerShowRoom .banner-show-room .img-banner-showroom {
-  /*opacity: 0.8;*/
-}
 #BannerShowRoom .content-banner-sr {
   position: absolute;
   top: 0;
@@ -6692,6 +6687,10 @@ main {
   margin-bottom: 0.25rem;
   font-size: 1.75rem;
 }
+#HistoryShowRoom .history-item img {
+  width: 274px;
+  height: 274px;
+}
 #HistoryShowRoom .history-item p {
   font-family: helveticaneue-medium;
   color: #013C74;
@@ -6720,6 +6719,14 @@ main {
   width: 87.5%;
   margin: 0;
   text-align: justify;
+}
+.img-goi-co-main-lg,
+.img-goi-lung-main-lg {
+  display: block;
+}
+.img-goi-co-main-mb,
+.img-goi-lung-main-mb {
+  display: none;
 }
 .title-product-showroom {
   font-size: 2.25rem;
@@ -7543,6 +7550,10 @@ main {
   #HistoryShowRoom .history-item h4 {
     font-size: 1.375rem;
   }
+  #HistoryShowRoom .history-item img {
+    width: 312px;
+    height: 312px;
+  }
   #HistoryShowRoom .history-item h5 {
     text-align: center;
   }
@@ -7589,11 +7600,18 @@ main {
   #PillowProduct {
     padding: 2rem 0;
   }
-  #ProductFirst .img-goi-co-main,
-  #PillowProduct .img-goi-co-main,
-  #ProductFirst .img-goi-lung-main,
-  #PillowProduct .img-goi-lung-main {
+  #ProductFirst .img-goi-co-main-lg,
+  #PillowProduct .img-goi-co-main-lg,
+  #ProductFirst .img-goi-lung-main-lg,
+  #PillowProduct .img-goi-lung-main-lg {
     display: none;
+  }
+  #ProductFirst .img-goi-co-main-mb,
+  #PillowProduct .img-goi-co-main-mb,
+  #ProductFirst .img-goi-lung-main-mb,
+  #PillowProduct .img-goi-lung-main-mb {
+    margin: 1rem auto;
+    display: block;
   }
   #ChairProduct {
     padding: 2rem 0;
@@ -7785,6 +7803,10 @@ main {
   #HistoryShowRoom .history-item h4 {
     font-size: 1.125rem;
   }
+  #HistoryShowRoom .history-item img {
+    width: 147px;
+    height: 147px;
+  }
   #HistoryShowRoom .history-item h5 {
     text-align: center;
     font-size: 0.875rem;
@@ -7831,11 +7853,18 @@ main {
   #PillowProduct {
     padding: 1.5rem 0;
   }
-  #ProductFirst .img-goi-co-main,
-  #PillowProduct .img-goi-co-main,
-  #ProductFirst .img-goi-lung-main,
-  #PillowProduct .img-goi-lung-main {
+  #ProductFirst .img-goi-co-main-lg,
+  #PillowProduct .img-goi-co-main-lg,
+  #ProductFirst .img-goi-lung-main-lg,
+  #PillowProduct .img-goi-lung-main-lg {
     display: none;
+  }
+  #ProductFirst .img-goi-co-main-mb,
+  #PillowProduct .img-goi-co-main-mb,
+  #ProductFirst .img-goi-lung-main-mb,
+  #PillowProduct .img-goi-lung-main-mb {
+    margin: 1rem auto;
+    display: block;
   }
   #ChairProduct {
     padding: 1rem 0;
