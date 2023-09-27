@@ -192,14 +192,17 @@
             <div class="row">
                 <div class="col-xl-6 col-12 m-auto">
                     @*qfZ0AOlPkbM*@
-                    <iframe id="introductory_video" class="drloan-video"
+                    @* <iframe id="introductory_video" class="drloan-video"
                             src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fphongkhamducphucdoctorloan%2Fvideos%2F902879381425348%2F&autoplay=1&show_text=false"
                         style="border:none;overflow:hidden"
                         scrolling="no"
                         frameborder="0"
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                         allowfullscreen="true"
-                        allowFullScreen="true"></iframe>
+                        allowFullScreen="true"></iframe> *@
+                    <video autoplay loop muted id="tvc-intro">
+                        <source type="video/mp4" src="~/img/home/video/Doctorloan-intro.mp4">
+                    </video>
                 </div>
                 <div class="col-xl-6 col-12">
                     <div class="about-desc">
@@ -409,7 +412,78 @@
         </div>
     </div>
 </section>
- 
+<section id="FormSubmit">
+    <div class="container">
+        <div class="form-content">
+            <div class="row">
+                <div class="col-md-6 col-12 pe-lg-5">
+                    <form class="row">
+                        <h4>Đăng ký tư vấn sức khỏe</h4>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" id="txtName" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="txtAddress" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" id="txtPhone" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Chọn thời gian khám bệnh</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1"><i class="far fa-calendar-alt"></i></span>
+                                <input type="text" class="form-control form_datetime">
+                            </div>
+                        </div>
+
+                        <div class="form-action">
+                            <a href="javascript:void(0)" class="btn btn-register">Đăng ký</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 col-12 ps-lg-5">
+                    <form class="row">
+                        <h4>Đăng ký tư vấn sản phẩm</h4>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" id="txtName" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="txtAddress" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" id="txtPhone" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Chọn Sản phẩm cần tư vấn</label>
+                            <select class="form-select" id="txtTime">
+                                <option selected disabled value="">Chọn...</option>
+                                <option>Ghế nằm</option>
+                                <option>Ghế ngồi</option>
+                                <option>Gối cổ</option>
+                                <option>Gối lưng</option>
+                                <option>Đệm thiền</option>
+                                <option>Gối đi xe</option>
+                                <option>Đai</option>
+                                <option>Vớ</option>
+                                <option>Ghế nhựa</option>
+                                <option>Dép</option>
+                            </select>
+                        </div>
+                        <div class="form-action">
+                            <a href="javascript:void(0)" class="btn btn-register">Đăng ký</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="License">
     <div class="container">
         <div class="title-drloan tt-w"><span>Hơn 255 Bằng sáng chế độc quyền <br /> trên 60 quốc gia</span></div>
@@ -424,11 +498,12 @@
                     </div>
                 }
                 <div class="swiper-slide">
-                 @*    <img src="~/img/home/australia.jpg" /> *@
+                     @* <img src="~/img/home/australia.jpg" /> *@
                     <a href="~/img/license/license-1.jpg" class="glightbox" data-gallery="license-space">
                         <img src="~/img/license/license-1.jpg" />
                     </a>
                     <div class="license-country">Australia</div>
+
                 </div>
                 <div class="swiper-slide">
                     @* <img src="~/img/home/canada.jpg" /> *@
@@ -501,8 +576,8 @@
                     <div class="license-country">Korea Patent</div>
                 </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            @* <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> *@
         </div>
     </div>
 </section>
@@ -789,7 +864,7 @@
     </div>
 </section>
 
-<section id="FormSubmit">
+@* <section id="FormSubmit">
     <div class="container">
         <div class="form-content">
             <div class="row">
@@ -860,14 +935,14 @@
             </div>
         </div>
     </div>
-</section>
+</section> *@
 
 <section id="Experience">
     @await Html.PartialAsync("/Views/Common/_ExperiencePartial.cshtml")
 </section>
 
 
-<section id="Events" class="bg-orange">
+@* <section id="Events" class="bg-orange">
     <div class="container">
         <div class="event-main">
             <div class="row">
@@ -987,7 +1062,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> *@
 
 @* <section id="Factory">
     <div class="factory-header">
@@ -2086,4 +2161,5 @@
 
     </script>
 }
+
 

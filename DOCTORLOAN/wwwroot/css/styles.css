@@ -919,7 +919,7 @@ footer #OwlCountry img {
 }
 header {
   padding: 1rem 0;
-  height: 70px;
+  /* height: 70px;*/
   position: fixed;
   left: 0;
   top: 0;
@@ -1809,6 +1809,9 @@ main {
 #About .about-content {
   margin-top: 3.5rem;
 }
+#About .about-content #tvc-intro {
+  width: 100%;
+}
 #About .about-desc {
   color: #FFF;
   padding: 0 2.5rem;
@@ -2114,11 +2117,11 @@ main {
   background-color: #FF7500;
 }
 #Experience {
-  padding: 5rem 0;
   background-image: linear-gradient(0, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(../img/home/bg-heritage.png);
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: bottom;
+  padding: 5rem 0 0 0;
 }
 #Experience #ExperienceSwiper {
   margin-top: 5rem;
@@ -2571,7 +2574,7 @@ main {
 }
 #Feedback .list-iframe-fb {
   height: 100%;
-  display: flex;
+  /*display: flex;*/
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
@@ -2601,7 +2604,7 @@ main {
 }
 #Feedback .video-group div.list-group-video > a {
   margin-bottom: 0;
-  padding: 0.75rem 0;
+  padding: 1 rem 0;
   border-bottom: 1px solid #CDCDCD;
   font-size: 0.875rem;
 }
@@ -2644,8 +2647,8 @@ main {
 }
 #Feedback .image-group img {
   display: block;
-  width: 90%;
-  max-width: 333px;
+  width: 100%;
+  max-width: 500px;
   margin: 0 auto;
 }
 #Feedback .image-group p {
@@ -3055,10 +3058,10 @@ main {
     margin-top: 3rem;
   }
   #Feedback .video-group {
-    padding: 0.75rem;
+    padding: 1rem;
   }
   #Feedback .video-group div.list-group-video > a {
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     font-size: 0.75rem;
   }
   #Feedback .video-group div.list-group-video > a.active,
@@ -4594,12 +4597,16 @@ main {
   margin: 0 auto;
   display: block;
 }
+#AboutBanner .left-thing .banner-about-content {
+  margin-top: 3rem;
+}
 #AboutBanner h4 {
   color: #FFF;
   text-transform: uppercase;
   font-size: 2.25rem;
   font-family: helveticaneue-Bold;
   margin-bottom: 2rem;
+  padding-top: 60px;
 }
 #AboutBanner p {
   color: #FFF;
@@ -4669,10 +4676,10 @@ main {
 #DoctorInfo .doctor-desc {
   width: 70%;
   display: block;
-  margin: 0 auto;
+  margin-top: 6rem;
 }
 #DoctorInfo .doctor-desc h4 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   color: #FF7500;
   font-family: helveticaneue-Bold;
   margin-bottom: 1.5rem;
@@ -6618,6 +6625,19 @@ main {
   position: relative;
   z-index: 1;
 }
+#BannerShowRoom .swiper-wrapper-showroom {
+  position: relative;
+  height: 700px;
+  width: auto;
+}
+#BannerShowRoom .swiper-wrapper-showroom #tvc-banner-showroom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+}
 #BannerShowRoom .content-banner-sr {
   position: absolute;
   top: 0;
@@ -7730,6 +7750,19 @@ main {
   }
 }
 @media only screen and (max-width: 991.98px) {
+  #BannerShowRoom .swiper-wrapper-showroom {
+    position: relative;
+    height: 525px;
+    width: auto;
+  }
+  #BannerShowRoom .swiper-wrapper-showroom #tvc-banner-showroom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+  }
   .row-thing-lg {
     position: unset;
   }
@@ -7830,6 +7863,19 @@ main {
     width: 0.75rem;
     height: 0.75rem;
     margin: 0 0.25rem;
+  }
+  #BannerShowRoom .swiper-wrapper-showroom {
+    position: relative;
+    height: 350px;
+    width: auto;
+  }
+  #BannerShowRoom .swiper-wrapper-showroom #tvc-banner-showroom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
   }
   #HistoryShowRoom {
     padding: 1.5rem 0;
