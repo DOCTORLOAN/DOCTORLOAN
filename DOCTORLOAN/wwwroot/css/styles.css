@@ -3609,16 +3609,17 @@ main {
   z-index: 1;
 }
 #BannerShowRoom .swiper-wrapper-showroom {
-  position: relative !important;
-  height: 700px !important;
-  width: auto !important;
+  position: relative;
+  height: 700px;
+  width: auto;
 }
-#BannerShowRoom .swiper-wrapper-showroom .video-banner-showroom {
-  position: absolute !important;
-  top: 0 !important;
-  left: 20% !important;
-  right: 20% !important;
-  bottom: 0 !important;
+#BannerShowRoom .swiper-wrapper-showroom #tvc-banner-showroom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
 }
 #BannerShowRoom .content-banner-sr {
   position: absolute;
@@ -4732,6 +4733,19 @@ main {
   }
 }
 @media only screen and (max-width: 991.98px) {
+  #BannerShowRoom .swiper-wrapper-showroom {
+    position: relative;
+    height: 525px;
+    width: auto;
+  }
+  #BannerShowRoom .swiper-wrapper-showroom #tvc-banner-showroom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+  }
   .row-thing-lg {
     position: unset;
   }
@@ -4832,6 +4846,19 @@ main {
     width: 0.75rem;
     height: 0.75rem;
     margin: 0 0.25rem;
+  }
+  #BannerShowRoom .swiper-wrapper-showroom {
+    position: relative;
+    height: 350px;
+    width: auto;
+  }
+  #BannerShowRoom .swiper-wrapper-showroom #tvc-banner-showroom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
   }
   #HistoryShowRoom {
     padding: 1.5rem 0;
