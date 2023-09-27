@@ -12,6 +12,20 @@
     <link href="~/libs/font-awesome_5.15.1/font-awesome_5.15.1_css_all.min.css" rel="stylesheet" />
     <link href="~/css/styles.min.css" rel="stylesheet" />
     <script src="~/libs/jquery/jquery-3.7.0.min.js"></script>
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    <script type='text/javascript'>
+        msg = document.title;
+        msg = msg + ".";
+        position = 0;
+
+        function scrolltitle() {
+            document.title = msg.substring(position, msg.length) + msg.substring(0, position);
+            position++;
+            if (position > msg.length) position = 0
+            window.setTimeout("scrolltitle()", 110);
+        }
+        scrolltitle();
+    </script>
 </head>
 <body>
     <header>
@@ -19,6 +33,7 @@
     </header>
     <main>
         @RenderBody()
+        <div class="zalo-chat-widget" data-oaid="3997762822356581117" data-welcome-message="DOCTORLOAN Rất vui khi được hỗ trợ bạn!" data-autopopup="2" data-width="" data-height=""></div>
     </main>
     <footer>
         @await Html.PartialAsync("/Views/Common/_FooterPartial.cshtml")
