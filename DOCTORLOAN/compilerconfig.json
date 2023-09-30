@@ -1,11 +1,5 @@
 [
   {
-    "outputFile": "wwwroot/css/styles.css",
-    "inputFile": "wwwroot/css/styles.less",
-    "sourceMap": false,
-    "useNodeSass": false
-  },
-  {
     "outputFile": "wwwroot/auth/auth.css",
     "inputFile": "wwwroot/auth/auth.less",
     "sourceMap": false,

@@ -15,20 +15,20 @@ namespace DOCTORLOAN.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        [HttpGet]
+        //[HttpGet]
         public async Task<IActionResult> Index()
         {
-            List<Product> productList = new List<Product>();
+            //List<Product> productList = new List<Product>();
 
-            using (var httpClient = new HttpClient())
-            {
-                using (var response = await httpClient.GetAsync(_baseURL + "/product-module/Product/FilterProducts"))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    productList = JsonConvert.DeserializeObject<List<Product>>(apiResponse);
-                    System.Console.WriteLine(productList);
-                }
-            }
+            //using (var httpClient = new HttpClient())
+            //{
+                //using (var response = await httpClient.GetAsync(_baseURL + "/product-module/Product/FilterProducts"))
+                //{
+                    //string apiResponse = await response.Content.ReadAsStringAsync();
+                    //productList = JsonConvert.DeserializeObject<List<Product>>(apiResponse);
+                    //System.Console.WriteLine(productList);
+                //}
+            //}
             return View();
         }
 
@@ -53,24 +53,43 @@ namespace DOCTORLOAN.Controllers
             return View();
         }
 
-        //[HttpPost]
-        public async Task<IActionResult> ProductInsert()
+        public async Task<IActionResult> Product135()
         {
-            //    List<Reservation> reservationList = new List<Reservation>();
-            //    using (var httpClient = new HttpClient())
-            //    {
-            //        using (var response = await httpClient.GetAsync("http://ec2-18-142-136-184.ap-southeast-1.compute.amazonaws.com:7979/api/product-module/Product/InsertProduct"))
-            //        {
-            //            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            //            {
-            //                string apiRespone = await response.Content.ReadAsStringAsync();
-            //                reservationList = JsonConvert.DeserializeObject<List<Reservation>>(apiRespone);
-            //            }
-            //            else
-            //                ViewBag.StatusCode = response.StatusCode;F
-            //        }
-            //    }
-            await Task.CompletedTask;
+            return View();
+        }
+
+        public async Task<IActionResult> Product90D()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Product90M()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Product95V()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductN85()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductGC()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductGL()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductDT()
+        {
             return View();
         }
 
