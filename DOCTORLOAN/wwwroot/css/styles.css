@@ -12246,8 +12246,11 @@ main {
   margin-right: 0.75rem;
   position: relative;
 }
-#InfoProduct .info-product-right .ipr-item .product-color.yellow {
+#InfoProduct .info-product-right .ipr-item .product-color.brown {
   background-color: #A45031;
+}
+#InfoProduct .info-product-right .ipr-item .product-color.yellow {
+  background-color: #ffff00;
 }
 #InfoProduct .info-product-right .ipr-item .product-color.grape {
   background-color: #311432;

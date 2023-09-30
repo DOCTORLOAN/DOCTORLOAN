@@ -20,34 +20,34 @@ namespace DOCTORLOAN.Controllers
         //[HttpGet]
         public async Task<IActionResult> Index()
         {
-            List<Product> productList = new List<Product>();
-            using (var httpClient = new HttpClient())
-            {
+            //List<Product> productList = new List<Product>();
+            //using (var httpClient = new HttpClient())
+            //{
                
-                try
-                {
-                    httpClient.BaseAddress = new Uri("http://localhost:49553");
-                    httpClient.DefaultRequestHeaders.Accept.Clear();
-                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //    try
+            //    {
+            //        httpClient.BaseAddress = new Uri("http://localhost:49553");
+            //        httpClient.DefaultRequestHeaders.Accept.Clear();
+            //        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    //GET Method
-                    var response = await httpClient.GetAsync("/api/product-module/Product/GetOptions");
+            //        //GET Method
+            //        var response = await httpClient.GetAsync("/api/product-module/Product/GetOptions");
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var data = await response.Content.ReadAsStringAsync();
-                        // a thuwr cach readFormJson xem a                       
-                        Console.WriteLine(data);
-                        return View(data);
-                    }
+            //        if (response.IsSuccessStatusCode)
+            //        {
+            //            var data = await response.Content.ReadAsStringAsync();
+            //            // a thuwr cach readFormJson xem a                       
+            //            Console.WriteLine(data);
+            //            return View(data);
+            //        }
 
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"{ex},Internal server Error");
-                    return null;
-                }
-            }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine($"{ex},Internal server Error");
+            //        return null;
+            //    }
+            //}
             return View();
         }
 

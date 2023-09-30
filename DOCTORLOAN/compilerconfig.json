@@ -1,8 +1,10 @@
-[
+﻿[
   {
     "outputFile": "wwwroot/auth/auth.css",
-    "inputFile": "wwwroot/auth/auth.less",
-    "sourceMap": false,
-    "useNodeSass": false
+    "inputFile": "wwwroot/auth/auth.less"
+  },
+  {
+    "outputFile": "wwwroot/css/styles.css",
+    "inputFile": "wwwroot/css/styles.less"
   }
 ]
