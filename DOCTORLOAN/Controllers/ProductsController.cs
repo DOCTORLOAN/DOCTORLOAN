@@ -2,13 +2,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.ComponentModel;
+using System.Net.Http.Headers;
+using static System.Net.WebRequestMethods;
 
 namespace DOCTORLOAN.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private const string _baseURL = "http://ec2-18-142-136-184.ap-southeast-1.compute.amazonaws.com:7979/api";
+        private const string _baseURL = "http://localhost:49553/api";
 
         public ProductsController(IHttpClientFactory httpClientFactory)
         {
@@ -18,19 +20,73 @@ namespace DOCTORLOAN.Controllers
         //[HttpGet]
         public async Task<IActionResult> Index()
         {
-            //List<Product> productList = new List<Product>();
+            List<Product> productList = new List<Product>();
+            using (var httpClient = new HttpClient())
+            {
+               
+                try
+                {
+                    httpClient.BaseAddress = new Uri("http://localhost:49553");
+                    httpClient.DefaultRequestHeaders.Accept.Clear();
+                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            //using (var httpClient = new HttpClient())
-            //{
-                //using (var response = await httpClient.GetAsync(_baseURL + "/product-module/Product/FilterProducts"))
-                //{
-                    //string apiResponse = await response.Content.ReadAsStringAsync();
-                    //productList = JsonConvert.DeserializeObject<List<Product>>(apiResponse);
-                    //System.Console.WriteLine(productList);
-                //}
-            //}
+                    //GET Method
+                    var response = await httpClient.GetAsync("/api/product-module/Product/GetOptions");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var data = await response.Content.ReadAsStringAsync();
+                        // a thuwr cach readFormJson xem a                       
+                        Console.WriteLine(data);
+                        return View(data);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{ex},Internal server Error");
+                    return null;
+                }
+            }
             return View();
         }
+
+        ////[HttpGet]
+        //public async Task<IActionResult> Index()
+        //{
+        //    List<Product> productList = new List<Product>();
+
+        //    using (var httpClient = new HttpClient())
+        //    {
+        //        using (var response = await httpClient.GetAsync(_baseURL + "/product-module/Product/FilterProducts"))
+        //        {
+        //            //string apiResponse = await response.Content.ReadAsStringAsync();
+        //            //productList = JsonConvert.DeserializeObject<List<Product>>(apiResponse);
+        //            //Console.WriteLine(apiResponse);
+
+        //            string apiResponse = await response.Content.ReadAsStringAsync();
+
+        //            // Kiểm tra xem dữ liệu JSON có dạng đối tượng JSON không
+        //            if (apiResponse.StartsWith("{"))
+        //            {
+        //                // Đối tượng JSON được trả về, deserializing thành một đối tượng Product (hoặc ViewModel)
+        //                //Product product = JsonConvert.DeserializeObject<Product>(apiResponse);
+        //                productList = JsonConvert.DeserializeObject<List<Product>>(apiResponse);
+        //                //Console.WriteLine('product - ' + product);
+
+        //                // Thực hiện xử lý với đối tượng Product ở đây
+        //            }
+        //            else if (apiResponse.StartsWith("["))
+        //            {
+        //                // Mảng JSON được trả về, deserializing thành danh sách sản phẩm
+        //                productList = JsonConvert.DeserializeObject<List<Product>>(apiResponse);
+        //                Console.WriteLine(productList);
+        //                // Sử dụng danh sách sản phẩm ở đây
+        //            }
+        //        }
+        //    }
+        //    return View(productList);
+        //}
 
         //[HttpGet("{id}")]
         public async Task<IActionResult> ProductDetail(int id)
