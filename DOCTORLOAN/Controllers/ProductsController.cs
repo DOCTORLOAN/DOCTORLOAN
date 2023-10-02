@@ -134,12 +134,47 @@ namespace DOCTORLOAN.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ProductGC()
+        public async Task<IActionResult> ProductGCF4()
         {
             return View();
         }
 
-        public async Task<IActionResult> ProductGL()
+        public async Task<IActionResult> ProductGCF5()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductGCNL()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductGCNLL()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductGCDX()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductGCDL()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductGCDLKL()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductGLF3()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductGLF1()
         {
             return View();
         }

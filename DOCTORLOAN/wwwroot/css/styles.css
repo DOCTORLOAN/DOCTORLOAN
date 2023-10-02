@@ -799,6 +799,9 @@ footer #OwlCountry img {
   body {
     font-size: 0.875rem;
   }
+  .side-product {
+    display: none;
+  }
   .title-drloan {
     font-size: 1.375rem;
   }
