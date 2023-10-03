@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="view-more">
-                    <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
+                    <a class="btn btn-view-more btn-seemore" href="javascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
                 </div>
             </div>
             <div class="col-md-6 col-12">
@@ -98,6 +98,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="view-more-mb" class="view-more">
+                <a class="btn btn-view-more btn-seemore" href="javascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
             </div>
         </div>
     </div>
@@ -527,7 +530,13 @@
         $(document).on("click", ".btn-seemore", function () {
             var parentbtn = $(this).parents(".pd-button-overlay");
             parentbtn.hide();
-            $(".accordion-product").addClass("expand");
+
+            // if ($(".accordion-product").find($(".expand"))) {
+            //     $(".accordion-product").removeClass("expand");
+            //     parentbtn.show();
+            // } else {
+                $(".accordion-product").addClass("expand");
+            // }
         });
 
         var swiper = new Swiper(".productSwiperThumb", {
