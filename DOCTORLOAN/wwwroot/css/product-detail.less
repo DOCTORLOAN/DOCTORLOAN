@@ -1,4 +1,4 @@
-@import "variables";
+﻿@import "variables";
 
 #InfoProduct {
     background-color: @white;
@@ -15,7 +15,7 @@
 
         .swiper-button-prev, .swiper-button-next {
             width: var(--sp-nav-size);
-            height: var(--sp-nav-size);
+            height: var(--s p-nav-size);
             margin-top: 0;
             color: @main-orange;
             opacity: 0.1;
@@ -106,19 +106,20 @@
         padding-left: 20%;
 
         .ipr-name {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2.0rem;
             display: block;
             font-family: @font-helveticaneue-blod;
             text-transform: uppercase;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             line-height: 1.2;
         }
-
+        /*Sửa lại layout giá*/
         .ipr-price {
-            font-size: 2.25rem;
-            font-family: @font-helveticaneue-blod;
+            font-size: 1.75rem;
+            font-family: @font-helveticaneue-regular;
             line-height: 1.1;
             color: @main-orange;
+            padding-bottom: 1.5rem;
         }
 
         .ipr-old-price {
@@ -278,11 +279,15 @@
                 cursor: pointer;
             }
         }
-
+        /*tạo nền price*/
         .ipr-action {
             display: flex;
             align-items: center;
             margin-top: 1.75rem;
+            background-image: url(/img/Priceback/Background-1.PNG);
+            padding: 0.5rem;
+            padding-left: 2rem;
+            border-radius: 1rem;
 
             .btn {
                 padding: .5rem 1rem;
