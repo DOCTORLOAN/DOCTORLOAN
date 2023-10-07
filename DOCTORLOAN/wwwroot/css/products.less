@@ -7,11 +7,13 @@
     text-align: center;
     margin-bottom: 2rem;
 
+
     span {
         display: block;
         font-size: 1rem;
         color: @black;
         font-family: @font-helveticaneue-regular;
+
     }
 
     &.text-left {
@@ -33,6 +35,7 @@
         color: @main-orange;
         font-size: 1.5rem;
         line-height: 1.1;
+        padding-top: 12rem;
 
         span {
             display: block;
@@ -84,6 +87,10 @@
                 color: @main-orange;
                 text-transform: uppercase;
             }
+        }
+
+        .img-bangsangche {
+            max-width: 300px;
         }
     }
 
@@ -329,6 +336,8 @@
         margin-top: -50%;
         z-index: 1;
 
+
+
         img {
             position: relative;
             z-index: 1;
@@ -372,7 +381,7 @@
         font-size: 1rem;
         margin: 0;
         padding-left: 2rem;
-
+        text-align: center;
         strong {
             display: block;
             font-size: 2rem;
@@ -395,20 +404,26 @@
 
 .product-wrapper {
     .img-item {
-        background-color: @light-grey;
+        /*background-color: @light-grey;*/
         border-radius: 1rem;
-        padding: 1.5rem 2rem;
+        padding: 1rem;
     }
 
     .product-item {
         margin: 2rem 0;
+        background-color: #f0f2f5;
+        border-radius: 1rem;
+        box-shadow: 0rem 0.3rem;
+        color: #ff7500;
+
     }
 
     .content-item {
-        text-align: left;
+        text-align: center;
 
         h5 {
             margin: 1rem 0 .5rem;
+            text-align: center;
 
             span {
                 text-transform: initial;
@@ -432,13 +447,16 @@
             font-family: @font-helveticaneue-blod;
             margin-bottom: .5rem;
             text-transform: uppercase;
+            text-align: center;
         }
 
         .action-item {
-            display: flex;
+            /*display: flex;*/
             align-items: center;
             justify-content: space-between;
             padding: 0 1.25rem;
+            text-align: center;
+            padding-bottom: 1rem;
         }
 
         .icon-cart {
@@ -470,10 +488,14 @@
 #CartMethod {
     padding: 2rem 0;
 
+
     .list-method {
         display: flex;
         align-items: center;
         flex-direction: row;
+        background-color: #f0f2f5;
+        padding: 0.5rem 2rem 0.5rem 2rem;
+        border-radius: 1px;
 
         .method-item {
             width: 100px;
@@ -646,7 +668,7 @@
 
     .product-wrapper {
         .product-item {
-            margin: 1.5rem 0;
+            margin: 1.5rem 0; 
         }
 
         .content-item {
@@ -676,6 +698,7 @@
                 align-items: center;
                 justify-content: center;
                 font-size: .875rem;
+                text-align: center;
             }
         }
     }
