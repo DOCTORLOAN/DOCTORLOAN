@@ -1,4 +1,4 @@
-@import "variables";
+﻿@import "variables";
 
 #InfoProduct {
     background-color: @white;
@@ -7,6 +7,7 @@
     .img-product-detail {
         width: 85%;
         margin: 0 auto;
+        padding-top: 1rem;
     }
 
     .productSwiperMain {
@@ -15,7 +16,7 @@
 
         .swiper-button-prev, .swiper-button-next {
             width: var(--sp-nav-size);
-            height: var(--sp-nav-size);
+            height: var(--s p-nav-size);
             margin-top: 0;
             color: @main-orange;
             opacity: 0.1;
@@ -66,7 +67,7 @@
     }
 
     .view-more {
-        margin-top: 1rem;
+        margin-top: 1.5rem;
         text-align: center;
 
         .btn-view-more {
@@ -103,22 +104,30 @@
 
     .info-product-right {
         color: @main-blue;
-        padding-left: 20%;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        background-color: #f0f2f5;
+        border-radius: 1rem;
 
         .ipr-name {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: block;
             font-family: @font-helveticaneue-blod;
-            text-transform: uppercase;
-            font-size: 1.25rem;
+            /*text-transform: uppercase;*/
+            font-size: 2rem;
             line-height: 1.2;
         }
-
+        /*Sửa lại layout giá*/
         .ipr-price {
-            font-size: 2.25rem;
-            font-family: @font-helveticaneue-blod;
+            font-size: 1.75rem;
+            font-family: @font-helveticaneue-regular;
             line-height: 1.1;
             color: @main-orange;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #d8d8d8;
+
         }
 
         .ipr-old-price {
@@ -129,6 +138,7 @@
 
         .ipr-item {
             margin-bottom: 1.75rem;
+            margin-top: 1.75rem;
 
             label {
                 font-family: @font-helveticaneue-medium;
@@ -192,6 +202,10 @@
 
                 &.green {
                     background-color: #759A77;
+                }
+
+                &.plasticgreen {
+                    background-color: #00FF00;
                 }
 
                 &.active {
@@ -278,11 +292,15 @@
                 cursor: pointer;
             }
         }
-
+        /*tạo nền price*/
         .ipr-action {
             display: flex;
             align-items: center;
             margin-top: 1.75rem;
+            background-image: url(/img/Priceback/Background-1.PNG);
+            padding: 0.5rem;
+            padding-left: 2rem;
+            border-radius: 1rem;
 
             .btn {
                 padding: .5rem 1rem;
@@ -829,68 +847,115 @@
 
 @media only screen and (max-width:767.98px) {
     #InfoProduct {
-        padding: 1rem 0;
-
-        .productSwiperMain {
-            margin-bottom: 1rem;
-            --sp-nav-size: 35px;
-
-            .swiper-button-prev, .swiper-button-next {
-                width: var(--sp-nav-size);
-                height: var(--sp-nav-size);
-                top: 35%;
-
-                &:after {
-                    font-size: 1.75rem;
-                }
-            }
-        }
-
         .info-product-right {
-            padding-left: 0;
-            text-align: center;
-
-            .ipr-name {
-                margin-bottom: 1rem;
-                font-size: 1rem;
-            }
-
-            .ipr-price {
-                font-size: 1.375rem;
-            }
-
-            .ipr-old-price {
-                margin-bottom: 1rem;
-            }
-
-            .ipr-item {
-                margin-bottom: 1rem;
-
-                .ipr-color {
-                    justify-content: center;
-                }
-
-                .product-color {
-                    width: 1.5rem;
-                    height: 1.5rem;
-                    margin: 0 .375rem;
-                }
-
-                .input-wrapper {
-                    height: 2rem;
-                    margin: 0 auto;
-                }
-
-                input[type="number"] {
-                    padding: .375rem;
-                }
-            }
-
             .ipr-action {
                 margin-top: 1rem;
                 justify-content: center;
+                font-size: 1rem;
+            }
+
+            .ipr-policy {
+                margin-top: 1.3rem;
+                padding-top: 1.3rem;
+                border-top: 1px solid @light-gray;
+
+                .policy-item {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 1.3rem;
+
+                    &:last-child {
+                        margin: 0;
+                    }
+
+                    img {
+                        width: 0.5rem;
+                        margin-right: .5rem;
+                        filter: invert(17%) sepia(23%) saturate(6440%) hue-rotate(195deg) brightness(93%) contrast(99%);
+                    }
+
+                    span {
+                        display: block;
+                        width: calc(100% - 2.75rem);
+                        line-height: 1.2;
+                    }
+
+                    a {
+                        font-size: smaller;
+                        line-height: 1;
+                        color: @main-orange;
+                        font-family: @font-helveticaneue-medium;
+
+                        i {
+                            margin-right: .25rem;
+                        }
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
             }
         }
+    }
+      
+.info-product-right {
+    padding-left: 0.3rem;
+    ;
+    padding-right: 0.3rem;
+    padding-top: 0.3rem;
+    margin-top: 0.5rem;
+    text-align: center;
+
+    .ipr-name {
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .ipr-price {
+        font-size: 1.2rem;
+        padding-bottom: 0.3rem;
+    }
+
+    .ipr-old-price {
+        margin-bottom: 0.5rem;
+    }
+
+    .ipr-item {
+        margin-bottom: 0.5rem;
+
+        .ipr-color {
+            justify-content: center;
+            padding-top: 0.3rem;
+        }
+
+        .product-color {
+            width: 1.3rem;
+            height: 1.3rem;
+            margin: 0 .375rem;
+            padding-top: 0.3rem;
+        }
+
+        .input-wrapper {
+            height: 1rem;
+            margin: 0 auto;
+        }
+
+        .ipr-item-desc {
+            font-size: 1.3rem;
+        }
+
+        input[type="number"] {
+                    padding: .375rem;
+                }
+    }
+
+    .ipr-action {
+        margin-top: 1rem;
+        justify-content: center;
+    }
+}
 
         #view-more {
             display: none;
