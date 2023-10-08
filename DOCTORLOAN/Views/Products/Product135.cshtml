@@ -36,13 +36,13 @@
                     </div>
                 </div>
                 <div id="view-more" class="view-more">
-                    <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
+                    <button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>
                 </div>
             </div>
             <div class="col-md-6 col-12">
                 <div class="info-product-right">
                     <div class="ipr-name">Ghế nằm sáng chế 135</div>
-                    <div class="ipr-price">37.400.000 VNĐ</div>
+                    <div class="ipr-price">37400000</div>
                     @* <div class="ipr-old-price">39.000.000 VNĐ</div> *@
                     <div class="ipr-item">
                         @* <label>Mã giảm</label>
@@ -100,7 +100,7 @@
                 </div>
             </div>
             <div id="view-more-mb" class="view-more">
-                <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
+                <button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>
             </div>
         </div>
     </div>
@@ -333,7 +333,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="pd-button-overlay"><span class="button-overlay btn-seemore">Đọc thêm<span class="carret"></span></span></div>
+                    @* <div class="pd-button-overlay"><span class="button-overlay btn-seemore">Đọc thêm<span class="carret"></span></span></div> *@
                 </div>
             </div>
         </div>
@@ -538,10 +538,15 @@
             $("#nav-menu-container ul li").eq(4).addClass("menu-active");
         });
 
-        $(document).on("click", ".btn-seemore", function () {
-            var parentbtn = $(this).parents(".pd-button-overlay");
-            parentbtn.hide();
-            $(".accordion-product").addClass("expand");
+        $('.btn-seemore').click(function () {
+            // var parentbtn = $(this).parents(".pd-button-overlay");
+            // parentbtn.hide();
+            // if ($(".accordion-product").find('.expand')) {
+            //     $(".accordion-product").removeClass("expand");
+            // } else {
+                // $(".accordion-product").addClass("expand");
+            // }
+            console.log($(".accordion-product .expand"))
         });
 
         var swiper = new Swiper(".productSwiperThumb", {
@@ -593,6 +598,8 @@
                 }
             },
         });
+
+        $('.ipr-price').text(parseInt($('.ipr-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
 
         // const incrementButton = document.querySelector("#increment");
         // const decrementButton = document.querySelector("#decrement");

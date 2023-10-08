@@ -35,19 +35,19 @@
                         }
                     </div>
                 </div>
-                <div class="view-more">
-                    <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
+                <div id="view-more" class="view-more">
+                    <a class="btn btn-view-more btn-seemore" href="javascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
                 </div>
             </div>
             <div class="col-md-6 col-12">
                 <div class="info-product-right">
-                    <div class="ipr-name">Đệm Thiền DOCTORLOAN</div>
-                    <div class="ipr-price">6.800.000 VNĐ</div>
-                    @* <div class="ipr-old-price">39.000.000 VNĐ</div>
+                    <div class="ipr-name">Đệm thiền</div>
+                    <div class="ipr-price">6800000</div>
+                    @* <div class="ipr-old-price">39.000.000 VNĐ</div> *@
                     <div class="ipr-item">
-                        <label>Mã giảm</label>
-                        <div class="ipr-discount">Giảm 30%</div>
-                    </div> *@
+                        @* <label>Mã giảm</label>
+                        <div class="ipr-discount">Giảm 30%</div> *@
+                    </div>
                     <div class="ipr-item">
                         <label>Hàng có sẵn</label>
                         @* <span class="input-wrapper">
@@ -74,7 +74,7 @@
                         </div>
                         <div class="policy-item">
                             <img src="~/img/icon/p-box-iso.svg" />
-                            <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)"> @*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
+                            <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
                         </div>
                         <div class="policy-item">
                             <img src="~/img/icon/p-delivery-truck.svg" />
@@ -83,11 +83,15 @@
                                 Giao nhanh 4H nội thành HCM
                             </span>
                         </div>
+                        <div class="policy-item">
+                            <img src="~/img/icon/p-setting.svg" />
+                            <span><strong>Hướng dẫn lắp ráp</strong> <br /><a href="~/img/products/90D/HDSD-90D.pdf" target="_blank"><i class="fas fa-download"></i> Xem chi tiết</a></span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="view-more-mb" class="view-more">
-                <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
+                <a class="btn btn-view-more btn-seemore" href="javascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
             </div>
         </div>
     </div>
@@ -112,7 +116,7 @@
                                                 <p>Kiểu dáng</p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>Đệm ngồi</span>
+                                                <span>Ghế nằm</span>
                                             </div>
                                         </li>
                                         <li>
@@ -125,18 +129,26 @@
                                         </li>
                                         <li>
                                             <div class="ctLeft">
-                                                <p>Lõi đệm:</p>
+                                                <p>Điều chỉnh lưng ghế</p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>Có</span>
+                                                <span>Không</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="ctLeft">
-                                                <p>Chất liệu lõi đệm:</p>
+                                                <p>Điều chỉnh chân ghế</p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>PU Foam</span>
+                                                <span>Không</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Chất liệu thân ghế</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Sợi thủy tinh, Composite</span>
                                             </div>
                                         </li>
                                         <li>
@@ -147,28 +159,20 @@
                                                 <span>Da Simili</span>
                                             </div>
                                         </li>
-                                     @*    <li>
-                                            <div class="ctLeft">
-                                                <p>Chất liệu vỏ bọc</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Da Simili</span>
-                                            </div>
-                                        </li> *@
-                                       @*  <li>
+                                        <li>
                                             <div class="ctLeft">
                                                 <p>Chất liệu chân ghế</p>
                                             </div>
                                             <div class="ctRight">
                                                 <span>Inox 304</span>
                                             </div>
-                                        </li> *@
+                                        </li>
                                         <li>
                                             <div class="ctLeft">
                                                 <p>Năm ra mắt</p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>2020</span>
+                                                <span>2014</span>
                                             </div>
                                         </li>
                                     </ul>
@@ -179,7 +183,7 @@
                                     <ul class="ulist ">
                                         <li>
                                             <div class="ctLeft">
-                                                <p>Độ bền lõi đệm</p>
+                                                <p>Độ bền lưng ghế</p>
                                             </div>
                                             <div class="ctRight">
                                                 <span>Hơn 10 năm</span>
@@ -190,7 +194,7 @@
                                                 <p>Công nghệ sản xuất</p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>PU Foaming</span>
+                                                <span>Composite</span>
                                             </div>
                                         </li>
                                     </ul>
@@ -269,14 +273,14 @@
                                                 <span>- Kg</span>
                                             </div>
                                         </li>
-                                        @* <li>
+                                        <li>
                                             <div class="ctLeft">
                                                 <p>Hướng dẫn lắp ráp</p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>Pdf</span>
+                                                <span>-</span>
                                             </div>
-                                        </li> *@
+                                        </li>
                                         <li>
                                             <div class="ctLeft">
                                                 <p>Sản xuất tại</p>
@@ -293,18 +297,26 @@
                                     <ul class="ulist ">
                                         <li>
                                             <div class="ctLeft">
-                                                <p>Vỏ đệm:</p>
+                                                <p>Thân ghế:</p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>Không</span>
+                                                <span>Không có</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="ctLeft">
-                                                <p>Lõi đệm:</p>
+                                                <p>Lõi thân ghế:</p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>- năm</span>
+                                                <span>10 năm</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Chân ghế:</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>6 tháng</span>
                                             </div>
                                         </li>
                                     </ul>
@@ -358,49 +370,49 @@
                     </div>
                 </div>
                 @* <div class="swiper-slide">
-                <div class="product-item">
-                <div class="img-item">
-                <img src="~/img/products/product-png-4.png" />
-                </div>
-                <div class="content-item">
-                <h5><span>Ghế ngồi chờ 90</span> <strong>Màu xanh dương - Chân inox 304</strong></h5>
-                <div class="price-item">9.100.000 vnđ</div>
-                </div>
-                </div>
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-4.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi chờ 90</span> <strong>Màu xanh dương - Chân inox 304</strong></h5>
+                            <div class="price-item">9.100.000 vnđ</div>
+                        </div>
+                    </div>
                 </div> *@
-                <div class="swiper-slide">
+                @* <div class="swiper-slide">
                     <div class="product-item">
                         <div class="img-item">
-                            <img src="~/img/products/product-png-5.png" />
+                            <img src="~/img/products/DT/img-pd-yellow-1.png" />
                         </div>
                         <div class="content-item">
-                            <h5><span>Ghế ngồi N85</span> <strong>Màu vàng - Chân nhựa (ngắn)</strong></h5>
-                            <div class="price-item">1.320.000 vnđ</div>
+                            <h5><span>Đệm thiền</span> <strong>Màu vàng</strong></h5>
+                            <div class="price-item">6.800.000 vnđ</div>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="product-item">
                         <div class="img-item">
-                            <img src="~/img/products/product-png-6.png" />
+                            <img src="~/img/products/GC/img-pd-gc-f4-4.png" />
                         </div>
                         <div class="content-item">
-                            <h5><span>Ghế ngồi N85</span> <strong>Màu xanh dương - Chân nhựa (ngắn)</strong></h5>
-                            <div class="price-item">1.320.000 vnđ</div>
+                            <h5><span>Gối cổ F4</span> <strong>DOCTORLOAN</strong></h5>
+                            <div class="price-item">5.300.000 vnđ</div>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="product-item">
                         <div class="img-item">
-                            <img src="~/img/products/product-png-7.png" />
+                            <img src="~/img/products/GL/img-pd-gl-f3-3.png" />
                         </div>
                         <div class="content-item">
-                            <h5><span>Ghế ngồi N85</span> <strong>Màu xanh lá - Chân nhựa (ngắn)</strong></h5>
+                            <h5><span>Gối lưng F3</span> <strong>DOCTORLOAN</strong></h5>
                             <div class="price-item">1.320.000 vnđ</div>
                         </div>
                     </div>
-                </div>
+                </div> *@
                 <div class="swiper-slide">
                     <div class="product-item">
                         <div class="img-item">
@@ -573,6 +585,8 @@
             },
         });
 
+        $('.ipr-price').text(parseInt($('.ipr-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+
         // const incrementButton = document.querySelector("#increment");
         // const decrementButton = document.querySelector("#decrement");
         // const quantityInput = document.querySelector("#quantity");
@@ -583,5 +597,6 @@
         // decrementButton.addEventListener("click", () => {
         //     quantityInput.value = parseInt(quantityInput.value) - 1;
         // });
+
     </script>
 }
