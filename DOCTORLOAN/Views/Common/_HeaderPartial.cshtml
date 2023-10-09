@@ -85,9 +85,12 @@
                 @* <li class="only-mb"><a asp-controller="Auth" asp-action="Register">Đăng ký</a></li> *@
             </ul>
         </nav>
-
-        <img class="slogan-mobile" src="~/img/logo/slogan-mobile.svg" />
-
+        <a asp-controller="Home" asp-action="Index" class="scrollto">
+            <picture>
+                <source media="(max-width:991px)" srcset="~/img/logo/slogan-mobile.svg">
+                <img class="slogan-mobile" src="~/img/logo/slogan-mobile.svg" />
+            </picture>
+        </a>
         <div class="header-info">
             <div class="auth-frm">
                @*  <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a> *@
