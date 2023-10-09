@@ -68,13 +68,13 @@
 
     .view-more {
         margin-top: 1.5rem;
-        text-align: center;
+        /*text-align: center;*/
 
         .btn-view-more {
             border: 1px solid @main-blue;
             color: @main-blue;
             background-color: @white;
-            padding: .5rem 2rem;
+            /*padding: .5rem 2rem;*/
             min-width: 175px;
             font-family: @font-helveticaneue-medium;
 
@@ -861,15 +861,15 @@
 
                 .policy-item {
                     display: flex;
-                    align-items: center;
+                    /*align-items: center;*/
                     margin-bottom: 1.3rem;
 
                     &:last-child {
                         margin: 0;
                     }
-
+                        
                     img {
-                        width: 0.5rem;
+                        width: 1.5rem;
                         margin-right: .5rem;
                         filter: invert(17%) sepia(23%) saturate(6440%) hue-rotate(195deg) brightness(93%) contrast(99%);
                     }
@@ -901,7 +901,6 @@
       
 .info-product-right {
     padding-left: 0.3rem;
-    ;
     padding-right: 0.3rem;
     padding-top: 0.3rem;
     margin-top: 0.5rem;
@@ -958,7 +957,8 @@
 }
 
         #view-more {
-            display: none;
+            display: block;
+            text-align: center;
         }
 
         #view-more-mb {
@@ -1040,4 +1040,3 @@
     #RelatedProducts {
         padding: 2rem 0;
     }
-}
