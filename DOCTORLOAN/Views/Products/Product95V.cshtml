@@ -42,7 +42,7 @@
             <div class="col-md-6 col-12">
                 <div class="info-product-right">
                     <div class="ipr-name">Ghế ngồi DOCTORLOAN 95 VIP</div>
-                    <div class="ipr-price">27.300.000 VNĐ</div>
+                    <div class="ipr-price" id="ipr-price">27300000</div>
                     @* <div class="ipr-old-price">39.000.000 VNĐ</div> *@
                     <div class="ipr-item">
                         @* <label>Mã giảm</label>
@@ -132,7 +132,7 @@
                                                 <p>Kiểu dáng</p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>Ghế nằm</span>
+                                                <span>Ghế ngồi</span>
                                             </div>
                                         </li>
                                         <li>
@@ -348,7 +348,8 @@
 </section>
 <section id="ProductBestSeller" class="product-wrapper">
     <div class="container">
-        <div class="title-product-info">Sản phẩm DOCTORLOAN <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
+        <div class="title-product-info">
+            <h4>Sản phẩm DOCTORLOAN</h4> <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
         <div class="row justify-content-center">
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
@@ -689,7 +690,7 @@
             },
         });
 
-        $('.ipr-price').text(parseInt($('.ipr-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+        $('#ipr-price').text(parseInt($('#ipr-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
 
         // const incrementButton = document.querySelector("#increment");
         // const decrementButton = document.querySelector("#decrement");

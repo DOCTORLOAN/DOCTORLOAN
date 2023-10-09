@@ -348,7 +348,8 @@
 </section>
 <section id="ProductBestSeller" class="product-wrapper">
     <div class="container">
-        <div class="title-product-info">Sản phẩm DOCTORLOAN <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
+        <div class="title-product-info">
+            <h4>Sản phẩm DOCTORLOAN</h4> <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
         <div class="row justify-content-center">
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
@@ -633,15 +634,10 @@
             $("#nav-menu-container ul li").eq(4).addClass("menu-active");
         });
 
-        $('.btn-seemore').click(function () {
-            // var parentbtn = $(this).parents(".pd-button-overlay");
-            // parentbtn.hide();
-            // if ($(".accordion-product").find('.expand')) {
-            //     $(".accordion-product").removeClass("expand");
-            // } else {
-                // $(".accordion-product").addClass("expand");
-            // }
-            console.log($(".accordion-product .expand"))
+        $(document).on("click", ".btn-seemore", function () {
+            var parentbtn = $(this).parents(".pd-button-overlay");
+            parentbtn.hide();
+            $(".accordion-product").addClass("expand");
         });
 
         var swiper = new Swiper(".productSwiperThumb", {
