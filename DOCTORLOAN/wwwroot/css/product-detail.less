@@ -2,7 +2,8 @@
 
 #InfoProduct {
     background-color: @white;
-    padding: 2.5rem 0;
+    /*padding: 2.5rem 0;*/
+    padding-top: 2.5rem;
 
     .img-product-detail {
         width: 85%;
@@ -68,11 +69,12 @@
 
     .view-more {
         margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
         /*text-align: center;*/
 
         .btn-view-more {
             border: 1px solid @main-blue;
-            color: @main-blue;
+            color: #ff7500;
             background-color: @white;
             /*padding: .5rem 2rem;*/
             min-width: 175px;
@@ -136,8 +138,13 @@
         }
 
         .ipr-item {
-            margin-bottom: 1.75rem;
-            margin-top: 1.75rem;
+            /*margin-bottom: 1.75rem;
+            margin-top: 1.75rem;*/
+
+            .ipr-optioncheck {
+                max-width: 100px;
+                border: 1px solid;
+            }
 
             label {
                 font-family: @font-helveticaneue-medium;
@@ -464,7 +471,7 @@
             .ctLeft {
                 font-family: @font-helveticaneue-blod;
                 line-height: 21px;
-                width: 30%;
+                width: 60%;
             }
 
             .ctRight {
@@ -484,7 +491,7 @@
             text-transform: uppercase;
             font-family: @font-helveticaneue-blod;
             padding: .75rem .625rem;
-            font-size: large;
+            /*font-size: large;*/
         }
     }
 }
@@ -846,6 +853,14 @@
 
 @media only screen and (max-width:767.98px) {
     #InfoProduct {
+
+        .ipr-item {
+            .ipr-optioncheck {
+                max-width: 100px;
+                border: 1pc;
+            }
+        }
+
         .info-product-right {
             .ipr-action {
                 margin-top: 1rem;
@@ -903,7 +918,7 @@
         padding-right: 0.3rem;
         padding-top: 0.3rem;
         margin-top: 0.5rem;
-        text-align: center;
+        /*text-align: center;*/
 
         .ipr-name {
             margin-bottom: 0.5rem;
@@ -914,6 +929,7 @@
         .ipr-price {
             font-size: 1.2rem;
             padding-bottom: 0.3rem;
+            text-align: center;
         }
 
         .ipr-old-price {
@@ -924,7 +940,7 @@
             margin-bottom: 0.5rem;
 
             .ipr-color {
-                justify-content: center;
+                /*justify-content: center;*/
                 padding-top: 0.3rem;
             }
 
