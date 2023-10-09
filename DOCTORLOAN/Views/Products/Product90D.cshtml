@@ -35,19 +35,16 @@
                         }
                     </div>
                 </div>
-                @* <div class="view-more">
-                    <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
-                </div> *@
             </div>
             <div class="col-md-6 col-12">
                 <div class="info-product-right">
-                    <div class="ipr-name">Ghế ngồi DOCTORLOAN 90 Dày</div>
-                    <div class="ipr-price">24.300.000 VNĐ</div>
-                    @* <div class="ipr-old-price">39.000.000 VNĐ</div>
+                    <div class="ipr-name">Ghế ngồi 90 dày</div>
+                    <div class="ipr-price">24300000</div>
+                    @* <div class="ipr-old-price">39.000.000 VNĐ</div> *@
                     <div class="ipr-item">
-                        <label>Mã giảm</label>
-                        <div class="ipr-discount">Giảm 30%</div>
-                    </div> *@
+                        @* <label>Mã giảm</label>
+                        <div class="ipr-discount">Giảm 30%</div> *@
+                    </div>
                     <div class="ipr-item">
                         <label>Màu sắc</label>
                         <div class="ipr-color">
@@ -85,7 +82,7 @@
                         </div>
                         <div class="policy-item">
                             <img src="~/img/icon/p-box-iso.svg" />
-                            <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@* <i class="fas fa-download"></i> Xem chi tiết*@ </a></span>
+                            <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
                         </div>
                         <div class="policy-item">
                             <img src="~/img/icon/p-delivery-truck.svg" />
@@ -96,7 +93,7 @@
                         </div>
                         <div class="policy-item">
                             <img src="~/img/icon/p-setting.svg" />
-                            <span><strong>Hướng dẫn lắp ráp</strong> <br /> <a href="~/img/products/90D/HDSD-90D.pdf" target="_blank"><i class="fas fa-download"></i> Xem chi tiết</a></span>
+                            <span><strong>Hướng dẫn lắp ráp</strong> <br /><a href="~/img/products/90D/HDSD-90D.pdf" target="_blank"><i class="fas fa-download"></i> Xem chi tiết</a></span>
                         </div>
                     </div>
                 </div>
@@ -143,7 +140,7 @@
                                                 <p>Điều chỉnh lưng ghế</p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>Có, điều chỉnh độ cao, xoay 360 độ</span>
+                                                <span>Không</span>
                                             </div>
                                         </li>
                                         <li>
@@ -268,20 +265,20 @@
                                 <div class="parameter-item">
                                     <p class="parameter-ttl">THÔNG TIN LẮP ĐẶT</p>
                                     <ul class="ulist ">
-                                        <li>
+                                        @* <li>
                                             <div class="ctLeft">
                                                 <p>Kích thước</p>
                                             </div>
                                             <div class="ctRight">
                                                 <span>105.2 x 48.4 x 64.8</span>
                                             </div>
-                                        </li>
+                                        </li> *@
                                         <li>
                                             <div class="ctLeft">
                                                 <p>Khối lượng </p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>13 Kg</span>
+                                                <span>- Kg</span>
                                             </div>
                                         </li>
                                         <li>
@@ -289,7 +286,7 @@
                                                 <p>Hướng dẫn lắp ráp</p>
                                             </div>
                                             <div class="ctRight">
-                                                <span>Pdf</span>
+                                                <span>-</span>
                                             </div>
                                         </li>
                                         <li>
@@ -343,7 +340,8 @@
 </section>
 <section id="ProductBestSeller" class="product-wrapper">
     <div class="container">
-        <div class="title-product-info">Sản phẩm DOCTORLOAN <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
+        <div class="title-product-info">
+            <h4>Sản phẩm DOCTORLOAN</h4> <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
         <div class="row justify-content-center">
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
@@ -430,11 +428,22 @@
         </div>
     </div>
 </section>
-@* <section id="RelatedProducts" class="product-wrapper">
+<section id="RelatedProducts" class="product-wrapper">
     <div class="container">
         <div class="sub-title-product">Có thể bạn cũng thích</div>
         <div class="swiper relatedProductSwiper">
             <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-2.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi 90 dày</span> <strong>Màu nâu - Chân inox 304</strong></h5>
+                            <div class="price-item">24.300.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="swiper-slide">
                     <div class="product-item">
                         <div class="img-item">
@@ -458,49 +467,49 @@
                     </div>
                 </div>
                 <div class="swiper-slide">
-                <div class="product-item">
-                <div class="img-item">
-                <img src="~/img/products/product-png-4.png" />
-                </div>
-                <div class="content-item">
-                <h5><span>Ghế ngồi chờ 90</span> <strong>Màu xanh dương - Chân inox 304</strong></h5>
-                <div class="price-item">9.100.000 vnđ</div>
-                </div>
-                </div>
-                </div>
-                <div class="swiper-slide">
                     <div class="product-item">
                         <div class="img-item">
-                            <img src="~/img/products/product-png-5.png" />
+                            <img src="~/img/products/product-png-4.png" />
                         </div>
                         <div class="content-item">
-                            <h5><span>Ghế ngồi N85</span> <strong>Màu vàng - Chân nhựa (ngắn)</strong></h5>
-                            <div class="price-item">1.320.000 vnđ</div>
+                            <h5><span>Ghế ngồi chờ 90</span> <strong>Màu xanh dương - Chân inox 304</strong></h5>
+                            <div class="price-item">9.100.000 vnđ</div>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="product-item">
                         <div class="img-item">
-                            <img src="~/img/products/product-png-6.png" />
+                            <img src="~/img/products/DT/img-pd-yellow-1.png" />
                         </div>
                         <div class="content-item">
-                            <h5><span>Ghế ngồi N85</span> <strong>Màu xanh dương - Chân nhựa (ngắn)</strong></h5>
-                            <div class="price-item">1.320.000 vnđ</div>
+                            <h5><span>Đệm thiền</span> <strong>Màu vàng</strong></h5>
+                            <div class="price-item">6.800.000 vnđ</div>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="product-item">
                         <div class="img-item">
-                            <img src="~/img/products/product-png-7.png" />
+                            <img src="~/img/products/GC/img-pd-gc-f4-4.png" />
                         </div>
                         <div class="content-item">
-                            <h5><span>Ghế ngồi N85</span> <strong>Màu xanh lá - Chân nhựa (ngắn)</strong></h5>
-                            <div class="price-item">1.320.000 vnđ</div>
+                            <h5><span>Gối cổ F4</span> <strong>DOCTORLOAN</strong></h5>
+                            <div class="price-item">5.300.000 vnđ</div>
                         </div>
                     </div>
                 </div>
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/GL/img-pd-gl-f3-3.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Gối lưng F3</span> <strong>DOCTORLOAN</strong></h5>
+                            <div class="price-item">1.320.000 vnđ</div>
+                        </div>
+                    </div>
+                </div> 
                 <div class="swiper-slide">
                     <div class="product-item">
                         <div class="img-item">
@@ -540,7 +549,7 @@
         </div>
 
     </div>
-</section> *@
+</section>
 
 @* <section id="ProductFeedback">
     <div class="container">
@@ -672,6 +681,8 @@
                 }
             },
         });
+
+        $('.ipr-price').text(parseInt($('.ipr-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
 
         // const incrementButton = document.querySelector("#increment");
         // const decrementButton = document.querySelector("#decrement");

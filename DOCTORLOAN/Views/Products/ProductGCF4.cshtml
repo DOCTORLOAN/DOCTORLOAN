@@ -35,28 +35,16 @@
                         }
                     </div>
                 </div>
-              @*   <div class="view-more">
-                    <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
-                </div> *@
             </div>
             <div class="col-md-6 col-12">
                 <div class="info-product-right">
                     <div class="ipr-name">Gối Cổ điều trị F4</div>
-                    <div class="ipr-price">5.300.000 VNĐ</div>
-                    @* <div class="ipr-old-price">39.000.000 VNĐ</div>
+                    <div class="ipr-price" id="ipr-price">5300000</div>
+                    @* <div class="ipr-old-price">39.000.000 VNĐ</div>*@
                     <div class="ipr-item">
-                        <label>Mã giảm</label>
-                        <div class="ipr-discount">Giảm 30%</div>
-                    </div> *@
-                    <div class="ipr-item">
-                       @*  <label>Màu sắc</label>
-                        <div class="ipr-color">
-                            <a href="javascript:void(0)" class="product-color yellow active" data-color="yellow" title="Màu nâu"></a>
-                            <a href="javascript:void(0)" class="product-color grape" data-color="grape" title="Màu nho"></a>
-                            <a href="javascript:void(0)" class="product-color black" data-color="black" title="Màu đen"></a>
-                            <a href="javascript:void(0)" class="product-color green" data-color="green" title="Màu xanh"></a>
-                        </div> *@
-                    </div>
+                        @* <label>Mã giảm</label>
+                        <div class="ipr-discount">Giảm 30%</div> 
+                    </div>*@
                     <div class="ipr-item">
                         <label>Màu sắc</label>
                         <div class="ipr-color">
@@ -73,38 +61,38 @@
                         <button id="increment"><i class="fas fa-plus"></i></button>
                         </span> *@
                     </div>
-                    <div class="ipr-action">
-                        @* <a href="javascript:void(0)" class="btn btn-outline-dtl">Mua ngay</a>
-                        <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
-                        <div class="action-item custom-action-item action-company action-call">
-                            <strong style="font-size: 1.3rem;color: white">Gọi ngay để đặt hàng</strong> <br />
-                            <a href="tel:0899136868">
-                                <img src="~/img/icon/phone-icon.png" style="width: 7%;" />
-                                <strong style="font-size: 1.3rem;color: white">08 9913 6868</strong>
-                            </a>
-                        </div>
+                <div class="ipr-action">
+                    @* <a href="javascript:void(0)" class="btn btn-outline-dtl">Mua ngay</a>
+                    <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
+                    <div class="action-item custom-action-item action-company action-call">
+                        <strong style="font-size: 1.3rem;color: white">Gọi ngay để đặt hàng</strong> <br />
+                        <a href="tel:0899136868">
+                            <img src="~/img/icon/phone-icon.png" style="width: 7%;" />
+                            <strong style="font-size: 1.3rem;color: white">08 9913 6868</strong>
+                        </a>
                     </div>
-                    <div class="ipr-policy">
-                        <div class="policy-item">
-                            <img src="~/img/icon/p-shield.svg" />
-                            <span>Cam kết <strong>hàng mới 100%</strong></span>
-                        </div>
-                        <div class="policy-item">
-                            <img src="~/img/icon/p-box-iso.svg" />
-                            <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
-                        </div>
-                        <div class="policy-item">
-                            <img src="~/img/icon/p-delivery-truck.svg" />
-                            <span>
-                                Free ship toàn quốc <br />
-                                Giao nhanh 4H nội thành HCM
-                            </span>
-                        </div>
+                </div>
+                <div class="ipr-policy">
+                    <div class="policy-item">
+                        <img src="~/img/icon/p-shield.svg" />
+                        <span>Cam kết <strong>hàng mới 100%</strong></span>
                     </div>
+                    <div class="policy-item">
+                        <img src="~/img/icon/p-box-iso.svg" />
+                        <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@* <i class="fas fa-download"></i> Xem chi tiết *@ </a></span>
+                    </div>
+                    <div class="policy-item">
+                        <img src="~/img/icon/p-delivery-truck.svg" />
+                        <span>
+                            Free ship toàn quốc <br />
+                            Giao nhanh 4H nội thành HCM
+                        </span>
+                    </div>
+                </div>
                 </div>
             </div>
             <div id="view-more" class="view-more">
-                <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
+                <a class="btn btn-view-more btn-seemore" href="javascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
             </div>
         </div>
     </div>
@@ -300,14 +288,6 @@
                                                 <span>- năm</span>
                                             </div>
                                         </li>
-                                        @* <li>
-                                            <div class="ctLeft">
-                                                <p>Chân ghế:</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>6 tháng</span>
-                                            </div>
-                                        </li> *@
                                     </ul>
                                 </div>
                             </div>
@@ -321,7 +301,10 @@
 </section>
 <section id="ProductBestSeller" class="product-wrapper">
     <div class="container">
-        <div class="title-product-info">Sản phẩm DOCTORLOAN <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
+        <div class="title-product-info">
+            <h4>Sản phẩm DOCTORLOAN</h4>
+            <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span>
+        </div>
         <div class="row justify-content-center">
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
@@ -739,6 +722,8 @@
                 }
             },
         });
+
+        $('#ipr-price').text(parseInt($('#ipr-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
 
         // const incrementButton = document.querySelector("#increment");
         // const decrementButton = document.querySelector("#decrement");

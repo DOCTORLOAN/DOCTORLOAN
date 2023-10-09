@@ -42,7 +42,7 @@
             <div class="col-md-6 col-12">
                 <div class="info-product-right">
                     <div class="ipr-name">Ghế ngồi DOCTORLOAN N85</div>
-                    <div class="ipr-price" id="ipr-price-n85">1.320.000 VNĐ</div>
+                    <div class="ipr-price" id="ipr-price-n85">1320000</div>
                   @*   <div class="ipr-old-price">39.000.000 VNĐ</div>
                     <div class="ipr-item">
                         <label>Mã giảm</label>
@@ -361,7 +361,8 @@
 </section>
 <section id="ProductBestSeller" class="product-wrapper">
     <div class="container">
-        <div class="title-product-info">Sản phẩm DOCTORLOAN <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
+        <div class="title-product-info">
+            <h4>Sản phẩm DOCTORLOAN</h4> <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
         <div class="row justify-content-center">
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
@@ -702,6 +703,11 @@
             },
         });
 
+        var iprPrice = $('#ipr-price-n85');
+
+        iprPrice.text(parseInt(iprPrice.text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+        // $('#ipr-price-n85').text(formatNumberWithVND($('#ipr-price-n85').text()));
+
         // const incrementButton = document.querySelector("#increment");
         // const decrementButton = document.querySelector("#decrement");
         // const quantityInput = document.querySelector("#quantity");
@@ -715,9 +721,9 @@
 
         $('.option-n85').click(function () {
             if ($('#n85-L').is(':checked')) {
-                $('#ipr-price-n85').html("1.430.000 VNĐ");
+                iprPrice.text(parseInt('1430000').toLocaleString('vi', { style: 'currency', currency: 'VND' }));
             } else {
-                $('#ipr-price-n85').html("1.320.000 VNĐ");
+                iprPrice.text(parseInt('1320000').toLocaleString('vi', { style: 'currency', currency: 'VND' }));
             }
         });
 

@@ -3,7 +3,7 @@
 }
 
 @{
-    var countNum = 3;
+    var countNum = 5;
 }
 <input type="hidden" id="txtCountNumber" value="@countNum" />
 
@@ -35,14 +35,11 @@
                         }
                     </div>
                 </div>
-               @*  <div class="view-more">
-                    <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
-                </div> *@
             </div>
             <div class="col-md-6 col-12">
                 <div class="info-product-right">
                     <div class="ipr-name">Gối cổ đi xe</div>
-                    <div class="ipr-price" id="ipr-price-gcnl">600.000 VNĐ</div>
+                    <div class="ipr-price" id="ipr-price-gcdx">600000</div>
                   @*   <div class="ipr-old-price">39.000.000 VNĐ</div>
                     <div class="ipr-item">
                         <label>Mã giảm</label>
@@ -76,7 +73,7 @@
                         </div>
                         <div class="policy-item">
                             <img src="~/img/icon/p-box-iso.svg" />
-                            <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)"/>@* <i class="fas fa-download"></i> Xem chi tiết</a> *@</span>
+                            <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
                         </div>
                         <div class="policy-item">
                             <img src="~/img/icon/p-delivery-truck.svg" />
@@ -89,7 +86,7 @@
                 </div>
             </div>
             <div id="view-more" class="view-more">
-                <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
+                <a class="btn btn-view-more btn-seemore" href="javascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
             </div>
         </div>
     </div>
@@ -306,7 +303,10 @@
 </section>
 <section id="ProductBestSeller" class="product-wrapper">
     <div class="container">
-        <div class="title-product-info">Sản phẩm DOCTORLOAN <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
+        <div class="title-product-info">
+            <h4>Sản phẩm DOCTORLOAN</h4>
+            <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span>
+        </div>
         <div class="row justify-content-center">
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
@@ -725,6 +725,8 @@
             },
         });
 
+        $('#ipr-price-gcdx').text(parseInt($('#ipr-price-gcdx').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+
         // const incrementButton = document.querySelector("#increment");
         // const decrementButton = document.querySelector("#decrement");
         // const quantityInput = document.querySelector("#quantity");
@@ -735,17 +737,5 @@
         // decrementButton.addEventListener("click", () => {
         //     quantityInput.value = parseInt(quantityInput.value) - 1;
         // });
-
-        $(document).on('click', '.product-color', function () {
-            var getcolor = $(this).attr("data-color");
-            var getNumber = parseInt($("#txtCountNumber").val());
-            for (var itemn = 1; itemn <= getNumber; itemn++) {
-                $("#imgMainPosition" + itemn).attr('src', '/img/products/N85/img-pd-' + getcolor + "-" + itemn + '.png');
-                $("#imgThumbPosition" + itemn).attr('src', '/img/products/N85/img-pdt-' + getcolor + "-" + itemn + '.png');
-            }
-            $(".product-color").removeClass("active");
-            $(this).addClass("active");
-        });
-
     </script>
 }

@@ -35,15 +35,11 @@
                         }
                     </div>
                 </div>
-                @* <div id="view-more" class="view-more">
-                    <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
-                </div> *@
             </div>
-
             <div class="col-md-6 col-12">
                 <div class="info-product-right">
-                    <div class="ipr-name">Ghế nằm DOCTORLOAN 135</div>
-                    <div class="ipr-price">37.400.000 VNĐ</div>
+                    <div class="ipr-name">Ghế nằm sáng chế 135</div>
+                    <div class="ipr-price">37400000</div>
                     @* <div class="ipr-old-price">39.000.000 VNĐ</div> *@
                     <div class="ipr-item">
                         @* <label>Mã giảm</label>
@@ -103,10 +99,9 @@
                 </div>
             </div>
             <div id="view-more" class="view-more">
-                <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
+                <button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>
             </div>
         </div>
-
     </div>
 </section>
 
@@ -345,7 +340,10 @@
 </section>
 <section id="ProductBestSeller" class="product-wrapper">
     <div class="container">
-        <div class="title-product-info">Sản phẩm DOCTORLOAN <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
+        <div class="title-product-info">
+            <h4>Sản phẩm DOCTORLOAN</h4>
+            <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span>
+        </div>
         <div class="row justify-content-center">
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
@@ -685,6 +683,8 @@
                 }
             },
         });
+
+        $('.ipr-price').text(parseInt($('.ipr-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
 
         // const incrementButton = document.querySelector("#increment");
         // const decrementButton = document.querySelector("#decrement");

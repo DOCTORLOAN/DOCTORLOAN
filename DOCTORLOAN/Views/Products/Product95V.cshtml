@@ -35,18 +35,15 @@
                         }
                     </div>
                 </div>
-                @* <div class="view-more">
-                    <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
-                </div> *@
             </div>
             <div class="col-md-6 col-12">
                 <div class="info-product-right">
                     <div class="ipr-name">Ghế ngồi DOCTORLOAN 95 VIP</div>
-                    <div class="ipr-price">27.300.000 VNĐ</div>
+                    <div class="ipr-price" id="ipr-price">27300000</div>
                     @* <div class="ipr-old-price">39.000.000 VNĐ</div> *@
                     <div class="ipr-item">
-                        @* <label>Mã giảm</label> *@
-                        @* <div class="ipr-discount">Giảm 30%</div> *@
+                        @* <label>Mã giảm</label>
+                        <div class="ipr-discount">Giảm 30%</div> *@
                     </div>
                     <div class="ipr-item">
                         <label>Màu sắc</label>
@@ -62,9 +59,9 @@
                             Dùng để ngồi làm việc, học tập, sinh hoạt hàng ngày. Đồng thời có tác dụng ĐIỀU CHỈNH XƯƠNG CHẬU, XƯƠNG CÙNG, XƯƠNG SỐNG VỀ HÌNH DẠNG BÌNH THƯỜNG
                         </div>
                         @* <span class="input-wrapper">
-                            <button id="decrement"><i class="fas fa-minus"></i></button>
-                            <input class="form-control" type="number" value="1" min="0" max="100" id="quantity" />
-                            <button id="increment"><i class="fas fa-plus"></i></button>
+                        <button id="decrement"><i class="fas fa-minus"></i></button>
+                        <input class="form-control" type="number" value="1" min="0" max="100" id="quantity" />
+                        <button id="increment"><i class="fas fa-plus"></i></button>
                         </span> *@
                     </div>
                     <div class="ipr-action">
@@ -85,7 +82,7 @@
                         </div>
                         <div class="policy-item">
                             <img src="~/img/icon/p-box-iso.svg" />
-                            <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@* <i class="fas fa-download"></i> Xem chi tiết *@ </a></span>
+                            <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
                         </div>
                         <div class="policy-item">
                             <img src="~/img/icon/p-delivery-truck.svg" />
@@ -96,13 +93,13 @@
                         </div>
                         <div class="policy-item">
                             <img src="~/img/icon/p-setting.svg" />
-                            <span><strong>Hướng dẫn lắp ráp</strong> <br /> <a href="~/img/products/95V/HDSD-90V.pdf" target="_blank"><i class="fas fa-download"></i> Xem chi tiết</a></span>
+                            <span><strong>Hướng dẫn lắp ráp</strong> <br /><a href="~/img/products/90D/HDSD-90D.pdf" target="_blank"><i class="fas fa-download"></i> Xem chi tiết</a></span>
                         </div>
                     </div>
                 </div>
             </div>
             <div id="view-more" class="view-more">
-                <a class="btn btn-view-more btn-seemore" href="jkavascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
+                <a class="btn btn-view-more btn-seemore" href="javascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
             </div>
         </div>
     </div>
@@ -343,7 +340,10 @@
 </section>
 <section id="ProductBestSeller" class="product-wrapper">
     <div class="container">
-        <div class="title-product-info">Sản phẩm DOCTORLOAN <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
+        <div class="title-product-info">
+            <h4>Sản phẩm DOCTORLOAN</h4>
+            <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span>
+        </div>
         <div class="row justify-content-center">
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
@@ -469,15 +469,15 @@
                     </div>
                 </div> *@
                 @* <div class="swiper-slide">
-                <div class="product-item">
-                <div class="img-item">
-                <img src="~/img/products/product-png-4.png" />
-                </div>
-                <div class="content-item">
-                <h5><span>Ghế ngồi chờ 90</span> <strong>Màu xanh dương - Chân inox 304</strong></h5>
-                <div class="price-item">9.100.000 vnđ</div>
-                </div>
-                </div>
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-4.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi chờ 90</span> <strong>Màu xanh dương - Chân inox 304</strong></h5>
+                            <div class="price-item">9.100.000 vnđ</div>
+                        </div>
+                    </div>
                 </div> *@
                @*  <div class="swiper-slide">
                     <div class="product-item">
@@ -684,6 +684,8 @@
             },
         });
 
+        $('#ipr-price').text(parseInt($('#ipr-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+
         // const incrementButton = document.querySelector("#increment");
         // const decrementButton = document.querySelector("#decrement");
         // const quantityInput = document.querySelector("#quantity");
@@ -698,7 +700,7 @@
         $(document).on('click', '.product-color', function () {
             var getcolor = $(this).attr("data-color");
             var getNumber = parseInt($("#txtCountNumber").val());
-            for (var itemn = 1; itemn <= 5; itemn++) {
+            for (var itemn = 1; itemn <= getNumber; itemn++) {
                 $("#imgMainPosition" + itemn).attr('src', '/img/products/95V/img-pd-' + getcolor + "-" + itemn + '.png');
                 $("#imgThumbPosition" + itemn).attr('src', '/img/products/95V/img-pdt-' + getcolor + "-" + itemn + '.png');
             }
