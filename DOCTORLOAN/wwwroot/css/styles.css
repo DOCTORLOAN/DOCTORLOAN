@@ -1313,6 +1313,7 @@ header .slogan-mobile {
 .menuProductSwiper .swiper-slide:hover {
   background-color: #FF7500;
   color: white;
+  transform: scale(1.3);
 }
 #nav-menu-container {
   margin: 0;
@@ -1617,20 +1618,18 @@ main {
   line-height: 1.35;
   margin-bottom: 2rem;
 }
-#Home_Banner .banner-info .desc-banner {
-  font-family: helveticaneue-medium;
-  font-size: 1.75rem;
-  text-transform: uppercase;
-  display: block;
-  text-align: center;
+#Home_Banner .banner-info .title-banner:hover {
+  color: white;
+  transform: scale(1.2);
+  transition: bottom 3.5s ease-in-out;
 }
-#Home_Banner .banner-info .select-country {
+#Home_Banner .banner-info .title-banner .select-country {
   max-width: 600px;
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-#Home_Banner .banner-info .select-country .btn {
+#Home_Banner .banner-info .title-banner .select-country .btn {
   width: 100%;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -1640,11 +1639,18 @@ main {
   background-color: #FFF;
   border: 0.25rem solid #F1F2F2;
 }
-#Home_Banner .banner-info .select-country .dropdown-menu {
+#Home_Banner .banner-info .title-banner .select-country .dropdown-menu {
   width: 100%;
 }
-#Home_Banner .banner-info .select-country .dropdown-menu .dropdown-item {
+#Home_Banner .banner-info .title-banner .select-country .dropdown-menu .dropdown-item {
   font-family: helveticaneue-Light;
+}
+#Home_Banner .banner-info .desc-banner {
+  font-family: helveticaneue-medium;
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
 }
 #Home_Banner .action-banner {
   display: flex;
@@ -1801,7 +1807,7 @@ main {
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 24px;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   height: 120px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -1895,7 +1901,7 @@ main {
 }
 #Solution .solution-module {
   display: block;
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
 }
 #Solution .main-solution {
@@ -8390,6 +8396,13 @@ main {
   box-shadow: 0rem 0.3rem;
   color: #ff7500;
 }
+.product-wrapper .product-item:hover {
+  background-color: rgba(253, 225, 26, 0.087);
+  color: white;
+  transform: scale(1.1);
+  transition: bottom 3.5s ease-in-out;
+  border: 0.5px solid orange;
+}
 .product-wrapper .content-item {
   text-align: center;
 }
@@ -12148,7 +12161,8 @@ main {
 }
 #InfoProduct {
   background-color: #FFF;
-  padding: 2.5rem 0;
+  /*padding: 2.5rem 0;*/
+  padding-top: 2.5rem;
 }
 #InfoProduct .img-product-detail {
   width: 85%;
@@ -12205,11 +12219,12 @@ main {
 }
 #InfoProduct .view-more {
   margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   /*text-align: center;*/
 }
 #InfoProduct .view-more .btn-view-more {
   border: 1px solid #013C74;
-  color: #013C74;
+  color: #ff7500;
   background-color: #FFF;
   /*padding: .5rem 2rem;*/
   min-width: 175px;
@@ -12268,8 +12283,12 @@ main {
   margin-bottom: 1.5rem;
 }
 #InfoProduct .info-product-right .ipr-item {
-  margin-bottom: 1.75rem;
-  margin-top: 1.75rem;
+  /*margin-bottom: 1.75rem;
+            margin-top: 1.75rem;*/
+}
+#InfoProduct .info-product-right .ipr-item .ipr-optioncheck {
+  max-width: 100px;
+  border: 1px solid;
 }
 #InfoProduct .info-product-right .ipr-item label {
   font-family: helveticaneue-medium;
@@ -12543,7 +12562,7 @@ main {
 .product-content-wrapper .content-t-wrap .parameter-all .ctLeft {
   font-family: helveticaneue-Bold;
   line-height: 21px;
-  width: 30%;
+  width: 60%;
 }
 .product-content-wrapper .content-t-wrap .parameter-all .ctRight {
   line-height: 21px;
@@ -12559,7 +12578,7 @@ main {
   text-transform: uppercase;
   font-family: helveticaneue-Bold;
   padding: 0.75rem 0.625rem;
-  font-size: large;
+  /*font-size: large;*/
 }
 .sub-title-product {
   color: #FF7500;
@@ -12836,6 +12855,10 @@ main {
   }
 }
 @media only screen and (max-width: 767.98px) {
+  #InfoProduct .ipr-item .ipr-optioncheck {
+    max-width: 100px;
+    border: 1pc;
+  }
   #InfoProduct .info-product-right .ipr-action {
     margin-top: 1rem;
     justify-content: center;
@@ -12881,7 +12904,7 @@ main {
     padding-right: 0.3rem;
     padding-top: 0.3rem;
     margin-top: 0.5rem;
-    text-align: center;
+    /*text-align: center;*/
   }
   .info-product-right .ipr-name {
     margin-bottom: 0.5rem;
@@ -12891,6 +12914,7 @@ main {
   .info-product-right .ipr-price {
     font-size: 1.2rem;
     padding-bottom: 0.3rem;
+    text-align: center;
   }
   .info-product-right .ipr-old-price {
     margin-bottom: 0.5rem;
@@ -12899,7 +12923,7 @@ main {
     margin-bottom: 0.5rem;
   }
   .info-product-right .ipr-item .ipr-color {
-    justify-content: center;
+    /*justify-content: center;*/
     padding-top: 0.3rem;
   }
   .info-product-right .ipr-item .product-color {
