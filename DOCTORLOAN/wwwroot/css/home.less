@@ -35,7 +35,7 @@
 
     .banner-info {
         display: block;
-        max-width: 750px;
+        max-width: 780px;
         margin: 35px auto;
 
         .title-banner {
@@ -85,9 +85,31 @@
         .desc-banner {
             font-family: @font-helveticaneue-medium;
             font-size: 1.75rem;
-            text-transform: uppercase;
-            display: block;
+            /*text-transform: uppercase;*/
+            /*display: block;*/
             text-align: center;
+
+            span {
+                display: block;
+                font-family: @font-helveticaneue-medium;
+                white-space: nowrap;
+                border-right: 2px solid;
+                width: 100%;
+                animation: typing 3s steps(35), blink 0.5s infinite step-end alternate;
+                overflow: hidden;
+            }
+
+            @keyframes typing {
+                from {
+                    width: 0;
+                }
+            }
+
+            @keyframes blink {
+                50% {
+                    border-color: transparent;
+                }
+            }
         }
     }
 
@@ -215,8 +237,8 @@
     }
 }
 
-    #Heritage {
-        padding: 5rem 0;
+#Heritage {
+        padding: 0rem 0;
         background-image: linear-gradient(0, rgba(255,255,255,.7), rgba(255,255,255,.7)), url(../img/home/bg-heritage.png);
         background-size: 100%;
         background-repeat: no-repeat;
@@ -285,47 +307,47 @@
     }*/
     }
 
-    #About {
-        padding: 5rem 0;
-        background: url(../img/home/bg-about.jpg) no-repeat center / cover;
+#About {
+    padding: 3rem 0;
+    /*background: url(../img/home/bg-about.jpg) no-repeat center / cover;*/
 
-        .about-content {
-            margin-top: 3.5rem;
+    .about-content {
+        margin-top: 3.5rem;
 
-            #tvc-intro {
-                width: 100%;
-            }
-        }
-
-        .about-desc {
-            color: @white;
-            padding: 0 2.5rem;
-        }
-
-        .about-date {
-            font-size: 1.125rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-title {
-            font-size: 1.375rem;
-            font-family: @font-helveticaneue-blod;
-            margin-bottom: 1rem;
-
-            strong {
-                font-family: @font-helveticaneue-blod;
-                text-transform: uppercase;
-                font-size: 1.75rem;
-            }
-        }
-
-        .about-text {
-            text-align: justify;
+        #tvc-intro {
+            width: 100%;
         }
     }
 
-    #Achievement {
-        padding: 5rem 0;
+    .about-desc {
+        color: #343f4a;
+        padding: 0 2.5rem;
+    }
+
+    .about-date {
+        font-size: 1.125rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-title {
+        font-size: 1.375rem;
+        font-family: @font-helveticaneue-blod;
+        margin-bottom: 1rem;
+
+        strong {
+            font-family: @font-helveticaneue-blod;
+            text-transform: uppercase;
+            font-size: 1.75rem;
+        }
+    }
+
+    .about-text {
+        text-align: justify;
+    }
+}
+
+#Achievement {
+        padding: 3rem 0;
         background-image: linear-gradient(0, rgba(255,255,255,.85), rgba(255,255,255,.85)), url(../img/home/bg-achievement.jpg);
         background-size: 100%;
         background-repeat: no-repeat;
@@ -377,100 +399,102 @@
         }
     }
 
-    #Solution {
-        padding: 5rem 0;
-        background-image: linear-gradient(0, rgba(255,117,0,.95), rgba(255,117,0,.95)), url(../img/home/bg-solution.jpg);
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-position: top;
+#Solution {
+    padding: 3rem 0;
+    /*background-image: linear-gradient(0, rgba(255,117,0,.95), rgba(255,117,0,.95)), url(../img/home/bg-solution.jpg);*/
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
 
-        .solution-module {
-            display: block;
+    .solution-module {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .main-solution {
+        color: @black;
+
+        .logo-duc-phuc {
             width: 100%;
-            margin: 0 auto;
+            padding: 0 1.5rem;
+            text-align: right;
+
+            img {
+                max-width: 200px;
+            }
         }
 
-        .main-solution {
-            color: @white;
+        .title-solution {
+            color: @main-blue;
+            text-transform: uppercase;
+            font-size: 3rem;
+            line-height: 1.25;
+            font-family: @font-helveticaneue-blod;
+            margin-bottom: .5rem;
+        }
 
-            .logo-duc-phuc {
-                width: 100%;
-                padding: 0 1.5rem;
-                text-align: right;
+        .sub-title-solution {
+            text-transform: uppercase;
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
 
-                img {
-                    max-width: 200px;
-                }
-            }
+        p {
+            text-align: justify;
+            margin: 0;
+            max-width: 700px;
+        }
+    }
 
-            .title-solution {
-                color: @main-blue;
-                text-transform: uppercase;
-                font-size: 3rem;
-                line-height: 1.25;
+    .content-solution {
+        margin-top: 3rem;
+
+        .content-info {
+            color: #013c74;
+            text-align: right;
+            width: 100%;
+            padding: 3rem 1.5rem;
+
+            .date-info {
+                font-size: 1.75rem;
                 font-family: @font-helveticaneue-blod;
-                margin-bottom: .5rem;
-            }
-
-            .sub-title-solution {
+                line-height: 1.75;
                 text-transform: uppercase;
-                font-size: 1.125rem;
-                margin-bottom: 1.5rem;
             }
 
-            p {
-                text-align: justify;
-                margin: 0;
-                max-width: 700px;
-            }
-        }
-
-        .content-solution {
-            margin-top: 3rem;
-
-            .content-info {
-                color: @white;
+            .address-info {
                 text-align: right;
-                width: 100%;
-                padding: 0 1.5rem;
-
-                .date-info {
-                    font-size: 1.75rem;
-                    font-family: @font-helveticaneue-blod;
-                    line-height: 1.25;
-                    text-transform: uppercase;
-                }
-
-                .address-info {
-                }
-            }
-        }
-
-        .solution-swiper {
-            margin: 1rem 0;
-
-            .swiper-slide {
-                position: relative;
-
-                &:before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    background-color: rgba(255,255,255, .5);
-                }
-
-                &.swiper-slide-active:before {
-                    content: "";
-                    display: none;
-                }
+                font-size: 1.3rem;
             }
         }
     }
 
-    #Space {
+    .solution-swiper {
+        margin: 1rem 0;
+
+        .swiper-slide {
+            position: relative;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: rgba(255,255,255, .5);
+            }
+
+            &.swiper-slide-active:before {
+                content: "";
+                display: none;
+            }
+        }
+    }
+}
+
+#Space {
         padding: 5rem 0;
         background-image: linear-gradient(0, rgba(255,255,255,.85), rgba(255,255,255,.85)), url(../img/home/bg-space.jpg);
         background-size: cover;
@@ -482,9 +506,9 @@
         }
     }
 
-    #License {
-        padding: 5rem 0;
-        background-color: @main-orange;
+#License {
+        padding: 3rem 0;
+        /*background-color: @main-orange;*/
 
         .title-drloan span {
             max-width: 992px;

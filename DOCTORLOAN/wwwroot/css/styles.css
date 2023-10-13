@@ -143,6 +143,7 @@ strong {
 .title-drloan span {
   position: relative;
   display: inline-block;
+  padding: 2rem;
 }
 .title-drloan span:after {
   content: "";
@@ -1606,7 +1607,7 @@ main {
 }
 #Home_Banner .banner-info {
   display: block;
-  max-width: 750px;
+  max-width: 780px;
   margin: 35px auto;
 }
 #Home_Banner .banner-info .title-banner {
@@ -1648,9 +1649,28 @@ main {
 #Home_Banner .banner-info .desc-banner {
   font-family: helveticaneue-medium;
   font-size: 1.75rem;
-  text-transform: uppercase;
-  display: block;
+  /*text-transform: uppercase;*/
+  /*display: block;*/
   text-align: center;
+}
+#Home_Banner .banner-info .desc-banner span {
+  display: block;
+  font-family: helveticaneue-medium;
+  white-space: nowrap;
+  border-right: 2px solid;
+  width: 100%;
+  animation: typing 3s steps(35), blink 0.5s infinite step-end alternate;
+  overflow: hidden;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }
 #Home_Banner .action-banner {
   display: flex;
@@ -1754,7 +1774,7 @@ main {
   text-decoration: underline;
 }
 #Heritage {
-  padding: 5rem 0;
+  padding: 0rem 0;
   background-image: linear-gradient(0, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(../img/home/bg-heritage.png);
   background-size: 100%;
   background-repeat: no-repeat;
@@ -1817,8 +1837,8 @@ main {
   margin-top: 1rem;
 }
 #About {
-  padding: 5rem 0;
-  background: url(../img/home/bg-about.jpg) no-repeat center / cover;
+  padding: 3rem 0;
+  /*background: url(../img/home/bg-about.jpg) no-repeat center / cover;*/
 }
 #About .about-content {
   margin-top: 3.5rem;
@@ -1827,7 +1847,7 @@ main {
   width: 100%;
 }
 #About .about-desc {
-  color: #FFF;
+  color: #343f4a;
   padding: 0 2.5rem;
 }
 #About .about-date {
@@ -1848,7 +1868,7 @@ main {
   text-align: justify;
 }
 #Achievement {
-  padding: 5rem 0;
+  padding: 3rem 0;
   background-image: linear-gradient(0, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(../img/home/bg-achievement.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
@@ -1893,8 +1913,8 @@ main {
   padding: 0 1rem;
 }
 #Solution {
-  padding: 5rem 0;
-  background-image: linear-gradient(0, rgba(255, 117, 0, 0.95), rgba(255, 117, 0, 0.95)), url(../img/home/bg-solution.jpg);
+  padding: 3rem 0;
+  /*background-image: linear-gradient(0, rgba(255,117,0,.95), rgba(255,117,0,.95)), url(../img/home/bg-solution.jpg);*/
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: top;
@@ -1905,7 +1925,7 @@ main {
   margin: 0 auto;
 }
 #Solution .main-solution {
-  color: #FFF;
+  color: #000;
 }
 #Solution .main-solution .logo-duc-phuc {
   width: 100%;
@@ -1937,16 +1957,20 @@ main {
   margin-top: 3rem;
 }
 #Solution .content-solution .content-info {
-  color: #FFF;
+  color: #013c74;
   text-align: right;
   width: 100%;
-  padding: 0 1.5rem;
+  padding: 3rem 1.5rem;
 }
 #Solution .content-solution .content-info .date-info {
   font-size: 1.75rem;
   font-family: helveticaneue-Bold;
-  line-height: 1.25;
+  line-height: 1.75;
   text-transform: uppercase;
+}
+#Solution .content-solution .content-info .address-info {
+  text-align: right;
+  font-size: 1.3rem;
 }
 #Solution .solution-swiper {
   margin: 1rem 0;
@@ -1978,8 +2002,8 @@ main {
   margin-top: 4rem;
 }
 #License {
-  padding: 5rem 0;
-  background-color: #FF7500;
+  padding: 3rem 0;
+  /*background-color: @main-orange;*/
 }
 #License .title-drloan span {
   max-width: 992px;
