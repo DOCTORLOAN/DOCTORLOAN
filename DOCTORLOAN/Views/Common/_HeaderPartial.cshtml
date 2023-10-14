@@ -1,126 +1,151 @@
 ﻿
-<div class="container">
-    <div class="nav-header">
-        <div id="logo">
+<header class="header-fixed">
+    <div class="container">
+        <div class="nav-header">
+            <div id="logo">
+                <a asp-controller="Home" asp-action="Index" class="scrollto">
+                    <picture>
+                        <source media="(max-width:991px)" srcset="~/img/logo/slogan-mobile.svg">
+                        <img src="~/img/logo/logo-header.svg" />
+                    </picture>
+                </a>
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+                    <li><a asp-controller="About" asp-action="Index">Giới thiệu</a></li>
+                    <li><a asp-controller="Clinic" asp-action="Index">Đức Phúc DoctorLoan</a></li>
+                    <li><a asp-controller="ShowRoom" asp-action="Index">Showroom</a></li>
+                    <li class="dropdown">
+                        <a asp-controller="Products" asp-action="Index">Sản phẩm</a>
+                        <span class="arrow arrow-down"></span>
+                        <div class="mega-menu side-product">
+                            <div class="list-menu">
+                                <div class="container">
+                                    <div class="swiper menuProductSwiper">
+                                        <div class="swiper-wrapper">
+                                            <style>
+                                                .arrow {
+                                                    width: 0;
+                                                    height: 0;
+                                                    display: inline-block;
+                                                    vertical-align: middle;
+                                                    margin-left: 0px;
+                                                }
+
+                                                .arrow-down {
+                                                    border-left: 7px solid transparent;
+                                                    border-right: 7px solid transparent;
+                                                    border-top: 7px solid black;
+                                                }
+
+                                                .arrow-right {
+                                                    border-top: 7px solid transparent;
+                                                    border-bottom: 7px solid transparent;
+                                                    border-left: 7px solid black;
+                                                }
+                                            </style>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="Product135"><img src="~/img/common/menu-product-135.png" /></a> <br />
+                                                <strong style="font-size: 0.875rem;color: #242F78">Ghế nằm 135</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="Product90D"><img src="~/img/common/menu-product-90D.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #242F78">Ghế ngồi 90 Dày</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="Product90M"><img src="~/img/common/menu-product-90M.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #242F78">Ghế ngồi 90 Mỏng</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="Product95V"><img src="~/img/common/menu-product-95V.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #242F78">Ghế ngồi 95 VIP</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="ProductN85"><img src="~/img/common/menu-product-N85.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #242F78">Ghế nhựa N85</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="ProductGCF4"><img src="~/img/common/menu-product-GC.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #242F78;padding-left: 15px">Gối cổ</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="ProductGLF3"><img src="~/img/common/menu-product-GL.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #242F78;padding-left: 15px">Gối lưng</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="ProductDT"><img src="~/img/common/menu-product-DT.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #242F78;padding-left: 15px">Đệm thiền</strong>
+                                            </div>
+                                        </div>
+                                        @* <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div> *@
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="dropdown menu-dropdown">
+                        <a asp-controller="News" asp-action="Index"><span>Tin tức</span></a>
+                        <div class="sub-menu">
+                            <ul>
+                                <li><a asp-controller="News" asp-action="NewsGroup">Thời sự</a></li>
+                                @* <li><a asp-controller="News" asp-action="NewsGroup">Nguyên nhân gây bệnh cột sống</a></li>
+                                <li><a asp-controller="News" asp-action="NewsGroup">Thực trạng xã hội và y học</a></li>
+                                <li><a asp-controller="News" asp-action="NewsGroup">Giải pháp phòng bệnh</a></li>
+                                <li><a asp-controller="News" asp-action="NewsGroup">Câu chuyện của những bệnh nhân</a></li>
+                                <li><a asp-controller="News" asp-action="NewsGroup">Hoạt động xã hội</a></li> *@
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a asp-controller="Contact" asp-action="Index">Liên hệ</a></li>
+                    <li class="only-mb">
+                        @*<a asp-controller="Auth" asp-action="Login">Đăng nhập</a>*@
+                        @* <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Đăng Xuất</a> *@
+                    </li>
+                    @* <li class="only-mb"><a asp-controller="Auth" asp-action="Register">Đăng ký</a></li> *@
+                </ul>
+            </nav>
             <a asp-controller="Home" asp-action="Index" class="scrollto">
                 <picture>
                     <source media="(max-width:991px)" srcset="~/img/logo/slogan-mobile.svg">
-                    <img src="~/img/logo/logo-header.svg"/>
+                    <img class="slogan-mobile" src="~/img/logo/slogan-mobile.svg" />
                 </picture>
             </a>
-        </div>
-
-        <nav id="nav-menu-container">
-            <ul class="nav-menu">
-                <li class="menu-active"><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
-                <li><a asp-controller="About" asp-action="Index">Giới thiệu</a></li>
-                <li><a asp-controller="Clinic" asp-action="Index">Đức Phúc DoctorLoan</a></li>
-                <li><a asp-controller="ShowRoom" asp-action="Index">Showroom</a></li>
-                <li class="dropdown">
-                    <a asp-controller="Products" asp-action="Index">Sản phẩm</a>
-                    <div class="mega-menu side-product">
-                        <div class="list-menu">
-                            <div class="container">
-                                <div class="swiper menuProductSwiper">
-                                    <div class="swiper-wrapper">
-                                         <div class="swiper-slide">
-                                              <a asp-controller="Products" asp-action="Product135"><img src="~/img/common/menu-product-135.png" /></a> <br />
-                                            <strong style="font-size: 0.875rem;color: #242F78">Ghế nằm 135</strong>
-                                         </div>
-                                        <div class="swiper-slide">
-                                            <a asp-controller="Products" asp-action="Product90D"><img src="~/img/common/menu-product-90D.png" /></a><br />
-                                            <strong style="font-size: 0.875rem;color: #242F78">Ghế ngồi 90 Dày</strong>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a asp-controller="Products" asp-action="Product90M"><img src="~/img/common/menu-product-90M.png" /></a><br />
-                                            <strong style="font-size: 0.875rem;color: #242F78">Ghế ngồi 90 Mỏng</strong>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a asp-controller="Products" asp-action="Product95V"><img src="~/img/common/menu-product-95V.png" /></a><br />
-                                            <strong style="font-size: 0.875rem;color: #242F78">Ghế ngồi 95 VIP</strong>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a asp-controller="Products" asp-action="ProductN85"><img src="~/img/common/menu-product-N85.png" /></a><br />
-                                            <strong style="font-size: 0.875rem;color: #242F78">Ghế nhựa N85</strong>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a asp-controller="Products" asp-action="ProductGCF4"><img src="~/img/common/menu-product-GC.png" /></a><br />
-                                            <strong style="font-size: 0.875rem;color: #242F78;padding-left: 15px">Gối cổ</strong>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a asp-controller="Products" asp-action="ProductGLF3"><img src="~/img/common/menu-product-GL.png" /></a><br />
-                                            <strong style="font-size: 0.875rem;color: #242F78;padding-left: 15px">Gối lưng</strong>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a asp-controller="Products" asp-action="ProductDT"><img src="~/img/common/menu-product-DT.png" /></a><br />
-                                            <strong style="font-size: 0.875rem;color: #242F78;padding-left: 15px">Đệm thiền</strong>
-                                        </div>
-                                    </div>
-                                    @* <div class="swiper-button-next"></div>
-                                    <div class="swiper-button-prev"></div> *@
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="dropdown menu-dropdown">
-                    <a asp-controller="News" asp-action="Index"><span>Tin tức</span></a>
-                    <div class="sub-menu">
-                        <ul>
-                            <li><a asp-controller="News" asp-action="NewsGroup">Thời sự</a></li>
-                            @* <li><a asp-controller="News" asp-action="NewsGroup">Nguyên nhân gây bệnh cột sống</a></li>
-                            <li><a asp-controller="News" asp-action="NewsGroup">Thực trạng xã hội và y học</a></li>
-                            <li><a asp-controller="News" asp-action="NewsGroup">Giải pháp phòng bệnh</a></li>
-                            <li><a asp-controller="News" asp-action="NewsGroup">Câu chuyện của những bệnh nhân</a></li>
-                            <li><a asp-controller="News" asp-action="NewsGroup">Hoạt động xã hội</a></li> *@
-                        </ul>
-                    </div>
-                </li>
-                <li><a asp-controller="Contact" asp-action="Index">Liên hệ</a></li>
-                <li class="only-mb">
-                    @*<a asp-controller="Auth" asp-action="Login">Đăng nhập</a>*@
-                    @* <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Đăng Xuất</a> *@
-                </li>
-                @* <li class="only-mb"><a asp-controller="Auth" asp-action="Register">Đăng ký</a></li> *@
-            </ul>
-        </nav>
-        <a asp-controller="Home" asp-action="Index" class="scrollto">
-            <picture>
-                <source media="(max-width:991px)" srcset="~/img/logo/slogan-mobile.svg">
-                <img class="slogan-mobile" src="~/img/logo/slogan-mobile.svg" />
-            </picture>
-        </a>
-        <div class="header-info">
-            <div class="auth-frm">
-               @*  <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a> *@
-                @* <div class="not-logged">
+            <div class="header-info">
+                <div class="auth-frm">
+                    @*  <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a> *@
+                    @* <div class="not-logged">
                     <a asp-controller="Auth" asp-action="Login" class="btn btn-login">Đăng nhập</a>
                     <a asp-controller="Auth" asp-action="Register" class="btn btn-register">Đăng ký</a>
-                </div> *@
-                @* <div class="nav-profile" style="display: none;">
+                    </div> *@
+                    @* <div class="nav-profile" style="display: none;">
                     <button id="ProfileFunc" class="profile-icon" data-menu-expanded="false"><img src="~/img/home/avatar-3.png" /></button>
                     <div class="dropdown-profile" hidden>
-                        <div class="dropdown-content">
-                            <div class="menu-profile-header">
-                                <img src="~/img/home/avatar-3.png" />
-                                <p><strong>Ngô Thành Công</strong> <span>ngothanhcong@doctorloan.vn</span></p>
-                            </div>
-                            <div class="menu-profile-body">
-                                <a class="item-menu-profile" href="javascript:void(0)"><img src="~/img/icon/icon-profile.svg" /> Hồ sơ sức khỏe</a>
-                                <a class="item-menu-profile" href="javascript:void(0)"><img src="~/img/icon/icon-medical-history.svg" /> Lịch khám bệnh</a>
-                                <a class="item-menu-profile" href="javascript:void(0)"><img src="~/img/icon/icon-setting.svg" /> Cài đặt</a>
-                            </div>
-                            <div class="menu-profile-footer">
-                                <a class="item-menu-profile" href="javascript:void(0)"><img src="~/img/icon/icon-logout.svg" /> Đăng xuất</a>
-                            </div>
-                        </div>
+                    <div class="dropdown-content">
+                    <div class="menu-profile-header">
+                    <img src="~/img/home/avatar-3.png" />
+                    <p><strong>Ngô Thành Công</strong> <span>ngothanhcong@doctorloan.vn</span></p>
                     </div>
-                </div> *@
+                    <div class="menu-profile-body">
+                    <a class="item-menu-profile" href="javascript:void(0)"><img src="~/img/icon/icon-profile.svg" /> Hồ sơ sức khỏe</a>
+                    <a class="item-menu-profile" href="javascript:void(0)"><img src="~/img/icon/icon-medical-history.svg" /> Lịch khám bệnh</a>
+                    <a class="item-menu-profile" href="javascript:void(0)"><img src="~/img/icon/icon-setting.svg" /> Cài đặt</a>
+                    </div>
+                    <div class="menu-profile-footer">
+                    <a class="item-menu-profile" href="javascript:void(0)"><img src="~/img/icon/icon-logout.svg" /> Đăng xuất</a>
+                    </div>
+                    </div>
+                    </div>
+                    </div> *@
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+</header>
 
 <script type="text/javascript">
     $(document).on("click", "#ProfileFunc", function (e) {
@@ -137,6 +162,17 @@
             $(this).removeClass("active");
             $(this).attr('data-menu-expanded', getactive);
             parentPF.find(".dropdown-profile").attr('hidden', true);
+        }
+        /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("container").style.top = "0";
+            } else {
+                document.getElementById("container").style.top = "-150px";
+            }
+            prevScrollpos = currentScrollPos;
         }
     });
 
