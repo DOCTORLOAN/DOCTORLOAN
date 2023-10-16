@@ -1,17 +1,15 @@
-﻿@{
+﻿@using DOCTORLOAN.Models.Bookings;
+@{
     ViewData["Title"] = "Đức Phúc DoctorLoan";
 }
 
-<link href="~/libs/Bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+@* <link href="~/libs/Bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" /> *@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <section id="BannerClinic">
     <div class="container">
         <div class="toolbar">
             <marquee>Website đang xây dựng! Mọi tư vấn hỗ trợ xin vui lòng gọi vào Hotline: 08.9913.6868 Phòng khám Đức Phúc xin cảm ơn! </marquee>
         </div>
-        <style>
-            .toolbar {
-                color: #ff7500;
-        </style>
     </div>
     <div class="banner-book">
         <img class="banner-clinic-second" src="~/img/clinic/bg-clinic-second.jpg" />
@@ -26,49 +24,39 @@
                         <div class="left-second">
                             <div>
                                 <h5>Đặt lịch khám bệnh</h5>
-                                <form class="row mb-3">
-                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm">
-                                        <input type="text" class="form-control" id="txtName" placeholder="Họ và tên" />
+                                @if (TempData["AlertMessageSuccess"] != null)
+                                {
+                                    <div class="alert alert-success">
+                                        @TempData["AlertMessageSuccess"]
                                     </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm">
-                                        <input type="text" class="form-control" id="txtAddress" placeholder="Địa chỉ" />
+                                }
+                                @if (TempData["AlertMessageError"] != null)
+                                {
+                                    <div class="alert alert-warning">
+                                        @TempData["AlertMessageError"]
                                     </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm">
-                                        <input type="text" class="form-control" id="txtPhone" placeholder="Số điện thoại" />
+                                }
+                                <form method="post" asp-controller="Clinic" asp-action="Booking" class="row mb-3 needs-validation">
+                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm has-validation">
+                                        <input type="text" class="form-control" id="txtName" name="LastName" placeholder="Họ" pattern=[A-Z\sa-z]{3,20} required>
                                     </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon1"><i class="far fa-calendar-alt"></i></span>
-                                            <input type="text" class="form-control form_datetime" placeholder="Chọn thời gian">
-                                        </div>
+                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm has-validation">
+                                        <input type="text" class="form-control" id="txtName" name="FirstName" placeholder="Tên" pattern=[A-Z\sa-z]{3,20} required>
                                     </div>
-
+                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm has-validation">
+                                        <input type="tel" class="form-control" id="txtPhone" name="Phone" placeholder="Số điện thoại" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                                    </div> 
+                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm">
+                                        <input type="date" class="form-control form_datetime" id="bookingdate" name="BookingDate" placeholder="Chọn thời gian" required>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-6 col-12 mb-frm has-validation">
+                                        <input type="text" class="form-control" id="txtAddress" name="AddressLine" placeholder="Địa chỉ nhà" required>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-6 col-12 mb-frm has-validation">
+                                        <textarea class="form-control" placeholder="Triệu chứng bệnh" name="Noted" rows="3"></textarea>
+                                    </div>
                                     <div class="form-action">
-                                        <a href="javascript:void(0)" class="btn btn-dtl">Đăng ký</a>
-                                    </div>
-                                </form>
-                            </div>
-                            <div>
-                                <h5>Đặt lịch X-Quang chẩn đoán</h5>
-                                <form class="row">
-                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm">
-                                        <input type="text" class="form-control" id="txtName" placeholder="Họ và tên" />
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm">
-                                        <input type="text" class="form-control" id="txtAddress" placeholder="Địa chỉ" />
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm">
-                                        <input type="text" class="form-control" id="txtPhone" placeholder="Số điện thoại" />
-                                    </div>
-                                    <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm">
-                                        <div class="input-group">
-                                            <span class="input-group-text" id="basic-addon1"><i class="far fa-calendar-alt"></i></span>
-                                            <input type="text" class="form-control form_datetime" placeholder="Chọn thời gian">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-action">
-                                        <a href="javascript:void(0)" class="btn btn-dtl">Đăng ký</a>
+                                        <button class="btn btn-dtl" type="submit">Đăng ký</button>
                                     </div>
                                 </form>
                             </div>
@@ -477,12 +465,31 @@
             $("#nav-menu-container ul li").eq(2).addClass("menu-active");
         });
 
-        $(".form_datetime").datetimepicker({
-            format: "dd/mm/yyyy - hh:ii",
-            autoclose: true,
-            todayBtn: true,
-            minuteStep: 15
+        flatpickr("#form_datetime", {
+            altInput: true,
+            altFormat: "F j, Y",
+            dateFormat: "Y-m-d"
         });
+
+        var currentDateTime = new Date();
+        var year = currentDateTime.getFullYear();
+        var month = (currentDateTime.getMonth() + 1);
+        var date = (currentDateTime.getDate() + 1);
+
+        if (date < 10) {
+            date = '0' + date;
+        }
+        if (month < 10) {
+            month = '0' + month;
+        }
+
+        var dateTomorrow = year + "-" + month + "-" + date;
+        var bookingdate = document.querySelector("#bookingdate");
+        bookingdate.setAttribute("min", dateTomorrow);
+
+        bookingdate.onchange = function () {
+            checkoutElem.setAttribute("min", this.value);
+        }
 
         var swiper4 = new Swiper(".solution-swiper", {
             grabCursor: true,
@@ -507,5 +514,22 @@
             },
         });
 
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            });
+
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 }
