@@ -24,24 +24,24 @@
                         <div class="left-second">
                             <div>
                                 <h5>Đặt lịch khám bệnh</h5>
-                                @if (TempData["AlertMessageSuccess"] != null)
-                                {
-                                    <div class="alert alert-success">
-                                        @TempData["AlertMessageSuccess"]
-                                    </div>
-                                }
-                                @if (TempData["AlertMessageError"] != null)
-                                {
-                                    <div class="alert alert-warning">
-                                        @TempData["AlertMessageError"]
-                                    </div>
-                                }
                                 <form method="post" asp-controller="Clinic" asp-action="Booking" class="row mb-3 needs-validation">
+                                    @if (TempData["AlertMessageSuccess"] != null)
+                                    {
+                                        <div class="alert alert-success">
+                                            @TempData["AlertMessageSuccess"]
+                                        </div>
+                                    }
+                                    @if (TempData["AlertMessageError"] != null)
+                                    {
+                                        <div class="alert alert-warning">
+                                            @TempData["AlertMessageError"]
+                                        </div>
+                                    }
                                     <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm has-validation">
-                                        <input type="text" class="form-control" id="txtName" name="LastName" placeholder="Họ" pattern=[A-Z\sa-z]{3,20} required>
+                                        <input type="text" class="form-control" id="txtName" name="LastName" placeholder="Họ" required>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm has-validation">
-                                        <input type="text" class="form-control" id="txtName" name="FirstName" placeholder="Tên" pattern=[A-Z\sa-z]{3,20} required>
+                                        <input type="text" class="form-control" id="txtName" name="FirstName" placeholder="Tên" required>
                                     </div>
                                     <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm has-validation">
                                         <input type="tel" class="form-control" id="txtPhone" name="Phone" placeholder="Số điện thoại" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
