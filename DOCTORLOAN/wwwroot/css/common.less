@@ -100,9 +100,15 @@ strong {
 }
 
 .footer-after ::after {
-    content: "  SALE";
+    content: "sale";
     color: #fff;
-    background-color: #d26e4b;
+    background-color: @main-orange;
+    margin-left: 1rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    border-radius: 5px;
 }
 
 .center-thing {
@@ -117,42 +123,34 @@ strong {
 }
 
 .title-drloan {
-    font-size: 2.75rem;
-    font-family: @font-helveticaneue-medium;
-    text-transform: uppercase;
+    font-size: 2.25rem;
+    font-family: @font-helveticaneue-regular;
+    /*text-transform: uppercase;*/
     position: relative;
     text-align: center;
     color: @main-orange;
     line-height: 1.1;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 
-    span {
+    /*span {
         position: relative;
         display: inline-block;
-        padding: 2rem;
-        &:after {
-            content: "";
-            position: absolute;
-            bottom: -1rem;
-            left: 50%;
-            transform: translate(-50%, -0%);
-            width: 50%;
-            height: .1875rem;
-            background-color: @main-orange;
-            z-index: 1;
-        }
+        padding: 0.5rem;
+        max-width: 400px*/
 
-        small {
-            text-transform: none;
-            font-size: 1.75rem;
-            line-height: 1.4;
-            display: inline-block;
-            width: 700px;
-        }
+        /*.small {
+                text-transform: none;
+                font-size: 1.75rem;
+                line-height: 1.4;
+                display: inline-block;
+                width: 700px;
+                }*/
 
-        .text-title-small {
+        /*.text-title-small {
             text-transform: initial !important;
         }
-    }
+    }*/
 
     &.tt-w {
         color: @white;
@@ -1025,7 +1023,7 @@ footer {
         } 
         
         .logo-footer {
-            width: 75%;
+            width: 45%;
             display: block;
             margin: 0 auto;
             max-width: 250px;
@@ -1035,7 +1033,7 @@ footer {
             width: 100%;
             margin: 1rem 0;
             font-size: .875rem;
-
+            display: none;
             ul {
                 display: flex;
                 align-items: center;
