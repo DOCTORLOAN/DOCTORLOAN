@@ -4,24 +4,56 @@
 }
 
 <section id="BannerClinic">
-    <div class="container">
-        <div class="toolbar">
-            <marquee>Website đang xây dựng! Mọi tư vấn hỗ trợ xin vui lòng gọi vào Hotline: 08.9913.6868 Phòng khám Đức Phúc xin cảm ơn! </marquee>
-        </div>
-    </div>
     <div class="banner-book">
+
+        <div class="untitled">
+            <div class="untitled__slides">
+                <div class="untitled__slide">
+                    <div class="untitled__slideBg"></div>
+                    <div class="untitled__slideContent">
+                        <span>Phòng khám Đức Phúc DOCTORLOAN</span>
+                        <h2>Bác sĩ Phạm Thị Kim Loan</h2>
+                        <a class="button" href="https://doctorloan.vn/Contact" target="/black">Đăng ký ngay</a>
+                    </div>
+                </div>
+                <div class="untitled__slide">
+                    <div class="untitled__slideBg"></div>
+                    <div class="untitled__slideContent">
+                        <span>Phòng khám Đức Phúc DOCTORLOAN</span>
+                        <h2>Bác sĩ Phạm Thị Kim Loan</h2>
+                        <a class="button" href="https://doctorloan.vn/Contact" target="/black">Đăng ký ngay</a>
+                    </div>
+                </div>
+                <div class="untitled__slide">
+                    <div class="untitled__slideBg"></div>
+                    <div class="untitled__slideContent">
+                        <span>Phòng khám Đức Phúc DOCTORLOAN</span>
+                        <h2>Bác sĩ Phạm Thị Kim Loan</h2>
+                        <a class="button" href="https://doctorloan.vn/Contact" target="/black">Đăng ký ngay</a>
+                    </div>
+                </div>
+                <div class="untitled__slide">
+                    <div class="untitled__slideBg"></div>
+                    <div class="untitled__slideContent">
+                        <span>Phòng khám Đức Phúc DOCTORLOAN</span>
+                        <h2>Bác sĩ Phạm Thị Kim Loan</h2>
+                        <a class="button" href="https://doctorloan.vn/Contact" target="/black">Đăng ký ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="untitled__shutters"></div>
+        </div>
         <img class="banner-clinic-second" src="~/img/clinic/bg-clinic-second.jpg" />
         <img class="bg-clinic-curve" src="~/img/clinic/curved.svg" />
     </div>
     <div class="banner-second">
         <div class="container">
-            
             <div class="row">
                 <div class="col-lg-4 col-12 order-2 order-lg-1">
                     <div class="center-thing">
                         <div class="left-second">
                             <div>
-                                <h5>Đặt lịch khám bệnh</h5>
+                                <h5>Đặt lịch NGAY</h5>
                                 <form method="post" asp-controller="Clinic" asp-action="Booking" class="row mb-3 needs-validation">
                                     @if (TempData["AlertMessageSuccess"] != null)
                                     {
@@ -64,91 +96,96 @@
                 <div class="col-lg-8 col-12 order-1 order-lg-2">
                     <div class="solution-header">
                         <div class="row">
-                            <div class="col-md-4 col-12">
-                                <div class="center-thing">
-                                    <div class="logo-solution">
-                                        <img src="~/img/home/logo-duc-phuc.png" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-8 col-12">
-                                <div class="center-thing">
-                                    <div class="title-solution">
-                                        <h4>Lịch sử ra đời và phát triển</h4>
-                                        <p>Tiên phong trong lĩnh vực nghiên cứu, ứng dụng công nghệ hỗ trợ điều trị và phòng ngừa các bệnh cột sống. Huấn luyện và chuyển giao bí quyết bảo vệ cột sống giúp cải thiện vóc dáng, thân – tâm – trí khỏe mạnh.</p>
-                                    </div>
-                                </div>
-                            </div>
+                              <div class="title-solution">
+                                        <h4>
+                                            PHÒNG KHÁM ĐỨC PHÚC DOCTORLOAN
+                                        </h4>
+                                        <p>
+                                                Tiên phong nghiên cứu giải pháp phòng ngừa các bệnh về Cột Sống.
+                                                Với mục tiêu huấn luyện và chuyển giao bí quyết TỰ CHỮA LÀNH.
+                                        </p>
+                              </div>
                         </div>
                     </div>
                     <div class="content-solution">
                         <div class="row">
-                            <div class="col-md-4 col-12">
-                                <div class="center-thing">
-                                    <div class="content-info">
-                                        <div class="date-info">Năm 2008</div>
-                                        <div class="address-info">Địa chỉ: 38 Tú Xương, Q.3, TP.HCM</div>
+                            <div class="solution-module">
+                                <div class="main-solution">
+                                    <div class="row">
+                                        
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-8 col-12">
-                                <div class="swiper solution-swiper">
-                                    <div class="swiper-wrapper">
-                                        @for (int i = 1; i <= 8; i++)
-                                        {
-                                            <div class="swiper-slide">
-                                                <a href="~/img/large/home/38-tu-xuong-large-@(i).jpg" class="glightbox" data-gallery="gallery-38-tuxuong">
-                                                    <img src="~/img/home/38-tu-xuong-@(i).jpg" />
-                                                </a>
-                                            </div>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-md-4 col-12">
-                                <div class="center-thing">
-                                    <div class="content-info">
-                                        <div class="date-info">Năm 2010</div>
-                                        <div class="address-info">Địa chỉ: 174 Nguyễn Văn Thủ, <br /> P.Dakao, Q.3, TP.HCM</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-8 col-12">
-                                <div class="swiper solution-swiper">
-                                    <div class="swiper-wrapper">
-                                        @for (int i = 1; i <= 12; i++)
-                                        {
-                                            <div class="swiper-slide">
-                                                <a href="~/img/large/home/174-nguyen-van-thu-large-@(i).jpg" class="glightbox" data-gallery="gallery-174-nvt">
-                                                    <img src="~/img/home/174-nguyen-van-thu-@(i).jpg" />
-                                                </a>
+                                <div class="content-solution">
+                                    <div class="row">
+                                        <div class="col-md-3 col-12">
+                                            <div class="center-thing">
+                                                <div class="content-info">
+                                                    <div class="date-info">Năm 2008</div>
+                                                    <div class="address-info">38 Tú Xương<br /> Q.3, TP.HCM</div>
+                                                </div>
                                             </div>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <div class="center-thing">
-                                    <div class="content-info">
-                                        <div class="date-info">Năm 2022</div>
-                                        <div class="address-info">Địa chỉ: 9A Tôn Thất Tùng, <br /> P.Phạm Ngũ Lão, Q.1, TP.HCM</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-8 col-12">
-                                <div class="swiper solution-swiper">
-                                    <div class="swiper-wrapper">
-                                        @for (int i = 1; i <= 7; i++)
-                                        {
-                                            <div class="swiper-slide">
-                                                <a href="~/img/large/home/9a-ton-that-tung-large-@(i).jpg" class="glightbox" data-gallery="gallery-9a-ttt">
-                                                    <img src="~/img/home/9a-ton-that-tung-@(i).jpg" />
-                                                </a>
+                                        </div>
+                                        <div class="col-md-9 col-12">
+                                            <div class="swiper solution-swiper">
+                                                <div class="swiper-wrapper">
+                                                    @for (int i = 1; i <= 8; i++)
+                                                    {
+                                                        <div class="swiper-slide">
+                                                            <a href="~/img/large/home/38-tu-xuong-large-@(i).jpg" class="glightbox" data-gallery="gallery-38-tuxuong">
+                                                                <img src="~/img/home/38-tu-xuong-@(i).jpg" />
+                                                            </a>
+                                                        </div>
+                                                    }
+                                                </div>
                                             </div>
-                                        }
+                                        </div>
+
+                                        <div class="col-md-3 col-12">
+                                            <div class="center-thing">
+                                                <div class="content-info">
+                                                    <div class="date-info">Năm 2010</div>
+                                                    <div class="address-info">174 Nguyễn Văn Thủ, <br /> P.Dakao, Q.3, TP.HCM</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9 col-12">
+                                            <div class="swiper solution-swiper">
+                                                <div class="swiper-wrapper">
+                                                    @for (int i = 1; i <= 8; i++)
+                                                    {
+                                                        <div class="swiper-slide">
+                                                            <a href="~/img/large/home/174-nguyen-van-thu-large-@(i).jpg" class="glightbox" data-gallery="gallery-174-nvt">
+                                                                <img src="~/img/home/174-nguyen-van-thu-@(i).jpg" />
+                                                            </a>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-12">
+                                            <div class="center-thing">
+                                                <div class="content-info">
+                                                    <div class="date-info">Năm 2022</div>
+                                                    <div class="address-info">9A Tôn Thất Tùng, <br /> P.Phạm Ngũ Lão, Q.1, TP.HCM</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-9 col-12">
+                                            <div class="swiper solution-swiper">
+                                                <div class="swiper-wrapper">
+                                                    @for (int i = 1; i <= 8; i++)
+                                                    {
+                                                        <div class="swiper-slide">
+                                                            <a href="~/img/large/home/9a-ton-that-tung-@(i).jpg" class="glightbox" data-gallery="gallery-9a-ttt">
+                                                                <img src="~/img/home/9a-ton-that-tung-@(i).jpg" />
+                                                            </a>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -156,109 +193,220 @@
                     </div>
                 </div>
             </div>
+            <section id="Signal">
+                <div class="title-drloan">
+                    <span>
+                        Các triệu chứng bệnh cột sống thường gặp
+                    </span>
+                </div>
+                <div class="container">
+                    
+
+                    <div class="list-signal">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-12">
+                                <div class="signal-item">
+                                    <div class="img-signal"><img src="~/img/clinic/cot-song-co.jpg" /></div>
+                                    <div class="title-signal">Cột sống cổ</div>
+                                    <div class="content-signal">
+                                        Thoát vị đĩa đệm cổ <br />
+                                        Thoái hóa cột sống <br />
+                                        Trượt đốt sống <br />
+                                        Rối loạn tiền đình <br />
+                                        Đau đầu <br />
+                                        Đau mỏi vai gáy
+                                    </div>
+                                    @*  <div class="action-signal"><a href="javascript:void(0)" class="btn btn-dtl">Xem thêm</a></div> *@
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-12">
+                                <div class="signal-item">
+                                    <div class="img-signal"><img src="~/img/clinic/cot-song-nguc.jpg" /></div>
+                                    <div class="title-signal">Cột sống ngực</div>
+                                    <div class="content-signal">
+                                        Thoát vị đĩa đệm cổ <br />
+                                        Thoái hóa cột sống <br />
+                                        Đau ngực <br />
+                                        Gai cột sống <br />
+                                        Cong vẹo cột sống <br />
+                                        Gù lưng
+                                    </div>
+                                    @* <div class="action-signal"><a href="javascript:void(0)" class="btn btn-dtl">Xem thêm</a></div> *@
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-12">
+                                <div class="signal-item">
+                                    <div class="img-signal"><img src="~/img/clinic/cot-song-lung.jpg" /></div>
+                                    <div class="title-signal">Cột sống lưng</div>
+                                    <div class="content-signal">
+                                        Đau thắt lưng/ đầu gối <br />
+                                        Đau thần kinh tọa <br />
+                                        Gai cột sống <br />
+                                        Thoát vị đĩa đệm lưng <br />
+                                        Thoái hóa cột sống <br />
+                                        Gù lưng
+                                    </div>
+                                    @*  <div class="action-signal"><a href="javascript:void(0)" class="btn btn-dtl">Xem thêm</a></div> *@
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-12">
+                                <div class="signal-item">
+                                    <div class="img-signal"><img src="/img/icon/spine.svg" /></div>
+                                    <div class="title-signal">Ca nặng</div>
+                                    <div class="content-signal">
+                                        Liệt tay/ chân <br />
+                                        Rối loạn hành vi <br />
+                                        Rối loạn tim mạch <br />
+                                        Rối loạn tiêu hóa <br />
+                                        Giảm (mất) trí nhớ <br />
+                                        Ngưng thở về đêm
+                                    </div>
+                                    @*  <div class="action-signal"><a href="javascript:void(0)" class="btn btn-dtl">Xem thêm</a></div> *@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="Technology">
+                <div class="container">
+                    <div class="title-drloan"><span>Đẩy lùi các bệnh cột sống bằng phương pháp dẫn đầu thế giới <br /> <small>Công nghệ độc quyền tại hơn 60 quốc gia giúp chăm sóc cột sống khỏe mạnh</small></span></div>
+                    <div class="technology-content">
+                        <div class="row rowlg justify-content-center">
+                            <div class="col-lg-4 col-md-6 col-12 collg">
+                                <div class="technology-item">
+                                    <img src="~/img/icon/clinic-icon.svg" />
+                                    <h5>Trung tâm cơ xương khớp hiện đại</h5>
+                                    <hr />
+                                    <p>Cung cấp sự ưu việt về chất lượng dịch vụ khám – tư vấn – chăm sóc. Huấn luyện giảm đau nhanh và điều chỉnh cột sống theo phương pháp DOCTORLOAN.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-12 collg">
+                                <div class="technology-item">
+                                    <img src="~/img/icon/stethoscope-icon.svg" />
+                                    <h5>Chẩn đoán chính xác chuyên nghiệp</h5>
+                                    <hr />
+                                    <p>Đội ngũ bác sỹ tâm huyết nhiều năm kinh nghiệm, kết hợp X-quang thế hệ mới với chất lượng hình ảnh xuất sắc giúp chẩn đoán chính xác tình trạng xương.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-12 collg">
+                                <div class="technology-item">
+                                    <img src="~/img/icon/social-distancing-icon.svg" />
+                                    <h5>Chuyển giao bí quyết làm chủ cột sống</h5>
+                                    <hr />
+                                    <p>Trao truyền giải pháp vượt trội chăm sóc xương khớp khỏe mạnh, giải quyết tận gốc nguyên nhân gây nên bệnh lý cột sống do tư thế hàng ngày.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="Method">
+                <div class="container">
+                    <div class="title-drloan"><span>Phương pháp DOCTORLOAN <br /> <small>MANG LẠI KHẢ NĂNG TỰ NGĂN CHẶN BỆNH CỘT SỐNG TỚI MỖI NGƯỜI</small></span> </div>
+                    <div class="content-method">
+                        <div class="item-method">
+                            <div class="item-section list-img-method">
+                                <img src="~/img/clinic/method-13.jpg" />
+                                <img src="~/img/clinic/method-14.jpg" />
+                                <img src="~/img/clinic/method-15.jpg" />
+                                <img src="~/img/clinic/method-16.jpg" />
+                            </div>
+                            <div class="item-section list-content-method">
+                                <h5>
+                                    HƯỚNG TỚI CỘT SỐNG KHỎE CHO MỌI LỨA TUỔI
+                                </h5>
+                                <hr />
+                                <ul>
+                                    <li>Xây dựng hình thể đẹp trong thời gian ngắn khi đến với ĐỨC PHÚC DOCTORLOAN, trải nghiệm liệu trình Chăm sóc.</li>
+                                    <li>Huấn luyện thói quen tốt - ngăn chặn lệch vẹo - phòng bệnh cột sống tái phát hoặc mắc phải.</li>
+                                    <li>Rèn luyện độ bền và dẻo dai của khớp và cơ xương - tăng cường khả năng hoạt động hàng ngày.</li>
+                                    <li>Chuyển giao khả năng tự điều chỉnh tại nhà, đem lại tư thế thẳng - cân đối - khoẻ - đẹp.</li>
+                                </ul>
+                                @*<div class="method-action"><a href="javascript:void(0)">Xem chi tiết >>></a></div>*@
+                            </div>
+                            <div class="item-section img-content-method">
+                                <img src="~/img/clinic/method-main-4.jpg" />
+                            </div>
+                        </div>
+                        @* <div class="item-method">
+                        <div class="item-section list-img-method">
+                        <img src="~/img/clinic/method-1.jpg" />
+                        <img src="~/img/clinic/method-2.jpg" />
+                        <img src="~/img/clinic/method-3.jpg" />
+                        <img src="~/img/clinic/method-4.jpg" />
+                        </div>
+                        <div class="item-section list-content-method">
+                        <h5>PHƯƠNG PHÁP DOCTORLOAN - GIẢI PHÁP CHĂM SÓC CỘT SỐNG KHOẺ CHO MỌI NGƯỜI, MỌI LÚC, MỌI NƠI</h5>
+                        <hr />
+                        <ul>
+                        <li>Điều chỉnh từng đốt sống về vị trí 	bình thường.</li>
+                        <li>Điều chỉnh đĩa đệm bằng lực tự 	thân tác động phối hợp sản phẩm DOCTORLOAN.</li>
+                        <li>Điều chỉnh các đường cong của 	cột sống.</li>
+                        </ul>
+                        <div class="method-action"><a href="javascript:void(0)">Xem chi tiết >>></a></div>
+                        </div>
+                        <div class="item-section img-content-method">
+                        <img src="~/img/clinic/method-main-1.jpg" />
+                        </div>
+                        </div> *@
+                        <div class="item-method">
+                            <div class="item-section list-img-method">
+                                <img src="~/img/clinic/method-5.jpg" />
+                                <img src="~/img/clinic/method-6.jpg" />
+                                <img src="~/img/clinic/method-7.jpg" />
+                                <img src="~/img/clinic/method-8.jpg" />
+                            </div>
+                            <div class="item-section list-content-method">
+                                <h5>CHUYỂN GIAO GIẢI PHÁP TỰ ĐIỀU CHỈNH CỘT SỐNG</h5>
+                                <hr />
+                                <ul>
+                                    <li>Thông qua huấn luyện các tư thế bảo vệ khung xương trong sinh hoạt hàng ngày</li>
+                                    <li>Thông qua xây dựng các hành vi đúng thực hiện suốt cuộc đời: đi, đứng, nằm, ngồi, sinh hoạt hàng ngày, thói quen.</li>
+                                    <li>Thông qua các bài tập hoàn thiện khả năng hoạt động bình thường, gia tăng năng lượng bền bỉ cho làm việc, học tập, sinh sống.</li>
+                                    <li>Thông qua chuyển giao công nghệ DOCTORLOAN - lợi ích cho mỗi người bảo vệ cột sống - xương khớp khoẻ trong suốt cuộc đời.</li>
+                                </ul>
+                                @*<div class="method-action"><a href="javascript:void(0)">Xem chi tiết >>></a></div>*@
+                            </div>
+                            <div class="item-section img-content-method">
+                                <img src="~/img/clinic/method-main-2.jpg" />
+                            </div>
+                        </div>
+                        <div class="item-method">
+                            <div class="item-section list-img-method">
+                                <img src="~/img/clinic/method-9.jpg" />
+                                <img src="~/img/clinic/method-10.jpg" />
+                                <img src="~/img/clinic/method-11.jpg" />
+                                <img src="~/img/clinic/method-12.jpg" />
+                            </div>
+                            <div class="item-section list-content-method">
+                                <h5>CÔNG NGHỆ DOCTORLOAN - TIÊN PHONG CHĂM SÓC CỘT SỐNG KHOẺ : ĐƠN GIẢN - THIẾT THỰC - HIỆU QUẢ</h5>
+                                <hr />
+                                <p>
+                                    Cống hiến Phương pháp CHĂM SÓC CỘT SỐNG - XƯƠNG KHỚP TOÀN DIỆN thông qua các qui trình DOCTORLOAN và sản phẩm DOCTORLOAN đã được cấp 255 bằng sáng chế tại 62 Quốc gia (Hoa Kỳ, Úc, Canada, Newzeland, Japan, Singapore, Hong kong, UAE, 37 nước Châu Âu, Malaysia,
+                                    Indonesia, Campuchia, Lào, Israel, Ấn độ, Nga,...).
+                                </p>
+                                @*<div class="method-action"><a href="javascript:void(0)">Xem chi tiết >>></a></div>*@
+                            </div>
+                            <div class="item-section img-content-method">
+                                <img src="~/img/clinic/method-main-3.jpg" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
         </div>
     </div>
 </section>
 
-@* <section id="Reason">
+@* <section id="Signal">
     <div class="container">
-        <div class="title-drloan">
-            <span>3 lý do bệnh nhân tin tưởng giải pháp <br /> Đức Phúc DoctorLoan</span>
-        </div>
-        <div class="row rowlg">
-            <div class="col-md-4 col-12 collg">
-                <div class="reason-item">
-                    <h4>Giải pháp triệt để từ nguồn gốc căn bệnh</h4>
-                    <div class="dtl-progress">
-                        <div class="progress-info"><span>Mức hài lòng của bệnh nhân</span><span>78%</span></div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 78%;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">78%</div>
-                        </div>
-                    </div>
-                    <div class="reason-footer">
-                        <div class="avatar-group">
-                            <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
-                            <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
-                            <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
-                            <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
-                        </div>
-                        <div class="reason-action">
-                            <a href="javascript:void(0)" class="btn btn-dtl">Xem thêm ý kiến</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-12 collg">
-                <div class="reason-item">
-                    <h4>Công nghệ hàng đầu hiệu quả an toàn</h4>
-                    <div class="dtl-progress">
-                        <div class="progress-info"><span>Mức hài lòng của bệnh nhân</span><span>78%</span></div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 78%;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">78%</div>
-                        </div>
-                    </div>
-                    <div class="reason-footer">
-                        <div class="avatar-group">
-                            <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
-                            <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
-                            <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
-                            <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
-                        </div>
-                        <div class="reason-action">
-                            <a href="javascript:void(0)" class="btn btn-dtl">Xem thêm ý kiến</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-12 collg">
-                <div class="reason-item">
-                    <h4>Chăm sóc toàn diện ngăn ngừa tái phát</h4>
-                    <div class="dtl-progress">
-                        <div class="progress-info"><span>Mức hài lòng của bệnh nhân</span><span>87%</span></div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 87%;" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100">87%</div>
-                        </div>
-                    </div>
-                    <div class="reason-footer">
-                        <div class="avatar-group">
-                            <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
-                            <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
-                            <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
-                            <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
-                        </div>
-                        <div class="reason-action">
-                            <a href="javascript:void(0)" class="btn btn-dtl">Xem thêm ý kiến</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> *@
-
-<section id="ClinicDoctor">
-    <div class="container">
-        <div class="img-clinic-doctor">
-            <img src="~/img/clinic/clinic-bac-si.png" />
-            <div class="content-clinic-doctor">Bác sĩ <strong>Phạm Thị Kim Loan</strong></div>
-        </div>
-
-        <div class="clinic-doctor-detail">
-            <h5>Những phát minh mang tính lịch sử mở ra</h5>
-            <h4>kỷ nguyên làm chủ cột sống khỏe</h4>
-            <p>Chúng tôi tiên phong nghiên cứu giải pháp phòng ngừa các bệnh về cơ xương khớp. Huấn luyện và chuyển giao bí quyết TỰ CHỮA LÀNH, giúp thấu hiểu nguyên lý điều chỉnh cột sống, từ đó cải thiện vóc dáng, thân – tâm – trí khỏe mạnh thư thái. Dễ dàng bảo vệ và chăm sóc người thân trong gia đình, cũng như cùng nhau tận hưởng những điều ý nghĩa trong cuộc sống.</p>
-            <div class="logo-duc-phuc">
-                <img src="~/img/home/logo-duc-phuc.png" />
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="Signal">
-    <div class="container">
-        <div class="title-drloan tt-w"><span>Lĩnh vực điều trị</span></div>
+        <div class="title-drloan"><span>Lĩnh vực điều trị</span></div>
 
         <div class="list-signal">
             <div class="row">
@@ -274,7 +422,6 @@
                             Đau đầu <br />
                             Đau mỏi vai gáy
                         </div>
-                       @*  <div class="action-signal"><a href="javascript:void(0)" class="btn btn-dtl">Xem thêm</a></div> *@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
@@ -289,7 +436,6 @@
                             Cong vẹo cột sống <br />
                             Gù lưng
                         </div>
-                        @* <div class="action-signal"><a href="javascript:void(0)" class="btn btn-dtl">Xem thêm</a></div> *@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
@@ -304,7 +450,6 @@
                             Thoái hóa cột sống <br />
                             Gù lưng
                         </div>
-                       @*  <div class="action-signal"><a href="javascript:void(0)" class="btn btn-dtl">Xem thêm</a></div> *@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
@@ -319,15 +464,15 @@
                             Giảm (mất) trí nhớ <br />
                             Ngưng thở về đêm
                         </div>
-                       @*  <div class="action-signal"><a href="javascript:void(0)" class="btn btn-dtl">Xem thêm</a></div> *@
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+ *@
 
-<section id="Technology">
+@* <section id="Technology">
     <div class="container">
         <div class="title-drloan"><span>Đẩy lùi các bệnh cột sống bằng phương pháp dẫn đầu thế giới <br /> <small>Công nghệ độc quyền tại hơn 60 quốc gia giúp chăm sóc cột sống khỏe mạnh</small></span></div>
         <div class="technology-content">
@@ -361,32 +506,34 @@
 
     </div>
 </section>
-
-<section id="Method">
+ *@
+@* <section id="Method">
     <div class="container">
-        <div class="title-drloan tt-w"><span>Phương pháp DoctorLoan <br /> <small>MANG LẠI KHẢ NĂNG TỰ NGĂN CHẶN BỆNH CỘT SỐNG TỚI MỖI NGƯỜI</small></span> </div>
+        <div class="title-drloan tt-w"><span>Phương pháp DOCTORLOAN <br /> <small>MANG LẠI KHẢ NĂNG TỰ NGĂN CHẶN BỆNH CỘT SỐNG TỚI MỖI NGƯỜI</small></span> </div>
         <div class="content-method">
             <div class="item-method">
                 <div class="item-section list-img-method">
-                    <img src="~/img/clinic/method-1.jpg" />
-                    <img src="~/img/clinic/method-2.jpg" />
-                    <img src="~/img/clinic/method-3.jpg" />
-                    <img src="~/img/clinic/method-4.jpg" />
+                    <img src="~/img/clinic/method-13.jpg" />
+                    <img src="~/img/clinic/method-14.jpg" />
+                    <img src="~/img/clinic/method-15.jpg" />
+                    <img src="~/img/clinic/method-16.jpg" />
                 </div>
                 <div class="item-section list-content-method">
-                    <h5>PHƯƠNG PHÁP DOCTORLOAN - GIẢI PHÁP CHĂM SÓC CỘT SỐNG KHOẺ CHO MỌI NGƯỜI, MỌI LÚC, MỌI NƠI</h5>
+                    <h5>
+                        HƯỚNG TỚI CỘT SỐNG KHỎE CHO MỌI LỨA TUỔI</h5>
                     <hr />
                     <ul>
-                        <li>Điều chỉnh từng đốt sống về vị trí 	bình thường.</li>
-                        <li>Điều chỉnh đĩa đệm bằng lực tự 	thân tác động phối hợp sản phẩm DOCTORLOAN.</li>
-                        <li>Điều chỉnh các đường cong của 	cột sống.</li>
+                        <li>Xây dựng hình thể đẹp trong thời gian ngắn khi đến với ĐỨC PHÚC DOCTORLOAN, trải nghiệm liệu trình Chăm sóc.</li>
+                        <li>Huấn luyện thói quen tốt - ngăn chặn lệch vẹo - phòng bệnh cột sống tái phát hoặc mắc phải.</li>
+                        <li>Rèn luyện độ bền và dẻo dai của khớp và cơ xương - tăng cường khả năng hoạt động hàng ngày.</li>
+                        <li>Chuyển giao khả năng tự điều chỉnh tại nhà, đem lại tư thế thẳng - cân đối - khoẻ - đẹp.</li>
                     </ul>
-                    @*<div class="method-action"><a href="javascript:void(0)">Xem chi tiết >>></a></div>*@
                 </div>
                 <div class="item-section img-content-method">
-                    <img src="~/img/clinic/method-main-1.jpg" />
+                    <img src="~/img/clinic/method-main-4.jpg" />
                 </div>
             </div>
+           
             <div class="item-method">
                 <div class="item-section list-img-method">
                     <img src="~/img/clinic/method-5.jpg" />
@@ -395,15 +542,14 @@
                     <img src="~/img/clinic/method-8.jpg" />
                 </div>
                 <div class="item-section list-content-method">
-                    <h5>CHUYỂN GIAO GIẢI PHÁP ĐIỀU CHỈNH CỘT SỐNG</h5>
+                    <h5>CHUYỂN GIAO GIẢI PHÁP TỰ ĐIỀU CHỈNH CỘT SỐNG</h5>
                     <hr />
                     <ul>
-                        <li>Thông qua các tư thế bảo vệ khung xương trong sinh hoạt hàng ngày</li>
-                        <li>Thông qua các hành vi thực hiện suốt cuộc đời: đi, đứng, nằm, ngồi, sinh hoạt hàng ngày, thói quen.</li>
+                        <li>Thông qua huấn luyện các tư thế bảo vệ khung xương trong sinh hoạt hàng ngày</li>
+                        <li>Thông qua xây dựng các hành vi đúng thực hiện suốt cuộc đời: đi, đứng, nằm, ngồi, sinh hoạt hàng ngày, thói quen.</li>
                         <li>Thông qua các bài tập hoàn thiện khả năng hoạt động bình thường, gia tăng năng lượng bền bỉ cho làm việc, học tập, sinh sống.</li>
                         <li>Thông qua chuyển giao công nghệ DOCTORLOAN - lợi ích cho mỗi người bảo vệ cột sống - xương khớp khoẻ trong suốt cuộc đời.</li>
                     </ul>
-                    @*<div class="method-action"><a href="javascript:void(0)">Xem chi tiết >>></a></div>*@
                 </div>
                 <div class="item-section img-content-method">
                     <img src="~/img/clinic/method-main-2.jpg" />
@@ -420,40 +566,18 @@
                     <h5>CÔNG NGHỆ DOCTORLOAN - TIÊN PHONG CHĂM SÓC CỘT SỐNG KHOẺ : ĐƠN GIẢN - THIẾT THỰC - HIỆU QUẢ</h5>
                     <hr />
                     <p>
-                        Cống hiến Phương pháp CHĂM SÓC CỘT SỐNG - XƯƠNG KHỚP TỔNG THỂ thông qua các qui trình và sản phẩm đã được cấp 255 bằng sáng chế tại 62 Quốc gia (Hoa Kỳ, Úc, Canada, Newzeland, Japan, Singapore, Hong kong, UAE, 37 nước Châu Âu, Malaysia,
+                        Cống hiến Phương pháp CHĂM SÓC CỘT SỐNG - XƯƠNG KHỚP TOÀN DIỆN thông qua các qui trình DOCTORLOAN và sản phẩm DOCTORLOAN đã được cấp 255 bằng sáng chế tại 62 Quốc gia (Hoa Kỳ, Úc, Canada, Newzeland, Japan, Singapore, Hong kong, UAE, 37 nước Châu Âu, Malaysia,
                         Indonesia, Campuchia, Lào, Israel, Ấn độ, Nga,...).
                     </p>
-                    @*<div class="method-action"><a href="javascript:void(0)">Xem chi tiết >>></a></div>*@
                 </div>
                 <div class="item-section img-content-method">
                     <img src="~/img/clinic/method-main-3.jpg" />
                 </div>
             </div>
-            <div class="item-method">
-                <div class="item-section list-img-method">
-                    <img src="~/img/clinic/method-13.jpg" />
-                    <img src="~/img/clinic/method-14.jpg" />
-                    <img src="~/img/clinic/method-15.jpg" />
-                    <img src="~/img/clinic/method-16.jpg" />
-                </div>
-                <div class="item-section list-content-method">
-                    <h5>THAY ĐỔI TƯỚNG MẠO HƯỚNG TỚI TỐT ĐẸP CHO MỌI LỨA TUỔI</h5>
-                    <hr />
-                    <ul>
-                        <li>Xây dựng hình thể đẹp trong thời gian kỳ lạ khi đến với ĐỨC PHÚC DOCTORLOAN, trải nghiệm liệu trình Chăm sóc.</li>
-                        <li>Huấn luyện thói quen tốt - ngăn chặn lệch vẹo - phòng bệnh cột sống tái phát hoặc mắc phải.</li>
-                        <li>Rèn luyện độ bền và dẻo dai của khớp và cơ - tăng cường khả năng hoạt động hàng ngày.</li>
-                        <li>Chuyển giao khả năng tự điều chỉnh đem lại tư thế thẳng - cân đối - khoẻ - đẹp.</li>
-                    </ul>
-                    @*<div class="method-action"><a href="javascript:void(0)">Xem chi tiết >>></a></div>*@
-                </div>
-                <div class="item-section img-content-method">
-                    <img src="~/img/clinic/method-main-4.jpg" />
-                </div>
-            </div>
+            
         </div>
     </div>
-</section>
+</section> *@
 
 @section scripts{
     <script type="text/javascript">
