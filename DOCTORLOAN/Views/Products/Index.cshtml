@@ -27,7 +27,8 @@
                                     <div class="info-banner">
                                         <h4>Nhà sáng chế - Bác Sĩ <strong>Phạm Thị Kim Loan</strong></h4>
                                         <h5>Sản phẩm được cấp bằng sáng chế độc quyền tại hơn <strong>60 quốc gia</strong></h5>
-                                        <div class="dropdown select-country">
+                                        <img class="img-bangsangche" src="~/img/license/ghe-nam.png" />
+                                        @* <div class="dropdown select-country">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 Chọn quốc gia xem bằng sáng chế
                                             </button>
@@ -63,7 +64,7 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> *@
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +93,8 @@
                                     <div class="info-banner">
                                         <h4>Nhà sáng chế - Bác Sĩ <strong>Phạm Thị Kim Loan</strong></h4>
                                         <h5>Sản phẩm được cấp bằng sáng chế độc quyền tại hơn <strong>60 quốc gia</strong></h5>
-                                        <div class="dropdown select-country">
+                                        <img class="img-bangsangche" src="~/img/license/ghe-ngoi.png" />
+                                        @* <div class="dropdown select-country">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 Chọn quốc gia xem bằng sáng chế
                                             </button>
@@ -128,7 +130,7 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> *@
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +158,8 @@
                                     <div class="info-banner">
                                         <h4>Nhà sáng chế - Bác Sĩ <strong>Phạm Thị Kim Loan</strong></h4>
                                         <h5>Sản phẩm được cấp bằng sáng chế độc quyền tại hơn <strong>60 quốc gia</strong></h5>
-                                        <div class="dropdown select-country">
+                                        <img class="img-bangsangche" src="~/img/license/dem-thien.png" />
+                                        @* <div class="dropdown select-country">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 Chọn quốc gia xem bằng sáng chế
                                             </button>
@@ -192,7 +195,7 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> *@
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +208,7 @@
     </div>
 </section>
 
-<section id="MenuBody">
+@* <section id="MenuBody">
     <nav id="navbar-area" class="navbar navbar-expand-xl">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -243,7 +246,8 @@
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navDroGoiCo" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Gối cổ
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navDroGoiCo">
+                        <ul class="dropdown-menu
+                        aria-labelledby="navDroGoiCo">
                             <li><a class="dropdown-item" asp-controller="Products" asp-action="ProductDetail">Gối điều trị cổ F4</a></li>
                             <li><a class="dropdown-item" asp-controller="Products" asp-action="ProductDetail">Gối điều trị cổ F5</a></li>
                             <li><a class="dropdown-item" asp-controller="Products" asp-action="ProductDetail">Gối điều trị cổ F6</a></li>
@@ -295,11 +299,11 @@
             </div>
         </div>
     </nav>
-</section>
+</section> *@
 
 <section class="product-info">
     <div class="container">
-        <div class="product-info-main pink">
+        @* <div class="product-info-main orange">
             <div class="row">
                 <div class="col-xl-3 col-md-3 col-12">
                     <div class="center-thing">
@@ -321,30 +325,47 @@
                             Ghế ngồi sáng chế
                             <strong>DOCTORLOAN N85</strong>
                             <span>Ngồi làm việc thường xuyên trong thời gian dài sẽ khiến cột sống và đĩa đệm bị áp lực lớn.</span>
-                            @* <a class="btn btn-pink" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a> *@
+                            <a class="btn btn-pink" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> *@
     </div>
 </section>
 
 <section id="ProductBestSeller" class="product-wrapper">
     <div class="container">
-        <div class="title-product-info">Sản phẩm bán chạy <span>Sản phẩm được cấp bằng sáng chế độc quyền</span></div>
+        <div class="title-product-info">Sản phẩm DOCTORLOAN <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
         <div class="row justify-content-center">
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
                     <div class="img-item">
-                        <img src="~/img/products/product-png-1.png" />
+                        <a asp-controller="Products" asp-action="Product135"><img src="~/img/products/product-135.png"></a>
                     </div>
                     <div class="content-item">
-                        <h5><span>Ghế ngồi 90 mỏng</span> <strong>Màu nâu - Chân inox 304</strong></h5>
+                        <h5><span>Ghế nằm<br />DOCTORLOAN 135</span> <strong>Nhiều màu lựa chọn - Chân inox 304</strong></h5>
+                        <div class="price-item">37.400.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="Product135" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="Product90M"><img src="~/img/products/product-png-1.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Ghế ngồi<br />DOCTORLOAN 90 Mỏng</span> <strong>Nhiều màu lựa chọn - Chân inox 304</strong></h5>
                         <div class="price-item">13.700.000 vnđ</div>
                         <div class="action-item">
-                            <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a>
-                            <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a>
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="Product90M" class="btn btn-buy">Xem chi tiết</a>
                         </div>
                     </div>
                 </div>
@@ -352,14 +373,15 @@
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
                     <div class="img-item">
-                        <img src="~/img/products/product-png-2.png" />
+                        <a asp-controller="Products" asp-action="Product90D"><img src="~/img/products/product-png-2.png"></a>
                     </div>
                     <div class="content-item">
-                        <h5><span>Ghế ngồi 90 dày</span> <strong>Màu nâu - Chân inox 304</strong></h5>
+                        <h5><span>Ghế ngồi<br />DOCTORLOAN 90 dày</span> <strong>Nhiều màu lựa chọn - Chân inox 304</strong></h5>
                         <div class="price-item">24.300.000 vnđ</div>
                         <div class="action-item">
-                            <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a>
-                            <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a>
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="Product90D" class="btn btn-buy">Xem chi tiết</a>
                         </div>
                     </div>
                 </div>
@@ -367,14 +389,16 @@
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
                     <div class="img-item">
-                        <img src="~/img/products/product-png-3.png" />
+                        <a asp-controller="Products" asp-action="Product95V"><img src="~/img/products/product-png-3.png"></a>
                     </div>
                     <div class="content-item">
-                        <h5><span>Ghế ngồi 95 VIP</span> <strong>Màu đen - Chân inox 304</strong></h5>
-                        <div class="price-item">38.000.000 vnđ</div>
+                        <h5><span>Ghế ngồi<br />DOCTORLOAN 95 VIP</span> <strong>Nhiều màu lựa chọn - Chân inox 304</strong></h5>
+                        <div class="price-item">27.300.000 vnđ</div>
                         <div class="action-item">
-                            <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a>
-                            <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a>
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="Product95V" class="btn btn-buy">Xem chi tiết</a>
                         </div>
                     </div>
                 </div>
@@ -382,29 +406,175 @@
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
                     <div class="img-item">
-                        <img src="~/img/products/product-png-4.png" />
+                        <a asp-controller="Products" asp-action="ProductN85"><img src="~/img/products/product-png-5.png"></a>
                     </div>
                     <div class="content-item">
-                        <h5><span>Ghế ngồi chờ 90</span> <strong>Màu xanh dương - Chân inox 304</strong></h5>
-                        <div class="price-item">9.100.000 vnđ</div>
-                        <div class="action-item">
-                            <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a>
-                            <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
-                <div class="product-item">
-                    <div class="img-item">
-                        <img src="~/img/products/product-png-5.png" />
-                    </div>
-                    <div class="content-item">
-                        <h5><span>Ghế ngồi N85</span><strong>Màu vàng - Chân nhựa</strong></h5>
+                        <h5><span>Ghế ngồi<br />DOCTORLOAN N85</span><strong>Nhiều màu lựa chọn - Chân ngắn</strong></h5>
                         <div class="price-item">1.320.000 vnđ</div>
                         <div class="action-item">
-                            <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a>
-                            <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a>
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductN85" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCF4"><img src="~/img/products/product-GCDT-F4.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ Điều trị<br />DOCTORLOAN F4</span><strong></strong></h5>
+                        <div class="price-item">5.300.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCF4" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCF5"><img src="~/img/products/product-GCDT-F5.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ Điều trị<br />DOCTORLOAN F5</span><strong></strong></h5>
+                        <div class="price-item">3.000.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCF5" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCNL"><img src="~/img/products/product-GCNL.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ<br />người lớn không lõi</span><strong></strong></h5>
+                        <div class="price-item">2.300.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCNL" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCDX"><img src="~/img/products/product-DX.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ<br />đi xe</span><strong></strong></h5>
+                        <div class="price-item">600.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCDX" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCDL"><img src="~/img/products/product-DLL.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ<br />du lịch không lõi</span><strong></strong></h5>
+                        <div class="price-item">1.500.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCDL" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCDL"><img src="~/img/products/product-DLL.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ<br />du lịch có lõi</span><strong></strong></h5>
+                        <div class="price-item">3.000.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCDL" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGLF3"><img src="~/img/products/product-GL.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối lưng điều trị<br />DOCTORLOAN F3</span><strong></strong></h5>
+                        <div class="price-item">2.600.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGLF3" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGLF1"><img src="~/img/products/product-GL-F1N.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối lưng điều trị<br />DOCTORLOAN F1 ngắn</span><strong></strong></h5>
+                        <div class="price-item">1.000.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGLF1" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGLF1"><img src="~/img/products/product-GL-F1D.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối lưng điều trị<br />DOCTORLOAN F1 dài</span><strong></strong></h5>
+                        <div class="price-item">2.000.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGLF1" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductDT"><img src="~/img/products/product-DT.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Đệm thiền<br />sáng chế</span><strong></strong></h5>
+                        <div class="price-item">6.800.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductDT" class="btn btn-buy">Xem chi tiết</a>
                         </div>
                     </div>
                 </div>
@@ -440,7 +610,7 @@
     </div>
 </section>
 
-<section class="product-info">
+@* <section class="product-info">
     <div class="container">
         <div class="product-info-main orange">
             <div class="row">
@@ -464,16 +634,16 @@
                             Ghế ngồi sáng chế
                             <strong>DOCTORLOAN 95VIP</strong>
                             <span>Ngồi làm việc thường xuyên trong thời gian dài sẽ khiến cột sống và đĩa đệm bị áp lực lớn.</span>
-                            @* <a class="btn btn-orange" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a> *@
+                            <a class="btn btn-orange" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</section> *@
 
-<section id="License" class="license-second">
+@* <section id="License" class="license-second">
     <div class="container">
         <div class="title-drloan"><span>Hơn 255 Bằng sáng chế độc quyền <br /> trên 60 quốc gia</span></div>
         <div id="LicenseSwiper" class="swiper">
@@ -527,7 +697,7 @@
             <div class="swiper-button-prev"></div>
         </div>
     </div>
-</section>
+</section> *@
 
 @*<section id="FeedbackStory">
         <div class="container">
@@ -563,7 +733,7 @@
     </div>
 </section>
 
-<section class="product-info">
+@* <section class="product-info">
     <div class="container">
         <div class="product-info-main pink">
             <div class="row">
@@ -587,16 +757,16 @@
                             Ghế ngồi sáng chế
                             <strong>DOCTORLOAN N85</strong>
                             <span>Ngồi làm việc thường xuyên trong thời gian dài sẽ khiến cột sống và đĩa đệm bị áp lực lớn.</span>
-                            @* <a class="btn btn-pink" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a> *@
+                             <a class="btn btn-pink" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</section> *@
 
-<section id="AllProduct" class="product-wrapper">
+@* <section id="AllProduct" class="product-wrapper">
     <div class="container">
         <div class="title-product-info text-left m-0">Tất cả sản phẩm</div>
         <div class="row justify-content-center">
@@ -753,15 +923,15 @@
             </div>
         </div>
     </div>
-</section>
+</section> *@
 
-<section id="Experience" class="padding-small">
+@* <section id="Experience" class="padding-small">
     @await Html.PartialAsync("/Views/Common/_ExperiencePartial.cshtml")
-</section>
+</section> *@
 
 <section class="product-info">
     <div class="container">
-        <div class="product-info-main pink mb-0">
+        <div class="product-info-main orange mb-0">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-12">
                     <div class="center-thing">
@@ -780,10 +950,8 @@
                 <div class="col-lg-5 col-md-4 col-12">
                     <div class="center-thing">
                         <div class="title-pi-r">
-                            Ghế ngồi sáng chế
-                            <strong>DOCTORLOAN N85</strong>
-                            <span>Ngồi làm việc thường xuyên trong thời gian dài sẽ khiến cột sống và đĩa đệm bị áp lực lớn.</span>
-                            <a class="btn btn-pink" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a>
+                            <strong>SHOW ROOM SẢN PHẨM DOCTORLOAN</strong>
+                            @* <a class="btn btn-pink" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a> *@
                         </div>
                     </div>
                 </div>
@@ -792,7 +960,7 @@
     </div>
 </section>
 
-<section id="Project" class="demo-section">
+@* <section id="Project" class="demo-section">
     <div class="container">
         <div class="title-drloan">
             <span>
@@ -1133,6 +1301,12 @@
             </div>
             <div class="swiper-pagination"></div>
         </div>
+    </div>
+</section> *@
+
+<section>
+    <div class="container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.536753666197!2d106.68565887683472!3d10.770140589378318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3d2d233975%3A0x2d41ad8b4e102d26!2zOUEgVMO0biBUaOG6pXQgVMO5bmcsIFBoxrDhu51uZyBQaOG6oW0gTmfFqSBMw6NvLCBRdeG6rW4gMSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1696662299725!5m2!1svi!2s" width=100% height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </section>
 

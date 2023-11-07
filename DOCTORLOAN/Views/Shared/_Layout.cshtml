@@ -4,14 +4,28 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Công ty TNHH Gia Thái DOCTORLOAN</title>
-    <link href="~/css/menu-header.min.css" rel="stylesheet" />
     <link href="~/libs/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="~/libs/glightbox/glightbox.min.css" rel="stylesheet" />
     <link href="~/libs/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
     <link href="~/libs/swiperjs/swiper-bundle.min.css" rel="stylesheet" />
     <link href="~/libs/font-awesome_5.15.1/font-awesome_5.15.1_css_all.min.css" rel="stylesheet" />
     <link href="~/css/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <script src="~/libs/jquery/jquery-3.7.0.min.js"></script>
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    <script type='text/javascript'>
+        msg = document.title;
+        msg = msg + ".";
+        position = 0;
+
+        function scrolltitle() {
+            document.title = msg.substring(position, msg.length) + msg.substring(0, position);
+            position++;
+            if (position > msg.length) position = 0
+            window.setTimeout("scrolltitle()", 110);
+        }
+        scrolltitle();
+    </script>
 </head>
 <body>
     <header>
@@ -19,6 +33,7 @@
     </header>
     <main>
         @RenderBody()
+        <div class="zalo-chat-widget" data-oaid="3997762822356581117" data-welcome-message="DOCTORLOAN Rất vui khi được hỗ trợ bạn!" data-autopopup="2" data-width="" data-height=""></div>
     </main>
     <footer>
         @await Html.PartialAsync("/Views/Common/_FooterPartial.cshtml")
@@ -32,6 +47,7 @@
     <script src="~/libs/owlcarousel/owl.carousel.min.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/common.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     @await RenderSectionAsync("scripts", required: false)
 </body>
 </html>

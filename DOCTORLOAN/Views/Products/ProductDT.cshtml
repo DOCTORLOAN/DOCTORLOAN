@@ -1,0 +1,732 @@
+﻿@{
+    ViewData["Title"] = "Sản phẩm";
+}
+
+@{
+    var countNum = 5;
+}
+<input type="hidden" id="txtCountNumber" value="@countNum" />
+
+<section id="InfoProduct">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="swiper productSwiperMain">
+                    <div class="swiper-wrapper">
+                        @for (int i = 1; i <= countNum; i++)
+                        {
+                            <div class="swiper-slide">
+                                <img id="imgMainPosition@(i)" class="img-product-detail" src="~/img/products/DT/img-pd-yellow-@(i).png" />
+                            </div>
+                        }
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <div thumbsSlider="" class="swiper productSwiperThumb">
+                    <div class="swiper-wrapper">
+                        @for (int i = 1; i <= countNum; i++)
+                        {
+                            <div class="swiper-slide">
+                                <div class="bg-product-thumb">
+                                    <img id="imgThumbPosition@(i)" src="~/img/products/DT/img-pdt-yellow-@(i).png" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="info-product-right">
+                    <div class="ipr-name">Đệm Thiền DOCTORLOAN</div>
+                    <div class="ipr-price">6800000</div>
+                    @* <div class="ipr-old-price">39.000.000 VNĐ</div>
+                    <div class="ipr-item">
+                        <label>Mã giảm</label>
+                        <div class="ipr-discount">Giảm 30%</div>
+                    </div> *@
+                    <div class="ipr-item">
+                        <label>.Màu sắc</label>
+                        <div class="ipr-color">
+                            <a href="javascript:void(0)" class="product-color brown active" data-color="brown" title="Màu nâu"></a>
+                        </div>
+                    </div>
+                    <div class="ipr-item">
+                        <div>
+                            <label>.Mô tả</label>
+                            Dùng để ngồi trên sản nhà khi thiền, nghi lễ, công việc, sinh hoạt hàng ngày. Có tác dụng giữ chặt xương chậu, xương cùng, xương cụt ở vị trí chuẩn, không lệch vẹo, khi dùng lâu có tác dụng chỉnh các xương trên về vị trí bình thường.
+                        </div>
+                        @* <span class="input-wrapper">
+                        <button id="decrement"><i class="fas fa-minus"></i></button>
+                        <input class="form-control" type="number" value="1" min="0" max="100" id="quantity" />
+                        <button id="increment"><i class="fas fa-plus"></i></button>
+                        </span> *@
+                    </div>
+                    <div class="ipr-action">
+                        @* <a href="javascript:void(0)" class="btn btn-outline-dtl">Mua ngay</a>
+                        <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
+                        <div class="action-item custom-action-item action-company action-call">
+                            <strong style="font-size: 1.3rem;color: white">Gọi ngay để đặt hàng</strong> <br />
+                            <a href="tel:0899136868">
+                                <img src="~/img/icon/phone-icon.png" style="width: 7%;" />
+                                <strong style="font-size: 1.3rem;color: white">08 9913 6868</strong>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ipr-policy">
+                        <div class="policy-item">
+                            <img src="~/img/icon/p-shield.svg" />
+                            <span>Cam kết <strong>hàng mới 100%</strong></span>
+                        </div>
+                        <div class="policy-item">
+                            <img src="~/img/icon/p-box-iso.svg" />
+                            <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)"> @*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
+                        </div>
+                        <div class="policy-item">
+                            <img src="~/img/icon/p-delivery-truck.svg" />
+                            <span>
+                                Free ship toàn quốc <br />
+                                Giao nhanh 4H nội thành HCM
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="view-more" class="view-more">
+                <a class="btn btn-view-more btn-seemore" href="javascript:void(0)">Xem chi tiết thông số <i class="fas fa-angle-down"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ContentProducts">
+    <div class="container">
+        <div class="product-content-wrapper">
+            <div class="main-content">
+                <div class="accordion-product">
+                    <div class="accordion-product-body">
+                        @*<p>Dựa trên mô phỏng đường cong cột sống sống, ghế sáng chế DOCTORLOAN 95 được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.</p>
+                        <p>Ghế sáng chế DOCTORLOAN 95 nổi bật với cơ chế nâng đỡ vùng thắt lưng và xương chậu, điều chỉnh hiệu quả các trật vẹo cột sống lưng về lại cấu trúc bình thường, duy trì trạng thái khoẻ mạnh của cột sống bằng việc sử dụng ghế DOCTORLOAN 95 hằng ngày.</p>
+                        <p>Đem lại hiệu quả BẢO VỆ CỘT SỐNG, NGĂN CHẶN BIẾN DẠNG xương chậu và cột sống, giúp ngăn chặn bệnh lý cột sống do ngồi sai tư thế hoặc diễn tiến nặng đối với các bệnh cột sống có sẵn.</p>*@
+                        <div class="content-t-wrap">
+                            <div class="parameter-all">
+                                <div class="parameter-item">
+                                    <p class="parameter-ttl">Tổng quan</p>
+                                    <ul class="ulist ">
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Kiểu dáng</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Đệm ngồi</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Tải trọng tối đa</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>150 Kg</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Lõi đệm:</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Có</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Chất liệu lõi đệm:</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>PU Foam</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Chất liệu vỏ bọc</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Da Simili</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Năm ra mắt</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>2020</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="parameter-item">
+                                    <p class="parameter-ttl">ĐỘ BỀN SỬ DỤNG</p>
+                                    <ul class="ulist ">
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Độ bền lõi đệm</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Hơn 10 năm</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Công nghệ sản xuất</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>PU Foaming</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="parameter-item">
+                                    <p class="parameter-ttl">HIỆU QUẢ ĐỐI VỚI BỆNH CỘT SỐNG</p>
+                                    <ul class="ulist ">
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Phòng bệnh cột sống</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Có</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Thoát vị đĩa đệm</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Có</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Đau mỏi vai gáy</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Có</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Đau mỏi lưng - mông</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Có</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Đa mỏi chân – gối</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Có</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Thư giản</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Có</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="parameter-item">
+                                    <p class="parameter-ttl">THÔNG TIN LẮP ĐẶT</p>
+                                    <ul class="ulist ">
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Khối lượng </p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>- Kg</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Sản xuất tại</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Công ty TNHH Gia Thái DOCTORLOAN</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="parameter-item">
+                                    <p class="parameter-ttl">Bảo hành sản phẩm</p>
+                                    <ul class="ulist ">
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Vỏ đệm:</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Không</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Lõi đệm:</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>- năm</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pd-button-overlay"><span class="button-overlay btn-seemore">Đọc thêm<span class="carret"></span></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="ProductBestSeller" class="product-wrapper">
+    <div class="container">
+        <div class="title-product-info">
+            <h4>Sản phẩm DOCTORLOAN</h4>
+            <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCF4"><img src="~/img/products/product-GCDT-F4.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ Điều trị<br />DOCTORLOAN F4</span><strong></strong></h5>
+                        <div class="price-item">5.300.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCF4" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCF5"><img src="~/img/products/product-GCDT-F5.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ Điều trị<br />DOCTORLOAN F5</span><strong></strong></h5>
+                        <div class="price-item">3.000.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCF5" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCNL"><img src="~/img/products/product-GCNL.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ<br />người lớn không lõi</span><strong></strong></h5>
+                        <div class="price-item">2.300.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCNL" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCDX"><img src="~/img/products/product-DX.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ<br />đi xe</span><strong></strong></h5>
+                        <div class="price-item">600.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCDX" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCDL"><img src="~/img/products/product-DLL.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ<br />du lịch không lõi</span><strong></strong></h5>
+                        <div class="price-item">1.500.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCDL" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGCDL"><img src="~/img/products/product-DLL.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối cổ<br />du lịch có lõi</span><strong></strong></h5>
+                        <div class="price-item">3.000.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGCDL" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGLF3"><img src="~/img/products/product-GL.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối lưng điều trị<br />DOCTORLOAN F3</span><strong></strong></h5>
+                        <div class="price-item">2.600.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGLF3" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGLF1"><img src="~/img/products/product-GL-F1N.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối lưng điều trị<br />DOCTORLOAN F1 ngắn</span><strong></strong></h5>
+                        <div class="price-item">1.000.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGLF1" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductGLF1"><img src="~/img/products/product-GL-F1D.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Gối lưng điều trị<br />DOCTORLOAN F1 dài</span><strong></strong></h5>
+                        <div class="price-item">2.000.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductGLF1" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                <div class="product-item">
+                    <div class="img-item">
+                        <a asp-controller="Products" asp-action="ProductDT"><img src="~/img/products/product-DT.png"></a>
+                    </div>
+                    <div class="content-item">
+                        <h5><span>Đệm thiền<br />sáng chế</span><strong></strong></h5>
+                        <div class="price-item">6.800.000 vnđ</div>
+                        <div class="action-item">
+                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
+                            <a asp-controller="Products" asp-action="ProductDT" class="btn btn-buy">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@* <section id="RelatedProducts" class="product-wrapper">
+    <div class="container">
+        <div class="sub-title-product">Có thể bạn cũng thích</div>
+        <div class="swiper relatedProductSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-2.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi 90 dày</span> <strong>Màu nâu - Chân inox 304</strong></h5>
+                            <div class="price-item">24.300.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-1.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi 90 mỏng</span> <strong>Màu nâu - Chân inox 304</strong></h5>
+                            <div class="price-item">13.700.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-3.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi 95 VIP</span> <strong>Màu đen - Chân inox 304</strong></h5>
+                            <div class="price-item">27.300.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-4.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi chờ 90</span> <strong>Màu xanh dương - Chân inox 304</strong></h5>
+                            <div class="price-item">9.100.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-5.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi N85</span> <strong>Màu vàng - Chân nhựa (ngắn)</strong></h5>
+                            <div class="price-item">1.320.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-6.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi N85</span> <strong>Màu xanh dương - Chân nhựa (ngắn)</strong></h5>
+                            <div class="price-item">1.320.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-7.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi N85</span> <strong>Màu xanh lá - Chân nhựa (ngắn)</strong></h5>
+                            <div class="price-item">1.320.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-8.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi N85</span> <strong>Màu đỏ - Chân nhựa (ngắn)</strong></h5>
+                            <div class="price-item">1.320.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-9.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi N85</span> <strong>Màu cam - Chân nhựa (ngắn)</strong></h5>
+                            <div class="price-item">1.320.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="product-item">
+                        <div class="img-item">
+                            <img src="~/img/products/product-png-10.png" />
+                        </div>
+                        <div class="content-item">
+                            <h5><span>Ghế ngồi N85</span> <strong>Màu xám - Chân nhựa (ngắn)</strong></h5>
+                            <div class="price-item">1.320.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+    </div>
+</section> *@
+
+@* <section id="ProductFeedback">
+    <div class="container">
+        <div class="sub-title-product">Ý kiến của khách hàng</div>
+        <div class="product-rating-overview">
+            <div class="star-rating">
+                <strong>4/5</strong>
+                <div class="list-star-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+            </div>
+            <div class="group-rating">
+                <div class="btn-rating active">Tất cả</div>
+                <div class="btn-rating">Bình luận (1.4k)</div>
+                <div class="btn-rating">Video/hình ảnh (1.4k)</div>
+            </div>
+        </div>
+        <div class="item-product-rating">
+            <div class="avatar-rating"><img src="~/img/products/review-1.jpg" /></div>
+            <div class="comment-rating">
+                <div class="name-comment">Mai Hà</div>
+                <div class="date-comment">25/07/2023  08:58</div>
+                <div class="content-comment">Đã nhận được hàng, phòng khám nhiệt tình gửi hàng nhanh, hàng dùng ok, phù hợp với giá tiền.</div>
+                <div class="like-comment"><i class="far fa-thumbs-up"></i> 15</div>
+            </div>
+        </div>
+        <div class="item-product-rating">
+            <div class="avatar-rating"><img src="~/img/products/review-2.jpg" /></div>
+            <div class="comment-rating">
+                <div class="name-comment">Hồng Ngọc</div>
+                <div class="date-comment">21/07/2023  16:15</div>
+                <div class="content-comment">Khá ưng ý. Phòng khám tư vấn nhiệt tình. Sẽ giới thiệu thêm cho người thân.</div>
+                <div class="like-comment"><i class="far fa-thumbs-up"></i> 24</div>
+            </div>
+        </div>
+        <div class="item-product-rating">
+            <div class="avatar-rating"><img src="~/img/products/review-3.jpg" /></div>
+            <div class="comment-rating">
+                <div class="name-comment">Mạnh Hùng</div>
+                <div class="date-comment">02/07/2023  14:36</div>
+                <div class="content-comment">Chất lượng sản phẩm tốt. Mình sẽ mua ủng hộ thêm những lần sau nha.</div>
+                <div class="like-comment"><i class="far fa-thumbs-up"></i> 68</div>
+            </div>
+        </div>
+        <div class="item-product-rating">
+            <div class="avatar-rating"><img src="~/img/products/review-4.jpg" /></div>
+            <div class="comment-rating">
+                <div class="name-comment">Lam Quynh</div>
+                <div class="date-comment">17/06/2023  18:13</div>
+                <div class="content-comment">Sáng nay chị mới nhận được hàng. Đóng gói rất đẹp và cẩn thận. Cảm ơn phòng khám nhé.</div>
+                <div class="like-comment"><i class="far fa-thumbs-up"></i> 68</div>
+            </div>
+        </div>
+        <div class="item-product-rating">
+            <div class="avatar-rating"><img src="~/img/products/review-5.jpg" /></div>
+            <div class="comment-rating">
+                <div class="name-comment">Lan Anh</div>
+                <div class="date-comment">09/06/2023  09:52</div>
+                <div class="content-comment">Sản phẩm đúng như quảng cáo. Giao hàng nhanh. Cảm ơn phòng khám nhiều!</div>
+                <div class="like-comment"><i class="far fa-thumbs-up"></i> 13</div>
+            </div>
+        </div>
+    </div>
+</section> *@
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#nav-menu-container ul li").removeClass("menu-active");
+            $("#nav-menu-container ul li").eq(4).addClass("menu-active");
+        });
+
+        $(document).on("click", ".btn-seemore", function () {
+            var parentbtn = $(this).parents(".pd-button-overlay");
+            parentbtn.hide();
+            $(".accordion-product").addClass("expand");
+        });
+
+        var swiper = new Swiper(".productSwiperThumb", {
+            loop: false,
+            spaceBetween: 12,
+            slidesPerView: 5,
+            freeMode: true,
+            watchSlidesProgress: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+        });
+
+        var swiper2 = new Swiper(".productSwiperMain", {
+            loop: false,
+            spaceBetween: 0,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            thumbs: {
+                swiper: swiper,
+            },
+        });
+
+        var swiper5 = new Swiper(".relatedProductSwiper", {
+            direction: 'horizontal',
+            slidesPerView: 2,
+            spaceBetween: 20,
+            grabCursor: true,
+            loop: false,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                992: {
+                    slidesPerView: 5,
+                    spaceBetween: 24,
+                }
+            },
+        });
+
+        $('.ipr-price').text(parseInt($('.ipr-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+
+        // const incrementButton = document.querySelector("#increment");
+        // const decrementButton = document.querySelector("#decrement");
+        // const quantityInput = document.querySelector("#quantity");
+
+        // incrementButton.addEventListener("click", () => {
+        //     quantityInput.value = parseInt(quantityInput.value) + 1;
+        // });
+        // decrementButton.addEventListener("click", () => {
+        //     quantityInput.value = parseInt(quantityInput.value) - 1;
+        // });
+    </script>
+}
