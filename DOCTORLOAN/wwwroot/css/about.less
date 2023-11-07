@@ -1,5 +1,13 @@
 @import "variables";
 
+body {
+    /*background-image: url(../img/about/bg-about-banner.jpg);*/
+    background-attachment: fixed;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50%;
+}
 #AboutBanner {
     padding-top: 3rem;
     background-image: url(../img/about/bg-about-banner.jpg);
@@ -8,7 +16,7 @@
     background-position: top;
 
     .img-banner-about {
-        width: 75%;
+        width: 60%;
         max-width: 450px;
         margin: 0 auto;
         display: block;
@@ -22,8 +30,8 @@
 
     h4 {
         color: @white;
-        text-transform: uppercase;
-        font-size: 2.25rem;
+        /*text-transform: uppercase;*/
+        font-size: 2.5rem;
         font-family: @font-helveticaneue-blod;
         margin-bottom: 2rem;
         padding-top: 60px;
@@ -31,7 +39,7 @@
 
     p {
         color: @white;
-        font-size: 1.125rem;
+        font-size: 1.3rem;
         margin-bottom: 2rem;
 
         &.font-regular {
@@ -88,8 +96,12 @@
         color: @black;
     }
 
+    .container {
+        background-color: #f0f2f5;
+    }
+
     .doctor-wrapper {
-        width: 75%;
+        width: 70%;
         margin: 0 auto;
     }
 
@@ -100,6 +112,9 @@
         img {
             position: relative;
             z-index: 2;
+            margin: 0 auto;
+            width: 80%;
+            padding-bottom: 2.2rem;
         }
 
         &:after {
@@ -115,28 +130,31 @@
     }
 
     .doctor-desc {
-        width: 70%;
+        width: 85%;
         display: block;
         margin-top: 6rem;
-        
+        text-align: left;
+
         h4 {
             font-size: 1.5rem;
             color: @main-orange;
             font-family: @font-helveticaneue-blod;
             margin-bottom: 1.5rem;
+            margin-top: 2rem;
         }
 
         h3 {
-            font-size: 2.25rem;
-            text-transform: uppercase;
+            font-size: 2rem;
+            /*text-transform: uppercase;*/
             color: @main-orange;
             font-family: @font-helveticaneue-blod;
             margin-bottom: 1.5rem;
         }
 
         p {
-            text-align: justify;
+            /*text-align: justify;*/
             margin-bottom: 1.5rem;
+            margin-left: 1rem;
 
             &:last-child {
                 margin: 0;
@@ -156,7 +174,7 @@
         position: absolute;
         top: calc(175px + 5rem);
         left: 1.5rem;
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         font-size: 1.125rem;
         line-height: 1.5rem;
         color: @main-orange;
@@ -221,21 +239,25 @@
 }
 
 #AboutDescription {
-    padding: 5rem 0;
-    background-color: #F6F5F3;
+    /*padding: 5rem 0;*/
 
     .about-desc-wrapper {
         width: 75%;
         margin: 0 auto;
     }
 
+    .container {
+        background-color: white;
+        padding-top: 2rem;
+    }
+
     .desc-first {
         p {
             font-family: @font-helveticaneue-medium;
-            text-transform: uppercase;
+            /*text-transform: uppercase;*/
             font-size: 1.25rem;
             margin: 0;
-            text-align: right;
+            text-align: left;
         }
     }
 
@@ -271,6 +293,14 @@
     }
 
     .about-mission-vision {
+        background-color: @white;
+        /*padding: 2rem;*/
+        .container {
+            background-color: #f4f5f5;
+            padding: 2rem;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+        }
+
         .mv-item {
             margin: 1rem 0;
 
@@ -281,11 +311,19 @@
             h5 {
                 text-transform: uppercase;
                 margin-bottom: .5rem;
+                padding-top: 2rem;
                 font-family: @font-helveticaneue-blod;
                 transition: color .25s ease-out 100ms
             }
 
             p {
+                margin: 0;
+                font-size: .875rem;
+                text-align: justify;
+                transition: color .25s ease-out 100ms
+            }
+
+            li {
                 margin: 0;
                 font-size: .875rem;
                 text-align: justify;
@@ -298,7 +336,7 @@
                     filter: invert(43%) sepia(93%) saturate(1751%) hue-rotate(2deg) brightness(106%) contrast(103%);
                 }
 
-                h5, p {
+                h5, p, li {
                     color: @main-orange;
                 }
             }
@@ -310,6 +348,7 @@
             text-transform: uppercase;
             line-height: 1.35;
             font-family: @font-helveticaneue-blod;
+            margin-top: 7rem;
 
             strong {
                 font-size: 2.5rem;
@@ -317,13 +356,18 @@
             }
         }
 
+        mv-title-1 {
+            margin-top: 1rem;
+        }
+
         .mv-sub-title {
             font-family: @font-helveticaneue-medium;
             text-align: center;
             text-transform: uppercase;
             color: @main-orange;
-            margin: .5rem 0;
-            font-size: 1.25rem;
+            margin: .3rem 0;
+            font-size: 2rem;
+            padding-top: 3rem;
         }
 
         ul {
@@ -349,7 +393,7 @@
             width: 100%;
             height: auto;
             flex-direction: row;
-            font-size: .875rem;
+            font-size: 1rem;
             margin-top: 1.5rem;
 
             &.mv-border {
@@ -363,6 +407,7 @@
                     padding-left: .5rem;
                     padding-right: .5rem;
                     border-right: 2px solid rgba(1, 60, 116, .5);
+                    margin: 2rem 0;
 
                     p {
                         overflow: hidden;
@@ -401,7 +446,7 @@
             }
 
             .img-mv-flex {
-                width: 7rem;
+                width: 10rem;
                 display: block;
                 margin: 0 auto;
                 margin-bottom: 1rem;
@@ -416,8 +461,14 @@
 }
 
 #Activities {
+
+
     .activities-content {
         padding: 1rem;
+    }
+
+    img {
+        padding: 2rem;
     }
 
     .activities-title {
@@ -426,6 +477,11 @@
         font-family: @font-helveticaneue-blod;
         font-size: 1.5rem;
         margin-bottom: 1.5rem;
+
+        h3 {
+            font-size: 1rem;
+            color: @main-blue;
+        }
     }
 
     .activities-activate {
@@ -508,10 +564,15 @@
     }
 
     .activities-story {
+
         .activities-story-body {
             padding: 2rem 1rem;
             width: 75%;
             margin: 0 auto;
+        }
+
+        .container {
+            background: #f8f8f8;
         }
 
         p {
@@ -559,6 +620,11 @@
 }
 
 #Distinctive {
+
+    .container {
+        background: rgba(253, 225, 26, 0.262);
+    }
+
     .distinctive-content {
         padding-right: 4rem;
 
@@ -573,17 +639,25 @@
         text-transform: uppercase;
         font-size: 1.75rem;
         margin-bottom: 2rem;
+        margin-top: 2rem;
         color: @main-orange;
     }
 
     p {
         text-align: justify;
-        margin: 0;
+        margin: 3rem;
+    }
+
+    img {
+        padding: 2rem;
     }
 
     .distinctive-action {
         margin-top: 2rem;
     }
+}
+
+@media only screen and (min-width:1600) {
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1399.8px) {
@@ -670,6 +744,7 @@
         }
 
         .about-mission-vision {
+            border-radius: 10px;
             .mv-item {
                 margin: .75rem 0;
 
@@ -691,7 +766,7 @@
             }
 
             .mv-sub-title {
-                font-size: 1.125rem;
+                font-size: 1.5rem;
             }
 
             ul {
@@ -1259,6 +1334,12 @@
         padding: 1.5rem 0;
         text-align: center;
 
+        .left-thing {
+            .banner-about-content {
+                margin-top: 0rem;
+            }
+        }
+
         .img-banner-about {
             width: 50%;
         }
@@ -1272,6 +1353,7 @@
         p {
             font-size: .875rem;
             margin-bottom: .5rem;
+            text-align: left;
         }
 
         .banner-action {
@@ -1283,13 +1365,14 @@
         padding: 1.5rem 0;
         font-size: .875rem;
         overflow: hidden;
+        display: none;
 
         .about-text-first, .about-text-last {
             display: none;
         }
 
         .doctor-wrapper {
-            width: 100%;
+            width: 85%;
         }
 
         .doctor-image {
@@ -1391,6 +1474,7 @@
         }
 
         .about-mission-vision {
+            padding: -1rem;
             .mv-item {
                 margin: 1rem 0;
 
@@ -1400,7 +1484,7 @@
                 }
 
                 p {
-                    font-size: .8125rem;
+                    font-size: .5rem;
                 }
 
                 img {
@@ -1413,6 +1497,7 @@
             }
 
             .mv-title {
+                display:none;
                 font-size: 1.125rem;
 
                 strong {
@@ -1421,10 +1506,13 @@
             }
 
             .mv-sub-title {
-                font-size: 1rem;
+                font-size: 1.5rem;
+                padding-top: 1rem;
+                padding-bottom: 2rem;
             }
 
             ul {
+                display: none;
                 padding-left: 1rem;
                 margin: .25rem 0;
             }
@@ -1441,6 +1529,33 @@
                     width: 4rem;
                     margin-bottom: .5rem;
                 }
+            }
+
+            .mv-flex-item {
+                padding-left: .5rem;
+                padding-right: .5rem;
+                border-right: 2px solid rgba(1, 60, 116, .5);
+                /*margin: 2rem 0;*/
+
+                p {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    line-height: 22px;
+                    -webkit-line-clamp: 5;
+                    height: 110px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    margin-bottom: 0;
+                }
+
+                /*&:hover {
+                    p {
+                        color: @main-orange;
+                        text-overflow: unset;
+                        -webkit-line-clamp: unset;
+                        height: auto;
+                    }
+                }*/
             }
         }
     }

@@ -93,6 +93,12 @@
         padding: 1.5rem 1rem;
         width: 100%;
         margin: 1rem 0;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+
+        &:hover {
+            transform: scale(1.1);
+            transition: bottom 3.5s ease-in-out;
+        }
 
         h4 {
             font-family: @font-helveticaneue-blod;
@@ -339,8 +345,17 @@
     }
 }
 
-#ProductFirst, #PillowProduct {
-    padding: 0;
+#ProductFirst{
+    padding: 2rem;
+   /* background-color: white;
+    &.product-option .pfirst-item {
+        background-color: @light-grey;
+    }*/
+}
+
+#PillowProduct {
+    padding: 2rem;
+    background-color: white;
 
     &.product-option .pfirst-item {
         background-color: @light-grey;
@@ -632,6 +647,132 @@
 
 .chair-oder {
     padding: 2rem 0 2rem;
+    background-color: white;
+
+    .chair-slide {
+        /*background-color: @light-grey;*/
+        border-radius: 1rem;
+        height: 100%;
+        padding: 4rem 0 2rem;
+    }
+
+    .swiperOrder {
+        padding-bottom: 3rem;
+
+        .img-order {
+            margin: 2rem 0;
+            transition: all .2s linear;
+        }
+
+        .swiper-slide {
+            position: relative;
+
+            .show-room-logo {
+                opacity: 0;
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(247, 247, 247, .6);
+            }
+        }
+
+        .swiper-slide-active {
+            .show-room-logo {
+                opacity: 1;
+            }
+
+            .img-order {
+                transform: scale(1.1);
+            }
+
+            &:before {
+                content: "";
+                display: none;
+            }
+        }
+
+        .swiper-pagination-bullet {
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+            margin: 0 0.5rem;
+            border: 1px solid @main-orange;
+            border-radius: 50%;
+
+            &.swiper-pagination-bullet-active {
+                background-color: @main-orange;
+            }
+
+            &:hover:not(.swiper-pagination-bullet-active) {
+                opacity: 1;
+                background-color: @main-orange-second;
+            }
+        }
+    }
+
+    .location-use {
+        margin-top: 1.5rem;
+
+        p {
+            font-family: @font-helveticaneue-medium;
+            margin-bottom: .5rem;
+        }
+
+        .list-location {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            .col-location {
+                width: 33.333333334%;
+                margin: .25rem 0;
+            }
+        }
+
+        .location-item {
+            text-align: center;
+            width: 7rem;
+            padding: .5rem 1rem;
+            background-color: #EAEBEE;
+            border-radius: .5rem;
+            transition: all .25s linear;
+
+            img {
+                filter: invert(69%) sepia(8%) saturate(394%) hue-rotate(179deg) brightness(95%) contrast(90%);
+                width: 3rem;
+            }
+
+            span {
+                display: block;
+                margin-top: .25rem;
+                font-family: @font-helveticaneue-medium;
+            }
+
+            &:hover {
+                background-color: @main-orange-second;
+
+                img {
+                    filter: invert(54%) sepia(89%) saturate(3060%) hue-rotate(359deg) brightness(101%) contrast(109%);
+                }
+
+                span {
+                    color: @main-orange;
+                }
+            }
+        }
+    }
+}
+
+.seating-oder {
+    padding: 2rem 0 2rem;
+    background-color: #f8f8f8;
 
     .chair-slide {
         background-color: @light-grey;
@@ -754,6 +895,7 @@
     }
 }
 
+
 @media only screen and (min-width: 1200px) and (max-width: 1399.8px) {
     #BannerShowRoom {
         .content-banner-sr {
@@ -787,6 +929,7 @@
             border-radius: 1rem;
             padding: 1.25rem .75rem;
             margin: .75rem 0;
+            
 
             h4 {
                 font-size: 1.5rem;
