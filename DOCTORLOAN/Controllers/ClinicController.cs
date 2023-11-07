@@ -37,7 +37,7 @@ namespace DOCTORLOAN.Controllers
                     BookingDate = _booking.BookingDate,
                     AddressLine = _booking.AddressLine,
                     ProvinceId = 4,
-                    DistrictId = 2,
+                    DistrictId = 1,
                     WardId = 1,
                     Noted = _booking.Noted,
                 };
