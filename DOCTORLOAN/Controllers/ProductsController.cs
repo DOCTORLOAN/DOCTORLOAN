@@ -1,55 +1,64 @@
-﻿using DOCTORLOAN.Models.Products;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.ComponentModel;
-using System.Net.Http.Headers;
-using static System.Net.WebRequestMethods;
+﻿using Microsoft.AspNetCore.Mvc;
+using DOCTORLOAN.Models.DTO.Products;
+using AutoMapper;
 
 namespace DOCTORLOAN.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private const string _baseURL = "http://localhost:49553/api";
+        private readonly IMapper _mapper;
 
         public ProductsController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
 
-        //[HttpGet]
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-            //List<Product> productList = new List<Product>();
-            //using (var httpClient = new HttpClient())
-            //{
-               
-            //    try
-            //    {
-            //        httpClient.BaseAddress = new Uri("http://localhost:49553");
-            //        httpClient.DefaultRequestHeaders.Accept.Clear();
-            //        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            List<ProductFilterResultDto> response = new List<ProductFilterResultDto>();
+            Console.WriteLine("dev: ", response);
+            try
+            {
+                var client = _httpClientFactory.CreateClient();
 
-            //        //GET Method
-            //        var response = await httpClient.GetAsync("/api/product-module/Product/GetOptions");
+                var responseMess = await client.GetAsync("http://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts");
 
-            //        if (response.IsSuccessStatusCode)
-            //        {
-            //            var data = await response.Content.ReadAsStringAsync();
-            //            // a thuwr cach readFormJson xem a                       
-            //            Console.WriteLine(data);
-            //            return View(data);
-            //        }
+                responseMess.EnsureSuccessStatusCode();
 
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine($"{ex},Internal server Error");
-            //        return null;
-            //    }
-            //}
-            return View();
+               /* response.AddRange(await responseMess.Content.ReadFromJsonAsync<IEnumerable<ProductFilterResultDto>>());*/
+
+                // Đọc và phân tích nội dung JSON thành một đối tượng
+                IEnumerable<ProductFilterResultDto> _products = await responseMess.Content.ReadFromJsonAsync<IEnumerable<ProductFilterResultDto>>();
+
+                // Thêm các sản phẩm vào danh sách hiện có
+                response.AddRange(_products);
+
+                /*var tmp = await responseMess.Content.*/
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+                
+            return View(response);
         }
+
+        /* public async Task<IActionResult> Index()
+         {
+             List<ProductItem> reservationList = new List<ProductItem>();
+             using (var httpClient = new HttpClient())
+             {
+                 using (var response = await httpClient.GetAsync("http://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts"))
+                 {
+                     string apiResponse = await response.Content.ReadAsStringAsync();
+                     reservationList = JsonConvert.DeserializeObject<List<ProductItem>>(apiResponse);
+                 }
+             }
+             return View(reservationList);
+         }*/
 
         ////[HttpGet]
         //public async Task<IActionResult> Index()

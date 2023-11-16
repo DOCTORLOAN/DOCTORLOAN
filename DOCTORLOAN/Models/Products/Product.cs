@@ -2,19 +2,32 @@
 
 public class Product
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Sku { get; set; }
-    //public StatusEnum Status { get; set; }
-    public string Slug { get; set; }
-    public int BrandId { get; set; }
-    public decimal Price { get; set; } = 0;
-    public decimal PriceDiscount { get; set; } = 0;
+    public int Status { get; set; }
+    public string BrandName { get; set; }
+    public decimal PriceDiscount { get; set; }
+    public decimal Price { get; set; }
     public int? Quantity { get; set; }
-    public virtual ICollection<ProductItem> ProductItems { get; set; } = new HashSet<ProductItem>();
-    public virtual ICollection<ProductAttribute> ProductAttributes { get; set; } = new HashSet<ProductAttribute>();
-    public virtual ICollection<ProductDetail> ProductDetails { get; set; } = new HashSet<ProductDetail>();
-    public virtual ICollection<ProductMedia> ProductMedias { get; set; } = new HashSet<ProductMedia>();
-    public virtual ICollection<ProductCategory> ProductCategories { get; set; } = new HashSet<ProductCategory>();
-    public virtual Brand Brand { get; set; }
-    public bool IsDelete { get; set; }
+    public List<ProductItem> ProductItems { get; set; }
+    public List<ProductAttribute> ProductAttributes { get; set; }
+    public List<ProductDetail> ProductDetails { get; set; }
+    public string ImgUrl { get; set; }
+    public List<ProductMedia> ProductMedias { get; set; }
+    public string CategorieName { get; set; }
+    public List<ProductCategory> ProductCategories { get; set; }
+    public List<int> CategoryIds { get; set; }
+
+    /*public int Id { get; set; }
+    public string Name { get; set; }
+    public string Sku { get; set; }
+    public string ImagesUrl { get; set; }
+    public List<ProductCategory> CategoryName { get; set; }
+    public int Status { get; set; }
+    public Brand BrandId { get; set; }
+    public decimal avaiableStock { get; set;}
+    public int Stock { get; set; }
+    public TimeOnly LastModified { get; set; }
+    public List<ProductItem> Items { get; set; }*/
 }

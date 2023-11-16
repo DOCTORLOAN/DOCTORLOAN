@@ -12,49 +12,39 @@
                 <div class="col-lg-8 col-12 collg">
                     <div class="frm-common">
                         <h4>Đăng ký tư vấn sức khỏe</h4>
-                        <form class="needs-validation" novalidate>
-                            <div class="mb-3">
-                                <label for="txtName" class="form-label req">Họ và tên</label>
-                                <input type="text" class="form-control" id="txtName" placeholder="Họ và tên" required />
-                                <div class="invalid-feedback">
-                                    Vui lòng nhập họ tên.
+                        <form method="post" asp-controller="Contact" asp-action="HealthAdvicePost" class="row mb-3 needs-validation">
+                            @if (TempData["AlertMessageSuccess"] != null)
+                            {
+                                <div class="alert alert-success">
+                                    @TempData["AlertMessageSuccess"]
                                 </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="txtPhone" class="form-label req">Số điện thoại</label>
-                                <input type="text" class="form-control" id="txtPhone" placeholder="Số điện thoại" required />
-                                <div class="invalid-feedback">
-                                    Vui lòng nhập số điện thoại.
+                            }
+                            @if (TempData["AlertMessageError"] != null)
+                            {
+                                <div class="alert alert-warning">
+                                    @TempData["AlertMessageError"]
                                 </div>
+                            }
+                            <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm has-validation">
+                                <input type="text" class="form-control" id="txtName" name="LastName" placeholder="Họ" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="txtAddress" class="form-label">Địa chỉ</label>
-                                <input type="text" class="form-control" id="txtAddress" placeholder="Địa chỉ" />
+                            <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm has-validation">
+                                <input type="text" class="form-control" id="txtName" name="FirstName" placeholder="Tên" required>
                             </div>
-                            <div class="row g-3 mb-3">
-                                <div class="col-md-6">
-                                    <label for="txtDate" class="form-label req">Chọn ngày tư vấn</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon1"><i class="far fa-calendar-alt"></i></span>
-                                        <input type="text" class="form-control datepicker" placeholder="Chọn ngày tư vấn" required />
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Vui lòng chọn ngày tư vấn.
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="txtDate" class="form-label req">Chọn giờ tư vấn</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon1"><i class="far fa-clock"></i></span>
-                                        <input type="text" class="form-control timepicker" placeholder="Chọn giờ tư vấn">
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Vui lòng chọn giờ tư vấn.
-                                    </div>
-                                </div>
+                            <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm has-validation">
+                                <input type="tel" class="form-control" id="txtPhone" name="Phone" placeholder="Số điện thoại" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
                             </div>
-                            <div class="mb-3 text-end">
-                                <button class="btn btn-dtl" type="submit">Đặt lịch</button>
+                            <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-frm">
+                                <input type="date" class="form-control form_datetime" id="bookingdate" name="BookingDate" placeholder="Chọn thời gian" required>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-12 mb-frm has-validation">
+                                <input type="text" class="form-control" id="txtAddress" name="AddressLine" placeholder="Địa chỉ liên hệ" required>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-12 mb-frm has-validation">
+                                <textarea class="form-control" placeholder="Triệu chứng bệnh" name="Noted" rows="3"></textarea>
+                            </div>
+                            <div class="form-action">
+                                <button class="btn btn-dtl" type="submit">Đăng ký</button>
                             </div>
                         </form>
                     </div>
@@ -85,37 +75,39 @@
             $("#nav-menu-container ul li").eq(6).addClass("menu-active");
         });
 
-        $('.datepicker').datepicker({
-            todayBtn: true,
-            language: "vi",
-            autoclose: true,
-            todayHighlight: true
+
+        flatpickr("#form_datetime", {
+            altInput: true,
+            altFormat: "F j, Y",
+            dateFormat: "Y-m-d"
         });
 
-        var firstOpen = true;
-        var time;
-        $('.timepicker').datetimepicker({
-            useCurrent: false,
-            format: "hh:mm A"
-        }).on('dp.show', function () {
-            if (firstOpen) {
-                time = moment().startOf('day');
-                firstOpen = false;
-            } else {
-                time = "01:00 PM"
-            }
-            $(this).data('DateTimePicker').date(time);
-        });
+        var currentDateTime = new Date();
+        var year = currentDateTime.getFullYear();
+        var month = (currentDateTime.getMonth() + 1);
+        var date = (currentDateTime.getDate() + 1);
 
-        (() => {
-            'use strict'
+        if (date < 10) {
+            date = '0' + date;
+        }
+        if (month < 10) {
+            month = '0' + month;
+        }
 
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
+        var dateTomorrow = year + "-" + month + "-" + date;
+        var bookingdate = document.querySelector("#bookingdate");
+        bookingdate.setAttribute("min", dateTomorrow);
 
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
+        bookingdate.onchange = function () {
+            checkoutElem.setAttribute("min", this.value);
+        }
+
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
                     if (!form.checkValidity()) {
                         event.preventDefault()
                         event.stopPropagation()
@@ -123,8 +115,7 @@
 
                     form.classList.add('was-validated')
                 }, false)
-            })
-        })()
+            });
     </script>
 
 }

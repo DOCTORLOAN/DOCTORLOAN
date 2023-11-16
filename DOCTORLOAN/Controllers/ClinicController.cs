@@ -1,12 +1,7 @@
 ﻿using DOCTORLOAN.Models.Bookings;
-using DOCTORLOAN.Models.Customers;
-using DOCTORLOAN.Models.Addresses;
 using Microsoft.AspNetCore.Mvc;
-using DOCTORLOAN.service;
-using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
-using System;
 
 namespace DOCTORLOAN.Controllers
 {
@@ -30,7 +25,7 @@ namespace DOCTORLOAN.Controllers
             {
                 Booking data = new Booking
                 {
-                    Type = 10,
+                    Type = 100,
                     FirstName = _booking.FirstName,
                     LastName = _booking.LastName,
                     Phone = _booking.Phone,
@@ -39,14 +34,15 @@ namespace DOCTORLOAN.Controllers
                     ProvinceId = 4,
                     DistrictId = 1,
                     WardId = 1,
-                    Noted = _booking.Noted,
+                    Noted = "Đặt lịch Khám: " + _booking.Noted,
                 };
 
                 string jsonData = JsonConvert.SerializeObject(data);
                 HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
                 HttpClient httpClient = new HttpClient();
-                var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
+                /*var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);*/
+                var response = await httpClient.PostAsync("http://localhost:49553/api/booking-module/Booking/create", content);
 
                 if (response.IsSuccessStatusCode)
                 {

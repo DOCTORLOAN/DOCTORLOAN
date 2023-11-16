@@ -40,13 +40,16 @@ public class User
 
     //public LTree? ParentTreeId { get; set; }
 
-    //public UserStatus Status { get; set; }
+    public int Status { get; set; }
+
+    public int Avatar { get; set; }
 
     //public LanguageEnum LanguageId { get; set; }
 
-    //public Gender Gender { get; set; }
+    public int Gender { get; set; }
 
     public DateTime? DOB { get; set; }
+    public string Password { get; set; }
 
     public string PasswordHash { get; set; }
 
@@ -61,7 +64,7 @@ public class User
     public int? ValidUnixTime { get; set; }
 
 
-    //public virtual Role Role { get; set; }
+    /*public virtual Role Role { get; set; }*/
     public virtual User ParentUser { get; set; }
     public virtual UserDetail UserDetail { get; set; }
 

@@ -26,29 +26,51 @@
                     <div class="col-12 frm-body">
                         <h3>Đăng ký tài khoản</h3>
                         <div class="sub-tt">Vui lòng nhập thông tin để tạo tài khoản</div>
-                        <form class="row needs-validation" novalidate>
+                        <form method="post" asp-controller="Auth" asp-action="RegisterPost" class="row needs-validation" novalidate>
+                            @if (TempData["AlertMessageSuccess"] != null)
+                            {
+                                <div class="alert alert-success">
+                                    @TempData["AlertMessageSuccess"]
+                                </div>
+                            }
+                            @if (TempData["AlertMessageError"] != null)
+                            {
+                                <div class="alert alert-warning">
+                                    @TempData["AlertMessageError"]
+                                </div>
+                            }
+                            <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-3">
+                                <label for="firstName" class="req">Họ</label>
+                                <input type="text" class="form-control" placeholder="Nhập Họ" id="lastName" name="lastName" required />
+                            </div>
+                            <div class="col-xl-6 col-lg-12 col-md-6 col-12 mb-3">
+                                <label for="firstName" class="req">Tên</label>
+                                <input type="text" class="form-control" placeholder="Nhận Tên" id="firstName" name="firstName" required />
+                            </div>
+                            <div class="invalid-feedback">
+                                Vui lòng nhập Họ Tên.
+                            </div>
                             <div class="mb-3">
-                                <label for="username" class="req">Email/ Số điện thoại</label>
-                                <input type="text" class="form-control" placeholder="Nhập số điện thoại hoặc email" id="username" required />
+                                <label for="email" class="req">Số điện thoại</label>
+                                <input type="text" class="form-control" placeholder="Nhập số điện thoại" id="phone" name="phone" required />
                                 <div class="invalid-feedback">
-                                    Vui lòng nhập email hoặc số điện thoại.
+                                    Vui lòng nhập số điện thoại liên hệ.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="req">Email (Tài khoản đăng nhập)</label>
+                                <input type="text" class="form-control" placeholder="Nhập số email" id="email" name="email" required />
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập email.
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="req">Mật khẩu</label>
-                                <input type="password" class="form-control" placeholder="Nhập mật khẩu" id="password" required />
+                                <input type="password" class="form-control" placeholder="Nhập mật khẩu" id="password" name="password" required />
                                 <div class="invalid-feedback">
                                     Vui lòng nhập mật khẩu.
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="passwordconfirm" class="req">Nhập lại mật khẩu</label>
-                                <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" id="passwordconfirm" required />
-                                <div class="invalid-feedback">
-                                    Mật khẩu không trùng khớp.
-                                </div>
-                            </div>
-
                             <div class="">
                                 <button type="submit" class="btn btn-submit">Đăng ký</button>
                             </div>

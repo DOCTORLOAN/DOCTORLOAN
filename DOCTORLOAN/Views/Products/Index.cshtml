@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<DOCTORLOAN.Models.DTO.Products.ProductFilterResultDto>
+@{
     ViewData["Title"] = "Sản phẩm";
 }
 
@@ -338,22 +339,30 @@
     <div class="container">
         <div class="title-product-info">Sản phẩm DOCTORLOAN <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
         <div class="row justify-content-center">
-            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
-                <div class="product-item">
-                    <div class="img-item">
-                        <a asp-controller="Products" asp-action="Product135"><img src="~/img/products/product-135.png"></a>
-                    </div>
-                    <div class="content-item">
-                        <h5><span>Ghế nằm<br />DOCTORLOAN 135</span> <strong>Nhiều màu lựa chọn - Chân inox 304</strong></h5>
-                        <div class="price-item">37.400.000 vnđ</div>
-                        <div class="action-item">
-                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
-                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
-                            <a asp-controller="Products" asp-action="Product135" class="btn btn-buy">Xem chi tiết</a>
+            @foreach (var product in Model)
+            {
+                <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                    <div class="product-item">
+                        <div class="img-item">
+                            @* <a asp-controller="Products" asp-action="Product135"><img src="~/img/products/product-135.png"></a> *@
+                            <a asp-controller="Products" asp-action="Product135"><img src="@product.ImageUrl"></a>
+                        </div>
+                        <div class="content-item">
+                            <h5>
+                                @product.Name
+                                @*     <span>Ghế nằm<br />DOCTORLOAN 135</span> <strong>Nhiều màu lựa chọn - Chân inox 304</strong> *@
+                            </h5>
+                            @* <div class="price-item">@Model.Price</div> *@
+                            @* <div class="price-item">37.400.000 vnđ</div> *@
+                            <div class="action-item">
+                                @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
+                                @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a>  *@
+                                <a asp-controller="Products" asp-action="Product135" class="btn btn-buy">Xem chi tiết</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
             <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                 <div class="product-item">
                     <div class="img-item">

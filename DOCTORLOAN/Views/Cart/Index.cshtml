@@ -34,11 +34,11 @@
                                     Màu: Nâu
                                 </p>
                             </div>
-                            <div class="product-price">27,300,000</div>
+                            <div class="product-price">27300000</div>
                             <div class="product-quantity">
                                 <input type="number" value="1" min="1">
                             </div>
-                            <div class="product-line-price">27,300,000</div>
+                            <div class="product-line-price">27300000</div>
                             <div class="product-removal">
                                 <button class="remove-product">
                                     <i class="fas fa-trash-alt"></i>
@@ -62,11 +62,11 @@
                                     Màu: Nâu
                                 </p>
                             </div>
-                            <div class="product-price">37,400,000</div>
+                            <div class="product-price">37400000</div>
                             <div class="product-quantity">
                                 <input type="number" value="1" min="1">
                             </div>
-                            <div class="product-line-price">37,400,000</div>
+                            <div class="product-line-price">37400000</div>
                             <div class="product-removal">
                                 <button class="remove-product">
                                     <i class="fas fa-trash-alt"></i>
@@ -90,11 +90,11 @@
                                     Size: Lớn
                                 </p>
                             </div>
-                            <div class="product-price">6,800,000</div>
+                            <div class="product-price">6800000</div>
                             <div class="product-quantity">
                                 <input type="number" value="1" min="1">
                             </div>
-                            <div class="product-line-price">6,800,000</div>
+                            <div class="product-line-price">6800000</div>
                             <div class="product-removal">
                                 <button class="remove-product">
                                     <i class="fas fa-trash-alt"></i>
@@ -110,7 +110,7 @@
                     <div class="total-cart">
                         <div class="total-info">
                             <span>Tạm tính</span>
-                            <span id="cart-subtotal" class="totals-value">71,500,000</span>
+                            <span id="cart-subtotal" class="totals-value">71500000</span>
                         </div>
                         <div class="total-info">
                             <span>Giảm giá (0%)</span>
@@ -118,11 +118,11 @@
                         </div>
                         <div class="total-info">
                             <span>Phí vận chuyển</span>
-                            <span id="cart-shipping" class="totals-value">200,000</span>
+                            <span id="cart-shipping" class="totals-value">200000</span>
                         </div>
                         <div class="total-info totals-item-total">
                             <span>Tổng cộng</span>
-                            <span id="cart-total" class="totals-value">71,700,000</span>
+                            <span id="cart-total" class="totals-value">71700000</span>
                         </div>
                     </div>
                 </div>
@@ -146,9 +146,12 @@
             updateQuantity(this);
         });
 
-        $('.product-removal button').click(function () {
+        $('.product-removal button').cl  ick(function () {
             removeItem(this);
         });
+
+        //$('.product-price').text(parseInt($('.product-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+        //$('.product-line-price').text(parseInt($('.product-line-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
 
         /* Recalculate cart */
         function recalculateCart() {
