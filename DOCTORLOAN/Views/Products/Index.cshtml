@@ -1678,8 +1678,7 @@
                     $('#price-item-'+item.id).text(parseInt($('#price-item-'+item.id).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                     $('#product-' + item.id).attr('href', $(location).attr('href') + '/ProductDetail/'+item.id);
 
-                    $("#buy-"+item.id).click(function () {
-                        /*console.log("id: ", $(this).attr('data-id'));*/
+                    /*$("#buy-"+item.id).click(function () {
                         $.ajax({
                             url: '/Cart/AddToCart',
                             data: {
@@ -1695,7 +1694,7 @@
                                 console.error('Error:', error);
                             }
                         });
-                    });
+                    });*/
                 });
                 
             },

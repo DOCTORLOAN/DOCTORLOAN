@@ -1,5 +1,8 @@
 ﻿using DOCTORLOAN.Models.Contents;
+using DOCTORLOAN.Models.Orders;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 namespace DOCTORLOAN.Controllers
 {
@@ -10,10 +13,25 @@ namespace DOCTORLOAN.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AddToCart(int id, int SoLuong, string type = "Normal")
+       /* public List<CartItem> Carts
         {
-            var myCart = Carts;
-            var item = myCart.SingleOrDefault(p => p.MaHh == id);
+            get
+            {
+                var data = HttpContext.Session.Get<List<CartItem>>("GioHang");
+                if (data == null)
+                {
+                    data = new List<CartItem>();
+                }
+                return data;
+            }
+        }*/
+
+        /*public async Task<IActionResult> AddToCart(int id, int SoLuong, string type = "Normal")
+        {
+            var _order = Order;
+            var item = _order.SingleOrDefault(p => p.asidasd == id);
+
+            HttpContent _content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
             if (item == null)//chưa có
             {
@@ -42,7 +60,7 @@ namespace DOCTORLOAN.Controllers
                 });
             }
             return RedirectToAction("Index");
-        }
+        }*/
 
         public IActionResult Payment()
         {

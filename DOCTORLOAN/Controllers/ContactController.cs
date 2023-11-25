@@ -39,9 +39,7 @@ namespace DOCTORLOAN.Controllers
                 HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
                 HttpClient httpClient = new HttpClient();
-                /*var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);*/
-                var response = await httpClient.PostAsync("http://localhost:49553/api/booking-module/Booking/create", content);
-                //var response = await httpClient.PostAsync("http://dev-doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
+                var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -88,9 +86,7 @@ namespace DOCTORLOAN.Controllers
                 HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
                 HttpClient httpClient = new HttpClient();
-                /*var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);*/
-                var response = await httpClient.PostAsync("http://localhost:49553/api/booking-module/Booking/create", content);
-                //var response = await httpClient.PostAsync("http://dev-doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
+                var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -137,9 +133,7 @@ namespace DOCTORLOAN.Controllers
                 HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
                 HttpClient httpClient = new HttpClient();
-                /*var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);*/
-                var response = await httpClient.PostAsync("http://localhost:49553/api/booking-module/Booking/create", content);
-                //var response = await httpClient.PostAsync("http://dev-doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
+                var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
 
                 if (response.IsSuccessStatusCode)
                 {
