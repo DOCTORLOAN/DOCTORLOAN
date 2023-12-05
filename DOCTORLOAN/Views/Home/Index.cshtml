@@ -1422,7 +1422,8 @@
         });
 
         var swiper = new Swiper("#HeritageSwiper", {
-            slidesPerView: 1,
+            slidesPerView: 3,
+            initialSlide: 2,
             spaceBetween: 0,
             loop: true,
             autoplay: {
@@ -1448,7 +1449,7 @@
         var swiper4 = new Swiper(".solution-swiper", {
             grabCursor: true,
             centeredSlides: true,
-            slidesPerView: 3,
+            slidesPerView: 2,
             initialSlide: 2,
             spaceBetween: 0,
             effect: 'coverflow',
@@ -1493,20 +1494,20 @@
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: 3,
-            initialSlide: 3,
+            initialSlide: 1,
             effect: 'coverflow',
             keyboard: true,
             slideToClickedSlide: true,
             coverflowEffect: {
-                rotate: 0,
+                rotate: 1,
                 stretch: 0,
                 depth: 100,
                 modifier: 4,
-                slideShadows: false,
+                slideShadows: true,
             },
             loop: true,
             autoplay: {
-                delay: 2500,
+                delay: 1500,
                 disableOnInteraction: false,
             },
             navigation: {
