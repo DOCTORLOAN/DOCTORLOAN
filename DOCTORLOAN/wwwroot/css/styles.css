@@ -1790,7 +1790,7 @@ body {
   background: url(../img/home/bg-banner.jpg) no-repeat top / cover;
 }
 #Home_Banner .content-banner {
-  /*padding: 5rem 0;*/
+  padding-top: 5rem;
 }
 #Home_Banner .content-banner .img-doctor {
   width: 85%;
@@ -2226,7 +2226,7 @@ body {
   margin: 0 auto;
   max-width: 580px;
   overflow: hidden;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   /*text-overflow: ellipsis;
                 line-height: 24px;
                 -webkit-line-clamp: 3;
@@ -3054,7 +3054,7 @@ body {
     padding: 3rem 0 0;
   }
   #Heritage .heritage-content .title-heritage {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
   #Heritage .heritage-content .desc-heritage {
     max-width: 350px;
@@ -9357,6 +9357,7 @@ body {
 }
 .product-wrapper .content-item {
   text-align: center;
+  border-top: 1px solid rgba(83, 88, 93, 0.1);
 }
 .product-wrapper .content-item h5 {
   margin: 1rem 0 0.5rem;
@@ -9382,6 +9383,7 @@ body {
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   text-align: center;
+  border: 1px solid rgba(83, 88, 93, 0.1);
 }
 .product-wrapper .content-item .action-item {
   /*display: flex;*/
@@ -13390,6 +13392,34 @@ body {
   margin-right: 1rem;
 }
 #InfoProduct .info-product-right .ipr-action .btn:last-child {
+  margin-right: 0;
+}
+#InfoProduct .info-product-right .shopify-button {
+  /*display: flex;*/
+  align-items: center;
+  margin-top: 1.75rem;
+  /*background-image: url(/img/Priceback/Background-1.PNG);*/
+  padding: 0.5rem;
+  /*padding-left: 2rem;*/
+  border-radius: 1rem;
+}
+#InfoProduct .info-product-right .shopify-button .strong {
+  padding: 1rem;
+  color: #373435;
+}
+#InfoProduct .info-product-right .shopify-button .btn {
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  border-radius: 0.25rem;
+  text-transform: initial;
+  min-width: unset;
+  margin-right: 1rem;
+  color: white;
+  background-color: #78b657;
+  border: none;
+  font-size: 1.5rem;
+}
+#InfoProduct .info-product-right .shopify-button .btn:last-child {
   margin-right: 0;
 }
 #InfoProduct .info-product-right .ipr-policy {
