@@ -7,103 +7,8 @@
 }
 <input type="hidden" id="txtCountNumber" value="@countNum" />
 
-<section id="InfoProduct">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-12">
-                <div class="swiper productSwiperMain">
-                    <div class="swiper-wrapper">
-                        @for (int i = 1; i <= countNum; i++)
-                        {
-                            <div class="swiper-slide">
-                                <img id="imgMainPosition@(i)" class="img-product-detail" src="~/img/products/135/img-pd-brown-@(i).png" />
-                            </div>
-                        }
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-                <div thumbsSlider="" class="swiper productSwiperThumb">
-                    <div class="swiper-wrapper">
-                        @for (int i = 1; i <= countNum; i++)
-                        {
-                            <div class="swiper-slide">
-                                <div class="bg-product-thumb">
-                                    <img id="imgThumbPosition@(i)" src="~/img/products/135/img-pdt-brown-@(i).png" />
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-12">
-                <div class="info-product-right">
-                    <div class="ipr-name">Ghế nằm sáng chế 135</div>
-                    <div class="ipr-price">37400000</div>
-                    @* <div class="ipr-old-price">39.000.000 VNĐ</div> *@
-                    <div class="ipr-item">
-                        @* <label>Mã giảm</label>
-                        <div class="ipr-discount">Giảm 30%</div> *@
-                    </div>
-                    <div class="ipr-item">
-                        <label>.Màu sắc</label>
-                        <div class="ipr-color">
-                            <a href="javascript:void(0)" class="product-color brown active" data-color="brown" title="Màu nâu"></a>
-                            <a href="javascript:void(0)" class="product-color grape" data-color="grape" title="Màu nho"></a>
-                            <a href="javascript:void(0)" class="product-color black" data-color="black" title="Màu đen"></a>
-                            <a href="javascript:void(0)" class="product-color green" data-color="green" title="Màu xanh"></a>
-                        </div>
-                    </div>
-                    <div class="ipr-item">
-                        <div>
-                            <label>.Mô tả</label>
-                            Dùng để nghỉ ngơi, xem sách , xem tivi đồng thời CÓ TÁC DỤNG CHỈNH TOÀN BỘ KHUNG XƯƠNG VỀ CẤU TRÚC CHUẨN
-                        </div>
-                        @* <span class="input-wrapper">
-                        <button id="decrement"><i class="fas fa-minus"></i></button>
-                        <input class="form-control" type="number" value="1" min="0" max="100" id="quantity" />
-                        <button id="increment"><i class="fas fa-plus"></i></button>
-                        </span> *@
-                    </div>
-                    <div class="ipr-action">
-                        @* <a href="javascript:void(0)" class="btn btn-outline-dtl">Mua ngay</a>
-                        <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
-                        <div class="action-item custom-action-item action-company action-call">
-                            <strong style="font-size: 1.3rem;color: white">Gọi ngay để đặt hàng</strong> <br />
-                            <a href="tel:0899136868">
-                                <img src="~/img/icon/phone-icon.png" style="width: 7%;" />
-                                <strong style="font-size: 1.3rem;color: white">08 9913 6868</strong>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ipr-policy">
-                        <div class="policy-item">
-                            <img src="~/img/icon/p-shield.svg" />
-                            <span>Cam kết <strong>hàng mới 100%</strong></span>
-                        </div>
-                        <div class="policy-item">
-                            <img src="~/img/icon/p-box-iso.svg" />
-                            <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
-                        </div>
-                        <div class="policy-item">
-                            <img src="~/img/icon/p-delivery-truck.svg" />
-                            <span>
-                                Free ship toàn quốc <br />
-                                Giao nhanh 4H nội thành HCM
-                            </span>
-                        </div>
-                        <div class="policy-item">
-                            <img src="~/img/icon/p-setting.svg" />
-                            <span><strong>Hướng dẫn lắp ráp</strong> <br /><a href="~/img/products/90D/HDSD-90D.pdf" target="_blank"><i class="fas fa-download"></i> Xem chi tiết</a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="view-more" class="view-more">
-                <button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>
-            </div>
-        </div>
-    </div>
+<section id="infoProduct">
+    
 </section>
 
 <section id="ContentProducts">
@@ -345,90 +250,7 @@
             <h4>Sản phẩm DOCTORLOAN</h4>
             <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
-                <div class="product-item">
-                    <div class="img-item">
-                        <a asp-controller="Products" asp-action="Product135"><img src="~/img/products/product-135.png"></a>
-                    </div>
-                    <div class="content-item">
-                        <h5><span>Ghế nằm DOCTORLOAN 135</span> <strong>Nhiều màu lựa chọn - Chân inox 304</strong></h5>
-                        <div class="price-item">37.400.000 vnđ</div>
-                        <div class="action-item">
-                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
-                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
-                            <a asp-controller="Products" asp-action="Product135" class="btn btn-buy">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
-                <div class="product-item">
-                    <div class="img-item">
-                        <a asp-controller="Products" asp-action="Product90M"><img src="~/img/products/product-png-1.png"></a>
-                    </div>
-                    <div class="content-item">
-                        <h5><span>Ghế ngồi DOCTORLOAN 90 Mỏng</span> <strong>Nhiều màu lựa chọn - Chân inox 304</strong></h5>
-                        <div class="price-item">13.700.000 vnđ</div>
-                        <div class="action-item">
-                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
-                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
-                            <a asp-controller="Products" asp-action="Product90M" class="btn btn-buy">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
-                <div class="product-item">
-                    <div class="img-item">
-                        <a asp-controller="Products" asp-action="Product90D"><img src="~/img/products/product-png-2.png"></a>
-                    </div>
-                    <div class="content-item">
-                        <h5><span>Ghế ngồi DOCTORLOAN 90 dày</span> <strong>Nhiều màu lựa chọn - Chân inox 304</strong></h5>
-                        <div class="price-item">24.300.000 vnđ</div>
-                        <div class="action-item">
-                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
-                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
-                            <a asp-controller="Products" asp-action="Product90D" class="btn btn-buy">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
-                <div class="product-item">
-                    <div class="img-item">
-                        <a asp-controller="Products" asp-action="Product95V"><img src="~/img/products/product-png-3.png"></a>
-                    </div>
-                    <div class="content-item">
-                        <h5><span>Ghế ngồi DOCTORLOAN 95 VIP</span> <strong>Nhiều màu lựa chọn - Chân inox 304</strong></h5>
-                        <div class="price-item">27.300.000 vnđ</div>
-                        <div class="action-item">
-                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
-                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
-                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
-                            <a asp-controller="Products" asp-action="Product95V" class="btn btn-buy">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
-                <div class="product-item">
-                    <div class="img-item">
-                        <a asp-controller="Products" asp-action="ProductN85"><img src="~/img/products/product-png-5.png"></a>
-                    </div>
-                    <div class="content-item">
-                        <h5><span>Ghế ngồi DOCTORLOAN N85</span><strong>Nhiều màu lựa chọn - Chân ngắn</strong></h5>
-                        <div class="price-item">1.320.000 vnđ</div>
-                        <div class="action-item">
-                            @* <a class="icon-cart" href="javascript:void(0)"><img src="~/img/icon/shopping-bag.svg" /></a> *@
-                            @* <a asp-controller="Products" asp-action="ProductDetail" class="btn btn-buy">Mua ngay</a> *@
-                            <a asp-controller="Products" asp-action="ProductN85" class="btn btn-buy">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
+        <div id="itemBestSeller" class="row justify-content-center"></div>
     </div>
 </section>
 @* <section id="RelatedProducts" class="product-wrapper">
@@ -635,33 +457,295 @@
             $(".accordion-product").addClass("expand");
         });
 
-        var swiper = new Swiper(".productSwiperThumb", {
-            loop: false,
-            spaceBetween: 12,
-            slidesPerView: 5,
-            freeMode: true,
-            watchSlidesProgress: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-        });
+        $('.ipr-price').text(parseInt($('.ipr-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
 
-        var swiper2 = new Swiper(".productSwiperMain", {
-            loop: false,
-            spaceBetween: 0,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            thumbs: {
-                swiper: swiper,
-            },
-        });
+        // const incrementButton = document.querySelector("#increment");
+        // const decrementButton = document.querySelector("#decrement");
+        // const quantityInput = document.querySelector("#quantity");
+
+        // incrementButton.addEventListener("click", () => {
+        //     quantityInput.value = parseInt(quantityInput.value) + 1;
+        // });
+        // decrementButton.addEventListener("click", () => {
+        //     quantityInput.value = parseInt(quantityInput.value) - 1;
+        // });
+
+        //Function get parameter in url
+        function getParam(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function redirectToWithData(url, data) {
+            // Create query parameters obj data
+            var queryParams = $.param(data);
+
+            // Handle string query parameters in URL
+            var redirectUrl = queryParams ? url + "?" + queryParams : url;
+
+            // Redirect to Url
+            window.location.href = redirectUrl;
+        }
+
+        // Get the value of the parameter in URL
+        var _productId = getParam('productId');
+        var _categoryId = getParam('categoryId');
+
+        // Get the value of the parameter categoryId in URL
+        if (_categoryId != undefined) {
+            $.ajax({
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+
+                    // Handle call API Categories
+                    $.each(data.data.items, function (idx, item) {
+
+                        var productSwiperMain = $(``);
+                        //$("#productSwiperMain").append(productSwiperMain);
+                    });
+                },
+                error: function (error) {
+                    //handle show error
+                    console.error('Error:', error);
+                }
+            });
+        }
+        
+
+        if (_productId != undefined) {
+            // Get the value of the parameter productId in URL
+            $.ajax({
+                url: 'http://localhost:49553/api/product-module/Product/GetProduct?id=' + _productId,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var productSwiperMain = $(`<div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="swiper productSwiperMain">
+                                                            <div id="productSwiperMain" class="swiper-wrapper"></div>
+                                                            <div class="swiper-button-next"></div>
+                                                            <div class="swiper-button-prev"></div>
+                                                        </div>
+                                                        <div thumbsSlider="" class="swiper productSwiperThumb">
+                                                            <div id="productSwiperThumb" class="swiper-wrapper"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="info-product-right">
+                                                            <div class="ipr-name">`+ data.data.name + `</div>
+                                                            <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
+                                                            @* <div class="ipr-old-price">39.000.000 VNĐ</div> *@
+                                                            <div class="ipr-item">
+                                                                @* <label>Mã giảm</label>
+                                                                <div class="ipr-discount">Giảm 30%</div> *@
+                                                            </div>
+                                                            <div class="ipr-item">
+                                                                <label>.Màu sắc</label>
+                                                                <div class="ipr-color">
+                                                                    <a href="javascript:void(0)" class="product-color brown active" data-color="`+data.data.sku+`-BROWN" title="Màu nâu"></a>
+                                                                    <a href="javascript:void(0)" class="product-color grape" data-color="`+data.data.sku+`-GRAPE" title="Màu nho"></a>
+                                                                    <a href="javascript:void(0)" class="product-color black" data-color="`+data.data.sku+`-BLACK" title="Màu đen"></a>
+                                                                    <a href="javascript:void(0)" class="product-color green" data-color="`+data.data.sku+`-GREEN" title="Màu xanh"></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ipr-item">
+                                                                <div>
+                                                                    <label>.Mô tả</label>
+                                                                    `+data.data.productDetails[0].summary+`
+                                                                </div>
+                                                                @* <span class="input-wrapper">
+                                                                    <button id="decrement"><i class="fas fa-minus"></i></button>
+                                                                    <input class="form-control" type="number" value="1" min="0" max="100" id="quantity" />
+                                                                    <button id="increment"><i class="fas fa-plus"></i></button>
+                                                                </span> *@
+                                                            </div>
+                                                            <div class="ipr-action">
+                                                            @* <a href="javascript:void(0)" class="btn btn-outline-dtl">Mua ngay</a>
+                                                            <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
+                                                            <div class="action-item custom-action-item action-company action-call">
+                                                                <strong style="font-size: 1.3rem;color: white">Gọi ngay để đặt hàng</strong> <br />
+                                                                <a href="tel:0899136868">
+                                                                    <img src="/img/icon/phone-icon.png" style="width: 7%;" />
+                                                                    <strong style="font-size: 1.3rem;color: white">08 99136868</strong>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ipr-policy">
+                                                            <div class="policy-item">
+                                                                <img src="/img/icon/p-shield.svg" />
+                                                                <span>Cam kết <strong>hàng mới 100%</strong></span>
+                                                            </div>
+                                                            <div class="policy-item">
+                                                                <img src="/img/icon/p-box-iso.svg" />
+                                                                <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
+                                                            </div>
+                                                            <div class="policy-item">
+                                                                <img src="/img/icon/p-delivery-truck.svg" />
+                                                                <span>
+                                                                    Free ship toàn quốc <br />
+                                                                    Giao nhanh 4H nội thành HCM
+                                                                </span>
+                                                            </div>
+                                                            <div class="policy-item">
+                                                                <img src="/img/icon/p-setting.svg" />
+                                                                <span><strong>Hướng dẫn lắp ráp</strong> <br /><a href="/img/products/90D/HDSD-90D.pdf" target="_blank"><i class="fas fa-download"></i> Xem chi tiết</a></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="view-more" class="view-more">
+                                                    <button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>`);
+                    $("#infoProduct").append(productSwiperMain);
+
+                    // Handle format currency vnd
+                    $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+
+                    var imgProduct = "";
+                    var imgThumb = "";
+
+                    var getNumber = parseInt($("#txtCountNumber").val());
+                    for (var itemn = 1; itemn <= getNumber; itemn++) {
+                        imgProduct = `<div class="swiper-slide" >
+                                                <img id="imgMainPosition`+ itemn + `" class="img-product-detail" src="` + data.data.productMedias[itemn].mediaUrl + `" />
+                                            </div>`;
+                        imgThumb = `<div class="swiper-slide">
+                                                <div class="bg-product-thumb">
+                                                    <img id="imgThumbPosition`+ itemn + `" src="` + data.data.productMedias[itemn].mediaUrl + `" />
+                                                </div>
+                                            </div>`;
+                        $("#productSwiperMain").append(imgProduct);
+                        $("#productSwiperThumb").append(imgThumb);
+                    }
+
+                    var swiper = new Swiper(".productSwiperThumb", {
+                        loop: false,
+                        spaceBetween: 12,
+                        slidesPerView: 5,
+                        freeMode: true,
+                        watchSlidesProgress: true,
+                        autoplay: {
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        },
+                    });
+
+                    var swiper2 = new Swiper(".productSwiperMain", {
+                        loop: false,
+                        spaceBetween: 0,
+                        autoplay: {
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        },
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
+                        thumbs: {
+                            swiper: swiper,
+                        },
+                    });
+
+                    $('.product-color').click(function () {
+                        var getcolor = $(this).attr("data-color");
+
+                        $.each(data.data.productMedias, function (idx, item) {
+                            if (item.itemCode == getcolor) {
+                                console.log(item.mediaUrl);
+
+                                for (var itemn = 1; itemn <= getNumber; itemn++) {
+                                    $("#imgMainPosition" + itemn).attr('src', item.mediaUrl);
+                                    $("#imgThumbPosition" + itemn).attr('src', item.mediaUrl);
+                                }
+                            }
+                        });
+
+                        $(".product-color").removeClass("active");
+                        $(this).addClass("active");
+                    });
+                },
+                error: function (error) {
+                    //handle show error
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function getProductBestSaller() {
+            $.ajax({
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=24',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // Handle call API Products
+                    $.each(data.data.items, function (idx, item) {
+                        var productItem = $(`<div data-id="` + item.id + `" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                                                <div class="product-item" >
+                                                    <div class="img-item" >
+                                                        <div id="product-`+ item.id + `"> <img src="` + item.imageUrl + `" > </div>
+                                                    </div>
+                                                    <div class="content-item">
+                                                        <h5><span>`+ item.name + `</span><strong>` + ((item.summary != undefined) ? item.summary : '') + `</strong> </h5>
+                                                        <div id="price-item-`+ item.id + `" class="price-item">` + item.productItems[0].price + `</div>
+                                                            <div class="action-item">
+
+                                                            <a id="buy-`+ item.id + `" data-id="` + item.id + `" class="btn btn-buy" target="_blank">Mua ngay</a>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>`);
+                        $("#itemBestSeller").append(productItem);
+
+                        // Handle format currency vnd
+                        $('#price-item-' + item.id).text(parseInt($('#price-item-' + item.id).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+
+                        // Handle seen details
+                        $('#product-' + item.id).click(function () {
+                            var data = {
+                                productId: item.id,
+                            };
+                            redirectToWithData("/Products/ProductDetail", data);
+                        });
+
+                        /*
+                        <a id="add-cart-`+ item.id + `" data-id="` + item.id + `" class="icon-cart"> <i class="fas fa-shopping-bag" > </i></a >
+                        // Handle add to cart
+                        $('body').on('click', '.price-item', function () {
+                            const id = $(this).data('id');
+                            alert("say hi!, ", id);
+                        });
+                        */
+
+                        // Handle buy now
+                        $("#buy-" + item.id).click(function () {
+                            var data = {
+                                id: item.id,
+                                quantity: 1,
+                            };
+                            redirectToWithData("/Cart/Payment", data);
+                        });
+                    });
+
+                },
+                error: function (error) {
+                    //handle show error
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        getProductBestSaller();
 
         var swiper5 = new Swiper(".relatedProductSwiper", {
             direction: 'horizontal',
@@ -683,30 +767,6 @@
                     spaceBetween: 24,
                 }
             },
-        });
-
-        $('.ipr-price').text(parseInt($('.ipr-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-
-        // const incrementButton = document.querySelector("#increment");
-        // const decrementButton = document.querySelector("#decrement");
-        // const quantityInput = document.querySelector("#quantity");
-
-        // incrementButton.addEventListener("click", () => {
-        //     quantityInput.value = parseInt(quantityInput.value) + 1;
-        // });
-        // decrementButton.addEventListener("click", () => {
-        //     quantityInput.value = parseInt(quantityInput.value) - 1;
-        // });
-
-        $(document).on('click', '.product-color', function () {
-            var getcolor = $(this).attr("data-color");
-            var getNumber = parseInt($("#txtCountNumber").val());
-            for (var itemn = 1; itemn <= getNumber; itemn++) {
-                $("#imgMainPosition" + itemn).attr('src', '/img/products/135/img-pd-' + getcolor + "-" + itemn + '.png');
-                $("#imgThumbPosition" + itemn).attr('src', '/img/products/135/img-pdt-' + getcolor + "-" + itemn + '.png');
-            }
-            $(".product-color").removeClass("active");
-            $(this).addClass("active");
         });
 
     </script>

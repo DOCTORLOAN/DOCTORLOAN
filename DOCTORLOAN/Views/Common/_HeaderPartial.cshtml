@@ -24,7 +24,7 @@
                             <div class="list-menu">
                                 <div class="container">
                                     <div class="swiper menuProductSwiper">
-                                        <div class="swiper-wrapper">
+                                        <div id="menuProductBestSeller" class="swiper-wrapper">
                                             <style>
                                                 .arrow {
                                                     width: 0;
@@ -46,7 +46,7 @@
                                                     border-left: 7px solid black;
                                                 }
                                             </style>
-                                            <div class="swiper-slide">
+                                            @* <div class="swiper-slide">
                                                 <a asp-controller="Products" asp-action="Product135"><img src="~/img/common/menu-product-135.png" /></a> <br />
                                                 <strong style="font-size: 0.875rem;color: #464646">Ghế nằm 135</strong>
                                             </div>
@@ -77,10 +77,10 @@
                                             <div class="swiper-slide">
                                                 <a asp-controller="Products" asp-action="ProductDT"><img src="~/img/common/menu-product-DT.png" /></a><br />
                                                 <strong style="font-size: 0.875rem;color: #464646";padding-left: 15px">Đệm thiền</strong>
-                                            </div>
+                                            </div> *@
                                         </div>
-                                        @* <div class="swiper-button-next"></div>
-                                        <div class="swiper-button-prev"></div> *@
+                                        <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
                                     </div>
                                 </div>
                             </div>
@@ -116,8 +116,8 @@
             </a>
             <div class="header-info">
                 <div class="auth-frm">
-                    <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a>
-                    <div class="not-logged">
+                    @* <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a>
+                    <div class="not-logged"> *@
                     @* <a asp-controller="Auth" asp-action="Login" class="btn btn-login">Đăng nhập</a>
                     <a asp-controller="Auth" asp-action="Register" class="btn btn-register">Đăng ký</a> *@
                     </div>
@@ -210,6 +210,51 @@
         $('html, body').animate({ scrollTop: 0 }, '300');
     });
 
+    function redirectToWithData(url, data) {
+        // Create query parameters obj data
+        var queryParams = $.param(data);
+
+        // Handle string query parameters in URL
+        var redirectUrl = queryParams ? url + "?" + queryParams : url;
+
+        // Redirect to Url
+        window.location.href = redirectUrl;
+    }
+    
+    $.ajax({
+        url: 'http://localhost:49553/api/product-module/Category/FilterCategories',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            // Handle call API Categories
+            $.each(data.data.items, function (idx, item) {
+                if (item.parentId == 24) {
+                    var productCategories = $(`<div class="swiper-slide">
+                                                    <div id="categories-`+ item.id + `">` + item.content + `</div><br />
+                                                    <strong style="font-size: 0.875rem;color: #464646">`+ item.name + `</strong>
+                                                </div>`);
+                    $("#menuProductBestSeller").append(productCategories);
+                    
+
+                    //const _url = $(location).attr('href');
+                    // Handle seen details
+                    //$('#categories-' + item.id).attr('href', _url.split('/').slice(0, 3).join('/') + '/Products/ProductDetail/' + _tmp);
+
+                    // Handle buy now
+                    $("#categories-" + item.id).click(function () {
+                        var _param = {
+                            categoryId: item.id,
+                        };
+                        redirectToWithData("/Products/ProductDetail", _param);
+                    });
+                }
+            });
+        },
+        error: function (error) {
+            //handle show error
+            console.error('Error:', error);
+        }
+    });
 
 </script>
 

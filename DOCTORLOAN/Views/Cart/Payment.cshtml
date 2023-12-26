@@ -1,136 +1,140 @@
-﻿@{
+﻿@using DOCTORLOAN.Models.Orders;
+@{
     ViewData["Title"] = "Thanh Toán";
 }
 
 <section id="CartPayment" class="cart-payment">
     <div class="container">
         <div class="row">
-            <div class="col-lg-7">
-                <div class="cart-wrapper">
-                    <div class="title-cart">Thông tin đơn hàng</div>
-                    <div class="cart-form">
+            <form method="post" asp-controller="Cart" asp-action="PaymentPost" class="row needs-validation" novalidate>
+                <div id="alert" class="alert alert-error">
+                    @if (TempData["AlertMessageError"] != null)
+                    {
+                        <div class="alert alert-warning">
+                            @TempData["AlertMessageError"]
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-7">
+                    <div class="cart-wrapper">
+                        <div class="title-cart">Thông tin đơn hàng</div>
                         <div class="cart-link">Đã có tài khoản?&nbsp; <a asp-controller="Auth" asp-action="Login">Đăng nhập</a></div>
-                        <form class="row needs-validation" novalidate>
+                        <div class="cart-form">
                             <div class="mb-3">
-                                <label for="username" class="req">Tên người nhận</label>
-                                <input type="text" class="form-control" placeholder="Nhập tên người nhận" id="username" required />
+                                <label for="fullName" class="req">Tên người nhận</label>
+                                <input type="text" class="form-control" placeholder="Nhập tên người nhận" name="FullName" id="fullName" required />
                                 <div class="invalid-feedback">
                                     Vui lòng nhập họ tên.
                                 </div>
                             </div>
 
                             <div class="mb-3">
-                                <label for="userphone" class="req">Số điện thoại</label>
-                                <input type="text" class="form-control" placeholder="Nhập số điện thoại" id="userphone" required />
+                                <label for="phone" class="req">Số điện thoại</label>
+                                <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="Phone" id="phone" required />
                                 <div class="invalid-feedback">
                                     Vui lòng nhập số điện thoại.
                                 </div>
                             </div>
 
                             <div class="mb-3">
-                                <label for="useraddress" class="req">Địa chỉ</label>
-                                <input type="text" class="form-control" placeholder="Nhập địa chỉ" id="useraddress" required />
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" placeholder="Nhập email" name="Email" id="email" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="city" class="req">Thành Phố</label>
+                                <select id="city" class="form-select" required>
+                                    <option value="" selected>Chọn tỉnh thành</option>
+                                </select>
                                 <div class="invalid-feedback">
-                                    Vui lòng nhập số điện thoại.
+                                    Vui lòng chọn thành phố.
                                 </div>
                             </div>
 
                             <div class="mb-3">
-                                <label for="usernote">Ghi chú</label>
-                                <textarea class="form-control" id="usernote" placeholder="Nhập ghi chú" rows="3"></textarea>
+                                <label for="District" class="req">Quận, Huyện</label>
+                                <select id="district" class="form-select" required>
+                                    <option value="" selected>Chọn quận huyện</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn Quận, huyện.
+                                </div>
                             </div>
 
-                        </form>
+                            <div class="mb-3">
+                                <label for="ward" class="req">Xã, Phường</label>
+                                <select id="ward" class="form-select" required>
+                                    <option value="" selected>Chọn xã, phường</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn Xã, Phường.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="addressDetaills" class="req">Địa chỉ cụ thể</label>
+                                <input type="text" class="form-control" placeholder="Số nhà - Tên Đường" id="addressDetaills" onfocusout="myFunction()" required  />
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập địa chỉ cụ thể:
+                                    <br/> - (Số nhà  - Tên Đường)
+                                    <br/> - Tên địa danh (Thôn - Ấp - Làng,...)
+                                </div>
+                            </div>
+                            
+                            <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="AddressLine" id="addressLine" hidden />
+
+                            <div class="mb-3">
+                                <label for="remarks">Ghi chú</label>
+                                <textarea class="form-control" placeholder="Nhập ghi chú" name="Remarks" id="remarks" rows="3"></textarea>
+                            </div>
+                            <input type="text" class="form-control" value="1" id="paymentMethod" name="PaymentMethod" hidden />
+                        </div>
+
+                        <div class="title-cart">Thông tin thanh toán <span>Vui lòng chọn một hình thức thanh toán.</span></div>
+                        <div class="info-payment">
+                            <a href="javascript:void(0)" class="btn btn-payment active" data-payment="transfer">Chuyển khoản</a>
+                            <a href="javascript:void(0)" class="btn btn-payment" data-payment="cod">Thanh toán khi nhận hàng</a>
+                            <hr class="hr-payment" />
+                            <div class="payment-content transfer active">
+                                <div id="transfer"></div>
+                                <p>Thông tin chuyển khoản</p>
+                                <p>
+                                    <strong>
+                                        CÔNG TY TNHH GIA THÁI DOCTORLOAN <br />
+                                        Số tài khoản: 6899136899 <br />
+                                        Ngân hàng: TMCP Ngoại Thương Việt Nam (VIETCOMBANK - VCB) <br />
+                                        Nội dung chuyển khoản: Tên + Địa chỉ giao hàng
+                                    </strong>
+                                </p>
+                            </div>
+
+                            <div class="payment-content cod">
+                                <div id="cod"></div>
+                                <p><strong>Đơn hàng sẽ được gửi đến bạn trong thời gian sớm nhất!</strong></p>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="title-cart">Thông tin thanh toán <span>Vui lòng chọn một hình thức thanh toán.</span></div>
-                    <div class="info-payment">
-                        <a href="javascript:void(0)" class="btn btn-payment active" data-payment="transfer">Chuyển khoản</a>
-                        <a href="javascript:void(0)" class="btn btn-payment" data-payment="cod">Thanh toán khi nhận hàng</a>
+                <div class="col-lg-5">
+                    <div class="cart-wrapper">
+                        <div class="title-cart">Đơn hàng</div>
                         <hr class="hr-payment" />
-                        <div class="payment-content transfer active">
-                            <p>Thông tin chuyển khoản</p>
-                            <p>
-                                <strong>
-                                    CÔNG TY TNHH GIA THÁI DOCTORLOAN <br />
-                                    Số tài khoản: 6899136899 <br />
-                                    Ngân hàng: TMCP Ngoại Thương Việt Nam (VIETCOMBANK - VCB) <br />
-                                    Nội dung chuyển khoản: Tên + Mã đơn hàng
-                                </strong>
-                            </p>
-                        </div>
-
-                        <div class="payment-content cod">
-                            <p><strong>Đơn hàng sẽ được gửi đến bạn trong thời gian sớm nhất!</strong></p>
-                        </div>
+                        <div id="cartWrapperItem"></div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn checkout" type="submit">Đặt hàng</button>
+                        @* <a id="btnOrder" class="btn checkout">Đặt hàng</a> *@
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-5">
-                <div class="cart-wrapper">
-                    <div class="title-cart">Đơn hàng <small>(3 sản phẩm)</small></div>
-                    <hr class="hr-payment" />
-                    <div class="list-product-payment">
-                        <div class="pp-item">
-                            <div class="pp-info">
-                                <img src="~/img/products/img-product-detail-1.png" />
-                                <div class="pp-desc">
-                                    <strong>Ghế ngồi sáng chế DOCTORLOAN 95 VIP</strong>
-                                    <span>1SP x Nâu</span>
-                                </div>
-                            </div>
-                            <div class="product-price">27,300,000</div>
-                        </div>
-                        <div class="pp-item">
-                            <div class="pp-info">
-                                <img src="~/img/products/img-product-banner.png" />
-                                <div class="pp-desc">
-                                    <strong>Ghế nằm sáng chế DOCTORLOAN 135</strong>
-                                    <span>1SP x Nâu</span>
-                                </div>
-                            </div>
-                            <div class="product-price">37,400,000</div>
-                        </div>
-                        <div class="pp-item">
-                            <div class="pp-info">
-                                <img src="~/img/showroom/cushion-2.png" />
-                                <div class="pp-desc">
-                                    <strong>Đệm thiền sáng chế DOCTORLOAN</strong>
-                                    <span>1SP x Lớn</span>
-                                </div>
-                            </div>
-                            <div class="product-price">6,800,000</div>
-                        </div>
-                    </div>
-                    <div class="total-cart">
-                        <div class="total-info">
-                            <span>Tạm tính</span>
-                            <span id="cart-subtotal" class="totals-value">71,500,000</span>
-                        </div>
-                        <div class="total-info">
-                            <span>Giảm giá (0%)</span>
-                            <span id="cart-tax" class="totals-value">0</span>
-                        </div>
-                        <div class="total-info">
-                            <span>Phí vận chuyển</span>
-                            <span id="cart-shipping" class="totals-value">200,000</span>
-                        </div>
-                        <div class="total-info totals-item-total">
-                            <span>Tổng cộng</span>
-                            <span id="cart-total" class="totals-value">71,700,000</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <a href="javascript:void(0)" class="btn checkout">Đặt hàng</a>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </section>
 
 @section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script type="text/javascript">
         (() => {
@@ -145,14 +149,223 @@
                     form.classList.add('was-validated')
                 }, false)
             })
-        })()
+        })();
 
+        const _host = "https://provinces.open-api.vn/api/";
+        
+        //Function call api city
+        var callAPI = (api) => {
+            return axios.get(api)
+                .then((response) => {
+                    renderData(response.data, "city");
+                });
+        }
+
+        //Function call api district
+        callAPI('https://provinces.open-api.vn/api/?depth=1');
+        var callApiDistrict = (api) => {
+            return axios.get(api)
+                .then((response) => {
+                    renderData(response.data.districts, "district");
+                });
+        }
+
+        //Function call api ward
+        var callApiWard = (api) => {
+            return axios.get(api)
+                .then((response) => {
+                    renderData(response.data.wards, "ward");
+                });
+        }
+
+        //Render data option
+        var renderData = (array, select) => {
+            let row = ' <option disable value="">Chọn</option>';
+            array.forEach(element => {
+                row += `<option data-id="${element.code}" value="${element.name}">${element.name}</option>`
+            });
+            document.querySelector("#" + select).innerHTML = row
+        }
+
+        //Selected City name
+        $("#city").change(() => {
+            callApiDistrict(_host + "p/" + $("#city").find(':selected').data('id') + "?depth=2");
+            printResult();
+        });
+
+        //Selected District name
+        $("#district").change(() => {
+            callApiWard(_host + "d/" + $("#district").find(':selected').data('id') + "?depth=2");
+            printResult();
+        });
+
+        //Selected Ward name
+        $("#ward").change(() => {
+            printResult();
+        })
+
+        //Get addressLine
+        var printResult = () => {
+            if ($("#district").find(':selected').data('id') != "" && $("#city").find(':selected').data('id') != "" &&
+                $("#ward").find(':selected').data('id') != "") {
+                let result = $("#city option:selected").text() +
+                    " - " + $("#district option:selected").text() + " - " +
+                    $("#ward option:selected").text();
+                $("#addressLine").val(result);
+            }
+        }
+
+        function myFunction() {
+            return $("#addressLine").val($("#addressLine").val() + " - " + $("#addressDetaills").val()) ;
+        }
+
+        //Function select method payment
         $(document).on('click', '.btn-payment', function () {
             $('.btn-payment').removeClass("active");
             $(this).addClass("active");
             var getdatapayment = $(this).attr("data-payment");
             $('.payment-content').removeClass("active");
             $('.payment-content.' + getdatapayment).addClass("active");
+
+            if (getdatapayment == 'transfer') {
+                $('#paymentMethod').val('1');
+            } else if (getdatapayment == 'cod') {
+                $('#paymentMethod').val('2');
+            }
         });
+
+        //Function convert formart VND
+        function formartVND(e) {
+            e.text(parseInt(e.text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+        }
+
+        //Function get parameter in url
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Get the value of the parameter in URL
+        var paramIdVal = getParameterByName('id');
+        var paramQuantityVal = getParameterByName('quantity');
+
+        function getOptionProduct() {
+            $.ajax({
+                url: 'http://localhost:49553/api/product-module/Product/GetProduct?id=' + paramIdVal,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var _itemOption = [];
+                    if (data.data.productItems != null) {
+                        $.each(data.data.productItems, function (idx, items) {
+                            _itemOption.push(`<option value="` + items.id + `">` + items.name + `</option>`);
+                        });
+                        if (_itemOption != "") {
+                            $("#pp-desc").append(`<div class="ipr-item form-group">
+                                                    <label for="optionProduct">Loại ghế</label>
+                                                        <select class="form-control" name="ProductItemId" id="optionProduct">
+                                                        `+_itemOption+`
+                                                    </select>
+                                                </div>`);
+                        } 
+                    }
+                },
+                error: function (error) {
+                    //handle show error
+                    console.error('Error:', error);
+                }
+            });
+        }
+        
+        function getProduct() {
+            $.ajax({
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + paramIdVal,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // Handle call API Products
+                    var productItem = $(`<div data-id="` + data.data.id + `" class="list-product-payment">
+                                            <div class="pp-item">
+                                                <div class="pp-info">
+                                                    <img src="`+ data.data.productMedias[0].mediaUrl + `" />
+                                                        <div id="pp-desc" class="pp-desc">
+                                                        <strong>`+ data.data.name + `</strong>
+                                                        <input type="text" name="Name" value="`+ data.data.name + `" class="form-control" hidden />
+                                                        <div style="display:left;" >
+                                                            <div id="quantity">
+                                                                <label for="quantityPayment">Số Lượng</label>
+                                                                <input min="1" type="number" name="Quantity" value="`+ paramQuantityVal + `" id="quantityPayment" class="form-control" style="width: 80px !important" />
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="product-price">`+ data.data.price + `</div>
+                                                <input type="text" name="Price" value="`+ data.data.price + `" class="form-control" hidden />
+                                            </div>
+                                        </div>
+                                        <div class="total-cart">
+                                            <div class="total-info">
+                                                <span>Tạm tính</span>
+                                                <span id="cart-subtotal">`+ data.data.price + `</span>
+                                            </div>
+                                            <div class="total-info">
+                                                <span>Giảm giá (0%)</span>
+                                                <span id="cart-tax">`+ data.data.priceDiscount + `</span>
+                                                <input type="text" name="priceDiscount" value="`+ data.data.priceDiscount + `" class="form-control" hidden />
+                                            </div>
+                                            <div class="total-info">
+                                                <span>Phí vận chuyển</span>
+                                                <span id="cart-shipping">Miễn phí toàn quốc</span>
+                                                <input type="text" name="priceDiscount" value="`+ $("#cart-shpping").val() + `" class="form-control" hidden />
+                                            </div>
+                                            <div class="total-info totals-item-total">
+                                                <span>Tổng cộng</span>
+                                                <span id="cart-total">`+ (data.data.price + data.data.priceDiscount) + `</span>
+                                                <input type="text" name="TotalPrice" value="`+ (data.data.price + data.data.priceDiscount) + `" class="form-control" hidden />
+                                            </div>
+                                        </div>`);
+                    $("#cartWrapperItem").append(productItem);
+
+                    formartVND($('#product-price'));
+                    formartVND($('#cart-subtotal'));
+                    formartVND($('#cart-tax'));
+                    //formartVND($('#cart-shipping'));
+                    formartVND($('#cart-total'));
+
+                    $("#quantityPayment").change(function () {
+                        var _price = data.data.price;
+                        var _subTotal = data.data.price * $('#quantityPayment').val();
+                        $("#cart-subtotal").html(_subTotal);
+
+                        formartVND($("#cart-subtotal"));
+
+                        var _total = _subTotal + data.data.priceDiscount;
+                        $("#cart-total").html(_total);
+                        formartVND($('#cart-total'));
+                    });
+                },
+                error: function (error) {
+                    //handle show error
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        getProduct();
+
+        getOptionProduct();
+
+        window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 3000);
+        
     </script>
-    }
+}

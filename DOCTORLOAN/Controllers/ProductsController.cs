@@ -16,10 +16,8 @@ namespace DOCTORLOAN.Controllers
             return View();
         }
 
-        //[HttpGet("{id}")]
-        public async Task<IActionResult> ProductDetail(int id)
+        public async Task<IActionResult> ProductDetail()
         {
-            await Task.CompletedTask;
             return View();
         }
 

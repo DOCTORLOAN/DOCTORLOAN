@@ -3,6 +3,15 @@
 }
 
 <link href="~/libs/flag/flag.css" rel="stylesheet" />
+<div id="alert">
+    @if (TempData["AlertMessageSuccess"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["AlertMessageSuccess"]
+        </div>
+    }
+</div>
+
 <section id="ProductsBanner">
     <div class="swiper bannerProductSwiper">
         <div class="swiper-wrapper">
@@ -1651,58 +1660,88 @@
                 });
         });
 
-        $.ajax({
-            url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                // Xử lý dữ liệu nhận được từ API
-                $.each(data.data.items, function (idx, item) {
-                    var productItem = $(`<div data-id="` + item.id + `" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
-                                            <div class="product-item" >
-                                                <div class="img-item" >
-                                                    <a id="product-`+item.id+`" target="_blank"> <img src="`+ item.imageUrl + `" > </a>
-                                                </div>
-                                                <div class="content-item">
-                                                    <h5><span>`+ item.name + `</span><strong>` + ((item.summary != undefined) ? item.summary : '') +`</strong> </h5>
-                                                    <div id="price-item-`+ item.id + `" class="price-item">` + item.productItems[0].price + `</div>
-                                                        <div class="action-item">
-                                                            <a class="icon-cart" href="javascript:void(0)"><i class="fas fa-shopping-bag"></i></a>
-                                                                    <a id="buy-`+ item.id + `" asp-action="Add" asp-controller="Cart" data-id="` + item.id + `" class="btn btn-buy">Mua ngay</a>
+        function redirectToWithData(url, data) {
+            // Create query parameters obj data
+            var queryParams = $.param(data);
+
+            // Handle string query parameters in URL
+            var redirectUrl = queryParams ? url + "?" + queryParams : url;
+
+            // Redirect to Url
+            window.location.href = redirectUrl;
+        }
+
+        function getProduct() {
+            $.ajax({
+                url: 'http://localhost:49553/api/product-module/Product/FilterProducts',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // Handle call API Products
+                    $.each(data.data.items, function (idx, item) {
+                        var productItem = $(`<div data-id="` + item.id + `" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                                                    <div class="product-item" >
+                                                        <div class="img-item" >
+                                                            <div id="product-`+ item.id + `"> <img src="` + item.imageUrl + `" > </div>
+                                                        </div>
+                                                        <div class="content-item">
+                                                            <h5><span>`+ item.name + `</span><strong>` + ((item.summary != undefined) ? item.summary : '') + `</strong> </h5>
+                                                            <div id="price-item-`+ item.id + `" class="price-item">` + item.productItems[0].price + `</div>
+                                                                <div class="action-item">
+
+                                                                <a id="buy-`+ item.id + `" data-id="` + item.id + `" class="btn btn-buy" target="_blank">Mua ngay</a>
+                                                            </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>`);
-                    $("#productItems").append(productItem);
-                    $('#price-item-'+item.id).text(parseInt($('#price-item-'+item.id).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-                    $('#product-' + item.id).attr('href', $(location).attr('href') + '/ProductDetail/'+item.id);
+                                                </div>`);
+                        $("#productItems").append(productItem);
 
-                    /*$("#buy-"+item.id).click(function () {
-                        $.ajax({
-                            url: '/Cart/AddToCart',
-                            data: {
-                                id: $(this).attr('data-id'),
-                                quantity: 1,
-                                type: "ajax"
-                            }
-                            success: function (data) { 
-                                console.log('Success: ', data);
-                            },
-                            error: function (error) {
-                                // Xử lý lỗi nếu có
-                                console.error('Error:', error);
-                            }
+                        // Handle format currency vnd
+                        $('#price-item-' + item.id).text(parseInt($('#price-item-' + item.id).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+
+                        // Handle seen details
+                        $('#product-' + item.id).click(function () {
+                            var data = {
+                                productId: item.id,
+                            };
+                            redirectToWithData("/Products/ProductDetail", data);
                         });
-                    });*/
-                });
-                
-            },
-            error: function (error) {
-                // Xử lý lỗi nếu có
-                console.error('Error:', error);
-            }
-        });
+
+                        /*
+                        <a id="add-cart-`+ item.id + `" data-id="` + item.id + `" class="icon-cart"> <i class="fas fa-shopping-bag" > </i></a >
+                        // Handle add to cart
+                        $('body').on('click', '.price-item', function () {
+                            const id = $(this).data('id');
+                            alert("say hi!, ", id);
+                        });
+                        */
+
+                        // Handle buy now
+                        $("#buy-" + item.id).click(function () {
+                            var data = {
+                                id: item.id,
+                                quantity: 1,
+                            };
+                            redirectToWithData("/Cart/Payment", data);
+                        });
+                    });
+
+                },
+                error: function (error) {
+                    //handle show error
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        getProduct();
+
+        window.setTimeout(function () {
+            $("#alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 3000);
 
     </script>
 }

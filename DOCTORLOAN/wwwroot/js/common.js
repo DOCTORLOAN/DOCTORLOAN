@@ -65,10 +65,4 @@ jQuery(document).ready(function ($) {
     lightbox.on('open', (target) => {
         console.log('lightbox opened');
     });
-
-    ////convert string to currency vnd
-    //function formatNumberWithVND(string number) {
-    //    console.log(number);
-    //    return parseInt(number).toLocaleString('vi', { style: 'currency', currency: 'VND' });
-    //}
 });
