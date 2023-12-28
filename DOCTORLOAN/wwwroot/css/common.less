@@ -1127,3 +1127,84 @@ footer {
             font-size: .875rem;
         }
     }
+    // modal evert
+    #modalDialog {
+        margin: 0.5rem;
+        position: relative;
+        width: auto;
+        pointer-events: none;
+    }
+
+    #bookingWorkshop {
+        display:none;
+        text-align: center;
+        align-items: center;
+    }
+
+    #bookingWorkshop:hover {
+        background-color: #ff7500;
+    }
+
+    #slideset1 {
+        height: 10em;
+        position: initial;
+    }
+
+    #slideset1 > * {
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: 18s autoplay1 infinite
+    }
+
+    @keyframes autoplay1 {
+        0% {
+            visibility: visible;
+        }
+
+        50% {
+            visibility: hidden;
+        }
+    }
+
+    #slideset1 > *:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    #slideset1 > *:nth-child(2) {
+        animation-delay: 16s;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .ag-format-container {
+            width: 96%;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 979px) {
+        .ag-format-container {
+            width: 750px;
+        }
+    }
+
+    @media (min-width: 980px) and (max-width: 1161px) {
+        .ag-format-container {
+            width: 960px;
+        }
+    }
+
+    @media (min-width: 576px) {
+        #modalDialog {
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    @media (max-width: 576px) {
+        #bookingWorkshop {
+            display: block;
+        }
+    }
+    // modal evert end
