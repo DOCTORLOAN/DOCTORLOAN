@@ -499,17 +499,11 @@
         // Get the value of the parameter categoryId in URL
         if (_categoryId != undefined) {
             $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
+                url: 'http://localhost:49553/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-
-                    // Handle call API Categories
-                    $.each(data.data.items, function (idx, item) {
-
-                        var productSwiperMain = $(``);
-                        //$("#productSwiperMain").append(productSwiperMain);
-                    });
+                    getProduct(data.data.items[0].id);
                 },
                 error: function (error) {
                     //handle show error
@@ -520,92 +514,85 @@
         
 
         if (_productId != undefined) {
+            getProduct(_productId);
+        }
+
+        var resultAPI;
+
+        function getProduct(id) {
             // Get the value of the parameter productId in URL
             $.ajax({
-                url: 'http://localhost:49553/api/product-module/Product/GetProduct?id=' + _productId,
+                url: 'http://localhost:49553/api/product-module/Product/GetProduct?id=' + id,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
+                    resultAPI = data;
                     var productSwiperMain = $(`<div class="container">
-                                                <div class="row">
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="swiper productSwiperMain">
-                                                            <div id="productSwiperMain" class="swiper-wrapper"></div>
-                                                            <div class="swiper-button-next"></div>
-                                                            <div class="swiper-button-prev"></div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="swiper productSwiperMain">
+                                                                <div id="productSwiperMain" class="swiper-wrapper"></div>
+                                                                <div class="swiper-button-next"></div>
+                                                                <div class="swiper-button-prev"></div>
+                                                            </div>
+                                                            <div thumbsSlider="" class="swiper productSwiperThumb">
+                                                                <div id="productSwiperThumb" class="swiper-wrapper"></div>
+                                                            </div>
                                                         </div>
-                                                        <div thumbsSlider="" class="swiper productSwiperThumb">
-                                                            <div id="productSwiperThumb" class="swiper-wrapper"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="info-product-right">
-                                                            <div class="ipr-name">`+ data.data.name + `</div>
-                                                            <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
-                                                            @* <div class="ipr-old-price">39.000.000 VNĐ</div> *@
-                                                            <div class="ipr-item">
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="info-product-right">
+                                                                <div class="ipr-name">`+ data.data.name + `</div>
+                                                                <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
+                                                                    @* <div class="ipr-old-price">39.000.000 VNĐ</div> *@
+                                                                <div class="ipr-item">
                                                                 @* <label>Mã giảm</label>
                                                                 <div class="ipr-discount">Giảm 30%</div> *@
-                                                            </div>
-                                                            <div class="ipr-item">
-                                                                <label>.Màu sắc</label>
-                                                                <div class="ipr-color">
-                                                                    <a href="javascript:void(0)" class="product-color brown active" data-color="`+data.data.sku+`-BROWN" title="Màu nâu"></a>
-                                                                    <a href="javascript:void(0)" class="product-color grape" data-color="`+data.data.sku+`-GRAPE" title="Màu nho"></a>
-                                                                    <a href="javascript:void(0)" class="product-color black" data-color="`+data.data.sku+`-BLACK" title="Màu đen"></a>
-                                                                    <a href="javascript:void(0)" class="product-color green" data-color="`+data.data.sku+`-GREEN" title="Màu xanh"></a>
                                                                 </div>
-                                                            </div>
-                                                            <div class="ipr-item">
-                                                                <div>
-                                                                    <label>.Mô tả</label>
-                                                                    `+data.data.productDetails[0].summary+`
+                                                                <div id="iprItemColor" class="ipr-item"></div>
+                                                                <div class="ipr-item">
+                                                                    <div>
+                                                                        <label>.Mô tả</label>
+                                                                        `+ data.data.productDetails[0].summary + `
+                                                                    </div>
+                                                                    @* <span class="input-wrapper">
+                                                                        <button id="decrement"><i class="fas fa-minus"></i></button>
+                                                                        <input class="form-control" type="number" value="1" min="0" max="100" id="quantity" />
+                                                                        <button id="increment"><i class="fas fa-plus"></i></button>
+                                                                    </span> *@
                                                                 </div>
-                                                                @* <span class="input-wrapper">
-                                                                    <button id="decrement"><i class="fas fa-minus"></i></button>
-                                                                    <input class="form-control" type="number" value="1" min="0" max="100" id="quantity" />
-                                                                    <button id="increment"><i class="fas fa-plus"></i></button>
-                                                                </span> *@
-                                                            </div>
-                                                            <div class="ipr-action">
-                                                            @* <a href="javascript:void(0)" class="btn btn-outline-dtl">Mua ngay</a>
-                                                            <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
-                                                            <div class="action-item custom-action-item action-company action-call">
-                                                                <strong style="font-size: 1.3rem;color: white">Gọi ngay để đặt hàng</strong> <br />
-                                                                <a href="tel:0899136868">
-                                                                    <img src="/img/icon/phone-icon.png" style="width: 7%;" />
-                                                                    <strong style="font-size: 1.3rem;color: white">08 99136868</strong>
-                                                                </a>
+                                                                <div class="ipr-action-details">
+                                                                    @* <a href="javascript:void(0)" class="btn btn-outline-dtl">Mua ngay</a>
+                                                                    <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
+                                                                    <a id="buy-`+ data.data.id + `" data-id="` + data.data.id + `" class="btn btn-buy-details" target="_blank">Mua ngay</a>
+                                                                </div>
+                                                                <div class="ipr-policy">
+                                                                    <div class="policy-item">
+                                                                        <img src="/img/icon/p-shield.svg" />
+                                                                        <span>Cam kết <strong>hàng mới 100%</strong></span>
+                                                                    </div>
+                                                                    <div class="policy-item">
+                                                                        <img src="/img/icon/p-box-iso.svg" />
+                                                                        <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
+                                                                    </div>
+                                                                    <div class="policy-item">
+                                                                        <img src="/img/icon/p-delivery-truck.svg" />
+                                                                        <span>
+                                                                            Free ship toàn quốc <br />
+                                                                            Giao nhanh 4H nội thành HCM
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="policy-item">
+                                                                        <img src="/img/icon/p-setting.svg" />
+                                                                        <span><strong>Hướng dẫn lắp ráp</strong> <br /><a href="/img/products/90D/HDSD-90D.pdf" target="_blank"><i class="fas fa-download"></i> Xem chi tiết</a></span>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="ipr-policy">
-                                                            <div class="policy-item">
-                                                                <img src="/img/icon/p-shield.svg" />
-                                                                <span>Cam kết <strong>hàng mới 100%</strong></span>
-                                                            </div>
-                                                            <div class="policy-item">
-                                                                <img src="/img/icon/p-box-iso.svg" />
-                                                                <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
-                                                            </div>
-                                                            <div class="policy-item">
-                                                                <img src="/img/icon/p-delivery-truck.svg" />
-                                                                <span>
-                                                                    Free ship toàn quốc <br />
-                                                                    Giao nhanh 4H nội thành HCM
-                                                                </span>
-                                                            </div>
-                                                            <div class="policy-item">
-                                                                <img src="/img/icon/p-setting.svg" />
-                                                                <span><strong>Hướng dẫn lắp ráp</strong> <br /><a href="/img/products/90D/HDSD-90D.pdf" target="_blank"><i class="fas fa-download"></i> Xem chi tiết</a></span>
-                                                            </div>
+                                                        <div id="view-more" class="view-more">
+                                                            <button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div id="view-more" class="view-more">
-                                                    <button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>`);
+                                                </div>`);
                     $("#infoProduct").append(productSwiperMain);
 
                     // Handle format currency vnd
@@ -613,19 +600,88 @@
 
                     var imgProduct = "";
                     var imgThumb = "";
+                    var flagN85, flag = false;
 
-                    var getNumber = parseInt($("#txtCountNumber").val());
-                    for (var itemn = 1; itemn <= getNumber; itemn++) {
-                        imgProduct = `<div class="swiper-slide" >
-                                                <img id="imgMainPosition`+ itemn + `" class="img-product-detail" src="` + data.data.productMedias[itemn].mediaUrl + `" />
+                    if (data.data.productItems[0].productOptions != undefined && (data.data.productItems[0].productOptions != undefined)) {
+                        var _arr = [];
+                        $.each(data.data.categoryIds, function (idx, item) {
+                            if (item === 24) {
+                                flagN85 = true;
+                            }
+                            if (item === 6 || item === 7 || item === 8) {
+                                flag = true;
+                            }
+                        });
+
+                        if (flag != true) {
+                            if (flagN85 != true) {
+                                $("#iprItemColor").append(`<label>.Màu sắc</label>
+                                                            <div class="ipr-color">
+                                                                <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.sku + `-BROWN" title="Màu nâu"></a>
+                                                                <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.sku + `-GRAPE" title="Màu nho"></a>
+                                                                <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.sku + `-BLACK" title="Màu đen"></a>
+                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-GREEN" title="Màu xanh"></a>
+                                                            </div>`);
+                            } else {
+                                $("#iprItemColor").append(`<label>.Màu sắc</label>
+                                                            <div class="ipr-color">
+                                                                <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.sku + `-YELLOW" title="Màu vàng"></a>
+                                                                <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.sku + `-ORANGE" title="Màu cam"></a>
+                                                                <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.sku + `-RED" title="Màu đỏ"></a>
+                                                                <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.sku + `-GRAY" title="Màu xám"></a>
+                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-GREEN" title="Màu xanh lá"></a>
+                                                                <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.sku + `-BLUE" title="Màu xanh dương"></a>
+                                                            </div>`);
+                            }
+                        }
+
+                        $.each(data.data.productMedias, function (_idx, _item) {
+                            if (flagN85 != true) {
+                                if (_item.itemCode == data.data.sku + '-BROWN') {
+                                    _arr.push(_item);
+                                }
+                            } else {
+                                if (flagN85 == true && _item.itemCode == data.data.sku + '-YELLOW') {
+                                    _arr.push(_item);
+                                }
+                            }
+                        });
+                        
+                        if (_arr[0] != undefined) {
+                            $.each(_arr, function (_idx, _item) {
+                                $("#imgMainPosition" + (_idx + 1)).attr('src', _item.mediaUrl);
+                                $("#imgThumbPosition" + (_idx + 1)).attr('src',);
+                                imgProduct = `<div class="swiper-slide" >
+                                                        <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + _item.mediaUrl + `" />
+                                                    </div>`;
+                                imgThumb = `<div class="swiper-slide">
+                                                        <div class="bg-product-thumb">
+                                                            <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + _item.mediaUrl + `" />
+                                                        </div>
+                                                    </div>`;
+                                $("#productSwiperMain").append(imgProduct);
+                                $("#productSwiperThumb").append(imgThumb);
+                            });
+                        }
+                    } else {
+                        var _arr = [];
+                        $.each(data.data.productMedias, function (idx, item) {
+                            _arr.push(item);
+                        });
+
+                        $.each(_arr, function (_idx, _item) {
+
+                            imgProduct = `<div class="swiper-slide" >
+                                                <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + data.data.productMedias[_idx].mediaUrl + `" />
                                             </div>`;
-                        imgThumb = `<div class="swiper-slide">
-                                                <div class="bg-product-thumb">
-                                                    <img id="imgThumbPosition`+ itemn + `" src="` + data.data.productMedias[itemn].mediaUrl + `" />
-                                                </div>
-                                            </div>`;
-                        $("#productSwiperMain").append(imgProduct);
-                        $("#productSwiperThumb").append(imgThumb);
+                            imgThumb = `<div class="swiper-slide">
+                                            <div class="bg-product-thumb">
+                                                <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + data.data.productMedias[_idx].mediaUrl + `" />
+                                            </div>
+                                        </div>`;
+                            $("#productSwiperMain").append(imgProduct);
+                            $("#productSwiperThumb").append(imgThumb);
+                        });
                     }
 
                     var swiper = new Swiper(".productSwiperThumb", {
@@ -658,20 +714,16 @@
 
                     $('.product-color').click(function () {
                         var getcolor = $(this).attr("data-color");
-
-                        $.each(data.data.productMedias, function (idx, item) {
-                            if (item.itemCode == getcolor) {
-                                console.log(item.mediaUrl);
-
-                                for (var itemn = 1; itemn <= getNumber; itemn++) {
-                                    $("#imgMainPosition" + itemn).attr('src', item.mediaUrl);
-                                    $("#imgThumbPosition" + itemn).attr('src', item.mediaUrl);
-                                }
-                            }
-                        });
-
-                        $(".product-color").removeClass("active");
-                        $(this).addClass("active");
+                        loadProductForColor(getcolor);
+                    });
+                    
+                    // Handle buy now
+                    $("#buy-" + data.data.id).click(function () {
+                        var _data = {
+                            id: data.data.id,
+                            quantity: 1,
+                        };
+                        redirectToWithData("/Cart/Payment", _data);
                     });
                 },
                 error: function (error) {
@@ -681,9 +733,32 @@
             });
         }
 
+        //handle pic product to color
+        function loadProductForColor(color) {
+            var _arr = [];
+            if (resultAPI != undefined) {
+                $.each(resultAPI.data.productMedias, function (idx, item) {
+                    if (item.itemCode == color) {
+                        _arr.push(item);
+                    }
+                });
+            }
+            
+            if (_arr[0] != undefined) {
+                $.each(_arr, function (_idx, _item) {
+                    $("#imgMainPosition" + (_idx + 1)).attr('src', _item.mediaUrl);
+                    $("#imgThumbPosition" + (_idx + 1)).attr('src', _item.mediaUrl);
+                });
+            }
+
+            $(".product-color").removeClass("active");
+            $(this).addClass("active");
+        }
+
+        //handle get Product Best Saller
         function getProductBestSaller() {
             $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=24',
+                url: 'http://localhost:49553/api/product-module/Product/FilterProducts?CategoryId=1',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {

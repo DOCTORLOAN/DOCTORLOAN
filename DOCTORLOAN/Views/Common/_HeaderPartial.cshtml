@@ -228,7 +228,7 @@
         success: function (data) {
             // Handle call API Categories
             $.each(data.data.items, function (idx, item) {
-                if (item.parentId == 24) {
+                if (item.parentId == 1) {
                     var productCategories = $(`<div class="swiper-slide">
                                                     <div id="categories-`+ item.id + `">` + item.content + `</div><br />
                                                     <strong style="font-size: 0.875rem;color: #464646">`+ item.name + `</strong>

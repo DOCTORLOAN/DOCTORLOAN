@@ -1680,21 +1680,20 @@
                     // Handle call API Products
                     $.each(data.data.items, function (idx, item) {
                         var productItem = $(`<div data-id="` + item.id + `" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
-                                                    <div class="product-item" >
-                                                        <div class="img-item" >
-                                                            <div id="product-`+ item.id + `"> <img src="` + item.imageUrl + `" > </div>
-                                                        </div>
-                                                        <div class="content-item">
-                                                            <h5><span>`+ item.name + `</span><strong>` + ((item.summary != undefined) ? item.summary : '') + `</strong> </h5>
-                                                            <div id="price-item-`+ item.id + `" class="price-item">` + item.productItems[0].price + `</div>
-                                                                <div class="action-item">
-
-                                                                <a id="buy-`+ item.id + `" data-id="` + item.id + `" class="btn btn-buy" target="_blank">Mua ngay</a>
-                                                            </div>
-                                                            </div>
+                                                <div class="product-item" >
+                                                    <div class="img-item" >
+                                                        <div id="product-`+ item.id + `"> <img src="` + item.imageUrl + `" > </div>
+                                                    </div>
+                                                    <div class="content-item">
+                                                        <h5><span>`+ item.name + `</span><strong>` + ((item.summary != undefined) ? item.summary : '') + `</strong> </h5>
+                                                        <div id="price-item-`+ item.id + `" class="price-item">` + item.productItems[0].price + `</div>
+                                                        <div class="action-item">
+                                                            <a id="buy-`+ item.id + `" data-id="` + item.id + `" class="btn btn-buy" target="_blank">Mua ngay</a>
                                                         </div>
                                                     </div>
-                                                </div>`);
+                                                </div>
+                                            </div>
+                                        </div>`);
                         $("#productItems").append(productItem);
 
                         // Handle format currency vnd
