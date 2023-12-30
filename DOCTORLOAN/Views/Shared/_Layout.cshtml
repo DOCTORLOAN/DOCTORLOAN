@@ -32,12 +32,47 @@
         @await Html.PartialAsync("/Views/Common/_HeaderPartial.cshtml")
     </header>
     <main>
+
+        <div b-hmxnz7sj43="" id="myModalEvert" class="modal" tabindex="-1" role="dialog" style="display: none;">
+            <div b-hmxnz7sj43="" id="modalDialog" class="modal-dialog" role="document">
+                <div b-hmxnz7sj43="" class="modal-content">
+                    <div b-hmxnz7sj43="" class="modal-header">
+                        <h5 b-hmxnz7sj43="" class="modal-title"></h5>
+                        <button b-hmxnz7sj43="" type="button" class="btn-close" id="btnClose" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div b-hmxnz7sj43="" class="modal-body">
+                        <div id=slideSet1>
+                            <div>
+                                <img src="~/img/eventualities/noen.jpg" style="width:100%" />
+                            </div>
+                            <div>
+                                <a href="https://docs.google.com/spreadsheets/d/13zAxF_vJQi0e9ni9FQfowPlLWHDCWxBmKf1mjzM6LW0/htmlview#gid=1884199409" target="_blank">
+                                    <img src="~/img/eventualities/workshop.png" style="width:100%" />
+                                </a>
+                            </div>
+                             <div>
+                                <img src="~/img/eventualities/noen.jpg" style="width:100%" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         @RenderBody()
         <div class="zalo-chat-widget" data-oaid="3997762822356581117" data-welcome-message="DOCTORLOAN Rất vui khi được hỗ trợ bạn!" data-autopopup="2" data-width="" data-height=""></div>
     </main>
     <footer>
         @await Html.PartialAsync("/Views/Common/_FooterPartial.cshtml")
     </footer>
+    <script>
+        setTimeout("document.getElementById('myModalEvert').style.display='block'", 1000);
+        setTimeout("document.getElementById('myModalEvert').style.display='none'", 48000);
+
+        // Handle close modal
+        $('#btnClose').click(function () {
+            document.getElementById('myModalEvert').style.display = 'none';
+        });
+    </script>
     <script src="~/libs/swiperjs/swiper-bundle.min.js"></script>
     <script src="~/libs/bootstrap/popper.min.js"></script>
     <script src="~/libs/bootstrap/bootstrap.min.js"></script>

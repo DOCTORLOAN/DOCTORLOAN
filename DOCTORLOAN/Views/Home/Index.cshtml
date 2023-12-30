@@ -31,76 +31,42 @@
                                 <a class="btn btn-outline-secondary rounded-pill" id="btn-show-modal" asp-controller="About" asp-action="Index">Xem chi tiết</a>
                             </div>
 
-                            <!-- Modal -->
-
-                            <div class="modal" id="myModal">
-                                <div class="modal-dialog modal-dialog-scrollable">
-                                    <div class="modal-content">
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h5 class="modal-title fw-bold">Giải pháp cho cột sống khỏe</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                           @*  <p>
-                                                Các sản phẩm DOCTORLOAN chuyên biệt chăm sóc, phòng ngừa và hỗ trợ điều trị các bệnh cột sống, đã được áp dụng cho cộng đồng trong và ngoài nước.
-                                            </p> *@
-                                            <p>
-                                                Sản phẩm DOCTORLOAN được công bố bởi Tổ Chức Sở Hữu Trí Tuệ Thế Giới (WIPO/PCT) và được cấp bằng sáng chế độc quyền trên 60 Quốc gia.
-                                            </p>
-                                            <p>
-                                                Bảo hộ sáng chế đóng một vai trò quan trọng trong việc thúc đẩy sự tiến bộ và sáng tạo trong xã hội loài người.
-                                                Bằng cách bảo vệ và khuyến khích sự sáng tạo, hệ thống bảo hộ sáng chế tạo điều kiện cho các nhà phát minh, nhà khoa học và nhà sáng tạo khám phá, phát triển và chia sẻ những ý tưởng mới.
-                                            </p>
-                                            <p>
-                                                Vai trò của bảo hộ sáng chế là tạo ra một môi trường độc lập và an toàn cho người sáng tạo. Nhờ bảo hộ sáng chế, họ có thể bảo vệ công nghệ, sản phẩm, phương pháp và quy trình độc đáo mà họ đã tạo ra khỏi việc sao chép trái phép và lợi dụng.  Điều này khuyến khích những người sáng tạo đầu tư thời gian, công sức và tài nguyên vào nghiên cứu và phát triển, biết rằng họ sẽ được bảo vệ và hưởng lợi từ thành quả của mình.</p>
-                                            <p>
-                                                Ứng dụng sáng chế có ảnh hưởng sâu rộng đến xã hội loài người. Chúng đóng vai trò quan trọng trong việc thúc đẩy sự tiến bộ kỹ thuật, y tế, công nghệ, và các lĩnh vực khác. Những ý tưởng sáng chế tiên tiến được bảo hộ và ứng dụng mang lại những đổi mới và tiện ích cho cuộc sống hàng ngày. Chẳng hạn, các phát minh trong lĩnh vực y tế đã cứu sống hàng triệu người, trong khi các công nghệ mới trong lĩnh vực viễn thông, năng lượng và giao thông đã thay đổi cách chúng ta sống và làm việc.</p>
-                                            <p>Đồng thời, bảo hộ sáng chế cũng thúc đẩy sự cạnh tranh lành mạnh và khuyến khích sự phát triển kinh tế. Việc bảo vệ sáng chế giúp tạo ra môi trường đầu tư ổn định và thu hút vốn đầu tư, đồng thời tạo ra cơ hội cho các doanh nghiệp và cá nhân để khai thác và phát triển ý tưởng sáng tạo của họ.</p>
-                                        </div>
-                                        <div class="modal-footer">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             @* <div class="dropdown select-country">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Chọn quốc gia để xem sáng chế độc quyền
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="javascript:void(0)">
-                                            <i class="flag-icon flag-vn"></i>
-                                            Viet Nam
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="javascript:void(0)">
-                                            <i class="flag-icon flag-us"></i>
-                                            United States
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="javascript:void(0)">
-                                            <i class="flag-icon flag-gb"></i>
-                                            United Kingdom
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="javascript:void(0)">
-                                            <i class="flag-icon flag-sg"></i>
-                                            Singapore
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="javascript:void(0)">
-                                            <i class="flag-icon flag-tl"></i>
-                                            Thailand
-                                        </a>
-                                    </li>
-                                </ul>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Chọn quốc gia để xem sáng chế độc quyền
+                            </button>
+                            <ul class="dropdown-menu">
+                            <li>
+                            <a class="dropdown-item" href="javascript:void(0)">
+                            <i class="flag-icon flag-vn"></i>
+                            Viet Nam
+                            </a>
+                            </li>
+                            <li>
+                            <a class="dropdown-item" href="javascript:void(0)">
+                            <i class="flag-icon flag-us"></i>
+                            United States
+                            </a>
+                            </li>
+                            <li>
+                            <a class="dropdown-item" href="javascript:void(0)">
+                            <i class="flag-icon flag-gb"></i>
+                            United Kingdom
+                            </a>
+                            </li>
+                            <li>
+                            <a class="dropdown-item" href="javascript:void(0)">
+                            <i class="flag-icon flag-sg"></i>
+                            Singapore
+                            </a>
+                            </li>
+                            <li>
+                            <a class="dropdown-item" href="javascript:void(0)">
+                            <i class="flag-icon flag-tl"></i>
+                            Thailand
+                            </a>
+                            </li>
+                            </ul>
                             </div> *@
                         </div>
                     </div>
@@ -116,7 +82,7 @@
                             </div>
                         </div>
                         <div class="action-item custom-action-item action-company">
-                            <img  src="~/img/home/logo-duc-phuc.png" />
+                            <img src="~/img/home/logo-duc-phuc.png" />
                             <div class="content-company"><a asp-controller="Clinic" asp-action="Index"> Phòng khám <br /> <span>Đức Phúc DoctorLoan</span></a></div>
                         </div>
                         <div class="action-item custom-action-item action-company">
@@ -627,7 +593,7 @@
                     </a>
                     <div class="license-country">United arab emirates</div>
                 </div>
-                
+
                 <div class="swiper-slide">
                     @* <img src="~/img/home/euro-patent.jpg" /> *@
                     <a href="~/img/license/license-5.jpg" class="glightbox" data-gallery="license-space">
@@ -635,7 +601,7 @@
                     </a>
                     <div class="license-country">Euro Patent</div>
                 </div>
-                
+
                 <div class="swiper-slide">
                     @* <img src="~/img/home/india-patent.jpg" /> *@
                     <a href="~/img/license/license-7.jpg" class="glightbox" data-gallery="license-space">
@@ -643,8 +609,8 @@
                     </a>
                     <div class="license-country">India Patent</div>
                 </div>
-                
-                
+
+
                 <div class="swiper-slide">
                     @* <img src="~/img/home/japan-patent.jpg" /> *@
                     <a href="~/img/license/license-10.jpg" class="glightbox" data-gallery="license-space">
@@ -652,7 +618,7 @@
                     </a>
                     <div class="license-country">Japan Patent</div>
                 </div>
-                
+
             </div>
             @* <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div> *@
@@ -661,7 +627,7 @@
 </section>
 
 <section id="Solution">
-    
+
     <div class="Heritage">
         <div class="container">
             <div class="title-drloan"><span>Giá trị cốt lõi</span></div>
@@ -710,7 +676,7 @@
 
         </div>
     </div>
-    
+
     <div class="container">
         <div class="solution-module">
             <div class="main-solution">
@@ -727,10 +693,10 @@
                             <div class="main-solution-info">
                                 <div class="title-solution">Đức Phúc DoctorLoan</div>
                                 <div class="sub-title-solution">Cung cấp giải pháp chăm sóc cột sống toàn diện</div>
-                                @* <p>Tiên phong nghiên cứu giải pháp phòng ngừa các bệnh về Cột Sống. 
-                                    Với mục tiêu huấn luyện và chuyển giao bí quyết TỰ CHỮA LÀNH, 
-                                    chúng tôi sẽ giúp khách hàng thấu hiểu nguyên lý điều chỉnh cột sống, 
-                                    từ đó cải thiện vóc dáng, thân – tâm – trí khỏe mạnh.</p> *@
+                                @* <p>Tiên phong nghiên cứu giải pháp phòng ngừa các bệnh về Cột Sống.
+                                Với mục tiêu huấn luyện và chuyển giao bí quyết TỰ CHỮA LÀNH,
+                                chúng tôi sẽ giúp khách hàng thấu hiểu nguyên lý điều chỉnh cột sống,
+                                từ đó cải thiện vóc dáng, thân – tâm – trí khỏe mạnh.</p> *@
                             </div>
                         </div>
                     </div>
@@ -813,19 +779,19 @@
             </div>
         </div>
         @* <div id="SpaceSwiper" class="swiper">
-            <div class="swiper-wrapper">
-                @for (int i = 1; i <= 12; i++)
-                {
-                    <div class="swiper-slide">
-                        <a href="~/img/large/home/space-large-@(i).jpg" class="glightbox" data-gallery="gallery-space">
-                            <img src="~/img/home/space-@(i).jpg" />
-                        </a>
-                    </div>
-                }
-            </div>
+        <div class="swiper-wrapper">
+        @for (int i = 1; i <= 12; i++)
+        {
+        <div class="swiper-slide">
+        <a href="~/img/large/home/space-large-@(i).jpg" class="glightbox" data-gallery="gallery-space">
+        <img src="~/img/home/space-@(i).jpg" />
+        </a>
+        </div>
+        }
+        </div>
         </div> *@
     </div>
-    
+
 </section>
 
 <section id="Feedback">
@@ -833,10 +799,10 @@
         <div class="main-feedback">
             <div class="row">
                 <div class="title-drloan">
-                <span>
-                    DOCTORLOAN đã thành công trong điều chỉnh xương khớp về đúng vị trí trong thời gian ngắn
-                </span>
-            </div>
+                    <span>
+                        DOCTORLOAN đã thành công trong điều chỉnh xương khớp về đúng vị trí trong thời gian ngắn
+                    </span>
+                </div>
 
                 <div class="col-xxl-9 col-xl-8 col-lg-7 col-12">
                     <div class="row h-100">
@@ -871,7 +837,7 @@
                                     <div class="accordion-item">
                                         <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                             <div class="accordion-body">
-                                               <div class="accordion-body-nguyenthihongminh">
+                                                <div class="accordion-body-nguyenthihongminh">
                                                     @for (int i = 1; i < 6; i++)
                                                     {
                                                         <div class="swiper-slide">
@@ -883,7 +849,7 @@
                                                     <a href="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-1.png" class="glightbox" data-gallery="nguyenthihongminh-space">
                                                         <img src="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-1.png" />
                                                     </a>
-                                                    
+
                                                     <p>Cột sống lưng</p>
                                                     <a href="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-2.png" class="glightbox" data-gallery="nguyenthihongminh-space">
                                                         <img src="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-2.png" />
@@ -895,7 +861,7 @@
                                                     </a>
 
                                                     <p>Cột sống cổ-ngực</p>
-                                               </div>         
+                                                </div>
                                             </div>
                                         </div>
                                         <h2 class="accordion-header" id="heading1">
@@ -934,7 +900,7 @@
 
                                                     <p>Cột sống cổ-ngực</p>
                                                 </div>
-                                         
+
                                             </div>
                                         </div>
                                         <h2 class="accordion-header" id="heading2">
@@ -972,7 +938,7 @@
 
                                                     <p>Cột sống cổ-ngực</p>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <h2 class="accordion-header" id="heading3">
@@ -1010,7 +976,7 @@
 
                                                     <p>Cột sống cổ-ngực</p>
                                                 </div>
-                                               
+
                                             </div>
                                         </div>
                                         <h2 class="accordion-header" id="heading4">
@@ -1020,7 +986,7 @@
                                         </h2>
                                     </div>
 
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -1032,20 +998,20 @@
                         <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F998659321172937%2F&show_text=true&width=560&t=0" width="350" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
                         <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F188832057356035%2F&show_text=true&width=560&t=0" width="350" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
                         <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F319354987187815%2F&show_text=true&width=560&t=0" width="560" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-                        
+
                     </div>
                 </div>
-            
+
+            </div>
         </div>
-    </div>
 </section>
 
 <section id="Project" class="demo-section">
     <div class="container">
         <div class="title-drloan">
-              <span>
-                 R&D/IPR<b class="text-title-small">s</b> <br /> <small>Hành trình nghiên cứu và phát triển đi tới các sáng chế thiết thực đem lại ích lợi cho mọi người</small>
-              </span>
+            <span>
+                R&D/IPR<b class="text-title-small">s</b> <br /> <small>Hành trình nghiên cứu và phát triển đi tới các sáng chế thiết thực đem lại ích lợi cho mọi người</small>
+            </span>
         </div>
 
         <div id="ProjectSwiper" class="swiper">
@@ -1053,7 +1019,7 @@
                 <div class="swiper-slide">
                     <div class="main-project">
                         <div class="row">
-                            
+
                             <div class="col-lg-7 col-12">
                                 <div class="project-info">
                                     <div class="project-product">
