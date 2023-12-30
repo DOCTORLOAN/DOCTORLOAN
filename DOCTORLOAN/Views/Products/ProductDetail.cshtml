@@ -602,7 +602,7 @@
                     var imgThumb = "";
                     var flagN85, flag = false;
 
-                    if (data.data.productItems[0].productOptions != undefined && (data.data.productItems[0].productOptions != undefined)) {
+                    if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined) {
                         var _arr = [];
                         $.each(data.data.categoryIds, function (idx, item) {
                             if (item === 24) {
