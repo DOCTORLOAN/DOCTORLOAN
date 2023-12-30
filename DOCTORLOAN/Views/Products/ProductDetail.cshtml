@@ -499,7 +499,7 @@
         // Get the value of the parameter categoryId in URL
         if (_categoryId != undefined) {
             $.ajax({
-                url: 'http://localhost:49553/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -519,10 +519,10 @@
 
         var resultAPI;
 
+        // Get the value of the parameter productId in URL
         function getProduct(id) {
-            // Get the value of the parameter productId in URL
             $.ajax({
-                url: 'http://localhost:49553/api/product-module/Product/GetProduct?id=' + id,
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + id,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -565,6 +565,13 @@
                                                                     <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
                                                                     <a id="buy-`+ data.data.id + `" data-id="` + data.data.id + `" class="btn btn-buy-details" target="_blank">Mua ngay</a>
                                                                 </div>
+                                                                <div class="shopify-button">
+                                                                    <div class="action-item custom-action-item action-company action-call">
+                                                                        <strong style="font-size: 1.3rem;color: black">Mua dễ dàng hơn bằng</strong><img src="/img/icon/shopify.png" style="width: 30%;">
+
+                                                                    </div>
+                                                                    <a href="" class="btn btn-outline-dtl btn-shopify" target="_blank">Mua ngay</a>
+                                                                </div>
                                                                 <div class="ipr-policy">
                                                                     <div class="policy-item">
                                                                         <img src="/img/icon/p-shield.svg" />
@@ -595,6 +602,8 @@
                                                 </div>`);
                     $("#infoProduct").append(productSwiperMain);
 
+                    setHrefShopify(data.data.id);
+
                     // Handle format currency vnd
                     $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
 
@@ -602,17 +611,17 @@
                     var imgThumb = "";
                     var flagN85, flag = false;
 
-                    if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined) {
-                        var _arr = [];
-                        $.each(data.data.categoryIds, function (idx, item) {
-                            if (item === 24) {
-                                flagN85 = true;
-                            }
-                            if (item === 6 || item === 7 || item === 8) {
-                                flag = true;
-                            }
-                        });
+                    $.each(data.data.categoryIds, function (idx, item) {
+                        if (item === 34) {
+                            flagN85 = true;
+                        }
+                        if (item === 29 || item === 30 || item === 31) {
+                            flag = true;
+                        }
+                    });
 
+                    if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined && flag != true) {
+                        var _arr = [];
                         if (flag != true) {
                             if (flagN85 != true) {
                                 $("#iprItemColor").append(`<label>.Màu sắc</label>
@@ -755,10 +764,48 @@
             $(this).addClass("active");
         }
 
+        //handle add href link shopify
+        function setHrefShopify(id) {
+            var _href = "";
+            switch (id) {
+                case 21:
+                    _href = "https://doctorloanstore.myshopify.com/products/135-doctorloan-chair";
+                    break;
+                case 22:
+                    _href = "https://doctorloanstore.myshopify.com/products/90-doctorloan-chair";
+                    break;
+                case 22:
+                    _href = "https://doctorloanstore.myshopify.com/products/90-doctorloan-thin-chair";
+                    break;
+                case 24:
+                    _href = "https://doctorloanstore.myshopify.com/products/gh%E1%BA%BF-ng%E1%BB%93i-doctorloan-95-vip";
+                    break;
+                case 25:
+                    _href = "https://doctorloanstore.myshopify.com/products/85-chair";
+                    break;
+                case 27:
+                    _href = "https://doctorloanstore.myshopify.com/products/f3-pillow";
+                    break;
+                case 28:
+                    _href = "https://doctorloanstore.myshopify.com/products/f1-pillow";
+                    break;
+                case 26:
+                    _href = "https://doctorloanstore.myshopify.com/products/f4-pillow";
+                    break;
+                case 29:
+                    _href = "https://doctorloanstore.myshopify.com/products/d%E1%BB%87m-thi%E1%BB%81n-doctorloan";
+                    break;
+                default:
+                // code block
+            }
+            
+            return $(".btn-shopify").attr("href", _href);
+        }
+
         //handle get Product Best Saller
         function getProductBestSaller() {
             $.ajax({
-                url: 'http://localhost:49553/api/product-module/Product/FilterProducts?CategoryId=1',
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=24',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
