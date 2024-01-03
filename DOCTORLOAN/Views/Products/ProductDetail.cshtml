@@ -588,10 +588,7 @@
                                                                             Giao nhanh 4H nội thành HCM
                                                                         </span>
                                                                     </div>
-                                                                    <div class="policy-item">
-                                                                        <img src="/img/icon/p-setting.svg" />
-                                                                        <span><strong>Hướng dẫn lắp ráp</strong> <br /><a href="/img/products/90D/HDSD-90D.pdf" target="_blank"><i class="fas fa-download"></i> Xem chi tiết</a></span>
-                                                                    </div>
+                                                                    <div id="policyItem" class="policy-item"></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -602,6 +599,7 @@
                                                 </div>`);
                     $("#infoProduct").append(productSwiperMain);
 
+                    setHrefHDSD(data.data.id);
                     setHrefShopify(data.data.id);
 
                     // Handle format currency vnd
@@ -610,6 +608,7 @@
                     var imgProduct = "";
                     var imgThumb = "";
                     var flagN85, flag = false;
+                    var gn_135 = 21;
                     var n85_id = 34;
                     var dt_id = 29;
                     var gcf5_id = 30;
@@ -768,6 +767,68 @@
             $(this).addClass("active");
         }
 
+        //handle add href link HDSD
+        function setHrefHDSD(id) {
+            var _tmp = "";
+            switch (id) {
+                case 21:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                            <span><strong>Hướng dẫn lắp ráp </strong> <br /> 
+                            <a class="btn-hdsd" href = "/img/products/135/HDSD-135.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                    break;
+                case 22:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                            <a class="btn-hdsd" href = "/img/products/90D/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                    break;
+                case 22:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                            <a class="btn-hdsd" href = "/img/products/90M/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                    break;
+                case 24:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                            <a class="btn-hdsd" href = "/img/products/95V/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                    break;
+                case 25:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                            <a class="btn-hdsd" href = "/img/products/N85/HDSD-N85.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                    break;
+                case 27:
+                    break;
+                case 28:
+                    break;
+                case 26:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                            <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
+                    break;
+                case 29:
+                    break;
+                case 30:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                            <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
+                    break;
+                case 31:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                            <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
+                    break;
+                case 32:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                            <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
+                    break;
+                default:
+                // code block
+            }
+
+            return $("#policyItem").append(_tmp);
+        }
+
         //handle add href link shopify
         function setHrefShopify(id) {
             var _href = "";
@@ -802,7 +863,7 @@
                 default:
                 // code block
             }
-            
+
             return $(".btn-shopify").attr("href", _href);
         }
 
