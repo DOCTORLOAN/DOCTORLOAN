@@ -610,12 +610,16 @@
                     var imgProduct = "";
                     var imgThumb = "";
                     var flagN85, flag = false;
+                    var n85_id = 34;
+                    var dt_id = 29;
+                    var gcf5_id = 30;
+                    var gcnl_id = 31;
 
                     $.each(data.data.categoryIds, function (idx, item) {
-                        if (item === 34) {
+                        if (item === n85_id) {
                             flagN85 = true;
                         }
-                        if (item === 29 || item === 30 || item === 31) {
+                        if (item === dt_id || item === gcf5_id || item === gcnl_id) {
                             flag = true;
                         }
                     });
@@ -626,31 +630,31 @@
                             if (flagN85 != true) {
                                 $("#iprItemColor").append(`<label>.Màu sắc</label>
                                                             <div class="ipr-color">
-                                                                <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.sku + `-BROWN" title="Màu nâu"></a>
-                                                                <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.sku + `-GRAPE" title="Màu nho"></a>
-                                                                <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.sku + `-BLACK" title="Màu đen"></a>
-                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-GREEN" title="Màu xanh"></a>
+                                                                <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.sku + `-MAU NAU" title="Màu nâu"></a>
+                                                                <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.sku + `-MAU NHO" title="Màu nho"></a>
+                                                                <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.sku + `-MAU DEN" title="Màu đen"></a>
+                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-MAU XANH LA" title="Màu xanh"></a>
                                                             </div>`);
                             } else {
                                 $("#iprItemColor").append(`<label>.Màu sắc</label>
                                                             <div class="ipr-color">
-                                                                <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.sku + `-YELLOW" title="Màu vàng"></a>
-                                                                <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.sku + `-ORANGE" title="Màu cam"></a>
-                                                                <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.sku + `-RED" title="Màu đỏ"></a>
-                                                                <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.sku + `-GRAY" title="Màu xám"></a>
-                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-GREEN" title="Màu xanh lá"></a>
-                                                                <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.sku + `-BLUE" title="Màu xanh dương"></a>
+                                                                <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.sku + `-MAU VANG" title="Màu vàng"></a>
+                                                                <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.sku + `-MAU CAM" title="Màu cam"></a>
+                                                                <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.sku + `-MAU DO" title="Màu đỏ"></a>
+                                                                <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.sku + `-MAU XAM" title="Màu xám"></a>
+                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-MAU XANH LA" title="Màu xanh lá"></a>
+                                                                <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.sku + `-MAU XANH DUONG" title="Màu xanh dương"></a>
                                                             </div>`);
                             }
                         }
 
                         $.each(data.data.productMedias, function (_idx, _item) {
                             if (flagN85 != true) {
-                                if (_item.itemCode == data.data.sku + '-BROWN') {
+                                if (_item.itemCode == data.data.sku + '-MAU NAU') {
                                     _arr.push(_item);
                                 }
                             } else {
-                                if (flagN85 == true && _item.itemCode == data.data.sku + '-YELLOW') {
+                                if (flagN85 == true && _item.itemCode == data.data.sku + '-MAU VANG') {
                                     _arr.push(_item);
                                 }
                             }

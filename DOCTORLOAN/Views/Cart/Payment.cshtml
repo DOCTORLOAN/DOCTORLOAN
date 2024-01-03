@@ -256,7 +256,7 @@
 
         function getOptionProduct() {
             $.ajax({
-                url: 'http://localhost:49553/api/product-module/Product/GetProduct?id=' + paramIdVal,
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + paramIdVal,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -281,18 +281,21 @@
                 }
             });
         }
-        
+
+        var resultAPI;
+        // Get the value of the parameter productId in URL
         function getProduct() {
             $.ajax({
                 url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + paramIdVal,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
+                    resultAPI = data;
                     // Handle call API Products
                     var productItem = $(`<div data-id="` + data.data.id + `" class="list-product-payment">
                                             <div class="pp-item">
                                                 <div class="pp-info">
-                                                    <img src="`+ data.data.productMedias[0].mediaUrl + `" />
+                                                    <img id="imgProductPayment" src="`+ data.data.productMedias[0].mediaUrl + `" />
                                                         <div id="pp-desc" class="pp-desc">
                                                         <strong>`+ data.data.name + `</strong>
                                                         <input type="text" name="Name" value="`+ data.data.name + `" class="form-control" hidden />
@@ -301,7 +304,7 @@
                                                                 <label for="quantityPayment">Số Lượng</label>
                                                                 <input min="1" type="number" name="Quantity" value="`+ paramQuantityVal + `" id="quantityPayment" class="form-control" style="width: 80px !important" />
                                                             </div>
-                                                            
+                                                            <div id="iprItemColor" class="ipr-color"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -338,6 +341,67 @@
                     //formartVND($('#cart-shipping'));
                     formartVND($('#cart-total'));
 
+                    /*
+                    var flagN85, flag = false;
+                    var n85_id = 34;
+                    var dt_id = 29;
+                    var gcf5_id = 30;
+                    var gcnl_id = 31;
+
+                    $.each(data.data.categoryIds, function (idx, item) {
+                        if (item === n85_id) {
+                            flagN85 = true;
+                        }
+                        if (item === dt_id || item === gcf5_id || item === gcnl_id) {
+                            flag = true;
+                        }
+                    });
+
+                    if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined && flag != true) {
+                        var _arr = [];
+                        if (flag != true) {
+                            if (flagN85 != true) {
+                                $("#iprItemColor").append(`<div class="ipr-color">
+                                                                <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.sku + `-BROWN" title="Màu nâu"></a>
+                                                                <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.sku + `-GRAPE" title="Màu nho"></a>
+                                                                <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.sku + `-BLACK" title="Màu đen"></a>
+                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-GREEN" title="Màu xanh"></a>
+                                                            </div>`);
+                            } else {
+                                $("#iprItemColor").append(`<div class="ipr-color">
+                                                                <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.sku + `-YELLOW" title="Màu vàng"></a>
+                                                                <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.sku + `-ORANGE" title="Màu cam"></a>
+                                                                <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.sku + `-RED" title="Màu đỏ"></a>
+                                                                <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.sku + `-GRAY" title="Màu xám"></a>
+                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-GREEN" title="Màu xanh lá"></a>
+                                                                <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.sku + `-BLUE" title="Màu xanh dương"></a>
+                                                            </div>`);
+                            }
+                        }
+
+                        $.each(data.data.productMedias, function (_idx, _item) {
+                            if (flagN85 != true) {
+                                if (_item.itemCode == data.data.sku + '-BROWN') {
+                                    _arr.push(_item);
+                                }
+                            } else {
+                                if (flagN85 == true && _item.itemCode == data.data.sku + '-YELLOW') {
+                                    _arr.push(_item);
+                                }
+                            }
+                        });
+
+                        if (_arr[0] != undefined) {
+                            $("#imgProductPayment").attr('src', _arr[0].mediaUrl);
+                        }
+                    }
+
+                    $('.product-color').click(function () {
+                        var getcolor = $(this).attr("data-color");
+                        //loadProductForColor(getcolor);
+                    });
+                    */
+
                     $("#quantityPayment").change(function () {
                         var _price = data.data.price;
                         var _subTotal = data.data.price * $('#quantityPayment').val();
@@ -357,6 +421,26 @@
             });
         }
 
+        /*
+        //handle pic product to color
+        function loadProductForColor(color) {
+            var _arr = [];
+            if (resultAPI != undefined) {
+                $.each(resultAPI.data.productMedias, function (idx, item) {
+                    if (item.itemCode == color) {
+                        _arr.push(item);
+                    }
+                });
+            }
+
+            if (_arr[0] != undefined) {
+                $("#imgProductPayment").attr('src', _arr[0].mediaUrl);
+            }
+
+            $(".product-color").removeClass("active");
+            $(this).addClass("active");
+        }
+        */
         getProduct();
 
         getOptionProduct();

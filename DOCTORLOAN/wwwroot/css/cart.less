@@ -194,6 +194,82 @@
                     width: calc(100% - 70px);
                     display: flex;
                     flex-direction: column;
+
+                    .ipr-color {
+                        display: flex;
+                        align-items: center;
+                        padding: 5px 0 0 0;
+                    }
+
+                    .product-color {
+                        width: 2rem;
+                        height: 2rem;
+                        border-radius: 50%;
+                        border: 2px solid @white;
+                        margin-right: .75rem;
+                        position: relative;
+
+                        &.brown {
+                            background-color: #A45031;
+                        }
+
+                        &.yellow {
+                            background-color: #ffff00;
+                        }
+
+                        &.grape {
+                            background-color: #311432;
+                        }
+
+                        &.red {
+                            background-color: #ff0000;
+                        }
+
+                        &.gray {
+                            background-color: #808080;
+                        }
+
+                        &.orange {
+                            background-color: #ffa500;
+                        }
+
+                        &.blue {
+                            background-color: #0000ff;
+                        }
+
+                        &.black {
+                            background-color: @black;
+                        }
+
+                        &.green {
+                            background-color: #759A77;
+                        }
+
+                        &.plasticgreen {
+                            background-color: #00FF00;
+                        }
+
+                        &.active {
+                            border-color: @main-orange;
+
+                            &:before {
+                                content: "";
+                                width: calc(100% - 2px);
+                                height: calc(100% - 2px);
+                                background-color: transparent;
+                                border: 2px solid @white;
+                                z-index: 1;
+                                position: absolute;
+                                top: 1px;
+                                left: 1px;
+                                border-radius: 50%;
+                            }
+                        }
+
+                        &:hover {
+                            border-color: @main-orange;
+                        }
+                    }
                 }
 
                 span {
