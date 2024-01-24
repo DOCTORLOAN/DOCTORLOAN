@@ -194,7 +194,6 @@
                     <div class="center-thing">
                         <div class="title-pi-r">
                             <strong>SHOW ROOM SẢN PHẨM DOCTORLOAN</strong>
-                            @* <a class="btn btn-pink" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a> *@
                         </div>
                     </div>
                 </div>
@@ -376,6 +375,7 @@
             window.location.href = redirectUrl;
         }
 
+        //Handle get Product
         function getProduct() {
             $.ajax({
                 url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts',
@@ -445,6 +445,7 @@
 
         getProduct();
 
+        //Handle get Image Product for id
         function getImgProduct(id) {
             $.ajax({
                 url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + id,
@@ -477,7 +478,7 @@
                                     _arr.push(_item);
                                 }
                             } else {
-                                if (flagN85 == true && _item.itemCode == data.data.sku + '-MAU VANG') {
+                                if (flagN85 == true && _item.itemCode == data.data.sku + '-MAU VANG-CHAN NGAN') {
                                     _arr.push(_item);
                                 }
                             }
