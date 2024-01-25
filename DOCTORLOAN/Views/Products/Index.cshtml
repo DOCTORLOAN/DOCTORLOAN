@@ -190,7 +190,6 @@
                     <div class="center-thing">
                         <div class="title-pi-r">
                             <strong>SHOW ROOM SẢN PHẨM DOCTORLOAN</strong>
-                            @* <a class="btn btn-pink" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a> *@
                         </div>
                     </div>
                 </div>
@@ -206,7 +205,6 @@
 </section>
 
 @section scripts{
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#nav-menu-container ul li").removeClass("menu-active");
@@ -372,19 +370,20 @@
             window.location.href = redirectUrl;
         }
 
+        //Handle get Product
         function getProduct() {
             $.ajax({
                 url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts',
-
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
+                    var _arr = [];
                     // Handle call API Products
                     $.each(data.data.items, function (idx, item) {
                         var productItem = $(`<div data-id="` + item.id + `" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                                                 <div class="product-item" >
                                                     <div class="img-item" >
-                                                        <div id="product-`+ item.id + `"> <img src="` + item.imageUrl + `" > </div>
+                                                        <div id="product-`+ item.id + `"></div>
                                                     </div>
                                                     <div class="content-item">
                                                         <h5><span>`+ item.name + `</span><strong>` + ((item.summary != undefined) ? item.summary : '') + `</strong> </h5>
@@ -398,6 +397,9 @@
                                             </div>
                                         </div>`);
                         $("#productItems").append(productItem);
+
+                        //Handle get img product
+                        getImgProduct(item.id);
 
                         // Handle format currency vnd
                         $('#price-item-' + item.id).text(parseInt($('#price-item-' + item.id).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
@@ -458,7 +460,6 @@
                             };
                             redirectToWithData("/Cart/Payment", data);
                         });
-
                     });
 
                 },
@@ -470,6 +471,70 @@
         }
 
         getProduct();
+
+        //Handle get Image Product for id
+        function getImgProduct(id) {
+            $.ajax({
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var flagN85, flag = false;
+                    var gn_135 = 21;
+                    var n85_id = 34;
+                    var dt_id = 29;
+                    var gcf5_id = 30;
+                    var gcnl_id = 31;
+                    var imgProduct;
+
+                    $.each(data.data.categoryIds, function (idx, item) {
+                        if (item === n85_id) {
+                            flagN85 = true;
+                        }
+                        if (item === dt_id || item === gcf5_id || item === gcnl_id) {
+                            flag = true;
+                        }
+                    });
+
+                    if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined && flag != true) {
+                        var _arr = [];
+
+                        $.each(data.data.productMedias, function (_idx, _item) {
+                            if (flagN85 != true) {
+                                if (_item.itemCode == data.data.sku + '-MAU NAU') {
+                                    _arr.push(_item);
+                                }
+                            } else {
+                                if (flagN85 == true && _item.itemCode == data.data.sku + '-MAU VANG-CHAN NGAN') {
+                                    _arr.push(_item);
+                                }
+                            }
+                        });
+
+                        if (_arr[0] != undefined) {
+                            $.each(_arr, function (_idx, _item) {
+                                imgProduct = `<img src="` + _item.mediaUrl + `" />`;
+                            });
+                            $("#product-" + id).append(imgProduct);
+                        }
+                    } else {
+                        var _arr = [];
+                        $.each(data.data.productMedias, function (idx, item) {
+                            _arr.push(item);
+                        });
+
+                        $.each(_arr, function (_idx, _item) {
+                            imgProduct = `<img src="` + _item.mediaUrl + `" />`;
+                        });
+                        $("#product-" + id).append(imgProduct);
+                    }
+                },
+                error: function (error) {
+                    //handle show error
+                    console.error('Error:', error);
+                }
+            });
+        }
 
         var messSuccess = $("#alertMessageSuccess").val();
         if (messSuccess != null) {
