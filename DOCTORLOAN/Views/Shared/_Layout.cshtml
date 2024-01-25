@@ -32,37 +32,6 @@
         @await Html.PartialAsync("/Views/Common/_HeaderPartial.cshtml")
     </header>
     <main>
-        <div b-hmxnz7sj43="" id="myModalEvert" class="modal" tabindex="-1" role="dialog" style="display: none;">
-            <div b-hmxnz7sj43="" id="modalDialog" class="modal-dialog" role="document">
-                <div b-hmxnz7sj43="" id="modalContent" class="modal-content">
-                    <div b-hmxnz7sj43="" class="modal-body">
-                        <div class="pyro">
-                            <div class="before"></div>
-                            <div class="after"></div>
-                        </div>
-
-                        <button b-hmxnz7sj43="" type="button" class="btn-close" id="btnClose" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <a asp-controller="News" asp-action="Sales">
-                            <img id="imgModal" src="~/img/eventualities/mess_CTKM.jpg" />
-                        </a>
-                        
-                        @* <div id=slideSet1>
-                            <div>
-                                <img src="~/img/eventualities/noen.jpg" style="width:100%" />
-                            </div>
-                            <div>
-                                <a href="https://docs.google.com/spreadsheets/d/13zAxF_vJQi0e9ni9FQfowPlLWHDCWxBmKf1mjzM6LW0/htmlview#gid=1884199409" target="_blank">
-                                    <img src="~/img/eventualities/workshop.png" style="width:100%" />
-                                </a>
-                            </div>
-                             <div>
-                                <img src="~/img/eventualities/noen.jpg" style="width:100%" />
-                            </div>
-                        </div> *@
-                    </div>
-                </div>
-            </div>
-        </div>
         @RenderBody()
 
         <div id='codepro-ads-bottom-left-corner'>
@@ -90,13 +59,6 @@
 
 
     <script>
-        setTimeout("document.getElementById('myModalEvert').style.display='block'", 1500);
-        setTimeout("document.getElementById('myModalEvert').style.display='none'", 8000);
-        // Handle close modal
-        $('#btnClose').click(function () {
-            document.getElementById('myModalEvert').style.display = 'none';
-        });
-
         function hideitem() {
             document.getElementById("codepro-ads-bottom-left-corner").style.display = "none";
         }
@@ -125,6 +87,8 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/common.js"></script>
     <script src="~/libs/swiperjs/swiper-bundle.min.js"></script>
     <script src="~/libs/bootstrap/popper.min.js"></script>
     <script src="~/libs/bootstrap/bootstrap.min.js"></script>
@@ -132,9 +96,11 @@
     <script src="~/libs/superfish/superfish.min.js"></script>
     <script src="~/libs/glightbox/glightbox.min.js"></script>
     <script src="~/libs/owlcarousel/owl.carousel.min.js"></script>
-    <script src="~/js/main.js"></script>
-    <script src="~/js/common.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="~/libs/Bootstrap/bootstrap-datetimepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css"></script>
     @await RenderSectionAsync("scripts", required: false)
 </body>
 </html>
