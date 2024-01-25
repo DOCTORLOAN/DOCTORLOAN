@@ -46,38 +46,6 @@
                                                     border-left: 7px solid black;
                                                 }
                                             </style>
-                                            @* <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="Product135"><img src="~/img/common/menu-product-135.png" /></a> <br />
-                                                <strong style="font-size: 0.875rem;color: #464646">Ghế nằm 135</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="Product90D"><img src="~/img/common/menu-product-90D.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646">Ghế ngồi 90 Dày</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="Product90M"><img src="~/img/common/menu-product-90M.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646">Ghế ngồi 90 Mỏng</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="Product95V"><img src="~/img/common/menu-product-95V.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646">Ghế ngồi 95 VIP</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="ProductN85"><img src="~/img/common/menu-product-N85.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646">Ghế nhựa N85</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="ProductGCF4"><img src="~/img/common/menu-product-GC.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646";padding-left: 15px">Gối cổ</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="ProductGLF3"><img src="~/img/common/menu-product-GL.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646";padding-left: 15px">Gối lưng</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="ProductDT"><img src="~/img/common/menu-product-DT.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646";padding-left: 15px">Đệm thiền</strong>
-                                            </div> *@
                                         </div>
                                         <div class="swiper-button-next"></div>
                                         <div class="swiper-button-prev"></div>
@@ -116,11 +84,11 @@
             </a>
             <div class="header-info">
                 <div class="auth-frm">
-                    @* <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a>
-                    <div class="not-logged"> *@
-                    @* <a asp-controller="Auth" asp-action="Login" class="btn btn-login">Đăng nhập</a>
-                    <a asp-controller="Auth" asp-action="Register" class="btn btn-register">Đăng ký</a> *@
-                    </div>
+                    <a asp-controller="Cart" asp-action="Index" id="shoppingCart" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> </a>
+                    @* <div class="not-logged">
+                        <a asp-controller="Auth" asp-action="Login" class="btn btn-login">Đăng nhập</a>
+                        <a asp-controller="Auth" asp-action="Register" class="btn btn-register">Đăng ký</a>
+                    </div> *@
                     @* <div class="nav-profile" style="display: none;">
                         <button id="ProfileFunc" class="profile-icon" data-menu-expanded="false"><img src="~/img/home/avatar-3.png" /></button>
                         <div class="dropdown-profile" hidden>
@@ -155,6 +123,10 @@
 
 
 <script type="text/javascript">
+    var _quantityProduct = 0;
+    // Read sessionStorage
+    var _CartProduct = JSON.parse(sessionStorage.getItem('CartProduct'));
+
     $(document).on("click", "#ProfileFunc", function (e) {
         e.preventDefault();
         var getactive = $(this).attr("data-menu-expanded");
@@ -220,6 +192,15 @@
         // Redirect to Url
         window.location.href = redirectUrl;
     }
+
+    //Handle get quantity Product
+    if (_CartProduct[0] != undefined) {
+        $.each(_CartProduct, function (idx, item) {
+            _quantityProduct = _quantityProduct + item.quantity;
+        });
+        $("#shoppingCart").append(`<span>`+_quantityProduct+`</span>`);
+    }
+    
     
     $.ajax({
         url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Category/FilterCategories',

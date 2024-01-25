@@ -1,59 +1,48 @@
-﻿using DOCTORLOAN.Models.Orders;
-using Microsoft.AspNetCore.Hosting.Server;
+﻿using DOCTORLOAN.Helpers;
+using DOCTORLOAN.Models.Products;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Session;
 using Newtonsoft.Json;
-using System.IO;
+using DOCTORLOAN.Models.Orders;
 using System.Text;
+using DOCTORLOAN.Models.Users;
+using Microsoft.AspNetCore.Http;
 
 namespace DOCTORLOAN.Controllers
 {
     public class CartController : Controller
     {
+        private readonly IHttpContextAccessor _contx;
+
+        public CartController(IHttpContextAccessor httpContextAccessor)
+        {
+            _contx = httpContextAccessor;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
-       /* public async Task<IActionResult> AddToCart(int productId, string productName, decimal price, int quantity)
+        public IActionResult AddToCart()
         {
-            var cart = HttpContext.Session.GetObject<List<CartItem>>("Cart") ?? new List<CartItem>();
-
-            // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-            var existingItem = cart.FirstOrDefault(item => item.ProductId == productId);
-
-            if (existingItem != null)
-            {
-                // Nếu đã tồn tại, cập nhật số lượng
-                existingItem.Quantity += quantity;
-            }
-            else
-            {
-                // Nếu chưa tồn tại, thêm sản phẩm mới vào giỏ hàng
-                cart.Add(new CartItem
-                {
-                    ProductId = productId,
-                    Name = productName,
-                    Price = price,
-                    Quantity = quantity
-                });
-            }
-
-            // Lưu giỏ hàng vào Session
-            HttpContext.Session.SetObject("Cart", cart);
-
-            // Trả về một JSON object để xử lý trên phía client nếu cần
-            return Json(new { success = true });
-        }*/
+            return View();
+        }
 
         public async Task<IActionResult> Payment(int id, int quantity)
         {
             return View();
         }
 
-        public async Task<IActionResult> PaymentPost(Order _order, ListItem _listItem)
+        public async Task<IActionResult> PaymentPost(HttpRequest request, Order _order, ListItem _listItem)
         {
             try
             {
+                string user = HttpContext.Session.GetString("Payment");
+                var tmp = request;
                 ListItem item = new ListItem
                 {
                     ProductItemId = _listItem.ProductItemId,

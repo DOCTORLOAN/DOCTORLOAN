@@ -7,8 +7,8 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="cart-wrapper">
-                    <div class="title-cart">Giỏ hàng <small>(3)</small></div>
-                    <div class="shopping-cart-main">
+                    <div id="titleCart" class="title-cart">Giỏ hàng<small>(0)</small></div>
+                    <div id="shoppingCartMain" class="shopping-cart-main">
                         <div class="column-labels">
                             <label class="product-image">Hình ảnh</label>
                             <label class="product-details">Sản phẩm</label>
@@ -17,117 +17,29 @@
                             <label class="product-line-price notd">Thành tiền</label>
                             <label class="product-removal">Xóa</label>
                         </div>
-
-                        <div class="product">
-                            <div class="product-image">
-                                <div class="checkbox-dl">
-                                    <label>
-                                        <input type="checkbox" value="">
-                                        <span class="icon-check-ok"></span>
-                                    </label>
-                                </div>
-                                <img src="~/img/products/img-product-detail-1.png" />
-                            </div>
-                            <div class="product-details">
-                                <div class="product-title">Ghế ngồi sáng chế DOCTORLOAN 95 VIP</div>
-                                <p class="product-description">
-                                    Màu: Nâu
-                                </p>
-                            </div>
-                            <div class="product-price">27300000</div>
-                            <div class="product-quantity">
-                                <input type="number" value="1" min="1">
-                            </div>
-                            <div class="product-line-price">27300000</div>
-                            <div class="product-removal">
-                                <button class="remove-product">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="product">
-                            <div class="product-image">
-                                <div class="checkbox-dl">
-                                    <label>
-                                        <input type="checkbox" value="">
-                                        <span class="icon-check-ok"></span>
-                                    </label>
-                                </div>
-                                <img src="~/img/products/img-product-banner.png" />
-                            </div>
-                            <div class="product-details">
-                                <div class="product-title">Ghế nằm sáng chế DOCTORLOAN 135</div>
-                                <p class="product-description">
-                                    Màu: Nâu
-                                </p>
-                            </div>
-                            <div class="product-price">37400000</div>
-                            <div class="product-quantity">
-                                <input type="number" value="1" min="1">
-                            </div>
-                            <div class="product-line-price">37400000</div>
-                            <div class="product-removal">
-                                <button class="remove-product">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="product">
-                            <div class="product-image">
-                                <div class="checkbox-dl">
-                                    <label>
-                                        <input type="checkbox" value="">
-                                        <span class="icon-check-ok"></span>
-                                    </label>
-                                </div>
-                                <img src="~/img/showroom/cushion-2.png" />
-                            </div>
-                            <div class="product-details">
-                                <div class="product-title">Đệm thiền sáng chế DOCTORLOAN</div>
-                                <p class="product-description">
-                                    Size: Lớn
-                                </p>
-                            </div>
-                            <div class="product-price">6800000</div>
-                            <div class="product-quantity">
-                                <input type="number" value="1" min="1">
-                            </div>
-                            <div class="product-line-price">6800000</div>
-                            <div class="product-removal">
-                                <button class="remove-product">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-3">
-                <div class="cart-wrapper">
+                <div id="cartWrapper" class="cart-wrapper">
                     <div class="total-cart">
                         <div class="total-info">
                             <span>Tạm tính</span>
-                            <span id="cart-subtotal" class="totals-value">71500000</span>
-                        </div>
-                        <div class="total-info">
-                            <span>Giảm giá (0%)</span>
-                            <span id="cart-tax" class="totals-value">0</span>
+                            <span id="cartSubtotal" class="totals-value">0</span>
                         </div>
                         <div class="total-info">
                             <span>Phí vận chuyển</span>
-                            <span id="cart-shipping" class="totals-value">200000</span>
+                            <span id="cartShipping" class="totals-value">Miễn phí toàn quốc</span>
                         </div>
                         <div class="total-info totals-item-total">
                             <span>Tổng cộng</span>
-                            <span id="cart-total" class="totals-value">71700000</span>
+                            <span id="cartTotal" class="totals-value">0</span>
                         </div>
                     </div>
                 </div>
                 <div class="text-center">
-                    <a asp-controller="Cart" asp-action="Payment" class="btn checkout">Mua hàng</a>
+                    <a asp-controller="Cart" asp-action="Payment" id="btnCheckout" class="btn checkout">Mua hàng</a>
                 </div>
             </div>
         </div>
@@ -135,23 +47,26 @@
 </section>
 
 @section scripts{
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script type="text/javascript">
         var taxRate = 1;
         var shippingRate = 1;
-        var fadeTime = 300;
+        var fadeTime = 50;
 
-        /* Assign actions */
-        $('.product-quantity input').change(function () {
-            updateQuantity(this);
-        });
+        //Handle reset Total
+        function resetTotal() {
+            $("#cartSubtotal").text('0');
+            $("#cartTax").text('0');
+            $("#cartTotal").text('0');
+        }
 
-        $('.product-removal button').cl  ick(function () {
-            removeItem(this);
-        });
+        // Read sessionStorage
+        var _CartProduct = JSON.parse(sessionStorage.getItem('CartProduct'));
+        getSession(_CartProduct);
 
-        //$('.product-price').text(parseInt($('.product-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-        //$('.product-line-price').text(parseInt($('.product-line-price').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+        //Load quantity cart
+        function loadQuantity(quantity) { 
+            $("#titleCart small").text(`(` + quantity + `)`);
+        }
 
         /* Recalculate cart */
         function recalculateCart() {
@@ -159,20 +74,23 @@
 
             /* Sum up row totals */
             $('.product').each(function () {
-                subtotal += parseFloat($(this).children('.product-line-price').text());
+                var _currency = $(this).children('.product-line-price').text();
+                subtotal += Number(_currency.replace(/[^0-9,-]/g, ''));
             });
 
             /* Calculate totals */
-            var tax = subtotal * taxRate;
-            var shipping = (subtotal > 0 ? shippingRate : 0);
+            var tax = 0;
+            //var shipping = (subtotal > 0 ? shippingRate : 0);
+            var shipping = 0;
             var total = subtotal + tax + shipping;
+
 
             /* Update totals display */
             $('.totals-value').fadeOut(fadeTime, function () {
-                $('#cart-subtotal').html(subtotal);
-                $('#cart-tax').html(tax);
-                $('#cart-shipping').html(shipping);
-                $('#cart-total').html(total);
+                $('#cartSubtotal').html(subtotal.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                $('#cartTax').html(tax.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                //$('#cart-shipping').html(shipping.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                $('#cartTotal').html(total.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                 if (total == 0) {
                     $('.checkout').fadeOut(fadeTime);
                 } else {
@@ -186,14 +104,14 @@
         function updateQuantity(quantityInput) {
             /* Calculate line price */
             var productRow = $(quantityInput).parent().parent();
-            var price = parseFloat(productRow.children('.product-price').text());
+            var price = Number((productRow.children('.product-price').text()).replace(/[^0-9,-]/g, ''));
             var quantity = $(quantityInput).val();
-            var linePrice = price * quantity;
+            var linePrice = parseInt(price * quantity);
 
             /* Update line price display and recalc cart totals */
             productRow.children('.product-line-price').each(function () {
                 $(this).fadeOut(fadeTime, function () {
-                    $(this).text(linePrice);
+                    $(this).text(linePrice.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                     recalculateCart();
                     $(this).fadeIn(fadeTime);
                 });
@@ -201,19 +119,154 @@
         }
 
         /* Remove item from cart */
-        function removeItem(removeButton) {
-            /* Remove row from DOM and recalc cart total */
-            var productRow = $(removeButton).parent().parent();
-            productRow.slideUp(fadeTime, function () {
-                productRow.remove();
-                recalculateCart();
+        function removeItem(removeButton, e) {
+            var tmpIdx = e.attr('data-idx');
+            if (tmpIdx != undefined) {
+                if (tmpIdx == 0) {
+                    _CartProduct.splice(tmpIdx, tmpIdx+1);
+                    resetTotal();
+                } else {
+                    _CartProduct.splice(tmpIdx, tmpIdx);
+                }
+                sessionStorage.setItem('CartProduct', JSON.stringify(_CartProduct));
+                var _cartProduct = JSON.parse(sessionStorage.getItem('CartProduct'));
+
+                $("#shoppingCartMain .product").remove();
+                getSession(_cartProduct);
+
+                new Notify({
+                    status: 'warning',
+                    title: 'Thông báo',
+                    text: 'Xoá sản phẩm khỏi giỏ hàng thành công.',
+                    autoclose: true,
+                    autotimeout: 3000,
+                });
+            }
+        }
+
+        //Handel get Session
+        function getSession(cartProduct) {
+            var _quantity = 0;
+            $.each(cartProduct, function (idx, item) {
+                getProductInCart(item.id, item.quantity, idx);
+                _quantity = _quantity + item.quantity;
+            });
+            loadQuantity(_quantity);
+        }
+        
+        //Handel get Product in Cart for id product
+        function getProductInCart(_idProduct, _quantity, _idx) {
+            $.ajax({
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id='+_idProduct,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // Handle call API Products
+                    var productItem, _productItem;
+                    var _id = data.data.id;
+
+                    productItem = $(`<div id="product-` + _id + `" data-id="`+_id+`" class="product">
+                                            <div class="product-image">
+                                                <div class="checkbox-dl">
+                                                    <label>
+                                                        <input type="checkbox" value="">
+                                                        <span class="icon-check-ok"></span>
+                                                    </label>
+                                                </div>
+                                                <img src="`+ data.data.productMedias[0].mediaUrl + `" />
+                                            </div>
+                                            <div class="product-details">
+                                                <div class="product-title">`+ data.data.name + `</div>
+                                                <div id="productDescription-`+ _id + `" class="product-description"></div>
+                                            </div>
+                                            <div id="productPrice-` + _id + `" class="product-price">` + data.data.price + `</div>
+                                            <div id="productQuantity-` + _id + `" class="product-quantity">
+                                                <input type="number" value="`+_quantity+`" min="1">
+                                            </div>
+                                            <div id="productLinePrice-` + _id + `" class="product-line-price">` + data.data.price + `</div>
+                                            <div id="productRemoval-` + _id + `" class="product-removal">
+                                                <button data-idx="`+ _idx + `" id="removeProduct-` + _id + `" class="remove-product">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </div>`);
+
+                    $("#shoppingCartMain").append(productItem);
+
+                    $('#productPrice-' + _id).text(parseInt($('#productPrice-' + _id).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                    $('#productLinePrice-' + _id).text(parseInt($('#productLinePrice-' + _id).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+
+                    getOptionProduct(_id);
+
+                    $('#productQuantity-' + _id + ' input').change(function () {
+                        updateQuantity(this);
+                        $('#cartSubtotal').text(parseInt($('#cartSubtotal').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                        $('#cartTax').text(parseInt($('#cartTax').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                        $('#cartTotal').text(parseInt($('#cartTotal').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                    });
+
+                    $('#productRemoval-' + _id + ' button').click(function () {
+                        removeItem(this, $(this));
+                    });
+
+                    recalculateCart();
+                },
+                error: function (error) {
+                    //handle show error
+                    console.error('Error:', error);
+                }
             });
         }
 
-        function formatCurrency(number) {
-            var n = number.split('').reverse().join("");
-            var n2 = n.replace(/\d\d\d(?!$)/g, "$&,");
-            return n2.split('').reverse().join('') + 'VNĐ';
+        //handle get Option Product
+        function getOptionProduct(_paramIdVal) {
+            $.ajax({
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + _paramIdVal,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var _itemOption = [];
+                    if (data.data.productItems[1] != null) {
+                        $.each(data.data.productItems, function (idx, items) {
+                            _itemOption.push(`<option value="` + items.id + `" data-color="`+items.sku+`">` + items.name + `</option>`);
+                        });
+                        $("#productDescription-"+_paramIdVal).append(`<div class="ipr-item form-group">
+                                                                            <label for="optionProduct">Tuỳ chọn</label>
+                                                                            <select class="form-control option-product" name="ProductItemId" id="optionProduct-`+_paramIdVal+`">
+                                                                                `+ _itemOption + `
+                                                                            </select>
+                                                                        </div>`);
+                    }
+                },
+                error: function (error) {
+                    //handle show error
+                    console.error('Error:', error);
+                }
+            });
         }
+
+        //handle checkout
+        $("#btnCheckout").on("click", function () {
+            var data = [];
+            var productId;
+            $('.product').each(function () {
+                productId = $(this).attr('data-id');
+
+                var optionId = 0;
+                if ($(this).children("#optionProduct")) {
+                    optionId = $("#optionProduct-" + productId).val();
+                }
+
+                var _data = {
+                    "id": productId,
+                    "quantity": $("#productQuantity-" + productId + " input").val(),
+                    "optionId": optionId,
+                };
+                data.push(_data);
+            });
+            //Handle save sesstion
+            sessionStorage.setItem('Payment', JSON.stringify(data));
+        });
+
     </script>
 }

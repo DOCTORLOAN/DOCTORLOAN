@@ -1,5 +1,4 @@
 ﻿using DOCTORLOAN.Models.VMAuth;
-using DOCTORLOAN.service;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
@@ -28,47 +27,11 @@ namespace DOCTORLOAN.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginPost(Signin modelLogin)
         {
-
-            if (modelLogin.UserName == "admindoctorloan" &&
-                modelLogin.Password == "Admin@123"
-                )
-            {
-                List<Claim> claims = new List<Claim>() {
-                    new Claim(ClaimTypes.NameIdentifier, modelLogin.UserName),
-                    new Claim("OtherProperties","Example Role")
-
-                };
-
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims,
-                    CookieAuthenticationDefaults.AuthenticationScheme);
-
-                AuthenticationProperties properties = new AuthenticationProperties()
-                {
-
-                    AllowRefresh = true,
-                    IsPersistent = modelLogin.KeepLoggedIn
-                };
-
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity), properties);
-
-                return RedirectToAction("Index", "Home");
-            }
-
-
-
-            ViewData["ValidateMessage"] = "user not found";
             return View();
         }
 
         public IActionResult Register()
         {
-            /*ClaimsPrincipal claimUser = HttpContext.User;
-
-            if (claimUser.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Home");*/
-
-
             return View();
         }
 

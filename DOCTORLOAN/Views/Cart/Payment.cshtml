@@ -7,14 +7,10 @@
     <div class="container">
         <div class="row">
             <form method="post" asp-controller="Cart" asp-action="PaymentPost" class="row needs-validation" novalidate>
-                <div id="alert" class="alert alert-error">
-                    @if (TempData["AlertMessageError"] != null)
-                    {
-                        <div class="alert alert-warning">
-                            @TempData["AlertMessageError"]
-                        </div>
-                    }
-                </div>
+                @if (TempData["AlertMessageError"] != null)
+                {
+                    <input type="text" class="form-control" value="@TempData["AlertMessageError"]" id="alertMessageError" hidden/>
+                }
                 <div class="col-lg-7">
                     <div class="cart-wrapper">
                         <div class="title-cart">Thông tin đơn hàng</div>
@@ -120,7 +116,25 @@
                     <div class="cart-wrapper">
                         <div class="title-cart">Đơn hàng</div>
                         <hr class="hr-payment" />
-                        <div id="cartWrapperItem"></div>
+                        <div>
+                            <div id="cartWrapperItem"></div>
+                            <div class="total-cart">
+                                <div class="total-info">
+                                    <span>Tạm tính</span>
+                                    <span id="cartSubtotal" class="totals-value"></span>
+                                </div>
+                                <div class="total-info">
+                                    <span>Phí vận chuyển</span>
+                                    <span id="cartShipping" class="totals-value">Miễn phí toàn quốc</span>
+                                    <input type="text" name="priceDiscount" id="inputCartShipping" value="" class="form-control" hidden />
+                                </div>
+                                <div class="total-info totals-item-total">
+                                    <span>Tổng cộng</span>
+                                    <span id="cartTotal" class="totals-value"></span>
+                                    <input type="text" name="TotalPrice" id="inputCartTotal" value="" class="form-control" hidden />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="text-center">
                         <button class="btn checkout" type="submit">Đặt hàng</button>
@@ -133,10 +147,9 @@
 </section>
 
 @section scripts{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script type="text/javascript">
+        var fadeTime = 50;
+
         (() => {
             'use strict'
             const forms = document.querySelectorAll('.needs-validation')
@@ -239,6 +252,23 @@
             e.text(parseInt(e.text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
         }
 
+        //Handel change quantity element
+        function changeQuantity(e, data) {
+            e.change(function () {
+                var _price = data.data.price;
+                var _subTotal = data.data.price * e.val();
+                var _currency = Number($("#cartSubtotal").text().replace(/[^0-9,-]/g, ''));
+                console.log((_currency-_price));
+                $("#cartSubtotal").html(_subTotal);
+
+                formartVND($("#cartSubtotal"));
+
+                var _total = _subTotal + data.data.priceDiscount;
+                $("#cartTotal").html(_total);
+                formartVND($('#cartTotal'));
+            });
+        }
+
         //Function get parameter in url
         function getParameterByName(name, url) {
             if (!url) url = window.location.href;
@@ -253,166 +283,122 @@
         // Get the value of the parameter in URL
         var paramIdVal = getParameterByName('id');
         var paramQuantityVal = getParameterByName('quantity');
+        var _payment = JSON.parse(sessionStorage.getItem('Payment'));
 
-        function getOptionProduct() {
+        //Handel get option for id
+        function getOptionProduct(_paramIdVal, _optionId) {
             $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + paramIdVal,
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + _paramIdVal,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
                     var _itemOption = [];
+                    var ip;
                     if (data.data.productItems != null) {
                         $.each(data.data.productItems, function (idx, items) {
-                            _itemOption.push(`<option value="` + items.id + `">` + items.name + `</option>`);
+                            if (_optionId != undefined) {
+                                console.log("_optionId: ", _optionId);
+                                ip = `<input type="text" name="ProductItemId" value="`+items.name+`" id="productItem-`+data.data.id+`" class="form-control">`;
+                            } else {
+                                    _itemOption.push(`<option value="` + items.id + `">` + items.name + `</option>`);
+                            }
                         });
                         if (_itemOption != "") {
-                            $("#pp-desc").append(`<div class="ipr-item form-group">
-                                                    <label for="optionProduct">Loại ghế</label>
-                                                        <select class="form-control" name="ProductItemId" id="optionProduct">
-                                                        `+_itemOption+`
-                                                    </select>
-                                                </div>`);
-                        } 
+                            $("#ppDesc-" + _paramIdVal).append(`<div class="ipr-item form-group">
+                                                                    <label for="optionProduct">Loại ghế</label>
+                                                                    <select class="form-control" name="ProductItemId" id="optionProduct">
+                                                                        `+ _itemOption + `
+                                                                    </select>
+                                                                </div>`);
+                        }
                     }
                 },
                 error: function (error) {
                     //handle show error
                     console.error('Error:', error);
                 }
+            });
+        }
+
+        /* Recalculate cart */
+        function recalculatePayment() {
+            var subtotal = 0;
+
+            /* Sum up row totals */
+            $('.pp-item').each(function () {
+                var _currency = $(this).children('.product-price').text();
+                subtotal += Number(_currency.replace(/[^0-9,-]/g, ''));
+            });
+
+            /* Calculate totals */
+            //var shipping = (subtotal > 0 ? shippingRate : 0);
+            var shipping = 0;
+            var total = subtotal + shipping;
+
+
+            /* Update totals display */
+            $('.totals-value').fadeOut(fadeTime, function () {
+                $('#cartSubtotal').html(subtotal.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                //$('#cart-shipping').html(shipping.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                $('#cartTotal').html(total.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                $('#inputCartTotal').val(total);
+                if (total == 0) {
+                    $('.checkout').fadeOut(fadeTime);
+                } else {
+                    $('.checkout').fadeIn(fadeTime);
+                }
+                $('.totals-value').fadeIn(fadeTime);
             });
         }
 
         var resultAPI;
         // Get the value of the parameter productId in URL
-        function getProduct() {
+        function getProduct(_paramIdVal, _quantity) {
             $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + paramIdVal,
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + _paramIdVal,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
                     resultAPI = data;
                     // Handle call API Products
-                    var productItem = $(`<div data-id="` + data.data.id + `" class="list-product-payment">
+                    var productItem = $(`<div id="listProductPayment-`+data.data.id+`" data-id="` + data.data.id + `" class="list-product-payment">
                                             <div class="pp-item">
                                                 <div class="pp-info">
                                                     <img id="imgProductPayment" src="`+ data.data.productMedias[0].mediaUrl + `" />
-                                                        <div id="pp-desc" class="pp-desc">
+                                                        <div id="ppDesc-`+_paramIdVal+`" class="pp-desc">
                                                         <strong>`+ data.data.name + `</strong>
                                                         <input type="text" name="Name" value="`+ data.data.name + `" class="form-control" hidden />
                                                         <div style="display:left;" >
                                                             <div id="quantity">
                                                                 <label for="quantityPayment">Số Lượng</label>
-                                                                <input min="1" type="number" name="Quantity" value="`+ paramQuantityVal + `" id="quantityPayment" class="form-control" style="width: 80px !important" />
+                                                                <input min="1" type="number" name="Quantity" value="`+ _quantity + `" id="quantityPayment-` + data.data.id + `" class="form-control" style="width: 80px !important" />
                                                             </div>
                                                             <div id="iprItemColor" class="ipr-color"></div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="product-price">`+ data.data.price + `</div>
+                                                <div id="productPrice-`+data.data.id+`" class="product-price">`+ (data.data.price * _quantity) + `</div>
                                                 <input type="text" name="Price" value="`+ data.data.price + `" class="form-control" hidden />
-                                            </div>
-                                        </div>
-                                        <div class="total-cart">
-                                            <div class="total-info">
-                                                <span>Tạm tính</span>
-                                                <span id="cart-subtotal">`+ data.data.price + `</span>
-                                            </div>
-                                            <div class="total-info">
-                                                <span>Giảm giá (0%)</span>
-                                                <span id="cart-tax">`+ data.data.priceDiscount + `</span>
-                                                <input type="text" name="priceDiscount" value="`+ data.data.priceDiscount + `" class="form-control" hidden />
-                                            </div>
-                                            <div class="total-info">
-                                                <span>Phí vận chuyển</span>
-                                                <span id="cart-shipping">Miễn phí toàn quốc</span>
-                                                <input type="text" name="priceDiscount" value="`+ $("#cart-shpping").val() + `" class="form-control" hidden />
-                                            </div>
-                                            <div class="total-info totals-item-total">
-                                                <span>Tổng cộng</span>
-                                                <span id="cart-total">`+ (data.data.price + data.data.priceDiscount) + `</span>
-                                                <input type="text" name="TotalPrice" value="`+ (data.data.price + data.data.priceDiscount) + `" class="form-control" hidden />
                                             </div>
                                         </div>`);
                     $("#cartWrapperItem").append(productItem);
 
-                    formartVND($('#product-price'));
-                    formartVND($('#cart-subtotal'));
-                    formartVND($('#cart-tax'));
-                    //formartVND($('#cart-shipping'));
-                    formartVND($('#cart-total'));
-
-                    /*
-                    var flagN85, flag = false;
-                    var n85_id = 34;
-                    var dt_id = 29;
-                    var gcf5_id = 30;
-                    var gcnl_id = 31;
-
-                    $.each(data.data.categoryIds, function (idx, item) {
-                        if (item === n85_id) {
-                            flagN85 = true;
-                        }
-                        if (item === dt_id || item === gcf5_id || item === gcnl_id) {
-                            flag = true;
-                        }
-                    });
-
-                    if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined && flag != true) {
-                        var _arr = [];
-                        if (flag != true) {
-                            if (flagN85 != true) {
-                                $("#iprItemColor").append(`<div class="ipr-color">
-                                                                <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.sku + `-BROWN" title="Màu nâu"></a>
-                                                                <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.sku + `-GRAPE" title="Màu nho"></a>
-                                                                <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.sku + `-BLACK" title="Màu đen"></a>
-                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-GREEN" title="Màu xanh"></a>
-                                                            </div>`);
-                            } else {
-                                $("#iprItemColor").append(`<div class="ipr-color">
-                                                                <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.sku + `-YELLOW" title="Màu vàng"></a>
-                                                                <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.sku + `-ORANGE" title="Màu cam"></a>
-                                                                <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.sku + `-RED" title="Màu đỏ"></a>
-                                                                <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.sku + `-GRAY" title="Màu xám"></a>
-                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-GREEN" title="Màu xanh lá"></a>
-                                                                <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.sku + `-BLUE" title="Màu xanh dương"></a>
-                                                            </div>`);
-                            }
-                        }
-
-                        $.each(data.data.productMedias, function (_idx, _item) {
-                            if (flagN85 != true) {
-                                if (_item.itemCode == data.data.sku + '-BROWN') {
-                                    _arr.push(_item);
-                                }
-                            } else {
-                                if (flagN85 == true && _item.itemCode == data.data.sku + '-YELLOW') {
-                                    _arr.push(_item);
-                                }
-                            }
-                        });
-
-                        if (_arr[0] != undefined) {
-                            $("#imgProductPayment").attr('src', _arr[0].mediaUrl);
-                        }
+                    if (paramIdVal != undefined) {
+                        $('#cartSubtotal').text(data.data.price);
+                        $('#inputCartTotal').val(data.data.price);
+                        $('#cartTotal').text(data.data.price);
+                    } else if (_payment != undefined) {
+                        $("#quantityPayment").attr('readonly', true);
+                        recalculatePayment();
                     }
 
-                    $('.product-color').click(function () {
-                        var getcolor = $(this).attr("data-color");
-                        //loadProductForColor(getcolor);
-                    });
-                    */
+                    formartVND($('#productPrice-'+data.data.id));
+                    formartVND($('#cartSubtotal'));
+                    //formartVND($('#cartShipping'));
+                    formartVND($('#cartTotal'));
 
-                    $("#quantityPayment").change(function () {
-                        var _price = data.data.price;
-                        var _subTotal = data.data.price * $('#quantityPayment').val();
-                        $("#cart-subtotal").html(_subTotal);
-
-                        formartVND($("#cart-subtotal"));
-
-                        var _total = _subTotal + data.data.priceDiscount;
-                        $("#cart-total").html(_total);
-                        formartVND($('#cart-total'));
-                    });
+                    changeQuantity($("#quantityPayment-" + data.data.id), resultAPI);
+                    
                 },
                 error: function (error) {
                     //handle show error
@@ -421,35 +407,33 @@
             });
         }
 
-        /*
-        //handle pic product to color
-        function loadProductForColor(color) {
-            var _arr = [];
-            if (resultAPI != undefined) {
-                $.each(resultAPI.data.productMedias, function (idx, item) {
-                    if (item.itemCode == color) {
-                        _arr.push(item);
-                    }
-                });
-            }
-
-            if (_arr[0] != undefined) {
-                $("#imgProductPayment").attr('src', _arr[0].mediaUrl);
-            }
-
-            $(".product-color").removeClass("active");
-            $(this).addClass("active");
+        if(paramIdVal != undefined) {
+            getProduct(paramIdVal, paramQuantityVal);
+            getOptionProduct(paramIdVal, '');
         }
-        */
-        getProduct();
-
-        getOptionProduct();
-
-        window.setTimeout(function () {
-            $(".alert").fadeTo(500, 0).slideUp(500, function () {
-                $(this).remove();
-            });
-        }, 3000);
         
+
+        var messError = $("#alertMessageError").val();
+
+        if (messError != null) {
+            new Notify({
+                status: 'error',
+                title: 'Thông báo lỗi',
+                text: messError,
+                autoclose: true,
+                autotimeout: 3000,
+            });
+        }
+
+        //Handle get Product to Cart
+        if (_payment != undefined && paramIdVal == undefined) {
+            $.each(_payment, function (idx, item) {
+                getProduct(item.id, item.quantity);
+                if (item.optionId != undefined) {
+                    getOptionProduct(item.id, item.optionId);
+                }
+            });
+        }
+
     </script>
 }
