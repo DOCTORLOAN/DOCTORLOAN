@@ -28,48 +28,53 @@
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="phone" class="req">Số điện thoại</label>
-                                <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="Phone" id="phone" required />
-                                <div class="invalid-feedback">
-                                    Vui lòng nhập số điện thoại.
+                            <div class="row">
+                                <div class="mb-3 col-6">
+                                    <label for="phone" class="req">Số điện thoại</label>
+                                    <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="Phone" id="phone" required />
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập số điện thoại.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 col-6">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" placeholder="Nhập email" name="Email" id="email" />
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control" placeholder="Nhập email" name="Email" id="email" />
-                            </div>
+                            <div class="row">
+                                <div class="mb-3 col-4">
+                                    <label for="city" class="req">Thành Phố</label>
+                                    <select id="city" class="form-select" required>
+                                        <option value="" selected>Chọn tỉnh thành</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Vui lòng chọn thành phố.
+                                    </div>
+                                </div>
 
-                            <div class="mb-3">
-                                <label for="city" class="req">Thành Phố</label>
-                                <select id="city" class="form-select" required>
-                                    <option value="" selected>Chọn tỉnh thành</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Vui lòng chọn thành phố.
+                                <div class="mb-3 col-4">
+                                    <label for="District" class="req">Quận, Huyện</label>
+                                    <select id="district" class="form-select" required>
+                                        <option value="" selected>Chọn quận huyện</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Vui lòng chọn Quận, huyện.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 col-4">
+                                    <label for="ward" class="req">Xã, Phường</label>
+                                    <select id="ward" class="form-select" required>
+                                        <option value="" selected>Chọn xã, phường</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Vui lòng chọn Xã, Phường.
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="mb-3">
-                                <label for="District" class="req">Quận, Huyện</label>
-                                <select id="district" class="form-select" required>
-                                    <option value="" selected>Chọn quận huyện</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Vui lòng chọn Quận, huyện.
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="ward" class="req">Xã, Phường</label>
-                                <select id="ward" class="form-select" required>
-                                    <option value="" selected>Chọn xã, phường</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Vui lòng chọn Xã, Phường.
-                                </div>
-                            </div>
+                            
 
                             <div class="mb-3">
                                 <label for="addressDetaills" class="req">Địa chỉ cụ thể</label>
@@ -254,34 +259,6 @@
         var paramIdVal = getParameterByName('id');
         var paramQuantityVal = getParameterByName('quantity');
 
-        function getOptionProduct() {
-            $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + paramIdVal,
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    var _itemOption = [];
-                    if (data.data.productItems != null) {
-                        $.each(data.data.productItems, function (idx, items) {
-                            _itemOption.push(`<option value="` + items.id + `">` + items.name + `</option>`);
-                        });
-                        if (_itemOption != "") {
-                            $("#pp-desc").append(`<div class="ipr-item form-group">
-                                                    <label for="optionProduct">Loại ghế</label>
-                                                        <select class="form-control" name="ProductItemId" id="optionProduct">
-                                                        `+_itemOption+`
-                                                    </select>
-                                                </div>`);
-                        } 
-                    }
-                },
-                error: function (error) {
-                    //handle show error
-                    console.error('Error:', error);
-                }
-            });
-        }
-
         var resultAPI;
         // Get the value of the parameter productId in URL
         function getProduct() {
@@ -296,19 +273,22 @@
                                             <div class="pp-item">
                                                 <div class="pp-info">
                                                     <img id="imgProductPayment" src="`+ data.data.productMedias[0].mediaUrl + `" />
-                                                        <div id="pp-desc" class="pp-desc">
-                                                        <strong>`+ data.data.name + `</strong>
-                                                        <input type="text" name="Name" value="`+ data.data.name + `" class="form-control" hidden />
-                                                        <div style="display:left;" >
-                                                            <div id="quantity">
-                                                                <label for="quantityPayment">Số Lượng</label>
-                                                                <input min="1" type="number" name="Quantity" value="`+ paramQuantityVal + `" id="quantityPayment" class="form-control" style="width: 80px !important" />
-                                                            </div>
-                                                            <div id="iprItemColor" class="ipr-color"></div>
+                                                    <div id="pp-desc" class="pp-desc">
+                                                    <strong>`+ data.data.name + `</strong>
+                                                    <input type="text" name="Name" value="`+ data.data.name + `" class="form-control" hidden />
+                                                    <div style="display:left;" >
+                                                        <div id="quantity">
+                                                            <label for="quantityPayment">Số Lượng</label>
+                                                            <input min="1" type="number" name="Quantity" value="`+ paramQuantityVal + `" id="quantityPayment" class="form-control" style="width: 80px !important" />
+                                                        </div>
+                                                        <div id="paymentItemColor" class="ipr-color"></div>
+                                                        <div id="iprItemOption" class="ipr-item">
+                                                            <input type="number" name="ProductItemId" value="" id="productItemId-`+ data.data.id + `" hidden />
                                                         </div>
                                                     </div>
+                                                    </div>
                                                 </div>
-                                                <div id="product-price">`+ data.data.price + `</div>
+                                                <div id="iprPrice">`+ data.data.price + `</div>
                                                 <input type="text" name="Price" value="`+ data.data.price + `" class="form-control" hidden />
                                             </div>
                                         </div>
@@ -318,14 +298,8 @@
                                                 <span id="cart-subtotal">`+ data.data.price + `</span>
                                             </div>
                                             <div class="total-info">
-                                                <span>Giảm giá (0%)</span>
-                                                <span id="cart-tax">`+ data.data.priceDiscount + `</span>
-                                                <input type="text" name="priceDiscount" value="`+ data.data.priceDiscount + `" class="form-control" hidden />
-                                            </div>
-                                            <div class="total-info">
                                                 <span>Phí vận chuyển</span>
                                                 <span id="cart-shipping">Miễn phí toàn quốc</span>
-                                                <input type="text" name="priceDiscount" value="`+ $("#cart-shpping").val() + `" class="form-control" hidden />
                                             </div>
                                             <div class="total-info totals-item-total">
                                                 <span>Tổng cộng</span>
@@ -335,72 +309,198 @@
                                         </div>`);
                     $("#cartWrapperItem").append(productItem);
 
-                    formartVND($('#product-price'));
+                    formartVND($('#iprPrice'));
                     formartVND($('#cart-subtotal'));
-                    formartVND($('#cart-tax'));
                     //formartVND($('#cart-shipping'));
                     formartVND($('#cart-total'));
 
-                    /*
-                    var flagN85, flag = false;
+                    var imgProduct = "";
+                    var imgThumb = "";
+                    var flagN85 = false;
+                    var flag = false;
+                    var flagF4 = false;
+                    var flagF1 = false;
+                    var flagDT = false;
+                    var gn_135 = 21;
                     var n85_id = 34;
-                    var dt_id = 29;
-                    var gcf5_id = 30;
-                    var gcnl_id = 31;
+                    var gcf5_id = 39;
+                    var gcnl_id = 36;
+                    var gcf4_id = 35;
+                    var glf3 = 41;
+                    var glf1 = 37;
+                    var dt = 31;
 
                     $.each(data.data.categoryIds, function (idx, item) {
                         if (item === n85_id) {
                             flagN85 = true;
-                        }
-                        if (item === dt_id || item === gcf5_id || item === gcnl_id) {
+                        } else if (item === gcf5_id || item === gcnl_id || item === glf3) {
                             flag = true;
+                        }
+
+                        if (item === gcf4_id) {
+                            flagF4 = true;
+                        }
+
+                        if (item === glf1) {
+                            flagF1 = true;
+                        }
+
+                        if (item === dt) {
+                            flagDT = true;
                         }
                     });
 
                     if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined && flag != true) {
                         var _arr = [];
-                        if (flag != true) {
+                        if (flagDT != false) {
+                            $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input option-dt" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Size lớn" id="dtL" checked>
+                                                            <label class="form-check-label" for="dtL">Lớn</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input option-dt" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Size nhỏ" id="dtS">
+                                                            <label class="form-check-label" for="dtS">Nhỏ</label>
+                                                        </div>`);
+                            $('.option-dt').click(function () {
+                                if ($('#dtL').is(':checked')) {
+                                    var option = $(this).attr("data-option");
+                                    getOptionProductForOption(option);
+                                    $('#iprPrice').text("6800000");
+                                } else {
+                                    var option = $(this).attr("data-option");
+                                    getOptionProductForOption(option);
+                                    $('#iprPrice').text("6500000");
+                                }
+                                $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                            });
+                        }
+
+                        if (flagF4 != false) {
+                            $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
+                                                        <div class="form-check">
+                                                                        <input class="form-check-input option-f4" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Đầu 12cm" id="f4L">
+                                                            <label class="form-check-label" for="f4L">12 cm</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                                <input class="form-check-input option-f4" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Đầu 9cm" id="f4S" checked>
+                                                            <label class="form-check-label" for="f4S">9 cm</label>
+                                                        </div>`);
+                            $('.option-f4').click(function () {
+                                if ($('#f4L').is(':checked')) {
+                                    var option = $(this).attr("data-option");
+                                    getOptionProductForOption(option);
+                                    $('#iprPrice').text("5500000");
+                                } else {
+                                    var option = $(this).attr("data-option");
+                                    getOptionProductForOption(option);
+                                    $('#iprPrice').text("5300000");
+                                }
+                                $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                            });
+                        }
+
+                        if (flagF1 != false) {
+                            $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
+                                                        <div class="form-check">
+                                                                <input class="form-check-input option-f1" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Dài" id="f1L" checked>
+                                                            <label class="form-check-label" for="f1L">Dài</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                                <input class="form-check-input option-f1" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Ngắn" id="f1S">
+                                                            <label class="form-check-label" for="f1S">Ngắn</label>
+                                                        </div>`);
+                            $('.option-f1').click(function () {
+                                if ($('#f1L').is(':checked')) {
+                                    var option = $(this).attr("data-option");
+                                    getOptionProductForOption(option);
+                                    $('#iprPrice').text("2000000");
+                                } else {
+                                    var option = $(this).attr("data-option");
+                                    getOptionProductForOption(option);
+                                    $('#iprPrice').text("1000000");
+                                }
+                                $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                            });
+                        }
+
+                        if (flag != true && flagF4 != true && flagF1 != true && flagDT != true) {
                             if (flagN85 != true) {
-                                $("#iprItemColor").append(`<div class="ipr-color">
-                                                                <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.sku + `-BROWN" title="Màu nâu"></a>
-                                                                <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.sku + `-GRAPE" title="Màu nho"></a>
-                                                                <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.sku + `-BLACK" title="Màu đen"></a>
-                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-GREEN" title="Màu xanh"></a>
+                                $("#paymentItemColor").append(`<label>.Màu sắc</label>
+                                                            <div class="ipr-color">
+                                                                <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.sku + `-MAU NAU" title="Màu nâu"></a>
+                                                                <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.sku + `-MAU NHO" title="Màu nho"></a>
+                                                                <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.sku + `-MAU DEN" title="Màu đen"></a>
+                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-MAU XANH LA" title="Màu xanh"></a>
                                                             </div>`);
                             } else {
-                                $("#iprItemColor").append(`<div class="ipr-color">
-                                                                <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.sku + `-YELLOW" title="Màu vàng"></a>
-                                                                <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.sku + `-ORANGE" title="Màu cam"></a>
-                                                                <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.sku + `-RED" title="Màu đỏ"></a>
-                                                                <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.sku + `-GRAY" title="Màu xám"></a>
-                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-GREEN" title="Màu xanh lá"></a>
-                                                                <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.sku + `-BLUE" title="Màu xanh dương"></a>
+                                $("#paymentItemColor").append(`<label>.Màu sắc</label>
+                                                            <div class="ipr-color">
+                                                                <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.sku + `-MAU VANG-CHAN NGAN" title="Màu vàng"></a>
+                                                                <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.sku + `-MAU CAM-CHAN NGAN" title="Màu cam"></a>
+                                                                <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.sku + `-MAU DO-CHAN NGAN" title="Màu đỏ"></a>
+                                                                <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.sku + `-MAU XAM-CHAN NGAN" title="Màu xám"></a>
+                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-MAU XANH LA-CHAN NGAN" title="Màu xanh lá"></a>
+                                                                <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.sku + `-MAU XANH DUONG-CHAN NGAN" title="Màu xanh dương"></a>
                                                             </div>`);
+                                $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân dài" id="n85-L">
+                                                                <label class="form-check-label" for="n85-L">Chân dài</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân ngắn" id="n85-S" checked>
+                                                                <label class="form-check-label" for="n85-S">Chân ngắn</label>
+                                                            </div>`);
+                                $('.option-n85').click(function () {
+                                    if ($('#n85-L').is(':checked')) {
+                                        $('#iprPrice').text("1430000");
+                                    } else {
+                                        $('#iprPrice').text("1320000");
+                                    }
+                                    $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                                });
                             }
+
                         }
 
                         $.each(data.data.productMedias, function (_idx, _item) {
                             if (flagN85 != true) {
-                                if (_item.itemCode == data.data.sku + '-BROWN') {
+                                if (_item.itemCode == data.data.sku + '-MAU NAU') {
                                     _arr.push(_item);
                                 }
                             } else {
-                                if (flagN85 == true && _item.itemCode == data.data.sku + '-YELLOW') {
+                                if (flagN85 == true && _item.itemCode == data.data.sku + '-MAU VANG-CHAN NGAN') {
                                     _arr.push(_item);
                                 }
+                            }
+                            if (flagF4 != false || flag != false || flagF1 != false || flagDT != false) {
+                                _arr.push(_item);
                             }
                         });
 
                         if (_arr[0] != undefined) {
-                            $("#imgProductPayment").attr('src', _arr[0].mediaUrl);
+                            $.each(_arr, function (_idx, _item) {
+                                $("#imgMainPosition" + (_idx + 1)).attr('src', _item.mediaUrl);
+                                $("#imgThumbPosition" + (_idx + 1)).attr('src',);
+                                imgProduct = `<div class="swiper-slide" >
+                                                    <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + _item.mediaUrl + `" />
+                                                </div>`;
+                                imgThumb = `<div class="swiper-slide">
+                                                <div class="bg-product-thumb">
+                                                    <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + _item.mediaUrl + `" />
+                                                </div>
+                                            </div>`;
+                                $("#productSwiperMain").append(imgProduct);
+                                $("#productSwiperThumb").append(imgThumb);
+                            });
                         }
                     }
 
                     $('.product-color').click(function () {
                         var getcolor = $(this).attr("data-color");
-                        //loadProductForColor(getcolor);
+                        loadProductForColor(getcolor);
                     });
-                    */
 
                     $("#quantityPayment").change(function () {
                         var _price = data.data.price;
@@ -421,11 +521,11 @@
             });
         }
 
-        /*
         //handle pic product to color
         function loadProductForColor(color) {
             var _arr = [];
             if (resultAPI != undefined) {
+                getOptionProductForColor(color);
                 $.each(resultAPI.data.productMedias, function (idx, item) {
                     if (item.itemCode == color) {
                         _arr.push(item);
@@ -434,16 +534,40 @@
             }
 
             if (_arr[0] != undefined) {
-                $("#imgProductPayment").attr('src', _arr[0].mediaUrl);
+                $.each(_arr, function (_idx, _item) {
+                    $("#imgProductPayment").attr('src', _item.mediaUrl);
+                });
             }
 
             $(".product-color").removeClass("active");
             $(this).addClass("active");
         }
-        */
-        getProduct();
 
-        getOptionProduct();
+        //handle get Product id for color
+        function getOptionProductForColor(option) {
+            if (resultAPI != undefined) {
+                var productId = resultAPI.data.id;
+                $.each(resultAPI.data.productItems, function (idx, item) {
+                    if (item.sku == option) {
+                        $("#productItemId-" + productId).val(item.id);
+                    }
+                });
+            }
+        }
+
+        //handle get Product id for option
+        function getOptionProductForOption(option) {
+            if (resultAPI != undefined) {
+                var productId = resultAPI.data.id;
+                $.each(resultAPI.data.productItems, function (idx, item) {
+                    if (item.name == option) {
+                        $("#productItemId-" + productId).val(item.id);
+                    }
+                });
+            }
+        }
+
+        getProduct();
 
         window.setTimeout(function () {
             $(".alert").fadeTo(500, 0).slideUp(500, function () {
