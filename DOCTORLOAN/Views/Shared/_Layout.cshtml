@@ -36,7 +36,7 @@
     <main>
         @RenderBody()
 
-        <div id='codepro-ads-bottom-left-corner'>
+        @* <div id='codepro-ads-bottom-left-corner'>
             <div class='exit-codepro-ads-bottom-left-corner'>
                 <a href='javascript:;' onclick='hideitem()'><i class="fas fa-times-circle"></i></a>
             </div>
@@ -45,7 +45,7 @@
                     <div id='codepro-setAds-left'></div>
                 </div>
             </a>
-        </div>
+        </div> *@
 
         <div class="zalo-chat-widget" data-oaid="3997762822356581117" data-welcome-message="DOCTORLOAN Rất vui khi được hỗ trợ bạn!" data-autopopup="2" data-width="" data-height=""></div>
 
@@ -60,13 +60,9 @@
     </footer>
 
     <script>
-        function hideitem() {
-            document.getElementById("codepro-ads-bottom-left-corner").style.display = "none";
-        }
-
-        if (window.location.pathname === "/News/Sales") {
-            $("#myModalEvert").css("display", "none")
-        }
+        //function hideitem() {
+          //  document.getElementById("codepro-ads-bottom-left-corner").style.display = "none";
+        //}
 
         //<!--Your SDK code-- >
         var chatbox = document.getElementById('fb-customer-chat');
