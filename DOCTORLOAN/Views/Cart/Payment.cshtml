@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Thanh Toán";
 }
-
 <section id="CartPayment" class="cart-payment">
     <div class="container">
         <div class="row">
@@ -46,36 +45,32 @@
                             <div class="row">
                                 <div class="mb-3 col-4">
                                     <label for="city" class="req">Thành Phố</label>
-                                    <select id="city" class="form-select" required>
-                                        <option value="" selected>Chọn tỉnh thành</option>
-                                    </select>
+                                    <input id="city" class="form-control" required />
                                     <div class="invalid-feedback">
-                                        Vui lòng chọn thành phố.
+                                        Vui lòng nhập tên Thành Phố:
+                                        <br /> - Ví dụ: Hồ Chí Minh, Hà Nội,...
                                     </div>
                                 </div>
 
                                 <div class="mb-3 col-4">
                                     <label for="District" class="req">Quận, Huyện</label>
-                                    <select id="district" class="form-select" required>
-                                        <option value="" selected>Chọn quận huyện</option>
-                                    </select>
+                                    <input id="district" class="form-control" required />
                                     <div class="invalid-feedback">
-                                        Vui lòng chọn Quận, huyện.
+                                        Vui lòng nhập tên Quận, Huyện:
+                                        <br /> - Ví dụ: Quận 1, Huyện Bình Chánh,...
                                     </div>
                                 </div>
 
                                 <div class="mb-3 col-4">
                                     <label for="ward" class="req">Xã, Phường</label>
-                                    <select id="ward" class="form-select" required>
-                                        <option value="" selected>Chọn xã, phường</option>
-                                    </select>
+                                    <input id="ward" class="form-control" required />
                                     <div class="invalid-feedback">
-                                        Vui lòng chọn Xã, Phường.
+                                        Vui lòng nhập tên Xã, Phường:
+                                        <br /> - Ví dụ: Phường Phạm Ngũ Lão, Xã Bình Mỹ,...
                                     </div>
                                 </div>
                             </div>
                             
-
                             <div class="mb-3">
                                 <label for="addressDetaills" class="req">Địa chỉ cụ thể</label>
                                 <input type="text" class="form-control" placeholder="Số nhà - Tên Đường" id="addressDetaills" onfocusout="myFunction()" required  />
@@ -138,10 +133,8 @@
 </section>
 
 @section scripts{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script type="text/javascript">
+        //Validation
         (() => {
             'use strict'
             const forms = document.querySelectorAll('.needs-validation')
@@ -156,72 +149,8 @@
             })
         })();
 
-        const _host = "https://provinces.open-api.vn/api/";
-        
-        //Function call api city
-        var callAPI = (api) => {
-            return axios.get(api)
-                .then((response) => {
-                    renderData(response.data, "city");
-                });
-        }
-
-        //Function call api district
-        callAPI('https://provinces.open-api.vn/api/?depth=1');
-        var callApiDistrict = (api) => {
-            return axios.get(api)
-                .then((response) => {
-                    renderData(response.data.districts, "district");
-                });
-        }
-
-        //Function call api ward
-        var callApiWard = (api) => {
-            return axios.get(api)
-                .then((response) => {
-                    renderData(response.data.wards, "ward");
-                });
-        }
-
-        //Render data option
-        var renderData = (array, select) => {
-            let row = ' <option disable value="">Chọn</option>';
-            array.forEach(element => {
-                row += `<option data-id="${element.code}" value="${element.name}">${element.name}</option>`
-            });
-            document.querySelector("#" + select).innerHTML = row
-        }
-
-        //Selected City name
-        $("#city").change(() => {
-            callApiDistrict(_host + "p/" + $("#city").find(':selected').data('id') + "?depth=2");
-            printResult();
-        });
-
-        //Selected District name
-        $("#district").change(() => {
-            callApiWard(_host + "d/" + $("#district").find(':selected').data('id') + "?depth=2");
-            printResult();
-        });
-
-        //Selected Ward name
-        $("#ward").change(() => {
-            printResult();
-        })
-
-        //Get addressLine
-        var printResult = () => {
-            if ($("#district").find(':selected').data('id') != "" && $("#city").find(':selected').data('id') != "" &&
-                $("#ward").find(':selected').data('id') != "") {
-                let result = $("#city option:selected").text() +
-                    " - " + $("#district option:selected").text() + " - " +
-                    $("#ward option:selected").text();
-                $("#addressLine").val(result);
-            }
-        }
-
         function myFunction() {
-            return $("#addressLine").val($("#addressLine").val() + " - " + $("#addressDetaills").val()) ;
+            return $("#addressLine").val($("#addressDetaills").val() + " - " + $("#ward").val() + " - " + $("#district").val() + " - " + $("#city").val());
         }
 
         //Function select method payment
@@ -268,8 +197,9 @@
                 dataType: 'json',
                 success: function (data) {
                     resultAPI = data;
+                    var productId = data.data.id;
                     // Handle call API Products
-                    var productItem = $(`<div data-id="` + data.data.id + `" class="list-product-payment">
+                    var productItem = $(`<div data-id="` + productId + `" class="list-product-payment">
                                             <div class="pp-item">
                                                 <div class="pp-info">
                                                     <img id="imgProductPayment" src="`+ data.data.productMedias[0].mediaUrl + `" />
@@ -278,8 +208,8 @@
                                                     <input type="text" name="Name" value="`+ data.data.name + `" class="form-control" hidden />
                                                     <div style="display:left;" >
                                                         <div id="quantity">
-                                                            <label for="quantityPayment">Số Lượng</label>
-                                                            <input min="1" type="number" name="Quantity" value="`+ paramQuantityVal + `" id="quantityPayment" class="form-control" style="width: 80px !important" />
+                                                            <label for="quantityPayment-`+productId+`">Số Lượng</label>
+                                                            <input min="1" type="number" name="Quantity" value="`+ paramQuantityVal + `" id="quantityPayment-`+productId+`" class="form-control" style="width: 80px !important" />
                                                         </div>
                                                         <div id="paymentItemColor" class="ipr-color"></div>
                                                         <div id="iprItemOption" class="ipr-item">
@@ -394,7 +324,7 @@
                                 } else {
                                     var option = $(this).attr("data-option");
                                     getOptionProductForOption(option);
-                                    $('#iprPrice').text("5300000");
+                                    $('#iprPrice-'+pro).text("5300000");
                                 }
                                 $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                             });
@@ -502,9 +432,9 @@
                         loadProductForColor(getcolor);
                     });
 
-                    $("#quantityPayment").change(function () {
+                    $('#quantityPayment-' + productId).change(function () {
                         var _price = data.data.price;
-                        var _subTotal = data.data.price * $('#quantityPayment').val();
+                        var _subTotal = data.data.price * $('#quantityPayment-' + productId).val();
                         $("#cart-subtotal").html(_subTotal);
 
                         formartVND($("#cart-subtotal"));
@@ -513,6 +443,7 @@
                         $("#cart-total").html(_total);
                         formartVND($('#cart-total'));
                     });
+                    
                 },
                 error: function (error) {
                     //handle show error
