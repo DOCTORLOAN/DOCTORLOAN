@@ -101,8 +101,8 @@
                                 <p>
                                     <strong>
                                         CÔNG TY TNHH GIA THÁI DOCTORLOAN <br />
-                                        Số tài khoản: 6899136899 <br />
-                                        Ngân hàng: TMCP Ngoại Thương Việt Nam (VIETCOMBANK - VCB) <br />
+                                        Số tài khoản: 39388686868 <br />
+                                        Ngân hàng: TMCP Á Châu (ACB - PGD Lê Ngô Cát) <br />
                                         Nội dung chuyển khoản: Tên + Địa chỉ giao hàng
                                     </strong>
                                 </p>
@@ -189,6 +189,7 @@
         var paramQuantityVal = getParameterByName('quantity');
 
         var resultAPI;
+        var _productId;
         // Get the value of the parameter productId in URL
         function getProduct() {
             $.ajax({
@@ -198,6 +199,7 @@
                 success: function (data) {
                     resultAPI = data;
                     var productId = data.data.id;
+                    _productId = productId;
                     // Handle call API Products
                     var productItem = $(`<div data-id="` + productId + `" class="list-product-payment">
                                             <div class="pp-item">
@@ -241,7 +243,6 @@
 
                     formartVND($('#iprPrice'));
                     formartVND($('#cart-subtotal'));
-                    //formartVND($('#cart-shipping'));
                     formartVND($('#cart-total'));
 
                     var imgProduct = "";
@@ -293,15 +294,19 @@
                                                             <label class="form-check-label" for="dtS">Nhỏ</label>
                                                         </div>`);
                             $('.option-dt').click(function () {
+                                var _price;
                                 if ($('#dtL').is(':checked')) {
                                     var option = $(this).attr("data-option");
-                                    getOptionProductForOption(option);
+                                    _price = getOptionProductForOption(option);
                                     $('#iprPrice').text("6800000");
                                 } else {
                                     var option = $(this).attr("data-option");
-                                    getOptionProductForOption(option);
+                                    _price = getOptionProductForOption(option);
                                     $('#iprPrice').text("6500000");
                                 }
+
+                                calculatePrice(_price, $('#quantityPayment-' + productId).val());
+
                                 $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                             });
                         }
@@ -317,15 +322,19 @@
                                                             <label class="form-check-label" for="f4S">9 cm</label>
                                                         </div>`);
                             $('.option-f4').click(function () {
+                                var _price;
                                 if ($('#f4L').is(':checked')) {
                                     var option = $(this).attr("data-option");
-                                    getOptionProductForOption(option);
+                                    _price = getOptionProductForOption(option);
                                     $('#iprPrice').text("5500000");
                                 } else {
                                     var option = $(this).attr("data-option");
-                                    getOptionProductForOption(option);
-                                    $('#iprPrice-'+pro).text("5300000");
+                                    _price = getOptionProductForOption(option);
+                                    $('#iprPrice').text("5300000");
                                 }
+
+                                calculatePrice( _price, $('#quantityPayment-' + productId).val());
+
                                 $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                             });
                         }
@@ -341,15 +350,19 @@
                                                             <label class="form-check-label" for="f1S">Ngắn</label>
                                                         </div>`);
                             $('.option-f1').click(function () {
+                                var _price;
                                 if ($('#f1L').is(':checked')) {
                                     var option = $(this).attr("data-option");
-                                    getOptionProductForOption(option);
+                                    _price = getOptionProductForOption(option);
                                     $('#iprPrice').text("2000000");
                                 } else {
                                     var option = $(this).attr("data-option");
-                                    getOptionProductForOption(option);
+                                    _price = getOptionProductForOption(option);
                                     $('#iprPrice').text("1000000");
                                 }
+                                
+                                calculatePrice(_price, $('#quantityPayment-' + productId).val());
+
                                 $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                             });
                         }
@@ -366,29 +379,42 @@
                             } else {
                                 $("#paymentItemColor").append(`<label>.Màu sắc</label>
                                                             <div class="ipr-color">
-                                                                <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.sku + `-MAU VANG-CHAN NGAN" title="Màu vàng"></a>
-                                                                <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.sku + `-MAU CAM-CHAN NGAN" title="Màu cam"></a>
-                                                                <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.sku + `-MAU DO-CHAN NGAN" title="Màu đỏ"></a>
-                                                                <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.sku + `-MAU XAM-CHAN NGAN" title="Màu xám"></a>
-                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-MAU XANH LA-CHAN NGAN" title="Màu xanh lá"></a>
-                                                                <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.sku + `-MAU XANH DUONG-CHAN NGAN" title="Màu xanh dương"></a>
+                                                                <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.name + ` - Màu vàng" title="Màu vàng"></a>
+                                                                <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.name + ` - Màu cam" title="Màu cam"></a>
+                                                                <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.name + ` - Màu đỏ" title="Màu đỏ"></a>
+                                                                <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.name + ` - Màu xám" title="Màu xám"></a>
+                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.name + ` - Màu xanh lá" title="Màu xanh lá"></a>
+                                                                <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.name + ` - Màu xanh dương" title="Màu xanh dương"></a>
                                                             </div>`);
                                 $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
                                                             <div class="form-check">
-                                                                <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân dài" id="n85-L">
+                                                                <input class="form-check-input option-n85" type="radio" name="flexRadioOption" data-option="-Chân dài" value="Chân dài" id="n85-L">
                                                                 <label class="form-check-label" for="n85-L">Chân dài</label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân ngắn" id="n85-S" checked>
+                                                                <input class="form-check-input option-n85" type="radio" name="flexRadioOption" data-option="-Chân ngắn" value="Chân ngắn" id="n85-S" checked>
                                                                 <label class="form-check-label" for="n85-S">Chân ngắn</label>
                                                             </div>`);
                                 $('.option-n85').click(function () {
+                                    var _price;
                                     if ($('#n85-L').is(':checked')) {
+                                        var option = $(".product-color").attr("data-color") + $(this).attr("data-option");
+                                        _price = getOptionProductForOption(option);
                                         $('#iprPrice').text("1430000");
+                                        $('.product-color').trigger("click");
                                     } else {
+                                        var option = $(".product-color").attr("data-color") + $(this).attr("data-option");
+                                        _price = getOptionProductForOption(option);
                                         $('#iprPrice').text("1320000");
                                     }
+
+                                    calculatePrice(_price, $('#quantityPayment-' + productId).val());
+
                                     $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                                });
+
+                                $('#quantityPayment-' + productId).change(function () {
+                                    calculatePrice(data.data.price, $('#quantityPayment-' + productId).val());
                                 });
                             }
 
@@ -427,22 +453,16 @@
                         }
                     }
 
-                    $('.product-color').click(function () {
-                        var getcolor = $(this).attr("data-color");
-                        loadProductForColor(getcolor);
-                    });
+                    if (flagN85 != true) {
+                        $('.product-color').click(function () {
+                            var getcolor = $(this).attr("data-color");
+                            loadProductForColor(getcolor);
+                        });
 
-                    $('#quantityPayment-' + productId).change(function () {
-                        var _price = data.data.price;
-                        var _subTotal = data.data.price * $('#quantityPayment-' + productId).val();
-                        $("#cart-subtotal").html(_subTotal);
-
-                        formartVND($("#cart-subtotal"));
-
-                        var _total = _subTotal + data.data.priceDiscount;
-                        $("#cart-total").html(_total);
-                        formartVND($('#cart-total'));
-                    });
+                        $('#quantityPayment-' + productId).change(function () {
+                            calculatePrice(data.data.price, $('#quantityPayment-' + productId).val());
+                        });
+                    }
                     
                 },
                 error: function (error) {
@@ -450,6 +470,18 @@
                     console.error('Error:', error);
                 }
             });
+        }
+
+        //handle calculate price
+        function calculatePrice(_price, _quantity) {
+            var _subTotal = _price * _quantity;
+            $("#cart-subtotal").html(_subTotal);
+
+            formartVND($("#cart-subtotal"));
+
+            var _total = _subTotal + resultAPI.data.priceDiscount;
+            $("#cart-total").html(_total);
+            formartVND($('#cart-total'));
         }
 
         //handle pic product to color
@@ -490,11 +522,14 @@
         function getOptionProductForOption(option) {
             if (resultAPI != undefined) {
                 var productId = resultAPI.data.id;
-                $.each(resultAPI.data.productItems, function (idx, item) {
-                    if (item.name == option) {
-                        $("#productItemId-" + productId).val(item.id);
-                    }
-                });
+                var priceProduct;
+                    $.each(resultAPI.data.productItems, function (idx, item) {
+                        if (item.name == option) {
+                            $("#productItemId-" + productId).val(item.id);
+                            priceProduct = item.price;
+                        }
+                    });
+                return priceProduct;
             }
         }
 
