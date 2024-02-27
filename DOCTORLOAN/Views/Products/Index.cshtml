@@ -381,7 +381,6 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    var _arr = [];
                     // Handle call API Products
                     $.each(data.data.items, function (idx, item) {
                         var productItem = $(`<div data-id="` + item.id + `" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
@@ -400,6 +399,7 @@
                                             </div>
                                         </div>`);
                         $("#productItems").append(productItem);
+
 
                         //Handle get img product
                         getImgProduct(item.id);
