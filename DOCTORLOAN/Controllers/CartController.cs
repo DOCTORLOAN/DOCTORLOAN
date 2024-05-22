@@ -86,28 +86,15 @@ namespace DOCTORLOAN.Controllers
                 string jsonData = JsonConvert.SerializeObject(data);
                 HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
                 HttpClient httpClient = new HttpClient();
-                var response = await httpClient.PostAsync("https://doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/create", content);
+                var response = await httpClient.PostAsync("https://dev-doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/create", content);
 
                 if (response.IsSuccessStatusCode)
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
-
-                    //send Email for Custommer
-                    if (_order.Email != null)
-                    {
-                        string contentCustomer = "";
-
-                    }
-
-                    TempData["AlertMessageSuccess"] = "Đặt đơn hàng thành công!";
-                    return RedirectToAction("Index", "Products");
-                }
-                else
-                {
+                    TempData["dataRes"] = responseContent;
+                } else
                     TempData["AlertMessageError"] = "Đặn đơn hàng thất bại. vui lòng kiểm tra lại thông tin ";
-                    return View("Payment");
-                }
-                
+                return View("Payment");
             } catch (Exception ex) {
                 return StatusCode(500, ex.Message); 
             }
