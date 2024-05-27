@@ -117,11 +117,11 @@
             </a>
             <div class="header-info">
                 <div class="auth-frm">
-                    @* <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a>
-                    <div class="not-logged"> *@
+                    @* <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a> *@
+                    @* <div class="not-logged"> *@
                     @* <a asp-controller="Auth" asp-action="Login" class="btn btn-login">Đăng nhập</a>
                     <a asp-controller="Auth" asp-action="Register" class="btn btn-register">Đăng ký</a> *@
-                    </div>
+                    @* </div> *@
                     @* <div class="nav-profile" style="display: none;">
                         <button id="ProfileFunc" class="profile-icon" data-menu-expanded="false"><img src="~/img/home/avatar-3.png" /></button>
                         <div class="dropdown-profile" hidden>
@@ -148,41 +148,40 @@
 
 </header>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+<link href="~/libs/font-awesome_4.5/font-awesome.min.css" rel="stylesheet">
+<link href="~/libs/font-awesome_4.5/css.css" rel="stylesheet">
 
 <!-- Back to top button -->
 <a id="button"></a>
 
 
 <script type="text/javascript">
-    $(document).on("click", "#ProfileFunc", function (e) {
-        e.preventDefault();
-        var getactive = $(this).attr("data-menu-expanded");
-        var parentPF = $(this).parents(".nav-profile");
-        if (getactive == 'false') {
-            getactive = 'true';
-            $(this).addClass("active");
-            $(this).attr('data-menu-expanded', getactive);
-            parentPF.find(".dropdown-profile").removeAttr('hidden');
-        } else {
-            getactive = 'false';
-            $(this).removeClass("active");
-            $(this).attr('data-menu-expanded', getactive);
-            parentPF.find(".dropdown-profile").attr('hidden', true);
-        }
-        /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
-        var prevScrollpos = window.pageYOffset;
-        window.onscroll = function () {
-            var currentScrollPos = window.pageYOffset;
-            if (prevScrollpos > currentScrollPos) {
-                document.getElementById("container").style.top = "0";
-            } else {
-                document.getElementById("container").style.top = "-150px";
-            }
-            prevScrollpos = currentScrollPos;
-        }
-    });
+    // $(document).on("click", "#ProfileFunc", function (e) {
+    //     e.preventDefault();
+    //     var getactive = $(this).attr("data-menu-expanded");
+    //     var parentPF = $(this).parents(".nav-profile");
+    //     if (getactive == 'false') {
+    //         getactive = 'true';
+    //         $(this).addClass("active");
+    //         $(this).attr('data-menu-expanded', getactive);
+    //         parentPF.find(".dropdown-profile").removeAttr('hidden');
+    //     } else {
+    //         getactive = 'false';
+    //         $(this).removeClass("active");
+    //         $(this).attr('data-menu-expanded', getactive);
+    //         parentPF.find(".dropdown-profile").attr('hidden', true);
+    //     }
+    //     var prevScrollpos = window.pageYOffset;
+    //     window.onscroll = function () {
+    //         var currentScrollPos = window.pageYOffset;
+    //         if (prevScrollpos > currentScrollPos) {
+    //             document.getElementById("container").style.top = "0";
+    //         } else {
+    //             document.getElementById("container").style.top = "-150px";
+    //         }
+    //         prevScrollpos = currentScrollPos;
+    //     }
+    // });
 
     $(window).on('load', function () {
         var swiper2 = new Swiper(".menuProductSwiper", {
@@ -223,7 +222,7 @@
     }
     
     $.ajax({
-        url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Category/FilterCategories',
+        url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Category/FilterCategories',
         type: 'GET',
         dataType: 'json',
         success: function (data) {

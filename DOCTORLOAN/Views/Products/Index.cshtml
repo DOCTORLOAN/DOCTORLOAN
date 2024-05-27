@@ -3,14 +3,6 @@
 }
 
 <link href="~/libs/flag/flag.css" rel="stylesheet" />
-<div id="alert">
-    @if (TempData["AlertMessageSuccess"] != null)
-    {
-        <div class="alert alert-success">
-            @TempData["AlertMessageSuccess"]
-        </div>
-    }
-</div>
 
 <section id="ProductsBanner">
     <div class="swiper bannerProductSwiper">
@@ -23,7 +15,7 @@
                                 <div class="center-thing">
                                     <div class="title-banner-product">
                                         Ghế nằm độc quyền sáng chế
-                                        <span>DoctorLoan</span>
+                                        <img class="mt-2" src="~/img/logo/logo-header.svg" />
                                         <strong>135</strong>
                                     </div>
                                 </div>
@@ -52,7 +44,7 @@
                                 <div class="center-thing">
                                     <div class="title-banner-product">
                                         Ghế ngồi độc quyền sáng chế
-                                        <span>DoctorLoan</span>
+                                        <img class="mt-2" src="~/img/logo/logo-header.svg" />
                                         <strong>95 VIP</strong>
                                     </div>
                                 </div>
@@ -81,7 +73,7 @@
                                 <div class="center-thing">
                                     <div class="title-banner-product">
                                         Đệm thiền độc quyền sáng chế
-                                        <span>DoctorLoan</span>
+                                        <img class="mt-2" src="~/img/logo/logo-header.svg" />
                                     </div>
                                 </div>
                             </div>
@@ -210,11 +202,13 @@
 
 @section scripts{
     <script type="text/javascript">
+        // Handle active menu
         $(document).ready(function () {
             $("#nav-menu-container ul li").removeClass("menu-active");
             $("#nav-menu-container ul li").eq(4).addClass("menu-active");
         });
 
+        // Handle active menu
         $('.btn-gr-dtl').click(function () {
             var parentbtn = $(this).parents(".chat-parent");
             parentbtn.find('.tile-project .btn-group .btn-gr-dtl').removeClass("btn-gr-active");
@@ -225,6 +219,7 @@
             parentbtn.find(".project-chart." + datachart).addClass("chart-active-home");
         });
 
+        // Handle swiper
         var bannerswiper = new Swiper(".bannerProductSwiper", {
             slidesPerView: 1,
             loop: true,
@@ -345,6 +340,7 @@
             },
         });
 
+        // Handle dropdown menu
         $(".dropdown-menu [data-bs-toggle='dropdown']").on("click", function (event) {
             event.preventDefault();
             event.stopPropagation();
@@ -363,6 +359,7 @@
                 });
         });
 
+        // Handle redirect to Url with data
         function redirectToWithData(url, data) {
             // Create query parameters obj data
             var queryParams = $.param(data);
@@ -377,7 +374,7 @@
         //Handle get Product
         function getProduct() {
             $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts',
+                url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -399,7 +396,6 @@
                                             </div>
                                         </div>`);
                         $("#productItems").append(productItem);
-
 
                         //Handle get img product
                         getImgProduct(item.id);
@@ -442,12 +438,13 @@
             });
         }
 
+        // Call function getProduct
         getProduct();
 
         //Handle get Image Product for id
         function getImgProduct(id) {
             $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + id,
+                url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + id,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -459,6 +456,7 @@
                     var gcnl_id = 31;
                     var imgProduct;
 
+                    // Handle get img product
                     $.each(data.data.categoryIds, function (idx, item) {
                         if (item === n85_id) {
                             flagN85 = true;
@@ -468,6 +466,7 @@
                         }
                     });
 
+                    // Handle get img product
                     if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined && flag != true) {
                         var _arr = [];
 
@@ -508,6 +507,7 @@
             });
         }
 
+        //Handle show alert
         window.setTimeout(function () {
             $("#alert").fadeTo(500, 0).slideUp(500, function () {
                 $(this).remove();
