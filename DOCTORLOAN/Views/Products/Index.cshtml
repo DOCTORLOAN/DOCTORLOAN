@@ -374,7 +374,7 @@
         //Handle get Product
         function getProduct() {
             $.ajax({
-                url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts',
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -444,7 +444,7 @@
         //Handle get Image Product for id
         function getImgProduct(id) {
             $.ajax({
-                url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + id,
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + id,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
