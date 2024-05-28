@@ -1,36 +1,90 @@
 ﻿@{
     ViewData["Title"] = "Thông báo thành công";
 }
+<style>
+    #orderSuccess {
+        text-align: center;
+        margin-top: 200px;
+        margin-bottom: 200px;
+    }
 
-<section id="OrderSuccess">
+    .imgRedirect {
+        width: 20%;
+        display: inline-block;
+    }
+
+    #btnHome {
+        color: #ff7500;
+        border: 1px solid #013c74;
+        border-radius: 1rem;
+    }
+
+        #btnHome:hover {
+            color: #fff !important;
+            background-color: #ff7500 !important;
+            border-color: #013c74 !important;
+        }
+</style>
+<section id="orderSuccess">
     <div class="container">
         <div class="main-success">
-            <div class="success-checkmark">
-                <div class="check-icon">
-                    <span class="icon-line line-tip"></span>
-                    <span class="icon-line line-long"></span>
-                    <div class="icon-circle"></div>
-                    <div class="icon-fix"></div>
-                </div>
-            </div>
+            <span id="iconStatus"></span>
 
-            <div class="title-success">Bạn đã đặt hàng thành công!</div>
-            <div class="order-code">Mã đơn hàng: <strong>0823GN12546</strong></div>
+            <div id="titleStatus"></div>
+            <div id="orderCode" class="order-code"></div>
+            <div id="messStatus"></div>
             <hr class="hr-order" />
-            <div class="info-order">
+          @*   <div class="info-order">
                 Thông tin giao hàng: <br />
                 Họ tên: <strong>Nguyễn Văn A</strong> <br />
                 Điện Thoại: <strong>0909555666</strong> <br />
                 Địa chỉ: <strong>9A, Tôn Thất Tùng, P. Phạm Ngũ Lão, Q.1, TP. Hồ Chí Minh</strong>
-            </div>
-            <a asp-controller="Home" asp-action="Index" class="btn btn-confrm">Trang chủ</a>
+            </div> *@
+        <a asp-controller="Home" asp-action="Index" id="btnHome" class="btn mt-5">Trang chủ</a>
         </div>
     </div>
 </section>
 
 @section scripts{
+    <script src="~/libs/jquery/crypto-js.min.js"></script>
     <script type="text/javascript">
+        //đọc tham số trên url
+        const _checksumKey = "ZTJmMjk1NGU2OTNlODE0MjExZGM3MDM3MmJkNDI5NWU=";
+        var urlParams = new URLSearchParams(window.location.search);
+        var status = urlParams.get('status');
+        var orderNo = urlParams.get('order_no');
+        var checksum = urlParams.get('checksum');
 
+        //function sha512 checksum
+        function sha512(strCheckSumKey, strXML) {
+            var combinedString = strCheckSumKey + strXML;
+            var checksum = CryptoJS.SHA512(combinedString).toString();
+            return checksum;
+        }
+
+        var _checksum = sha512(_checksumKey, '.' + orderNo + '.' + status);
+
+        //kiểm tra checksum
+        if (checksum != undefined || status != undefined || orderNo != undefined) {
+            if (_checksum === checksum) {
+                // xử lý theo status
+                if (status != '1') {
+                    $("#titleStatus").append('<h1 class="display-4 text-danger">Đơn hàng của bạn chưa được thanh toán!</h1>');
+                    $("#iconStatus").append('<img src="../img/icon/erorr-payment.png" class="imgRedirect" alt="icon-error">');
+                    $("#orderCode").append(`Mã đơn hàng: <strong>` + orderNo + `</strong>`);
+                    $("#messStatus").append(`<h3 class="text-danger">Đơn hàng:` + orderNo + ` đã bị hủy.</h3>`);
+                } else {
+                    $("#titleStatus").append('<h1 class="display-4 text-success">Đơn hàng của bạn đã được thanh toán thành công!</h1>');
+                    $("#iconStatus").append('<img src="../img/icon/sucess-payment.png" class="imgRedirect" alt="icon-sucess">');
+                    $("#orderCode").append(`Mã đơn hàng: <strong>` + orderNo + `</strong>`);
+                    $("#messStatus").append(`<h3 class="text-success">Đơn hàng:` + orderNo + ` đã được thanh toán, đơn hàng đang được xử lý!</h3>`);
+                }
+            } else {
+                $("#iconStatus").append('<img src="../img/icon/404-notfound.png" class="imgRedirect" alt="icon-404-not-found">');
+            }
+        } else {
+            $("#iconStatus").append('<img src="../img/icon/404-notfound.png" class="imgRedirect" alt="icon-404-not-found">');
+        }
     </script>
 }
 
