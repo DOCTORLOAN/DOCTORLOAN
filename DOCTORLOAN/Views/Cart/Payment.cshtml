@@ -6,10 +6,6 @@
     <div class="container">
         <div class="row">
             <form method="post" asp-controller="Cart" asp-action="PaymentPost" class="row needs-validation" novalidate>
-                @if (TempData["dataRes"] != null)
-                {
-                    <input type="text" class="form-control" value="@TempData["dataRes"]" id="dataRes" hidden />
-                }
                 <div id="alert" class="alert alert-error">
                     @if (TempData["AlertMessageError"] != null)
                     {
@@ -17,6 +13,8 @@
                             @TempData["AlertMessageError"]
                         </div>
                     }
+                    <input type="text" class="form-control" value="@ViewBag.id" id="idProduct" hidden />
+                    <input type="text" class="form-control" value="@ViewBag.quantity" id="qProduct" hidden />
                 </div>
                 <div class="col-lg-7">
                     <div class="cart-wrapper">
@@ -41,8 +39,8 @@
                                 </div>
 
                                 <div class="mb-3 col-6">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" placeholder="Nhập email" name="Email" id="email" />
+                                    <label for="email" class="req">Email</label>
+                                    <input type="text" class="form-control" placeholder="Nhập email" name="Email" id="email" required />
                                 </div>
                             </div>
 
@@ -102,6 +100,12 @@
                         <hr class="hr-payment" />
                         <div id="cartWrapperItem"></div>
                     </div>
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" required>
+                        <label class="form-check-label req" for="flexCheckChecked">
+                            Tôi đã đọc và đồng ý với các <a href="/common/policydetails">Chính sách và điều khoản</a> của doctorloan.vn
+                        </label>
+                    </div>
                     <div class="text-center">
                         <button id="btnPayment" class="btn checkout" type="submit">Đặt hàng</button>
                     </div>
@@ -114,12 +118,6 @@
 @section scripts{
     <script src="~/libs/jquery/crypto-js.min.js"></script>
     <script type="text/javascript">
-        //infor custommer
-        var _custommerName = "";
-        var _phone = "";
-        var _email = "";
-        var _address = "";
-
         //Function get data address
         function myFunction() {
             return $("#addressLine").val($("#addressDetaills").val() + " - " + $("#ward").val() + " - " + $("#district").val() + " - " + $("#city").val());
@@ -234,7 +232,17 @@
 
         var resultAPI;
         var _productId;
+        var _quantity;
+
         if (getParameterByName('id') && getParameterByName('quantity')) {
+            _productId = getParameterByName('id');
+            _quantity = getParameterByName('quantity');
+        } else {
+            _productId = $('#idProduct').val();
+            _quantity = $('#qProduct').val();
+        }
+
+        if (_productId != null && _quantity != null) {
             // Get the value of the parameter productId in URL
             $.ajax({
                 url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + getParameterByName('id'),
@@ -243,9 +251,9 @@
                 success: function (data) {
                     resultAPI = data;
                     var productId = data.data.id;
-                    _productId = productId;
                     // Handle call API Products
                     var productItem = $(`<div data-id="` + productId + `" class="list-product-payment">
+                                            <input type="text" class="form-control" value="`+ _productId + `" name="ProductId" hidden />
                                             <div class="pp-item">
                                                 <div class="pp-info">
                                                     <img id="imgProductPayment" src="`+ data.data.productMedias[0].mediaUrl + `" />
@@ -255,7 +263,7 @@
                                                     <div style="display:left;" >
                                                         <div id="quantity">
                                                             <label for="quantityPayment-`+productId+`">Số Lượng</label>
-                                                            <input min="1" type="number" name="Quantity" value="`+ getParameterByName('quantity') + `" id="quantityPayment-` + productId + `" class="form-control" style="width: 80px !important" />
+                                                            <input min="1" type="number" name="Quantity" value="`+ _quantity + `" id="quantityPayment-` + productId + `" class="form-control" style="width: 80px !important" />
                                                         </div>
                                                         <div id="paymentItemColor" class="ipr-color"></div>
                                                         <div id="iprItemOption" class="ipr-item">
@@ -507,6 +515,8 @@
                     console.error('Error:', error);
                 }
             });
+        } else {
+            window.location.href = "/";
         }
 
         //handle show alert
@@ -515,8 +525,6 @@
                 $(this).remove();
             });
         }, 3000);
-
-        var _dataRes = $("#dataRes").val();
 
         //Validation
         (() => {
@@ -527,11 +535,6 @@
                     if (!form.checkValidity()) {
                         event.preventDefault();
                         event.stopPropagation();
-
-                        _custommerName = $("#fullName").val();
-                        _phone = $("#phone").val();
-                        _email = $("#email").val();
-                        _addres = $("#addressLine").val();
                     }
                     form.classList.add('was-validated');
                 }, false);
@@ -556,83 +559,5 @@
             var _subTotal = _price * _quantity;
             $("#cart-subtotal").html(_subTotal);
         }
-
-        //handle call API checkout
-        if (_dataRes != undefined && _phone != null && _custommerName != null && _address != null) {
-            var _res = JSON.parse(_dataRes);
-            //Payment Payoo
-            var _baseUrl = "https://payoo.vn/v2/";
-            const _businessUsername = "PY8_DOCTORLOAN_ECOM";
-            const _shopID = "6587";
-            const _shopTitle = "DOCTORLOAN";
-            const _checksumKey = "ySpkGehhqJcLuniNYGZZJO8IAftdXc3HxBFvGJgyeMPpPcFk8i+z9ywiCcq53kuv8C8rMm8pnOypibnXIw2/Nw==";
-            const _apiUsername = "PY8_DOCTORLOAN_ECOM_BizAPI";
-            const _apiPassword = "MTwmyaC3H8FQxCb6";
-            const _apiSignature = "h9yQ5+wZC2nEvpCodoW1cnp6JTYz5ezKaJgNoyGzOqerArpKtdiIh+/7oN1i3ncw";
-            const _domain = "https://doctorloan.vn/";
-
-            //function sha512 checksum
-            function sha512(strCheckSumKey, strXML) {
-                var combinedString = strCheckSumKey + strXML;
-                var checksum = CryptoJS.SHA512(combinedString).toString();
-                return checksum;
-            }
-
-            const now = new Date();
-
-            //function get current date time formatted
-            function getCurrentDateTimeFormatted() {
-                const year = now.getFullYear();
-                const month = (now.getMonth() + 1).toString().padStart(2, '0');
-                const day = now.getDate().toString().padStart(2, '0');
-                const hours = (now.getHours() + 1).toString().padStart(2, '0');
-                const minutes = now.getMinutes().toString().padStart(2, '0');
-                const seconds = now.getSeconds().toString().padStart(2, '0');
-
-                return `${year}${month}${day}${hours}${minutes}${seconds}`;
-            }
-
-            //function get current date formatted
-            function getCurrentDateFormatted() {
-                const day = now.getDate().toString().padStart(2, '0');
-                const month = (now.getMonth() + 1).toString().padStart(2, '0');
-                const year = now.getFullYear();
-
-                return `${day}/${month}/${year}`;
-            }
-
-            const _validityTime = getCurrentDateTimeFormatted();
-            const _orderDate = getCurrentDateFormatted();
-            var _orderNo = "ORD_" + _shopID + "_" + _res.data.orderNo;
-            var _data = "<shops><shop><username>" + _businessUsername + "</username><shop_id>" + _shopID + "</shop_id>" +
-                "<shop_title>" + _shopTitle + "</shop_title><shop_domain>" + _domain + "</shop_domain>" +
-                "<order_no>" + _orderNo + "</order_no><order_cash_amount>" + _res.data.totalPrice + "</order_cash_amount>" +
-                "<order_ship_date>" + _orderDate + "</order_ship_date><order_ship_days>0</order_ship_days>" +
-                "<order_description>Mã đơn hàng: " + _res.data.orderNo + " Tổng tiền: " + _res.data.totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' }) + "</order_description>" +
-                "<shop_back_url>https://doctorloan.vn/common/OrderSuccess</shop_back_url>" +
-                "<notify_url>https://doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/callback-payoo</notify_url>" +
-                "<validity_time>" + _validityTime + "</validity_time><customer>" +
-                "<name>" + _custommerName + "</name><phone>"+_phone+"</phone><address>"+_address+"</address>" +
-                "<email>" + _email + "</email></customer><JsonResponse>true</JsonResponse><direct_return_time>5</direct_return_time></shop></shops>";
-
-            //function call API checkout
-            $.ajax({
-                url: _baseUrl + "create-preorder",
-                type: 'POST',
-                data: {
-                    "data": _data,
-                    "checksum": sha512(_checksumKey, _data),
-                    "refer": _domain,
-                    "payment_group": ""
-                },
-                success: function (response) {
-                    window.location.href = response.order.payment_url;
-                },
-                error: function (xhr, status, error) {
-                    console.error('Có lỗi khi gửi yêu cầu API error:', error);
-                }
-            });
-        }
-        
     </script>
 }
