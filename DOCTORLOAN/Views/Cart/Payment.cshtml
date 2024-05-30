@@ -13,8 +13,8 @@
                             @TempData["AlertMessageError"]
                         </div>
                     }
-                    <input type="text" class="form-control" value="@ViewBag.id" id="idProduct" hidden />
-                    <input type="text" class="form-control" value="@ViewBag.quantity" id="qProduct" hidden />
+                    <input type="text" class="form-control" value="@TempData["id"]" id="idProduct" hidden />
+                    <input type="text" class="form-control" value="@TempData["quantity"]" id="qProduct" hidden />
                 </div>
                 <div class="col-lg-7">
                     <div class="cart-wrapper">
@@ -103,8 +103,11 @@
                     <div class="form-check mt-2">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" required>
                         <label class="form-check-label req" for="flexCheckChecked">
-                            Tôi đã đọc và đồng ý với các <a href="/common/policydetails">Chính sách và điều khoản</a> của doctorloan.vn
+                            Tôi đã đọc và đồng ý với các <a class="text-decoration-underline" href="/common/policydetails">Chính sách và điều khoản</a> của doctorloan.vn
                         </label>
+                        <div class="invalid-feedback">
+                            Vui lòng chấp nhận thỏa thuận!
+                        </div>
                     </div>
                     <div class="text-center">
                         <button id="btnPayment" class="btn checkout" type="submit">Đặt hàng</button>

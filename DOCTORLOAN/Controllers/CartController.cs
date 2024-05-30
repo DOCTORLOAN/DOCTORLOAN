@@ -101,8 +101,8 @@ namespace DOCTORLOAN.Controllers
                 else
                 {
                     TempData["AlertMessageError"] = "Đặn đơn hàng thất bại. vui lòng kiểm tra lại thông tin ";
-                    ViewBag.id = _listItem.ProductId;
-                    ViewBag.quantity = _listItem.Quantity;
+                    TempData["id"] = _listItem.ProductId;
+                    TempData["quantity"] = _listItem.Quantity;
 
                     return View("Payment");
                 }

@@ -1785,6 +1785,23 @@ header .slogan-mobile {
   align-items: center;
   min-height: 2rem;
 }
+#nav-menu-container .arrow {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0px;
+}
+#nav-menu-container .arrow-down {
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid black;
+}
+#nav-menu-container .arrow-right {
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid black;
+}
 #mobile-nav-toggle {
   position: fixed;
   left: 0;

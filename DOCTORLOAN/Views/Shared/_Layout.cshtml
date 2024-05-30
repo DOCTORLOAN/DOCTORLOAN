@@ -39,7 +39,7 @@
         <div id="fb-root"></div>
 
         <!-- Your Chat plugin code -->
-        <div id="fb-customer-chat" class="fb-customerchat"></div>
+        @* <div id="fb-customer-chat" class="fb-customerchat"></div> *@
     </main>
     <footer>
         @await Html.PartialAsync("/Views/Common/_FooterPartial.cshtml")
@@ -52,36 +52,36 @@
         //}
 
         //<!--Your SDK code-- >
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "122107555106002865");
-        chatbox.setAttribute("attribution", "biz_inbox");
+        // var chatbox = document.getElementById('fb-customer-chat');
+        // chatbox.setAttribute("page_id", "122107555106002865");
+        // chatbox.setAttribute("attribution", "biz_inbox");
 
-        window.fbAsyncInit = function () {
-            FB.init({
-                xfbml: true,
-                version: 'v18.0'
-            });
-        };
+        // window.fbAsyncInit = function () {
+        //     FB.init({
+        //         xfbml: true,
+        //         version: 'v18.0'
+        //     });
+        // };
 
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+        // (function (d, s, id) {
+        //     var js, fjs = d.getElementsByTagName(s)[0];
+        //     if (d.getElementById(id)) return;
+        //     js = d.createElement(s); js.id = id;
+        //     js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        //     fjs.parentNode.insertBefore(js, fjs);
+        // }(document, 'script', 'facebook-jssdk'));
 
-        msg = document.title;
-        msg = msg + ".";
-        position = 0;
+        // msg = document.title;
+        // msg = msg + ".";
+        // position = 0;
 
-        function scrolltitle() {
-            document.title = msg.substring(position, msg.length) + msg.substring(0, position);
-            position++;
-            if (position > msg.length) position = 0
-            window.setTimeout("scrolltitle()", 110);
-        }
-        scrolltitle();
+        // function scrolltitle() {
+        //     document.title = msg.substring(position, msg.length) + msg.substring(0, position);
+        //     position++;
+        //     if (position > msg.length) position = 0
+        //     window.setTimeout("scrolltitle()", 110);
+        // }
+        // scrolltitle();
     </script>
     <script src="~/libs/jquery/jquery-3.7.0.min.js"></script>
     <script src="~/js/main.js"></script>
@@ -97,6 +97,8 @@
     <script src="~/libs/Bootstrap/bootstrap-datepicker.vi.min.js"></script>
     <script src="~/libs/Bootstrap/bootstrap-datetimepicker.js"></script>
     <script src="~/libs/flatpickr/flatpickr.js"></script>
+    <script src="~/libs/font/fontawesome-webfont.woff"></script>
+    <script src="~/libs/font/fontawesome-webfont.woff2"></script>
     <script src="~/libs/chart/chart.js"></script>
     <script src="~/libs/youtube/iframe_api.js"></script>
     <script src="~/libs/zalo/sdk.js"></script>

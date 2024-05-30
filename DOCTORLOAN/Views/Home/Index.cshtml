@@ -319,76 +319,28 @@
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span class="count1">185000</span></h4>
-                    <script>
-                        $('.count').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 10000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Bệnh nhân khỏi bệnh</p>
                 </div>
             </div>
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span class="count1">168000</span></h4>
-                    <script>
-                        $('.count').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 10000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Sản phẩm</p>
                 </div>
             </div>
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span id="value">62+</span></h4>
-                    <script>
-                        $('.count1').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 6000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Quốc gia bảo hộ</p>
                 </div>
             </div>
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span class="count2">255</span></h4>
-                    <script>
-                        $('.count2').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 4000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Bằng sáng chế</p>
                 </div>
             </div>
@@ -1147,6 +1099,7 @@
 
 @section scripts{
     <script src="~/libs/jquery/crypto-js.min.js"></script>
+        
     <script type="text/javascript">
 
         //setTimeout("document.getElementById('myModalEvert').style.display='block'", 1500);
@@ -1154,6 +1107,43 @@
         // Handle close modal
         $('#btnClose').click(function () {
             document.getElementById('myModalEvert').style.display = 'none';
+        });
+
+        $('.count').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 10000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+
+        $('.count1').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 6000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+
+        
+        $('.count2').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 4000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
         });
 
         // Chờ tải xong trang và sau đó tự động phát video
