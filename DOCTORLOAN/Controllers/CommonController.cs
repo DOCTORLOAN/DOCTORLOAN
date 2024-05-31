@@ -8,7 +8,7 @@ namespace DOCTORLOAN.Controllers
         {
             return View();
         }
-        public IActionResult WarrantyPolicy()
+        public IActionResult PolicyDetails()
         {
             return View();
         }

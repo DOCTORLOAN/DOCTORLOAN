@@ -5,6 +5,15 @@
 <link href="~/libs/flag/flag.css" rel="stylesheet" />
 <link href="~/libs/Bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
+@if (TempData["dataRes"] != null)
+{
+    <input type="text" class="form-control" value="@TempData["dataRes"]" id="dataRes" hidden />
+    <input type="text" class="form-control" value="@TempData["phone"]" id="phone" hidden />
+    <input type="text" class="form-control" value="@TempData["custommerName"]" id="custommerName" hidden />
+    <input type="text" class="form-control" value="@TempData["addressLine"]" id="addressLine" hidden />
+    <input type="text" class="form-control" value="@TempData["email"]" id="email" hidden />
+}
+
 <div b-hmxnz7sj43="" id="myModalEvert" class="modal" tabindex="-1" role="dialog" style="display: none;">
     <div b-hmxnz7sj43="" id="modalDialog" class="modal-dialog" role="document">
         <div b-hmxnz7sj43="" id="modalContent" class="modal-content">
@@ -310,76 +319,28 @@
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span class="count1">185000</span></h4>
-                    <script>
-                        $('.count').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 10000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Bệnh nhân khỏi bệnh</p>
                 </div>
             </div>
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span class="count1">168000</span></h4>
-                    <script>
-                        $('.count').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 10000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Sản phẩm</p>
                 </div>
             </div>
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span id="value">62+</span></h4>
-                    <script>
-                        $('.count1').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 6000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Quốc gia bảo hộ</p>
                 </div>
             </div>
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span class="count2">255</span></h4>
-                    <script>
-                        $('.count2').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 4000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Bằng sáng chế</p>
                 </div>
             </div>
@@ -1137,7 +1098,8 @@
 </section>
 
 @section scripts{
-    
+    <script src="~/libs/jquery/crypto-js.min.js"></script>
+        
     <script type="text/javascript">
 
         //setTimeout("document.getElementById('myModalEvert').style.display='block'", 1500);
@@ -1145,6 +1107,43 @@
         // Handle close modal
         $('#btnClose').click(function () {
             document.getElementById('myModalEvert').style.display = 'none';
+        });
+
+        $('.count').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 10000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+
+        $('.count1').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 6000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+
+        
+        $('.count2').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 4000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
         });
 
         // Chờ tải xong trang và sau đó tự động phát video
@@ -1604,5 +1603,87 @@
             var url = $(this).attr('data-video2-id');
             player2.cueVideoById(url);
         });
+
+        var _dataRes = $("#dataRes").val();
+        var _phone = $("#phone").val();
+        var _custommerName = $("#custommerName").val();
+        var _address = $("#addressLine").val();
+        var _email = $("#email").val();
+        //handle call API checkout
+        if (_dataRes != undefined && _phone != null && _custommerName != null && _address != null) {
+            var _res = JSON.parse(_dataRes);
+            //Payment Payoo
+            var _baseUrl = "https://payoo.vn/v2/";
+            const _businessUsername = "PY8_DOCTORLOAN_ECOM";
+            const _shopID = "6587";
+            const _shopTitle = "DOCTORLOAN";
+            const _checksumKey = "ySpkGehhqJcLuniNYGZZJO8IAftdXc3HxBFvGJgyeMPpPcFk8i+z9ywiCcq53kuv8C8rMm8pnOypibnXIw2/Nw==";
+            const _apiUsername = "PY8_DOCTORLOAN_ECOM_BizAPI";
+            const _apiPassword = "MTwmyaC3H8FQxCb6";
+            const _apiSignature = "h9yQ5+wZC2nEvpCodoW1cnp6JTYz5ezKaJgNoyGzOqerArpKtdiIh+/7oN1i3ncw";
+            const _domain = "https://doctorloan.vn/";
+
+            //function sha512 checksum
+            function sha512(strCheckSumKey, strXML) {
+                var combinedString = strCheckSumKey + strXML;
+                var checksum = CryptoJS.SHA512(combinedString).toString();
+                return checksum;
+            }
+
+            const now = new Date();
+
+            //function get current date time formatted
+            function getCurrentDateTimeFormatted() {
+                const year = now.getFullYear();
+                const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                const day = now.getDate().toString().padStart(2, '0');
+                const hours = (now.getHours() + 1).toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const seconds = now.getSeconds().toString().padStart(2, '0');
+
+                return `${year}${month}${day}${hours}${minutes}${seconds}`;
+            }
+
+            //function get current date formatted
+            function getCurrentDateFormatted() {
+                const day = now.getDate().toString().padStart(2, '0');
+                const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                const year = now.getFullYear();
+
+                return `${day}/${month}/${year}`;
+            }
+
+            const _validityTime = getCurrentDateTimeFormatted();
+            const _orderDate = getCurrentDateFormatted();
+            var _orderNo = "ORD_" + _shopID + "_" + _res.data.orderNo;
+            var _data = "<shops><shop><username>" + _businessUsername + "</username><shop_id>" + _shopID + "</shop_id>" +
+                "<shop_title>" + _shopTitle + "</shop_title><shop_domain>" + _domain + "</shop_domain>" +
+                "<order_no>" + _orderNo + "</order_no><order_cash_amount>" + _res.data.totalPrice + "</order_cash_amount>" +
+                "<order_ship_date>" + _orderDate + "</order_ship_date><order_ship_days>0</order_ship_days>" +
+                "<order_description>Mã đơn hàng: " + _res.data.orderNo + " Tổng tiền: " + _res.data.totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' }) + "</order_description>" +
+                "<shop_back_url>https://doctorloan.vn/common/OrderSuccess</shop_back_url>" +
+                "<notify_url>https://doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/callback-payoo</notify_url>" +
+                "<validity_time>" + _validityTime + "</validity_time><customer>" +
+                "<name>" + _custommerName + "</name><phone>" + _phone + "</phone><address>" + _address + "</address>" +
+                "<email>" + _email + "</email></customer><JsonResponse>true</JsonResponse><direct_return_time>5</direct_return_time></shop></shops>";
+
+            //function call API checkout
+            $.ajax({
+                url: _baseUrl + "create-preorder",
+                type: 'POST',
+                data: {
+                    "data": _data,
+                    "checksum": sha512(_checksumKey, _data),
+                    "refer": _domain,
+                    "payment_group": ""
+                },
+                success: function (response) {
+                    window.location.href = response.order.payment_url;
+                },
+                error: function (xhr, status, error) {
+                    console.error('Có lỗi khi gửi yêu cầu API error:', error);
+                }
+            });
+        }
     </script>
 }

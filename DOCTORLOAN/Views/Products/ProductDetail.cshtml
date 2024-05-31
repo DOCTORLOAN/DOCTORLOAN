@@ -224,25 +224,26 @@
         var _productId = getParam('productId');
         var _categoryId = getParam('categoryId');
 
-        // Get the value of the parameter categoryId in URL
-        if (_categoryId != undefined) {
-            $.ajax({
+        if (_categoryId == null && _productId == null || _categoryId != undefined && _productId != undefined) {
+            window.location.href = "/";
+        } else {
+            // Get the value of the parameter categoryId in URL
+            if (_categoryId != null) {
+                $.ajax({
                 url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    getProduct(data.data.items[0].id);
-                },
-                error: function (error) {
-                    //handle show error
-                    console.error('Error:', error);
-                }
-            });
-        }
-        
-
-        if (_productId != undefined) {
-            getProduct(_productId);
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        getProduct(data.data.items[0].id);
+                    },
+                    error: function (error) {
+                        //handle show error
+                        console.error('Error:', error);
+                    }
+                });
+            } else {
+                getProduct(_productId);
+            }
         }
 
         var resultAPI;

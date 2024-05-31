@@ -89,10 +89,24 @@ namespace DOCTORLOAN.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
+
                     TempData["dataRes"] = responseContent;
-                } else
+                    TempData["phone"] = _order.Phone;
+                    TempData["custommerName"] = _order.FullName;
+                    TempData["addressLine"] = _order.AddressLine;
+                    TempData["email"] = _order.Email;
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
                     TempData["AlertMessageError"] = "Đặn đơn hàng thất bại. vui lòng kiểm tra lại thông tin ";
-                return View("Payment");
+                    TempData["id"] = _listItem.ProductId;
+                    TempData["quantity"] = _listItem.Quantity;
+
+                    return View("Payment");
+                }
+                    
             } catch (Exception ex) {
                 return StatusCode(500, ex.Message); 
             }

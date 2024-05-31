@@ -25,27 +25,6 @@
                                 <div class="container">
                                     <div class="swiper menuProductSwiper">
                                         <div id="menuProductBestSeller" class="swiper-wrapper">
-                                            <style>
-                                                .arrow {
-                                                    width: 0;
-                                                    height: 0;
-                                                    display: inline-block;
-                                                    vertical-align: middle;
-                                                    margin-left: 0px;
-                                                }
-
-                                                .arrow-down {
-                                                    border-left: 7px solid transparent;
-                                                    border-right: 7px solid transparent;
-                                                    border-top: 7px solid black;
-                                                }
-
-                                                .arrow-right {
-                                                    border-top: 7px solid transparent;
-                                                    border-bottom: 7px solid transparent;
-                                                    border-left: 7px solid black;
-                                                }
-                                            </style>
                                             @* <div class="swiper-slide">
                                                 <a asp-controller="Products" asp-action="Product135"><img src="~/img/common/menu-product-135.png" /></a> <br />
                                                 <strong style="font-size: 0.875rem;color: #464646">Ghế nằm 135</strong>
@@ -154,107 +133,110 @@
 <!-- Back to top button -->
 <a id="button"></a>
 
+@section scripts{
+    <script type="text/javascript">
 
-<script type="text/javascript">
-    // $(document).on("click", "#ProfileFunc", function (e) {
-    //     e.preventDefault();
-    //     var getactive = $(this).attr("data-menu-expanded");
-    //     var parentPF = $(this).parents(".nav-profile");
-    //     if (getactive == 'false') {
-    //         getactive = 'true';
-    //         $(this).addClass("active");
-    //         $(this).attr('data-menu-expanded', getactive);
-    //         parentPF.find(".dropdown-profile").removeAttr('hidden');
-    //     } else {
-    //         getactive = 'false';
-    //         $(this).removeClass("active");
-    //         $(this).attr('data-menu-expanded', getactive);
-    //         parentPF.find(".dropdown-profile").attr('hidden', true);
-    //     }
-    //     var prevScrollpos = window.pageYOffset;
-    //     window.onscroll = function () {
-    //         var currentScrollPos = window.pageYOffset;
-    //         if (prevScrollpos > currentScrollPos) {
-    //             document.getElementById("container").style.top = "0";
-    //         } else {
-    //             document.getElementById("container").style.top = "-150px";
-    //         }
-    //         prevScrollpos = currentScrollPos;
-    //     }
-    // });
-
-    $(window).on('load', function () {
-        var swiper2 = new Swiper(".menuProductSwiper", {
-            slidesPerView: 8,
-            loop: true,
-            spaceBetween: 24,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+        $(document).on("click", "#ProfileFunc", function (e) {
+            e.preventDefault();
+            var getactive = $(this).attr("data-menu-expanded");
+            var parentPF = $(this).parents(".nav-profile");
+            if (getactive == 'false') {
+                getactive = 'true';
+                $(this).addClass("active");
+                $(this).attr('data-menu-expanded', getactive);
+                parentPF.find(".dropdown-profile").removeAttr('hidden');
+            } else {
+                getactive = 'false';
+                $(this).removeClass("active");
+                $(this).attr('data-menu-expanded', getactive);
+                parentPF.find(".dropdown-profile").attr('hidden', true);
+            }
+            /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+            var prevScrollpos = window.pageYOffset;
+            window.onscroll = function () {
+                var currentScrollPos = window.pageYOffset;
+                if (prevScrollpos > currentScrollPos) {
+                    document.getElementById("container").style.top = "0";
+                } else {
+                    document.getElementById("container").style.top = "-150px";
+                }
+                prevScrollpos = currentScrollPos;
             }
         });
-    });
 
-    var btn = $('#button');
-
-    $(window).scroll(function () {
-        if ($(window).scrollTop() > 300) {
-            btn.addClass('show');
-        } else {
-            btn.removeClass('show');
-        }
-    });
-
-    btn.on('click', function (e) {
-        e.preventDefault();
-        $('html, body').animate({ scrollTop: 0 }, '300');
-    });
-
-    function redirectToWithData(url, data) {
-        // Create query parameters obj data
-        var queryParams = $.param(data);
-
-        // Handle string query parameters in URL
-        var redirectUrl = queryParams ? url + "?" + queryParams : url;
-
-        // Redirect to Url
-        window.location.href = redirectUrl;
-    }
-    
-    $.ajax({
-        url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Category/FilterCategories',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            // Handle call API Categories
-            $.each(data.data.items, function (idx, item) {
-                if (item.parentId == 24) {
-                    var productCategories = $(`<div class="swiper-slide">
-                                                    <div id="categories-`+ item.id + `">` + item.content + `</div>
-                                                    <strong style="font-size: 0.875rem;color: #464646">`+ item.name + `</strong>
-                                                </div>`);
-                    $("#menuProductBestSeller").append(productCategories);
-                    
-
-                    //const _url = $(location).attr('href');
-                    // Handle seen details
-                    //$('#categories-' + item.id).attr('href', _url.split('/').slice(0, 3).join('/') + '/Products/ProductDetail/' + _tmp);
-
-                    // Handle buy now
-                    $("#categories-" + item.id).click(function () {
-                        var _param = {
-                            categoryId: item.id,
-                        };
-                        redirectToWithData("/Products/ProductDetail", _param);
-                    });
+        $(window).on('load', function () {
+            var swiper2 = new Swiper(".menuProductSwiper", {
+                slidesPerView: 8,
+                loop: true,
+                spaceBetween: 24,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
                 }
             });
-        },
-        error: function (error) {
-            //handle show error
-            console.error('Error:', error);
-        }
-    });
+        });
 
-</script>
+        var btn = $('#button');
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 300) {
+                btn.addClass('show');
+            } else {
+                btn.removeClass('show');
+            }
+        });
+
+        btn.on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, '300');
+        });
+
+        function redirectToWithData(url, data) {
+            // Create query parameters obj data
+            var queryParams = $.param(data);
+
+            // Handle string query parameters in URL
+            var redirectUrl = queryParams ? url + "?" + queryParams : url;
+
+            // Redirect to Url
+            window.location.href = redirectUrl;
+        }
+
+        $.ajax({
+            url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Category/FilterCategories',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                // Handle call API Categories
+                $.each(data.data.items, function (idx, item) {
+                    if (item.parentId == 24) {
+                        var productCategories = $(`<div class="swiper-slide">
+                                                            <div id="categories-`+ item.id + `">` + item.content + `</div>
+                                                            <strong style="font-size: 0.875rem;color: #464646">`+ item.name + `</strong>
+                                                        </div>`);
+                        $("#menuProductBestSeller").append(productCategories);
+
+
+                        //const _url = $(location).attr('href');
+                        // Handle seen details
+                        //$('#categories-' + item.id).attr('href', _url.split('/').slice(0, 3).join('/') + '/Products/ProductDetail/' + _tmp);
+
+                        // Handle buy now
+                        $("#categories-" + item.id).click(function () {
+                            var _param = {
+                                categoryId: item.id,
+                            };
+                            redirectToWithData("/Products/ProductDetail", _param);
+                        });
+                    }
+                });
+            },
+            error: function (error) {
+                //handle show error
+                console.error('Error:', error);
+            }
+        });
+
+    </script>
+}
 

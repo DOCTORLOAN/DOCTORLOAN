@@ -17,6 +17,7 @@ public class Order
 
 public class ListItem
 {
+    public int ProductId { get; set; }
     public int ProductItemId { get; set; }
     public string Name { get; set; }
     public string ProductSku { get; set; }
