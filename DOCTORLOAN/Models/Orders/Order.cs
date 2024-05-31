@@ -1,6 +1,4 @@
-﻿using DOCTORLOAN.Models.Products;
-
-namespace DOCTORLOAN.Models.Orders;
+﻿namespace DOCTORLOAN.Models.Orders;
 
 public class Order
 {

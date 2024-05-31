@@ -1,14 +1,11 @@
 ﻿using DOCTORLOAN.Models.VMAuth;
-using DOCTORLOAN.service;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using DOCTORLOAN.Models.Users;
-using DOCTORLOAN.Models.Bookings;
 using Newtonsoft.Json;
 using System.Text;
-using BCrypt.Net;
 
 namespace DOCTORLOAN.Controllers
 {
@@ -20,15 +17,12 @@ namespace DOCTORLOAN.Controllers
 
             if (claimUser.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Home");
-
-
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> LoginPost(Signin modelLogin)
         {
-
             if (modelLogin.UserName == "admindoctorloan" &&
                 modelLogin.Password == "Admin@123"
                 )
@@ -44,7 +38,6 @@ namespace DOCTORLOAN.Controllers
 
                 AuthenticationProperties properties = new AuthenticationProperties()
                 {
-
                     AllowRefresh = true,
                     IsPersistent = modelLogin.KeepLoggedIn
                 };
@@ -54,8 +47,6 @@ namespace DOCTORLOAN.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-
-
 
             ViewData["ValidateMessage"] = "user not found";
             return View();
@@ -95,9 +86,7 @@ namespace DOCTORLOAN.Controllers
                 HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
                 HttpClient httpClient = new HttpClient();
-                /*var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);*/
-                var response = await httpClient.PostAsync("http://localhost:49553/api/user-module/User/create", content);
-                //var response = await httpClient.PostAsync("http://dev-doctorloan-api.giathaidoctorloan.vn/api/user-module/User/create", content);
+                var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
 
                 if (response.IsSuccessStatusCode)
                 {

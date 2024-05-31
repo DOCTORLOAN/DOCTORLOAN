@@ -1,8 +1,6 @@
 ﻿using DOCTORLOAN.Models.Orders;
-using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.IO;
 using System.Text;
 
 namespace DOCTORLOAN.Controllers
