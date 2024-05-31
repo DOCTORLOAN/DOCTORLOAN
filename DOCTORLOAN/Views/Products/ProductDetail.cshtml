@@ -230,7 +230,7 @@
             // Get the value of the parameter categoryId in URL
             if (_categoryId != null) {
                 $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
+                url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
@@ -251,7 +251,7 @@
         // Get the value of the parameter productId in URL
         function getProduct(id) {
             $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + id,
+                url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + id,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -762,7 +762,7 @@
         //handle get Product Best Saller
         function getProductBestSaller() {
             $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=24',
+                url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=24',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -832,7 +832,7 @@
         //Handle get Image Product for id
         function getImgProduct(id) {
             $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + id,
+                url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + id,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {

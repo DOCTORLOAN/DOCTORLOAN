@@ -84,7 +84,7 @@ namespace DOCTORLOAN.Controllers
                 string jsonData = JsonConvert.SerializeObject(data);
                 HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
                 HttpClient httpClient = new HttpClient();
-                var response = await httpClient.PostAsync("https://doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/create", content);
+                var response = await httpClient.PostAsync("https://dev-doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/create", content);
 
                 if (response.IsSuccessStatusCode)
                 {
