@@ -13,9 +13,13 @@
                             @TempData["AlertMessageError"]
                         </div>
                     }
+                   
+                </div>
+                 @if (TempData["AlertMessageError"] != null)
+                {
                     <input type="text" class="form-control" value="@TempData["id"]" id="idProduct" hidden />
                     <input type="text" class="form-control" value="@TempData["quantity"]" id="qProduct" hidden />
-                </div>
+                }
                 <div class="col-lg-7">
                     <div class="cart-wrapper">
                         <div class="title-cart">Thông tin đơn hàng</div>
