@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Payoo Redirect";
+}
+<style>
+    #redirectContent{
+        text-align: center;
+        margin-top: 200px;
+        margin-bottom: 200px;
+    }
+
+    .imgRedirect{
+        width: 20%;
+        display: inline-block;
+    }
+    #btnHome {
+        color:#ff7500; 
+        border:1px solid #013c74; 
+        border-radius:1rem;
+    }
+    #btnHome:hover {
+        color:#fff !important;
+        background-color:#ff7500 !important;
+        border-color:#013c74 !important;
+    }
+</style>
+<section id="redirect" class="container">
+    <div id="redirectContainer" class="row">
+        <div class="col col-md-12 col-sm-12">
+            <div id="redirectContent">
+                <div id="titleStatus"></div>
+                <div>
+                    <span id="iconStatus"></span>
+                    <div id="messStatus"></div>
+                    <div class="mt-3">
+                        <a id="btnHome" target="" class="btn" href="/">QUAY LẠI TRANG CHỦ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="~/libs/jquery/crypto-js.min.js"></script>
+    <script type="text/javascript">
+        //đọc tham số trên url
+        const _checksumKey = "ZTJmMjk1NGU2OTNlODE0MjExZGM3MDM3MmJkNDI5NWU=";
+        var urlParams = new URLSearchParams(window.location.search);
+        var status = urlParams.get('status');
+        var orderNo = urlParams.get('order_no');
+        var checksum = urlParams.get('checksum');
+
+        //function sha512 checksum
+        function sha512(strCheckSumKey, strXML) {
+            var combinedString = strCheckSumKey + strXML;
+            var checksum = CryptoJS.SHA512(combinedString).toString();
+            return checksum;
+        }
+
+        var _checksum = sha512(_checksumKey,'.' + orderNo + '.' + status);
+
+        //kiểm tra checksum
+        if (checksum != undefined || status != undefined || orderNo != undefined) {
+            if (_checksum === checksum) {
+                // xử lý theo status
+                if (status != '1') {
+                    $("#titleStatus").append('<h1 class="display-4 text-danger">ĐƠN HÀNG ĐÃ ĐƯỢC HỦY!</h1>');
+                    $("#iconStatus").append('<img src="../img/icon/erorr-payment.png" class="imgRedirect" alt="icon-error">');
+                    $("#messStatus").append(`<h3 class="text-danger">Đơn hàng:` + orderNo + ` đã bị hủy.</h3>`);
+                } else {
+                    $("#titleStatus").append('<h1 class="display-4 text-success">ĐƠN HÀNG ĐÃ HOÀN THÀNH THANH TOÁN!</h1>');
+                    $("#iconStatus").append('<img src="../img/icon/sucess-payment.png" class="imgRedirect" alt="icon-sucess">');
+                    $("#messStatus").append(`<h3 class="text-success">Đơn hàng:` + orderNo + ` đã được thanh toán, đơn hàng đang được xử lý!</h3>`);
+                }
+            } else {
+                $("#iconStatus").append('<img src="../img/icon/404-notfound.png" class="imgRedirect" alt="icon-404-not-found">');
+            }
+        } else {
+            $("#iconStatus").append('<img src="../img/icon/404-notfound.png" class="imgRedirect" alt="icon-404-not-found">');
+        }
+    </script>
+}

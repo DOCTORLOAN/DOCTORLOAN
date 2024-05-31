@@ -8,12 +8,69 @@
     <link href="~/libs/glightbox/glightbox.min.css" rel="stylesheet" />
     <link href="~/libs/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
     <link href="~/libs/swiperjs/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="~/libs/font-awesome_4.5/css.css" rel="stylesheet" />
+    <link href="~/libs/font-awesome_4.5/font-awesome.min.css" rel="stylesheet" />
     <link href="~/libs/font-awesome_5.15.1/font-awesome_5.15.1_css_all.min.css" rel="stylesheet" />
     <link href="~/css/styles.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-    <script src="~/libs/jquery/jquery-3.7.0.min.js"></script>
-    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
-    <script type='text/javascript'>
+    <link href="~/libs/flatpickr/flatpickr.min.css" rel="stylesheet" />
+    <link href="~/libs/ajax/tailwind.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        @await Html.PartialAsync("/Views/Common/_HeaderPartial.cshtml")
+    </header>
+    <main>
+        @RenderBody()
+
+        @* <div id='codepro-ads-bottom-left-corner'>
+            <div class='exit-codepro-ads-bottom-left-corner'>
+                <a href='javascript:;' onclick='hideitem()'><i class="fas fa-times-circle"></i></a>
+            </div>
+            <a href='https://forms.gle/QE9iFzJN3vcGL9tN6' target='_blank' title='Chia sẻ kiến thức, tư duy sáng tạo!'>
+                <div class='codepro-ads-bottom-left-corner-hover' > 
+                    <div id='codepro-setAds-left'></div>
+                </div>
+            </a>
+        </div> *@
+
+        <div class="zalo-chat-widget" data-oaid="3997762822356581117" data-welcome-message="DOCTORLOAN Rất vui khi được hỗ trợ bạn!" data-autopopup="2" data-width="" data-height=""></div>
+
+        <!-- Messenger Chat plugin Code -->
+        <div id="fb-root"></div>
+
+        <!-- Your Chat plugin code -->
+        <div id="fb-customer-chat" class="fb-customerchat"></div>
+    </main>
+    <footer>
+        @await Html.PartialAsync("/Views/Common/_FooterPartial.cshtml")
+    </footer>
+
+
+    <script>
+        //function hideitem() {
+          //  document.getElementById("codepro-ads-bottom-left-corner").style.display = "none";
+        //}
+
+        //<!--Your SDK code-- >
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "122107555106002865");
+        chatbox.setAttribute("attribution", "biz_inbox");
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v18.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
         msg = document.title;
         msg = msg + ".";
         position = 0;
@@ -26,28 +83,23 @@
         }
         scrolltitle();
     </script>
-</head>
-<body>
-    <header>
-        @await Html.PartialAsync("/Views/Common/_HeaderPartial.cshtml")
-    </header>
-    <main>
-        @RenderBody()
-        <div class="zalo-chat-widget" data-oaid="3997762822356581117" data-welcome-message="DOCTORLOAN Rất vui khi được hỗ trợ bạn!" data-autopopup="2" data-width="" data-height=""></div>
-    </main>
-    <footer>
-        @await Html.PartialAsync("/Views/Common/_FooterPartial.cshtml")
-    </footer>
+    <script src="~/libs/jquery/jquery-3.7.0.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/common.js"></script>
     <script src="~/libs/swiperjs/swiper-bundle.min.js"></script>
-    <script src="~/libs/bootstrap/popper.min.js"></script>
-    <script src="~/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="~/libs/Bootstrap/popper.min.js"></script>
+    <script src="~/libs/Bootstrap/bootstrap.min.js"></script>
     <script src="~/libs/superfish/hoverintent.js"></script>
     <script src="~/libs/superfish/superfish.min.js"></script>
     <script src="~/libs/glightbox/glightbox.min.js"></script>
     <script src="~/libs/owlcarousel/owl.carousel.min.js"></script>
-    <script src="~/js/main.js"></script>
-    <script src="~/js/common.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="~/libs/Bootstrap/bootstrap-datepicker.js"></script>
+    <script src="~/libs/Bootstrap/bootstrap-datepicker.vi.min.js"></script>
+    <script src="~/libs/Bootstrap/bootstrap-datetimepicker.js"></script>
+    <script src="~/libs/flatpickr/flatpickr.js"></script>
+    <script src="~/libs/chart/chart.js"></script>
+    <script src="~/libs/youtube/iframe_api.js"></script>
+    <script src="~/libs/zalo/sdk.js"></script>
     @await RenderSectionAsync("scripts", required: false)
 </body>
 </html>
