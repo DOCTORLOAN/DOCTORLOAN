@@ -387,7 +387,7 @@
                         var productItem = $(`<div data-id="` + item.id + `" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                                                 <div class="product-item" >
                                                     <div class="img-item" >
-                                                    <div id="product-`+ item.id + `"> <img style="width: 200px; height: 200px;" src="` + item.imageUrl + `" /> </div>
+                                                    <div id="product-`+ item.id + `" style="display: ruby-text;"> <img style="width: 200px; height: 200px;" src="` + item.imageUrl + `" /> </div>
                                                     <div class="content-item">
                                                         <h5><span>`+ item.name + `</span><strong>` + ((item.summary != undefined) ? item.summary : '') + `</strong> </h5>
                                                         <div id="price-item-`+ item.id + `" class="price-item">` + item.productItems[0].price + `</div>
@@ -399,8 +399,6 @@
                                             </div>
                                         </div>`);
                         $("#productItems").append(productItem);
-
-                        //Handle get img product
 
                         // Handle format currency vnd
                         $('#price-item-' + item.id).text(parseInt($('#price-item-' + item.id).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
@@ -431,7 +429,6 @@
                             redirectToWithData("/Cart/Payment", data);
                         });
                     });
-
                 },
                 error: function (error) {
                     //handle show error
