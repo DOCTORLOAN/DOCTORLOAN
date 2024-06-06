@@ -190,6 +190,25 @@
             $("#nav-menu-container ul li").eq(4).addClass("menu-active");
         });
 
+        var _sku135 = "LC35LESY";
+        var _sku90 = "SC90DESY";
+        var _sku90T = "SC90TESY";
+        var _sku95 = "SC95VESY";
+        var _skuN85 = "PL85SFOR";
+        var _skuF4 = "NP04SEFY";
+        var _skuF5 = "NP05SEFY";
+        var _skuF6 = "NP06SEFY";
+        var _skuF3 = "BP03CEFY";
+        var _skuF1 = "BP01LEFY";
+        var _skuDT = "SDNLSESY";
+        var _skuGCSS = "NP00OEFY";
+        var _skuGC26 = "NP26SEFY";
+        var _skuGC61 = "NP61SEFY";
+        var _skuGC = "NP00SEFY";
+        var _skuGCNL = "NPAUNEFY";
+        var _skuGCDL = "NPTLSEFY";
+        var _skuGCDX = "NPCROEFY";
+
         $(document).on("click", ".btn-seemore", function () {
             var parentbtn = $(this).parents(".pd-button-overlay");
             parentbtn.hide();
@@ -320,7 +339,7 @@
                                                 </div>`);
                     $("#infoProduct").append(productSwiperMain);
 
-                    setHrefHDSD(data.data.id);
+                    setHrefHDSD(data.data.sku);
                     setHrefShopify(data.data.id);
                     loadAttributes(data.data.productAttributes);
 
@@ -329,24 +348,6 @@
 
                     var imgProduct;
                     var imgThumb = "";
-                    var _sku135 = "LC35LESY";
-                    var _sku90 = "SC90DESY";
-                    var _sku90T = "SC90TESY";
-                    var _sku95 = "SC95VESY";
-                    var _skuN85 = "PL85SFOR";
-                    var _skuF4 = "NP04SEFY";
-                    var _skuF5 = "NP05SEFY";
-                    var _skuF6 = "NP06SEFY";
-                    var _skuF3 = "BP03CEFY";
-                    var _skuF1 = "BP01LEFY";
-                    var _skuDT = "SDNLSESY";
-                    var _skuGCSS = "NP00OEFY";
-                    var _skuGC26 = "NP26SEFY";
-                    var _skuGC61 = "NP61SEFY";
-                    var _skuGC = "NP00SEFY";
-                    var _skuGCNL = "NPAUNEFY";
-                    var _skuGCDL = "NPTLSEFY";
-                    var _skuGCDX = "NPCROEFY";
                     
                     if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined) {
                         var _arr = [];
@@ -617,21 +618,19 @@
         //handle pic product to color
         function loadProductForColor(productItem, data) {
             var _arr = [];
-            if (data != undefined) {
-                var _codeColor;
+            var _codeColor;
 
-                $.each(data.productItems, function (idx, item) {
-                    if (item.name == productItem) {
-                        _codeColor = item.sku;
-                    }
-                });
+            $.each(data.productItems, function (idx, item) {
+                if (item.name == productItem) {
+                    _codeColor = item.sku;
+                }
+            });
 
-                $.each(data.productMedias, function (idx, item) {
-                    if (item.itemCode == _codeColor) {
-                        _arr.push(item);
-                    }
-                });
-            }
+            $.each(data.productMedias, function (idx, item) {
+                if (item.itemCode == _codeColor) {
+                    _arr.push(item);
+                }
+            });
             
             if (_arr[0] != undefined) {
                 $.each(_arr, function (_idx, _item) {
@@ -645,56 +644,65 @@
         }
 
         //handle add href link HDSD
-        function setHrefHDSD(id) {
+        function setHrefHDSD(sku) {
             var _tmp = "";
-            switch (id) {
-                case 21:
+            switch (sku) {
+                case _sku135:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
                             <span><strong>Hướng dẫn lắp ráp </strong> <br /> 
                             <a class="btn-hdsd" href = "/img/products/135/HDSD-135.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
                     break;
-                case 22:
+                case _sku90:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
                             <span><strong>Hướng dẫn lắp ráp </strong> <br />
                             <a class="btn-hdsd" href = "/img/products/90D/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
                     break;
-                case 23:
+                case _sku90T:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
                             <span><strong>Hướng dẫn lắp ráp </strong> <br />
                             <a class="btn-hdsd" href = "/img/products/90M/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
                     break;
-                case 24:
+                case _sku95:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
                             <span><strong>Hướng dẫn lắp ráp </strong> <br />
                             <a class="btn-hdsd" href = "/img/products/95V/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
                     break;
-                case 25:
+                case _skuN85:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
                             <span><strong>Hướng dẫn lắp ráp </strong> <br />
                             <a class="btn-hdsd" href = "/img/products/N85/HDSD-N85.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
                     break;
-                case 27:
+                case _skuGCSS:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                                    <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                                    <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
                     break;
-                case 28:
+                case _skuGC26:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                                    <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                                    <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
                     break;
-                case 26:
+                case _skuGC:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
                             <span><strong>Hướng dẫn lắp ráp </strong> <br />
                             <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
                     break;
-                case 29:
+                case _skuGC61:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                                    <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                                    <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
                     break;
-                case 30:
+                case _skuF6:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
                             <span><strong>Hướng dẫn lắp ráp </strong> <br />
                             <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
                     break;
-                case 31:
+                case _skuF5:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
                             <span><strong>Hướng dẫn lắp ráp </strong> <br />
                             <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
                     break;
-                case 32:
+                case _skuF4:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
                             <span><strong>Hướng dẫn lắp ráp </strong> <br />
                             <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
@@ -792,7 +800,7 @@
         function getProductBestSaller(idCategories) {
             if (idCategories != undefined && idCategories != null) {
                 $.ajax({
-                url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=24',
+                url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId='+idCategories,
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
