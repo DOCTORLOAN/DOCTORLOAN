@@ -24,7 +24,7 @@
                             <div class="list-menu">
                                 <div class="container">
                                     <div class="swiper menuProductSwiper">
-                                        <div id="menuProductBestSeller" class="swiper-wrapper">
+                                        <div class="swiper-wrapper menu-product-bestseller">
                                             @* <div class="swiper-slide">
                                                 <a asp-controller="Products" asp-action="Product135"><img src="~/img/common/menu-product-135.png" /></a> <br />
                                                 <strong style="font-size: 0.875rem;color: #464646">Ghế nằm 135</strong>
@@ -127,46 +127,46 @@
 
 </header>
 
+<script src="~/libs/jquery/jquery-3.7.0.min.js"></script>
 <link href="~/libs/font-awesome_4.5/font-awesome.min.css" rel="stylesheet">
 <link href="~/libs/font-awesome_4.5/css.css" rel="stylesheet">
 
 <!-- Back to top button -->
 <a id="button"></a>
 
-@section scripts{
-    <script type="text/javascript">
+<script type="text/javascript">
 
-        $(document).on("click", "#ProfileFunc", function (e) {
-            e.preventDefault();
-            var getactive = $(this).attr("data-menu-expanded");
-            var parentPF = $(this).parents(".nav-profile");
-            if (getactive == 'false') {
-                getactive = 'true';
-                $(this).addClass("active");
-                $(this).attr('data-menu-expanded', getactive);
-                parentPF.find(".dropdown-profile").removeAttr('hidden');
-            } else {
-                getactive = 'false';
-                $(this).removeClass("active");
-                $(this).attr('data-menu-expanded', getactive);
-                parentPF.find(".dropdown-profile").attr('hidden', true);
-            }
-            /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
-            var prevScrollpos = window.pageYOffset;
-            window.onscroll = function () {
-                var currentScrollPos = window.pageYOffset;
-                if (prevScrollpos > currentScrollPos) {
-                    document.getElementById("container").style.top = "0";
-                } else {
-                    document.getElementById("container").style.top = "-150px";
-                }
-                prevScrollpos = currentScrollPos;
-            }
-        });
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("container").style.top = "0";
+        } else {
+            document.getElementById("container").style.top = "-150px";
+        }
+        prevScrollpos = currentScrollPos;
+    }
+
+    $(document).on("click", "#ProfileFunc", function (e) {
+        e.preventDefault();
+        var getactive = $(this).attr("data-menu-expanded");
+        var parentPF = $(this).parents(".nav-profile");
+        if (getactive == 'false') {
+            getactive = 'true';
+            $(this).addClass("active");
+            $(this).attr('data-menu-expanded', getactive);
+            parentPF.find(".dropdown-profile").removeAttr('hidden');
+        } else {
+            getactive = 'false';
+            $(this).removeClass("active");
+            $(this).attr('data-menu-expanded', getactive);
+            parentPF.find(".dropdown-profile").attr('hidden', true);
+        }
+    });
 
         $(window).on('load', function () {
             var swiper2 = new Swiper(".menuProductSwiper", {
-                slidesPerView: 8,
+                slidesPerView: 9,
                 loop: true,
                 spaceBetween: 24,
                 navigation: {
@@ -176,67 +176,72 @@
             });
         });
 
-        var btn = $('#button');
+    var btn = $('#button');
 
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > 300) {
-                btn.addClass('show');
-            } else {
-                btn.removeClass('show');
-            }
-        });
-
-        btn.on('click', function (e) {
-            e.preventDefault();
-            $('html, body').animate({ scrollTop: 0 }, '300');
-        });
-
-        function redirectToWithData(url, data) {
-            // Create query parameters obj data
-            var queryParams = $.param(data);
-
-            // Handle string query parameters in URL
-            var redirectUrl = queryParams ? url + "?" + queryParams : url;
-
-            // Redirect to Url
-            window.location.href = redirectUrl;
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
         }
+    });
 
-        $.ajax({
-            url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Category/FilterCategories',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                // Handle call API Categories
+    btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, '300');
+    });
+
+    function redirectToWithData(url, data) {
+        // Create query parameters obj data
+        var queryParams = $.param(data);
+
+        // Handle string query parameters in URL
+        var redirectUrl = queryParams ? url + "?" + queryParams : url;
+
+        // Redirect to Url
+        window.location.href = redirectUrl;
+    }
+
+    $.ajax({
+        url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/category/filtercategories',
+        type: 'get',
+        datatype: 'json',
+        success: function (data) {
+            // handle call api categories
+            var _idbestseller = 0;
+            $.each(data.data.items, function (idx, item) {
+                if (item.slug == "bestsaller-doctorloan") {
+                    _idbestseller = item.id;
+                }
+            });
+
+            if (_idbestseller != 0) {
+
                 $.each(data.data.items, function (idx, item) {
-                    if (item.parentId == 24) {
-                        var productCategories = $(`<div class="swiper-slide">
-                                                            <div id="categories-`+ item.id + `">` + item.content + `</div>
-                                                            <strong style="font-size: 0.875rem;color: #464646">`+ item.name + `</strong>
-                                                        </div>`);
-                        $("#menuProductBestSeller").append(productCategories);
+                    if (item.parentId == _idbestseller) {
 
+                        var productcategories = $(`<div id="categories-` + item.id + `" class="swiper-slide">
+                                                        <div>` + item.content + `</div>
+                                                        <strong style="font-size: 0.75rem;color: #464646">`+ item.name + `</strong>
+                                                    </div>`);
+                        $(".menu-product-bestseller").append(productcategories);
 
-                        //const _url = $(location).attr('href');
-                        // Handle seen details
-                        //$('#categories-' + item.id).attr('href', _url.split('/').slice(0, 3).join('/') + '/Products/ProductDetail/' + _tmp);
-
-                        // Handle buy now
+                        // handle buy now style="width: 20%;"
                         $("#categories-" + item.id).click(function () {
                             var _param = {
-                                categoryId: item.id,
+                                categoryid: item.id,
                             };
-                            redirectToWithData("/Products/ProductDetail", _param);
+                            redirecttowithdata("/products/productdetail", _param);
                         });
                     }
                 });
-            },
-            error: function (error) {
-                //handle show error
-                console.error('Error:', error);
             }
-        });
+        },
+        error: function (error) {
+            //handle show error
+            console.error('error:', error);
+        }
+    });
 
-    </script>
-}
+</script>
 
