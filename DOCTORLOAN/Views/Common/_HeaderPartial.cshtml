@@ -139,11 +139,16 @@
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
         var currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-            document.getElementById("container").style.top = "0";
-        } else {
-            document.getElementById("container").style.top = "-150px";
+        var container = document.getElementById("container");
+
+        if (container) {
+            if (prevScrollpos > currentScrollPos) {
+                container.style.top = "0";
+            } else {
+                container.style.top = "-150px";
+            }
         }
+
         prevScrollpos = currentScrollPos;
     }
 
@@ -166,13 +171,13 @@
 
         $(window).on('load', function () {
             var swiper2 = new Swiper(".menuProductSwiper", {
-                slidesPerView: 9,
+                slidesPerView: 8,
                 loop: true,
-                spaceBetween: 24,
+                spaceBetween: 15,
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
-                }
+                }, 
             });
         });
 
@@ -219,19 +224,19 @@
 
                 $.each(data.data.items, function (idx, item) {
                     if (item.parentId == _idbestseller) {
-
+                        // font - size: 0.75rem;
                         var productcategories = $(`<div id="categories-` + item.id + `" class="swiper-slide">
-                                                        <div>` + item.content + `</div>
-                                                        <strong style="font-size: 0.75rem;color: #464646">`+ item.name + `</strong>
+                                                        <div style="width: 90%;">` + item.content + `</div>
+                                                        <strong style="color: #464646;font-size: x-small;">`+ item.name + `</strong>
                                                     </div>`);
                         $(".menu-product-bestseller").append(productcategories);
 
-                        // handle buy now style="width: 20%;"
                         $("#categories-" + item.id).click(function () {
+
                             var _param = {
-                                categoryid: item.id,
+                                categoryId: item.id,
                             };
-                            redirecttowithdata("/products/productdetail", _param);
+                            redirectToWithData("/products/productdetail", _param);
                         });
                     }
                 });

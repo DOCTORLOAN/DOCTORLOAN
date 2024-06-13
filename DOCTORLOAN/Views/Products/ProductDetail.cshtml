@@ -243,13 +243,12 @@
         var _productId = getParam('productId');
         var _categoryId = getParam('categoryId');
 
-        if (_categoryId == null && _productId == null || _categoryId != undefined && _productId != undefined) {
+        if (_categoryId === undefined && _productId === undefined || _categoryId === null && _productId === null) {
             window.location.href = "/";
         } else {
-            // Get the value of the parameter categoryId in URL
             if (_categoryId != null) {
                 $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
+                    url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
@@ -265,8 +264,6 @@
             }
         }
 
-        var resultAPI;
-
         // Get the value of the parameter productId in URL
         function getProduct(id) {
             $.ajax({
@@ -274,7 +271,6 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    resultAPI = data;
                     var productSwiperMain = $(`<div class="container">
                                                     <div class="row">
                                                         <div class="col-md-6 col-12">
