@@ -243,10 +243,9 @@
         var _productId = getParam('productId');
         var _categoryId = getParam('categoryId');
 
-        if (_categoryId == null && _productId == null || _categoryId != undefined && _productId != undefined) {
+        if (_categoryId === undefined && _productId === undefined || _categoryId === null && _productId === null) {
             window.location.href = "/";
         } else {
-            // Get the value of the parameter categoryId in URL
             if (_categoryId != null) {
                 $.ajax({
                 url: 'https://dev-doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
@@ -265,8 +264,6 @@
             }
         }
 
-        var resultAPI;
-
         // Get the value of the parameter productId in URL
         function getProduct(id) {
             $.ajax({
@@ -274,7 +271,6 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    resultAPI = data;
                     var productSwiperMain = $(`<div class="container">
                                                     <div class="row">
                                                         <div class="col-md-6 col-12">
@@ -320,13 +316,6 @@
                                                                     <div class="policy-item">
                                                                         <img src="/img/icon/p-box-iso.svg" />
                                                                         <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
-                                                                    </div>
-                                                                    <div class="policy-item">
-                                                                        <img src="/img/icon/p-delivery-truck.svg" />
-                                                                        <span>
-                                                                            Free ship toàn quốc <br />
-                                                                            Giao nhanh 4H nội thành HCM
-                                                                        </span>
                                                                     </div>
                                                                     <div id="policyItem" class="policy-item"></div>
                                                                 </div>
