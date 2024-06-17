@@ -329,7 +329,7 @@
                     $("#infoProduct").append(productSwiperMain);
 
                     setHrefHDSD(data.data.sku);
-                    setHrefShopify(data.data.id);
+                    setHrefShopify(data.data.sku);
                     loadAttributes(data.data.productAttributes);
 
                     // Handle format currency vnd
@@ -704,38 +704,47 @@
         }
 
         //handle add href link shopify
-        function setHrefShopify(id) {
+        function setHrefShopify(sku) {
             var _href = "";
-            switch (id) {
-                case 21:
+            var shouldShowButton = true;
+
+            switch (sku) {
+                case _sku135:
                     _href = "https://doctorloanstore.myshopify.com/products/135-doctorloan-chair";
                     break;
-                case 22:
+                case _sku90:
                     _href = "https://doctorloanstore.myshopify.com/products/90-doctorloan-chair";
                     break;
-                case 22:
+                case _sku90T:
                     _href = "https://doctorloanstore.myshopify.com/products/90-doctorloan-thin-chair";
                     break;
-                case 24:
-                    _href = "https://doctorloanstore.myshopify.com/products/gh%E1%BA%BF-ng%E1%BB%93i-doctorloan-95-vip";
+                case _sku95:
+                    _href = "https://doctorloanstore.myshopify.com/products/95v-doctorloan-chair";
                     break;
-                case 25:
-                    _href = "https://doctorloanstore.myshopify.com/products/85-chair";
+                case _skuN85:
+                    _href = "https://doctorloanstore.myshopify.com/products/n85-doctorloan-chair";
                     break;
-                case 27:
+                case _skuF3:
                     _href = "https://doctorloanstore.myshopify.com/products/f3-pillow";
                     break;
-                case 28:
+                case _skuF1:
                     _href = "https://doctorloanstore.myshopify.com/products/f1-pillow";
                     break;
-                case 26:
+                case _skuF4:
                     _href = "https://doctorloanstore.myshopify.com/products/f4-pillow";
                     break;
-                case 29:
-                    _href = "https://doctorloanstore.myshopify.com/products/d%E1%BB%87m-thi%E1%BB%81n-doctorloan";
+                case _skuDT:
+                    _href = "https://doctorloanstore.myshopify.com/products/meditation-cushion-doctorloan";
                     break;
                 default:
-                // code block
+                    shouldShowButton = false;
+                    break;
+            }
+
+            if (shouldShowButton) {
+                $(".shopify-button").show();
+            } else {
+                $(".shopify-button").hide();
             }
 
             return $(".btn-shopify").attr("href", _href);
