@@ -74,7 +74,7 @@ namespace DOCTORLOAN.Controllers
                     TotalPrice = _listItem.TotalPrice,
                     AddressLine = _order.AddressLine,
                     Remarks = _order.Remarks,
-                    PaymentMethod = _order.PaymentMethod,
+                    PaymentMethod = PaymentMethod.Payoo,
                     ListItem  =
                     {
                         item
