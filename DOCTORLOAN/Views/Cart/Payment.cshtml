@@ -209,7 +209,7 @@
         }
 
         //handle pic product to color
-        function loadProductForColor(productItem, data) {
+        function loadProductForColor(productItem, data, element) {
             var _arr = [];
             var _codeColor;
 
@@ -230,7 +230,7 @@
             }
 
             $(".product-color").removeClass("active");
-            $(this).addClass("active");
+            element.addClass("active");
         }
 
         //handle get Product id for color
@@ -398,47 +398,88 @@
                     if (data.data.sku === _skuN85) {
                         $("#paymentItemColor").append(`<label>.Màu sắc</label>
                                                         <div class="ipr-color">
-                                                            <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.name + `-S/YL" title="Màu vàng"></a>
-                                                            <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.name + `-S/OR" title="Màu cam"></a>
-                                                            <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.name + `-S/RE" title="Màu đỏ"></a>
-                                                            <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.name + `-S/GE" title="Màu xám"></a>
-                                                            <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.name + `-S/GR" title="Màu xanh lá"></a>
-                                                            <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.name + `-S/BL" title="Màu xanh dương"></a>
+                                                            <a href="javascript:void(0)" class="product-color yellow active" data-color="/YL" title="Màu vàng"></a>
+                                                            <a href="javascript:void(0)" class="product-color orange" data-color="/OR" title="Màu cam"></a>
+                                                            <a href="javascript:void(0)" class="product-color red" data-color="/RE" title="Màu đỏ"></a>
+                                                            <a href="javascript:void(0)" class="product-color gray" data-color="/GE" title="Màu xám"></a>
+                                                            <a href="javascript:void(0)" class="product-color green" data-color="/GR" title="Màu xanh lá"></a>
+                                                            <a href="javascript:void(0)" class="product-color blue" data-color="/BL" title="Màu xanh dương"></a>
                                                         </div>`);
                         $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
                                                     <div class="form-check">
-                                                        <input class="form-check-input product-option option-n85" type="radio" name="flexRadioOption" data-option="`+ data.data.name + `-L/YL" value="Chân dài" id="n85-L">
+                                                        <input class="form-check-input product-option option-n85" type="radio" name="flexRadioOption" data-option="-L" value="Chân dài" id="n85-L">
                                                         <label class="form-check-label" for="n85-L">Chân dài</label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input product-option option-n85" type="radio" name="flexRadioOption" data-option="`+ data.data.name + `-S/YL" value="Chân ngắn" id="n85-S" checked>
+                                                        <input class="form-check-input product-option option-n85" type="radio" name="flexRadioOption" data-option="-S" value="Chân ngắn" id="n85-S" checked>
                                                         <label class="form-check-label" for="n85-S">Chân ngắn</label>
                                                     </div>`);
                     }
                 }
 
-                // Handle click event for color
-                $('.product-color').click(function () {
-                    var getcolor = $(this).attr("data-color");
-                    loadProductForColor(getcolor, data.data);
-                });
-
-                var _flagSku;
-                // Handle click event for option
-                $('.product-option').click(function () {
-                    var option = $(this).attr("data-option");
-                    $.each(data.data.productItems, function (idx, item) {
-                        if (item.name === option) {
-                            _flagSku = item.sku;
-                        }
+                if (data.data.sku != _skuN85) {
+                    // Handle click event for color
+                    $('.product-color').click(function () {
+                        var getcolor = $(this).attr("data-color");
+                        loadProductForColor(getcolor, data.data);
                     });
-                    getOptionProductForOption(option, data.data);
-                });
 
-                $('#quantityPayment-' + productId).change(function () {
-                    $('.product-option').trigger("click");
-                    calculatePrice(data.data.sku, $('#quantityPayment-' + productId).val(), data.data);
-                });
+                    var _flagSku;
+                    // Handle click event for option
+                    $('.product-option').click(function () {
+                        var option = $(this).attr("data-option");
+                        $.each(data.data.productItems, function (idx, item) {
+                            if (item.name === option) {
+                                _flagSku = item.sku;
+                            }
+                        });
+                        getOptionProductForOption(option, data.data);
+                    });
+
+                    if (data.data.sku != _skuF1 || data.data.sku != _skuDT || data.data.sku != _skuF4) {
+                        $('#quantityPayment-' + productId).change(function () {
+                            calculatePrice(data.data.sku, $('#quantityPayment-' + productId).val(), data.data);
+                        });
+                    } else {
+                        $('#quantityPayment-' + productId).change(function () {
+                            $('.product-option').trigger("click");
+                            calculatePrice(data.data.sku, $('#quantityPayment-' + productId).val(), data.data);
+                        });
+                    }
+                } else {
+                    // Handle click event for color
+                    $('.product-color').click(function () {
+                        var _option = $('.product-option:checked').attr("data-option");
+                        var getcolor = data.data.name + _option + $(this).attr("data-color");
+                        loadProductForColor(getcolor, data.data, $(this));
+                    });
+
+                    var _flagSku;
+                    // Handle click event for option
+                    $('.product-option').click(function () {
+                        var _color = $('.product-color.active').attr("data-color");
+                        var option = data.data.name + $(this).attr("data-option") + _color;
+                        $.each(data.data.productItems, function (idx, item) {
+                            if (item.name === option) {
+                                _flagSku = item.sku;
+                            }
+                        });
+                        getOptionProductForOption(option, data.data);
+                    });
+                    // Handle change quantity
+                    var _flagSkus;
+                    $('#quantityPayment-' + productId).change(function () {
+                        var _option = $('.product-option:checked').attr("data-option");
+                        var _color = $('.product-color.active').attr("data-color");
+                        var _sku = data.data.name + _option + _color;
+                        $.each(data.data.productItems, function (idx, item) {
+                            if (item.sku === _sku) {
+                                _flagSkus = item.sku;
+                            }
+                        });
+                        calculatePrice(_flagSku, $('#quantityPayment-' + productId).val(), data.data);
+                    });
+                }
             },
             error: function (error) {
                 //handle show error
