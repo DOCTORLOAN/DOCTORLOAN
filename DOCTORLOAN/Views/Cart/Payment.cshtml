@@ -407,11 +407,11 @@
                                                         </div>`);
                         $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
                                                     <div class="form-check">
-                                                        <input class="form-check-input product-option option-n85" type="radio" name="flexRadioOption" data-option="-CHAN DAI" value="Chân dài" id="n85-L">
-                                                            <label class="form-check-label" for="n85-L">Chân dài</label>
-                                                        </div>
+                                                        <input class="form-check-input product-option option-n85" type="radio" name="flexRadioOption" data-option="`+ data.data.name + `-L/YL" value="Chân dài" id="n85-L">
+                                                        <label class="form-check-label" for="n85-L">Chân dài</label>
+                                                    </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input product-option option-n85" type="radio" name="flexRadioOption" data-option="-CHAN NGAN" value="Chân ngắn" id="n85-S" checked>
+                                                        <input class="form-check-input product-option option-n85" type="radio" name="flexRadioOption" data-option="`+ data.data.name + `-S/YL" value="Chân ngắn" id="n85-S" checked>
                                                         <label class="form-check-label" for="n85-S">Chân ngắn</label>
                                                     </div>`);
                     }
@@ -435,18 +435,10 @@
                     getOptionProductForOption(option, data.data);
                 });
 
-                if (data.data.sku != _skuN85) {
-                    if (data.data.sku != _skuF1 || data.data.sku != _skuDT || data.data.sku != _skuF4) {
-                        $('#quantityPayment-' + productId).change(function () {
-                            calculatePrice(data.data.sku, $('#quantityPayment-' + productId).val(), data.data);
-                        });
-                    } else {
-                        $('#quantityPayment-' + productId).change(function () {
-                            $('.product-option').trigger("click");
-                            calculatePrice(data.data.sku, $('#quantityPayment-' + productId).val(), data.data);
-                        });
-                    }
-                }
+                $('#quantityPayment-' + productId).change(function () {
+                    $('.product-option').trigger("click");
+                    calculatePrice(data.data.sku, $('#quantityPayment-' + productId).val(), data.data);
+                });
             },
             error: function (error) {
                 //handle show error
