@@ -190,6 +190,7 @@
 
         var _sku135 = "LC35LESY";
         var _sku90 = "SC90DESY";
+        var _sku90BL = "SC90OEBL";
         var _sku90T = "SC90TESY";
         var _sku95 = "SC95VESY";
         var _skuN85 = "PL85SFOR";
@@ -284,7 +285,7 @@
                                                                 </div>
                                                                 <div class="col-md-6 col-12">
                                                                     <div class="info-product-right">
-                                                                        <div class="ipr-name">`+ data.data.name + `</div>
+                                                                        <div class="ipr-name">`+ data.data.name+ `</div>
                                                                         <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
                                                                         <div id="iprItemColor" class="ipr-item"></div>
                                                                         <div id="iprItemOption" class="ipr-item"></div>
@@ -666,6 +667,33 @@
                     $("#policyItem2").append(_tmp2);
                     break;
                 case _sku90:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                                    <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                                    <a class="btn-hdsd" href = "/img/products/90D/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                                        <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1MS6-VMJHfguJbhhuh5g8tzPyBzUB11Tn/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Ghế ngồi sáng chế DOCTORLOAN
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
+                    break;
+                case _sku90BL:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
                                     <span><strong>Hướng dẫn lắp ráp </strong> <br />
                                     <a class="btn-hdsd" href = "/img/products/90D/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
