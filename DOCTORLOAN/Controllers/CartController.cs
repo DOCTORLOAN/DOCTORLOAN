@@ -1,27 +1,12 @@
-﻿using DOCTORLOAN.Helpers;
-using DOCTORLOAN.Models.Products;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Session;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using DOCTORLOAN.Models.Orders;
 using System.Text;
-using DOCTORLOAN.Models.Users;
-using Microsoft.AspNetCore.Http;
 
 namespace DOCTORLOAN.Controllers
 {
     public class CartController : Controller
     {
-        private readonly IHttpContextAccessor _contx;
-
-        public CartController(IHttpContextAccessor httpContextAccessor)
-        {
-            _contx = httpContextAccessor;
-        }
-
         public IActionResult Index()
         {
             return View();
@@ -37,12 +22,10 @@ namespace DOCTORLOAN.Controllers
             return View();
         }
 
-        public async Task<IActionResult> PaymentPost(HttpRequest request, Order _order, ListItem _listItem)
+        public async Task<IActionResult> PaymentPost(Order _order, ListItem _listItem)
         {
             try
             {
-                string user = HttpContext.Session.GetString("Payment");
-                var tmp = request;
                 ListItem item = new ListItem
                 {
                     ProductItemId = _listItem.ProductItemId,

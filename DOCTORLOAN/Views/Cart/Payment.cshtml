@@ -7,10 +7,14 @@
     <div class="container">
         <div class="row">
             <form method="post" asp-controller="Cart" asp-action="PaymentPost" class="row needs-validation" novalidate>
-                @if (TempData["AlertMessageError"] != null)
-                {
-                    <input type="text" class="form-control" value="@TempData["AlertMessageError"]" id="alertMessageError" hidden/>
-                }
+                <div id="alert" class="alert alert-error">
+                    @if (TempData["AlertMessageError"] != null)
+                    {
+                        <div class="alert alert-warning">
+                            @TempData["AlertMessageError"]
+                        </div>
+                    }
+                </div>
                 <div class="col-lg-7">
                     <div class="cart-wrapper">
                         <div class="title-cart">Thông tin đơn hàng</div>
@@ -70,18 +74,18 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
 
                             <div class="mb-3">
                                 <label for="addressDetaills" class="req">Địa chỉ cụ thể</label>
-                                <input type="text" class="form-control" placeholder="Số nhà - Tên Đường" id="addressDetaills" onfocusout="myFunction()" required  />
+                                <input type="text" class="form-control" placeholder="Số nhà - Tên Đường" id="addressDetaills" onfocusout="myFunction()" required />
                                 <div class="invalid-feedback">
                                     Vui lòng nhập địa chỉ cụ thể:
-                                    <br/> - (Số nhà  - Tên Đường)
-                                    <br/> - Tên địa danh (Thôn - Ấp - Làng,...)
+                                    <br /> - (Số nhà  - Tên Đường)
+                                    <br /> - Tên địa danh (Thôn - Ấp - Làng,...)
                                 </div>
                             </div>
-                            
+
                             <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="AddressLine" id="addressLine" hidden />
 
                             <div class="mb-3">
@@ -121,25 +125,7 @@
                     <div class="cart-wrapper">
                         <div class="title-cart">Đơn hàng</div>
                         <hr class="hr-payment" />
-                        <div>
-                            <div id="cartWrapperItem"></div>
-                            <div class="total-cart">
-                                <div class="total-info">
-                                    <span>Tạm tính</span>
-                                    <span id="cartSubtotal" class="totals-value"></span>
-                                </div>
-                                <div class="total-info">
-                                    <span>Phí vận chuyển</span>
-                                    <span id="cartShipping" class="totals-value">Miễn phí toàn quốc</span>
-                                    <input type="text" name="priceDiscount" id="inputCartShipping" value="" class="form-control" hidden />
-                                </div>
-                                <div class="total-info totals-item-total">
-                                    <span>Tổng cộng</span>
-                                    <span id="cartTotal" class="totals-value"></span>
-                                    <input type="text" name="TotalPrice" id="inputCartTotal" value="" class="form-control" hidden />
-                                </div>
-                            </div>
-                        </div>
+                        <div id="cartWrapperItem"></div>
                     </div>
                     <div class="text-center">
                         <button class="btn checkout" type="submit">Đặt hàng</button>
@@ -152,9 +138,10 @@
 </section>
 
 @section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script type="text/javascript">
-        var fadeTime = 50;
-
         (() => {
             'use strict'
             const forms = document.querySelectorAll('.needs-validation')
@@ -170,7 +157,7 @@
         })();
 
         const _host = "https://provinces.open-api.vn/api/";
-        
+
         //Function call api city
         var callAPI = (api) => {
             return axios.get(api)
@@ -234,7 +221,7 @@
         }
 
         function myFunction() {
-            return $("#addressLine").val($("#addressLine").val() + " - " + $("#addressDetaills").val()) ;
+            return $("#addressLine").val($("#addressLine").val() + " - " + $("#addressDetaills").val());
         }
 
         //Function select method payment
@@ -257,23 +244,6 @@
             e.text(parseInt(e.text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
         }
 
-        //Handel change quantity element
-        function changeQuantity(e, data) {
-            e.change(function () {
-                var _price = data.data.price;
-                var _subTotal = data.data.price * e.val();
-                var _currency = Number($("#cartSubtotal").text().replace(/[^0-9,-]/g, ''));
-                console.log((_currency-_price));
-                $("#cartSubtotal").html(_subTotal);
-
-                formartVND($("#cartSubtotal"));
-
-                var _total = _subTotal + data.data.priceDiscount;
-                $("#cartTotal").html(_total);
-                formartVND($('#cartTotal'));
-            });
-        }
-
         //Function get parameter in url
         function getParameterByName(name, url) {
             if (!url) url = window.location.href;
@@ -288,122 +258,55 @@
         // Get the value of the parameter in URL
         var paramIdVal = getParameterByName('id');
         var paramQuantityVal = getParameterByName('quantity');
-        var _payment = JSON.parse(sessionStorage.getItem('Payment'));
-
-        //Handel get option for id
-        function getOptionProduct(_paramIdVal, _optionId) {
-            $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + _paramIdVal,
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    var _itemOption = [];
-                    var ip;
-                    if (data.data.productItems != null) {
-                        $.each(data.data.productItems, function (idx, items) {
-                            if (_optionId != undefined) {
-                                console.log("_optionId: ", _optionId);
-                                ip = `<input type="text" name="ProductItemId" value="`+items.name+`" id="productItem-`+data.data.id+`" class="form-control">`;
-                            } else {
-                                    _itemOption.push(`<option value="` + items.id + `">` + items.name + `</option>`);
-                            }
-                        });
-                        if (_itemOption != "") {
-                            $("#ppDesc-" + _paramIdVal).append(`<div class="ipr-item form-group">
-                                                                    <label for="optionProduct">Loại ghế</label>
-                                                                    <select class="form-control" name="ProductItemId" id="optionProduct">
-                                                                        `+ _itemOption + `
-                                                                    </select>
-                                                                </div>`);
-                        }
-                    }
-                },
-                error: function (error) {
-                    //handle show error
-                    console.error('Error:', error);
-                }
-            });
-        }
-
-        /* Recalculate cart */
-        function recalculatePayment() {
-            var subtotal = 0;
-
-            /* Sum up row totals */
-            $('.pp-item').each(function () {
-                var _currency = $(this).children('.product-price').text();
-                subtotal += Number(_currency.replace(/[^0-9,-]/g, ''));
-            });
-
-            /* Calculate totals */
-            //var shipping = (subtotal > 0 ? shippingRate : 0);
-            var shipping = 0;
-            var total = subtotal + shipping;
-
-
-            /* Update totals display */
-            $('.totals-value').fadeOut(fadeTime, function () {
-                $('#cartSubtotal').html(subtotal.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-                //$('#cart-shipping').html(shipping.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-                $('#cartTotal').html(total.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-                $('#inputCartTotal').val(total);
-                if (total == 0) {
-                    $('.checkout').fadeOut(fadeTime);
-                } else {
-                    $('.checkout').fadeIn(fadeTime);
-                }
-                $('.totals-value').fadeIn(fadeTime);
-            });
-        }
 
         var resultAPI;
         // Get the value of the parameter productId in URL
-        function getProduct(_paramIdVal, _quantity) {
+        function getProduct() {
             $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + _paramIdVal,
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/GetProduct?id=' + paramIdVal,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
                     resultAPI = data;
                     // Handle call API Products
-                    var productItem = $(`<div id="listProductPayment-`+data.data.id+`" data-id="` + data.data.id + `" class="list-product-payment">
-                                            <div class="pp-item">
-                                                <div class="pp-info">
-                                                    <img id="imgProductPayment" src="`+ data.data.productMedias[0].mediaUrl + `" />
-                                                    <div id="pp-desc" class="pp-desc">
-                                                    <strong>`+ data.data.name + `</strong>
-                                                    <input type="text" name="Name" value="`+ data.data.name + `" class="form-control" hidden />
-                                                    <div style="display:left;" >
-                                                        <div id="quantity">
-                                                            <label for="quantityPayment">Số Lượng</label>
-                                                            <input min="1" type="number" name="Quantity" value="`+ paramQuantityVal + `" id="quantityPayment" class="form-control" style="width: 80px !important" />
+                    var productItem = $(`<div data-id="` + data.data.id + `" class="list-product-payment">
+                                                    <div class="pp-item">
+                                                        <div class="pp-info">
+                                                            <img id="imgProductPayment" src="`+ data.data.productMedias[0].mediaUrl + `" />
+                                                            <div id="pp-desc" class="pp-desc">
+                                                            <strong>`+ data.data.name + `</strong>
+                                                            <input type="text" name="Name" value="`+ data.data.name + `" class="form-control" hidden />
+                                                            <div style="display:left;" >
+                                                                <div id="quantity">
+                                                                    <label for="quantityPayment">Số Lượng</label>
+                                                                    <input min="1" type="number" name="Quantity" value="`+ paramQuantityVal + `" id="quantityPayment" class="form-control" style="width: 80px !important" />
+                                                                </div>
+                                                                <div id="paymentItemColor" class="ipr-color"></div>
+                                                                <div id="iprItemOption" class="ipr-item">
+                                                                    <input type="number" name="ProductItemId" value="" id="productItemId-`+ data.data.id + `" hidden />
+                                                                </div>
+                                                            </div>
+                                                            </div>
                                                         </div>
-                                                        <div id="paymentItemColor" class="ipr-color"></div>
-                                                        <div id="iprItemOption" class="ipr-item">
-                                                            <input type="number" name="ProductItemId" value="" id="productItemId-`+ data.data.id + `" hidden />
-                                                        </div>
-                                                    </div>
+                                                        <div id="iprPrice">`+ data.data.price + `</div>
+                                                        <input type="text" name="Price" value="`+ data.data.price + `" class="form-control" hidden />
                                                     </div>
                                                 </div>
-                                                <div id="iprPrice">`+ data.data.price + `</div>
-                                                <input type="text" name="Price" value="`+ data.data.price + `" class="form-control" hidden />
-                                            </div>
-                                        </div>
-                                        <div class="total-cart">
-                                            <div class="total-info">
-                                                <span>Tạm tính</span>
-                                                <span id="cart-subtotal">`+ data.data.price + `</span>
-                                            </div>
-                                            <div class="total-info">
-                                                <span>Phí vận chuyển</span>
-                                                <span id="cart-shipping">Miễn phí toàn quốc</span>
-                                            </div>
-                                            <div class="total-info totals-item-total">
-                                                <span>Tổng cộng</span>
-                                                <span id="cart-total">`+ (data.data.price + data.data.priceDiscount) + `</span>
-                                                <input type="text" name="TotalPrice" value="`+ (data.data.price + data.data.priceDiscount) + `" class="form-control" hidden />
-                                            </div>
-                                        </div>`);
+                                                <div class="total-cart">
+                                                    <div class="total-info">
+                                                        <span>Tạm tính</span>
+                                                        <span id="cart-subtotal">`+ data.data.price + `</span>
+                                                    </div>
+                                                    <div class="total-info">
+                                                        <span>Phí vận chuyển</span>
+                                                        <span id="cart-shipping">Miễn phí toàn quốc</span>
+                                                    </div>
+                                                    <div class="total-info totals-item-total">
+                                                        <span>Tổng cộng</span>
+                                                        <span id="cart-total">`+ (data.data.price + data.data.priceDiscount) + `</span>
+                                                        <input type="text" name="TotalPrice" value="`+ (data.data.price + data.data.priceDiscount) + `" class="form-control" hidden />
+                                                    </div>
+                                                </div>`);
                     $("#cartWrapperItem").append(productItem);
 
                     formartVND($('#iprPrice'));
@@ -451,14 +354,14 @@
                         var _arr = [];
                         if (flagDT != false) {
                             $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input option-dt" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Size lớn" id="dtL" checked>
-                                                            <label class="form-check-label" for="dtL">Lớn</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input option-dt" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Size nhỏ" id="dtS">
-                                                            <label class="form-check-label" for="dtS">Nhỏ</label>
-                                                        </div>`);
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input option-dt" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Size lớn" id="dtL" checked>
+                                                                    <label class="form-check-label" for="dtL">Lớn</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input option-dt" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Size nhỏ" id="dtS">
+                                                                    <label class="form-check-label" for="dtS">Nhỏ</label>
+                                                                </div>`);
                             $('.option-dt').click(function () {
                                 if ($('#dtL').is(':checked')) {
                                     var option = $(this).attr("data-option");
@@ -475,14 +378,14 @@
 
                         if (flagF4 != false) {
                             $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
-                                                        <div class="form-check">
-                                                                        <input class="form-check-input option-f4" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Đầu 12cm" id="f4L">
-                                                            <label class="form-check-label" for="f4L">12 cm</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                                <input class="form-check-input option-f4" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Đầu 9cm" id="f4S" checked>
-                                                            <label class="form-check-label" for="f4S">9 cm</label>
-                                                        </div>`);
+                                                                <div class="form-check">
+                                                                                <input class="form-check-input option-f4" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Đầu 12cm" id="f4L">
+                                                                    <label class="form-check-label" for="f4L">12 cm</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                        <input class="form-check-input option-f4" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Đầu 9cm" id="f4S" checked>
+                                                                    <label class="form-check-label" for="f4S">9 cm</label>
+                                                                </div>`);
                             $('.option-f4').click(function () {
                                 if ($('#f4L').is(':checked')) {
                                     var option = $(this).attr("data-option");
@@ -499,14 +402,14 @@
 
                         if (flagF1 != false) {
                             $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
-                                                        <div class="form-check">
-                                                                <input class="form-check-input option-f1" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Dài" id="f1L" checked>
-                                                            <label class="form-check-label" for="f1L">Dài</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                                <input class="form-check-input option-f1" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Ngắn" id="f1S">
-                                                            <label class="form-check-label" for="f1S">Ngắn</label>
-                                                        </div>`);
+                                                                <div class="form-check">
+                                                                        <input class="form-check-input option-f1" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Dài" id="f1L" checked>
+                                                                    <label class="form-check-label" for="f1L">Dài</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                        <input class="form-check-input option-f1" type="radio" name="flexRadioOption" data-option="`+ data.data.name + ` - Ngắn" id="f1S">
+                                                                    <label class="form-check-label" for="f1S">Ngắn</label>
+                                                                </div>`);
                             $('.option-f1').click(function () {
                                 if ($('#f1L').is(':checked')) {
                                     var option = $(this).attr("data-option");
@@ -524,31 +427,31 @@
                         if (flag != true && flagF4 != true && flagF1 != true && flagDT != true) {
                             if (flagN85 != true) {
                                 $("#paymentItemColor").append(`<label>.Màu sắc</label>
-                                                            <div class="ipr-color">
-                                                                <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.sku + `-MAU NAU" title="Màu nâu"></a>
-                                                                <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.sku + `-MAU NHO" title="Màu nho"></a>
-                                                                <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.sku + `-MAU DEN" title="Màu đen"></a>
-                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-MAU XANH LA" title="Màu xanh"></a>
-                                                            </div>`);
+                                                                    <div class="ipr-color">
+                                                                        <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.sku + `-MAU NAU" title="Màu nâu"></a>
+                                                                        <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.sku + `-MAU NHO" title="Màu nho"></a>
+                                                                        <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.sku + `-MAU DEN" title="Màu đen"></a>
+                                                                        <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-MAU XANH LA" title="Màu xanh"></a>
+                                                                    </div>`);
                             } else {
                                 $("#paymentItemColor").append(`<label>.Màu sắc</label>
-                                                            <div class="ipr-color">
-                                                                <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.sku + `-MAU VANG-CHAN NGAN" title="Màu vàng"></a>
-                                                                <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.sku + `-MAU CAM-CHAN NGAN" title="Màu cam"></a>
-                                                                <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.sku + `-MAU DO-CHAN NGAN" title="Màu đỏ"></a>
-                                                                <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.sku + `-MAU XAM-CHAN NGAN" title="Màu xám"></a>
-                                                                <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-MAU XANH LA-CHAN NGAN" title="Màu xanh lá"></a>
-                                                                <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.sku + `-MAU XANH DUONG-CHAN NGAN" title="Màu xanh dương"></a>
-                                                            </div>`);
+                                                                    <div class="ipr-color">
+                                                                        <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.sku + `-MAU VANG-CHAN NGAN" title="Màu vàng"></a>
+                                                                        <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.sku + `-MAU CAM-CHAN NGAN" title="Màu cam"></a>
+                                                                        <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.sku + `-MAU DO-CHAN NGAN" title="Màu đỏ"></a>
+                                                                        <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.sku + `-MAU XAM-CHAN NGAN" title="Màu xám"></a>
+                                                                        <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-MAU XANH LA-CHAN NGAN" title="Màu xanh lá"></a>
+                                                                        <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.sku + `-MAU XANH DUONG-CHAN NGAN" title="Màu xanh dương"></a>
+                                                                    </div>`);
                                 $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân dài" id="n85-L">
-                                                                <label class="form-check-label" for="n85-L">Chân dài</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân ngắn" id="n85-S" checked>
-                                                                <label class="form-check-label" for="n85-S">Chân ngắn</label>
-                                                            </div>`);
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân dài" id="n85-L">
+                                                                        <label class="form-check-label" for="n85-L">Chân dài</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân ngắn" id="n85-S" checked>
+                                                                        <label class="form-check-label" for="n85-S">Chân ngắn</label>
+                                                                    </div>`);
                                 $('.option-n85').click(function () {
                                     if ($('#n85-L').is(':checked')) {
                                         $('#iprPrice').text("1430000");
@@ -581,13 +484,13 @@
                                 $("#imgMainPosition" + (_idx + 1)).attr('src', _item.mediaUrl);
                                 $("#imgThumbPosition" + (_idx + 1)).attr('src',);
                                 imgProduct = `<div class="swiper-slide" >
-                                                    <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + _item.mediaUrl + `" />
-                                                </div>`;
+                                                            <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + _item.mediaUrl + `" />
+                                                        </div>`;
                                 imgThumb = `<div class="swiper-slide">
-                                                <div class="bg-product-thumb">
-                                                    <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + _item.mediaUrl + `" />
-                                                </div>
-                                            </div>`;
+                                                        <div class="bg-product-thumb">
+                                                            <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + _item.mediaUrl + `" />
+                                                        </div>
+                                                    </div>`;
                                 $("#productSwiperMain").append(imgProduct);
                                 $("#productSwiperThumb").append(imgThumb);
                             });
@@ -604,8 +507,12 @@
                         var _subTotal = data.data.price * $('#quantityPayment').val();
                         $("#cart-subtotal").html(_subTotal);
 
-                    changeQuantity($("#quantityPayment-" + data.data.id), resultAPI);
-                    
+                        formartVND($("#cart-subtotal"));
+
+                        var _total = _subTotal + data.data.priceDiscount;
+                        $("#cart-total").html(_total);
+                        formartVND($('#cart-total'));
+                    });
                 },
                 error: function (error) {
                     //handle show error
@@ -666,7 +573,7 @@
             $(".alert").fadeTo(500, 0).slideUp(500, function () {
                 $(this).remove();
             });
-        }
+        }, 3000);
 
     </script>
 }

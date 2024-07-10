@@ -865,15 +865,6 @@
                             redirectToWithData("/Products/ProductDetail", data);
                         });
 
-                        /*
-                        <a id="add-cart-`+ item.id + `" data-id="` + item.id + `" class="icon-cart"> <i class="fas fa-shopping-bag" > </i></a >
-                        // Handle add to cart
-                        $('body').on('click', '.price-item', function () {
-                            const id = $(this).data('id');
-                            alert("say hi!, ", id);
-                        });
-                        */
-
                         // Handle buy now
                         $("#buy-" + item.id).click(function () {
                             var data = {
