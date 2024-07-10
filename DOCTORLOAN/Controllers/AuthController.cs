@@ -23,8 +23,6 @@ namespace DOCTORLOAN.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginPost(Signin modelLogin)
         {
-<<<<<<< HEAD
-=======
             if (modelLogin.UserName == "admindoctorloan" &&
                 modelLogin.Password == "Admin@123"
                 )
@@ -51,12 +49,17 @@ namespace DOCTORLOAN.Controllers
             }
 
             ViewData["ValidateMessage"] = "user not found";
->>>>>>> staging
             return View();
         }
 
         public IActionResult Register()
         {
+            /*ClaimsPrincipal claimUser = HttpContext.User;
+
+            if (claimUser.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");*/
+
+
             return View();
         }
 
@@ -83,7 +86,7 @@ namespace DOCTORLOAN.Controllers
                 HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
                 HttpClient httpClient = new HttpClient();
-                var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
+                var response = await httpClient.PostAsync("https://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
 
                 if (response.IsSuccessStatusCode)
                 {

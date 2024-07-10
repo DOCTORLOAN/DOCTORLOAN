@@ -24,30 +24,6 @@
                             <div class="list-menu">
                                 <div class="container">
                                     <div class="swiper menuProductSwiper">
-<<<<<<< HEAD
-                                        <div id="menuProductBestSeller" class="swiper-wrapper">
-                                            <style>
-                                                .arrow {
-                                                    width: 0;
-                                                    height: 0;
-                                                    display: inline-block;
-                                                    vertical-align: middle;
-                                                    margin-left: 0px;
-                                                }
-
-                                                .arrow-down {
-                                                    border-left: 7px solid transparent;
-                                                    border-right: 7px solid transparent;
-                                                    border-top: 7px solid black;
-                                                }
-
-                                                .arrow-right {
-                                                    border-top: 7px solid transparent;
-                                                    border-bottom: 7px solid transparent;
-                                                    border-left: 7px solid black;
-                                                }
-                                            </style>
-=======
                                         <div class="swiper-wrapper menu-product-bestseller">
                                             @* <div class="swiper-slide">
                                                 <a asp-controller="Products" asp-action="Product135"><img src="~/img/common/menu-product-135.png" /></a> <br />
@@ -81,7 +57,6 @@
                                                 <a asp-controller="Products" asp-action="ProductDT"><img src="~/img/common/menu-product-DT.png" /></a><br />
                                                 <strong style="font-size: 0.875rem;color: #464646";padding-left: 15px">Đệm thiền</strong>
                                             </div> *@
->>>>>>> staging
                                         </div>
                                         <div class="swiper-button-next"></div>
                                         <div class="swiper-button-prev"></div>
@@ -121,19 +96,11 @@
             </a>
             <div class="header-info">
                 <div class="auth-frm">
-<<<<<<< HEAD
-                    <a asp-controller="Cart" asp-action="Index" id="shoppingCart" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> </a>
-                    @* <div class="not-logged">
-                        <a asp-controller="Auth" asp-action="Login" class="btn btn-login">Đăng nhập</a>
-                        <a asp-controller="Auth" asp-action="Register" class="btn btn-register">Đăng ký</a>
-                    </div> *@
-=======
                     @* <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a> *@
                     @* <div class="not-logged"> *@
                     @* <a asp-controller="Auth" asp-action="Login" class="btn btn-login">Đăng nhập</a>
                     <a asp-controller="Auth" asp-action="Register" class="btn btn-register">Đăng ký</a> *@
                     @* </div> *@
->>>>>>> staging
                     @* <div class="nav-profile" style="display: none;">
                         <button id="ProfileFunc" class="profile-icon" data-menu-expanded="false"><img src="~/img/home/avatar-3.png" /></button>
                         <div class="dropdown-profile" hidden>
@@ -168,11 +135,6 @@
 <a id="button"></a>
 
 <script type="text/javascript">
-<<<<<<< HEAD
-    var _quantityProduct = 0;
-    // Read sessionStorage
-    var _CartProduct = JSON.parse(sessionStorage.getItem('CartProduct'));
-=======
 
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
@@ -189,7 +151,6 @@
 
         prevScrollpos = currentScrollPos;
     }
->>>>>>> staging
 
     $(document).on("click", "#ProfileFunc", function (e) {
         e.preventDefault();
@@ -246,18 +207,6 @@
         window.location.href = redirectUrl;
     }
 
-<<<<<<< HEAD
-    //Handle get quantity Product
-    if (_CartProduct[0] != undefined) {
-        $.each(_CartProduct, function (idx, item) {
-            _quantityProduct = _quantityProduct + item.quantity;
-        });
-        $("#shoppingCart").append(`<span>`+_quantityProduct+`</span>`);
-    }
-    
-    
-=======
->>>>>>> staging
     $.ajax({
         url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/category/filtercategories',
         type: 'get',
@@ -300,4 +249,3 @@
     });
 
 </script>
-
