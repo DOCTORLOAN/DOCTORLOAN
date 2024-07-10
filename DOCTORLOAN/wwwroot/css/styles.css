@@ -458,6 +458,9 @@ button:focus,
   border-color: #DDD !important;
   background-color: #DDD !important;
 }
+#policiesDetails {
+  min-height: 70vh;
+}
 footer {
   font-size: 0.8125rem;
   color: #0E1111;
@@ -478,6 +481,7 @@ footer .logo-footer {
 footer .social-link {
   margin: 15px 0 0 0;
   text-align: center;
+  display: ruby-text;
 }
 footer .social-link #socialZalo {
   width: 15%;
@@ -622,10 +626,13 @@ footer #OwlCountry img {
 }
 @media only screen and (min-width: 1600px) {
   .container {
-    max-width: 1600px;
+    min-width: 1600px;
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399.98px) {
+  .container {
+    min-width: 1200px;
+  }
   .title-drloan {
     font-size: 2.5rem;
   }
@@ -649,14 +656,33 @@ footer #OwlCountry img {
     margin-left: -0.75rem;
     margin-right: -0.75rem;
   }
-  .rowlg .collg {
+  .rowlg .container {
+    min-width: 1600px;
+  }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399.98px) {
+  .container {
+    min-width: 1200px;
+  }
+  .title-drloan {
+    font-size: 2.5rem;
+  }
+  .collg {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     margin-top: 3rem;
   }
-  footer .list-address h5,
-  footer h5 {
-    font-size: 0.875rem;
+}
+footer .list-address h5,
+footer h5 {
+  font-size: 0.875rem;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+  .container {
+    min-width: 992px;
+  }
+  .title-drloan {
+    font-size: 2.25rem;
   }
   footer {
     font-size: 0.75rem;
@@ -675,6 +701,9 @@ footer #OwlCountry img {
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+  .container {
+    min-width: 992px;
+  }
   .title-drloan {
     font-size: 2.25rem;
   }
@@ -688,6 +717,14 @@ footer #OwlCountry img {
   }
   .btn-dtl {
     min-width: 150px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+  .container {
+    min-width: 768px;
+  }
+  .title-drloan {
+    font-size: 2rem;
   }
   .btn-outline-dtl {
     padding: 0.375rem 1rem;
@@ -723,6 +760,9 @@ footer #OwlCountry img {
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {
+  .container {
+    min-width: 768px;
+  }
   .title-drloan {
     font-size: 2rem;
   }
@@ -1782,6 +1822,23 @@ header .slogan-mobile {
   align-items: center;
   min-height: 2rem;
 }
+#nav-menu-container .arrow {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0px;
+}
+#nav-menu-container .arrow-down {
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid black;
+}
+#nav-menu-container .arrow-right {
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid black;
+}
 #mobile-nav-toggle {
   position: fixed;
   left: 0;
@@ -2097,6 +2154,7 @@ body {
 }
 #imgModal {
   width: 100%;
+  height: 89vh;
   border-radius: 10px;
 }
 #Home_Banner {
@@ -5374,7 +5432,7 @@ body {
   margin-top: 2rem;
 }
 #AboutDescription .about-desc-wrapper {
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
 }
 #AboutDescription .container {
@@ -9197,7 +9255,7 @@ body {
 }
 #ProductsBanner .title-banner-product {
   color: #FF7500;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.1;
   padding-top: 1rem;
 }
@@ -9211,7 +9269,7 @@ body {
 #ProductsBanner .title-banner-product strong {
   line-height: 1;
   display: block;
-  font-size: 6.5rem;
+  font-size: 5.5rem;
   font-family: helveticaneue-Bold;
 }
 #ProductsBanner .img-product-banner {
@@ -9714,14 +9772,14 @@ body {
     margin-right: 0.5rem;
   }
   .product-wrapper .content-item .btn-buy {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
     /*height: 2.25rem;*/
     min-width: 125px;
     padding: 0.375rem 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 0.75rem;
-    text-align: center;
   }
   #CartMethod {
     padding: 1.5rem 0;

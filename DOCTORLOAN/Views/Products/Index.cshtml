@@ -3,10 +3,13 @@
 }
 
 <link href="~/libs/flag/flag.css" rel="stylesheet" />
+<<<<<<< HEAD
     @if (TempData["AlertMessageSuccess"] != null)
     {
         <input type="text" class="form-control" value="@TempData["AlertMessageSuccess"]" id="alertMessageSuccess" hidden />
     }
+=======
+>>>>>>> staging
 
 <section id="ProductsBanner">
     <div class="swiper bannerProductSwiper">
@@ -19,7 +22,7 @@
                                 <div class="center-thing">
                                     <div class="title-banner-product">
                                         Ghế nằm độc quyền sáng chế
-                                        <span>DoctorLoan</span>
+                                        <img class="mt-2" src="~/img/logo/logo-header.svg" />
                                         <strong>135</strong>
                                     </div>
                                 </div>
@@ -48,7 +51,7 @@
                                 <div class="center-thing">
                                     <div class="title-banner-product">
                                         Ghế ngồi độc quyền sáng chế
-                                        <span>DoctorLoan</span>
+                                        <img class="mt-2" src="~/img/logo/logo-header.svg" />
                                         <strong>95 VIP</strong>
                                     </div>
                                 </div>
@@ -77,7 +80,7 @@
                                 <div class="center-thing">
                                     <div class="title-banner-product">
                                         Đệm thiền độc quyền sáng chế
-                                        <span>DoctorLoan</span>
+                                        <img class="mt-2" src="~/img/logo/logo-header.svg" />
                                     </div>
                                 </div>
                             </div>
@@ -206,11 +209,13 @@
 
 @section scripts{
     <script type="text/javascript">
+        // Handle active menu
         $(document).ready(function () {
             $("#nav-menu-container ul li").removeClass("menu-active");
             $("#nav-menu-container ul li").eq(4).addClass("menu-active");
         });
 
+        // Handle active menu
         $('.btn-gr-dtl').click(function () {
             var parentbtn = $(this).parents(".chat-parent");
             parentbtn.find('.tile-project .btn-group .btn-gr-dtl').removeClass("btn-gr-active");
@@ -221,6 +226,7 @@
             parentbtn.find(".project-chart." + datachart).addClass("chart-active-home");
         });
 
+        // Handle swiper
         var bannerswiper = new Swiper(".bannerProductSwiper", {
             slidesPerView: 1,
             loop: true,
@@ -234,6 +240,7 @@
             },
         });
 
+        // Handle swiper
         var swiper = new Swiper("#ProjectSwiper", {
             slidesPerView: 1,
             spaceBetween: 30,
@@ -248,6 +255,7 @@
             }
         });
 
+        // Handle swiper2
         var swiper2 = new Swiper("#ClientSwiper", {
             slidesPerView: 3,
             spaceBetween: 30,
@@ -268,6 +276,7 @@
             },
         });
 
+        // Handle swiper3
         var swiper3 = new Swiper("#ExperienceSwiper", {
             grabCursor: true,
             centeredSlides: true,
@@ -304,6 +313,7 @@
             },
         });
 
+        // Handle swiper4
         var swiper4 = new Swiper("#LicenseSwiper", {
             grabCursor: true,
             centeredSlides: true,
@@ -341,6 +351,7 @@
             },
         });
 
+        // Handle dropdown menu
         $(".dropdown-menu [data-bs-toggle='dropdown']").on("click", function (event) {
             event.preventDefault();
             event.stopPropagation();
@@ -359,6 +370,7 @@
                 });
         });
 
+        // Handle redirect to Url with data
         function redirectToWithData(url, data) {
             // Create query parameters obj data
             var queryParams = $.param(data);
@@ -377,14 +389,12 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    var _arr = [];
                     // Handle call API Products
                     $.each(data.data.items, function (idx, item) {
                         var productItem = $(`<div data-id="` + item.id + `" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                                                 <div class="product-item" >
                                                     <div class="img-item" >
-                                                        <div id="product-`+ item.id + `"></div>
-                                                    </div>
+                                                    <div id="product-`+ item.id + `" > <img src="` + item.imageUrl + `" /> </div>
                                                     <div class="content-item">
                                                         <h5><span>`+ item.name + `</span><strong>` + ((item.summary != undefined) ? item.summary : '') + `</strong> </h5>
                                                         <div id="price-item-`+ item.id + `" class="price-item">` + item.productItems[0].price + `</div>
@@ -397,9 +407,6 @@
                                             </div>
                                         </div>`);
                         $("#productItems").append(productItem);
-
-                        //Handle get img product
-                        getImgProduct(item.id);
 
                         // Handle format currency vnd
                         $('#price-item-' + item.id).text(parseInt($('#price-item-' + item.id).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
@@ -461,7 +468,6 @@
                             redirectToWithData("/Cart/Payment", data);
                         });
                     });
-
                 },
                 error: function (error) {
                     //handle show error
@@ -470,8 +476,10 @@
             });
         }
 
+        // Call function getProduct
         getProduct();
 
+<<<<<<< HEAD
         //Handle get Image Product for id
         function getImgProduct(id) {
             $.ajax({
@@ -544,6 +552,12 @@
                 text: messSuccess,
                 autoclose: true,
                 autotimeout: 3000,
+=======
+        //Handle show alert
+        window.setTimeout(function () {
+            $("#alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+>>>>>>> staging
             });
         }
 

@@ -24,6 +24,7 @@
                             <div class="list-menu">
                                 <div class="container">
                                     <div class="swiper menuProductSwiper">
+<<<<<<< HEAD
                                         <div id="menuProductBestSeller" class="swiper-wrapper">
                                             <style>
                                                 .arrow {
@@ -46,6 +47,41 @@
                                                     border-left: 7px solid black;
                                                 }
                                             </style>
+=======
+                                        <div class="swiper-wrapper menu-product-bestseller">
+                                            @* <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="Product135"><img src="~/img/common/menu-product-135.png" /></a> <br />
+                                                <strong style="font-size: 0.875rem;color: #464646">Ghế nằm 135</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="Product90D"><img src="~/img/common/menu-product-90D.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #464646">Ghế ngồi 90 Dày</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="Product90M"><img src="~/img/common/menu-product-90M.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #464646">Ghế ngồi 90 Mỏng</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="Product95V"><img src="~/img/common/menu-product-95V.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #464646">Ghế ngồi 95 VIP</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="ProductN85"><img src="~/img/common/menu-product-N85.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #464646">Ghế nhựa N85</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="ProductGCF4"><img src="~/img/common/menu-product-GC.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #464646";padding-left: 15px">Gối cổ</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="ProductGLF3"><img src="~/img/common/menu-product-GL.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #464646";padding-left: 15px">Gối lưng</strong>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a asp-controller="Products" asp-action="ProductDT"><img src="~/img/common/menu-product-DT.png" /></a><br />
+                                                <strong style="font-size: 0.875rem;color: #464646";padding-left: 15px">Đệm thiền</strong>
+                                            </div> *@
+>>>>>>> staging
                                         </div>
                                         <div class="swiper-button-next"></div>
                                         <div class="swiper-button-prev"></div>
@@ -60,7 +96,7 @@
                         <div class="sub-menu">
                             <ul>
                                 <li><a asp-controller="News" asp-action="NewsGroup">Thời sự</a></li>
-                                <li><a asp-controller="News" asp-action="Sales">Khuyến mãi</a></li>
+                                @*<li><a asp-controller="News" asp-action="Sales">Khuyến mãi</a></li>*@
                                 @* <li><a asp-controller="News" asp-action="NewsGroup">Nguyên nhân gây bệnh cột sống</a></li>
                                 <li><a asp-controller="News" asp-action="NewsGroup">Thực trạng xã hội và y học</a></li>
                                 <li><a asp-controller="News" asp-action="NewsGroup">Giải pháp phòng bệnh</a></li>
@@ -85,11 +121,19 @@
             </a>
             <div class="header-info">
                 <div class="auth-frm">
+<<<<<<< HEAD
                     <a asp-controller="Cart" asp-action="Index" id="shoppingCart" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> </a>
                     @* <div class="not-logged">
                         <a asp-controller="Auth" asp-action="Login" class="btn btn-login">Đăng nhập</a>
                         <a asp-controller="Auth" asp-action="Register" class="btn btn-register">Đăng ký</a>
                     </div> *@
+=======
+                    @* <a asp-controller="Cart" asp-action="Index" class="shopping-cart"><img src="~/img/icon/shopping-cart.svg" /> <span>2</span> </a> *@
+                    @* <div class="not-logged"> *@
+                    @* <a asp-controller="Auth" asp-action="Login" class="btn btn-login">Đăng nhập</a>
+                    <a asp-controller="Auth" asp-action="Register" class="btn btn-register">Đăng ký</a> *@
+                    @* </div> *@
+>>>>>>> staging
                     @* <div class="nav-profile" style="display: none;">
                         <button id="ProfileFunc" class="profile-icon" data-menu-expanded="false"><img src="~/img/home/avatar-3.png" /></button>
                         <div class="dropdown-profile" hidden>
@@ -116,17 +160,36 @@
 
 </header>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+<script src="~/libs/jquery/jquery-3.7.0.min.js"></script>
+<link href="~/libs/font-awesome_4.5/font-awesome.min.css" rel="stylesheet">
+<link href="~/libs/font-awesome_4.5/css.css" rel="stylesheet">
 
 <!-- Back to top button -->
 <a id="button"></a>
 
-
 <script type="text/javascript">
+<<<<<<< HEAD
     var _quantityProduct = 0;
     // Read sessionStorage
     var _CartProduct = JSON.parse(sessionStorage.getItem('CartProduct'));
+=======
+
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        var container = document.getElementById("container");
+
+        if (container) {
+            if (prevScrollpos > currentScrollPos) {
+                container.style.top = "0";
+            } else {
+                container.style.top = "-150px";
+            }
+        }
+
+        prevScrollpos = currentScrollPos;
+    }
+>>>>>>> staging
 
     $(document).on("click", "#ProfileFunc", function (e) {
         e.preventDefault();
@@ -143,30 +206,19 @@
             $(this).attr('data-menu-expanded', getactive);
             parentPF.find(".dropdown-profile").attr('hidden', true);
         }
-        /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
-        var prevScrollpos = window.pageYOffset;
-        window.onscroll = function () {
-            var currentScrollPos = window.pageYOffset;
-            if (prevScrollpos > currentScrollPos) {
-                document.getElementById("container").style.top = "0";
-            } else {
-                document.getElementById("container").style.top = "-150px";
-            }
-            prevScrollpos = currentScrollPos;
-        }
     });
 
-    $(window).on('load', function () {
-        var swiper2 = new Swiper(".menuProductSwiper", {
-            slidesPerView: 8,
-            loop: true,
-            spaceBetween: 24,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            }
+        $(window).on('load', function () {
+            var swiper2 = new Swiper(".menuProductSwiper", {
+                slidesPerView: 8,
+                loop: true,
+                spaceBetween: 15,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                }, 
+            });
         });
-    });
 
     var btn = $('#button');
 
@@ -194,6 +246,7 @@
         window.location.href = redirectUrl;
     }
 
+<<<<<<< HEAD
     //Handle get quantity Product
     if (_CartProduct[0] != undefined) {
         $.each(_CartProduct, function (idx, item) {
@@ -203,38 +256,46 @@
     }
     
     
+=======
+>>>>>>> staging
     $.ajax({
-        url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Category/FilterCategories',
-        type: 'GET',
-        dataType: 'json',
+        url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/category/filtercategories',
+        type: 'get',
+        datatype: 'json',
         success: function (data) {
-            // Handle call API Categories
+            // handle call api categories
+            var _idbestseller = 0;
             $.each(data.data.items, function (idx, item) {
-                if (item.parentId == 24) {
-                    var productCategories = $(`<div class="swiper-slide">
-                                                    <div id="categories-`+ item.id + `">` + item.content + `</div>
-                                                    <strong style="font-size: 0.875rem;color: #464646">`+ item.name + `</strong>
-                                                </div>`);
-                    $("#menuProductBestSeller").append(productCategories);
-                    
-
-                    //const _url = $(location).attr('href');
-                    // Handle seen details
-                    //$('#categories-' + item.id).attr('href', _url.split('/').slice(0, 3).join('/') + '/Products/ProductDetail/' + _tmp);
-
-                    // Handle buy now
-                    $("#categories-" + item.id).click(function () {
-                        var _param = {
-                            categoryId: item.id,
-                        };
-                        redirectToWithData("/Products/ProductDetail", _param);
-                    });
+                if (item.slug == "bestsaller-doctorloan") {
+                    _idbestseller = item.id;
                 }
             });
+
+            if (_idbestseller != 0) {
+
+                $.each(data.data.items, function (idx, item) {
+                    if (item.parentId == _idbestseller) {
+                        // font - size: 0.75rem;
+                        var productcategories = $(`<div id="categories-` + item.id + `" class="swiper-slide">
+                                                        <div style="width: 90%;">` + item.content + `</div>
+                                                        <strong style="color: #464646;font-size: x-small;">`+ item.name + `</strong>
+                                                    </div>`);
+                        $(".menu-product-bestseller").append(productcategories);
+
+                        $("#categories-" + item.id).click(function () {
+
+                            var _param = {
+                                categoryId: item.id,
+                            };
+                            redirectToWithData("/products/productdetail", _param);
+                        });
+                    }
+                });
+            }
         },
         error: function (error) {
             //handle show error
-            console.error('Error:', error);
+            console.error('error:', error);
         }
     });
 

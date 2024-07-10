@@ -8,8 +8,11 @@
     <link href="~/libs/glightbox/glightbox.min.css" rel="stylesheet" />
     <link href="~/libs/owlcarousel/owl.carousel.min.css" rel="stylesheet" />
     <link href="~/libs/swiperjs/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="~/libs/font-awesome_4.5/css.css" rel="stylesheet" />
+    <link href="~/libs/font-awesome_4.5/font-awesome.min.css" rel="stylesheet" />
     <link href="~/libs/font-awesome_5.15.1/font-awesome_5.15.1_css_all.min.css" rel="stylesheet" />
     <link href="~/css/styles.min.css" rel="stylesheet" />
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <link rel="stylesheet" href="~/libs/simple-notify-master/simple-notify.min.css" />
     <script src="~/libs/simple-notify-master/simple-notify.min.js"></script>
@@ -28,6 +31,10 @@
         }
         scrolltitle();
     </script>
+=======
+    <link href="~/libs/flatpickr/flatpickr.min.css" rel="stylesheet" />
+    <link href="~/libs/ajax/tailwind.min.css" rel="stylesheet" />
+>>>>>>> staging
 </head>
 <body>
     <header>
@@ -53,7 +60,7 @@
         <div id="fb-root"></div>
 
         <!-- Your Chat plugin code -->
-        <div id="fb-customer-chat" class="fb-customerchat"></div>
+        @* <div id="fb-customer-chat" class="fb-customerchat"></div> *@
     </main>
     <footer>
         @await Html.PartialAsync("/Views/Common/_FooterPartial.cshtml")
@@ -65,39 +72,56 @@
         //}
 
         //<!--Your SDK code-- >
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "122107555106002865");
-        chatbox.setAttribute("attribution", "biz_inbox");
+        // var chatbox = document.getElementById('fb-customer-chat');
+        // chatbox.setAttribute("page_id", "122107555106002865");
+        // chatbox.setAttribute("attribution", "biz_inbox");
 
-        window.fbAsyncInit = function () {
-            FB.init({
-                xfbml: true,
-                version: 'v18.0'
-            });
-        };
+        // window.fbAsyncInit = function () {
+        //     FB.init({
+        //         xfbml: true,
+        //         version: 'v18.0'
+        //     });
+        // };
 
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+        // (function (d, s, id) {
+        //     var js, fjs = d.getElementsByTagName(s)[0];
+        //     if (d.getElementById(id)) return;
+        //     js = d.createElement(s); js.id = id;
+        //     js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        //     fjs.parentNode.insertBefore(js, fjs);
+        // }(document, 'script', 'facebook-jssdk'));
+
+        // msg = document.title;
+        // msg = msg + ".";
+        // position = 0;
+
+        // function scrolltitle() {
+        //     document.title = msg.substring(position, msg.length) + msg.substring(0, position);
+        //     position++;
+        //     if (position > msg.length) position = 0
+        //     window.setTimeout("scrolltitle()", 110);
+        // }
+        // scrolltitle();
     </script>
+    <script src="~/libs/jquery/jquery-3.7.0.min.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/common.js"></script>
     <script src="~/libs/swiperjs/swiper-bundle.min.js"></script>
-    <script src="~/libs/bootstrap/popper.min.js"></script>
-    <script src="~/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="~/libs/Bootstrap/popper.min.js"></script>
+    <script src="~/libs/Bootstrap/bootstrap.min.js"></script>
     <script src="~/libs/superfish/hoverintent.js"></script>
     <script src="~/libs/superfish/superfish.min.js"></script>
     <script src="~/libs/glightbox/glightbox.min.js"></script>
     <script src="~/libs/owlcarousel/owl.carousel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="~/libs/Bootstrap/bootstrap-datepicker.js"></script>
+    <script src="~/libs/Bootstrap/bootstrap-datepicker.vi.min.js"></script>
     <script src="~/libs/Bootstrap/bootstrap-datetimepicker.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css"></script>
+    <script src="~/libs/flatpickr/flatpickr.js"></script>
+    <script src="~/libs/font/fontawesome-webfont.woff"></script>
+    <script src="~/libs/font/fontawesome-webfont.woff2"></script>
+    <script src="~/libs/chart/chart.js"></script>
+    <script src="~/libs/youtube/iframe_api.js"></script>
+    <script src="~/libs/zalo/sdk.js"></script>
     @await RenderSectionAsync("scripts", required: false)
 </body>
 </html>

@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using DOCTORLOAN.Models.Orders;
+=======
+﻿using DOCTORLOAN.Models.Orders;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+>>>>>>> staging
 using System.Text;
 
 namespace DOCTORLOAN.Controllers
@@ -48,7 +54,7 @@ namespace DOCTORLOAN.Controllers
                     TotalPrice = _listItem.TotalPrice,
                     AddressLine = _order.AddressLine,
                     Remarks = _order.Remarks,
-                    PaymentMethod = _order.PaymentMethod,
+                    PaymentMethod = PaymentMethod.Payoo,
                     ListItem  =
                     {
                         item
@@ -64,22 +70,23 @@ namespace DOCTORLOAN.Controllers
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
 
-                    //send Email for Custommer
-                    if (_order.Email != null)
-                    {
-                        string contentCustomer = "";
+                    TempData["dataRes"] = responseContent;
+                    TempData["phone"] = _order.Phone;
+                    TempData["custommerName"] = _order.FullName;
+                    TempData["addressLine"] = _order.AddressLine;
+                    TempData["email"] = _order.Email;
 
-                    }
-
-                    TempData["AlertMessageSuccess"] = "Đặt đơn hàng thành công!";
-                    return RedirectToAction("Index", "Products");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     TempData["AlertMessageError"] = "Đặn đơn hàng thất bại. vui lòng kiểm tra lại thông tin ";
+                    TempData["id"] = _listItem.ProductId;
+                    TempData["quantity"] = _listItem.Quantity;
+
                     return View("Payment");
                 }
-                
+                    
             } catch (Exception ex) {
                 return StatusCode(500, ex.Message); 
             }

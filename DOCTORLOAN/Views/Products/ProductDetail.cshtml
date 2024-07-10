@@ -7,9 +7,7 @@
 }
 <input type="hidden" id="txtCountNumber" value="@countNum" />
 
-<section id="infoProduct">
-    
-</section>
+<section id="infoProduct"></section>
 
 @*<section id="ContentProducts">
     <div class="container">
@@ -252,12 +250,33 @@
     </div>
 </section>
 
-@section scripts{
+@section scripts {
     <script type="text/javascript">
         $(document).ready(function () {
             $("#nav-menu-container ul li").removeClass("menu-active");
             $("#nav-menu-container ul li").eq(4).addClass("menu-active");
         });
+
+        var _sku135 = "LC35LESY";
+        var _sku90 = "SC90DESY";
+        var _sku90BL = "SC90OEBL";
+        var _sku90T = "SC90TESY";
+        var _sku95 = "SC95VESY";
+        var _skuN85 = "PL85SFOR";
+        var _skuF4 = "NP04SEFY";
+        var _skuF5 = "NP05SEFY";
+        var _skuF6 = "NP06SEFY";
+        var _skuF3 = "BP03CEFY";
+        var _skuLF4 = "BP04OEFY";
+        var _skuF1 = "BP01LEFY";
+        var _skuDT = "SDNLSESY";
+        var _skuGCSS = "NP00OEFY";
+        var _skuGC26 = "NP26SEFY";
+        var _skuGC61 = "NP61SEFY";
+        var _skuGC = "NP00SEFY";
+        var _skuGCNL = "NPAUNEFY";
+        var _skuGCDL = "NPTLSEFY";
+        var _skuGCDX = "NPCROEFY";
 
         $(document).on("click", ".btn-seemore", function () {
             var parentbtn = $(this).parents(".pd-button-overlay");
@@ -293,28 +312,26 @@
         var _productId = getParam('productId');
         var _categoryId = getParam('categoryId');
 
-        // Get the value of the parameter categoryId in URL
-        if (_categoryId != undefined) {
-            $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    getProduct(data.data.items[0].id);
-                },
-                error: function (error) {
-                    //handle show error
-                    console.error('Error:', error);
-                }
-            });
+        if (_categoryId === undefined && _productId === undefined || _categoryId === null && _productId === null) {
+            window.location.href = "/";
+        } else {
+            if (_categoryId != null) {
+                $.ajax({
+                    url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + _categoryId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        getProduct(data.data.items[0].id);
+                    },
+                    error: function (error) {
+                        //handle show error
+                        console.error('Error:', error);
+                    }
+                });
+            } else {
+                getProduct(_productId);
+            }
         }
-        
-
-        if (_productId != undefined) {
-            getProduct(_productId);
-        }
-
-        var resultAPI;
 
         // Get the value of the parameter productId in URL
         function getProduct(id) {
@@ -323,71 +340,67 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    resultAPI = data;
                     var productSwiperMain = $(`<div class="container">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="swiper productSwiperMain">
-                                                                <div id="productSwiperMain" class="swiper-wrapper"></div>
-                                                                <div class="swiper-button-next"></div>
-                                                                <div class="swiper-button-prev"></div>
-                                                            </div>
-                                                            <div thumbsSlider="" class="swiper productSwiperThumb">
-                                                                <div id="productSwiperThumb" class="swiper-wrapper"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="info-product-right">
-                                                                <div class="ipr-name">`+ data.data.name + `</div>
-                                                                <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
-                                                                <div id="iprItemColor" class="ipr-item"></div>
-                                                                <div id="iprItemOption" class="ipr-item"></div>
-                                                                <div class="ipr-item">
-                                                                    <div>
-                                                                        <label>.Mô tả</label>
-                                                                        `+ data.data.productDetails[0].summary + `
+                                                            <div class="row">
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="swiper productSwiperMain">
+                                                                        <div id="productSwiperMain" class="swiper-wrapper"></div>
+                                                                        <div class="swiper-button-next"></div>
+                                                                        <div class="swiper-button-prev"></div>
+                                                                    </div>
+                                                                    <div thumbsSlider="" class="swiper productSwiperThumb">
+                                                                        <div id="productSwiperThumb" class="swiper-wrapper"></div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="ipr-action-details">
-                                                                    @* <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
-                                                                    <a id="buy-`+ data.data.id + `" data-id="` + data.data.id + `" class="btn btn-buy-details" target="_blank">Mua ngay</a>
-                                                                </div>
-                                                                <div class="shopify-button">
-                                                                    <div class="action-item custom-action-item action-company action-call">
-                                                                        <strong style="font-size: 1.3rem;color: black">Mua dễ dàng hơn bằng</strong><img src="/img/icon/shopify.png" style="width: 30%;">
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="info-product-right">
+                                                                        <div class="ipr-name">`+ data.data.name+ `</div>
+                                                                        <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
+                                                                        <div id="iprItemColor" class="ipr-item"></div>
+                                                                        <div id="iprItemOption" class="ipr-item"></div>
+                                                                        <div class="ipr-item">
+                                                                            <div>
+                                                                                <label>.Mô tả</label>
+                                                                                `+ data.data.productDetails[0].summary + ` </br>
+                                                                                <label>.Mô tả chi tiết</label>
+                                                                                `+ data.data.productDetails[0].description + `
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="ipr-action-details">
+        @* <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
+                                                                            <a id="buy-`+ data.data.id + `" data-id="` + data.data.id + `" class="btn btn-buy-details" target="_blank">Mua ngay</a>
+                                                                        </div>
+                                                                        <div class="shopify-button">
+                                                                            <div class="action-item custom-action-item action-company action-call">
+                                                                                <strong style="font-size: 1.3rem;color: black">Mua dễ dàng hơn bằng</strong><img src="/img/icon/shopify.png" style="width: 30%;">
 
+                                                                            </div>
+                                                                            <a href="" class="btn btn-outline-dtl btn-shopify" target="_blank">Mua ngay</a>
+                                                                        </div>
+                                                                        <div class="ipr-policy">
+                                                                            <div class="policy-item">
+                                                                                <img src="/img/icon/p-shield.svg" />
+                                                                                <span>Cam kết <strong>hàng mới 100%</strong></span>
+                                                                            </div>
+                                                                            <div class="policy-item">
+                                                                                <img src="/img/icon/p-box-iso.svg" />
+                                                                                <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
+                                                                            </div>
+                                                                            <div id="policyItem" class="policy-item"></div>
+                                                                            <div id="policyItem1" class="policy-item"></div>
+                                                                            <div id="policyItem2" class="policy-item"></div>
+                                                                        </div>
                                                                     </div>
-                                                                    <a href="" class="btn btn-outline-dtl btn-shopify" target="_blank">Mua ngay</a>
                                                                 </div>
-                                                                <div class="ipr-policy">
-                                                                    <div class="policy-item">
-                                                                        <img src="/img/icon/p-shield.svg" />
-                                                                        <span>Cam kết <strong>hàng mới 100%</strong></span>
-                                                                    </div>
-                                                                    <div class="policy-item">
-                                                                        <img src="/img/icon/p-box-iso.svg" />
-                                                                        <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
-                                                                    </div>
-                                                                    <div class="policy-item">
-                                                                        <img src="/img/icon/p-delivery-truck.svg" />
-                                                                        <span>
-                                                                            Free ship toàn quốc <br />
-                                                                            Giao nhanh 4H nội thành HCM
-                                                                        </span>
-                                                                    </div>
-                                                                    <div id="policyItem" class="policy-item"></div>
+                                                                <div id="view-more" class="view-more">
+        @*<button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>*@
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div id="view-more" class="view-more">
-                                                            @*<button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>*@
-                                                        </div>
-                                                    </div>
-                                                </div>`);
+                                                        </div>`);
                     $("#infoProduct").append(productSwiperMain);
 
-                    setHrefHDSD(data.data.id);
-                    setHrefShopify(data.data.id);
+                    setHrefHDSD(data.data.sku);
+                    setHrefShopify(data.data.sku);
                     loadAttributes(data.data.productAttributes);
 
                     // Handle format currency vnd
@@ -395,72 +408,39 @@
 
                     var imgProduct;
                     var imgThumb = "";
-                    var flagN85 = false;
-                    var flag = false;
-                    var flagF4 = false;
-                    var flagF1 = false;
-                    var flagDT = false;
-                    var gn_135 = 21;
-                    var n85_id = 34;
-                    var gcf5_id = 39;
-                    var gcnl_id = 36;
-                    var gcf4_id = 35;
-                    var glf3 = 41;
-                    var glf1 = 37;
-                    var dt = 31;
 
-                    $.each(data.data.categoryIds, function (idx, item) {
-                        if (item === n85_id) {
-                            flagN85 = true;
-                        } else if (item === gcf5_id || item === gcnl_id || item === glf3) {
-                            flag = true;
-                        } 
-                        
-                        if (item === gcf4_id) {
-                            flagF4 = true;
-                        }
-
-                        if (item === glf1) {
-                            flagF1 = true;
-                        }
-
-                        if (item === dt) {
-                            flagDT = true;
-                        }
-                    });
-                    
-                    if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined && flag != true) {
+                    if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined) {
                         var _arr = [];
-                        if (flagDT != false) {
+                        if (data.data.sku === _skuDT) {
                             $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
-                                                                                <div class="form-check">
-                                                                                    <input class="form-check-input option-dt" type="radio" name="flexRadioOption" id="dtL" checked>
-                                                                                    <label class="form-check-label" for="dtL">Lớn</label>
-                                                                                </div>
-                                                                                <div class="form-check">
-                                                                                    <input class="form-check-input option-dt" type="radio" name="flexRadioOption" id="dtS">
-                                                                                    <label class="form-check-label" for="dtS">Nhỏ</label>
-                                                                                </div>`);
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input option-dt" type="radio" name="flexRadioOption" id="dtL">
+                                                                    <label class="form-check-label" for="dtL">Lớn</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input option-dt" type="radio" name="flexRadioOption" id="dtS" checked>
+                                                                    <label class="form-check-label" for="dtS">Nhỏ</label>
+                                                                </div>`);
                             $('.option-dt').click(function () {
                                 if ($('#dtL').is(':checked')) {
-                                    $('#iprPrice').text("6800000");
+                                    $('#iprPrice').text("4760000");
                                 } else {
-                                    $('#iprPrice').text("6500000");
+                                    $('#iprPrice').text("4480000");
                                 }
                                 $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                             });
                         }
 
-                        if (flagF4 != false) {
+                        if (data.data.sku === _skuF4) {
                             $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input option-f4" type="radio" name="flexRadioOption" id="f4L">
-                                                                            <label class="form-check-label" for="f4L">12 cm</label>
-                                                                        </div>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input option-f4" type="radio" name="flexRadioOption" id="f4S" checked>
-                                                                            <label class="form-check-label" for="f4S">9 cm</label>
-                                                                        </div>`);
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input option-f4" type="radio" name="flexRadioOption" id="f4L">
+                                                                    <label class="form-check-label" for="f4L">12 cm</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input option-f4" type="radio" name="flexRadioOption" id="f4S" checked>
+                                                                    <label class="form-check-label" for="f4S">9 cm</label>
+                                                                </div>`);
                             $('.option-f4').click(function () {
                                 if ($('#f4L').is(':checked')) {
                                     $('#iprPrice').text("5500000");
@@ -471,16 +451,16 @@
                             });
                         }
 
-                        if (flagF1 != false) {
+                        if (data.data.sku === _skuF1) {
                             $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input option-f1" type="radio" name="flexRadioOption" id="f1L" checked>
-                                                            <label class="form-check-label" for="f1L">Dài</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input option-f1" type="radio" name="flexRadioOption" id="f1S">
-                                                            <label class="form-check-label" for="f1S">Ngắn</label>
-                                                        </div>`);
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input option-f1" type="radio" name="flexRadioOption" id="f1L">
+                                                                    <label class="form-check-label" for="f1L">Dài</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input option-f1" type="radio" name="flexRadioOption" id="f1S" checked>
+                                                                    <label class="form-check-label" for="f1S">Ngắn</label>
+                                                                </div>`);
                             $('.option-f1').click(function () {
                                 if ($('#f1L').is(':checked')) {
                                     $('#iprPrice').text("2000000");
@@ -491,73 +471,63 @@
                             });
                         }
 
-                        if (flag != true && flagF4 != true && flagF1 != true && flagDT != true) {
-                            if (flagN85 != true) {
-                                $("#iprItemColor").append(`<label>.Màu sắc</label>
-                                                                <div class="ipr-color">
-                                                                    <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.sku + `-MAU NAU" title="Màu nâu"></a>
-                                                                    <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.sku + `-MAU NHO" title="Màu nho"></a>
-                                                                    <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.sku + `-MAU DEN" title="Màu đen"></a>
-                                                                    <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-MAU XANH LA" title="Màu xanh"></a>
-                                                                </div>`);
-                            } else {
-                                $("#iprItemColor").append(`<label>.Màu sắc</label>
-                                                                <div class="ipr-color">
-                                                                    <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.sku + `-MAU VANG-CHAN NGAN" title="Màu vàng"></a>
-                                                                    <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.sku + `-MAU CAM-CHAN NGAN" title="Màu cam"></a>
-                                                                    <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.sku + `-MAU DO-CHAN NGAN" title="Màu đỏ"></a>
-                                                                    <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.sku + `-MAU XAM-CHAN NGAN" title="Màu xám"></a>
-                                                                    <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.sku + `-MAU XANH LA-CHAN NGAN" title="Màu xanh lá"></a>
-                                                                    <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.sku + `-MAU XANH DUONG-CHAN NGAN" title="Màu xanh dương"></a>
-                                                                </div>`);
-                                $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân dài" id="n85-L">
-                                                                    <label class="form-check-label" for="n85-L">Chân dài</label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân ngắn" id="n85-S" checked>
-                                                                    <label class="form-check-label" for="n85-S">Chân ngắn</label>
-                                                                </div>`);
-                                $('.option-n85').click(function () {
-                                    if ($('#n85-L').is(':checked')) {
-                                        $('#iprPrice').text("1430000");
-                                    } else {
-                                        $('#iprPrice').text("1320000");
-                                    }
-                                    $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-                                });
-                            }
-                            
+                        if (data.data.sku === _sku135 || data.data.sku === _sku95 || data.data.sku === _sku90 || data.data.sku === _sku90T) {
+                            $("#iprItemColor").append(`<label>.Màu sắc</label>
+                                                                    <div class="ipr-color">
+                                                                        <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.name + `/Y" title="Màu nâu"></a>
+                                                                        <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.name + `/P" title="Màu nho"></a>
+                                                                        <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.name + `/B" title="Màu đen"></a>
+                                                                        <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.name + `/G" title="Màu xanh"></a>
+                                                                    </div>`);
+                        }
+
+                        if (data.data.sku === _skuN85) {
+                            $("#iprItemColor").append(`<label>.Màu sắc</label>
+                                                                    <div class="ipr-color">
+                                                                            <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.name + `-S/YL" title="Màu vàng"></a>
+                                                                            <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.name + `-S/OR" title="Màu cam"></a>
+                                                                            <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.name + `-S/RE" title="Màu đỏ"></a>
+                                                                            <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.name + `-S/GR" title="Màu xám"></a>
+                                                                            <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.name + `-S/GE" title="Màu xanh lá"></a>
+                                                                            <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.name + `-S/BL" title="Màu xanh dương"></a>
+                                                                    </div>`);
+                            $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân dài" id="n85-L">
+                                                                        <label class="form-check-label" for="n85-L">Chân dài</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân ngắn" id="n85-S" checked>
+                                                                        <label class="form-check-label" for="n85-S">Chân ngắn</label>
+                                                                    </div>`);
+                            $('.option-n85').click(function () {
+                                if ($('#n85-L').is(':checked')) {
+                                    $('#iprPrice').text("1430000");
+                                } else {
+                                    $('#iprPrice').text("1320000");
+                                }
+                                $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+                            });
                         }
 
                         $.each(data.data.productMedias, function (_idx, _item) {
-                            if (flagN85 != true) {
-                                if (_item.itemCode == data.data.sku + '-MAU NAU') {
-                                    _arr.push(_item);
-                                }
-                            } else {
-                                if (flagN85 == true && _item.itemCode == data.data.sku + '-MAU VANG-CHAN NGAN') {
-                                    _arr.push(_item);
-                                }
-                            }
-                            if (flagF4 != false || flag != false || flagF1 != false || flagDT != false) {
+                            if (_item.itemCode == data.data.sku) {
                                 _arr.push(_item);
                             }
                         });
-                        
+
                         if (_arr[0] != undefined) {
                             $.each(_arr, function (_idx, _item) {
                                 $("#imgMainPosition" + (_idx + 1)).attr('src', _item.mediaUrl);
                                 $("#imgThumbPosition" + (_idx + 1)).attr('src',);
                                 imgProduct = `<div class="swiper-slide" >
-                                                        <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + _item.mediaUrl + `" />
-                                                    </div>`;
+                                                                <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + _item.mediaUrl + `" />
+                                                            </div>`;
                                 imgThumb = `<div class="swiper-slide">
-                                                        <div class="bg-product-thumb">
-                                                            <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + _item.mediaUrl + `" />
-                                                        </div>
-                                                    </div>`;
+                                                                <div class="bg-product-thumb">
+                                                                    <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + _item.mediaUrl + `" />
+                                                                </div>
+                                                            </div>`;
                                 $("#productSwiperMain").append(imgProduct);
                                 $("#productSwiperThumb").append(imgThumb);
                             });
@@ -571,13 +541,13 @@
                         $.each(_arr, function (_idx, _item) {
 
                             imgProduct = `<div class="swiper-slide" >
-                                                <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + data.data.productMedias[_idx].mediaUrl + `" />
-                                            </div>`;
+                                                        <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + data.data.productMedias[_idx].mediaUrl + `" />
+                                                    </div>`;
                             imgThumb = `<div class="swiper-slide">
-                                            <div class="bg-product-thumb">
-                                                <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + data.data.productMedias[_idx].mediaUrl + `" />
-                                            </div>
-                                        </div>`;
+                                                    <div class="bg-product-thumb">
+                                                        <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + data.data.productMedias[_idx].mediaUrl + `" />
+                                                    </div>
+                                                </div>`;
                             $("#productSwiperMain").append(imgProduct);
                             $("#productSwiperThumb").append(imgThumb);
                         });
@@ -613,9 +583,9 @@
 
                     $('.product-color').click(function () {
                         var getcolor = $(this).attr("data-color");
-                        loadProductForColor(getcolor);
+                        loadProductForColor(getcolor, data.data);
                     });
-                    
+
                     // Handle buy now
                     $("#buy-" + data.data.id).click(function () {
                         var _data = {
@@ -635,87 +605,93 @@
         //handle get Attributes
         function loadAttributes(_attr) {
             var attr = `<div class="parameter-item">
-                            <p class="parameter-ttl">Tổng quan</p>
-                            <ul class="ulist ">
-                                <li>
-                                    <div class="ctLeft">
-                                        <p>Kiểu dáng</p>
-                                    </div>
-                                    <div class="ctRight">
-                                        <span></span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ctLeft">
-                                        <p>Tải trọng tối đa</p>
-                                    </div>
-                                    <div class="ctRight">
-                                        <span>150 Kg</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ctLeft">
-                                        <p>Điều chỉnh lưng ghế</p>
-                                    </div>
-                                    <div class="ctRight">
-                                        <span>Không</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ctLeft">
-                                        <p>Điều chỉnh chân ghế</p>
-                                    </div>
-                                    <div class="ctRight">
-                                        <span>Không</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ctLeft">
-                                        <p>Chất liệu thân ghế</p>
-                                    </div>
-                                    <div class="ctRight">
-                                        <span>Sợi thủy tinh, Composite</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ctLeft">
-                                        <p>Chất liệu vỏ bọc</p>
-                                    </div>
-                                    <div class="ctRight">
-                                        <span>Da Simili</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ctLeft">
-                                        <p>Chất liệu chân ghế</p>
-                                    </div>
-                                    <div class="ctRight">
-                                        <span>Inox 304</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ctLeft">
-                                        <p>Năm ra mắt</p>
-                                    </div>
-                                    <div class="ctRight">
-                                        <span>2014</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>`;
+                                    <p class="parameter-ttl">Tổng quan</p>
+                                    <ul class="ulist ">
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Kiểu dáng</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Tải trọng tối đa</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>150 Kg</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Điều chỉnh lưng ghế</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Không</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Điều chỉnh chân ghế</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Không</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Chất liệu thân ghế</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Sợi thủy tinh, Composite</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Chất liệu vỏ bọc</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Da Simili</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Chất liệu chân ghế</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>Inox 304</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ctLeft">
+                                                <p>Năm ra mắt</p>
+                                            </div>
+                                            <div class="ctRight">
+                                                <span>2014</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>`;
         }
 
         //handle pic product to color
-        function loadProductForColor(color) {
+        function loadProductForColor(productItem, data) {
             var _arr = [];
-            if (resultAPI != undefined) {
-                $.each(resultAPI.data.productMedias, function (idx, item) {
-                    if (item.itemCode == color) {
-                        _arr.push(item);
-                    }
-                });
-            }
-            
+            var _codeColor;
+
+            $.each(data.productItems, function (idx, item) {
+                if (item.name == productItem) {
+                    _codeColor = item.sku;
+                }
+            });
+
+            $.each(data.productMedias, function (idx, item) {
+                if (item.itemCode == _codeColor) {
+                    _arr.push(item);
+                }
+            });
+
             if (_arr[0] != undefined) {
                 $.each(_arr, function (_idx, _item) {
                     $("#imgMainPosition" + (_idx + 1)).attr('src', _item.mediaUrl);
@@ -728,105 +704,447 @@
         }
 
         //handle add href link HDSD
-        function setHrefHDSD(id) {
+        function setHrefHDSD(sku) {
             var _tmp = "";
-            switch (id) {
-                case 21:
+            var _tmp1 = "";
+            switch (sku) {
+                case _sku135:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
-                            <span><strong>Hướng dẫn lắp ráp </strong> <br /> 
-                            <a class="btn-hdsd" href = "/img/products/135/HDSD-135.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                                        <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                                        <a class="btn-hdsd" href = "/img/products/135/HDSD-135.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                            <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1NFjBtJ_EO9i1Qh6_Xjf-D60_8PRaO84G/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Ghế nằm sáng chế DOCTORLOAN 135
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
                     break;
-                case 22:
+                case _sku90:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
-                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
-                            <a class="btn-hdsd" href = "/img/products/90D/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                                    <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                                    <a class="btn-hdsd" href = "/img/products/90D/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                                        <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1DObhBH18217unRiKlerPY7bJTwypTtk_/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Ghế ngồi sáng chế DOCTORLOAN
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
                     break;
-                case 22:
+                case _sku90BL:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
-                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
-                            <a class="btn-hdsd" href = "/img/products/90M/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                                    <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                                    <a class="btn-hdsd" href = "/img/products/90D/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                                        <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1DObhBH18217unRiKlerPY7bJTwypTtk_/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Ghế ngồi sáng chế DOCTORLOAN
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
                     break;
-                case 24:
+                case _sku90T:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
-                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
-                            <a class="btn-hdsd" href = "/img/products/95V/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                                    <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                                    <a class="btn-hdsd" href = "/img/products/90M/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                            <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1DObhBH18217unRiKlerPY7bJTwypTtk_/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Ghế ngồi sáng chế DOCTORLOAN
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
                     break;
-                case 25:
+                case _sku95:
+                    _tmp = `<img src="/img/icon/p-setting.svg" />
+                                    <span><strong>Hướng dẫn lắp ráp </strong> <br />
+                                    <a class="btn-hdsd" href = "/img/products/95V/HDSD-GN.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                                    <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div>
+                                        <div class="image-group">
+                                            <div class="accordion" id="accordionFeedback">
+                                                <div class="accordion-item">
+                                                    <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                        <div class="accordion-body">
+                                                            <iframe src="https://drive.google.com/file/d/1DObhBH18217unRiKlerPY7bJTwypTtk_/preview" allow="autoplay"></iframe>
+                                                        </div>
+                                                    </div>
+                                                    <h2 class="accordion-header" id="heading1">
+                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                            1. Ghế ngồi sáng chế DOCTORLOAN
+                                                        </button>
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
+                    break;
+                case _skuN85:
                     _tmp = `<img src="/img/icon/p-setting.svg" />
                             <span><strong>Hướng dẫn lắp ráp </strong> <br />
                             <a class="btn-hdsd" href = "/img/products/N85/HDSD-N85.pdf" target = "_blank" > <i class="fas fa-download"> </i> Xem chi tiết</a> </span>`;
                     break;
-                case 27:
+                case _skuGC:
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                            <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1qM_ecg_GjTE8wWB4Aw2mxwnayDgpnM5Q/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Gối cối cổ đầu thấp
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1QEQLdsmesCeDE1KvDn3qSe9SLCfjMveH/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading2">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                                    2. Gối cổ đầu cao
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
                     break;
-                case 28:
+                case _skuF6:
+                    _tmp1 = ` <img src="/img/icon/icons8-video-100.png" />
+                            <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1qM_ecg_GjTE8wWB4Aw2mxwnayDgpnM5Q/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Gối cối cổ đầu thấp
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1QEQLdsmesCeDE1KvDn3qSe9SLCfjMveH/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading2">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                                    2. Gối cổ đầu cao
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
                     break;
-                case 26:
-                    _tmp = `<img src="/img/icon/p-setting.svg" />
-                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
-                            <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
+                case _skuF5:
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                            <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1qM_ecg_GjTE8wWB4Aw2mxwnayDgpnM5Q/preview" allow="autoplay"></iframe>                                                
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Gối cối cổ đầu thấp
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1QEQLdsmesCeDE1KvDn3qSe9SLCfjMveH/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading2">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                                    2. Gối cổ đầu cao
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
                     break;
-                case 29:
+                case _skuF4:
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                            <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                        <iframe src="https://drive.google.com/file/d/1qM_ecg_GjTE8wWB4Aw2mxwnayDgpnM5Q/preview" allow="autoplay"></iframe>
+                                                 </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Gối cối cổ đầu thấp
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1QEQLdsmesCeDE1KvDn3qSe9SLCfjMveH/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading2">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                                    2. Gối cổ đầu cao
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
                     break;
-                case 30:
-                    _tmp = `<img src="/img/icon/p-setting.svg" />
-                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
-                            <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
+                case _skuF3:
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                                        <span><strong>Video hướng dẫn</strong> </span>`
+                    _tmp2 =`<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                   <iframe src="https://drive.google.com/file/d/1wH_WTRH_oCKBqk7NrQsdBVEoJBNLbbsY/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Gối lưng sáng chế DOCTORLOAN F3
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
                     break;
-                case 31:
-                    _tmp = `<img src="/img/icon/p-setting.svg" />
-                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
-                            <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
+                case _skuF1:
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                             <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 =`<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                     <iframe src="https://drive.google.com/file/d/1wH_WTRH_oCKBqk7NrQsdBVEoJBNLbbsY/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Gối lưng sáng chế DOCTORLOAN F1
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
                     break;
-                case 32:
-                    _tmp = `<img src="/img/icon/p-setting.svg" />
-                            <span><strong>Hướng dẫn lắp ráp </strong> <br />
-                            <a class="btn-hdsd" href = "/img/products/GC/HDSD-GC.pdf" target = "_blank" > <i class="fas fa-download" > </i> Xem chi tiết</a > </span>`;
+                case _skuLF4:
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                                <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div>
+                                <div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1wH_WTRH_oCKBqk7NrQsdBVEoJBNLbbsY/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Gối lưng sáng chế DOCTORLOAN F4
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
+                    break;
+                case _skuDT:
+                    _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
+                            <span><strong>Video hướng dẫn</strong> </span>`;
+                    _tmp2 = `<div class="image-group">
+                                    <div class="accordion" id="accordionFeedback">
+                                        <div class="accordion-item">
+                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                <div class="accordion-body">
+                                                    <iframe src="https://drive.google.com/file/d/1S5KhUuIN1rbL4d-v3PSbssQr-jccED3r/preview" allow="autoplay"></iframe>
+                                                </div>
+                                            </div>
+                                            <h2 class="accordion-header" id="heading1">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    1. Đệm thiền sáng chế DOCTORLOAN
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>`;
+                    $("#policyItem1").append(_tmp1);
+                    $("#policyItem2").append(_tmp2);
                     break;
                 default:
-                // code block
+                    break;
             }
 
             return $("#policyItem").append(_tmp);
         }
 
         //handle add href link shopify
-        function setHrefShopify(id) {
+        function setHrefShopify(sku) {
             var _href = "";
-            switch (id) {
-                case 21:
+            var shouldShowButton = true;
+
+            switch (sku) {
+                case _sku135:
                     _href = "https://doctorloanstore.myshopify.com/products/135-doctorloan-chair";
                     break;
-                case 22:
+                case _sku90:
                     _href = "https://doctorloanstore.myshopify.com/products/90-doctorloan-chair";
                     break;
-                case 22:
+                case _sku90T:
                     _href = "https://doctorloanstore.myshopify.com/products/90-doctorloan-thin-chair";
                     break;
-                case 24:
-                    _href = "https://doctorloanstore.myshopify.com/products/gh%E1%BA%BF-ng%E1%BB%93i-doctorloan-95-vip";
+                case _sku95:
+                    _href = "https://doctorloanstore.myshopify.com/products/95v-doctorloan-chair";
                     break;
-                case 25:
-                    _href = "https://doctorloanstore.myshopify.com/products/85-chair";
+                case _skuN85:
+                    _href = "https://doctorloanstore.myshopify.com/products/n85-doctorloan-chair";
                     break;
-                case 27:
+                case _skuF3:
                     _href = "https://doctorloanstore.myshopify.com/products/f3-pillow";
                     break;
-                case 28:
+                case _skuF1:
                     _href = "https://doctorloanstore.myshopify.com/products/f1-pillow";
                     break;
-                case 26:
+                case _skuF4:
                     _href = "https://doctorloanstore.myshopify.com/products/f4-pillow";
                     break;
-                case 29:
-                    _href = "https://doctorloanstore.myshopify.com/products/d%E1%BB%87m-thi%E1%BB%81n-doctorloan";
+                case _skuDT:
+                    _href = "https://doctorloanstore.myshopify.com/products/meditation-cushion-doctorloan";
                     break;
                 default:
-                // code block
+                    shouldShowButton = false;
+                    break;
+            }
+
+            if (shouldShowButton) {
+                $(".shopify-button").show();
+            } else {
+                $(".shopify-button").hide();
             }
 
             return $(".btn-shopify").attr("href", _href);
         }
 
+<<<<<<< HEAD
         //handle get Product Best Saller
         function getProductBestSaller() {
             $.ajax({
@@ -885,6 +1203,8 @@
 
         getProductBestSaller();
 
+=======
+>>>>>>> staging
         var swiper5 = new Swiper(".relatedProductSwiper", {
             direction: 'horizontal',
             slidesPerView: 2,
@@ -906,6 +1226,92 @@
                 }
             },
         });
+
+        //handle get Product Best Saller
+        $.ajax({
+            url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Category/FilterCategories',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var idCategories;
+
+                if (data.data.items.length > 0) {
+                    $.each(data.data.items, function (idx, item) {
+                        if (item.slug === "bestsaller-doctorloan")
+                            idCategories = item.id;
+                    });
+                    getProductBestSaller(idCategories);
+                }
+            },
+            error: function (error) {
+                //handle show error
+                console.error('Error:', error);
+            }
+        });
+
+        //handle get Product Best Saller
+        function getProductBestSaller(idCategories) {
+            if (idCategories != undefined && idCategories != null) {
+                $.ajax({
+                    url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts?CategoryId=' + idCategories,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        // Handle call API Products
+                        $.each(data.data.items, function (idx, item) {
+                            var productItem = $(`<div data-id="` + item.id + `" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                                                                <div class="product-item" >
+                                                                    <div class="img-item" >
+                                                                            <div id="product-`+ item.id + `" > <img src="` + item.imageUrl + `" /> </div>
+                                                                    <div class="content-item">
+                                                                        <h5><span>`+ item.name + `</span><strong>` + ((item.summary != undefined) ? item.summary : '') + `</strong> </h5>
+                                                                        <div id="price-item-`+ item.id + `" class="price-item">` + item.productItems[0].price + `</div>
+                                                                        <div class="action-item">
+                                                                            <a id="buy-`+ item.id + `" data-id="` + item.id + `" class="btn btn-buy" target="_blank">Mua ngay</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>`);
+                            $("#itemBestSeller").append(productItem);
+
+                            // Handle format currency vnd
+                            $('#price-item-' + item.id).text(parseInt($('#price-item-' + item.id).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
+
+                            // Handle seen details
+                            $('#product-' + item.id).click(function () {
+                                var data = {
+                                    productId: item.id,
+                                };
+                                redirectToWithData("/Products/ProductDetail", data);
+                            });
+
+                            /*
+                            <a id="add-cart-`+ item.id + `" data-id="` + item.id + `" class="icon-cart"> <i class="fas fa-shopping-bag" > </i></a >
+                            // Handle add to cart
+                            $('body').on('click', '.price-item', function () {
+                                const id = $(this).data('id');
+                                alert("say hi!, ", id);
+                            });
+                            */
+
+                            // Handle buy now
+                            $("#buy-" + item.id).click(function () {
+                                var data = {
+                                    id: item.id,
+                                    quantity: 1,
+                                };
+                                redirectToWithData("/Cart/Payment", data);
+                            });
+                        });
+                    },
+                    error: function (error) {
+                        //handle show error
+                        console.error('Error:', error);
+                    }
+                });
+            }
+        }
 
     </script>
 }

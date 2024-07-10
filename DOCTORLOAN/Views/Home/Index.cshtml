@@ -5,10 +5,19 @@
 <link href="~/libs/flag/flag.css" rel="stylesheet" />
 <link href="~/libs/Bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
+@if (TempData["dataRes"] != null)
+{
+    <input type="text" class="form-control" value="@TempData["dataRes"]" id="dataRes" hidden />
+    <input type="text" class="form-control" value="@TempData["phone"]" id="phone" hidden />
+    <input type="text" class="form-control" value="@TempData["custommerName"]" id="custommerName" hidden />
+    <input type="text" class="form-control" value="@TempData["addressLine"]" id="addressLine" hidden />
+    <input type="text" class="form-control" value="@TempData["email"]" id="email" hidden />
+}
+
 <div b-hmxnz7sj43="" id="myModalEvert" class="modal" tabindex="-1" role="dialog" style="display: none;">
     <div b-hmxnz7sj43="" id="modalDialog" class="modal-dialog" role="document">
         <div b-hmxnz7sj43="" id="modalContent" class="modal-content">
-            <div b-hmxnz7sj43="" class="modal-body">
+            <div b-hmxnz7sj43="" class="modal-body p-0">
                 <div class="pyro">
                     <div class="before"></div>
                     <div class="after"></div>
@@ -16,7 +25,7 @@
 
                 <button b-hmxnz7sj43="" type="button" class="btn-close" id="btnClose" data-bs-dismiss="modal" aria-label="Close"></button>
                 <a asp-controller="News" asp-action="Sales">
-                    <img id="imgModal" src="~/img/eventualities/promotion_2601_2902.jpg" />
+                    <img id="imgModal" src="~/img/eventualities/poster-ctkm-t01-01.jpg" />
                 </a>
             </div>
         </div>
@@ -37,11 +46,13 @@
                         <div class="banner-info">
                             <div class="title-banner">Giải pháp <br /> cho cột sống khỏe</div>
                             <div class="desc-banner">
-                                <span>Sáng chế của người Việt Nam mang tính đột phá cho sức khỏe cột sống được bảo hộ độc quyền trên 60 quốc gia.</span>
+                                <span>Sáng chế của người Việt Nam mang tính đột phá cho sức khỏe cột sống được bảo hộ độc quyền trên 62 quốc gia.</span>
                             </div>
                             <div class="desc-doctor">
                                 “Người bác sĩ trong tương lai không kê toa cho thuốc mà chú trọng đến cấu trúc cơ thể của bệnh nhân, đến dinh dưỡng,
                                 đến nguyên nhân phát sinh ra bệnh và phương pháp phòng ngừa.”
+                                <br />
+                                <i>- Edison</i>
                             </div>
                             <div class="more-action">
                                 <a class="btn btn-outline-secondary rounded-pill" id="btn-show-modal" asp-controller="About" asp-action="Index">Xem chi tiết</a>
@@ -90,7 +101,7 @@
                         <div class="col-xl-6 col-12">
                             <div class="about-text">
                                 <div class="about-text mb-5">
-                                    DOCTORLOAN
+                                    <img class="" src="~/img/logo/logo-header.svg" />
                                 </div>
                                 <div class="about-text mb-4">
                                     “Thương hiệu hàng đầu đưa ra các giải pháp chữa lành và bảo vệ cơ xương
@@ -308,76 +319,28 @@
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span class="count1">185000</span></h4>
-                    <script>
-                        $('.count').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 10000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Bệnh nhân khỏi bệnh</p>
                 </div>
             </div>
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span class="count1">168000</span></h4>
-                    <script>
-                        $('.count').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 10000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Sản phẩm</p>
                 </div>
             </div>
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span id="value">62+</span></h4>
-                    <script>
-                        $('.count1').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 6000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Quốc gia bảo hộ</p>
                 </div>
             </div>
             <div class="achievement-item">
                 <div class="achievement-content">
                     <h4><span class="count2">255</span></h4>
-                    <script>
-                        $('.count2').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 4000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now));
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <p>Bằng sáng chế</p>
                 </div>
             </div>
@@ -391,7 +354,6 @@
         <div id="LicenseSwiper" class="swiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    @* <img src="~/img/home/australia.jpg" /> *@
                     <a href="~/img/license/license-1.jpg" class="glightbox" data-gallery="license-space">
                         <img src="~/img/license/license-1.jpg" />
                     </a>
@@ -399,14 +361,12 @@
 
                 </div>
                 <div class="swiper-slide">
-                    @* <img src="~/img/home/canada.jpg" /> *@
                     <a href="~/img/license/license-2.jpg" class="glightbox" data-gallery="license-space">
                         <img src="~/img/license/license-2.jpg" />
                     </a>
                     <div class="license-country">Canada</div>
                 </div>
                 <div class="swiper-slide">
-                    @* <img src="~/img/home/united-arab-emirates.jpg" /> *@
                     <a href="~/img/license/license-3.jpg" class="glightbox" data-gallery="license-space">
                         <img src="~/img/license/license-3.jpg" />
                     </a>
@@ -414,7 +374,6 @@
                 </div>
 
                 <div class="swiper-slide">
-                    @* <img src="~/img/home/euro-patent.jpg" /> *@
                     <a href="~/img/license/license-5.jpg" class="glightbox" data-gallery="license-space">
                         <img src="~/img/license/license-5.jpg" />
                     </a>
@@ -422,7 +381,6 @@
                 </div>
 
                 <div class="swiper-slide">
-                    @* <img src="~/img/home/india-patent.jpg" /> *@
                     <a href="~/img/license/license-7.jpg" class="glightbox" data-gallery="license-space">
                         <img src="~/img/license/license-7.jpg" />
                     </a>
@@ -431,7 +389,6 @@
 
 
                 <div class="swiper-slide">
-                    @* <img src="~/img/home/japan-patent.jpg" /> *@
                     <a href="~/img/license/license-10.jpg" class="glightbox" data-gallery="license-space">
                         <img src="~/img/license/license-10.jpg" />
                     </a>
@@ -459,9 +416,6 @@
                             <div class="desc-heritage">
                                 Cột sống đóng vai trò vô cùng quan trọng trong đời sống con người. Nó không chỉ là khung xương cho cơ thể mà còn chịu trách nhiệm giữ cho cơ thể thẳng đứng và cung cấp sự ổn định và hỗ trợ cho các hoạt động hàng ngày.
                             </div>
-                            @* <div class="heritage-action">
-                            <a href="javascript:void(0)" class="btn btn-dtl">Xem chi tiết</a>
-                            </div> *@
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -471,9 +425,6 @@
                             <div class="desc-heritage">
                                 Có một xu hướng mới đang xuất hiện trong lĩnh vực chăm sóc và phòng ngừa bệnh cột sống, đó là giải pháp DOCTORLOAN - Giải pháp Chăm sóc Cột sống với sản phẩm công nghệ sáng chế đột phá-an toàn-hiệu quả.
                             </div>
-                            @* <div class="heritage-action">
-                            <a href="javascript:void(0)" class="btn btn-dtl">Xem chi tiết</a>
-                            </div> *@
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -483,9 +434,6 @@
                             <div class="desc-heritage">
                                 Sản phẩm DOCTORLOAN đạt 5 Thương hiệu Quốc gia đã chứng minh và được công nhận là những sáng chế thiết thực phục vụ đời sống con người không những ở Việt Nam mà cho tất cả mọi người trên thế giới.
                             </div>
-                            @* <div class="heritage-action">
-                            <a href="javascript:void(0)" class="btn btn-dtl">Xem chi tiết</a>
-                            </div> *@
                         </div>
                     </div>
                 </div>
@@ -638,7 +586,6 @@
                                                     {
                                                         <div class="swiper-slide">
                                                             <a href="~/img/x-quang\nguyen-thi-hong-minh\nguyen-thi-hong-minh-@(i).png" class="glightbox" data-gallery="nguyenthihongminh-space">
-                                                                @* <img src="~/img/x-quang\nguyen-thi-hong-minh\nguyen-thi-hong-minh-@(i).png" /> *@
                                                             </a>
                                                         </div>
                                                     }
@@ -675,7 +622,6 @@
                                                     {
                                                         <div class="swiper-slide">
                                                             <a href="~/img/x-quang/hoang-thi-viet-anh/hoang-thi-viet-anh-@(i).png" class="glightbox" data-gallery="hoangthivietanh-space">
-                                                                @* <img src="~/img/x-quang\nguyen-thi-hong-minh\nguyen-thi-hong-minh-@(i).png" /> *@
                                                             </a>
                                                         </div>
                                                     }
@@ -714,7 +660,6 @@
                                                     {
                                                         <div class="swiper-slide">
                                                             <a href="~/img/x-quang/do-thi-nguyet/do-thi-nguyet-@(i).png" class="glightbox" data-gallery="dothinguyet-space">
-                                                                @* <img src="~/img/x-quang\nguyen-thi-hong-minh\nguyen-thi-hong-minh-@(i).png" /> *@
                                                             </a>
                                                         </div>
                                                     }
@@ -752,7 +697,6 @@
                                                     {
                                                         <div class="swiper-slide">
                                                             <a href="~/img/x-quang/vu-hong-duong/vu-hong-duong-@(i).png" class="glightbox" data-gallery="vuhongduong-space">
-                                                                @* <img src="~/img/x-quang\nguyen-thi-hong-minh\nguyen-thi-hong-minh-@(i).png" /> *@
                                                             </a>
                                                         </div>
                                                     }
@@ -823,14 +767,12 @@
                                         <div class="product-desc">
                                             <h4>Ghế Ngồi Sáng Chế DOCTORLOAN N85</h4>
                                             <p>Sau khi được đọc về các công trình nghiên cứu về việc ngồi không đúng cách có nguy cơ khiến con người bị các bệnh về cột sống. Tôi hiểu được rằng thay đổi thói quen của con người rất khó nên phải tạo ra sản phẩm giúp thuận theo thói quen của con người nhưng vẫn đảm bảo giúp ngồi đúng cách. Tôi đã tạo ra chiếc ghế đầu tiên giúp khi ngồi không bị đổ người về phía trước…</p>
-                                            @* <div class="text-end"><a href="javscript:void(0)">Xem chi tiết >>></a></div> *@
                                         </div>
                                         <div class="product-img"><img src="~/img/home/ghe-n85.png" /></div>
                                     </div>
                                 </div>
                                 <div class="tile-project mg-prj">
                                     <span>Câu chuyện vì sao sản phẩm có tên trên được ra đời?</span>
-                                    @* <a href="javascript:void(0)">Xem chi tiết &gt;&gt;&gt;</a> *@
                                 </div>
                                 <div class="recital-project">
                                     <div class="row">
@@ -934,7 +876,6 @@
                                     <div class="project-feedback">
                                         <div class="tile-project">
                                             <span>Ý kiến của 5 khách hàng</span>
-                                            @* <a href="javascript:void(0)">Xem chi tiết >>></a> *@
                                         </div>
                                         <div id="ClientSwiper" class="swiper">
                                             <div class="swiper-wrapper">
@@ -974,7 +915,6 @@
                                         </div>
                                         <div class="feedback-content">
                                             <p>"Người bác sĩ trong tương lai không kê toa cho thuốc, mà chú trọng đến cấu trúc cơ thể của bệnh nhân, đến dinh dưỡng, đến nguyên nhân phát sinh ra bệnh và phương pháp phòng ngừa"</p>
-                                            @* <a class="btn btn-outline-dtl" href="javascript:void(0)">Xem chi tiết</a> *@
                                         </div>
                                     </div>
                                 </div>
@@ -994,14 +934,12 @@
                                             <p>
                                                 Ghế ngồi sáng chế DOCTORLOAN 90 mỏng được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.
                                             </p>
-                                            @* <div class="text-end"><a href="javscript:void(0)">Xem chi tiết >>></a></div> *@
                                         </div>
                                         <div class="product-img"><img src="~/img/home/ghe-90-mong.png" /></div>
                                     </div>
                                 </div>
                                 <div class="tile-project mg-prj">
                                     <span>Câu chuyện vì sao sản phẩm có tên trên được ra đời?</span>
-                                    @* <a href="javascript:void(0)">Xem chi tiết &gt;&gt;&gt;</a> *@
                                 </div>
                                 <div class="recital-project">
                                     <div class="row">
@@ -1106,7 +1044,6 @@
                                     <div class="project-feedback">
                                         <div class="tile-project">
                                             <span>Ý kiến của 5 khách hàng</span>
-                                            @* <a href="javascript:void(0)">Xem chi tiết >>></a> *@
                                         </div>
                                         <div id="ClientSwiper" class="swiper">
                                             <div class="swiper-wrapper">
@@ -1161,14 +1098,52 @@
 </section>
 
 @section scripts{
-    
+    <script src="~/libs/jquery/crypto-js.min.js"></script>
+        
     <script type="text/javascript">
 
-        setTimeout("document.getElementById('myModalEvert').style.display='block'", 1500);
-        setTimeout("document.getElementById('myModalEvert').style.display='none'", 8000);
+        //setTimeout("document.getElementById('myModalEvert').style.display='block'", 1500);
+        //setTimeout("document.getElementById('myModalEvert').style.display='none'", 8000);
         // Handle close modal
         $('#btnClose').click(function () {
             document.getElementById('myModalEvert').style.display = 'none';
+        });
+
+        $('.count').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 10000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+
+        $('.count1').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 6000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+
+        
+        $('.count2').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 4000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
         });
 
         // Chờ tải xong trang và sau đó tự động phát video
@@ -1628,5 +1603,87 @@
             var url = $(this).attr('data-video2-id');
             player2.cueVideoById(url);
         });
+
+        var _dataRes = $("#dataRes").val();
+        var _phone = $("#phone").val();
+        var _custommerName = $("#custommerName").val();
+        var _address = $("#addressLine").val();
+        var _email = $("#email").val();
+        //handle call API checkout
+        if (_dataRes != undefined && _phone != null && _custommerName != null && _address != null) {
+            var _res = JSON.parse(_dataRes);
+            //Payment Payoo
+            var _baseUrl = "https://payoo.vn/v2/";
+            const _businessUsername = "PY8_DOCTORLOAN_ECOM";
+            const _shopID = "6587";
+            const _shopTitle = "DOCTORLOAN";
+            const _checksumKey = "ySpkGehhqJcLuniNYGZZJO8IAftdXc3HxBFvGJgyeMPpPcFk8i+z9ywiCcq53kuv8C8rMm8pnOypibnXIw2/Nw==";
+            const _apiUsername = "PY8_DOCTORLOAN_ECOM_BizAPI";
+            const _apiPassword = "MTwmyaC3H8FQxCb6";
+            const _apiSignature = "h9yQ5+wZC2nEvpCodoW1cnp6JTYz5ezKaJgNoyGzOqerArpKtdiIh+/7oN1i3ncw";
+            const _domain = "https://doctorloan.vn/";
+
+            //function sha512 checksum
+            function sha512(strCheckSumKey, strXML) {
+                var combinedString = strCheckSumKey + strXML;
+                var checksum = CryptoJS.SHA512(combinedString).toString();
+                return checksum;
+            }
+
+            const now = new Date();
+
+            //function get current date time formatted
+            function getCurrentDateTimeFormatted() {
+                const year = now.getFullYear();
+                const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                const day = now.getDate().toString().padStart(2, '0');
+                const hours = (now.getHours() + 1).toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const seconds = now.getSeconds().toString().padStart(2, '0');
+
+                return `${year}${month}${day}${hours}${minutes}${seconds}`;
+            }
+
+            //function get current date formatted
+            function getCurrentDateFormatted() {
+                const day = now.getDate().toString().padStart(2, '0');
+                const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                const year = now.getFullYear();
+
+                return `${day}/${month}/${year}`;
+            }
+
+            const _validityTime = getCurrentDateTimeFormatted();
+            const _orderDate = getCurrentDateFormatted();
+            var _orderNo = "ORD_" + _shopID + "_" + _res.data.orderNo;
+            var _data = "<shops><shop><username>" + _businessUsername + "</username><shop_id>" + _shopID + "</shop_id>" +
+                "<shop_title>" + _shopTitle + "</shop_title><shop_domain>" + _domain + "</shop_domain>" +
+                "<order_no>" + _orderNo + "</order_no><order_cash_amount>" + _res.data.totalPrice + "</order_cash_amount>" +
+                "<order_ship_date>" + _orderDate + "</order_ship_date><order_ship_days>0</order_ship_days>" +
+                "<order_description>Mã đơn hàng: " + _res.data.orderNo + " Tổng tiền: " + _res.data.totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' }) + "</order_description>" +
+                "<shop_back_url>https://doctorloan.vn/common/OrderSuccess</shop_back_url>" +
+                "<notify_url>https://doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/callback-payoo</notify_url>" +
+                "<validity_time>" + _validityTime + "</validity_time><customer>" +
+                "<name>" + _custommerName + "</name><phone>" + _phone + "</phone><address>" + _address + "</address>" +
+                "<email>" + _email + "</email></customer><JsonResponse>true</JsonResponse><direct_return_time>5</direct_return_time></shop></shops>";
+
+            //function call API checkout
+            $.ajax({
+                url: _baseUrl + "create-preorder",
+                type: 'POST',
+                data: {
+                    "data": _data,
+                    "checksum": sha512(_checksumKey, _data),
+                    "refer": _domain,
+                    "payment_group": ""
+                },
+                success: function (response) {
+                    window.location.href = response.order.payment_url;
+                },
+                error: function (xhr, status, error) {
+                    console.error('Có lỗi khi gửi yêu cầu API error:', error);
+                }
+            });
+        }
     </script>
 }

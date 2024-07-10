@@ -1,6 +1,4 @@
-﻿using DOCTORLOAN.Models.Products;
-
-namespace DOCTORLOAN.Models.Orders;
+﻿namespace DOCTORLOAN.Models.Orders;
 
 public class Order
 {
@@ -19,6 +17,7 @@ public class Order
 
 public class ListItem
 {
+    public int ProductId { get; set; }
     public int ProductItemId { get; set; }
     public string Name { get; set; }
     public string ProductSku { get; set; }
@@ -32,4 +31,5 @@ public enum PaymentMethod
 {
     Cash = 1,
     Payment_On_Delivery = 2,
+    Payoo = 3,
 }
