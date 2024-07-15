@@ -33,13 +33,17 @@
             </a>
         </div> *@
 
+        <div class="" style="width: 100px; display: flex; flex-direction: row-reverse; align-items: center; position: fixed; top: 85px; right: 15px; z-index:1;">
+            <img src="~/img/common/flaticon.png" alt="DOCTORLOAN giải pháp cho cột sống khỏe" style="widows:100%; position:relative; z-index:1;" />
+        </div>
+
         <div class="zalo-chat-widget" data-oaid="3997762822356581117" data-welcome-message="DOCTORLOAN Rất vui khi được hỗ trợ bạn!" data-autopopup="2" data-width="" data-height=""></div>
 
         <!-- Messenger Chat plugin Code -->
         <div id="fb-root"></div>
 
         <!-- Your Chat plugin code -->
-        @* <div id="fb-customer-chat" class="fb-customerchat"></div> *@
+        <div id="fb-customer-chat" class="fb-customerchat"></div> 
     </main>
     <footer>
         @await Html.PartialAsync("/Views/Common/_FooterPartial.cshtml")
