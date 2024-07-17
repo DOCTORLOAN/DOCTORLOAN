@@ -2181,6 +2181,9 @@ body {
 #Home_Banner .modal-dialog {
   overflow-y: initial !important;
 }
+#Home_Banner #contentBanner {
+  margin-left: 16%;
+}
 #Home_Banner .banner-info {
   display: block;
   max-width: 780px;
@@ -2188,13 +2191,12 @@ body {
 }
 #Home_Banner .banner-info .title-banner {
   font-family: helveticaneue-Bold;
-  font-size: 4rem;
+  font-size: 3rem;
   color: #013C74;
   text-align: center;
   text-transform: uppercase;
   line-height: 1.35;
   margin-bottom: 2rem;
-  margin-top: 3rem;
 }
 #Home_Banner .banner-info .title-banner:hover {
   color: #FF7500;
@@ -2232,7 +2234,7 @@ body {
   display: block;
   font-family: helveticaneue-medium;
   width: 100%;
-  color: white;
+  color: #565454;
 }
 #Home_Banner .banner-info .desc-doctor {
   color: #013C74;
@@ -2240,7 +2242,7 @@ body {
   padding-top: 2rem;
   text-align: right;
   max-width: 500px;
-  margin-left: 300px;
+  margin-left: 20%;
 }
 #Home_Banner .action-banner {
   display: flex;
@@ -4156,13 +4158,17 @@ body {
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {
   #Home_Banner .content-banner {
     padding: 3rem 0;
+    /*.img-doctor {
+                width: 50%;
+                margin-bottom: 1rem;
+            }*/
   }
   #Home_Banner .content-banner .flex-end-thing {
-    justify-content: center;
+    /*justify-content: center;*/
+    display: none !important;
   }
-  #Home_Banner .content-banner .img-doctor {
-    width: 50%;
-    margin-bottom: 1rem;
+  #Home_Banner #contentBanner {
+    margin: 35% 0 0 0;
   }
   #Home_Banner .banner-info .title-banner {
     font-size: 2rem;
@@ -4644,6 +4650,9 @@ body {
     margin-left: 0;
     margin-bottom: 1rem;
     display: none;
+  }
+  #Home_Banner #contentBanner {
+    margin: 35% 0 0 0;
   }
   #Home_Banner .banner-info .title-banner {
     font-size: 2rem;
@@ -5131,10 +5140,10 @@ body {
   }
   #Events .event-center {
     /* .desc-event-center.fl-end {
-                flex-direction: row;
-                align-items: center;
-                margin-top: .5rem;
-            }*/
+            flex-direction: row;
+            align-items: center;
+            margin-top: .5rem;
+        }*/
   }
   #Events .event-center .content-event-center {
     padding: 1.5rem 1rem;
@@ -6814,9 +6823,12 @@ body {
   text-shadow: 0 0 0.5em rgba(179, 64, 26, 0.25);
   mix-blend-mode: lighten;
 }
+#BannerClinic .banner-book .untitled__slideContent img {
+  width: 30%;
+}
 #BannerClinic .banner-book .untitled__slideContent span {
   display: block;
-  font-size: 5rem;
+  font-size: 4rem;
 }
 #BannerClinic .banner-book .button {
   font-family: "Roboto Mono", sans-serif;
@@ -13368,6 +13380,10 @@ body {
 }
 #infoProduct .productSwiperThumb .swiper-slide-thumb-active {
   opacity: 1;
+}
+#infoProduct #productDetail {
+  margin-top: 15px;
+  border: 1px solid;
 }
 #infoProduct .view-more {
   margin-top: 1.5rem;
