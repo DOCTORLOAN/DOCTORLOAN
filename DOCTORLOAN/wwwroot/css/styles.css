@@ -5271,16 +5271,17 @@ body {
 }
 #AboutBanner .left-thing .banner-about-content {
   margin-top: 3rem;
+  margin-bottom: 4rem;
 }
 #AboutBanner h4 {
-  color: #FFF;
   font-size: 2.5rem;
   font-family: helveticaneue-Bold;
   margin-bottom: 2rem;
   padding-top: 60px;
+  color: #013c74;
 }
 #AboutBanner p {
-  color: #FFF;
+  color: #013c74;
   font-size: 1.3rem;
   margin-bottom: 2rem;
 }
