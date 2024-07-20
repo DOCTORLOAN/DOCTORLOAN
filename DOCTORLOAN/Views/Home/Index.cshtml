@@ -35,63 +35,83 @@
 <section id="Home_Banner">
     <div class="content-banner">
         <div class="container">
-            <div class="row" style="background: url(../img/common/logo_white.png) no-repeat top; background-size: 40%;">
-                <div class="col-lg-4 col-12">
-                    <div class="flex-end-thing">
-                        <img class="img-doctor" src="~/img/home/bac-si.png" />
-                    </div>
-                </div>
-                <div id="contentBanner" class="col-lg-6 col-12">
-                    <div class="center-thing">
-                        <div class="banner-info">
-                            <div class="title-banner">Giải pháp <br /> cho cột sống khỏe</div>
-                            <div class="desc-banner">
-                                <span>Sáng chế của người Việt Nam mang tính đột phá cho sức khỏe cột sống được bảo hộ độc quyền trên 62 quốc gia.</span>
-                            </div>
-                            <div class="desc-doctor">
-                                “Người bác sĩ trong tương lai không kê toa cho thuốc mà chú trọng đến cấu trúc cơ thể của bệnh nhân, đến dinh dưỡng,
-                                đến nguyên nhân phát sinh ra bệnh và phương pháp phòng ngừa.”
-                                <br />
-                                <i>- Edison</i>
-                            </div>
-                            <div class="more-action">
-                                <a class="btn btn-outline-secondary rounded-pill" id="btn-show-modal" asp-controller="About" asp-action="Index">Xem chi tiết</a>
+            <div class="row">
+                <div>
+                    <div class="row">
+                        <div class="col-md-4 col-12">
+                            <div class="flex-end-thing">
+                                <picture>
+                                    <source media="(max-width: 768px)" srcset="~/img/common/logo_white.png" />
+                                    <img class="img-banner-home" src="~/img/home/bac-si.png" alt="" />
+                                </picture>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="action-banner">
-                        <div class="action-item custom-action-item action-info">
-                            <div class="center-thing justify-content-center">
-                                <span>
-                                    Bác sĩ <br /> <strong>Phạm Thị Kim Loan</strong> <br />
-                                    <span>Nhà sáng lập - Chủ tịch</span>
-                                </span>
+                        <div class="col-md-3 col-12">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="~/img/home/bac-si.png" style="max-width: 450px; margin: 0 auto; display: block;" />
+                                <img src="~/img/common/logo_white.png" alt="" />
+                            </picture>
+                        </div>
+                        <div id="contentBanner" class="col-md-5 col-12">
+                            <div class="center-thing">
+                                <div class="banner-info">
+                                    <div class="title-banner">
+                                        <h4>Giải pháp <br /> cho cột sống khỏe</h4>
+                                    </div>
+                                    <div class="desc-banner">
+                                        <span>Sáng chế của người Việt Nam mang tính đột phá cho sức khỏe cột sống được bảo hộ độc quyền trên 62 quốc gia.</span>
+                                    </div>
+                                    <div class="desc-doctor">
+                                        “Người bác sĩ trong tương lai không kê toa cho thuốc mà chú trọng đến cấu trúc cơ thể của bệnh nhân, đến dinh dưỡng,
+                                        đến nguyên nhân phát sinh ra bệnh và phương pháp phòng ngừa.”
+                                        <br />
+                                        <i>- Edison</i>
+                                    </div>
+                                    <div class="more-action">
+                                        <a class="btn btn-outline-secondary rounded-pill" id="btn-show-modal" asp-controller="About" asp-action="Index">Xem chi tiết</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="action-item custom-action-item action-company">
-                            <img src="~/img/home/logo-duc-phuc.png" />
-                            <div class="content-company"><a asp-controller="Clinic" asp-action="Index"> Phòng khám <br /> <span>Đức Phúc DoctorLoan</span></a></div>
-                        </div>
-                        <div class="action-item custom-action-item action-company">
-                            <img src="~/img/home/rnd.png" />
-                            <div class="content-company"><strong>R&D/IPRs</strong> <br /> <div class="small-text">Research and Development</div> <div class="small-text">Intellectual property rights</div></div>
-                        </div>
-                        <div class="action-item custom-action-item action-company">
-                            <img src="~/img/home/logo-doctor-loan.png" />
-                            <div class="content-company"><a asp-controller="Products" asp-action="Index"> Sản phẩm <br /> <strong>DoctorLoan</strong></a></div>
-                        </div>
-                        <div class="action-item custom-action-item action-company">
-                            <img src="~/img/home/logo-gia-thai.png" />
-                            <div class="content-company">Nhà máy sản xuất <br /> <strong>DoctorLoan</strong></div>
-                        </div>
-                        <div class="action-item custom-action-item action-company action-call">
-                            <img src="~/img/home/phone-icon.png" />
-                            <div class="content-company"><span>Tư vấn ngay</span> <br /> <a href="tel:0899136868"><strong>08 9913 6868</strong></a></div>
                         </div>
                     </div>
                 </div>
+                <div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="action-banner">
+                                <div class="action-item custom-action-item action-info">
+                                    <div class="center-thing justify-content-center">
+                                        <span>
+                                            Bác sĩ <br /> <strong>Phạm Thị Kim Loan</strong> <br />
+                                            <span>Nhà sáng lập - Chủ tịch</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="action-item custom-action-item action-company">
+                                    <img src="~/img/home/logo-duc-phuc.png" />
+                                    <div class="content-company"><a asp-controller="Clinic" asp-action="Index"> Phòng khám <br /> <span>Đức Phúc DoctorLoan</span></a></div>
+                                </div>
+                                <div class="action-item custom-action-item action-company">
+                                    <img src="~/img/home/rnd.png" />
+                                    <div class="content-company"><strong>R&D/IPRs</strong> <br /> <div class="small-text">Research and Development</div> <div class="small-text">Intellectual property rights</div></div>
+                                </div>
+                                <div class="action-item custom-action-item action-company">
+                                    <img src="~/img/home/logo-doctor-loan.png" />
+                                    <div class="content-company"><a asp-controller="Products" asp-action="Index"> Sản phẩm <br /> <strong>DoctorLoan</strong></a></div>
+                                </div>
+                                <div class="action-item custom-action-item action-company">
+                                    <img src="~/img/home/logo-gia-thai.png" />
+                                    <div class="content-company">Nhà máy sản xuất <br /> <strong>DoctorLoan</strong></div>
+                                </div>
+                                <div class="action-item custom-action-item action-company action-call">
+                                    <img src="~/img/home/phone-icon.png" />
+                                    <div class="content-company"><span>Tư vấn ngay</span> <br /> <a href="tel:0899136868"><strong>08 9913 6868</strong></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
         <section id="About">
@@ -735,10 +755,8 @@
 
                 <div class="col-xxl-3 col-xl-4 col-lg-5 col-12">
                     <div class="list-iframe-fb">
-                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F998659321172937%2F&show_text=true&width=560&t=0" width="350" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
                         <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FGiaThaiDOCTORLOAN%2Fvideos%2F885511473444410%2F&show_text=true&width=560&t=0" width="560" height="429" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F319354987187815%2F&show_text=true&width=560&t=0" width="560" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FpkDucPhucDOCTORLOAN%2Fvideos%2F405994005821995%2F&show_text=true&width=560&t=0" width="560" height="429" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
                     </div>
                 </div>
 

@@ -34,6 +34,13 @@ body {
     margin-top: -1rem;
     background: url(../img/home/bg-banner.jpg) no-repeat top / cover;
 
+    .img-banner-home {
+        width: 90%;
+        max-width: 450px;
+        margin: 0 auto;
+        display: block;
+    }
+
     .content-banner {
         padding-top: 5rem;
 
@@ -60,10 +67,6 @@ body {
         overflow-y: initial !important;
     }
 
-    #contentBanner {
-        margin-left: 16%;
-    }
-    
     .banner-info {
         display: block;
         max-width: 780px;
@@ -71,7 +74,7 @@ body {
 
         .title-banner {
             font-family: @font-helveticaneue-blod;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: @main-blue;
             text-align: center;
             text-transform: uppercase;
@@ -115,7 +118,7 @@ body {
 
         .desc-banner {
             font-family: @font-helveticaneue-medium;
-            font-size: 1.75rem;
+            font-size: 1.3rem;
             text-align: center;
 
             span {
@@ -123,12 +126,13 @@ body {
                 font-family: @font-helveticaneue-medium;
                 width: 100%;
                 color: #565454;
+                font-size: 1.3rem;
             }
         }
 
         .desc-doctor {
             color: @main-blue;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             padding-top: 2rem;
             text-align: right;
             max-width: 500px;
@@ -2599,22 +2603,21 @@ body {
 
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {
     #Home_Banner {
+
+        .img-banner-home {
+            width: 50%;
+        }
+
         .content-banner {
             padding: 3rem 0;
 
             .flex-end-thing {
-                /*justify-content: center;*/
-                display: none !important;
+                justify-content: center;
             }
-
-            /*.img-doctor {
-                width: 50%;
+            .img-doctor {
+                width: 90%;
                 margin-bottom: 1rem;
-            }*/
-        }
-
-        #contentBanner {
-            margin: 35% 0 0 0;
+            }
         }
 
         .banner-info {
@@ -3244,6 +3247,11 @@ body {
 
 @media only screen and (max-width:767.98px) {
     #Home_Banner {
+
+        .img-banner-home {
+            width: 50%;
+        }
+
         .content-banner {
             padding: 2rem 0;
 
@@ -3259,10 +3267,6 @@ body {
             }
         }
 
-        #contentBanner {
-            margin: 35% 0 0 0;
-        }
-                
         .banner-info {
             .title-banner {
                 font-size: 2rem;
@@ -3279,7 +3283,7 @@ body {
                 padding-top: 2rem;
                 max-width: 500px;
                 text-align: center;
-                padding-left:0rem;
+                padding-left: 0rem;
                 margin-left: 0rem;
             }
 

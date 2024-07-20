@@ -2161,6 +2161,12 @@ body {
   margin-top: -1rem;
   background: url(../img/home/bg-banner.jpg) no-repeat top / cover;
 }
+#Home_Banner .img-banner-home {
+  width: 90%;
+  max-width: 450px;
+  margin: 0 auto;
+  display: block;
+}
 #Home_Banner .content-banner {
   padding-top: 5rem;
 }
@@ -2181,9 +2187,6 @@ body {
 #Home_Banner .modal-dialog {
   overflow-y: initial !important;
 }
-#Home_Banner #contentBanner {
-  margin-left: 16%;
-}
 #Home_Banner .banner-info {
   display: block;
   max-width: 780px;
@@ -2191,7 +2194,7 @@ body {
 }
 #Home_Banner .banner-info .title-banner {
   font-family: helveticaneue-Bold;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #013C74;
   text-align: center;
   text-transform: uppercase;
@@ -2227,7 +2230,7 @@ body {
 }
 #Home_Banner .banner-info .desc-banner {
   font-family: helveticaneue-medium;
-  font-size: 1.75rem;
+  font-size: 1.3rem;
   text-align: center;
 }
 #Home_Banner .banner-info .desc-banner span {
@@ -2235,10 +2238,11 @@ body {
   font-family: helveticaneue-medium;
   width: 100%;
   color: #565454;
+  font-size: 1.3rem;
 }
 #Home_Banner .banner-info .desc-doctor {
   color: #013C74;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   padding-top: 2rem;
   text-align: right;
   max-width: 500px;
@@ -4156,19 +4160,18 @@ body {
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {
+  #Home_Banner .img-banner-home {
+    width: 50%;
+  }
   #Home_Banner .content-banner {
     padding: 3rem 0;
-    /*.img-doctor {
-                width: 50%;
-                margin-bottom: 1rem;
-            }*/
   }
   #Home_Banner .content-banner .flex-end-thing {
-    /*justify-content: center;*/
-    display: none !important;
+    justify-content: center;
   }
-  #Home_Banner #contentBanner {
-    margin: 35% 0 0 0;
+  #Home_Banner .content-banner .img-doctor {
+    width: 90%;
+    margin-bottom: 1rem;
   }
   #Home_Banner .banner-info .title-banner {
     font-size: 2rem;
@@ -4639,6 +4642,9 @@ body {
   }
 }
 @media only screen and (max-width: 767.98px) {
+  #Home_Banner .img-banner-home {
+    width: 50%;
+  }
   #Home_Banner .content-banner {
     padding: 2rem 0;
   }
@@ -4650,9 +4656,6 @@ body {
     margin-left: 0;
     margin-bottom: 1rem;
     display: none;
-  }
-  #Home_Banner #contentBanner {
-    margin: 35% 0 0 0;
   }
   #Home_Banner .banner-info .title-banner {
     font-size: 2rem;
@@ -6520,6 +6523,194 @@ body {
   position: relative;
   z-index: 1;
   margin-top: -1rem;
+  /*.untitled {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            -webkit-animation: rotateHue infinite 20s linear;
+            animation: rotateHue infinite 20s linear;
+            -webkit-animation-delay: 0.625s;
+            animation-delay: 0.625s;
+        }*/
+  /* @-webkit-keyframes rotateFrame {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(180deg);
+            }
+        }*/
+  /* @keyframes rotateFrame {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(180deg);
+            }
+        }*/
+  /*.untitled__shutters:before,
+        .untitled__shutters:after {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 50%;
+            transform: translate3d(-50%, 0, 0);
+            background-color: #ff7500;
+            pointer-events: auto;
+        }*/
+  /*.untitled__shutters:before {
+            bottom: 50%;
+            -webkit-animation: openTop 5s infinite;
+            animation: openTop 5s infinite;
+        }*/
+  /*@-webkit-keyframes openTop {
+            0% {
+                transform: translate3d(-50%, 0, 0);
+                -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
+                animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
+            }
+
+            40% {
+                transform: translate3d(-50%, -65vmax, 0);
+                animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+
+            70% {
+                transform: translate3d(-50%, -65vmax, 0);
+                animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+
+            100% {
+                transform: translate3d(-50%, 0, 0);
+                -webkit-animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+                animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+        }
+
+        @keyframes openTop {
+            0% {
+                transform: translate3d(-50%, 0, 0);
+                -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
+                animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
+            }
+
+            40% {
+                transform: translate3d(-50%, -65vmax, 0);
+                animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+
+            70% {
+                transform: translate3d(-50%, -65vmax, 0);
+                animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+
+            100% {
+                transform: translate3d(-50%, 0, 0);
+                -webkit-animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+                animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+        }*/
+  /*.untitled__shutters:after {
+            top: 50%;
+            -webkit-animation: openBottom 5s infinite;
+            animation: openBottom 5s infinite;
+        }*/
+  /*@-webkit-keyframes openBottom {
+            0% {
+                transform: translate3d(-50%, 0, 0);
+                -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
+                animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
+            }
+
+            40% {
+                transform: translate3d(-50%, 65vmax, 0);
+                animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+
+            70% {
+                transform: translate3d(-50%, 65vmax, 0);
+                animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+
+            100% {
+                transform: translate3d(-50%, 0, 0);
+                -webkit-animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+                animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+        }*/
+  /*@keyframes openBottom {
+            0% {
+                transform: translate3d(-50%, 0, 0);
+                -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
+                animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
+            }
+
+            40% {
+                transform: translate3d(-50%, 65vmax, 0);
+                animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+
+            70% {
+                transform: translate3d(-50%, 65vmax, 0);
+                animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+
+            100% {
+                transform: translate3d(-50%, 0, 0);
+                -webkit-animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+                animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+            }
+        }*/
+  /*.untitled__slide {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            -webkit-animation: showHideSlide infinite 20s steps(1);
+            animation: showHideSlide infinite 20s steps(1);
+        }*/
+  /*@-webkit-keyframes showHideSlide {
+            0% {
+                opacity: 1;
+                pointer-events: auto;
+                z-index: 1;
+            }
+
+            25% {
+                opacity: 0;
+                pointer-events: none;
+                z-index: -1;
+            }
+
+            100% {
+                opacity: 0;
+                pointer-events: none;
+                z-index: -1;
+            }
+        }
+
+        @keyframes showHideSlide {
+            0% {
+                opacity: 1;
+                pointer-events: auto;
+                z-index: 1;
+            }
+
+            25% {
+                opacity: 0;
+                pointer-events: none;
+                z-index: -1;
+            }
+
+            100% {
+                opacity: 0;
+                pointer-events: none;
+                z-index: -1;
+            }
+        }*/
 }
 #BannerClinic .banner-book .banner-clinic-second {
   width: 100%;
@@ -6538,15 +6729,6 @@ body {
   height: 100vh;
   overflow: hidden;
 }
-#BannerClinic .banner-book .untitled {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  -webkit-animation: rotateHue infinite 20s linear;
-  animation: rotateHue infinite 20s linear;
-  -webkit-animation-delay: 0.625s;
-  animation-delay: 0.625s;
-}
 #BannerClinic .banner-book .untitled__shutters {
   position: absolute;
   height: 150vmax;
@@ -6555,125 +6737,8 @@ body {
   top: calc(50% - 75vmax);
   pointer-events: none;
   z-index: 2;
-  -webkit-animation: rotateFrame 10s linear infinite;
-  animation: rotateFrame 10s linear infinite;
-}
-@-webkit-keyframes rotateFrame {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(180deg);
-  }
-}
-@keyframes rotateFrame {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(180deg);
-  }
-}
-#BannerClinic .banner-book .untitled__shutters:before,
-#BannerClinic .banner-book .untitled__shutters:after {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 50%;
-  transform: translate3d(-50%, 0, 0);
-  background-color: #ff7500;
-  pointer-events: auto;
-}
-#BannerClinic .banner-book .untitled__shutters:before {
-  bottom: 50%;
-  -webkit-animation: openTop 5s infinite;
-  animation: openTop 5s infinite;
-}
-@-webkit-keyframes openTop {
-  0% {
-    transform: translate3d(-50%, 0, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
-    animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
-  }
-  40% {
-    transform: translate3d(-50%, -65vmax, 0);
-    animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-  70% {
-    transform: translate3d(-50%, -65vmax, 0);
-    animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-    animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-}
-@keyframes openTop {
-  0% {
-    transform: translate3d(-50%, 0, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
-    animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
-  }
-  40% {
-    transform: translate3d(-50%, -65vmax, 0);
-    animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-  70% {
-    transform: translate3d(-50%, -65vmax, 0);
-    animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-    animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-}
-#BannerClinic .banner-book .untitled__shutters:after {
-  top: 50%;
-  -webkit-animation: openBottom 5s infinite;
-  animation: openBottom 5s infinite;
-}
-@-webkit-keyframes openBottom {
-  0% {
-    transform: translate3d(-50%, 0, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
-    animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
-  }
-  40% {
-    transform: translate3d(-50%, 65vmax, 0);
-    animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-  70% {
-    transform: translate3d(-50%, 65vmax, 0);
-    animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-    animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-}
-@keyframes openBottom {
-  0% {
-    transform: translate3d(-50%, 0, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
-    animation-timing-function: cubic-bezier(0.8, 0, 0.1, 1);
-  }
-  40% {
-    transform: translate3d(-50%, 65vmax, 0);
-    animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-  70% {
-    transform: translate3d(-50%, 65vmax, 0);
-    animation-timing-functon: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-    animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  }
+  -webkit-animation: rotateFrame 50s linear infinite;
+  animation: rotateFrame 50s linear infinite;
 }
 #BannerClinic .banner-book .untitled__slides {
   position: absolute;
@@ -6682,48 +6747,6 @@ body {
   top: 0;
   left: 0;
   background-color: #b3401a;
-}
-#BannerClinic .banner-book .untitled__slide {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  -webkit-animation: showHideSlide infinite 20s steps(1);
-  animation: showHideSlide infinite 20s steps(1);
-}
-@-webkit-keyframes showHideSlide {
-  0% {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 1;
-  }
-  25% {
-    opacity: 0;
-    pointer-events: none;
-    z-index: -1;
-  }
-  100% {
-    opacity: 0;
-    pointer-events: none;
-    z-index: -1;
-  }
-}
-@keyframes showHideSlide {
-  0% {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 1;
-  }
-  25% {
-    opacity: 0;
-    pointer-events: none;
-    z-index: -1;
-  }
-  100% {
-    opacity: 0;
-    pointer-events: none;
-    z-index: -1;
-  }
 }
 #BannerClinic .banner-book .untitled__slide:nth-child(1) {
   -webkit-animation-delay: 0s;
@@ -13673,10 +13696,102 @@ body {
 #infoProduct .info-product-right .ipr-policy .policy-item a:hover {
   text-decoration: underline;
 }
-#ContentProducts .container {
-  margin: 2rem auto;
-  padding: 2rem;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+/* Container styling */
+#ContentProducts {
+  background-color: #f9f9f9;
+  margin-top: 20px;
+  padding: 20px 0;
+  border-radius: 15px;
+  width: 750px;
+  height: 70vh;
+}
+.container_a {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  height: 100%;
+}
+.product-content-wrapper,
+.main-content {
+  height: 100%;
+}
+.accordion-product {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.accordion-product-body {
+  padding: 20px;
+}
+.parameter-item {
+  margin-bottom: 20px;
+}
+.parameter-ttl {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ulist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  /* Initially hide the list */
+}
+.ulist.show {
+  display: block;
+  /* Show the list when active */
+}
+.ulist li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.ulist li:last-child {
+  border-bottom: none;
+}
+.ctLeft p,
+.ctRight span {
+  margin: 0;
+}
+.pd-button-overlay {
+  text-align: center;
+  margin-top: 20px;
+}
+.button-overlay {
+  background-color: #FF9800;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+.button-overlay:hover {
+  background-color: #e68900;
+}
+.carret {
+  display: inline-block;
+  margin-left: 5px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  padding: 2px;
+  transform: rotate(45deg);
+  vertical-align: middle;
+}
+.icon {
+  font-size: 1em;
+  margin-left: 10px;
+  transition: transform 0.3s;
+}
+.icon.open {
+  transform: rotate(45deg);
 }
 .product-content-wrapper .main-content {
   min-height: 0px;
