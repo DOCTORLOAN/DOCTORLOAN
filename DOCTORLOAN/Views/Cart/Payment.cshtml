@@ -51,7 +51,9 @@
                             <div class="row">
                                 <div class="mb-3 col-4">
                                     <label for="city" class="req">Thành Phố</label>
-                                    <input id="city" class="form-control" required />
+                                    <select class="form-control" id="city" name="city" title="Chọn Tỉnh Thành" required>
+                                        <option value="0">Tỉnh Thành</option>
+                                    </select>
                                     <div class="invalid-feedback">
                                         Vui lòng nhập tên Thành Phố:
                                         <br /> - Ví dụ: Hồ Chí Minh, Hà Nội,...
@@ -59,8 +61,10 @@
                                 </div>
 
                                 <div class="mb-3 col-4">
-                                    <label for="District" class="req">Quận, Huyện</label>
-                                    <input id="district" class="form-control" required />
+                                    <label for="district" class="req">Quận, Huyện</label>
+                                    <select class="form-control" id="district" name="district" title="Chọn Quận Huyện" required>
+                                        <option value="0">Quận Huyện</option>
+                                    </select>
                                     <div class="invalid-feedback">
                                         Vui lòng nhập tên Quận, Huyện:
                                         <br /> - Ví dụ: Quận 1, Huyện Bình Chánh,...
@@ -69,7 +73,9 @@
 
                                 <div class="mb-3 col-4">
                                     <label for="ward" class="req">Xã, Phường</label>
-                                    <input id="ward" class="form-control" required />
+                                    <select class="form-control" id="ward" name="ward" title="Chọn Phường Xã">
+                                        <option value="0">Phường Xã</option>
+                                    </select>
                                     <div class="invalid-feedback">
                                         Vui lòng nhập tên Xã, Phường:
                                         <br /> - Ví dụ: Phường Phạm Ngũ Lão, Xã Bình Mỹ,...
@@ -94,6 +100,24 @@
                                 <textarea class="form-control" placeholder="Nhập ghi chú" name="Remarks" id="remarks" rows="3"></textarea>
                             </div>
                             <input type="text" class="form-control" value="1" id="paymentMethod" name="PaymentMethod" hidden />
+                            <div class="title-cart">Thông tin thanh toán <span>Vui lòng chọn một hình thức thanh toán.</span></div>
+                            <div class="info-payment">
+                                <a href="javascript:void(0)" class="btn btn-payment active" data-payment="payoo">Payoo</a>
+                                <a href="javascript:void(0)" class="btn btn-payment" data-payment="cod">Thanh toán khi nhận hàng</a>
+                                <hr class="hr-payment" />
+                                <div class="payment-content transfer active">
+                                    <p>
+                                        <strong>
+                                            Vui lòng thanh toán đơn hàng qua cổng thanh toán Payoo. <br/>
+                                            Đơn hàng của bạn sẽ được gửi đến bạn trong thời gian sớm nhất!
+                                        </strong>
+                                    </p>
+                                </div>
+
+                                <div class="payment-content cod">
+                                    <p><strong>Đơn hàng sẽ được gửi đến bạn trong thời gian sớm nhất!</strong></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,11 +147,51 @@
 </section>
 
 @section scripts{
+    <script src="https://esgoo.net/scripts/jquery.js"></script>
     <script src="~/libs/jquery/crypto-js.min.js"></script>
     <script type="text/javascript">
+
+        //Lấy tỉnh thành
+        $.getJSON('https://esgoo.net/api-tinhthanh/1/0.htm', function (data_tinh) {
+            if (data_tinh.error == 0) {
+                $.each(data_tinh.data, function (key_tinh, val_tinh) {
+                    $("#city").append('<option value="' + val_tinh.id + '">' + val_tinh.full_name + '</option>');
+                });
+                $("#city").change(function (e) {
+                    var idtinh = $(this).val();
+                    //Lấy quận huyện
+                    $.getJSON('https://esgoo.net/api-tinhthanh/2/' + idtinh + '.htm', function (data_quan) {
+                        if (data_quan.error == 0) {
+                            $("#district").html('<option value="0">Quận Huyện</option>');
+                            $("#ward").html('<option value="0">Phường Xã</option>');
+                            $.each(data_quan.data, function (key_quan, val_quan) {
+                                $("#district").append('<option value="' + val_quan.id + '">' + val_quan.full_name + '</option>');
+                            });
+                            //Lấy phường xã
+                            $("#district").change(function (e) {
+                                var idquan = $(this).val();
+                                $.getJSON('https://esgoo.net/api-tinhthanh/3/' + idquan + '.htm', function (data_phuong) {
+                                    if (data_phuong.error == 0) {
+                                        $("#ward").html('<option value="0">Phường Xã</option>');
+                                        $.each(data_phuong.data, function (key_phuong, val_phuong) {
+                                            $("#ward").append('<option value="' + val_phuong.id + '">' + val_phuong.full_name + '</option>');
+                                        });
+                                    }
+                                });
+                            });
+
+                        }
+                    });
+
+                    $(".btn-payment").trigger('click');
+                });
+
+            }
+        });
+
         //Function get data address
         function myFunction() {
-            return $("#addressLine").val($("#addressDetaills").val() + " - " + $("#ward").val() + " - " + $("#district").val() + " - " + $("#city").val());
+            return $("#addressLine").val($("#addressDetaills").val() + " - " + $("#ward :selected").text() + " - " + $("#district :selected").text() + " - " + $("#city :selected").text());
         }
 
         //Function select method payment
@@ -285,7 +349,7 @@
                                                 <input type="text" class="form-control" value="`+ _productId + `" name="ProductId" hidden />
                                                 <div class="pp-item">
                                                     <div class="pp-info">
-                                                        <img id="imgProductPayment" style="width:60px; height: 60px;" src="`+ data.data.productMedias[0].mediaUrl + `" />
+                                                        <img loading="lazy" id="imgProductPayment" style="width:60px; height: 60px;" src="`+ data.data.productMedias[0].mediaUrl + `" />
                                                         <div id="pp-desc" class="pp-desc">
                                                         <strong>`+ data.data.name + `</strong>
                                                         <input type="text" name="Name" value="`+ data.data.name + `" class="form-control" hidden />

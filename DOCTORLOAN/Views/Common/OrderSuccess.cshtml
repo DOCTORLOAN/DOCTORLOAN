@@ -70,20 +70,20 @@
                 // xử lý theo status
                 if (status != '1') {
                     $("#titleStatus").append('<h1 class="display-4 text-danger">Đơn hàng của bạn chưa được thanh toán!</h1>');
-                    $("#iconStatus").append('<img src="../img/icon/erorr-payment.png" class="imgRedirect" alt="icon-error">');
+                    $("#iconStatus").append('<img loading="lazy" src="../img/icon/erorr-payment.png" class="imgRedirect" alt="icon-error">');
                     $("#orderCode").append(`Mã đơn hàng: <strong>` + orderNo + `</strong>`);
                     $("#messStatus").append(`<h3 class="text-danger">Đơn hàng:` + orderNo + ` đã bị hủy.</h3>`);
                 } else {
                     $("#titleStatus").append('<h1 class="display-4 text-success">Đơn hàng của bạn đã được thanh toán thành công!</h1>');
-                    $("#iconStatus").append('<img src="../img/icon/sucess-payment.png" class="imgRedirect" alt="icon-sucess">');
+                    $("#iconStatus").append('<img loading="lazy" src="../img/icon/sucess-payment.png" class="imgRedirect" alt="icon-sucess">');
                     $("#orderCode").append(`Mã đơn hàng: <strong>` + orderNo + `</strong>`);
                     $("#messStatus").append(`<h3 class="text-success">Đơn hàng:` + orderNo + ` đã được thanh toán, đơn hàng đang được xử lý!</h3>`);
                 }
             } else {
-                $("#iconStatus").append('<img src="../img/icon/404-notfound.png" class="imgRedirect" alt="icon-404-not-found">');
+                $("#iconStatus").append('<img loading="lazy" src="../img/icon/404-notfound.png" class="imgRedirect" alt="icon-404-not-found">');
             }
         } else {
-            $("#iconStatus").append('<img src="../img/icon/404-notfound.png" class="imgRedirect" alt="icon-404-not-found">');
+            $("#iconStatus").append('<img loading="lazy" src="../img/icon/404-notfound.png" class="imgRedirect" alt="icon-404-not-found">');
         }
     </script>
 }

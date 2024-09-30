@@ -238,7 +238,7 @@
             </div>
         </div>
     </div>
-</section>*@
+</section> *@
 
 <section id="ProductBestSeller" class="product-wrapper">
     <div class="container">
@@ -252,6 +252,29 @@
 
 @section scripts {
     <script type="text/javascript">
+
+        function querySelectorAll(e) {  
+            document.querySelectorAll(e).forEach(function (title) {
+                title.addEventListener('click', function () {
+                    var ulist = this.nextElementSibling;
+                    var icon = this.querySelector('.icon');
+                    if (ulist.classList.contains('show')) {
+                        ulist.classList.remove('show');
+                        icon.textContent = '+';
+                    } else {
+                        ulist.classList.add('show');
+                        icon.textContent = '-';
+                    }
+                });
+                // Auto scroll behavior
+                if (content.classList.contains('show-content')) {
+                    content.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        }
+
         $(document).ready(function () {
             $("#nav-menu-container ul li").removeClass("menu-active");
             $("#nav-menu-container ul li").eq(4).addClass("menu-active");
@@ -341,67 +364,111 @@
                 dataType: 'json',
                 success: function (data) {
                     var productSwiperMain = $(`<div class="container">
-                                                            <div class="row">
-                                                                <div class="col-md-6 col-12">
-                                                                    <div class="swiper productSwiperMain">
-                                                                        <div id="productSwiperMain" class="swiper-wrapper"></div>
-                                                                        <div class="swiper-button-next"></div>
-                                                                        <div class="swiper-button-prev"></div>
-                                                                    </div>
-                                                                    <div thumbsSlider="" class="swiper productSwiperThumb">
-                                                                        <div id="productSwiperThumb" class="swiper-wrapper"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6 col-12">
-                                                                    <div class="info-product-right">
-                                                                        <div class="ipr-name">`+ data.data.name+ `</div>
-                                                                        <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
-                                                                        <div id="iprItemColor" class="ipr-item"></div>
-                                                                        <div id="iprItemOption" class="ipr-item"></div>
-                                                                        <div class="ipr-item">
-                                                                            <div>
-                                                                                <label>.Mô tả</label>
-                                                                                `+ data.data.productDetails[0].summary + ` </br>
-                                                                                <label>.Mô tả chi tiết</label>
-                                                                                `+ data.data.productDetails[0].description + `
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="swiper productSwiperMain">
+                                                                <div id="productSwiperMain" class="swiper-wrapper"></div>
+                                                                <div class="swiper-button-next"></div>
+                                                                <div class="swiper-button-prev"></div>
+                                                            </div>
+                                                            <div thumbsSlider="" class="swiper productSwiperThumb">
+                                                                <div id="productSwiperThumb" class="swiper-wrapper"></div>
+                                                            </div>
+                                                            @*<div id="policiesDetails" class="">
+                                                                <div class="image-group mt-5 mb-5">
+                                                                    <div class="accordion" id="accordionFeedback">
+                                                                        <div class="accordion-item">
+                                                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                                                <div class="accordion-body">
+                                                                                    <div class="content-t-wrap">
+                                                                                        <div id="parameterAll" class="">
+                                                                                            <div class="parameter-item">
+                                                                                                <p class="parameter-ttl">Tổng quan</p>
+                                                                                                <ul id="attributesItem" class="ulist"> </ul>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="ipr-action-details">
-        @* <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
-                                                                            <a id="buy-`+ data.data.id + `" data-id="` + data.data.id + `" class="btn btn-buy-details" target="_blank">Mua ngay</a>
-                                                                        </div>
-                                                                        <div class="shopify-button">
-                                                                            <div class="action-item custom-action-item action-company action-call">
-                                                                                <strong style="font-size: 1.3rem;color: black">Mua dễ dàng hơn bằng</strong><img src="/img/icon/shopify.png" style="width: 30%;">
-
-                                                                            </div>
-                                                                            <a href="" class="btn btn-outline-dtl btn-shopify" target="_blank">Mua ngay</a>
-                                                                        </div>
-                                                                        <div class="ipr-policy">
-                                                                            <div class="policy-item">
-                                                                                <img src="/img/icon/p-shield.svg" />
-                                                                                <span>Cam kết <strong>hàng mới 100%</strong></span>
-                                                                            </div>
-                                                                            <div class="policy-item">
-                                                                                <img src="/img/icon/p-box-iso.svg" />
-                                                                                <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
-                                                                            </div>
-                                                                            <div id="policyItem" class="policy-item"></div>
-                                                                            <div id="policyItem1" class="policy-item"></div>
-                                                                            <div id="policyItem2" class="policy-item"></div>
+                                                                            <h2 class="accordion-header" id="heading1">
+                                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                                                    Thông tin tổng quan về sản phẩm
+                                                                                </button>
+                                                                            </h2>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div id="view-more" class="view-more">
-        @*<button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>*@
+                                                            </div>*@
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="info-product-right">
+                                                                <div class="ipr-name">`+ data.data.name+ `</div>
+                                                                <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
+                                                                <div id="iprItemColor" class="ipr-item"></div>
+                                                                <div id="iprItemOption" class="ipr-item"></div>
+                                                                <div class="ipr-item">
+                                                                    <div>
+                                                                        <label>.Mô tả</label>
+                                                                        `+ data.data.productDetails[0].summary + ` </br>
+                                                                        <label>.Mô tả chi tiết</label>
+                                                                        `+ data.data.productDetails[0].description + `
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ipr-action-details">
+                                                                    @* <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
+                                                                    <a id="buy-`+ data.data.id + `" data-id="` + data.data.id + `" class="btn btn-buy-details" target="_blank">Mua ngay</a>
+                                                                </div>
+                                                                <div class="shopify-button">
+                                                                    <div class="action-item custom-action-item action-company action-call">
+                                                                        <strong style="font-size: 1.3rem;color: black">Mua dễ dàng hơn bằng</strong>
+                                                                        <img loading="lazy" src="/img/icon/shopify.png" style="width: 30%;">
+                                                                    </div>
+                                                                    <a href="" class="btn btn-outline-dtl btn-shopify" target="_blank">Mua ngay</a>
+                                                                </div>
+                                                                <div class="ipr-policy">
+                                                                    <div class="policy-item">
+                                                                        <img loading="lazy" src="/img/icon/p-shield.svg" />
+                                                                        <span>Cam kết <strong>hàng mới 100%</strong></span>
+                                                                    </div>
+                                                                    <div class="policy-item">
+                                                                        <img loading="lazy" src="/img/icon/p-box-iso.svg" />
+                                                                        <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
+                                                                    </div>
+                                                                    <div id="policyItem" class="policy-item"></div>
+                                                                    <div id="policyItem1" class="policy-item"></div>
+                                                                    <div id="policyItem2" class="policy-item"></div>
                                                                 </div>
                                                             </div>
-                                                        </div>`);
+                                                        </div>
+                                                        <div id="view-more" class="view-more">
+                                                            @*<button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>*@
+                                                        </div>
+                                                    </div>
+                                                </div>`);
                     $("#infoProduct").append(productSwiperMain);
+
+                    var _productAttr = data.data.productAttributes;
+
+                    @*if (_productAttr != null || _productAttr != undefined) { 
+                        var _arrayIndexAttr = JSON.parse($('#txtAttrGroup').val());
+
+                        $.each(_arrayIndexAttr, function (idx, item) {
+                            $.each(_productAttr, function (_idx, _item) {
+                                if (item == _item.attributeId) {
+                                    //console.log("idx=============== " + item);
+                                    loadAttributes(item, _item.value);
+                                    //console.log("sda=============== " + _item.value);
+
+                                    //console.log("xaunlam ==>>>>>>>> " +_item.value)
+                                }
+                            });
+                            
+                        });
+                    }*@
 
                     setHrefHDSD(data.data.sku);
                     setHrefShopify(data.data.sku);
-                    loadAttributes(data.data.productAttributes);
+                    //loadAttributes(data.data.productAttributes);
 
                     // Handle format currency vnd
                     $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
@@ -521,13 +588,13 @@
                                 $("#imgMainPosition" + (_idx + 1)).attr('src', _item.mediaUrl);
                                 $("#imgThumbPosition" + (_idx + 1)).attr('src',);
                                 imgProduct = `<div class="swiper-slide" >
-                                                                <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + _item.mediaUrl + `" />
-                                                            </div>`;
+                                                <img loading="lazy" id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + _item.mediaUrl + `" />
+                                              </div>`;
                                 imgThumb = `<div class="swiper-slide">
-                                                                <div class="bg-product-thumb">
-                                                                    <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + _item.mediaUrl + `" />
-                                                                </div>
-                                                            </div>`;
+                                                <div class="bg-product-thumb">
+                                                    <img loading="lazy" id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + _item.mediaUrl + `" />
+                                                </div>
+                                            </div>`;
                                 $("#productSwiperMain").append(imgProduct);
                                 $("#productSwiperThumb").append(imgThumb);
                             });
@@ -541,13 +608,13 @@
                         $.each(_arr, function (_idx, _item) {
 
                             imgProduct = `<div class="swiper-slide" >
-                                                        <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + data.data.productMedias[_idx].mediaUrl + `" />
-                                                    </div>`;
+                                            <img loading="lazy" id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + data.data.productMedias[_idx].mediaUrl + `" />
+                                          </div>`;
                             imgThumb = `<div class="swiper-slide">
-                                                    <div class="bg-product-thumb">
-                                                        <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + data.data.productMedias[_idx].mediaUrl + `" />
-                                                    </div>
-                                                </div>`;
+                                            <div class="bg-product-thumb">
+                                                <img loading="lazy" id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + data.data.productMedias[_idx].mediaUrl + `" />
+                                            </div>
+                                        </div>`;
                             $("#productSwiperMain").append(imgProduct);
                             $("#productSwiperThumb").append(imgThumb);
                         });
@@ -594,6 +661,12 @@
                         };
                         redirectToWithData("/Cart/Payment", _data);
                     });
+
+                    //Handle ....
+                    $('.parameter - ttl').click(function () {
+                        querySelectorAll(this);
+
+                    });
                 },
                 error: function (error) {
                     //handle show error
@@ -603,76 +676,148 @@
         }
 
         //handle get Attributes
-        function loadAttributes(_attr) {
-            var attr = `<div class="parameter-item">
-                                    <p class="parameter-ttl">Tổng quan</p>
-                                    <ul class="ulist ">
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Kiểu dáng</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Tải trọng tối đa</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>150 Kg</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Điều chỉnh lưng ghế</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Không</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Điều chỉnh chân ghế</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Không</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Chất liệu thân ghế</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Sợi thủy tinh, Composite</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Chất liệu vỏ bọc</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Da Simili</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Chất liệu chân ghế</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Inox 304</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Năm ra mắt</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>2014</span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>`;
+        function loadAttributes(_attr, _item) {
+
+            switch (_attr) {
+                case 1:
+                    var attr = ``;
+                    attr = `<li>
+                            <div class="ctLeft">
+                                <p>Kích thước: </p>
+                            </div>
+                            <div class="ctRight">
+                                <span>`+ _item +`</span>
+                            </div>
+                        </li>`;
+                    $("#attributesItem").append(attr);
+                    break;
+                case 2:
+                    var attr = ``;
+                    attr = `<li>
+                                <div class="ctLeft">
+                                    <p>Khối lượng: </p>
+                                </div>
+                                <div class="ctRight">
+                                    <span>`+ _item + `</span>
+                                </div>
+                            </li>`;
+                    $("#attributesItem").append(attr);
+                    break;
+                case 3:
+                    var attr = ``;
+                    attr = `<li>
+                                <div class="ctLeft">
+                                    <p>Kiểu dáng: </p>
+                                </div>
+                                <div class="ctRight">
+                                    <span>`+ _item + `</span>
+                                </div>
+                            </li>`;
+                    $("#attributesItem").append(attr);
+                    break;
+                case 4:
+                    var attr = ``;
+                    attr = `<li>
+                                <div class="ctLeft">
+                                    <p>Chất liệu lõi: </p>
+                                </div>
+                                <div class="ctRight">
+                                    <span>`+ _item + `</span>
+                                </div>
+                            </li>`;
+                    $("#attributesItem").append(attr);
+                    break;
+                case 5:
+                    var attr = ``;
+                    attr = `<li>
+                                <div class="ctLeft">
+                                    <p>Chất liệu vỏ: </p>
+                                </div>
+                                <div class="ctRight">
+                                    <span>`+ _item + `</span>
+                                </div>
+                            </li>`;
+                    $("#attributesItem").append(attr);
+                    break;
+                case 6:
+                    var attr = ``;
+                    attr = `<li>
+                                <div class="ctLeft">
+                                    <p>Công nghệ: </p>
+                                </div>
+                                <div class="ctRight">
+                                    <span>`+ _item + `</span>
+                                </div>
+                            </li>`;
+                    $("#attributesItem").append(attr);
+                    break;
+                case 7:
+                    var attr = ``;
+                    attr = `<li>
+                                <div class="ctLeft">
+                                    <p>Hiệu quả sử dụng: </p>
+                                </div>
+                                <div class="ctRight">
+                                    <span>`+ _item + `</span>
+                                </div>
+                            </li>`;
+                    $("#attributesItem").append(attr);
+                    break;
+                case 8:
+                    var attr = ``;
+                    attr = `<li>
+                                <div class="ctLeft">
+                                    <p>Hướng dẫn sử dụng: </p>
+                                </div>
+                                <div class="ctRight">
+                                    <span>`+ _item + `</span>
+                                </div>
+                            </li>`;
+                    $("#attributesItem").append(attr);
+                    break;
+                case 9:
+                    var attr = ``;
+                    attr = `<li>
+                                <div class="ctLeft">
+                                    <p>Bảo hành: </p>
+                                </div>
+                                <div class="ctRight">
+                                    <span>`+ _item + `</span>
+                                </div>
+                            </li>`;
+                    $("#attributesItem").append(attr);
+                    break;
+                case 10:
+                    var attr = ``;
+                    attr = `<li>
+                                <div class="ctLeft">
+                                    <p>Năm sản xuất: </p>
+                                </div>
+                                <div class="ctRight">
+                                    <span>`+ _item + `</span>
+                                </div>
+                            </li>`;
+                    $("#attributesItem").append(attr);
+                    break;
+                case 11:
+                    var attr = ``;
+                    attr = `<li>
+                                <div class="ctLeft">
+                                    <p>Sản xuất tại: </p>
+                                </div>
+                                <div class="ctRight">
+                                    <span>`+ _item + `</span>
+                                </div>
+                            </li>`;
+                    $("#attributesItem").append(attr);
+                    break;
+                default:
+                    break;
+            }
+
+            //console.log("@@@@@@@@@@@@@@@@@@ " + $("#attributesItem").html());
+            //$("#attributesItem").append(attr)
+            return ;
         }
 
         //handle pic product to color
@@ -720,7 +865,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1NFjBtJ_EO9i1Qh6_Xjf-D60_8PRaO84G/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1wMhLlsOviqpSl0stxdTj7pGuRG4BRMBc/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -747,7 +892,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1DObhBH18217unRiKlerPY7bJTwypTtk_/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1D1pTuwtkVl_nj7GnadwgQfnwUxS4JeGT/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -774,7 +919,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1DObhBH18217unRiKlerPY7bJTwypTtk_/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1D1pTuwtkVl_nj7GnadwgQfnwUxS4JeGT/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -801,7 +946,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1DObhBH18217unRiKlerPY7bJTwypTtk_/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1D1pTuwtkVl_nj7GnadwgQfnwUxS4JeGT/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -828,7 +973,7 @@
                                                 <div class="accordion-item">
                                                     <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                         <div class="accordion-body">
-                                                            <iframe src="https://drive.google.com/file/d/1DObhBH18217unRiKlerPY7bJTwypTtk_/preview" allow="autoplay"></iframe>
+                                                            <iframe src="https://drive.google.com/file/d/1D1pTuwtkVl_nj7GnadwgQfnwUxS4JeGT/preview" allow="autoplay"></iframe>
                                                         </div>
                                                     </div>
                                                     <h2 class="accordion-header" id="heading1">
@@ -857,7 +1002,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1qM_ecg_GjTE8wWB4Aw2mxwnayDgpnM5Q/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1i3o8XPy-7itj-WwTuYiE5AMlQ77_pS16/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -870,7 +1015,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1QEQLdsmesCeDE1KvDn3qSe9SLCfjMveH/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1refBvaDLJAzCQafD7aI65gYT7f3UnoUw/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading2">
@@ -894,7 +1039,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1qM_ecg_GjTE8wWB4Aw2mxwnayDgpnM5Q/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1i3o8XPy-7itj-WwTuYiE5AMlQ77_pS16/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -907,7 +1052,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1QEQLdsmesCeDE1KvDn3qSe9SLCfjMveH/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1refBvaDLJAzCQafD7aI65gYT7f3UnoUw/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading2">
@@ -931,7 +1076,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1qM_ecg_GjTE8wWB4Aw2mxwnayDgpnM5Q/preview" allow="autoplay"></iframe>                                                
+                                                    <iframe src="https://drive.google.com/file/d/1i3o8XPy-7itj-WwTuYiE5AMlQ77_pS16/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -944,7 +1089,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1QEQLdsmesCeDE1KvDn3qSe9SLCfjMveH/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1refBvaDLJAzCQafD7aI65gYT7f3UnoUw/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading2">
@@ -968,7 +1113,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                        <iframe src="https://drive.google.com/file/d/1qM_ecg_GjTE8wWB4Aw2mxwnayDgpnM5Q/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1i3o8XPy-7itj-WwTuYiE5AMlQ77_pS16/preview" allow="autoplay"></iframe>
                                                  </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -981,7 +1126,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1QEQLdsmesCeDE1KvDn3qSe9SLCfjMveH/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1refBvaDLJAzCQafD7aI65gYT7f3UnoUw/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading2">
@@ -998,14 +1143,14 @@
                     break;
                 case _skuF3:
                     _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
-                                        <span><strong>Video hướng dẫn</strong> </span>`
+                            <span><strong>Video hướng dẫn</strong> </span>`;
                     _tmp2 =`<div>
                                 <div class="image-group">
                                     <div class="accordion" id="accordionFeedback">
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                   <iframe src="https://drive.google.com/file/d/1wH_WTRH_oCKBqk7NrQsdBVEoJBNLbbsY/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1c3ZWb82RpQNttDFZ5mWTqkWBjawqHk4a/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -1029,7 +1174,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                     <iframe src="https://drive.google.com/file/d/1wH_WTRH_oCKBqk7NrQsdBVEoJBNLbbsY/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1c3ZWb82RpQNttDFZ5mWTqkWBjawqHk4a/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -1046,14 +1191,14 @@
                     break;
                 case _skuLF4:
                     _tmp1 = `<img src="/img/icon/icons8-video-100.png" />
-                                <span><strong>Video hướng dẫn</strong> </span>`;
+                            <span><strong>Video hướng dẫn</strong> </span>`;
                     _tmp2 = `<div>
                                 <div class="image-group">
                                     <div class="accordion" id="accordionFeedback">
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1wH_WTRH_oCKBqk7NrQsdBVEoJBNLbbsY/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/1c3ZWb82RpQNttDFZ5mWTqkWBjawqHk4a/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -1076,7 +1221,7 @@
                                         <div class="accordion-item">
                                             <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
                                                 <div class="accordion-body">
-                                                    <iframe src="https://drive.google.com/file/d/1S5KhUuIN1rbL4d-v3PSbssQr-jccED3r/preview" allow="autoplay"></iframe>
+                                                    <iframe src="https://drive.google.com/file/d/114D-yiXF4icrXpsdu13JHLBtDvC2bDCf/preview" allow="autoplay"></iframe>
                                                 </div>
                                             </div>
                                             <h2 class="accordion-header" id="heading1">
@@ -1201,7 +1346,7 @@
                             var productItem = $(`<div data-id="` + item.id + `" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
                                                                 <div class="product-item" >
                                                                     <div class="img-item" >
-                                                                            <div id="product-`+ item.id + `" > <img src="` + item.imageUrl + `" /> </div>
+                                                                        <div id="product-`+ item.id + `" > <img src="` + item.imageUrl + `" /> </div>
                                                                     <div class="content-item">
                                                                         <h5><span>`+ item.name + `</span><strong>` + ((item.summary != undefined) ? item.summary : '') + `</strong> </h5>
                                                                         <div id="price-item-`+ item.id + `" class="price-item">` + item.productItems[0].price + `</div>
