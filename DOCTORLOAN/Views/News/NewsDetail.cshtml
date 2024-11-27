@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Tin tức";
 }
-
+@*
 <section id="NewsDetail">
     <div class="container">
         <div class="news-content-detail">
@@ -116,30 +116,258 @@
         </div>
     </div>
 </section>
+*@
+
+<section id="NewsDetail">
+    <div class="container">
+        <div class="news-content-detail">
+            <div class="news-title"></div>
+            <div class="meta-desc"></div>
+            <div class="action-link">
+                @*
+                <div class="date-auth">
+                <strong>Tác giả: Phạm Thị Kim Loan</strong>
+                <span>30/06/2023</span>
+                </div>
+                <div class="link-view">
+                <div class="social-icon">
+                <a href="javascript:void(0)"><img loading="lazy" src="~/img/icon/icon-facebook.svg" /></a>
+                <a href="javascript:void(0)"><img loading="lazy" src="~/img/icon/zalo-icon.svg" /></a>
+                </div>
+                <div class="detail-icon">
+                <a href="javascript:void(0)"><img loading="lazy" src="~/img/icon/icon-chat.svg" /> 12</a>
+                <a href="javascript:void(0)"><img loading="lazy" src="~/img/icon/icon-eye-empty.svg" /> 459</a>
+                </div>
+                </div>
+                *@
+                
+            </div>
+
+            <div class="news-content-wrapper">
+                <h5 class="news-meta-title"></h5>
+                <div class="meta-desc-detail"></div>
+            </div>
+
+            <div id="interdepend-slide" class="interdepend-slide">
+                <h4>Các Di Sản khác</h4>
+                <div class="swiper interdependSwiper">
+                    <div class="swiper-wrapper">
+                        @*
+                        <div class="swiper-slide">
+                            <div class="interdepend-desc">
+                                <img loading="lazy" src="~/img/home/di-san-2.jpg" />
+                                <div class="interdepend-info">
+                                    <h5><a href="javascript:void(0)">Sở hữu trí tuệ</a></h5>
+                                    <p>Có một xu hướng mới đang xuất hiện trong lĩnh vựa chăm sóc và phòng ngừa bệnh cột sống, đó là giải pháp DOCTORLOAN- Giải pháp Chăm sóc Cột sống với sản phẩm công nghệ sáng chế đột phá-an toàn-hiệu quả.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                        <div class="interdepend-desc">
+                        <img loading="lazy" src="~/img/home/di-san-1.jpg" />
+                        <div class="interdepend-info">
+                        <h5><a href="javascript:void(0)">Khởi nguồn từ chữa bệnh</a></h5>
+                        <p>Cột sống đóng vai trò vô cùng quan trọng trong đời sống con người. Nó không chỉ là khung xương cho cơ thể mà còn chịu trách nhiệm giữ cho cơ thể thẳng đứng và cung cấp sự ổn định và hỗ trợ cho các hoạt động hàng ngày.</p>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="swiper-slide">
+                        <div class="interdepend-desc">
+                        <img loading="lazy" src="~/img/home/di-san-3.jpg" />
+                        <div class="interdepend-info">
+                        <h5><a href="javascript:void(0)">Sản xuất và thương mại</a></h5>
+                        <p>Sản phẩm DOCTORLOAN đạt 5 Thương hiệu Quốc gia đã chứng minh và được công nhận là những sáng chế thiết thực phục vụ đời sống con người không những ở Việt Nam mà cho tất cả mọi người trên thế giới. Sản phẩm DOCTORLOAN chính là cuộc cách mạng trong chăm sóc cột sống cộng đồng của Y Khoa hiện đại.</p>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="swiper-slide">
+                        <div class="interdepend-desc">
+                        <img loading="lazy" src="~/img/home/di-san-2.jpg" />
+                        <div class="interdepend-info">
+                        <h5><a href="javascript:void(0)">Sở hữu trí tuệ</a></h5>
+                        <p>Có một xu hướng mới đang xuất hiện trong lĩnh vựa chăm sóc và phòng ngừa bệnh cột sống, đó là giải pháp DOCTORLOAN- Giải pháp Chăm sóc Cột sống với sản phẩm công nghệ sáng chế đột phá-an toàn-hiệu quả.</p>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="swiper-slide">
+                        <div class="interdepend-desc">
+                        <img loading="lazy" src="~/img/home/di-san-1.jpg" />
+                        <div class="interdepend-info">
+                        <h5><a href="javascript:void(0)">Khởi nguồn từ chữa bệnh</a></h5>
+                        <p>Cột sống đóng vai trò vô cùng quan trọng trong đời sống con người. Nó không chỉ là khung xương cho cơ thể mà còn chịu trách nhiệm giữ cho cơ thể thẳng đứng và cung cấp sự ổn định và hỗ trợ cho các hoạt động hàng ngày.</p>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="swiper-slide">
+                        <div class="interdepend-desc">
+                        <img loading="lazy" src="~/img/home/di-san-3.jpg" />
+                        <div class="interdepend-info">
+                        <h5><a href="javascript:void(0)">Sản xuất và thương mại</a></h5>
+                        <p>Sản phẩm DOCTORLOAN đạt 5 Thương hiệu Quốc gia đã chứng minh và được công nhận là những sáng chế thiết thực phục vụ đời sống con người không những ở Việt Nam mà cho tất cả mọi người trên thế giới. Sản phẩm DOCTORLOAN chính là cuộc cách mạng trong chăm sóc cột sống cộng đồng của Y Khoa hiện đại.</p>
+                        </div>
+                        </div>
+                        </div>
+                        *@
+                    </div>
+                    <div class="swiper-button-next" aria-label="Next slide"></div>
+                    <div class="swiper-button-prev" aria-label="Previous slide"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section scripts{
     <script type="text/javascript">
         $(document).ready(function () {
+            // Set the active menu item
             $("#nav-menu-container ul li").removeClass("menu-active");
             $("#nav-menu-container ul li").eq(5).addClass("menu-active");
+
+            // Initialize Swiper slider
+            initializeSwiper();
+
+            // Retrieve parameters from the URL
+            const categoryId = getParam('newCategoriesId');
+            const newsId = getParam('newsId');
+
+            // Redirect to the News page if the categoryId is missing
+            if (!categoryId && !newsId) {
+                window.location.href = "/News";
+            } else {
+                if (categoryId && !newsId) {
+                    getCategoriesNews(categoryId);
+                } else {
+                    getNewsItemDetails(newsId, categoryId);
+                }
+            }
         });
 
-        var swiper = new Swiper(".interdependSwiper", {
-            direction: 'horizontal',
-            slidesPerView: 2,
-            spaceBetween: 15,
-            grabCursor: true,
-            loop: true,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
+        // Function to initialize the Swiper slider
+        function initializeSwiper() {
+            new Swiper(".interdependSwiper", {
+                direction: 'horizontal',
+                slidesPerView: 2,
+                spaceBetween: 15,
+                grabCursor: true,
+                loop: true,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    }
+                },
+            });
+        }
+
+        // Utility function: Retrieve a query parameter value from the URL
+        function getParam(name, url = window.location.href) {
+            name = name.replace(/[[\]]/g, '\\$&');
+            const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
+            const results = regex.exec(url);
+            if (!results) return null;
+            return results[2] ? decodeURIComponent(results[2].replace(/\+/g, ' ')) : '';
+        }
+
+        // Redirect vs pagram
+        function redirectToWithData(url, data) {
+            const queryParams = $.param(data);
+            const redirectUrl = queryParams ? `${url}?${queryParams}` : url;
+            window.location.href = redirectUrl;
+        }
+
+        // Function call API => show news details
+        function getNewsItemDetails(newsId, dataCategories) {
+            $.ajax({
+                url: `https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsItem/GetNewById?id=${newsId}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    const { title, newsItemDetails, categoryIds } = response.data;
+                    appendNewsDetails(title, newsItemDetails);
+
+                    if (dataCategories) {
+                        renderNewsSlides(dataCategories);
+                    } else {
+                        loadCategoriesNews(categoryIds[0]);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error:', error);
                 }
-            },
-        });
+            });
+        }
+
+        // Function to call API and display list of articles by category
+        function getCategoriesNews(categoryId) {
+            $.ajax({
+                url: `https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsItem/FilterNews?CategoryId=${categoryId}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    const firstNews = response.data.items[0];
+                    getNewsItemDetails(firstNews.id, response.data.items);
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        // Function to load more related posts if there is no dataCategories
+        function loadCategoriesNews(categoryId) {
+            $.ajax({
+                url: `https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsItem/FilterNews?CategoryId=${categoryId}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    renderNewsSlides(response.data.items);
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        // Function to display news details in view mode
+        function appendNewsDetails(title, details) {
+            $("#NewsDetail .news-title").text(title);
+            $("#NewsDetail .meta-desc").text(details[0].short);
+            $("#NewsDetail .news-meta-title").text(details[0].metaTitle);
+            $("#NewsDetail .meta-desc-detail").html(details[0].full);
+        }
+
+        // function to render list of related articles
+        function renderNewsSlides(dataCategories) {
+            const slideContainer = $("#interdepend-slide .swiper-wrapper");
+            slideContainer.empty(); // delete old slides
+
+            $.each(dataCategories, function (idx, item) {
+                const slide = $(`
+                            <div id="swiperSlide-${item.id}" class="swiper-slide">
+                                <div class="interdepend-desc">
+                                    <img loading="lazy" src="${item.imageUrl}" alt="${item.title}" />
+                                    <div class="interdepend-info">
+                                        <h5><a href="javascript:void(0)">${item.title}</a></h5>
+                                        <p>Có một xu hướng mới đang xuất hiện trong lĩnh vực chăm sóc và phòng ngừa bệnh cột sống...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                slideContainer.append(slide);
+
+                // click event handler
+                $(`#swiperSlide-${item.id}`).click(function () {
+                    redirectToWithData("/News/NewsDetail", { newsId: item.id });
+                });
+            });
+
+            initializeSwiper(); // Render Swiper after adding new slide
+        }
     </script>
 }

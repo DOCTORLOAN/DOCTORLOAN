@@ -109,56 +109,7 @@
         <div class="list-menu-news">
             <div class="menu-news-item" style="padding: 0;">
                 <a asp-controller="Home" asp-action="Index">
-                    <img loading="lazy" src="~/img/common/logo_black.png" style="width: 100%;" />
-                </a>
-            </div>
-            <div class="menu-news-item">
-                <a asp-controller="News" asp-action="NewsGroup">
-                    <img loading="lazy" src="~/img/icon/newspaper-icon.svg" />
-                    <div class="content-menu">
-                        Thời sự <br />
-                        (Tin tức - sự kiện)
-                    </div>
-                </a>
-            </div>
-            <div class="menu-news-item">
-                <a asp-controller="News" asp-action="NewsGroup">
-                    <img loading="lazy" src="~/img/icon/spine-icon.svg" />
-                    <div class="content-menu">
-                        Nguyên nhân gây bệnh cột sống
-                    </div>
-                </a>
-            </div>
-            <div class="menu-news-item @*active*@">
-                <a asp-controller="News" asp-action="NewsGroup">
-                    <img loading="lazy" src="~/img/icon/no-drugs-icon.svg" />
-                    <div class="content-menu">
-                        Thực trạng xã hội và y học về bệnh cột sống
-                    </div>
-                </a>
-            </div>
-            <div class="menu-news-item">
-                <a asp-controller="News" asp-action="NewsGroup">
-                    <img loading="lazy" src="~/img/icon/health-insurance.svg" />
-                    <div class="content-menu">
-                        Giải pháp phòng và điều trị bệnh cột sống
-                    </div>
-                </a>
-            </div>
-            <div class="menu-news-item">
-                <a asp-controller="News" asp-action="NewsGroup">
-                    <img loading="lazy" src="~/img/icon/health-insurance-1.svg" />
-                    <div class="content-menu">
-                        Câu chuyện của những bệnh nhân khỏi bệnh cột sống
-                    </div>
-                </a>
-            </div>
-            <div class="menu-news-item">
-                <a asp-controller="News" asp-action="NewsGroup">
-                    <img loading="lazy" src="~/img/icon/health-insurance-2.svg" />
-                    <div class="content-menu">
-                        Hoạt động xã hội
-                    </div>
+                    <img loading="lazy" src="../img/common/logo_black.png" style="width: 100%;" />
                 </a>
             </div>
         </div>
@@ -846,5 +797,40 @@
                 }
             },
         });
+
+        $.ajax({
+            url: 'https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsCategory/FilterCategories',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                getCatagoriesNews(data.data);
+            },
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
+
+        // Get the value of the parameter productId in URL
+        function getCatagoriesNews(data) {
+            var menuNews = $(``);
+            $.each(data.items, function (_idx, _item) {
+                menuNews = $(`<div class="menu-news-item" id="menu-news-item-` + _item.id + `">
+                                <a asp-controller="News" asp-action="NewsGroup">
+                                        ` + _item.description + `
+                                    <div class="content-menu">
+                                        ` + _item.name + `
+                                    </div>
+                                </a>
+                            </div>`);
+                $("#MenuNews .list-menu-news").append(menuNews);
+                $('#menu-news-item-' + _item.id).click(function () {
+                    var data = {
+                        newCategoriesId: _item.id,
+                    };
+                    redirectToWithData("News/NewsDetail", data);
+                });
+            });
+        }
+
     </script>
 }
