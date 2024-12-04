@@ -838,11 +838,11 @@
         function getCatagoriesNews(data) {
             var menuNews = $(``);
             $.each(data.items, function (_idx, _item) {
-                menuNews = $(`<div class="menu-news-item" id="menu-news-item-` + _item.id + `">
+                menuNews = $(`<div class="menu-news-item" id="menu-news-item-${ _item.id }">
                                 <a asp-controller="News" asp-action="NewsGroup">
-                                        ` + _item.description + `
+                                        ${ _item.description }
                                     <div class="content-menu">
-                                        ` + _item.name + `
+                                        ${ _item.name }
                                     </div>
                                 </a>
                             </div>`);
@@ -866,18 +866,18 @@
                     var item = $(``);
                     $.each(data.data.items, function (_idx, _item) {
                         item = $(` <div class="col-4">
-                                    <div class="card-info">
-                                            <img loading="lazy" src="`+ _item.imageUrl + `" />
+                                        <div class="card-info">
+                                            <img loading="lazy" src="${ _item.imageUrl }" />
                                             <div class="content-card-info">
-                                            <h5>`+ _item.title + `</h5>
-                                                <p class="mb-0">Thật vui khi viết lời tâm sự lại bắt đầu ngày mới ngày 20/10, là ngày phụ nữ Viêt Nam. Qua Cha Trọng tại trung tâm mục vụ Sài Gòn, mà tôi được biết và giới thiệu đến bác sĩ và phòng khám…</p>
-                                            <div class="action-fb">
-                                                <span><i class="fas fa-heart"></i> 360</span>
-                                                <span><i class="fas fa-share-alt"></i></span>
+                                                <h5>${ _item.title }</h5>
+                                                <p class="mb-0">${ _item.short }</p>
+                                                <div class="action-fb">
+                                                    <span><i class="fas fa-heart"></i> 360</span>
+                                                    <span><i class="fas fa-share-alt"></i></span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                        </div>`);
+                                    </div>`);
                         $("#info-feedback .row").append(item);
                     });
                 },
