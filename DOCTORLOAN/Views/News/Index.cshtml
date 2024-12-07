@@ -2,108 +2,6 @@
     ViewData["Title"] = "Tin tức";
 }
 
-@* <section id="NewsSlide">
-    <div class="container-fluid">
-        <div class="title-news">
-            <a asp-controller="News" asp-action="NewsGroup"><strong><img loading="lazy" src="~/img/icon/newspaper-icon.svg" />Thời sự</strong></a>
-            <span>Thông tin cập nhật mới nhất về những vấn đề liên quan đến bệnh cột sống</span>
-        </div>
-        <div id="NewsSwiper" class="swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="news-item">
-                        <img loading="lazy" src="~/img/news/news-img-1.jpg" />
-                        <div class="content-news">
-                            <div class="news-group">
-                                <div class="date-ns">21/02/2021</div>
-                                <div class="title-ns">Đơ cứng cổ không rõ nguyên nhân</div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              
-                <div class="swiper-slide">
-                    <div class="news-item">
-                        <img loading="lazy" src="~/img/news/news-img-3.jpg" />
-                        <div class="content-news">
-                            <div class="news-group">
-                                <div class="date-ns">03/09/2022</div>
-                                <div class="title-ns">Nhức đầu - bệnh chớ coi thường</div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news-item">
-                        <img loading="lazy" src="~/img/news/news-img-4.jpg" />
-                        <div class="content-news">
-                            <div class="news-group">
-                                <div class="date-ns">15/09/2022</div>
-                                <div class="title-ns">Mang lại niềm vui cho phụ nữ</div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-             
-                <div class="swiper-slide">
-                    <div class="news-item">
-                        <img loading="lazy" src="~/img/news/news-img-6.jpg" />
-                        <div class="content-news">
-                            <div class="news-group">
-                                <div class="date-ns">09/11/2022</div>
-                                <div class="title-ns">Đau lưng do sai tư thế</div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="news-item">
-                        <img loading="lazy" src="~/img/news/news-img-7.jpg" />
-                        <div class="content-news">
-                            <div class="news-group">
-                                <div class="date-ns">05/02/2023</div>
-                                <div class="title-ns">Bệnh vẹo cổ (torticolis)</div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="info-news">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-4 col-12">
-                    <div class="center-thing">
-                        <div class="info-desc">
-                            <h5>Đúng tư thế giúp giữ dáng, phòng bệnh</h5>
-                           
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-8 col-12">
-                    <div class="center-thing">
-                        <div class="info-desc">
-                            <p>Rất nhiều người bị đau buốt hoặc tê bại cổ vai cánh tay, thắt lưng, đầu gối, chân, … nguyên nhân thường do thoát vị đĩa đệm cột sống cổ hay lưng. Do phải làm việc, đi lại đa số chúng ta hay có thói quen cúi đầu cổ, thắt lưng đột ngột, với tốc độ nhanh và nhiều lần trong ngày, từ đó các đĩa đệm lót giữa các đốt sống dù rất đàn hồi cũng sẽ bị chấn thương, vỡ rách màng bao nhân đệm, đưa đến bệnh lý thoát vị đĩa đệm.</p>
-                            <div class="user-review">
-                                <img loading="lazy" src="~/img/home/avatar-2.png" />
-                                <strong>Mai Trúc</strong>
-                                <span>15/05/2023 22:47</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> *@
-
 <section id="MenuNews">
     <div class="container">
         <div class="list-menu-news">
@@ -140,80 +38,35 @@
                     </div>
                 </div>
 
-                <div class="news-feedback">
+                <div id="news-feedback" class="news-feedback">
                     <div class="feedback-main">
                         <div class="title-news text-left">
-                            <a asp-controller="News" asp-action="NewsGroup"><strong><img loading="lazy" src="~/img/icon/health-insurance-1.svg" />“Câu chuyện của những bệnh nhân khỏi bệnh cột sống”</strong></a>
+                            <a><strong><img loading="lazy" src="~/img/icon/health-insurance-1.svg" />“Câu chuyện của những bệnh nhân khỏi bệnh cột sống”</strong></a>
                         </div>
                         <div class="list-feedback">
                             <div class="item-fb">
-                                <a asp-controller="News" asp-action="NewsDetail">
+                                <div>
                                     <img loading="lazy" class="avatar-fb" src="~/img/home/avatar-1.png" />
                                     <span>Bệnh nhân Nguyễn Thị Độ</span>
-                                </a>
+                                </div>
                             </div>
                             <div class="item-fb">
-                                <a asp-controller="News" asp-action="NewsDetail">
+                                <div>
                                     <img loading="lazy" class="avatar-fb" src="~/img/home/avatar-3.png" />
                                     <span>Bệnh nhân Công Thế Phong</span>
-                                </a>
+                                </div>
                             </div>
                             <div class="item-fb">
-                                <a asp-controller="News" asp-action="NewsDetail">
+                                <div>
                                     <img loading="lazy" class="avatar-fb" src="~/img/home/avatar-4.png" />
                                     <span>Bệnh nhân Chu Hảo</span>
-                                </a>
+                                </div>
                             </div>
                         </div>
 
                     </div>
                     <div id="info-feedback" class="info-feedback">
-                        <div class="row">
-                            @*
-                                <div class="col-4">
-                                    <div class="card-info">
-                                        <img loading="lazy" src="~/img/news/news-story-1.jpg" />
-                                            <div class="content-card-info">
-                                                <a asp-controller="News" asp-action="NewsDetail"><h5>Giám Mục Lạng Sơn <br /> Cha Đặng Đức Ngân</h5></a>
-                                                <p class="mb-0">Thật vui khi viết lời tâm sự lại bắt đầu ngày mới ngày 20/10, là ngày phụ nữ Viêt Nam. Qua Cha Trọng tại trung tâm mục vụ Sài Gòn, mà tôi được biết và giới thiệu đến bác sĩ và phòng khám…</p>
-                                                <a class="hr-link mb-3" asp-controller="News" asp-action="NewsDetail">Xem chi tiết &gt;&gt;&gt;</a>
-                                            <div class="action-fb">
-                                                <span><i class="fas fa-heart"></i> 360</span>
-                                                <span><i class="fas fa-share-alt"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="card-info">
-                                        <img loading="lazy" src="~/img/news/news-story-2.jpg" />
-                                        <div class="content-card-info">
-                                            <a asp-controller="News" asp-action="NewsDetail"><h5>Linh Mục Giuse <br /> Phạm Văn Trọng</h5></a>
-                                            <p class="mb-0">Có lẽ không quá khi nói căn bệnh rối loạn tiền đình và đau nhức khó khăn trong đi đứng đã làm cho tôi bị suy sup sức khỏe rất nhiều. Sự suy sụp sức khỏe có lẽ vì tôi không biết nguyên nhân của chúng….</p>
-                                            <a class="hr-link mb-3" asp-controller="News" asp-action="NewsDetail">Xem chi tiết &gt;&gt;&gt;</a>
-                                            <div class="action-fb">
-                                                <span><i class="fas fa-heart"></i> 360</span>
-                                                <span><i class="fas fa-share-alt"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="card-info">
-                                        <img loading="lazy" src="~/img/news/news-story-2.jpg" />
-                                        <div class="content-card-info">
-                                            <a asp-controller="News" asp-action="NewsDetail"><h5>Linh Mục Giuse <br /> Phạm Văn Trọng</h5></a>
-                                            <p class="mb-0">Có lẽ không quá khi nói căn bệnh rối loạn tiền đình và đau nhức khó khăn trong đi đứng đã làm cho tôi bị suy sup sức khỏe rất nhiều. Sự suy sụp sức khỏe có lẽ vì tôi không biết nguyên nhân của chúng….</p>
-                                            <a class="hr-link mb-3" asp-controller="News" asp-action="NewsDetail">Xem chi tiết &gt;&gt;&gt;</a>
-                                            <div class="action-fb">
-                                                <span><i class="fas fa-heart"></i> 360</span>
-                                                <span><i class="fas fa-share-alt"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            *@
-                        </div>
+                        <div class="row"></div>
                     </div>
                 </div>
             </div>
@@ -398,11 +251,14 @@
 <section id="RealityAndReason" class="news-group-page">
     <div class="container">
         <div class="title-news text-left">
-            <a asp-controller="News" asp-action="NewsGroup"><strong><img loading="lazy" src="~/img/icon/no-drugs-icon.svg" />Thực trạng xã hội và y học về bệnh cột sống</strong></a>
+            <a><strong><img loading="lazy" src="~/img/icon/no-drugs-icon.svg" />Thực trạng xã hội và y học về bệnh cột sống</strong></a>
             <span class="text-black">Từ 30 tuổi trở đi, nhiều người đã bắt đầu bước vào thời kỳ lão hoá, xương và các khớp xương bắt đầu  thoái hoá với nhiều chứng bệnh liên quan đến xương khớp…</span>
         </div>
         <div class="list-news-reality">
             <div class="row justify-content-center">
+                @*
+
+                *@
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="news-reality-main">
                         <div class="img-reality-main">
@@ -413,7 +269,6 @@
                                 <div>
                                     <h5 class="title-desc-news">Bệnh do những thói quen xấu</h5>
                                     <p class="desc-news">Ngồi, đứng hoặc làm việc với tư thế cúi đầu, nghiêng hoặc xoay đầu thường xuyên qua một bên; khiêng vật nặng với tư thế uốn cong lưng và cổ; ngồi bắt tréo chân khiến khung chậu bị bẻ vẹo và lực ép tập trung một bên khung chậu…</p>
-                                    @* <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a> *@
                                 </div>
                             </div>
                         </div>
@@ -429,7 +284,6 @@
                                 <div>
                                     <h5 class="title-desc-news">Đau cột sống cổ do chấn thương</h5>
                                     <p class="desc-news">Do vị trí và đặc điểm sinh – cơ học cột sống cổ là bộ phận nối tiếp giữa đầu và thân nên dễ bị tổn thương. Nếu một trong hai phần của cơ thể, đầu hoặc thân bị tăng tốc hoặc hãm đột ngột thì cột sống cổ phải chịu sức căng rất lớn…</p>
-                                    @* <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a> *@
                                 </div>
                             </div>
                         </div>
@@ -445,7 +299,6 @@
                                 <div>
                                     <h5 class="title-desc-news">Tư thế ngồi lý tưởng</h5>
                                     <p class="desc-news">Ngồi không đúng tư thế sẽ dẫn đến những bệnh liên quan đến cột sống. Đối với những người làm việc văn phòng, học sinh, sinh viên… cần có tư thế ngồi lý tưởng để giữ cho cột sống luôn được nâng đỡ tốt…</p>
-                                    @* <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a> *@
                                 </div>
                             </div>
                         </div>
@@ -454,88 +307,18 @@
             </div>
         </div>
 
-        <div class="list-news-reason">
+        <div id="list-news-reason" class="list-news-reason">
             <div class="social-activities">
                 <div class="title-news text-left">
-                    <a asp-controller="News" asp-action="NewsGroup"><strong><img loading="lazy" src="~/img/icon/spine-icon.svg" />Nguyên nhân gây bệnh cột sống</strong></a>
+                    <a><strong><img loading="lazy" src="~/img/icon/spine-icon.svg" />Nguyên nhân gây bệnh cột sống</strong></a>
                     <span class="text-black">Cột sống của con người rất mong manh, dễ bị tổn thương nhưng ít người quan tâm đúng mức.</span>
                 </div>
 
-                <div class="swiper socialActivities">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="social-activities-item">
-                                <div class="img-social-activities">
-                                    <img loading="lazy" src="~/img/news/nguyen-nhan-1.jpg" />
-                                </div>
-                                <div class="content-social-activities">
-                                    <div class="center-thing">
-                                        <div>
-                                            <h5 class="title-desc-news two-row">Đơ cứng cổ  không rõ nguyên nhân</h5>
-                                            <div class="d-flex justify-content-between color-gray"><span>Admin</span><span>11/05/2023</span></div>
-                                            <p class="desc-news">Góc “Trò chuyện cùng nhà chuyên môn” cung cấp những kiến thức cần thiết về y tế, dinh dưỡng. Để giúp bạn có thể nhận biết, phòng, chống và tự chăm sóc bản thân, gia đình…</p>
-                                            @* <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a> *@
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="social-activities-item">
-                                <div class="img-social-activities">
-                                    <img loading="lazy" src="~/img/news/nguyen-nhan-2.jpg" />
-                                </div>
-                                <div class="content-social-activities">
-                                    <div class="center-thing">
-                                        <div>
-                                            <h5 class="title-desc-news two-row">Nhức đầu - bệnh chớ coi thường</h5>
-                                            <div class="d-flex justify-content-between color-gray"><span>Admin</span><span>11/05/2023</span></div>
-                                            <p class="desc-news">Nhức đầu, đau đầu có nguyên nhân bắt đầu từ bệnh liên quan đến cột sống cổ, gây chèn ép mạch máu lên não... Các triệu chứng đau đầu có thể do đau dây thần kinh chẩm lớn, điểm đau ngay ở dưới da đầu,...</p>
-                                            @* <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a> *@
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="social-activities-item">
-                                <div class="img-social-activities">
-                                    <img loading="lazy" src="~/img/news/nguyen-nhan-3.jpg" />
-                                </div>
-                                <div class="content-social-activities">
-                                    <div class="center-thing">
-                                        <div>
-                                            <h5 class="title-desc-news two-row">Đau lưng do sai tư thế</h5>
-                                            <div class="d-flex justify-content-between color-gray"><span>Admin</span><span>11/05/2023</span></div>
-                                            <p class="desc-news">Nhiều người, nhất là phụ nữ, bị đau lưng thường xuyên, tê cứng tay chân… do đi, đứng, nằm, ngồi không đứng tư thế. Trong sinh hoạt thường ngày, do tính chất công việc hoặc do không hiểu biết nên đi, đứng, ngồi sai tư thế…</p>
-                                            @* <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a> *@
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="social-activities-item">
-                                <div class="img-social-activities">
-                                    <img loading="lazy" src="~/img/news/nguyen-nhan-4.jpg" />
-                                </div>
-                                <div class="content-social-activities">
-                                    <div class="center-thing">
-                                        <div>
-                                            <h5 class="title-desc-news two-row">Bệnh vẹo cổ (torticolis)</h5>
-                                            <div class="d-flex justify-content-between color-gray"><span>Admin</span><span>11/05/2023</span></div>
-                                            <p class="desc-news">Vẹo cổ là căn bệnh thường gặp ở cả người lớn và trẻ em nhưng ít ai chú ý mà thường cho rằng do bị trúng gió hay bị mắc bệnh cảm cúm gây ra…</p>
-                                            @* <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a> *@
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div id="socialActivities" class="swiper socialActivities">
+                    <div class="swiper-wrapper"></div>
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
@@ -543,7 +326,7 @@
 <section id="NewsSolution">
     <div class="container">
         <div class="title-news text-left">
-            <a asp-controller="News" asp-action="NewsGroup"><strong><img loading="lazy" src="~/img/icon/health-insurance.svg" />Giải pháp phòng và điều trị bệnh cột sống</strong></a>
+            <a id="NewsSolutionA"><strong><img loading="lazy" src="~/img/icon/health-insurance.svg" />Giải pháp phòng và điều trị bệnh cột sống</strong></a>
             <span class="text-black">Từ tuổi 30 trở đi, nhiều chị em phụ nữ đã bắt đầu bước vào thời kỳ lão hóa, làn da bắt đầu không còn tươi tắn, tóc bắt đầu có sợi phai màu, xương và các khớp xương bắt đầu bước vào thời kỳ thoái hóa với nhiều chứng bệnh liên quan đến xương khớp…</span>
         </div>
 
@@ -663,7 +446,7 @@
     <div class="container">
         <div class="social-activities">
             <div class="title-news text-left">
-                <a asp-controller="News" asp-action="NewsGroup"><strong><img loading="lazy" src="~/img/icon/health-insurance-2.svg" />Hoạt động xã hội</strong></a>
+                <a><strong><img loading="lazy" src="~/img/icon/health-insurance-2.svg" />Hoạt động xã hội</strong></a>
                 <span class="text-black">Tại Phòng khám Đức Phúc đã có một loại gối có thể giúp điều chỉnh lấy lại độ cong cột sống cổ, hỗ trợ điều trị y khoa về thoát vị đĩa đệm cột sống cổ, đó là gối DoctorLoan</span>
             </div>
 
@@ -814,50 +597,114 @@
             },
         });
 
-        $.ajax({
-            url: 'https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsCategory/FilterCategories',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                getCatagoriesNews(data.data);
+        // Redirect vs pagram
+        function redirectToWithData(url, data) {
+            const queryParams = $.param(data);
+            const redirectUrl = queryParams ? `${url}?${queryParams}` : url;
+            window.location.href = redirectUrl;
+        }
 
-                $.each(data.data.items, function (_idx, _item) {
-                    var _name = _item.name;
-                    var _str = "Câu chuyện";
-                    if (_name.includes(_str)) {
-                        getItemNewOfCategoríe(_item.id);
-                    }
-                });
-            },
-            error: function (error) {
-                console.error('Error:', error);
-            }
-        });
+        // Hàm gọi API chung
+        function fetchData(url, onSuccess, onError) {
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                success: onSuccess,
+                error: onError || function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
 
-        // Get the value NewCategories
-        function getCatagoriesNews(data) {
-            var menuNews = $(``);
+        // Hàm xử lý các danh mục từ API
+        function getCategoriesNews(data) {
+            const menuNewsContainer = $("#MenuNews .list-menu-news");
+
+            // Lặp qua các danh mục và tạo các mục trong menu
             $.each(data.items, function (_idx, _item) {
-                menuNews = $(`<div class="menu-news-item" id="menu-news-item-${ _item.id }">
-                                <a asp-controller="News" asp-action="NewsGroup">
-                                        ${ _item.description }
-                                    <div class="content-menu">
-                                        ${ _item.name }
-                                    </div>
-                                </a>
-                            </div>`);
-                $("#MenuNews .list-menu-news").append(menuNews);
-                $('#menu-news-item-' + _item.id).click(function () {
-                    var data = {
-                        newCategoriesId: _item.id,
-                    };
-                    redirectToWithData("News/NewsDetail", data);
+                const menuNews = $(`
+                    <div class="menu-news-item" id="menu-news-item-${_item.id}">
+                        <a href="javascript:void(0)">
+                            ${_item.description}
+                            <div class="content-menu">
+                                ${_item.name}
+                            </div>
+                        </a>
+                    </div>
+                `);
+
+                // Thêm vào danh sách menu
+                menuNewsContainer.append(menuNews);
+
+                // Gắn sự kiện click
+                $(`#menu-news-item-${_item.id}`).click(function () {
+                    redirectToWithData("/News/NewsDetail", { newCategoriesId: _item.id });
                 });
             });
         }
 
+        // Hàm xử lý các danh mục theo từng từ khóa
+        function handleCategoryItems(items) {
+            const categoryHandlers = [
+                {
+                    keyword: "Câu chuyện",
+                    fetchFunction: (id) => getItemNewOfCategories(id),
+                    clickSelector: "#news-feedback .title-news a",
+                },
+                {
+                    keyword: "Nguyên nhân",
+                    fetchFunction: (id) => getNewsOfReasonCategory(id, 1, 5),
+                    clickSelector: "#list-news-reason .title-news a",
+                },
+                {
+                    keyword: "Thực trạng",
+                    fetchFunction: (id) => getNewsOfCurrentStatusCategory(id),
+                    clickSelector: "#RealityAndReason .title-news a",
+                },
+                {
+                    keyword: "Giải pháp",
+                    fetchFunction: null,
+                    clickSelector: "#NewsSolutionA",
+                },
+            ];
+
+            // Lặp qua danh sách items
+            $.each(items, function (_idx, _item) {
+                const _name = _item.name;
+
+                // Tìm handler phù hợp
+                categoryHandlers.forEach(({ keyword, fetchFunction, clickSelector }) => {
+                    if (_name.includes(keyword)) {
+                        // Gọi hàm fetchFunction nếu tồn tại
+                        if (fetchFunction) fetchFunction(_item.id);
+
+                        // Gắn sự kiện click
+                        $(clickSelector).off("click").on("click", function () {
+                            redirectToWithData("/News/NewsDetail", { newCategoriesId: _item.id });
+                        });
+                    }
+                });
+            });
+        }
+
+        // Khởi chạy khi tải trang
+        $(document).ready(function () {
+            // Gọi API lấy danh sách danh mục
+            fetchData(
+                'https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsCategory/FilterCategories',
+                function (response) {
+                    // Hiển thị danh mục trong menu
+                    getCategoriesNews(response.data);
+
+                    // Xử lý logic theo từ khóa
+                    handleCategoryItems(response.data.items);
+                }
+            );
+        });
+
         // Get the value ItemNewOfCategoríe
-        function getItemNewOfCategoríe(id) {
+        function getItemNewOfCategories(id) {
             $.ajax({
                 url: 'https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsItem/FilterNews?CategoryId=' + id,
                 type: 'GET',
@@ -865,7 +712,7 @@
                 success: function (data) {
                     var item = $(``);
                     $.each(data.data.items, function (_idx, _item) {
-                        item = $(` <div class="col-4">
+                        item = $(`<div id="info-feedback-${_item.id}" class="col-4">
                                         <div class="card-info">
                                             <img loading="lazy" src="${ _item.imageUrl }" />
                                             <div class="content-card-info">
@@ -879,6 +726,136 @@
                                         </div>
                                     </div>`);
                         $("#info-feedback .row").append(item);
+
+                         // click event handler
+                        $(`#info-feedback-${_item.id}`).click(function () {
+                            redirectToWithData("/News/NewsDetail", { newsId: _item.id });
+                        });
+                    });
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        // Get the News section of the Reason category
+        function getNewsOfReasonCategory(id, pageNumber, pageSize) {
+            $.ajax({
+                url: `https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsItem/FilterNews?CategoryId=${id}&PageNumber=${pageNumber}&PageSize=${pageSize}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+
+                    $("#socialActivities .swiper-wrapper").empty();
+
+                    var item = $(``);
+                    $.each(data.data.items, function (_idx, _item) {
+                        item = $(`<div class="swiper-slide">
+                                    <div class="social-activities-item">
+                                        <div class="img-social-activities">
+                                            <img loading="lazy" src="${_item.imageUrl}" />
+                                        </div>
+                                        <div class="content-social-activities">
+                                            <div class="center-thing">
+                                                <div>
+                                                    <h5 class="title-desc-news two-row">${_item.title}</h5>
+                                                    <div class="d-flex justify-content-between color-gray"><span>Admin</span><span>11/05/2023</span></div>
+                                                    <p class="desc-news">${_item.short}</p>
+                                                    @*<a>Xem chi tiết >>></a>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`);
+                        $("#socialActivities .swiper-wrapper").append(item);
+                    });
+
+                    updatePagination(data.data.totalPages, pageNumber);
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        //
+        function updatePagination(totalPages, currentPage) {
+            const paginationContainer = $(".swiper-pagination");
+            paginationContainer.empty();
+
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = $(`<button class="page-btn ${i === currentPage ? 'active' : ''}">${i}</button>`);
+                pageButton.on('click', function () {
+                    getNewsOfReasonCategory(1, i, 5); // Ví dụ: 1 là CategoryId, 5 là PageSize
+                });
+                paginationContainer.append(pageButton);
+            }
+        }
+
+
+        // Get the News section of the current status list
+        function getNewsOfCurrentStatusCategory(id) {
+            $.ajax({
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsItem/FilterNews?CategoryId=' + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var item = $(``);
+                    $.each(data.data.items, function (_idx, _item) {
+                        item = $(`<div class="swiper-slide">
+                                            <div class="social-activities-item">
+                                                <div class="img-social-activities">
+                                                    <img loading="lazy" src="${_item.imageUrl}" />
+                                                </div>
+                                                <div class="content-social-activities">
+                                                    <div class="center-thing">
+                                                        <div>
+                                                            <h5 class="title-desc-news two-row">${_item.title}</h5>
+                                                            <div class="d-flex justify-content-between color-gray"><span>Admin</span><span>11/05/2023</span></div>
+                                                            <p class="desc-news">${_item.short}</p>
+                                                            @*<a>Xem chi tiết >>></a>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>`);
+                        $("#socialActivities .swiper-wrapper").append(item);
+                    });
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+        
+        // Get the News section of the current status list
+        function getNewsSolutionCategory(id) {
+            $.ajax({
+                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsItem/FilterNews?CategoryId=' + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var item = $(``);
+                    $.each(data.data.items, function (_idx, _item) {
+                        item = $(`<div class="swiper-slide">
+                                            <div class="social-activities-item">
+                                                <div class="img-social-activities">
+                                                    <img loading="lazy" src="${_item.imageUrl}" />
+                                                </div>
+                                                <div class="content-social-activities">
+                                                    <div class="center-thing">
+                                                        <div>
+                                                            <h5 class="title-desc-news two-row">${_item.title}</h5>
+                                                            <div class="d-flex justify-content-between color-gray"><span>Admin</span><span>11/05/2023</span></div>
+                                                            <p class="desc-news">${_item.short}</p>
+                                                            @*<a>Xem chi tiết >>></a>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>`);
+                        $("#socialActivities .swiper-wrapper").append(item);
                     });
                 },
                 error: function (error) {
