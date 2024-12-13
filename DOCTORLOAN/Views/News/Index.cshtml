@@ -34,14 +34,13 @@
                             Trong thời gian từ 19/9 đến tháng 10, Công ty Ngân Hà phối hợp với Công đoàn FPT triển khai chuỗi hội thảo tìm hiểu về phương pháp chữa bệnh DOCTORLOAN tại các đơn vị thành viên trên địa bàn Hà Nội. CBNV tham gia có thể tìm hiểu thông tin phòng tránh bệnh và trải nghiệm các sản phẩm.
                         </p>
                         <p>Cột sống là chìa khóa của sự sống. Chính từ đó mà dây thần kinh giao cảm đi ra để chỉ huy mọi cơ quan nội tạng. Các bệnh văn phòng do cột sống gây ra có thể kể tới như đau lưng cấp và mãn tính, đau thần kinh tọa, đau khớp gối, thoát vị đĩa đệm, đau thần kinh liên sườn… hoặc các bệnh mãn tính như thiểu năng tuần hoàn não, đau đầu, mất ngủ kinh niên, rối loạn tiền đình, hen phế quản, huyết áp, suy nhược thần kinh, suy nhược cơ thể…</p>
-                        @* <a class="hr-link" asp-controller="News" asp-action="NewsDetail">Xem chi tiết &gt;&gt;&gt;</a> *@
                     </div>
                 </div>
 
                 <div id="news-feedback" class="news-feedback">
                     <div class="feedback-main">
                         <div class="title-news text-left">
-                            <a><strong><img loading="lazy" src="~/img/icon/health-insurance-1.svg" />“Câu chuyện của những bệnh nhân khỏi bệnh cột sống”</strong></a>
+                            <a style="cursor: pointer;"><strong><img loading="lazy" src="~/img/icon/health-insurance-1.svg" />“Câu chuyện của những bệnh nhân khỏi bệnh cột sống”</strong></a>
                         </div>
                         <div class="list-feedback">
                             <div class="item-fb">
@@ -187,7 +186,6 @@
                             Ghế ngồi sáng chế
                             <strong>DOCTORLOAN N85</strong>
                             <span>Ngồi làm việc thường xuyên trong thời gian dài sẽ khiến cột sống và đĩa đệm bị áp lực lớn.</span>
-                            @* <a class="btn btn-pink" asp-controller="Products" asp-action="ProductDetail">Xem chi tiết</a> *@
                         </div>
                     </div>
                 </div>
@@ -238,23 +236,25 @@
 
 <section id="RealityAndReason" class="news-group-page">
     <div class="container">
-        <div class="title-news text-left">
-            <a><strong><img loading="lazy" src="~/img/icon/no-drugs-icon.svg" />Thực trạng xã hội và y học về bệnh cột sống</strong></a>
-            <span class="text-black">Từ 30 tuổi trở đi, nhiều người đã bắt đầu bước vào thời kỳ lão hoá, xương và các khớp xương bắt đầu  thoái hoá với nhiều chứng bệnh liên quan đến xương khớp…</span>
-        </div>
-        <div class="swiper list-news-reality">
-            <div class="swiper-wrapper"></div>
-            <div class="swiper-pagination"></div>
+        <div id="Reality">
+            <div class="title-news text-left">
+                <a style="cursor: pointer;"><strong><img loading="lazy" src="~/img/icon/no-drugs-icon.svg" />Thực trạng xã hội và y học về bệnh cột sống</strong></a>
+                <span class="text-black">Từ 30 tuổi trở đi, nhiều người đã bắt đầu bước vào thời kỳ lão hoá, xương và các khớp xương bắt đầu  thoái hoá với nhiều chứng bệnh liên quan đến xương khớp…</span>
+            </div>
+            <div class="Reality swiper list-news-reality">
+                <div class="swiper-wrapper"></div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
 
-        <div id="list-news-reason" class="list-news-reason">
-            <div class="social-activities">
+        <div class="list-news-reason mt-5">
+            <div id="Reason" class="social-activities">
                 <div class="title-news text-left">
-                    <a><strong><img loading="lazy" src="~/img/icon/spine-icon.svg" />Nguyên nhân gây bệnh cột sống</strong></a>
+                    <a style="cursor: pointer;"><strong><img loading="lazy" src="~/img/icon/spine-icon.svg" />Nguyên nhân gây bệnh cột sống</strong></a>
                     <span class="text-black">Cột sống của con người rất mong manh, dễ bị tổn thương nhưng ít người quan tâm đúng mức.</span>
                 </div>
 
-                <div class="swiper socialActivities">
+                <div class="Reason swiper socialActivities">
                     <div class="swiper-wrapper"></div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -266,7 +266,7 @@
 <section id="NewsSolution">
     <div class="container">
         <div class="title-news text-left">
-            <a id="NewsSolution"><strong><img loading="lazy" src="~/img/icon/health-insurance.svg" />Giải pháp phòng và điều trị bệnh cột sống</strong></a>
+            <a style="cursor: pointer;"><strong><img loading="lazy" src="~/img/icon/health-insurance.svg" />Giải pháp phòng và điều trị bệnh cột sống</strong></a>
             <span class="text-black">Từ tuổi 30 trở đi, nhiều chị em phụ nữ đã bắt đầu bước vào thời kỳ lão hóa, làn da bắt đầu không còn tươi tắn, tóc bắt đầu có sợi phai màu, xương và các khớp xương bắt đầu bước vào thời kỳ thoái hóa với nhiều chứng bệnh liên quan đến xương khớp…</span>
         </div>
 
@@ -338,20 +338,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-12">
-                    <div class="news-solution-main">
-                        <div class="img-solution-main">
-                            <img loading="lazy" src="~/img/news/giai-phap-news.jpg" alt="Giai pháp" />
-                        </div>
-                        <div class="content-news-solution">
-                            <div class="center-thing">
-                                <div>
-                                    <h5 class="title-desc-news">Phụ nữ và bệnh thoái hóa khớp</h5>
-                                    <p class="desc-news">Môi trường công việc dù ở ngồi văn phòng hay phải di chuyển thường xuyên, ngay cả những việc tưởng chừng giản đơn như đi chợ, nấu ăn, dọn dẹp nhà cửa…</p>
-                                    @* <a asp-controller="News" asp-action="NewsDetail">Xem chi tiết >>></a> *@
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="news-solution-main"></div>
                 </div>
             </div>
         </div>
@@ -386,7 +373,7 @@
     <div class="container">
         <div class="social-activities">
             <div class="title-news text-left">
-                <a><strong><img loading="lazy" src="~/img/icon/health-insurance-2.svg" />Hoạt động xã hội</strong></a>
+                <a style="cursor: pointer;"><strong><img loading="lazy" src="~/img/icon/health-insurance-2.svg" />Hoạt động xã hội</strong></a>
                 <span class="text-black">Tại Phòng khám Đức Phúc đã có một loại gối có thể giúp điều chỉnh lấy lại độ cong cột sống cổ, hỗ trợ điều trị y khoa về thoát vị đĩa đệm cột sống cổ, đó là gối DoctorLoan</span>
             </div>
 
@@ -526,17 +513,17 @@
                 {
                     keyword: "Nguyên nhân",
                     fetchFunction: (id) => getNewsOfReasonCategory(id, 1, 5),
-                    clickSelector: "#list-news-reason .title-news a",
+                    clickSelector: "#Reason .title-news a",
                 },
                 {
                     keyword: "Thực trạng",
-                    fetchFunction: (id) => getNewsOfCurrentStatusCategory(id),
-                    clickSelector: "#RealityAndReason .title-news a",
+                    fetchFunction: (id) => getNewsOfRealityCategory(id),
+                    clickSelector: "#Reality .title-news a",
                 },
                 {
                     keyword: "Giải pháp",
-                    fetchFunction: null,
-                    clickSelector: "#NewsSolution",
+                    fetchFunction: (id) => getNewsOfSolutionCategory(id),
+                    clickSelector: "#NewsSolution .title-news a",
                 },
                 {
                     keyword: "Hoạt động",
@@ -588,7 +575,7 @@
                 success: function (data) {
                     var item = $(``);
                     $.each(data.data.items, function (_idx, _item) {
-                        item = $(`<div id="info-feedback-${_item.id}" class="col-4">
+                        item = $(`<div id="info-feedback-${_item.id}" class="col-4" role="button">
                                         <div class="card-info">
                                             <img loading="lazy" src="${ _item.imageUrl }" />
                                             <div class="content-card-info">
@@ -638,16 +625,16 @@
                                                     <h5 class="title-desc-news two-row">${_item.title}</h5>
                                                     <div class="d-flex justify-content-between color-gray"><span>Admin</span><span>11/05/2023</span></div>
                                                     <p class="desc-news">${_item.short}</p>
-                                                    <a id="list-news-reason-${_item.id}">Xem chi tiết >>></a>
+                                                    <a id="Reason-${_item.id}" style="cursor: pointer;">Xem chi tiết >>></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>`);
-                        $("#list-news-reason .swiper .swiper-wrapper").append(item);
+                        $("#Reason .swiper .swiper-wrapper").append(item);
 
                         // click event handler
-                        $(`#list-news-reason-${_item.id}`).click(function () {
+                        $(`#Reason-${_item.id}`).click(function () {
                             redirectToWithData("/News/NewsDetail", { newsId: _item.id });
                         });
                     });
@@ -675,7 +662,7 @@
 
 
         // Get the News section of the current status list
-        function getNewsOfCurrentStatusCategory(id) {
+        function getNewsOfRealityCategory(id) {
             $.ajax({
                 url: 'https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsItem/FilterNews?CategoryId=' + id,
                 type: 'GET',
@@ -693,16 +680,16 @@
                                                 <div>
                                                     <h5 class="title-desc-news">${_item.title}</h5>
                                                     <p class="desc-news">${_item.short}</p>
-                                                    <a id="RealityAndReason-${_item.id}">Xem chi tiết >>></a>
+                                                    <a id="Reality-${_item.id}" style="cursor: pointer;">Xem chi tiết >>></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>`);
-                        $("#RealityAndReason .swiper .swiper-wrapper").append(item);
+                        $("#RealityAndReason .Reality .swiper-wrapper").append(item);
 
                         // click event handler
-                        $(`#RealityAndReason-${_item.id}`).click(function () {
+                        $(`#Reality-${_item.id}`).click(function () {
                             redirectToWithData("/News/NewsDetail", { newsId: _item.id });
                         });
                     });
@@ -714,7 +701,7 @@
         }
 
         // Get the News Solution of the current status list
-        function getNewsSolutionCategory(id) {
+        function getNewsOfSolutionCategory(id) {
             $.ajax({
                 url: 'https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsItem/FilterNews?CategoryId=' + id,
                 type: 'GET',
@@ -722,24 +709,24 @@
                 success: function (data) {
                     var item = $(``);
                     $.each(data.data.items, function (_idx, _item) {
-                        item = $(`<div class="swiper-slide">
-                                            <div class="social-activities-item">
-                                                <div class="img-social-activities">
-                                                    <img loading="lazy" src="${_item.imageUrl}" alt"Image news details" />
-                                                </div>
-                                                <div class="content-social-activities">
-                                                    <div class="center-thing">
-                                                        <div>
-                                                            <h5 class="title-desc-news two-row">${_item.title}</h5>
-                                                            <div class="d-flex justify-content-between color-gray"><span>Admin</span><span>11/05/2023</span></div>
-                                                            <p class="desc-news">${_item.short}</p>
-                                                            <a>Xem chi tiết >>></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>`);
-                        $("#NewsSolution").append(item);
+                        item = $(`<div class="img-solution-main">
+                                    <img loading="lazy" src="${_item.imageUrl}" alt="Giải pháp" />
+                                </div>
+                                <div class="content-news-solution">
+                                    <div class="center-thing">
+                                        <div>
+                                            <h5 class="title-desc-news">${_item.title}</h5>
+                                            <p class="desc-news">${_item.short}</p>
+                                            <a id="Solution-${_item.id}" style="cursor: pointer;">Xem chi tiết >>></a>
+                                        </div>
+                                    </div>
+                                </div>`);
+                        $("#NewsSolution .news-solution-main").append(item);
+
+                        // click event handler
+                        $(`#Solution-${_item.id}`).click(function () {
+                            redirectToWithData("/News/NewsDetail", { newsId: _item.id });
+                        });
                     });
                 },
                 error: function (error) {
@@ -768,7 +755,7 @@
                                                 <h5 class="title-desc-news two-row">${_item.title}</h5>
                                                 <div class="d-flex justify-content-between color-gray"><span>Admin</span><span>11/05/2023</span></div>
                                                 <p class="desc-news">${_item.short}</p>
-                                                <a id="NewsSocialDetails-${_item.id}">Xem chi tiết >>></a>
+                                                <a id="NewsSocialDetails-${_item.id}" style="cursor: pointer;">Xem chi tiết >>></a>
                                             </div>
                                         </div>
                                     </div>
