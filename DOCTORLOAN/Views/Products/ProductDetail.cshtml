@@ -341,62 +341,62 @@
                 dataType: 'json',
                 success: function (data) {
                     var productSwiperMain = $(`<div class="container">
-                                                            <div class="row">
-                                                                <div class="col-md-6 col-12">
-                                                                    <div class="swiper productSwiperMain">
-                                                                        <div id="productSwiperMain" class="swiper-wrapper"></div>
-                                                                        <div class="swiper-button-next"></div>
-                                                                        <div class="swiper-button-prev"></div>
-                                                                    </div>
-                                                                    <div thumbsSlider="" class="swiper productSwiperThumb">
-                                                                        <div id="productSwiperThumb" class="swiper-wrapper"></div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="swiper productSwiperMain">
+                                                                <div id="productSwiperMain" class="swiper-wrapper"></div>
+                                                                <div class="swiper-button-next"></div>
+                                                                <div class="swiper-button-prev"></div>
+                                                            </div>
+                                                            <div thumbsSlider="" class="swiper productSwiperThumb">
+                                                                <div id="productSwiperThumb" class="swiper-wrapper"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="info-product-right">
+                                                                <div class="ipr-name">`+ data.data.name+ `</div>
+                                                                <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
+                                                                <div id="iprItemColor" class="ipr-item"></div>
+                                                                <div id="iprItemOption" class="ipr-item"></div>
+                                                                <div class="ipr-item">
+                                                                    <div>
+                                                                        <label>.Mô tả</label>
+                                                                        `+ data.data.productDetails[0].summary + ` </br>
+                                                                        <label>.Mô tả chi tiết</label>
+                                                                        `+ data.data.productDetails[0].description + `
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-6 col-12">
-                                                                    <div class="info-product-right">
-                                                                        <div class="ipr-name">`+ data.data.name+ `</div>
-                                                                        <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
-                                                                        <div id="iprItemColor" class="ipr-item"></div>
-                                                                        <div id="iprItemOption" class="ipr-item"></div>
-                                                                        <div class="ipr-item">
-                                                                            <div>
-                                                                                <label>.Mô tả</label>
-                                                                                `+ data.data.productDetails[0].summary + ` </br>
-                                                                                <label>.Mô tả chi tiết</label>
-                                                                                `+ data.data.productDetails[0].description + `
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="ipr-action-details">
-        @* <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
-                                                                            <a id="buy-`+ data.data.id + `" data-id="` + data.data.id + `" class="btn btn-buy-details" target="_blank">Mua ngay</a>
-                                                                        </div>
-                                                                        <div class="shopify-button">
-                                                                            <div class="action-item custom-action-item action-company action-call">
-                                                                                <strong style="font-size: 1.3rem;color: black">Mua dễ dàng hơn bằng</strong><img src="/img/icon/shopify.png" style="width: 30%;">
+                                                                <div class="ipr-action-details">
+                                                                    @* <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
+                                                                    <a id="buy-`+ data.data.id + `" data-id="` + data.data.id + `" class="btn btn-buy-details" target="_blank">Mua ngay</a>
+                                                                </div>
+                                                                <div class="shopify-button">
+                                                                    <div class="action-item custom-action-item action-company action-call">
+                                                                        <strong style="font-size: 1.3rem;color: black">Mua dễ dàng hơn bằng</strong><img src="/img/icon/shopify.png" style="width: 30%;">
 
-                                                                            </div>
-                                                                            <a href="" class="btn btn-outline-dtl btn-shopify" target="_blank">Mua ngay</a>
-                                                                        </div>
-                                                                        <div class="ipr-policy">
-                                                                            <div class="policy-item">
-                                                                                <img src="/img/icon/p-shield.svg" />
-                                                                                <span>Cam kết <strong>hàng mới 100%</strong></span>
-                                                                            </div>
-                                                                            <div class="policy-item">
-                                                                                <img src="/img/icon/p-box-iso.svg" />
-                                                                                <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
-                                                                            </div>
-                                                                            <div id="policyItem" class="policy-item"></div>
-                                                                            <div id="policyItem1" class="policy-item"></div>
-                                                                            <div id="policyItem2" class="policy-item"></div>
-                                                                        </div>
                                                                     </div>
+                                                                    <a href="" class="btn btn-outline-dtl btn-shopify" target="_blank">Mua ngay</a>
                                                                 </div>
-                                                                <div id="view-more" class="view-more">
-        @*<button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>*@
+                                                                <div class="ipr-policy">
+                                                                    <div class="policy-item">
+                                                                        <img src="/img/icon/p-shield.svg" />
+                                                                        <span>Cam kết <strong>hàng mới 100%</strong></span>
+                                                                    </div>
+                                                                    <div class="policy-item">
+                                                                        <img src="/img/icon/p-box-iso.svg" />
+                                                                        <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
+                                                                    </div>
+                                                                    <div id="policyItem" class="policy-item"></div>
+                                                                    <div id="policyItem1" class="policy-item"></div>
+                                                                    <div id="policyItem2" class="policy-item"></div>
                                                                 </div>
                                                             </div>
-                                                        </div>`);
+                                                        </div>
+                                                        <div id="view-more" class="view-more">
+                                                            @*<button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>*@
+                                                        </div>
+                                                    </div>
+                                                </div>`);
                     $("#infoProduct").append(productSwiperMain);
 
                     setHrefHDSD(data.data.sku);

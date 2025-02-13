@@ -51,6 +51,26 @@
         var taxRate = 1;
         var shippingRate = 1;
         var fadeTime = 50;
+        var _sku135 = "LC35LESY";
+        var _sku90 = "SC90DESY";
+        var _sku90BL = "SC90OEBL";
+        var _sku90T = "SC90TESY";
+        var _sku95 = "SC95VESY";
+        var _skuN85 = "PL85SFOR";
+        var _skuF4 = "NP04SEFY";
+        var _skuF5 = "NP05SEFY";
+        var _skuF6 = "NP06SEFY";
+        var _skuF3 = "BP03CEFY";
+        var _skuLF4 = "BP04OEFY";
+        var _skuF1 = "BP01LEFY";
+        var _skuDT = "SDNLSESY";
+        var _skuGCSS = "NP00OEFY";
+        var _skuGC26 = "NP26SEFY";
+        var _skuGC61 = "NP61SEFY";
+        var _skuGC = "NP00SEFY";
+        var _skuGCNL = "NPAUNEFY";
+        var _skuGCDL = "NPTLSEFY";
+        var _skuGCDX = "NPCROEFY";
 
         //Handle reset Total
         function resetTotal() {
@@ -232,176 +252,113 @@
                     _resultAPI = data;
                     var imgProduct;
                     var imgThumb = "";
-                    var flagN85 = false;
-                    var flag = false;
-                    var flagF4 = false;
-                    var flagF1 = false;
-                    var flagDT = false;
-                    var gn_135 = 21;
-                    var n85_id = 34;
-                    var gcf5_id = 39;
-                    var gcnl_id = 36;
-                    var gcf4_id = 35;
-                    var glf3 = 41;
-                    var glf1 = 37;
-                    var dt = 31;
 
-                    $.each(data.data.categoryIds, function (idx, item) {
-                        if (item === n85_id) {
-                            flagN85 = true;
-                        } else if (item === gcf5_id || item === gcnl_id || item === glf3) {
-                            flag = true;
-                        }
-
-                        if (item === gcf4_id) {
-                            flagF4 = true;
-                        }
-
-                        if (item === glf1) {
-                            flagF1 = true;
-                        }
-
-                        if (item === dt) {
-                            flagDT = true;
-                        }
-                    });
-
-                    if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined && flag != true) {
+                    if (data.data.productItems[0].productOptions != undefined && data.data.productItems[0].productOptions[0] != undefined) {
                         var _arr = [];
-                        if (flagDT != false) {
-                            $("#productDescription-" + _paramIdVal).append(`<label>.Tuỳ chọn</label>
+                        if (data.data.sku === _skuDT) {
+                            $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
                                                         <div class="form-check">
-                                                            <input class="form-check-input option-dt" type="radio" name="flexRadioOption-`+_paramIdVal+`" id="dtL" checked>
+                                                            <input class="form-check-input option-dt" type="radio" name="flexRadioOption" data-sku="SDNLMESY" id="dtM">
                                                             <label class="form-check-label" for="dtL">Lớn</label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input option-dt" type="radio" name="flexRadioOption-`+ _paramIdVal + `" id="dtS">
+                                                            <input class="form-check-input option-dt" type="radio" name="flexRadioOption" data-sku="SDNLSESY" id="dtS" checked>
                                                             <label class="form-check-label" for="dtS">Nhỏ</label>
                                                         </div>`);
                             $('.option-dt').click(function () {
-                                if ($('#dtL').is(':checked')) {
-                                    $('#productPrice-' + _paramIdVal).text("6800000");
-                                    $('#productLinePrice-' + _paramIdVal).text("6800000");
+                                if ($('#dtM').is(':checked')) {
+                                    $('#productPrice-' + _paramIdVal).text("4760000");
+                                    $('#productLinePrice-' + _paramIdVal).text("4760000");
                                 } else {
-                                    $('#productPrice-' + _paramIdVal).text("6500000");
-                                    $('#productLinePrice-' + _paramIdVal).text("6500000");
+                                    $('#productPrice-' + _paramIdVal).text("4480000");
+                                    $('#productLinePrice-' + _paramIdVal).text("4480000");
                                 }
-                                $('#productPrice-' + _paramIdVal).text(parseInt($('#productPrice-' + _paramIdVal).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-                                $('#productLinePrice-' + _paramIdVal).text(parseInt($('#productLinePrice-' + _paramIdVal).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-
-                                recalculateCart();
+                                $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                             });
                         }
 
-                        if (flagF4 != false) {
-                            $("#productDescription-" + _paramIdVal).append(`<label>.Tuỳ chọn</label>
+                        if (data.data.sku === _skuF4) {
+                            $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
                                                         <div class="form-check">
-                                                                    <input class="form-check-input option-f4" type="radio" name="flexRadioOption-`+ _paramIdVal + `" id="f4L">
+                                                            <input class="form-check-input option-f4" type="radio" name="flexRadioOption" data-sku="NP04MEFY" id="f4M">
                                                             <label class="form-check-label" for="f4L">12 cm</label>
                                                         </div>
                                                         <div class="form-check">
-                                                                    <input class="form-check-input option-f4" type="radio" name="flexRadioOption-`+ _paramIdVal + `" id="f4S" checked>
+                                                            <input class="form-check-input option-f4" type="radio" name="flexRadioOption" data-sku="NP04SEFY" id="f4S" checked>
                                                             <label class="form-check-label" for="f4S">9 cm</label>
                                                         </div>`);
                             $('.option-f4').click(function () {
-                                if ($('#f4L').is(':checked')) {
-                                    $('#productPrice-'+ _paramIdVal).text("5500000");
+                                if ($('#f4M').is(':checked')) {
+                                    $('#productPrice-' + _paramIdVal).text("5500000");
                                     $('#productLinePrice-' + _paramIdVal).text("5500000");
                                 } else {
                                     $('#productPrice-' + _paramIdVal).text("5300000");
-                                    $('#productLinePrice-' + _paramIdVal).text("5300000");
                                 }
-                                $('#productPrice-' + _paramIdVal).text(parseInt($('#productPrice-' + _paramIdVal).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-                                $('#productLinePrice-' + _paramIdVal).text(parseInt($('#productLinePrice-' + _paramIdVal).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-
-                                recalculateCart();
+                                $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                             });
                         }
 
-                        if (flagF1 != false) {
-                            $("#productDescription-" + _paramIdVal).append(`<label>.Tuỳ chọn</label>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input option-f1" type="radio" name="flexRadioOption-`+ _paramIdVal + `" id="f1L" checked>
-                                                                    <label class="form-check-label" for="f1L">Dài</label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input option-f1" type="radio" name="flexRadioOption-`+ _paramIdVal + `" id="f1S">
-                                                                    <label class="form-check-label" for="f1S">Ngắn</label>
-                                                                </div>`);
+                        if (data.data.sku === _skuF1) {
+                            $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input option-f1" type="radio" name="flexRadioOption" data-sku="BP01SEFY" id="f1L">
+                                                            <label class="form-check-label" for="f1L">Dài</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input option-f1" type="radio" name="flexRadioOption" data-sku="BP01LEFY" id="f1S" checked>
+                                                            <label class="form-check-label" for="f1S">Ngắn</label>
+                                                        </div>`);
                             $('.option-f1').click(function () {
                                 if ($('#f1L').is(':checked')) {
                                     $('#productPrice-' + _paramIdVal).text("2000000");
-                                    $('#productLinePrice-' + _paramIdVal).text("2000000");
                                 } else {
                                     $('#productPrice-' + _paramIdVal).text("1000000");
-                                    $('#productLinePrice-' + _paramIdVal).text("1000000");
                                 }
-                                $('#productPrice-' + _paramIdVal).text(parseInt($('#productPrice-' + _paramIdVal).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-                                $('#productLinePrice-' + _paramIdVal).text(parseInt($('#productLinePrice-' + _paramIdVal).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-
-                                recalculateCart();
+                                $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                             });
                         }
 
-                        if (flag != true && flagF4 != true && flagF1 != true && flagDT != true) {
-                            if (flagN85 != true) {
-                                $("#productColor-" + _paramIdVal).append(`<label>.Màu sắc</label>
-                                                                            <div class="product-item-color">
-                                                                                <a href="javascript:void(0)" class="item-color Brown active" data-color="`+ data.data.sku + `-MAU NAU" title="Màu nâu"></a>
-                                                                                <a href="javascript:void(0)" class="item-color Grape" data-color="`+ data.data.sku + `-MAU NHO" title="Màu nho"></a>
-                                                                                <a href="javascript:void(0)" class="item-color Black" data-color="`+ data.data.sku + `-MAU DEN" title="Màu đen"></a>
-                                                                                <a href="javascript:void(0)" class="item-color Green" data-color="`+ data.data.sku + `-MAU XANH LA" title="Màu xanh"></a>
-                                                                            </div>`);
-                            } else {
-                                $("#productColor-" + _paramIdVal).append(`<label>.Màu sắc</label>
-                                                                            <div class="product-item-color">
-                                                                                <a href="javascript:void(0)" class="item-color Yellow active" data-color="`+ data.data.sku + `-MAU VANG-CHAN NGAN" title="Màu vàng"></a>
-                                                                                <a href="javascript:void(0)" class="item-color Orange" data-color="`+ data.data.sku + `-MAU CAM-CHAN NGAN" title="Màu cam"></a>
-                                                                                <a href="javascript:void(0)" class="item-color Red" data-color="`+ data.data.sku + `-MAU DO-CHAN NGAN" title="Màu đỏ"></a>
-                                                                                <a href="javascript:void(0)" class="item-color Gray" data-color="`+ data.data.sku + `-MAU XAM-CHAN NGAN" title="Màu xám"></a>
-                                                                                <a href="javascript:void(0)" class="item-color Green" data-color="`+ data.data.sku + `-MAU XANH LA-CHAN NGAN" title="Màu xanh lá"></a>
-                                                                                <a href="javascript:void(0)" class="item-color Blue" data-color="`+ data.data.sku + `-MAU XANH DUONG-CHAN NGAN" title="Màu xanh dương"></a>
-                                                                            </div>`);
-                                $("#productDescription-" + _paramIdVal).append(`<label>.Tuỳ chọn</label>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân dài" id="n85-L">
-                                                                            <label class="form-check-label" for="n85-L">Chân dài</label>
-                                                                        </div>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân ngắn" id="n85-S" checked>
-                                                                            <label class="form-check-label" for="n85-S">Chân ngắn</label>
-                                                                        </div>`);
-                                $('.option-n85').click(function () {
-                                    if ($('#n85-L').is(':checked')) {
-                                        $('#productPrice-' + _paramIdVal).text("1430000");
-                                        $('#productLinePrice-' + _paramIdVal).text("1430000");
-                                    } else {
-                                        $('#productPrice-' + _paramIdVal).text("1320000");
-                                        $('#productLinePrice-' + _paramIdVal).text("1320000");
-                                    }
-                                    $('#productPrice-' + _paramIdVal).text(parseInt($('#productPrice-' + _paramIdVal).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-                                    $('#productLinePrice-' + _paramIdVal).text(parseInt($('#productLinePrice-' + _paramIdVal).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-                                });
-                            }
+                        if (data.data.sku === _sku135 || data.data.sku === _sku95 || data.data.sku === _sku90 || data.data.sku === _sku90T) {
+                            $("#iprItemColor").append(`<label>.Màu sắc</label>
+                                                        <div class="ipr-color">
+                                                            <a href="javascript:void(0)" class="product-color brown active" data-color="`+ data.data.name + `/Y" title="Màu nâu"></a>
+                                                            <a href="javascript:void(0)" class="product-color grape" data-color="`+ data.data.name + `/P" title="Màu nho"></a>
+                                                            <a href="javascript:void(0)" class="product-color black" data-color="`+ data.data.name + `/B" title="Màu đen"></a>
+                                                            <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.name + `/G" title="Màu xanh"></a>
+                                                        </div>`);
+                        }
 
-                            $('.item-color').click(function () {
-                                var getcolor = $(this).attr("data-color");
-                                loadProductForColor(getcolor);
+                        if (data.data.sku === _skuN85) {
+                            $("#iprItemColor").append(`<label>.Màu sắc</label>
+                                                        <div class="ipr-color">
+                                                            <a href="javascript:void(0)" class="product-color yellow active" data-color="`+ data.data.name + `-S/YL" title="Màu vàng"></a>
+                                                            <a href="javascript:void(0)" class="product-color orange" data-color="`+ data.data.name + `-S/OR" title="Màu cam"></a>
+                                                            <a href="javascript:void(0)" class="product-color red" data-color="`+ data.data.name + `-S/RE" title="Màu đỏ"></a>
+                                                            <a href="javascript:void(0)" class="product-color gray" data-color="`+ data.data.name + `-S/GR" title="Màu xám"></a>
+                                                            <a href="javascript:void(0)" class="product-color green" data-color="`+ data.data.name + `-S/GE" title="Màu xanh lá"></a>
+                                                            <a href="javascript:void(0)" class="product-color blue" data-color="`+ data.data.name + `-S/BL" title="Màu xanh dương"></a>
+                                                        </div>`);
+                            $("#iprItemOption").append(`<label>.Tuỳ chọn</label>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân dài" id="n85-L">
+                                                            <label class="form-check-label" for="n85-L">Chân dài</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input option-n85" type="radio" name="flexRadioOption" value="Chân ngắn" id="n85-S" checked>
+                                                            <label class="form-check-label" for="n85-S">Chân ngắn</label>
+                                                        </div>`);
+                            $('.option-n85').click(function () {
+                                if ($('#n85-L').is(':checked')) {
+                                    $('#productPrice-' + _paramIdVal).text("1430000");
+                                } else {
+                                    $('#productPrice-' + _paramIdVal).text("1320000");
+                                }
+                                $('#iprPrice').text(parseInt($('#iprPrice').text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                             });
-
                         }
 
                         $.each(data.data.productMedias, function (_idx, _item) {
-                            if (flagN85 != true) {
-                                if (_item.itemCode == data.data.sku + '-MAU NAU') {
-                                    _arr.push(_item);
-                                }
-                            } else {
-                                if (flagN85 == true && _item.itemCode == data.data.sku + '-MAU VANG-CHAN NGAN') {
-                                    _arr.push(_item);
-                                }
-                            }
-                            if (flagF4 != false || flag != false || flagF1 != false || flagDT != false) {
+                            if (_item.itemCode == data.data.sku) {
                                 _arr.push(_item);
                             }
                         });
@@ -411,17 +368,36 @@
                                 $("#imgMainPosition" + (_idx + 1)).attr('src', _item.mediaUrl);
                                 $("#imgThumbPosition" + (_idx + 1)).attr('src',);
                                 imgProduct = `<div class="swiper-slide" >
-                                                                <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + _item.mediaUrl + `" />
-                                                            </div>`;
+                                                                        <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + _item.mediaUrl + `" />
+                                                                    </div>`;
                                 imgThumb = `<div class="swiper-slide">
-                                                                <div class="bg-product-thumb">
-                                                                    <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + _item.mediaUrl + `" />
-                                                                </div>
-                                                            </div>`;
+                                                                        <div class="bg-product-thumb">
+                                                                            <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + _item.mediaUrl + `" />
+                                                                        </div>
+                                                                    </div>`;
                                 $("#productSwiperMain").append(imgProduct);
                                 $("#productSwiperThumb").append(imgThumb);
                             });
                         }
+                    } else {
+                        var _arr = [];
+                        $.each(data.data.productMedias, function (idx, item) {
+                            _arr.push(item);
+                        });
+
+                        $.each(_arr, function (_idx, _item) {
+
+                            imgProduct = `<div class="swiper-slide" >
+                                                                <img id="imgMainPosition`+ (_idx + 1) + `" class="img-product-detail" src="` + data.data.productMedias[_idx].mediaUrl + `" />
+                                                            </div>`;
+                            imgThumb = `<div class="swiper-slide">
+                                                            <div class="bg-product-thumb">
+                                                                <img id="imgThumbPosition`+ (_idx + 1) + `" class="img-thumb-position" src="` + data.data.productMedias[_idx].mediaUrl + `" />
+                                                            </div>
+                                                        </div>`;
+                            $("#productSwiperMain").append(imgProduct);
+                            $("#productSwiperThumb").append(imgThumb);
+                        });
                     }
                 },
                 error: function (error) {
