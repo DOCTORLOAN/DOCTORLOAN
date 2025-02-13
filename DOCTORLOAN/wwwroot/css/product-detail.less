@@ -1,4 +1,4 @@
-﻿﻿@import "variables";
+﻿@import "variables";
 
 #infoProduct {
     background-color: @white;
@@ -64,6 +64,11 @@
         .swiper-slide-thumb-active {
             opacity: 1;
         }
+    }
+
+    #productDetail {
+        margin-top: 15px;
+        border: 1px solid;
     }
 
     .view-more {
@@ -409,12 +414,115 @@
     }
 }
 
+/* Container styling */
 #ContentProducts {
-    .container {
-        margin: 2rem auto;
-        padding: 2rem;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    }
+    background-color: #f9f9f9;
+    margin-top: 20px;
+    padding: 20px 0;
+    border-radius: 15px;
+    width: 750px;
+    height: 70vh;
+}
+
+.container_a {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    height: 100%;
+}
+
+.product-content-wrapper, .main-content {
+    height: 100%;
+}
+
+.accordion-product {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.accordion-product-body {
+    padding: 20px;
+}
+
+.parameter-item {
+    margin-bottom: 20px;
+}
+
+.parameter-ttl {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ulist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Initially hide the list */
+}
+
+.ulist.show {
+    display: block; /* Show the list when active */
+}
+
+.ulist li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.ulist li:last-child {
+    border-bottom: none;
+}
+
+.ctLeft p, .ctRight span {
+    margin: 0;
+}
+
+.pd-button-overlay {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-overlay {
+    background-color: #FF9800;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.button-overlay:hover {
+    background-color: #e68900;
+}
+
+.carret {
+    display: inline-block;
+    margin-left: 5px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    padding: 2px;
+    transform: rotate(45deg);
+    vertical-align: middle;
+}
+
+.icon {
+    font-size: 1em;
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+.icon.open {
+    transform: rotate(45deg);
 }
 
 .product-content-wrapper {
@@ -503,10 +611,10 @@
             background-color: @white;
 
             p {
-                -webkit-margin-before: 0;
-                -webkit-margin-after: 0;
-                -webkit-margin-start: 0;
-                -webkit-margin-end: 0;
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-left: 0;
+                margin-right: 0;
                 text-rendering: geometricPrecision;
             }
 
