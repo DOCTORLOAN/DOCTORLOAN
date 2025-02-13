@@ -13,7 +13,7 @@
     <input type="text" class="form-control" value="@TempData["custommerName"]" id="custommerName" hidden />
     <input type="text" class="form-control" value="@TempData["addressLine"]" id="addressLine" hidden />
     <input type="text" class="form-control" value="@TempData["email"]" id="email" hidden />
-    <input type="text" class="form-control" value="@((int)TempData["paymentMethod"])" id="paymentMethod" hidden />
+    <input type="text" class="form-control" value="@(TempData["paymentMethod"])" id="paymentMethod" hidden />
     <input type="text" class="form-control" value="@((int)PaymentMethod.Payoo)" id="tmp_paymentMethod" hidden />
 }
 
@@ -1618,17 +1618,17 @@
             player2.cueVideoById(url);
         });
 
-        var _paymentMethod = $("#paymentMethod").val();
-        var _tmp_paymentMethod = $("#tmp_paymentMethod").val();
+        var _paymentMethod = Number($("#paymentMethod").val());
+        var _tmp_paymentMethod = Number($("#tmp_paymentMethod").val());
 
-        if (_paymentMethod == tmp_paymentMethod) {
-
+        if (_paymentMethod = tmp_paymentMethod) {
+        
             var _dataRes = $("#dataRes").val();
             var _phone = $("#phone").val();
             var _custommerName = $("#custommerName").val();
             var _address = $("#addressLine").val();
             var _email = $("#email").val();
-        
+
             //handle call API checkout
             if (_dataRes != undefined && _phone != null && _custommerName != null && _address != null) {
                 var _res = JSON.parse(_dataRes);
