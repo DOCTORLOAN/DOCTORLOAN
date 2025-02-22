@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Trang chủ";
 }
+@using DOCTORLOAN.Models.Orders
 
 <link href="~/libs/flag/flag.css" rel="stylesheet" />
 <link href="~/libs/Bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" />
@@ -12,6 +13,8 @@
     <input type="text" class="form-control" value="@TempData["custommerName"]" id="custommerName" hidden />
     <input type="text" class="form-control" value="@TempData["addressLine"]" id="addressLine" hidden />
     <input type="text" class="form-control" value="@TempData["email"]" id="email" hidden />
+    <input type="text" class="form-control" value="@(TempData["paymentMethod"])" id="paymentMethod" hidden />
+    <input type="text" class="form-control" value="@((int)PaymentMethod.Payoo)" id="tmp_paymentMethod" hidden />
 }
 
 <div b-hmxnz7sj43="" id="myModalEvert" class="modal" tabindex="-1" role="dialog" style="display: none;">
@@ -25,7 +28,7 @@
 
                 <button b-hmxnz7sj43="" type="button" class="btn-close" id="btnClose" data-bs-dismiss="modal" aria-label="Close"></button>
                 <a asp-controller="News" asp-action="Sales">
-                    <img id="imgModal" src="~/img/eventualities/poster-ctkm-t01-01.jpg" />
+                    <img loading="lazy" id="imgModal" src="~/img/eventualities/poster-ctkm-t01-01.jpg" />
                 </a>
             </div>
         </div>
@@ -36,62 +39,82 @@
     <div class="content-banner">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-12">
-                    <div class="flex-end-thing">
-                        <img class="img-doctor" src="~/img/home/bac-si.png" />
-                    </div>
-                </div>
-                <div class="col-lg-8 col-12">
-                    <div class="center-thing">
-                        <div class="banner-info">
-                            <div class="title-banner">Giải pháp <br /> cho cột sống khỏe</div>
-                            <div class="desc-banner">
-                                <span>Sáng chế của người Việt Nam mang tính đột phá cho sức khỏe cột sống được bảo hộ độc quyền trên 62 quốc gia.</span>
-                            </div>
-                            <div class="desc-doctor">
-                                “Người bác sĩ trong tương lai không kê toa cho thuốc mà chú trọng đến cấu trúc cơ thể của bệnh nhân, đến dinh dưỡng,
-                                đến nguyên nhân phát sinh ra bệnh và phương pháp phòng ngừa.”
-                                <br />
-                                <i>- Edison</i>
-                            </div>
-                            <div class="more-action">
-                                <a class="btn btn-outline-secondary rounded-pill" id="btn-show-modal" asp-controller="About" asp-action="Index">Xem chi tiết</a>
+                <div>
+                    <div class="row">
+                        <div class="col-md-4 col-12">
+                            <div class="flex-end-thing">
+                                <picture>
+                                    <source media="(max-width: 768px)" srcset="~/img/common/logo_white.png" />
+                                    <img loading="lazy" class="img-banner-home" src="~/img/home/bac-si.png" alt="" />
+                                </picture>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="action-banner">
-                        <div class="action-item custom-action-item action-info">
-                            <div class="center-thing justify-content-center">
-                                <span>
-                                    Bác sĩ <br /> <strong>Phạm Thị Kim Loan</strong> <br />
-                                    <span>Nhà sáng lập - Chủ tịch</span>
-                                </span>
+                        <div class="col-md-3 col-12">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="~/img/home/bac-si.png" style="max-width: 450px; margin: 0 auto; display: block;" />
+                                <img loading="lazy" src="~/img/common/logo_white.png" alt="" />
+                            </picture>
+                        </div>
+                        <div id="contentBanner" class="col-md-5 col-12">
+                            <div class="center-thing">
+                                <div class="banner-info">
+                                    <div class="title-banner">
+                                        <h4>Giải pháp <br /> cho cột sống khỏe</h4>
+                                    </div>
+                                    <div class="desc-banner">
+                                        <span>Sáng chế của người Việt Nam mang tính đột phá cho sức khỏe cột sống được bảo hộ độc quyền trên 62 quốc gia.</span>
+                                    </div>
+                                    <div class="desc-doctor">
+                                        “Người bác sĩ trong tương lai không kê toa cho thuốc mà chú trọng đến cấu trúc cơ thể của bệnh nhân, đến dinh dưỡng,
+                                        đến nguyên nhân phát sinh ra bệnh và phương pháp phòng ngừa.”
+                                        <br />
+                                        <i>- Edison</i>
+                                    </div>
+                                    <div class="more-action">
+                                        <a class="btn btn-outline-secondary rounded-pill" id="btn-show-modal" asp-controller="About" asp-action="Index">Xem chi tiết</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="action-item custom-action-item action-company">
-                            <img src="~/img/home/logo-duc-phuc.png" />
-                            <div class="content-company"><a asp-controller="Clinic" asp-action="Index"> Phòng khám <br /> <span>Đức Phúc DoctorLoan</span></a></div>
-                        </div>
-                        <div class="action-item custom-action-item action-company">
-                            <img src="~/img/home/rnd.png" />
-                            <div class="content-company"><strong>R&D/IPRs</strong> <br /> <div class="small-text">Research and Development</div> <div class="small-text">Intellectual property rights</div></div>
-                        </div>
-                        <div class="action-item custom-action-item action-company">
-                            <img src="~/img/home/logo-doctor-loan.png" />
-                            <div class="content-company"><a asp-controller="Products" asp-action="Index"> Sản phẩm <br /> <strong>DoctorLoan</strong></a></div>
-                        </div>
-                        <div class="action-item custom-action-item action-company">
-                            <img src="~/img/home/logo-gia-thai.png" />
-                            <div class="content-company">Nhà máy sản xuất <br /> <strong>DoctorLoan</strong></div>
-                        </div>
-                        <div class="action-item custom-action-item action-company action-call">
-                            <img src="~/img/home/phone-icon.png" />
-                            <div class="content-company"><span>Tư vấn ngay</span> <br /> <a href="tel:0899136868"><strong>08 9913 6868</strong></a></div>
                         </div>
                     </div>
                 </div>
+                <div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="action-banner">
+                                <div class="action-item custom-action-item action-info">
+                                    <div class="center-thing justify-content-center">
+                                        <span>
+                                            Bác sĩ <br /> <strong>Phạm Thị Kim Loan</strong> <br />
+                                            <span>Nhà sáng lập - Chủ tịch</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="action-item custom-action-item action-company">
+                                    <img loading="lazy" src="~/img/home/logo-duc-phuc.png" />
+                                    <div class="content-company"><a asp-controller="Clinic" asp-action="Index"> Phòng khám <br /> <span>Đức Phúc DoctorLoan</span></a></div>
+                                </div>
+                                <div class="action-item custom-action-item action-company">
+                                    <img loading="lazy" src="~/img/home/rnd.png" />
+                                    <div class="content-company"><strong>R&D/IPRs</strong> <br /> <div class="small-text">Research and Development</div> <div class="small-text">Intellectual property rights</div></div>
+                                </div>
+                                <div class="action-item custom-action-item action-company">
+                                    <img loading="lazy" src="~/img/home/logo-doctor-loan.png" />
+                                    <div class="content-company"><a asp-controller="Products" asp-action="Index"> Sản phẩm <br /> <strong>DoctorLoan</strong></a></div>
+                                </div>
+                                <div class="action-item custom-action-item action-company">
+                                    <img loading="lazy" src="~/img/home/logo-gia-thai.png" />
+                                    <div class="content-company">Nhà máy sản xuất <br /> <strong>DoctorLoan</strong></div>
+                                </div>
+                                <div class="action-item custom-action-item action-company action-call">
+                                    <img loading="lazy" src="~/img/home/phone-icon.png" />
+                                    <div class="content-company"><span>Tư vấn ngay</span> <br /> <a href="tel:0899136868"><strong>08 9913 6868</strong></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
         <section id="About">
@@ -101,7 +124,7 @@
                         <div class="col-xl-6 col-12">
                             <div class="about-text">
                                 <div class="about-text mb-5">
-                                    <img class="" src="~/img/logo/logo-header.svg" />
+                                    <img loading="lazy" class="" src="~/img/logo/logo-header.svg" />
                                 </div>
                                 <div class="about-text mb-4">
                                     “Thương hiệu hàng đầu đưa ra các giải pháp chữa lành và bảo vệ cơ xương
@@ -355,34 +378,34 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <a href="~/img/license/license-1.jpg" class="glightbox" data-gallery="license-space">
-                        <img src="~/img/license/license-1.jpg" />
+                        <img loading="lazy" src="~/img/license/license-1.jpg" />
                     </a>
                     <div class="license-country">Australia</div>
 
                 </div>
                 <div class="swiper-slide">
                     <a href="~/img/license/license-2.jpg" class="glightbox" data-gallery="license-space">
-                        <img src="~/img/license/license-2.jpg" />
+                        <img loading="lazy" src="~/img/license/license-2.jpg" />
                     </a>
                     <div class="license-country">Canada</div>
                 </div>
                 <div class="swiper-slide">
                     <a href="~/img/license/license-3.jpg" class="glightbox" data-gallery="license-space">
-                        <img src="~/img/license/license-3.jpg" />
+                        <img loading="lazy" src="~/img/license/license-3.jpg" />
                     </a>
                     <div class="license-country">United arab emirates</div>
                 </div>
 
                 <div class="swiper-slide">
                     <a href="~/img/license/license-5.jpg" class="glightbox" data-gallery="license-space">
-                        <img src="~/img/license/license-5.jpg" />
+                        <img loading="lazy" src="~/img/license/license-5.jpg" />
                     </a>
                     <div class="license-country">Euro Patent</div>
                 </div>
 
                 <div class="swiper-slide">
                     <a href="~/img/license/license-7.jpg" class="glightbox" data-gallery="license-space">
-                        <img src="~/img/license/license-7.jpg" />
+                        <img loading="lazy" src="~/img/license/license-7.jpg" />
                     </a>
                     <div class="license-country">India Patent</div>
                 </div>
@@ -390,7 +413,7 @@
 
                 <div class="swiper-slide">
                     <a href="~/img/license/license-10.jpg" class="glightbox" data-gallery="license-space">
-                        <img src="~/img/license/license-10.jpg" />
+                        <img loading="lazy" src="~/img/license/license-10.jpg" />
                     </a>
                     <div class="license-country">Japan Patent</div>
                 </div>
@@ -410,7 +433,7 @@
             <div id="HeritageSwiper" class="swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="~/img/home/di-san-1.jpg" />
+                        <img loading="lazy" src="~/img/home/di-san-1.jpg" />
                         <div class="heritage-content">
                             <div class="title-heritage">Khởi nguồn từ chữa bệnh</div>
                             <div class="desc-heritage">
@@ -419,7 +442,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="~/img/home/di-san-2.jpg" />
+                        <img loading="lazy" src="~/img/home/di-san-2.jpg" />
                         <div class="heritage-content">
                             <div class="title-heritage">Sở hữu trí tuệ</div>
                             <div class="desc-heritage">
@@ -428,7 +451,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="~/img/home/di-san-3.jpg" />
+                        <img loading="lazy" src="~/img/home/di-san-3.jpg" />
                         <div class="heritage-content">
                             <div class="title-heritage">Sản xuất và thương mại</div>
                             <div class="desc-heritage">
@@ -451,7 +474,7 @@
                     <div class="col-md-4 col-12">
                         <div class="center-thing">
                             <div class="logo-duc-phuc">
-                                <img src="~/img/home/logo-duc-phuc.png" />
+                                <img loading="lazy" src="~/img/home/logo-duc-phuc.png" />
                             </div>
                         </div>
                     </div>
@@ -483,7 +506,7 @@
                                 {
                                     <div class="swiper-slide">
                                         <a href="~/img/large/home/38-tu-xuong-large-@(i).jpg" class="glightbox" data-gallery="gallery-38-tuxuong">
-                                            <img src="~/img/home/38-tu-xuong-@(i).jpg" />
+                                            <img loading="lazy" src="~/img/home/38-tu-xuong-@(i).jpg" />
                                         </a>
                                     </div>
                                 }
@@ -506,7 +529,7 @@
                                 {
                                     <div class="swiper-slide">
                                         <a href="~/img/large/home/174-nguyen-van-thu-large-@(i).jpg" class="glightbox" data-gallery="gallery-174-nvt">
-                                            <img src="~/img/home/174-nguyen-van-thu-@(i).jpg" />
+                                            <img loading="lazy" src="~/img/home/174-nguyen-van-thu-@(i).jpg" />
                                         </a>
                                     </div>
                                 }
@@ -529,7 +552,7 @@
                                 {
                                     <div class="swiper-slide">
                                         <a href="~/img/large/home/9a-ton-that-tung-large-@(i).jpg" class="glightbox" data-gallery="gallery-9a-ttt">
-                                            <img src="~/img/home/9a-ton-that-tung-@(i).jpg" />
+                                            <img loading="lazy" src="~/img/home/9a-ton-that-tung-@(i).jpg" />
                                         </a>
                                     </div>
                                 }
@@ -590,17 +613,17 @@
                                                         </div>
                                                     }
                                                     <a href="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-1.png" class="glightbox" data-gallery="nguyenthihongminh-space">
-                                                        <img src="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-1.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-1.png" />
                                                     </a>
 
                                                     <p>Cột sống lưng</p>
                                                     <a href="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-2.png" class="glightbox" data-gallery="nguyenthihongminh-space">
-                                                        <img src="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-2.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-2.png" />
                                                     </a>
                                                     <p>Xương chậu</p>
 
                                                     <a href="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-4.png" class="glightbox" data-gallery="nguyenthihongminh-space">
-                                                        <img src="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-4.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/nguyen-thi-hong-minh/nguyen-thi-hong-minh-4.png" />
                                                     </a>
 
                                                     <p>Cột sống cổ-ngực</p>
@@ -626,18 +649,18 @@
                                                         </div>
                                                     }
                                                     <a href="~/img/x-quang/hoang-thi-viet-anh/hoang-thi-viet-anh-1.png" class="glightbox" data-gallery="hoangthivietanh-space">
-                                                        <img src="~/img/x-quang/hoang-thi-viet-anh/hoang-thi-viet-anh-1.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/hoang-thi-viet-anh/hoang-thi-viet-anh-1.png" />
                                                     </a>
 
                                                     </a>
                                                     <p>Cột sống lưng</p>
                                                     <a href="~/img/x-quang/hoang-thi-viet-anh/hoang-thi-viet-anh-2.png" class="glightbox" data-gallery="hoangthivietanh-space">
-                                                        <img src="~/img/x-quang/hoang-thi-viet-anh/hoang-thi-viet-anh-2.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/hoang-thi-viet-anh/hoang-thi-viet-anh-2.png" />
                                                     </a>
                                                     <p>Xương chậu</p>
 
                                                     <a href="~/img/x-quang/hoang-thi-viet-anh/hoang-thi-viet-anh-4.png" class="glightbox" data-gallery="hoangthivietanh-space">
-                                                        <img src="~/img/x-quang/hoang-thi-viet-anh/hoang-thi-viet-anh-4.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/hoang-thi-viet-anh/hoang-thi-viet-anh-4.png" />
                                                     </a>
 
                                                     <p>Cột sống cổ-ngực</p>
@@ -664,17 +687,17 @@
                                                         </div>
                                                     }
                                                     <a href="~/img/x-quang/do-thi-nguyet/do-thi-nguyet-3.png" class="glightbox" data-gallery="dothinguyet-space">
-                                                        <img src="~/img/x-quang/do-thi-nguyet/do-thi-nguyet-3.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/do-thi-nguyet/do-thi-nguyet-3.png" />
                                                     </a>
 
                                                     <p>Cột sống lưng</p>
                                                     <a href="~/img/x-quang/do-thi-nguyet/do-thi-nguyet-4.png" class="glightbox" data-gallery="dothinguyet-space">
-                                                        <img src="~/img/x-quang/do-thi-nguyet/do-thi-nguyet-4.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/do-thi-nguyet/do-thi-nguyet-4.png" />
                                                     </a>
                                                     <p>Xương chậu</p>
 
                                                     <a href="~/img/x-quang/do-thi-nguyet/do-thi-nguyet-1.png" class="glightbox" data-gallery="dothinguyet-space">
-                                                        <img src="~/img/x-quang/do-thi-nguyet/do-thi-nguyet-1.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/do-thi-nguyet/do-thi-nguyet-1.png" />
                                                     </a>
 
                                                     <p>Cột sống cổ-ngực</p>
@@ -701,17 +724,17 @@
                                                         </div>
                                                     }
                                                     <a href="~/img/x-quang/vu-hong-duong/vu-hong-duong-4.png" class="glightbox" data-gallery="vuhongduong-space">
-                                                        <img src="~/img/x-quang/vu-hong-duong/vu-hong-duong-4.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/vu-hong-duong/vu-hong-duong-4.png" />
                                                     </a>
 
                                                     <p>Cột sống lưng</p>
                                                     <a href="~/img/x-quang/vu-hong-duong/vu-hong-duong-3.png" class="glightbox" data-gallery="vuhongduong-space">
-                                                        <img src="~/img/x-quang/vu-hong-duong/vu-hong-duong-3.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/vu-hong-duong/vu-hong-duong-3.png" />
                                                     </a>
                                                     <p>Xương chậu</p>
 
                                                     <a href="~/img/x-quang/vu-hong-duong/vu-hong-duong-1.png" class="glightbox" data-gallery="vuhongduong-space">
-                                                        <img src="~/img/x-quang/vu-hong-duong/vu-hong-duong-1.png" />
+                                                        <img loading="lazy" src="~/img/x-quang/vu-hong-duong/vu-hong-duong-1.png" />
                                                     </a>
 
                                                     <p>Cột sống cổ-ngực</p>
@@ -735,10 +758,8 @@
 
                 <div class="col-xxl-3 col-xl-4 col-lg-5 col-12">
                     <div class="list-iframe-fb">
-                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F998659321172937%2F&show_text=true&width=560&t=0" width="350" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F188832057356035%2F&show_text=true&width=560&t=0" width="350" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FdoctorLoanchamsoccotsongkhoe%2Fvideos%2F319354987187815%2F&show_text=true&width=560&t=0" width="560" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FGiaThaiDOCTORLOAN%2Fvideos%2F885511473444410%2F&show_text=true&width=560&t=0" width="560" height="429" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FpkDucPhucDOCTORLOAN%2Fvideos%2F405994005821995%2F&show_text=true&width=560&t=0" width="560" height="429" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
                     </div>
                 </div>
 
@@ -768,7 +789,7 @@
                                             <h4>Ghế Ngồi Sáng Chế DOCTORLOAN N85</h4>
                                             <p>Sau khi được đọc về các công trình nghiên cứu về việc ngồi không đúng cách có nguy cơ khiến con người bị các bệnh về cột sống. Tôi hiểu được rằng thay đổi thói quen của con người rất khó nên phải tạo ra sản phẩm giúp thuận theo thói quen của con người nhưng vẫn đảm bảo giúp ngồi đúng cách. Tôi đã tạo ra chiếc ghế đầu tiên giúp khi ngồi không bị đổ người về phía trước…</p>
                                         </div>
-                                        <div class="product-img"><img src="~/img/home/ghe-n85.png" /></div>
+                                        <div class="product-img"><img loading="lazy" src="~/img/home/ghe-n85.png" /></div>
                                     </div>
                                 </div>
                                 <div class="tile-project mg-prj">
@@ -782,13 +803,13 @@
                                                 <p>Ghế phù hợp lắp ráp nhanh chóng. Sản phẩm có khả năng chịu tác động ngoại</p>
                                                 <div class="footer-recital">
                                                     <div class="avatar-group">
-                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/count.svg" alt="Avatar" /></div>
                                                     </div>
                                                     <div class="count-clap">
-                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                        <img loading="lazy" src="~/img/home/clap.png" /> <span>1.5K</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -799,13 +820,13 @@
                                                 <p>Ghế phù hợp cho học sinh các cấp chống gù lưng và vẹo cột sống.</p>
                                                 <div class="footer-recital">
                                                     <div class="avatar-group">
-                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/count.svg" alt="Avatar" /></div>
                                                     </div>
                                                     <div class="count-clap">
-                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                        <img loading="lazy" src="~/img/home/clap.png" /> <span>1.5K</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -816,13 +837,13 @@
                                                 <p>Sản phẩm được sử dụng nhiều tại khu vực chờ của bệnh nhân và người thân.</p>
                                                 <div class="footer-recital">
                                                     <div class="avatar-group">
-                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/count.svg" alt="Avatar" /></div>
                                                     </div>
                                                     <div class="count-clap">
-                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                        <img loading="lazy" src="~/img/home/clap.png" /> <span>1.5K</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -850,7 +871,7 @@
                             <div class="col-lg-5 col-12">
                                 <div class="project-info h-100">
                                     <div class="project-number">
-                                        <div class="icon-number"><img src="~/img/home/clock.png" /></div>
+                                        <div class="icon-number"><img loading="lazy" src="~/img/home/clock.png" /></div>
                                         <div class="body-number">
                                             <div class="title-number">Thời gian nghiên cứu sản phẩm</div>
                                             <div class="text-number">130 Giờ</div>
@@ -858,7 +879,7 @@
                                     </div>
 
                                     <div class="project-number">
-                                        <div class="icon-number"><img src="~/img/home/package.png" /></div>
+                                        <div class="icon-number"><img loading="lazy" src="~/img/home/package.png" /></div>
                                         <div class="body-number">
                                             <div class="title-number">Số lần cải tiến sản phẩm</div>
                                             <div class="text-number">500 Lần</div>
@@ -866,7 +887,7 @@
                                     </div>
 
                                     <div class="project-number">
-                                        <div class="icon-number"><img src="~/img/home/user-group.png" /></div>
+                                        <div class="icon-number"><img loading="lazy" src="~/img/home/user-group.png" /></div>
                                         <div class="body-number">
                                             <div class="title-number">Số lượng khách hàng sử dụng sản phẩm</div>
                                             <div class="text-number">500+ Người</div>
@@ -881,31 +902,31 @@
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide">
                                                     <div class="client-info">
-                                                        <img src="~/img/home/dang-duc-ngan.jpg" />
+                                                        <img loading="lazy" src="~/img/home/dang-duc-ngan.jpg" />
                                                         <div class="client-name">Cha Đặng Đức Ngân</div>
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
                                                     <div class="client-info">
-                                                        <img src="~/img/home/pham-van-trong.jpg" />
+                                                        <img loading="lazy" src="~/img/home/pham-van-trong.jpg" />
                                                         <div class="client-name">Giuse Phạm Văn Trọng</div>
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
                                                     <div class="client-info">
-                                                        <img src="~/img/home/thanh-lieu.jpg" />
+                                                        <img loading="lazy" src="~/img/home/thanh-lieu.jpg" />
                                                         <div class="client-name">Bệnh nhân Thanh Liễu</div>
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
                                                     <div class="client-info">
-                                                        <img src="~/img/home/chu-hao.jpg" />
+                                                        <img loading="lazy" src="~/img/home/chu-hao.jpg" />
                                                         <div class="client-name">Bệnh nhân Chu Hảo</div>
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
                                                     <div class="client-info">
-                                                        <img src="~/img/home/hoang-kim-dan.jpg" />
+                                                        <img loading="lazy" src="~/img/home/hoang-kim-dan.jpg" />
                                                         <div class="client-name">Sister M.JB Hoàng Kim Dâng</div>
                                                     </div>
                                                 </div>
@@ -935,7 +956,7 @@
                                                 Ghế ngồi sáng chế DOCTORLOAN 90 mỏng được thiết kế với phần lồi phía trước và lõm phía sau, tạo nên chức năng “ÔM CHẶT – GIỮ CHUẨN – CHỐNG TRƯỢT” từng chi tiết của khung xương, mang đến khả năng tự điều chỉnh cột sống dưới tác động của trọng lực cơ thể khi ngồi trên ghế.
                                             </p>
                                         </div>
-                                        <div class="product-img"><img src="~/img/home/ghe-90-mong.png" /></div>
+                                        <div class="product-img"><img loading="lazy" src="~/img/home/ghe-90-mong.png" /></div>
                                     </div>
                                 </div>
                                 <div class="tile-project mg-prj">
@@ -949,13 +970,13 @@
                                                 <p>Ghế phù hợp lắp ráp nhanh chóng. Sản phẩm có khả năng chịu tác động ngoại</p>
                                                 <div class="footer-recital">
                                                     <div class="avatar-group">
-                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/count.svg" alt="Avatar" /></div>
                                                     </div>
                                                     <div class="count-clap">
-                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                        <img loading="lazy" src="~/img/home/clap.png" /> <span>1.5K</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -966,13 +987,13 @@
                                                 <p>Ghế phù hợp cho học sinh các cấp chống gù lưng và vẹo cột sống.</p>
                                                 <div class="footer-recital">
                                                     <div class="avatar-group">
-                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/count.svg" alt="Avatar" /></div>
                                                     </div>
                                                     <div class="count-clap">
-                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                        <img loading="lazy" src="~/img/home/clap.png" /> <span>1.5K</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -983,13 +1004,13 @@
                                                 <p>Sản phẩm được sử dụng nhiều tại khu vực chờ cảu bệnh nhân và người thân.</p>
                                                 <div class="footer-recital">
                                                     <div class="avatar-group">
-                                                        <div class="avatar"><img src="~/img/home/avatar-1.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-2.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/avatar-3.png" alt="Avatar" /></div>
-                                                        <div class="avatar"><img src="~/img/home/count.svg" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-1.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-2.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/avatar-3.png" alt="Avatar" /></div>
+                                                        <div class="avatar"><img loading="lazy" src="~/img/home/count.svg" alt="Avatar" /></div>
                                                     </div>
                                                     <div class="count-clap">
-                                                        <img src="~/img/home/clap.png" /> <span>1.5K</span>
+                                                        <img loading="lazy" src="~/img/home/clap.png" /> <span>1.5K</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1018,7 +1039,7 @@
                             <div class="col-lg-5 col-12">
                                 <div class="project-info h-100">
                                     <div class="project-number">
-                                        <div class="icon-number"><img src="~/img/home/clock.png" /></div>
+                                        <div class="icon-number"><img loading="lazy" src="~/img/home/clock.png" /></div>
                                         <div class="body-number">
                                             <div class="title-number">Thời gian nghiên cứu sản phẩm</div>
                                             <div class="text-number">80 Giờ</div>
@@ -1026,7 +1047,7 @@
                                     </div>
 
                                     <div class="project-number">
-                                        <div class="icon-number"><img src="~/img/home/package.png" /></div>
+                                        <div class="icon-number"><img loading="lazy" src="~/img/home/package.png" /></div>
                                         <div class="body-number">
                                             <div class="title-number">Số lần cải tiến sản phẩm</div>
                                             <div class="text-number">20 Lần</div>
@@ -1034,7 +1055,7 @@
                                     </div>
 
                                     <div class="project-number">
-                                        <div class="icon-number"><img src="~/img/home/user-group.png" /></div>
+                                        <div class="icon-number"><img loading="lazy" src="~/img/home/user-group.png" /></div>
                                         <div class="body-number">
                                             <div class="title-number">Số lượng khách hàng sử dụng sản phẩm</div>
                                             <div class="text-number">700+ Người</div>
@@ -1049,31 +1070,31 @@
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide">
                                                     <div class="client-info">
-                                                        <img src="~/img/home/dang-duc-ngan.jpg" />
+                                                        <img loading="lazy" src="~/img/home/dang-duc-ngan.jpg" />
                                                         <div class="client-name">Cha Đặng Đức Ngân</div>
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
                                                     <div class="client-info">
-                                                        <img src="~/img/home/pham-van-trong.jpg" />
+                                                        <img loading="lazy" src="~/img/home/pham-van-trong.jpg" />
                                                         <div class="client-name">Giuse Phạm Văn Trọng</div>
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
                                                     <div class="client-info">
-                                                        <img src="~/img/home/thanh-lieu.jpg" />
+                                                        <img loading="lazy" src="~/img/home/thanh-lieu.jpg" />
                                                         <div class="client-name">Bệnh nhân Thanh Liễu</div>
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
                                                     <div class="client-info">
-                                                        <img src="~/img/home/chu-hao.jpg" />
+                                                        <img loading="lazy" src="~/img/home/chu-hao.jpg" />
                                                         <div class="client-name">Bệnh nhân Chu Hảo</div>
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
                                                     <div class="client-info">
-                                                        <img src="~/img/home/hoang-kim-dan.jpg" />
+                                                        <img loading="lazy" src="~/img/home/hoang-kim-dan.jpg" />
                                                         <div class="client-name">Sister M.JB Hoàng Kim Dâng</div>
                                                     </div>
                                                 </div>
@@ -1101,13 +1122,6 @@
     <script src="~/libs/jquery/crypto-js.min.js"></script>
         
     <script type="text/javascript">
-
-        //setTimeout("document.getElementById('myModalEvert').style.display='block'", 1500);
-        //setTimeout("document.getElementById('myModalEvert').style.display='none'", 8000);
-        // Handle close modal
-        $('#btnClose').click(function () {
-            document.getElementById('myModalEvert').style.display = 'none';
-        });
 
         $('.count').each(function () {
             $(this).prop('Counter', 0).animate({
@@ -1604,86 +1618,93 @@
             player2.cueVideoById(url);
         });
 
-        var _dataRes = $("#dataRes").val();
-        var _phone = $("#phone").val();
-        var _custommerName = $("#custommerName").val();
-        var _address = $("#addressLine").val();
-        var _email = $("#email").val();
-        //handle call API checkout
-        if (_dataRes != undefined && _phone != null && _custommerName != null && _address != null) {
-            var _res = JSON.parse(_dataRes);
-            //Payment Payoo
-            var _baseUrl = "https://payoo.vn/v2/";
-            const _businessUsername = "PY8_DOCTORLOAN_ECOM";
-            const _shopID = "6587";
-            const _shopTitle = "DOCTORLOAN";
-            const _checksumKey = "ySpkGehhqJcLuniNYGZZJO8IAftdXc3HxBFvGJgyeMPpPcFk8i+z9ywiCcq53kuv8C8rMm8pnOypibnXIw2/Nw==";
-            const _apiUsername = "PY8_DOCTORLOAN_ECOM_BizAPI";
-            const _apiPassword = "MTwmyaC3H8FQxCb6";
-            const _apiSignature = "h9yQ5+wZC2nEvpCodoW1cnp6JTYz5ezKaJgNoyGzOqerArpKtdiIh+/7oN1i3ncw";
-            const _domain = "https://doctorloan.vn/";
+        var _paymentMethod = Number($("#paymentMethod").val());
+        var _tmp_paymentMethod = Number($("#tmp_paymentMethod").val());
 
-            //function sha512 checksum
-            function sha512(strCheckSumKey, strXML) {
-                var combinedString = strCheckSumKey + strXML;
-                var checksum = CryptoJS.SHA512(combinedString).toString();
-                return checksum;
-            }
+        if (_paymentMethod = tmp_paymentMethod) {
+        
+            var _dataRes = $("#dataRes").val();
+            var _phone = $("#phone").val();
+            var _custommerName = $("#custommerName").val();
+            var _address = $("#addressLine").val();
+            var _email = $("#email").val();
 
-            const now = new Date();
+            //handle call API checkout
+            if (_dataRes != undefined && _phone != null && _custommerName != null && _address != null) {
+                var _res = JSON.parse(_dataRes);
+                //Payment Payoo
+                var _baseUrl = "https://payoo.vn/v2/";
+                const _businessUsername = "PY8_DOCTORLOAN_ECOM";
+                const _shopID = "6587";
+                const _shopTitle = "DOCTORLOAN";
+                const _checksumKey = "ySpkGehhqJcLuniNYGZZJO8IAftdXc3HxBFvGJgyeMPpPcFk8i+z9ywiCcq53kuv8C8rMm8pnOypibnXIw2/Nw==";
+                const _apiUsername = "PY8_DOCTORLOAN_ECOM_BizAPI";
+                const _apiPassword = "MTwmyaC3H8FQxCb6";
+                const _apiSignature = "h9yQ5+wZC2nEvpCodoW1cnp6JTYz5ezKaJgNoyGzOqerArpKtdiIh+/7oN1i3ncw";
+                const _domain = "https://doctorloan.vn/";
 
-            //function get current date time formatted
-            function getCurrentDateTimeFormatted() {
-                const year = now.getFullYear();
-                const month = (now.getMonth() + 1).toString().padStart(2, '0');
-                const day = now.getDate().toString().padStart(2, '0');
-                const hours = (now.getHours() + 1).toString().padStart(2, '0');
-                const minutes = now.getMinutes().toString().padStart(2, '0');
-                const seconds = now.getSeconds().toString().padStart(2, '0');
-
-                return `${year}${month}${day}${hours}${minutes}${seconds}`;
-            }
-
-            //function get current date formatted
-            function getCurrentDateFormatted() {
-                const day = now.getDate().toString().padStart(2, '0');
-                const month = (now.getMonth() + 1).toString().padStart(2, '0');
-                const year = now.getFullYear();
-
-                return `${day}/${month}/${year}`;
-            }
-
-            const _validityTime = getCurrentDateTimeFormatted();
-            const _orderDate = getCurrentDateFormatted();
-            var _orderNo = "ORD_" + _shopID + "_" + _res.data.orderNo;
-            var _data = "<shops><shop><username>" + _businessUsername + "</username><shop_id>" + _shopID + "</shop_id>" +
-                "<shop_title>" + _shopTitle + "</shop_title><shop_domain>" + _domain + "</shop_domain>" +
-                "<order_no>" + _orderNo + "</order_no><order_cash_amount>" + _res.data.totalPrice + "</order_cash_amount>" +
-                "<order_ship_date>" + _orderDate + "</order_ship_date><order_ship_days>0</order_ship_days>" +
-                "<order_description>Mã đơn hàng: " + _res.data.orderNo + " Tổng tiền: " + _res.data.totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' }) + "</order_description>" +
-                "<shop_back_url>https://doctorloan.vn/common/OrderSuccess</shop_back_url>" +
-                "<notify_url>https://doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/callback-payoo</notify_url>" +
-                "<validity_time>" + _validityTime + "</validity_time><customer>" +
-                "<name>" + _custommerName + "</name><phone>" + _phone + "</phone><address>" + _address + "</address>" +
-                "<email>" + _email + "</email></customer><JsonResponse>true</JsonResponse><direct_return_time>5</direct_return_time></shop></shops>";
-
-            //function call API checkout
-            $.ajax({
-                url: _baseUrl + "create-preorder",
-                type: 'POST',
-                data: {
-                    "data": _data,
-                    "checksum": sha512(_checksumKey, _data),
-                    "refer": _domain,
-                    "payment_group": ""
-                },
-                success: function (response) {
-                    window.location.href = response.order.payment_url;
-                },
-                error: function (xhr, status, error) {
-                    console.error('Có lỗi khi gửi yêu cầu API error:', error);
+                //function sha512 checksum
+                function sha512(strCheckSumKey, strXML) {
+                    var combinedString = strCheckSumKey + strXML;
+                    var checksum = CryptoJS.SHA512(combinedString).toString();
+                    return checksum;
                 }
-            });
+
+                const now = new Date();
+
+                //function get current date time formatted
+                function getCurrentDateTimeFormatted() {
+                    const year = now.getFullYear();
+                    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                    const day = now.getDate().toString().padStart(2, '0');
+                    const hours = (now.getHours() + 1).toString().padStart(2, '0');
+                    const minutes = now.getMinutes().toString().padStart(2, '0');
+                    const seconds = now.getSeconds().toString().padStart(2, '0');
+
+                    return `${year}${month}${day}${hours}${minutes}${seconds}`;
+                }
+
+                //function get current date formatted
+                function getCurrentDateFormatted() {
+                    const day = now.getDate().toString().padStart(2, '0');
+                    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                    const year = now.getFullYear();
+
+                    return `${day}/${month}/${year}`;
+                }
+
+                const _validityTime = getCurrentDateTimeFormatted();
+                const _orderDate = getCurrentDateFormatted();
+                var _orderNo = "ORD_" + _shopID + "_" + _res.data.orderNo;
+                var _data = "<shops><shop><username>" + _businessUsername + "</username><shop_id>" + _shopID + "</shop_id>" +
+                    "<shop_title>" + _shopTitle + "</shop_title><shop_domain>" + _domain + "</shop_domain>" +
+                    "<order_no>" + _orderNo + "</order_no><order_cash_amount>" + _res.data.totalPrice + "</order_cash_amount>" +
+                    "<order_ship_date>" + _orderDate + "</order_ship_date><order_ship_days>0</order_ship_days>" +
+                    "<order_description>Mã đơn hàng: " + _res.data.orderNo + " Tổng tiền: " + _res.data.totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' }) + "</order_description>" +
+                    "<shop_back_url>https://doctorloan.vn/common/OrderSuccess</shop_back_url>" +
+                    "<notify_url>https://doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/callback-payoo</notify_url>" +
+                    "<validity_time>" + _validityTime + "</validity_time><customer>" +
+                    "<name>" + _custommerName + "</name><phone>" + _phone + "</phone><address>" + _address + "</address>" +
+                    "<email>" + _email + "</email></customer><JsonResponse>true</JsonResponse><direct_return_time>5</direct_return_time></shop></shops>";
+
+                //function call API checkout
+                $.ajax({
+                    url: _baseUrl + "create-preorder",
+                    type: 'POST',
+                    data: {
+                        "data": _data,
+                        "checksum": sha512(_checksumKey, _data),
+                        "refer": _domain,
+                        "payment_group": ""
+                    },
+                    success: function (response) {
+                        window.location.href = response.order.payment_url;
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Có lỗi khi gửi yêu cầu API error:', error);
+                    }
+                });
+            }
         }
     </script>
 }

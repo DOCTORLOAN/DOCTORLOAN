@@ -74,11 +74,11 @@ namespace DOCTORLOAN.Controllers
                     TotalPrice = _listItem.TotalPrice,
                     AddressLine = _order.AddressLine,
                     Remarks = _order.Remarks,
-                    PaymentMethod = PaymentMethod.Payoo,
-                    ListItem  =
-                    {
-                        item
-                    } 
+                    PaymentMethod = _order.PaymentMethod,
+                    ListItem =
+                        {
+                            item
+                        }
                 };
 
                 string jsonData = JsonConvert.SerializeObject(data);
@@ -95,6 +95,7 @@ namespace DOCTORLOAN.Controllers
                     TempData["custommerName"] = _order.FullName;
                     TempData["addressLine"] = _order.AddressLine;
                     TempData["email"] = _order.Email;
+                    TempData["paymentMethod"] = _order.PaymentMethod;
 
                     return RedirectToAction("Index", "Home");
                 }

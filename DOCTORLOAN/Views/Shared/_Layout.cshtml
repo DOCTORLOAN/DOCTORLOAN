@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="facebook-domain-verification" content="1te1j7yiuwa5e0as1tszd540epeul7" />
     <title>@ViewData["Title"] - Công ty TNHH Gia Thái DOCTORLOAN</title>
     <meta name="google-site-verification" content="0dwDQPx-V8Q03sncbrL3ktvKOZpWjgm4E5wmi9kJOMI" />
     <link href="~/libs/bootstrap/bootstrap.min.css" rel="stylesheet" />
@@ -16,6 +17,15 @@
     <link href="~/libs/flatpickr/flatpickr.min.css" rel="stylesheet" />
     <link href="~/libs/ajax/tailwind.min.css" rel="stylesheet" />
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XHPGS4R7MQ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-XHPGS4R7MQ');
+</script>
 <body>
     <header>
         @await Html.PartialAsync("/Views/Common/_HeaderPartial.cshtml")
@@ -40,7 +50,7 @@
         <div id="fb-root"></div>
 
         <!-- Your Chat plugin code -->
-        @* <div id="fb-customer-chat" class="fb-customerchat"></div> *@
+        <div id="fb-customer-chat" class="fb-customerchat"></div> 
     </main>
     <footer>
         @await Html.PartialAsync("/Views/Common/_FooterPartial.cshtml")
