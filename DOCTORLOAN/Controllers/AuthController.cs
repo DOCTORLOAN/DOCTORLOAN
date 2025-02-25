@@ -20,7 +20,7 @@ namespace DOCTORLOAN.Controllers
             return View();
         }
 
-        [HttpPost]
+        /*
         public async Task<IActionResult> LoginPost(Signin modelLogin)
         {
             if (modelLogin.UserName == "admindoctorloan" &&
@@ -50,7 +50,7 @@ namespace DOCTORLOAN.Controllers
 
             ViewData["ValidateMessage"] = "user not found";
             return View();
-        }
+        }*/
 
         public IActionResult Register()
         {
@@ -62,8 +62,7 @@ namespace DOCTORLOAN.Controllers
 
             return View();
         }
-
-        [HttpPost]
+        /*
         public async Task<IActionResult> RegisterPost(User _user)
         {
             try
@@ -104,7 +103,7 @@ namespace DOCTORLOAN.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-        }
+        }*/
 
         //public IActionResult ForgotPassword()
         //{

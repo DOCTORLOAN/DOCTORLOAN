@@ -17,10 +17,5 @@ namespace DOCTORLOAN.Controllers
         {
             return View();
         }
-
-        public IActionResult Sales()
-        {
-            return View();
-        }
     }
 }
