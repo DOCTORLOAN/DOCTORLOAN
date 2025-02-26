@@ -8,13 +8,21 @@
 
 @if (TempData["dataRes"] != null)
 {
-    <input type="text" class="form-control" value="@TempData["dataRes"]" id="dataRes" hidden />
-    <input type="text" class="form-control" value="@TempData["phone"]" id="phone" hidden />
-    <input type="text" class="form-control" value="@TempData["custommerName"]" id="custommerName" hidden />
-    <input type="text" class="form-control" value="@TempData["addressLine"]" id="addressLine" hidden />
-    <input type="text" class="form-control" value="@TempData["email"]" id="email" hidden />
-    <input type="text" class="form-control" value="@(TempData["paymentMethod"])" id="paymentMethod" hidden />
-    <input type="text" class="form-control" value="@((int)PaymentMethod.Payoo)" id="tmp_paymentMethod" hidden />
+    var inputData = new Dictionary<string, object>
+    {
+        { "dataRes", TempData["dataRes"] },
+        { "phone", TempData["phone"] },
+        { "custommerName", TempData["custommerName"] },
+        { "addressLine", TempData["addressLine"] },
+        { "email", TempData["email"] },
+        { "paymentMethod", TempData["paymentMethod"] },
+        { "tmp_paymentMethod", (int)PaymentMethod.Payoo }
+    };
+
+    foreach (var item in inputData)
+    {
+        <input type="text" class="form-control" value="@item.Value" id="@item.Key" hidden />
+    }
 }
 
 <div b-hmxnz7sj43="" id="myModalEvert" class="modal" tabindex="-1" role="dialog" style="display: none;">
@@ -1615,91 +1623,90 @@
             player2.cueVideoById(url);
         });
 
-        var _paymentMethod = Number($("#paymentMethod").val());
-        var _tmp_paymentMethod = Number($("#tmp_paymentMethod").val());
+        const getValue = (id) => $(`#${id}`).val();
 
-        if (_paymentMethod = tmp_paymentMethod) {
-        
-            var _dataRes = $("#dataRes").val();
-            var _phone = $("#phone").val();
-            var _custommerName = $("#custommerName").val();
-            var _address = $("#addressLine").val();
-            var _email = $("#email").val();
+        const _paymentMethod = Number(getValue("paymentMethod"));
+        const _tmp_paymentMethod = Number(getValue("tmp_paymentMethod"));
 
-            //handle call API checkout
-            if (_dataRes != undefined && _phone != null && _custommerName != null && _address != null) {
-                var _res = JSON.parse(_dataRes);
-                //Payment Payoo
-                var _baseUrl = "https://payoo.vn/v2/";
-                const _businessUsername = "PY8_DOCTORLOAN_ECOM";
-                const _shopID = "6587";
-                const _shopTitle = "DOCTORLOAN";
-                const _checksumKey = "ySpkGehhqJcLuniNYGZZJO8IAftdXc3HxBFvGJgyeMPpPcFk8i+z9ywiCcq53kuv8C8rMm8pnOypibnXIw2/Nw==";
-                const _apiUsername = "PY8_DOCTORLOAN_ECOM_BizAPI";
-                const _apiPassword = "MTwmyaC3H8FQxCb6";
-                const _apiSignature = "h9yQ5+wZC2nEvpCodoW1cnp6JTYz5ezKaJgNoyGzOqerArpKtdiIh+/7oN1i3ncw";
-                const _domain = "https://doctorloan.vn/";
+        if (_paymentMethod === _tmp_paymentMethod) {
+            const _dataRes = getValue("dataRes");
+            const _phone = getValue("phone");
+            const _custommerName = getValue("custommerName");
+            const _address = getValue("addressLine");
+            const _email = getValue("email");
 
-                //function sha512 checksum
-                function sha512(strCheckSumKey, strXML) {
-                    var combinedString = strCheckSumKey + strXML;
-                    var checksum = CryptoJS.SHA512(combinedString).toString();
-                    return checksum;
-                }
+            if (_dataRes && _phone && _custommerName && _address) {
+                const _res = JSON.parse(_dataRes);
 
-                const now = new Date();
+                // Cấu hình thanh toán Payoo
+                const config = {
+                    baseUrl: "https://payoo.vn/v2/",
+                    businessUsername: "PY8_DOCTORLOAN_ECOM",
+                    shopID: "6587",
+                    shopTitle: "DOCTORLOAN",
+                    checksumKey: "ySpkGehhqJcLuniNYGZZJO8IAftdXc3HxBFvGJgyeMPpPcFk8i+z9ywiCcq53kuv8C8rMm8pnOypibnXIw2/Nw==",
+                    apiUsername: "PY8_DOCTORLOAN_ECOM_BizAPI",
+                    apiPassword: "MTwmyaC3H8FQxCb6",
+                    apiSignature: "h9yQ5+wZC2nEvpCodoW1cnp6JTYz5ezKaJgNoyGzOqerArpKtdiIh+/7oN1i3ncw",
+                    domain: "https://doctorloan.vn/",
+                    shopBackUrl: "https://doctorloan.vn/common/OrderSuccess",
+                    notifyUrl: "https://doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/callback-payoo",
+                };
 
-                //function get current date time formatted
-                function getCurrentDateTimeFormatted() {
-                    const year = now.getFullYear();
-                    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-                    const day = now.getDate().toString().padStart(2, '0');
-                    const hours = (now.getHours() + 1).toString().padStart(2, '0');
-                    const minutes = now.getMinutes().toString().padStart(2, '0');
-                    const seconds = now.getSeconds().toString().padStart(2, '0');
+                // Hàm tạo chuỗi checksum SHA-512
+                const sha512 = (key, data) => CryptoJS.SHA512(key + data).toString();
 
-                    return `${year}${month}${day}${hours}${minutes}${seconds}`;
-                }
+                // Hàm lấy ngày giờ hiện tại theo định dạng
+                const getFormattedDate = (type) => {
+                    const now = new Date();
+                    const pad = (num) => num.toString().padStart(2, "0");
 
-                //function get current date formatted
-                function getCurrentDateFormatted() {
-                    const day = now.getDate().toString().padStart(2, '0');
-                    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-                    const year = now.getFullYear();
-
-                    return `${day}/${month}/${year}`;
-                }
-
-                const _validityTime = getCurrentDateTimeFormatted();
-                const _orderDate = getCurrentDateFormatted();
-                var _orderNo = "ORD_" + _shopID + "_" + _res.data.orderNo;
-                var _data = "<shops><shop><username>" + _businessUsername + "</username><shop_id>" + _shopID + "</shop_id>" +
-                    "<shop_title>" + _shopTitle + "</shop_title><shop_domain>" + _domain + "</shop_domain>" +
-                    "<order_no>" + _orderNo + "</order_no><order_cash_amount>" + _res.data.totalPrice + "</order_cash_amount>" +
-                    "<order_ship_date>" + _orderDate + "</order_ship_date><order_ship_days>0</order_ship_days>" +
-                    "<order_description>Mã đơn hàng: " + _res.data.orderNo + " Tổng tiền: " + _res.data.totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' }) + "</order_description>" +
-                    "<shop_back_url>https://doctorloan.vn/common/OrderSuccess</shop_back_url>" +
-                    "<notify_url>https://doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/callback-payoo</notify_url>" +
-                    "<validity_time>" + _validityTime + "</validity_time><customer>" +
-                    "<name>" + _custommerName + "</name><phone>" + _phone + "</phone><address>" + _address + "</address>" +
-                    "<email>" + _email + "</email></customer><JsonResponse>true</JsonResponse><direct_return_time>5</direct_return_time></shop></shops>";
-
-                //function call API checkout
-                $.ajax({
-                    url: _baseUrl + "create-preorder",
-                    type: 'POST',
-                    data: {
-                        "data": _data,
-                        "checksum": sha512(_checksumKey, _data),
-                        "refer": _domain,
-                        "payment_group": ""
-                    },
-                    success: function (response) {
-                        window.location.href = response.order.payment_url;
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Có lỗi khi gửi yêu cầu API error:', error);
+                    if (type === "datetime") {
+                        return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours() + 1)}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+                    } else {
+                        return `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
                     }
+                };
+
+                const _validityTime = getFormattedDate("datetime");
+                const _orderDate = getFormattedDate("date");
+                const _orderNo = `ORD_${config.shopID}_${_res.data.orderNo}`;
+
+                // Xây dựng dữ liệu gửi API
+                const _data = `
+                        <shops><shop>
+                            <username>${config.businessUsername}</username>
+                            <shop_id>${config.shopID}</shop_id>
+                            <shop_title>${config.shopTitle}</shop_title>
+                            <shop_domain>${config.domain}</shop_domain>
+                            <order_no>${_orderNo}</order_no>
+                            <order_cash_amount>${_res.data.totalPrice}</order_cash_amount>
+                            <order_ship_date>${_orderDate}</order_ship_date>
+                                    <order_ship_days>0</order_ship_days>
+                            <order_description>Mã đơn hàng: ${_res.data.orderNo} Tổng tiền: ${_res.data.totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</order_description>
+                            <shop_back_url>${config.shopBackUrl}</shop_back_url>
+                            <notify_url>${config.notifyUrl}</notify_url>
+                            <validity_time>${_validityTime}</validity_time>
+                            <customer>
+                                <name>${_custommerName}</name>
+                                <phone>${_phone}</phone>
+                                <address>${_address}</address>
+                                <email>${_email}</email>
+                            </customer>
+                            <JsonResponse>true</JsonResponse>
+                            <direct_return_time>5</direct_return_time>
+                        </shop></shops>`.replace(/\s+/g, " "); // Xóa khoảng trắng thừa
+
+                // Gửi yêu cầu API
+                $.post(config.baseUrl + "create-preorder", {
+                    data: _data,
+                    checksum: sha512(config.checksumKey, _data),
+                    refer: config.domain,
+                    payment_group: ""
+                }).done((response) => {
+                    window.location.href = response.order.payment_url;
+                }).fail((xhr, status, error) => {
+                    console.error("Có lỗi khi gửi yêu cầu API:", error);
                 });
             }
         }
