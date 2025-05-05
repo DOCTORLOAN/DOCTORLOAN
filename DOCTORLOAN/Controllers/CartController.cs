@@ -7,10 +7,10 @@ namespace DOCTORLOAN.Controllers
 {
     public class CartController : Controller
     {
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
             return View();
-        }
+        }*/
 
        /* public async Task<IActionResult> AddToCart(int productId, string productName, decimal price, int quantity)
         {
