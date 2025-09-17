@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Net.Http.Headers; // Thêm namespace này
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -26,7 +27,34 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        // Kiểm tra xem đây có phải là môi trường Development không.
+        // Trong môi trường Development, có thể không cần cache hoặc cache ngắn hơn
+        // để dễ dàng xem các thay đổi ngay lập tức.
+        // Nếu không phải Development, áp dụng cache dài hạn.
+        if (!app.Environment.IsDevelopment())
+        {
+            const int durationInSeconds = 60 * 60 * 24 * 365; // 1 năm (31,536,000 giây)
+            ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                "public,max-age=" + durationInSeconds;
+            ctx.Context.Response.Headers[HeaderNames.Expires] =
+                DateTime.UtcNow.AddYears(1).ToString("R"); // RFC1123 format
+        }
+        else
+        {
+            // Trong môi trường Development, có thể không cache hoặc cache rất ngắn
+            // để đảm bảo bạn thấy các thay đổi ngay lập tức.
+            ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                "no-cache, no-store, must-revalidate";
+            ctx.Context.Response.Headers[HeaderNames.Pragma] = "no-cache";
+            ctx.Context.Response.Headers[HeaderNames.Expires] = "0";
+        }
+    }
+});
 
 app.UseRouting();
 
