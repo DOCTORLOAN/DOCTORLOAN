@@ -1,0 +1,43 @@
+# Ignore build outputs
+**/bin
+**/obj
+
+# Ignore user-specific files
+**/*.*proj.user
+**/.vs
+**/.vscode
+**/.idea
+
+# Ignore node/npm stuff
+**/node_modules
+**/npm-debug.log
+
+# Ignore docker and compose configs
+**/docker-compose*
+**/Dockerfile*
+
+# Ignore git and IDE configs
+**/.git
+**/.gitignore
+**/.gitattributes
+**/.classpath
+**/.project
+**/.settings
+**/.toolstarget
+
+# Ignore secrets & env files
+**/.env
+**/secrets.*.yaml
+**/values.*.yaml
+azds.yaml
+
+# Ignore database & temp files
+**/*.dbmdl
+**/*.jfm
+
+# Ignore Helm charts
+**/charts
+
+# Ignore docs/license
+LICENSE
+README.md
