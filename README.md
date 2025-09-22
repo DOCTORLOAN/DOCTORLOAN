@@ -10,7 +10,6 @@
 - **Docker**
 - **LESS, CSS, JS**
 - **External REST API** (backend data source)
-- Other libraries...
 
 ---
 
@@ -18,14 +17,22 @@
 
 ### 1. Clone the source code
 ```sh
-git clone <link-repo>
+git clone https://github.com/DOCTORLOAN/DOCTORLOAN.git
 cd DOCTORLOAN
 
 ### 2.Build and run with Docker
-```sh 
+```sh
+#Clean Docker build
+docker-compose build --no-cache
+
+# Build and start containers
 docker-compose up --build
 
-Check status at: http://localhost:8080
+# Stop and remove containers
+docker-compose down
+
+#Check status at: 
+http://localhost:8080
 
 ### 3.Compile LESS to CSS
 ```sh
