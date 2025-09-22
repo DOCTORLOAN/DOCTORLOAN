@@ -1,4 +1,4 @@
-﻿/*------Color------*/
+/*------Color------*/
 /*------Font------*/
 @font-face {
   font-family: helveticaneue-Regular;
@@ -37,6 +37,7 @@ body {
   overflow-x: hidden;
   font-family: helveticaneue-Regular;
   font-weight: 400;
+  font-display: swap;
 }
 body * {
   transition-timing-function: ease-in-out;
@@ -481,7 +482,6 @@ footer .logo-footer {
 footer .social-link {
   margin: 15px 0 0 0;
   text-align: center;
-  display: ruby-text;
 }
 footer .social-link #socialZalo {
   width: 15%;
@@ -6712,6 +6712,10 @@ body {
                 z-index: -1;
             }
         }*/
+  /*.untitled__slide:nth-child(1) {
+            -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+        }*/
 }
 #BannerClinic .banner-book .banner-clinic-second {
   width: 100%;
@@ -6749,10 +6753,6 @@ body {
   left: 0;
   background-color: #b3401a;
 }
-#BannerClinic .banner-book .untitled__slide:nth-child(1) {
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-}
 #BannerClinic .banner-book .untitled__slide:nth-child(1) .untitled__slideBg {
   background-image: url(../img/showroom-slide/showroom-2.jpg);
 }
@@ -6777,6 +6777,44 @@ body {
 #BannerClinic .banner-book .untitled__slide:nth-child(4) .untitled__slideBg {
   background-image: url(../img/showroom-slide/showroom-4.jpg);
 }
+@-webkit-keyframes bgInOut {
+  0% {
+    transform: rotate(-45deg) scale(1.1);
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  33% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  66% {
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  }
+  100% {
+    transform: rotate(45deg) scale(0.9);
+  }
+}
+@keyframes bgInOut {
+  0% {
+    transform: rotate(-45deg) scale(1.1);
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  33% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  66% {
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  }
+  100% {
+    transform: rotate(45deg) scale(0.9);
+  }
+}
 #BannerClinic .banner-book .untitled__slideBg {
   position: relative;
   height: 100%;
@@ -6791,48 +6829,6 @@ body {
   z-index: -1;
   -webkit-animation: bgInOut 5s infinite;
   animation: bgInOut 5s infinite;
-}
-@-webkit-keyframes bgInOut {
-  0% {
-    transform: rotate(-45deg) scale(1.1);
-    -webkit-animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-  33% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  66% {
-    transform: rotate(0deg);
-    -webkit-animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-  }
-  100% {
-    transform: rotate(45deg) scale(0.9);
-  }
-}
-@keyframes bgInOut {
-  0% {
-    transform: rotate(-45deg) scale(1.1);
-    -webkit-animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-  33% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  66% {
-    transform: rotate(0deg);
-    -webkit-animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-  }
-  100% {
-    transform: rotate(45deg) scale(0.9);
-  }
 }
 #BannerClinic .banner-book .untitled__slideContent {
   position: absolute;
@@ -9632,12 +9628,13 @@ body {
   padding: 0 1.25rem;
   text-align: center;
   padding-bottom: 1rem;
+  display: flex;
 }
 .product-wrapper .content-item .action-item #add-cart {
   float: left;
 }
 .product-wrapper .content-item .action-item .btn-buy {
-  min-width: 180px !important;
+  min-width: 160px !important;
 }
 .product-wrapper .content-item .icon-cart {
   background-color: #FF7500;
@@ -13873,10 +13870,10 @@ body {
   background-color: #FFF;
 }
 .product-content-wrapper .content-t-wrap .parameter-all p {
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0;
-  -webkit-margin-start: 0;
-  -webkit-margin-end: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
   text-rendering: geometricPrecision;
 }
 .product-content-wrapper .content-t-wrap .parameter-all .ulist li {

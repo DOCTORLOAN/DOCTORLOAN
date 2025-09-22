@@ -1,0 +1,7 @@
+{
+  "name": "doctorloan",
+  "version": "1.0.0",
+  "scripts": {
+    "build-css": "lessc wwwroot/auth/auth.less wwwroot/auth/auth.css && lessc wwwroot/css/styles.less wwwroot/css/styles.css"
+  }
+}
