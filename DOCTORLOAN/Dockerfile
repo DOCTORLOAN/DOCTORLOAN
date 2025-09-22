@@ -1,23 +1,29 @@
 # ---------- STAGE 1: BUILD ----------
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-# Copy file project và restore
-COPY DOCTORLOAN.csproj ./
-RUN dotnet restore
+# Copy csproj and restore as distinct layers
+COPY ["DOCTORLOAN/DOCTORLOAN.csproj", "DOCTORLOAN/"]
+RUN dotnet restore "./DOCTORLOAN/DOCTORLOAN.csproj"
 
-# Copy toàn bộ mã nguồn
-COPY . ./
-RUN dotnet publish -c Release -o /app/publish
+# Copy the full source and build
+COPY . .
+WORKDIR "/src/DOCTORLOAN"
+RUN dotnet build "DOCTORLOAN.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+# Publish the application
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "DOCTORLOAN.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # ---------- STAGE 2: RUNTIME ----------
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS final
 WORKDIR /app
-
-COPY --from=build /app/publish .
-
-# Mở port cho ứng dụng ASP.NET Core
 EXPOSE 80
+EXPOSE 443
 
-# Khởi động app
+COPY --from=publish /app/publish .
+
+# Start the app
 ENTRYPOINT ["dotnet", "DOCTORLOAN.dll"]
