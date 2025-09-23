@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  doctorloan-web:
+    volumes:
+      - ./wwwroot:/app/wwwroot
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5001:80"

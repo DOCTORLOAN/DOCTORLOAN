@@ -7,3 +7,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8081:80"
+    volumes:
+      - ./wwwroot:/app/wwwroot
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
