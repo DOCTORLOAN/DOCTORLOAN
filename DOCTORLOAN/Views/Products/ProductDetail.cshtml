@@ -17,75 +17,6 @@
                     <div class="accordion-product-body">
                         <div class="content-t-wrap">
                             <div id="parameterAll" class="parameter-all">
-                                <div class="parameter-item">
-                                    <p class="parameter-ttl">Tổng quan</p>
-                                    <ul class="ulist ">
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Kiểu dáng</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Ghế nằm</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Tải trọng tối đa</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>150 Kg</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Điều chỉnh lưng ghế</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Không</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Điều chỉnh chân ghế</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Không</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Chất liệu thân ghế</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Sợi thủy tinh, Composite</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Chất liệu vỏ bọc</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Da Simili</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Chất liệu chân ghế</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>Inox 304</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ctLeft">
-                                                <p>Năm ra mắt</p>
-                                            </div>
-                                            <div class="ctRight">
-                                                <span>2014</span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
 
                                 <div class="parameter-item">
                                     <p class="parameter-ttl">ĐỘ BỀN SỬ DỤNG</p>
@@ -364,87 +295,87 @@
                 dataType: 'json',
                 success: function (data) {
                     var productSwiperMain = $(`<div class="container">
-                                                                <div class="row">
-        <div class="col-md-6 col-12">
-            <div class="swiper productSwiperMain">
-                <div id="productSwiperMain" class="swiper-wrapper"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-            <div thumbsSlider="" class="swiper productSwiperThumb">
-                <div id="productSwiperThumb" class="swiper-wrapper"></div>
-            </div>
-            @*<div id="policiesDetails" class="">
-                <div class="image-group mt-5 mb-5">
-                    <div class="accordion" id="accordionFeedback">
-                        <div class="accordion-item">
-                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
-                                <div class="accordion-body">
-                                    <div class="content-t-wrap">
-                                        <div id="parameterAll" class="">
-                                            <div class="parameter-item">
-                                                <p class="parameter-ttl">Tổng quan</p>
-                                                <ul id="attributesItem" class="ulist"> </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <h2 class="accordion-header" id="heading1">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                    Thông tin tổng quan về sản phẩm
-                                </button>
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-        </div>
-        <div class="col-md-6 col-12">
-            <div class="info-product-right">
-                <div class="ipr-name">`+ data.data.name+ `</div>
-                <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
-                <div id="iprItemColor" class="ipr-item"></div>
-                <div id="iprItemOption" class="ipr-item"></div>
-                <div class="ipr-item">
-                    <div>
-                        <label>.Mô tả</label>
-                        `+ data.data.productDetails[0].summary + ` </br>
-                        <label>.Mô tả chi tiết</label>
-                        `+ data.data.productDetails[0].description + `
-                    </div>
-                </div>
-                <div class="ipr-action-details">
-                    @* <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
-                    <a id="buy-`+ data.data.id + `" data-id="` + data.data.id + `" class="btn btn-buy-details" target="_blank">Mua ngay</a>
-                </div>
-                <div class="shopify-button">
-                    <div class="action-item custom-action-item action-company action-call">
-                        <strong style="font-size: 1.3rem;color: black">Mua dễ dàng hơn bằng</strong>
-                        <img loading="lazy" src="/img/icon/shopify.png" style="width: 30%;">
-                    </div>
-                    <a href="" class="btn btn-outline-dtl btn-shopify" target="_blank">Mua ngay</a>
-                </div>
-                <div class="ipr-policy">
-                    <div class="policy-item">
-                        <img loading="lazy" src="/img/icon/p-shield.svg" />
-                        <span>Cam kết <strong>hàng mới 100%</strong></span>
-                    </div>
-                    <div class="policy-item">
-                        <img loading="lazy" src="/img/icon/p-box-iso.svg" />
-                        <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
-                    </div>
-                    <div id="policyItem" class="policy-item"></div>
-                    <div id="policyItem1" class="policy-item"></div>
-                    <div id="policyItem2" class="policy-item"></div>
-                </div>
-            </div>
-        </div>
-        <div id="view-more" class="view-more">
-            @*<button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>*@
-        </div>
-    </div>
-</div>`);
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="swiper productSwiperMain">
+                                                                <div id="productSwiperMain" class="swiper-wrapper"></div>
+                                                                <div class="swiper-button-next"></div>
+                                                                <div class="swiper-button-prev"></div>
+                                                            </div>
+                                                            <div thumbsSlider="" class="swiper productSwiperThumb">
+                                                                <div id="productSwiperThumb" class="swiper-wrapper"></div>
+                                                            </div>
+                                                            @*<div id="policiesDetails" class="">
+                                                                <div class="image-group mt-5 mb-5">
+                                                                    <div class="accordion" id="accordionFeedback">
+                                                                        <div class="accordion-item">
+                                                                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#accordionFeedback">
+                                                                                <div class="accordion-body">
+                                                                                    <div class="content-t-wrap">
+                                                                                        <div id="parameterAll" class="">
+                                                                                            <div class="parameter-item">
+                                                                                                <p class="parameter-ttl">Tổng quan</p>
+                                                                                                <ul id="attributesItem" class="ulist"> </ul>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <h2 class="accordion-header" id="heading1">
+                                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                                                    Thông tin tổng quan về sản phẩm
+                                                                                </button>
+                                                                            </h2>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>*@
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="info-product-right">
+                                                                <div class="ipr-name">`+ data.data.name+ `</div>
+                                                                <div id="iprPrice" class="ipr-price">`+ data.data.price + `</div>
+                                                                <div id="iprItemColor" class="ipr-item"></div>
+                                                                <div id="iprItemOption" class="ipr-item"></div>
+                                                                <div class="ipr-item">
+                                                                    <div>
+                                                                        <label>.Mô tả</label>
+                                                                        `+ data.data.productDetails[0].summary + ` </br>
+                                                                        <label>.Mô tả chi tiết</label>
+                                                                        `+ data.data.productDetails[0].description + `
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ipr-action-details">
+                                                                    @* <a href="javascript:void(0)" class="btn btn-dtl">Thêm vào giỏ hàng</a> *@
+                                                                    <a id="buy-`+ data.data.id + `" data-id="` + data.data.id + `" class="btn btn-buy-details" target="_blank">Mua ngay</a>
+                                                                </div>
+                                                                <div class="shopify-button">
+                                                                    <div class="action-item custom-action-item action-company action-call">
+                                                                        <strong style="font-size: 1.3rem;color: black">Mua dễ dàng hơn bằng</strong>
+                                                                        <img loading="lazy" src="/img/icon/shopify.png" style="width: 30%;">
+                                                                    </div>
+                                                                    <a href="" class="btn btn-outline-dtl btn-shopify" target="_blank">Mua ngay</a>
+                                                                </div>
+                                                                <div class="ipr-policy">
+                                                                    <div class="policy-item">
+                                                                        <img loading="lazy" src="/img/icon/p-shield.svg" />
+                                                                        <span>Cam kết <strong>hàng mới 100%</strong></span>
+                                                                    </div>
+                                                                    <div class="policy-item">
+                                                                        <img loading="lazy" src="/img/icon/p-box-iso.svg" />
+                                                                        <span>Bảo hành chính hãng <br /> <a class="btn-seemore" href="javascript:void(0)">@*<i class="fas fa-download"></i> Xem chi tiết*@</a></span>
+                                                                    </div>
+                                                                    <div id="policyItem" class="policy-item"></div>
+                                                                    <div id="policyItem1" class="policy-item"></div>
+                                                                    <div id="policyItem2" class="policy-item"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="view-more" class="view-more">
+                                                            @*<button class="btn btn-view-more btn-seemore">Xem chi tiết thông số <i class="fas fa-angle-down"></i></button>*@
+                                                        </div>
+                                                    </div>
+                                                </div>`);
                     $("#infoProduct").append(productSwiperMain);
 
                     var _productAttr = data.data.productAttributes;

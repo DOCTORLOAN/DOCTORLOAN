@@ -37,7 +37,6 @@ body {
   overflow-x: hidden;
   font-family: helveticaneue-Regular;
   font-weight: 400;
-  font-display: swap;
 }
 body * {
   transition-timing-function: ease-in-out;
@@ -482,6 +481,7 @@ footer .logo-footer {
 footer .social-link {
   margin: 15px 0 0 0;
   text-align: center;
+  display: ruby-text;
 }
 footer .social-link #socialZalo {
   width: 15%;
@@ -1355,11 +1355,10 @@ header .shopping-cart {
 }
 header .shopping-cart img {
   filter: invert(57%) sepia(94%) saturate(3616%) hue-rotate(1deg) brightness(103%) contrast(105%);
-  padding: 15px 0 0 0 !important;
 }
 header .shopping-cart span {
   position: absolute;
-  top: 1.05rem;
+  top: 0.125rem;
   right: 0;
   width: 1.125rem;
   height: 1.125rem;
@@ -6712,10 +6711,6 @@ body {
                 z-index: -1;
             }
         }*/
-  /*.untitled__slide:nth-child(1) {
-            -webkit-animation-delay: 0s;
-            animation-delay: 0s;
-        }*/
 }
 #BannerClinic .banner-book .banner-clinic-second {
   width: 100%;
@@ -6753,6 +6748,10 @@ body {
   left: 0;
   background-color: #b3401a;
 }
+#BannerClinic .banner-book .untitled__slide:nth-child(1) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
 #BannerClinic .banner-book .untitled__slide:nth-child(1) .untitled__slideBg {
   background-image: url(../img/showroom-slide/showroom-2.jpg);
 }
@@ -6777,44 +6776,6 @@ body {
 #BannerClinic .banner-book .untitled__slide:nth-child(4) .untitled__slideBg {
   background-image: url(../img/showroom-slide/showroom-4.jpg);
 }
-@-webkit-keyframes bgInOut {
-  0% {
-    transform: rotate(-45deg) scale(1.1);
-    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-  33% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  66% {
-    transform: rotate(0deg);
-    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-  }
-  100% {
-    transform: rotate(45deg) scale(0.9);
-  }
-}
-@keyframes bgInOut {
-  0% {
-    transform: rotate(-45deg) scale(1.1);
-    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-  33% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  66% {
-    transform: rotate(0deg);
-    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-  }
-  100% {
-    transform: rotate(45deg) scale(0.9);
-  }
-}
 #BannerClinic .banner-book .untitled__slideBg {
   position: relative;
   height: 100%;
@@ -6829,6 +6790,48 @@ body {
   z-index: -1;
   -webkit-animation: bgInOut 5s infinite;
   animation: bgInOut 5s infinite;
+}
+@-webkit-keyframes bgInOut {
+  0% {
+    transform: rotate(-45deg) scale(1.1);
+    -webkit-animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  33% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  66% {
+    transform: rotate(0deg);
+    -webkit-animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  }
+  100% {
+    transform: rotate(45deg) scale(0.9);
+  }
+}
+@keyframes bgInOut {
+  0% {
+    transform: rotate(-45deg) scale(1.1);
+    -webkit-animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  33% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  66% {
+    transform: rotate(0deg);
+    -webkit-animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  }
+  100% {
+    transform: rotate(45deg) scale(0.9);
+  }
 }
 #BannerClinic .banner-book .untitled__slideContent {
   position: absolute;
@@ -9628,13 +9631,9 @@ body {
   padding: 0 1.25rem;
   text-align: center;
   padding-bottom: 1rem;
-  display: flex;
 }
 .product-wrapper .content-item .action-item #add-cart {
   float: left;
-}
-.product-wrapper .content-item .action-item .btn-buy {
-  min-width: 160px !important;
 }
 .product-wrapper .content-item .icon-cart {
   background-color: #FF7500;
@@ -13870,10 +13869,10 @@ body {
   background-color: #FFF;
 }
 .product-content-wrapper .content-t-wrap .parameter-all p {
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
   text-rendering: geometricPrecision;
 }
 .product-content-wrapper .content-t-wrap .parameter-all .ulist li {
@@ -14781,6 +14780,11 @@ body {
   background-color: #FFF1E6;
   border-color: #FFF1E6;
 }
+.cart-payment .product-price:not(.notd):after,
+.cart-payment .product-line-price:not(.notd):after,
+.cart-payment .totals-value:after {
+  content: ' đ';
+}
 .cart-payment .hr-payment {
   border-color: #CCC;
 }
@@ -14975,72 +14979,6 @@ body {
 #Cart .product .product-details .product-title {
   margin-right: 20px;
   font-family: helveticaneue-Bold;
-}
-#Cart .product .product-details .product-item-color {
-  display: flex !important;
-  align-items: end !important;
-  padding: 5px 0 0 0 !important;
-}
-#Cart .product .product-details .product-item-color label {
-  padding-right: 5px !important;
-}
-#Cart .product .product-details .item-color {
-  display: flex;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  border: 2px solid #FFF;
-  margin-right: 0.75rem;
-  position: relative;
-}
-#Cart .product .product-details .item-color.Brown {
-  background-color: #A45031;
-}
-#Cart .product .product-details .item-color.Yellow {
-  background-color: #ffff00;
-}
-#Cart .product .product-details .item-color.Grape {
-  background-color: #311432;
-}
-#Cart .product .product-details .item-color.Red {
-  background-color: #ff0000;
-}
-#Cart .product .product-details .item-color.Gray {
-  background-color: #808080;
-}
-#Cart .product .product-details .item-color.Orange {
-  background-color: #ffa500;
-}
-#Cart .product .product-details .item-color.Blue {
-  background-color: #0000ff;
-}
-#Cart .product .product-details .item-color.Black {
-  background-color: #000;
-}
-#Cart .product .product-details .item-color.Green {
-  background-color: #759A77;
-}
-#Cart .product .product-details .item-color.Plasticgreen {
-  background-color: #00FF00;
-}
-#Cart .product .product-details .item-color.active {
-  border-color: #FF7500;
-}
-#Cart .product .product-details .item-color.active:before {
-  content: "";
-  width: calc(100% - 2px);
-  height: calc(100% - 2px);
-  background-color: transparent;
-  border: 2px solid #FCFBFB;
-  z-index: 1;
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  border-radius: 50%;
-}
-#Cart .product .product-details .item-color:hover {
-  border-color: #FF7500;
 }
 #Cart .product .product-details .product-description {
   margin: 5px 20px 5px 0;

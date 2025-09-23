@@ -13,9 +13,9 @@ namespace DOCTORLOAN.Controllers
             return View();
         }
 
-        public IActionResult NewsGroup()
+        /*public IActionResult NewsGroup()
         {
             return View();
-        }
+        }*/
     }
 }

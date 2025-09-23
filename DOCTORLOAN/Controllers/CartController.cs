@@ -1,23 +1,47 @@
 ﻿using DOCTORLOAN.Models.Orders;
-using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.IO;
 using System.Text;
 
 namespace DOCTORLOAN.Controllers
 {
     public class CartController : Controller
     {
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
             return View();
-        }
+        }*/
 
-        public IActionResult AddToCart()
+       /* public async Task<IActionResult> AddToCart(int productId, string productName, decimal price, int quantity)
         {
-            return View();
-        }
+            var cart = HttpContext.Session.GetObject<List<CartItem>>("Cart") ?? new List<CartItem>();
+
+            // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+            var existingItem = cart.FirstOrDefault(item => item.ProductId == productId);
+
+            if (existingItem != null)
+            {
+                // Nếu đã tồn tại, cập nhật số lượng
+                existingItem.Quantity += quantity;
+            }
+            else
+            {
+                // Nếu chưa tồn tại, thêm sản phẩm mới vào giỏ hàng
+                cart.Add(new CartItem
+                {
+                    ProductId = productId,
+                    Name = productName,
+                    Price = price,
+                    Quantity = quantity
+                });
+            }
+
+            // Lưu giỏ hàng vào Session
+            HttpContext.Session.SetObject("Cart", cart);
+
+            // Trả về một JSON object để xử lý trên phía client nếu cần
+            return Json(new { success = true });
+        }*/
 
         public async Task<IActionResult> Payment(int id, int quantity)
         {
