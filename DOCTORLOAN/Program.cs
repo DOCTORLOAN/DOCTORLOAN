@@ -1,20 +1,36 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers; // Thêm namespace này
+using System.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+	options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+}).AddRazorRuntimeCompilation();
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option => {
         option.LoginPath = "/Auth/Login";
-        option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+		option.AccessDeniedPath = "/Auth/Login";
+		option.SlidingExpiration = true;
+		option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+		option.Cookie.Name = "DoctorLoan.Auth";
+		option.Cookie.HttpOnly = true;
+		option.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+		option.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
     });
 builder.Services.AddHttpClient();
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddHttpClient("DoctorLoanApi", client =>
+{
+	client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
+	client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+	client.Timeout = TimeSpan.FromSeconds(30);
+});
 
 var app = builder.Build();
 
@@ -27,6 +43,26 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Security Headers (CSP report-only to avoid breaking while tuning)
+app.Use(async (context, next) =>
+{
+	context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+	context.Response.Headers["X-Frame-Options"] = "DENY";
+	context.Response.Headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
+	context.Response.Headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()";
+	// CSP Report-Only: allow required third-parties while tuning.
+	context.Response.Headers["Content-Security-Policy-Report-Only"] =
+		"default-src 'self'; " +
+		"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.youtube.com https://s.ytimg.com https://za.zdn.vn; " +
+		"style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+		"img-src 'self' data: https://www.google-analytics.com; " +
+		"font-src 'self' https://fonts.gstatic.com data:; " +
+		"connect-src 'self' https://doctorloan-api.giathaidoctorloan.vn https://esgoo.net ws://localhost:* wss://localhost:*; " +
+		"frame-src https://www.youtube.com https://page.widget.zalo.me; " +
+		"frame-ancestors 'none'";
+	await next();
+});
 
 app.UseStaticFiles(new StaticFileOptions
 {

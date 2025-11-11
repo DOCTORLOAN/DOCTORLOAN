@@ -28,6 +28,7 @@
                         <h3>Đăng nhập tài khoản</h3>
                         <div class="sub-tt">Vui lòng nhập thông tin đăng nhập</div>
                         <form asp-controller="Auth" asp-action="Login" class="row needs-validation" novalidate method="post">
+                            @Html.AntiForgeryToken()
                             <div class="mb-3">
                                 <label for="username" class="req">Email/ Số điện thoại</label>
                                 <input type="text" class="form-control" placeholder="Nhập số điện thoại hoặc email" asp-for="UserName" id="username" required />

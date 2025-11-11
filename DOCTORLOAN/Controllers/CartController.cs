@@ -7,110 +7,178 @@ namespace DOCTORLOAN.Controllers
 {
     public class CartController : Controller
     {
-        /*public IActionResult Index()
+        private const string OrderCreateEndpoint = "api/order-module/Order/create";
+        private const string ProductEndpointTemplate = "api/product-module/Product/GetProduct?id={0}";
+
+        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ILogger<CartController> _logger;
+
+        public CartController(IHttpClientFactory httpClientFactory, ILogger<CartController> logger)
         {
-            return View();
-        }*/
+            _httpClientFactory = httpClientFactory;
+            _logger = logger;
+        }
 
-       /* public async Task<IActionResult> AddToCart(int productId, string productName, decimal price, int quantity)
+        public IActionResult Payment(int id, int quantity)
         {
-            var cart = HttpContext.Session.GetObject<List<CartItem>>("Cart") ?? new List<CartItem>();
-
-            // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-            var existingItem = cart.FirstOrDefault(item => item.ProductId == productId);
-
-            if (existingItem != null)
+            if (id <= 0 || quantity <= 0)
             {
-                // Nếu đã tồn tại, cập nhật số lượng
-                existingItem.Quantity += quantity;
-            }
-            else
-            {
-                // Nếu chưa tồn tại, thêm sản phẩm mới vào giỏ hàng
-                cart.Add(new CartItem
-                {
-                    ProductId = productId,
-                    Name = productName,
-                    Price = price,
-                    Quantity = quantity
-                });
+                return RedirectToAction("Index", "Home");
             }
 
-            // Lưu giỏ hàng vào Session
-            HttpContext.Session.SetObject("Cart", cart);
-
-            // Trả về một JSON object để xử lý trên phía client nếu cần
-            return Json(new { success = true });
-        }*/
-
-        public async Task<IActionResult> Payment(int id, int quantity)
-        {
             return View();
         }
 
-        public async Task<IActionResult> PaymentPost(Order _order, ListItem _listItem)
+        [HttpPost]
+        public async Task<IActionResult> PaymentPost(
+            [Bind("FullName,Phone,Email,AddressLine,Remarks,PaymentMethod")] Order order,
+            [Bind("ProductId,ProductItemId,Name,ProductSku,OptionName,Price,Quantity")] ListItem listItem,
+            CancellationToken cancellationToken)
         {
+            if (!ModelState.IsValid)
+            {
+                TempData["AlertMessageError"] = "Thông tin đơn hàng không hợp lệ, vui lòng kiểm tra lại.";
+                TempData["id"] = listItem.ProductId;
+                TempData["quantity"] = listItem.Quantity;
+                return View("Payment");
+            }
+
+            if (!Enum.IsDefined(typeof(PaymentMethod), order.PaymentMethod))
+            {
+                ModelState.AddModelError(nameof(order.PaymentMethod), "Phương thức thanh toán không hợp lệ.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                TempData["AlertMessageError"] = "Thông tin đơn hàng không hợp lệ, vui lòng kiểm tra lại.";
+                TempData["id"] = listItem.ProductId;
+                TempData["quantity"] = listItem.Quantity;
+                return View("Payment");
+            }
+
             try
             {
-                ListItem item = new ListItem
-                {
-                    ProductItemId = _listItem.ProductItemId,
-                    Name = _listItem.Name,
-                    Price = _listItem.Price,
-                    Quantity = _listItem.Quantity,
-                    TotalPrice = _order.TotalPrice,
-                    ProductSku = "",
-                };
+                var client = _httpClientFactory.CreateClient("DoctorLoanApi");
+                var productResponse = await client.GetAsync(string.Format(ProductEndpointTemplate, listItem.ProductId), cancellationToken);
 
-                if (_order.Email == null ) {
-                    _order.Email = "";
+                if (!productResponse.IsSuccessStatusCode)
+                {
+                    _logger.LogWarning("Không thể lấy thông tin sản phẩm {ProductId}. StatusCode: {StatusCode}", listItem.ProductId, productResponse.StatusCode);
+                    TempData["AlertMessageError"] = "Không thể xác minh thông tin sản phẩm. Vui lòng thử lại sau.";
+                    TempData["id"] = listItem.ProductId;
+                    TempData["quantity"] = listItem.Quantity;
+                    return View("Payment");
                 }
 
-                Order data = new Order
+                var productContent = await productResponse.Content.ReadAsStringAsync(cancellationToken);
+                var productData = JsonConvert.DeserializeObject<ProductResponse>(productContent);
+                if (productData?.Data == null)
                 {
-                    FullName = _order.FullName,
-                    Phone = _order.Phone,
-                    Email = _order.Email,
-                    TotalPrice = _listItem.TotalPrice,
-                    AddressLine = _order.AddressLine,
-                    Remarks = _order.Remarks,
-                    PaymentMethod = _order.PaymentMethod,
-                    ListItem =
-                        {
-                            item
-                        }
+                    _logger.LogWarning("Dữ liệu sản phẩm rỗng cho ProductId {ProductId}", listItem.ProductId);
+                    TempData["AlertMessageError"] = "Không thể xác minh thông tin sản phẩm. Vui lòng thử lại sau.";
+                    TempData["id"] = listItem.ProductId;
+                    TempData["quantity"] = listItem.Quantity;
+                    return View("Payment");
+                }
+
+                var productItem = productData.Data.ProductItems?.FirstOrDefault(p => p.Id == listItem.ProductItemId);
+                var unitPrice = productItem?.Price ?? productData.Data.Price;
+                if (unitPrice <= 0)
+                {
+                    _logger.LogWarning("Giá sản phẩm không hợp lệ cho ProductId {ProductId}", listItem.ProductId);
+                    TempData["AlertMessageError"] = "Không thể xác minh thông tin sản phẩm. Vui lòng thử lại sau.";
+                    TempData["id"] = listItem.ProductId;
+                    TempData["quantity"] = listItem.Quantity;
+                    return View("Payment");
+                }
+
+                var totalPrice = decimal.Round(unitPrice * listItem.Quantity, 2, MidpointRounding.AwayFromZero);
+
+                var sanitizedOrder = new Order
+                {
+                    FullName = order.FullName.Trim(),
+                    Phone = order.Phone.Trim(),
+                    Email = (order.Email ?? string.Empty).Trim(),
+                    AddressLine = order.AddressLine.Trim(),
+                    Remarks = order.Remarks?.Trim(),
+                    PaymentMethod = order.PaymentMethod,
+                    SubTotal = totalPrice,
+                    TotalPrice = totalPrice,
                 };
 
-                string jsonData = JsonConvert.SerializeObject(data);
-                HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                HttpClient httpClient = new HttpClient();
-                var response = await httpClient.PostAsync("https://doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/create", content);
+                sanitizedOrder.ListItem.Add(new ListItem
+                {
+                    ProductId = listItem.ProductId,
+                    ProductItemId = productItem?.Id ?? listItem.ProductItemId,
+                    Name = listItem.Name,
+                    ProductSku = productItem?.Sku ?? listItem.ProductSku,
+                    OptionName = listItem.OptionName,
+                    Price = unitPrice,
+                    Quantity = listItem.Quantity,
+                    TotalPrice = totalPrice
+                });
+
+                var jsonData = JsonConvert.SerializeObject(sanitizedOrder);
+                using var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(OrderCreateEndpoint, content, cancellationToken);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    string responseContent = await response.Content.ReadAsStringAsync();
+                    var responseContent = await response.Content.ReadAsStringAsync(cancellationToken);
 
                     TempData["dataRes"] = responseContent;
-                    TempData["phone"] = _order.Phone;
-                    TempData["custommerName"] = _order.FullName;
-                    TempData["addressLine"] = _order.AddressLine;
-                    TempData["email"] = _order.Email;
-                    TempData["paymentMethod"] = _order.PaymentMethod;
+                    TempData["phone"] = sanitizedOrder.Phone;
+                    TempData["custommerName"] = sanitizedOrder.FullName;
+                    TempData["addressLine"] = sanitizedOrder.AddressLine;
+                    TempData["email"] = sanitizedOrder.Email;
+                    TempData["paymentMethod"] = sanitizedOrder.PaymentMethod;
 
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    TempData["AlertMessageError"] = "Đặn đơn hàng thất bại. vui lòng kiểm tra lại thông tin ";
-                    TempData["id"] = _listItem.ProductId;
-                    TempData["quantity"] = _listItem.Quantity;
 
-                    return View("Payment");
-                }
-                    
-            } catch (Exception ex) {
-                return StatusCode(500, ex.Message); 
+                _logger.LogWarning("Đặt đơn hàng thất bại với mã trạng thái {StatusCode}", response.StatusCode);
+                TempData["AlertMessageError"] = "Đặt đơn hàng thất bại. Vui lòng kiểm tra lại thông tin.";
+                TempData["id"] = listItem.ProductId;
+                TempData["quantity"] = listItem.Quantity;
+                return View("Payment");
+            }
+            catch (OperationCanceledException)
+            {
+                _logger.LogWarning("Yêu cầu đặt hàng đã bị hủy.");
+                return StatusCode(499);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Lỗi trong quá trình đặt hàng.");
+                return StatusCode(500, "Đã xảy ra lỗi nội bộ. Vui lòng thử lại sau.");
             }
         }
-    } 
+
+        private sealed class ProductResponse
+        {
+            [JsonProperty("data")]
+            public ProductData? Data { get; set; }
+        }
+
+        private sealed class ProductData
+        {
+            [JsonProperty("price")]
+            public decimal Price { get; set; }
+
+            [JsonProperty("productItems")]
+            public List<ProductItemData>? ProductItems { get; set; }
+        }
+
+        private sealed class ProductItemData
+        {
+            [JsonProperty("id")]
+            public int Id { get; set; }
+
+            [JsonProperty("sku")]
+            public string? Sku { get; set; }
+
+            [JsonProperty("price")]
+            public decimal Price { get; set; }
+        }
+    }
 }

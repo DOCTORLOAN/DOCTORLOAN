@@ -1,11 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Sản phẩm";
-}
-
-@{
+    var productId = ViewData["ProductId"] as int?;
+    var categoryId = ViewData["CategoryId"] as int?;
     var countNum = 5;
 }
 <input type="hidden" id="txtCountNumber" value="@countNum" />
+<input type="hidden" id="serverProductId" value="@(productId ?? 0)" />
+<input type="hidden" id="serverCategoryId" value="@(categoryId ?? 0)" />
 
 <section id="infoProduct"></section>
 
@@ -263,10 +264,23 @@
         }
 
         // Get the value of the parameter in URL
-        var _productId = getParam('productId');
-        var _categoryId = getParam('categoryId');
+        function parsePositiveInt(value) {
+            var parsed = parseInt(value, 10);
+            if (isNaN(parsed) || parsed <= 0) {
+                return null;
+            }
+            return parsed;
+        }
 
-        if (_categoryId === undefined && _productId === undefined || _categoryId === null && _productId === null) {
+        var _productId = parsePositiveInt($('#serverProductId').val());
+        var _categoryId = parsePositiveInt($('#serverCategoryId').val());
+
+        if (_productId === null && _categoryId === null) {
+            _productId = parsePositiveInt(getParam('productId'));
+            _categoryId = parsePositiveInt(getParam('categoryId'));
+        }
+
+        if (_productId === null && _categoryId === null) {
             window.location.href = "/";
         } else {
             if (_categoryId != null) {

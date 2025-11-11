@@ -5,7 +5,8 @@
 <section id="CartPayment" class="cart-payment">
     <div class="container">
         <div class="row">
-            <form method="post" asp-controller="Cart" asp-action="PaymentPost" class="row needs-validation" novalidate>
+            <form id="CartPaymentForm" method="post" asp-controller="Cart" asp-action="PaymentPost" class="row needs-validation" novalidate>
+                @Html.AntiForgeryToken()
                 <div id="alert" class="alert alert-error">
                     @if (TempData["AlertMessageError"] != null)
                     {
@@ -36,15 +37,18 @@
                             <div class="row">
                                 <div class="mb-3 col-6">
                                     <label for="phone" class="req">Số điện thoại</label>
-                                    <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="Phone" id="phone" required />
+                                    <input type="tel" class="form-control" placeholder="Nhập số điện thoại" name="Phone" id="phone" required pattern="^(0[0-9]{9,10})$" inputmode="numeric" />
                                     <div class="invalid-feedback">
-                                        Vui lòng nhập số điện thoại.
+                                        Vui lòng nhập số điện thoại hợp lệ (10-11 số và bắt đầu bằng 0).
                                     </div>
                                 </div>
 
                                 <div class="mb-3 col-6">
                                     <label for="email" class="req">Email</label>
-                                    <input type="text" class="form-control" placeholder="Nhập email" name="Email" id="email" required />
+                                    <input type="email" class="form-control" placeholder="Nhập email" name="Email" id="email" />
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập email hợp lệ.
+                                    </div>
                                 </div>
                             </div>
 
@@ -52,7 +56,7 @@
                                 <div class="mb-3 col-4">
                                     <label for="city" class="req">Thành Phố</label>
                                     <select class="form-control" id="city" name="city" title="Chọn Tỉnh Thành" required>
-                                        <option value="0">Tỉnh Thành</option>
+                                        <option value="" selected disabled>Tỉnh Thành</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Vui lòng nhập tên Thành Phố:
@@ -63,7 +67,7 @@
                                 <div class="mb-3 col-4">
                                     <label for="district" class="req">Quận, Huyện</label>
                                     <select class="form-control" id="district" name="district" title="Chọn Quận Huyện" required>
-                                        <option value="0">Quận Huyện</option>
+                                        <option value="" selected disabled>Quận Huyện</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Vui lòng nhập tên Quận, Huyện:
@@ -73,8 +77,8 @@
 
                                 <div class="mb-3 col-4">
                                     <label for="ward" class="req">Xã, Phường</label>
-                                    <select class="form-control" id="ward" name="ward" title="Chọn Phường Xã">
-                                        <option value="0">Phường Xã</option>
+                                    <select class="form-control" id="ward" name="ward" title="Chọn Phường Xã" required>
+                                        <option value="" selected disabled>Phường Xã</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Vui lòng nhập tên Xã, Phường:
@@ -85,7 +89,7 @@
                             
                             <div class="mb-3">
                                 <label for="addressDetaills" class="req">Địa chỉ cụ thể</label>
-                                <input type="text" class="form-control" placeholder="Số nhà - Tên Đường" id="addressDetaills" onfocusout="myFunction()" required  />
+                                <input type="text" class="form-control" placeholder="Số nhà - Tên Đường" id="addressDetaills" required />
                                 <div class="invalid-feedback">
                                     Vui lòng nhập địa chỉ cụ thể:
                                     <br/> - (Số nhà  - Tên Đường)
@@ -147,9 +151,213 @@
 </section>
 
 @section scripts{
-    <script src="https://esgoo.net/scripts/jquery.js"></script>
+    <script src="~/auth/jquery-3.3.1.min.js"></script>
     <script src="~/libs/jquery/crypto-js.min.js"></script>
     <script type="text/javascript">
+
+        const form = document.getElementById('CartPaymentForm');
+        const phoneInput = document.getElementById('phone');
+        const emailInput = document.getElementById('email');
+        const citySelect = document.getElementById('city');
+        const districtSelect = document.getElementById('district');
+        const wardSelect = document.getElementById('ward');
+        const addressDetailsInput = document.getElementById('addressDetaills');
+        const addressLineInput = document.getElementById('addressLine');
+        const termsCheckbox = document.getElementById('flexCheckChecked');
+        const phoneRegex = /^(0\d{9,10})$/;
+
+        function updateAddressLine() {
+            if (!addressLineInput) return;
+
+            const parts = [
+                addressDetailsInput?.value.trim() ?? '',
+                wardSelect && wardSelect.selectedIndex > 0 ? wardSelect.options[wardSelect.selectedIndex].text : '',
+                districtSelect && districtSelect.selectedIndex > 0 ? districtSelect.options[districtSelect.selectedIndex].text : '',
+                citySelect && citySelect.selectedIndex > 0 ? citySelect.options[citySelect.selectedIndex].text : ''
+            ].filter(part => part && part !== 'Phường Xã' && part !== 'Quận Huyện' && part !== 'Tỉnh Thành');
+
+            addressLineInput.value = parts.join(' - ');
+        }
+
+        if (addressDetailsInput) {
+            addressDetailsInput.addEventListener('input', () => {
+                if (addressDetailsInput.value.trim()) {
+                    addressDetailsInput.setCustomValidity('');
+                }
+                updateAddressLine();
+            });
+        }
+
+        [citySelect, districtSelect, wardSelect].forEach(select => {
+            if (!select) {
+                return;
+            }
+
+            select.addEventListener('change', () => {
+                if (select.value) {
+                    select.setCustomValidity('');
+                } else {
+                    select.setCustomValidity('Trường này là bắt buộc.');
+                }
+                updateAddressLine();
+            });
+        });
+
+        if (phoneInput) {
+            phoneInput.addEventListener('input', () => {
+                phoneInput.value = phoneInput.value.replace(/\D/g, '');
+                if (phoneRegex.test(phoneInput.value.trim())) {
+                    phoneInput.setCustomValidity('');
+                }
+            });
+        }
+
+        if (emailInput) {
+            emailInput.addEventListener('input', () => {
+                emailInput.value = emailInput.value.trim();
+                if (!emailInput.value || emailInput.checkValidity()) {
+                    emailInput.setCustomValidity('');
+                }
+            });
+        }
+
+        if (termsCheckbox) {
+            termsCheckbox.addEventListener('change', () => {
+                if (termsCheckbox.checked) {
+                    termsCheckbox.setCustomValidity('');
+                }
+            });
+        }
+
+        function validateQuantities() {
+            let isValid = true;
+            const qtyInputs = document.querySelectorAll('input[name="Quantity"]');
+            qtyInputs.forEach((inp) => {
+                const value = parseInt((inp.value || '').toString().trim(), 10);
+                if (!Number.isInteger(value) || value < 1 || value > 1000) {
+                    inp.setCustomValidity('Số lượng phải từ 1 đến 1000.');
+                    isValid = false;
+                } else {
+                    inp.setCustomValidity('');
+                }
+            });
+            return isValid;
+        }
+
+        document.addEventListener('input', (e) => {
+            const target = e.target;
+            if (target && target.getAttribute('name') === 'Quantity') {
+                const value = target.value.replace(/\D/g, '');
+                target.value = value;
+                if (value) {
+                    target.setCustomValidity('');
+                }
+            }
+        });
+
+        // Helper: hiển thị tổng hợp lỗi ngắn gọn
+        function showErrorSummary() {
+            const alertBox = document.getElementById('alert');
+            if (!alertBox) return;
+            // chỉ hiển thị nếu có phần tử invalid
+            const firstInvalid = form?.querySelector('.form-control:invalid, .form-check-input:invalid, select:invalid');
+            if (firstInvalid) {
+                alertBox.innerHTML = '<div class="alert alert-warning">Vui lòng kiểm tra lại các trường được yêu cầu.</div>';
+            }
+        }
+
+        // Realtime: toggle is-valid/is-invalid
+        document.addEventListener('input', function (e) {
+            var el = e.target;
+            if (!(el instanceof HTMLElement)) return;
+            if (el.matches('.form-control, .form-check-input, select')) {
+                var inputElement = el;
+                if (inputElement.checkValidity()) {
+                    el.classList.remove('is-invalid');
+                    el.classList.add('is-valid');
+                } else {
+                    el.classList.remove('is-valid');
+                    // chỉ thêm is-invalid khi người dùng đã tương tác
+                }
+            }
+        });
+
+        if (form) {
+            form.addEventListener('submit', (event) => {
+                const submitBtn = document.getElementById('btnPayment');
+                let originalBtnHtml = '';
+                if (submitBtn) {
+                    originalBtnHtml = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('disabled');
+                    submitBtn.setAttribute('aria-busy', 'true');
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang xử lý...';
+                }
+                if (phoneInput) {
+                    phoneInput.value = phoneInput.value.trim();
+                    if (!phoneRegex.test(phoneInput.value)) {
+                        phoneInput.setCustomValidity('Vui lòng nhập số điện thoại hợp lệ (10-11 số và bắt đầu bằng 0).');
+                    } else {
+                        phoneInput.setCustomValidity('');
+                    }
+                }
+
+                if (emailInput) {
+                    emailInput.value = emailInput.value.trim();
+                    if (emailInput.value && !emailInput.checkValidity()) {
+                        emailInput.setCustomValidity('Vui lòng nhập email hợp lệ.');
+                    } else {
+                        emailInput.setCustomValidity('');
+                    }
+                }
+
+                [citySelect, districtSelect, wardSelect].forEach(select => {
+                    if (select && !select.value) {
+                        select.setCustomValidity('Trường này là bắt buộc.');
+                    }
+                });
+
+                if (addressDetailsInput) {
+                    addressDetailsInput.value = addressDetailsInput.value.trim();
+                    if (!addressDetailsInput.value) {
+                        addressDetailsInput.setCustomValidity('Vui lòng nhập địa chỉ cụ thể.');
+                    } else {
+                        addressDetailsInput.setCustomValidity('');
+                    }
+                }
+
+                const qtyOk = validateQuantities();
+                updateAddressLine();
+
+                if (termsCheckbox && !termsCheckbox.checked) {
+                    termsCheckbox.setCustomValidity('Bạn phải đồng ý với điều khoản.');
+                }
+
+                if (!form.checkValidity() || !qtyOk) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    // Scroll tới lỗi đầu tiên
+                    const firstInvalid = form.querySelector('.form-control:invalid, .form-check-input:invalid, select:invalid');
+                    if (firstInvalid) {
+                        const el = firstInvalid;
+                        el.classList.add('is-invalid');
+                        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        if (typeof el.focus === 'function') {
+                            el.focus();
+                        }
+                    }
+                    showErrorSummary();
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('disabled');
+                        submitBtn.removeAttribute('aria-busy');
+                        submitBtn.innerHTML = originalBtnHtml || 'Đặt hàng';
+                    }
+                }
+
+                form.classList.add('was-validated');
+            }, false);
+        }
 
         //Lấy tỉnh thành
         $.getJSON('https://esgoo.net/api-tinhthanh/1/0.htm', function (data_tinh) {
@@ -162,8 +370,8 @@
                     //Lấy quận huyện
                     $.getJSON('https://esgoo.net/api-tinhthanh/2/' + idtinh + '.htm', function (data_quan) {
                         if (data_quan.error == 0) {
-                            $("#district").html('<option value="0">Quận Huyện</option>');
-                            $("#ward").html('<option value="0">Phường Xã</option>');
+                            $("#district").html('<option value="" selected disabled>Quận Huyện</option>');
+                            $("#ward").html('<option value="" selected disabled>Phường Xã</option>');
                             $.each(data_quan.data, function (key_quan, val_quan) {
                                 $("#district").append('<option value="' + val_quan.id + '">' + val_quan.full_name + '</option>');
                             });
