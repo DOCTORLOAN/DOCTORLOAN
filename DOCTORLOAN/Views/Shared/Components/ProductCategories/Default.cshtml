@@ -1,0 +1,13 @@
+@model List<DOCTORLOAN.Models.Api.CategoryResponse>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var category in Model)
+    {
+        <div id="categories-@category.Id" class="swiper-slide" data-category-id="@category.Id">
+            <div style="width: 90%;">@Html.Raw(category.Content)</div>
+            <strong style="color: #464646;font-size: x-small;">@category.Name</strong>
+        </div>
+    }
+}
+

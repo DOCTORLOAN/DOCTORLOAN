@@ -1,4 +1,5 @@
 ﻿using DOCTORLOAN.Models.Bookings;
+using DOCTORLOAN.Constants;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using Newtonsoft.Json;
@@ -41,7 +42,7 @@ namespace DOCTORLOAN.Controllers
                 HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
                 HttpClient httpClient = new HttpClient();
-                var response = await httpClient.PostAsync("https://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
+                var response = await httpClient.PostAsync(ApiConstants.BookingCreate, content);
 
                 if (response.IsSuccessStatusCode)
                 {

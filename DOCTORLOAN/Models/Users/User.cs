@@ -38,13 +38,9 @@ public class User
 
     public int? ParentId { get; set; }
 
-    //public LTree? ParentTreeId { get; set; }
-
     public int Status { get; set; }
 
     public int Avatar { get; set; }
-
-    //public LanguageEnum LanguageId { get; set; }
 
     public int Gender { get; set; }
 
@@ -55,8 +51,6 @@ public class User
 
     public string Remarks { get; set; }
 
-    //public SourcePlatform SourcePlatform { get; set; }
-
     public bool IsResetPassword { get; set; } = false;
 
     public bool IsSignOut { get; set; } = false;
@@ -64,15 +58,5 @@ public class User
     public int? ValidUnixTime { get; set; }
 
 
-    /*public virtual Role Role { get; set; }*/
     public virtual User ParentUser { get; set; }
-    public virtual UserDetail UserDetail { get; set; }
-
-    public virtual ICollection<UserDevice> UserDevices { get; set; } = new List<UserDevice>();
-    public virtual ICollection<UserBankBranch> UserBankBranchs { get; set; } = new List<UserBankBranch>();
-    public virtual ICollection<UserIdentity> UserIdentities { get; set; } = new List<UserIdentity>();
-    public virtual ICollection<UserMedia> UserMedias { get; set; } = new List<UserMedia>();
-    public virtual ICollection<UserAddress> UserAddresses { get; set; } = new List<UserAddress>();
-    public virtual ICollection<UserActivity> UserActivities { get; set; } = new List<UserActivity>();
-    //public virtual ICollection<UserPermission> UserPermissions { get; set; } = new List<UserPermission>();
 }
