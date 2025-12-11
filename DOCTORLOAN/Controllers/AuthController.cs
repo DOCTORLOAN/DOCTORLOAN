@@ -1,4 +1,5 @@
 ﻿using DOCTORLOAN.Models.VMAuth;
+using DOCTORLOAN.Constants;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
@@ -20,7 +21,37 @@ namespace DOCTORLOAN.Controllers
             return View();
         }
 
-        
+        /*
+        public async Task<IActionResult> LoginPost(Signin modelLogin)
+        {
+            if (modelLogin.UserName == "admindoctorloan" &&
+                modelLogin.Password == "Admin@123"
+                )
+            {
+                List<Claim> claims = new List<Claim>() {
+                    new Claim(ClaimTypes.NameIdentifier, modelLogin.UserName),
+                    new Claim("OtherProperties","Example Role")
+
+                };
+
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims,
+                    CookieAuthenticationDefaults.AuthenticationScheme);
+
+                AuthenticationProperties properties = new AuthenticationProperties()
+                {
+                    AllowRefresh = true,
+                    IsPersistent = modelLogin.KeepLoggedIn
+                };
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity), properties);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewData["ValidateMessage"] = "user not found";
+            return View();
+        }*/
 
         public IActionResult Register()
         {
@@ -55,7 +86,7 @@ namespace DOCTORLOAN.Controllers
                 HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
                 HttpClient httpClient = new HttpClient();
-                var response = await httpClient.PostAsync("http://doctorloan-api.giathaidoctorloan.vn/api/booking-module/Booking/create", content);
+                var response = await httpClient.PostAsync(ApiConstants.BookingCreate, content);
 
                 if (response.IsSuccessStatusCode)
                 {

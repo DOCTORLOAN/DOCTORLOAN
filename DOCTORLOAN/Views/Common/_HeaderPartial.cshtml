@@ -25,38 +25,7 @@
                                 <div class="container">
                                     <div class="swiper menuProductSwiper">
                                         <div class="swiper-wrapper menu-product-bestseller">
-                                            @* <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="Product135"><img loading="lazy" src="~/img/common/menu-product-135.png" /></a> <br />
-                                                <strong style="font-size: 0.875rem;color: #464646">Ghế nằm 135</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="Product90D"><img loading="lazy" src="~/img/common/menu-product-90D.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646">Ghế ngồi 90 Dày</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="Product90M"><img loading="lazy" src="~/img/common/menu-product-90M.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646">Ghế ngồi 90 Mỏng</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="Product95V"><img loading="lazy" src="~/img/common/menu-product-95V.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646">Ghế ngồi 95 VIP</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="ProductN85"><img loading="lazy" src="~/img/common/menu-product-N85.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646">Ghế nhựa N85</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="ProductGCF4"><img loading="lazy" src="~/img/common/menu-product-GC.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646";padding-left: 15px">Gối cổ</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="ProductGLF3"><img loading="lazy" src="~/img/common/menu-product-GL.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646";padding-left: 15px">Gối lưng</strong>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a asp-controller="Products" asp-action="ProductDT"><img loading="lazy" src="~/img/common/menu-product-DT.png" /></a><br />
-                                                <strong style="font-size: 0.875rem;color: #464646";padding-left: 15px">Đệm thiền</strong>
-                                            </div> *@
+                                            @await Component.InvokeAsync("ProductCategories")
                                         </div>
                                         <div class="swiper-button-next"></div>
                                         <div class="swiper-button-prev"></div>
@@ -127,11 +96,6 @@
 
 </header>
 
-<!-- <script src="~/libs/jquery/jquery-3.7.0.min.js"></script>
-<link href="~/libs/font-awesome_4.5/font-awesome.min.css" rel="stylesheet">
-<link href="~/libs/font-awesome_4.5/css.css" rel="stylesheet">
-<link href="~/libs/font-awesome_5.15.1/font-awesome_5.15.1_css_all.min.css" rel="stylesheet">-->
-
 <!-- Back to top button -->
 <a id="button"></a>
 
@@ -184,6 +148,15 @@
         });
     });
 
+    // Use event delegation for category click handlers to ensure they work even if categories load asynchronously
+    $(document).on('click', '.menu-product-bestseller .swiper-slide[data-category-id]', function () {
+        var categoryId = $(this).data("category-id");
+        if (categoryId) {
+            var redirectUrl = "/Products/ProductDetail?categoryId=" + categoryId;
+            window.location.href = redirectUrl;
+        }
+    });
+
     var btn = $('#button');
 
     $(window).scroll(function () {
@@ -199,57 +172,4 @@
         $('html, body').animate({ scrollTop: 0 }, '300');
     });
 
-    function redirectToWithData(url, data) {
-        // Create query parameters obj data
-        var queryParams = $.param(data);
-
-        // Handle string query parameters in URL
-        var redirectUrl = queryParams ? url + "?" + queryParams : url;
-
-        // Redirect to Url
-        window.location.href = redirectUrl;
-    }
-
-    $.ajax({
-        url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/category/filtercategories',
-        type: 'get',
-        datatype: 'json',
-        success: function (data) {
-            // handle call api categories
-            var _idbestseller = 0;
-            $.each(data.data.items, function (idx, item) {
-                if (item.slug == "bestsaller-doctorloan") {
-                    _idbestseller = item.id;
-                }
-            });
-
-            if (_idbestseller != 0) {
-
-                $.each(data.data.items, function (idx, item) {
-                    if (item.parentId == _idbestseller) {
-                        // font - size: 0.75rem;
-                        var productcategories = $(`<div id="categories-` + item.id + `" class="swiper-slide">
-                                                        <div style="width: 90%;">` + item.content + `</div>
-                                                        <strong style="color: #464646;font-size: x-small;">`+ item.name + `</strong>
-                                                    </div>`);
-                        $(".menu-product-bestseller").append(productcategories);
-
-                        $("#categories-" + item.id).click(function () {
-
-                            var _param = {
-                                categoryId: item.id,
-                            };
-                            redirectToWithData("/products/productdetail", _param);
-                        });
-                    }
-                });
-            }
-        },
-        error: function (error) {
-            //handle show error
-            console.error('error:', error);
-        }
-    });
-
 </script>
-

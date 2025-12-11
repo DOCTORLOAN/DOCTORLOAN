@@ -1,8 +1,11 @@
-﻿@{
+﻿@model DOCTORLOAN.Models.Products.ProductListViewModel
+@{
     ViewData["Title"] = "Sản phẩm";
 }
 
 <link href="~/libs/flag/flag.css" rel="stylesheet" />
+
+@await Html.PartialAsync("_LoadingState")
 
 <section id="ProductsBanner">
     <div class="swiper bannerProductSwiper">
@@ -108,7 +111,40 @@
 <section id="ProductBestSeller" class="product-wrapper">
     <div class="container">
         <div class="title-product-info">Sản phẩm DOCTORLOAN <span>Sản phẩm được cấp bằng sáng chế độc quyền được bảo hộ trên 62 quốc gia</span></div>
-        <div id="productItems" class="row justify-content-center"></div>
+        <div id="productItems" class="row justify-content-center">
+            @if (Model?.Products != null && Model.Products.Any())
+            {
+                @foreach (var product in Model.Products)
+                {
+                    var price = product.ProductItems?.FirstOrDefault()?.Price ?? product.Price;
+                    <div data-id="@product.Id" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
+                        <div class="product-item">
+                            <div class="img-item">
+                                <div id="product-@product.Id">
+                                    <img loading="lazy" src="@product.ImageUrl" alt="@product.Name" />
+                                </div>
+                                <div class="content-item">
+                                    <h5>
+                                        <span>@product.Name</span>
+                                        @if (!string.IsNullOrEmpty(product.Summary))
+                                        {
+                                            <strong>@product.Summary</strong>
+                                        }
+                                    </h5>
+                                    <div id="price-item-@product.Id" class="price-item">@price.ToString("N0")</div>
+                                    <div class="action-item">
+                                        <a id="addCart-@product.Id" class="icon-cart" href="javascript:void(0)">
+                                            <img src="/img/icon/shopping-bag.svg" />
+                                        </a>
+                                        <a id="buy-@product.Id" data-id="@product.Id" class="btn btn-buy" href="javascript:void(0)">Mua ngay</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
     </div>
 </section>
 
@@ -236,117 +272,6 @@
             },
         });
 
-        // Handle swiper
-        var swiper = new Swiper("#ProjectSwiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            }
-        });
-
-        // Handle swiper2
-        var swiper2 = new Swiper("#ClientSwiper", {
-            slidesPerView: 3,
-            spaceBetween: 30,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            breakpoints: {
-                640: {
-                    spaceBetween: 10
-                },
-                992: {
-                    spaceBetween: 10
-                },
-                1200: {
-                    spaceBetween: 30
-                },
-            },
-        });
-
-        // Handle swiper3
-        var swiper3 = new Swiper("#ExperienceSwiper", {
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 2,
-            initialSlide: 1,
-            spaceBetween: 0,
-            effect: 'coverflow',
-            keyboard: true,
-            slideToClickedSlide: true,
-            loop: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            coverflowEffect: {
-                rotate: 0,
-                stretch: 0,
-                depth: 50,
-                modifier: 6,
-                slideShadows: false,
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 3,
-                    initialSlide: 2,
-                    coverflowEffect: {
-                        rotate: 0,
-                        stretch: 0,
-                        depth: 100,
-                        modifier: 4,
-                        slideShadows: false,
-                    },
-                }
-            },
-        });
-
-        // Handle swiper4
-        var swiper4 = new Swiper("#LicenseSwiper", {
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 3,
-            initialSlide: 3,
-            effect: 'coverflow',
-            keyboard: true,
-            slideToClickedSlide: true,
-            coverflowEffect: {
-                rotate: 0,
-                stretch: 0,
-                depth: 100,
-                modifier: 4,
-                slideShadows: false,
-            },
-            loop: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            breakpoints: {
-                640: {
-                    spaceBetween: 40
-                },
-                992: {
-                    spaceBetween: 80
-                },
-                1200: {
-                    spaceBetween: 120
-                },
-            },
-        });
-
         // Handle dropdown menu
         $(".dropdown-menu [data-bs-toggle='dropdown']").on("click", function (event) {
             event.preventDefault();
@@ -378,77 +303,76 @@
             window.location.href = redirectUrl;
         }
 
-        //Handle get Product
-        function getProduct() {
-            $.ajax({
-                url: 'https://doctorloan-api.giathaidoctorloan.vn/api/product-module/Product/FilterProducts',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    // Handle call API Products
-                    $.each(data.data.items, function (idx, item) {
-                        var productItem = $(`<div data-id="` + item.id + `" class="col-xl-2 col-lg-3 col-md-4 col-6 col-20">
-                                                <div class="product-item" >
-                                                    <div class="img-item" >
-                                                        <div id="product-`+ item.id + `" > <img loading="lazy" src="` + item.imageUrl + `" /> </div>
-                                                    <div class="content-item">
-                                                        <h5><span>`+ item.name + `</span><strong>` + ((item.summary != undefined) ? item.summary : '') + `</strong> </h5>
-                                                        <div id="price-item-`+ item.id + `" class="price-item">` + item.productItems[0].price + `</div>
-                                                        <div class="action-item">
-                                                            <a id="buy-`+ item.id + `" data-id="` + item.id + `" class="btn btn-buy" target="_blank">Mua ngay</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>`);
-                        $("#productItems").append(productItem);
-
-                        // Handle format currency vnd
-                        $('#price-item-' + item.id).text(parseInt($('#price-item-' + item.id).text()).toLocaleString('vi', { style: 'currency', currency: 'VND' }));
-
-                        // Handle seen details
-                        $('#product-' + item.id).click(function () {
-                            var data = {
-                                productId: item.id,
-                            };
-                            redirectToWithData("/Products/ProductDetail", data);
-                        });
-
-                        /*
-                        <a id="add-cart-`+ item.id + `" data-id="` + item.id + `" class="icon-cart"> <i class="fas fa-shopping-bag" > </i></a >
-                        // Handle add to cart
-                        $('body').on('click', '.price-item', function () {
-                            const id = $(this).data('id');
-                            alert("say hi!, ", id);
-                        });
-                        */
-
-                        // Handle buy now
-                        $("#buy-" + item.id).click(function () {
-                            var data = {
-                                id: item.id,
-                                quantity: 1,
-                            };
-                            redirectToWithData("/Cart/Payment", data);
-                        });
-                    });
-                },
-                error: function (error) {
-                    //handle show error
-                    console.error('Error:', error);
+        // Handle format currency vnd for all price items
+        $(document).ready(function () {
+            $('.price-item').each(function () {
+                var priceText = $(this).text().replace(/[^\d]/g, '');
+                if (priceText) {
+                    var price = parseInt(priceText);
+                    $(this).text(price.toLocaleString('vi', { style: 'currency', currency: 'VND' }));
                 }
             });
-        }
 
-        // Call function getProduct
-        getProduct();
-
-        //Handle show alert
-        window.setTimeout(function () {
-            $("#alert").fadeTo(500, 0).slideUp(500, function () {
-                $(this).remove();
+            // Handle seen details
+            $('[id^="product-"]').click(function () {
+                var productId = $(this).attr('id').replace('product-', '');
+                var data = {
+                    productId: productId,
+                };
+                redirectToWithData("/Products/ProductDetail", data);
             });
-        }, 3000);
+
+            // Handle add to cart
+            $('[id^="addCart-"]').click(function () {
+                var productId = $(this).attr('id').replace('addCart-', '');
+                var existingData = [];
+
+                //Handle save session
+                if (sessionStorage.getItem("CartProduct") != undefined && sessionStorage.getItem("CartProduct") != null) {
+                    existingData = JSON.parse(sessionStorage.getItem('CartProduct'));
+                    var _data = {
+                        "id": parseInt(productId),
+                        "quantity": 1,
+                    };
+                    var flag = false;
+                    $.each(existingData, function (idx, _item) {
+                        if (parseInt(productId) == _item.id) {
+                            flag = true;
+                            _item.quantity = _item.quantity + 1;
+                            sessionStorage.setItem('CartProduct', JSON.stringify(existingData));
+                        }
+                    });
+                    if (flag != true) {
+                        existingData.push(_data);
+                        sessionStorage.setItem('CartProduct', JSON.stringify(existingData));
+                    }
+                } else {
+                    var data = [{
+                        "id": parseInt(productId),
+                        "quantity": 1,
+                    }];
+                    sessionStorage.setItem('CartProduct', JSON.stringify(data));
+                }
+
+                new Notify({
+                    status: 'success',
+                    title: 'Thêm giỏ hàng thành công',
+                    text: 'Thêm sản phẩm vào giỏ hàng thành công.',
+                    autoclose: true,
+                    autotimeout: 3000,
+                });
+            });
+
+            // Handle buy now
+            $('[id^="buy-"]').click(function () {
+                var productId = $(this).attr('id').replace('buy-', '');
+                var data = {
+                    id: parseInt(productId),
+                    quantity: 1,
+                };
+                redirectToWithData("/Cart/Payment", data);
+            });
+        });
 
     </script>
 }
