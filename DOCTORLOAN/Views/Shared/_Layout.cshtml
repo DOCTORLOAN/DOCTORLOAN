@@ -32,67 +32,28 @@
     <main>
         @RenderBody()
 
-        @* <div id='codepro-ads-bottom-left-corner'>
-            <div class='exit-codepro-ads-bottom-left-corner'>
-                <a href='javascript:;' onclick='hideitem()'><i class="fas fa-times-circle"></i></a>
-            </div>
-            <a href='https://forms.gle/QE9iFzJN3vcGL9tN6' target='_blank' title='Chia sẻ kiến thức, tư duy sáng tạo!'>
-                <div class='codepro-ads-bottom-left-corner-hover' > 
-                    <div id='codepro-setAds-left'></div>
+        <div class="modal" id="myModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer"></div>
                 </div>
-            </a>
-        </div> *@
+            </div>
+        </div>
 
         <div class="zalo-chat-widget" data-oaid="3997762822356581117" data-welcome-message="DOCTORLOAN Rất vui khi được hỗ trợ bạn!" data-autopopup="2" data-width="" data-height=""></div>
-
-        <!-- Messenger Chat plugin Code -->
-        <div id="fb-root"></div>
-
-        <!-- Your Chat plugin code -->
-        <div id="fb-customer-chat" class="fb-customerchat"></div> 
+        
     </main>
     <footer>
         @await Html.PartialAsync("/Views/Common/_FooterPartial.cshtml")
     </footer>
 
-
-    <script>
-        //function hideitem() {
-          //  document.getElementById("codepro-ads-bottom-left-corner").style.display = "none";
-        //}
-
-        //<!--Your SDK code-- >
-        // var chatbox = document.getElementById('fb-customer-chat');
-        // chatbox.setAttribute("page_id", "122107555106002865");
-        // chatbox.setAttribute("attribution", "biz_inbox");
-
-        // window.fbAsyncInit = function () {
-        //     FB.init({
-        //         xfbml: true,
-        //         version: 'v18.0'
-        //     });
-        // };
-
-        // (function (d, s, id) {
-        //     var js, fjs = d.getElementsByTagName(s)[0];
-        //     if (d.getElementById(id)) return;
-        //     js = d.createElement(s); js.id = id;
-        //     js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-        //     fjs.parentNode.insertBefore(js, fjs);
-        // }(document, 'script', 'facebook-jssdk'));
-
-        // msg = document.title;
-        // msg = msg + ".";
-        // position = 0;
-
-        // function scrolltitle() {
-        //     document.title = msg.substring(position, msg.length) + msg.substring(0, position);
-        //     position++;
-        //     if (position > msg.length) position = 0
-        //     window.setTimeout("scrolltitle()", 110);
-        // }
-        // scrolltitle();
-    </script>
     <script src="~/libs/jquery/jquery-3.7.0.min.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/common.js"></script>
@@ -113,6 +74,73 @@
     <script src="~/libs/chart/chart.js"></script>
     <script src="~/libs/youtube/iframe_api.js"></script>
     <script src="~/libs/zalo/sdk.js"></script>
+    <script>
+        // Function để chuyển hướng
+        function redirectToWithData(url, data) {
+            const queryParams = $.param(data);
+            const redirectUrl = queryParams ? `${url}?${queryParams}` : url;
+            window.location.href = redirectUrl;
+        }
+
+        // Hàm xử lý việc hiển thị modal khi trang tải xong
+        $(document).ready(function () {
+            let keyword = "Kinh doanh";
+            getNews(keyword);
+
+            $('#myModal').modal('show');
+        });
+
+        $("#myModal .close").click(function () {
+            $('#myModal').modal('hide');
+        });
+
+        // Get the News section of the Reason category
+        function getNews(keyword) {
+            $.ajax({
+                url: `https://doctorloan-api.giathaidoctorloan.vn/api/news-module/NewsItem/FilterNews?Keyword=${keyword}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+
+                    // XÓA BỎ nội dung cũ TRƯỚC KHI thêm nội dung mới
+                    $("#myModal .modal-title").empty();
+                    $("#myModal .modal-body").empty();
+                    $("#myModal .modal-footer").empty();
+
+                    // CHỈ LẤY TIN TỨC ĐẦU TIÊN để hiển thị trong modal
+                    if (data.data.items && data.data.items.length > 0) {
+
+                        const _item = data.data.items[0]; // Lấy tin tức đầu tiên
+
+                        // 1. Thêm tiêu đề
+                        $("#myModal .modal-title").append(`<h5 class="modal-title">${_item.title}</h5>`);
+
+                        // 2. Thêm hình ảnh
+                        $("#myModal .modal-body").append(`<img src='${_item.imageUrl}' class="img-fluid" />`);
+
+                        // 3. Thêm nút hành động (Xem chi tiết)
+                        const footerContent = `<div class="more-action">
+                                                <a class="btn btn-outline-secondary rounded-pill" id="newsDetails-${_item.id}">Xem chi tiết</a>
+                                              </div>`;
+                        $("#myModal .modal-footer").append(footerContent);
+
+                        // 4. Gắn sự kiện click vào nút mới được thêm
+                        $(`#newsDetails-${_item.id}`).click(function () {
+                            redirectToWithData("/News/NewsDetail", { newsId: _item.id });
+                        });
+                    } else {
+                        // Nếu không có tin tức, có thể đóng modal hoặc thông báo lỗi
+                        $('#myModal').modal('hide');
+                    }
+
+                },
+                error: function (error) {
+                    console.error('Error fetching news:', error);
+                    $('#myModal').modal('hide');
+                }
+            });
+        }
+    </script>
     @await RenderSectionAsync("scripts", required: false)
 </body>
 </html>

@@ -29,7 +29,7 @@ public class Order
 
     [StringLength(500)]
     public string? Remarks { get; set; }
-
+    
     public virtual List<ListItem> ListItem { get; set; } = new();
 }
 

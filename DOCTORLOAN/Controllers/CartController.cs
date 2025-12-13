@@ -34,7 +34,7 @@ namespace DOCTORLOAN.Controllers
         {
             try
             {
-                if (id == 0 || quantity == 0)
+                if (id <= 0 || quantity <= 0)
                 {
                     return RedirectToAction("Index", "Home");
                 }
@@ -142,6 +142,15 @@ namespace DOCTORLOAN.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
+                // Validate model state
+                if (!ModelState.IsValid)
+                {
+                    TempData["AlertMessageError"] = "Thông tin đơn hàng không hợp lệ. Vui lòng kiểm tra lại các trường bắt buộc.";
+                    TempData["id"] = _listItem.ProductId;
+                    TempData["quantity"] = _listItem.Quantity;
+                    return RedirectToAction("Payment", new { id = _listItem.ProductId, quantity = _listItem.Quantity });
+                }
+
                 ListItem item = new ListItem
                 {
                     ProductId = _listItem.ProductId,
@@ -149,20 +158,16 @@ namespace DOCTORLOAN.Controllers
                     Name = _listItem.Name,
                     Price = _listItem.Price,
                     Quantity = _listItem.Quantity,
-                    TotalPrice = _order.TotalPrice,
-                    ProductSku = "",
+                    TotalPrice = _listItem.TotalPrice, // Sử dụng TotalPrice từ _listItem (đã được tính từ client)
+                    ProductSku = _listItem.ProductSku ?? string.Empty,
                 };
-
-                if (_order.Email == null)
-                {
-                    _order.Email = "";
-                }
 
                 Order data = new Order
                 {
                     FullName = _order.FullName,
                     Phone = _order.Phone,
-                    Email = _order.Email,
+                    Email = _order.Email ?? string.Empty,
+                    SubTotal = item.Price * item.Quantity,
                     TotalPrice = _listItem.TotalPrice,
                     AddressLine = _order.AddressLine,
                     Remarks = _order.Remarks,
@@ -197,7 +202,7 @@ namespace DOCTORLOAN.Controllers
                     TempData["id"] = _listItem.ProductId;
                     TempData["quantity"] = _listItem.Quantity;
 
-                    return RedirectToAction("Payment", new { id = _listItem.ProductId, quantity = int.Parse(_listItem.Quantity) });
+                    return RedirectToAction("Payment", new { id = _listItem.ProductId, quantity = _listItem.Quantity });
                 }
             }
             catch (Exception ex)
@@ -205,7 +210,7 @@ namespace DOCTORLOAN.Controllers
                 TempData["AlertMessageError"] = $"Đã xảy ra lỗi: {ex.Message}";
                 if (_listItem != null)
                 {
-                    return RedirectToAction("Payment", new { id = _listItem.ProductId, quantity = int.Parse(_listItem.Quantity) });
+                    return RedirectToAction("Payment", new { id = _listItem.ProductId, quantity = _listItem.Quantity });
                 }
                 return RedirectToAction("Index", "Home");
             }

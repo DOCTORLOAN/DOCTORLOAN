@@ -23,13 +23,13 @@
                         <div class="mega-menu side-product">
                             <div class="list-menu">
                                 <div class="container">
-                                    <div class="swiper menuProductSwiper">
+                                    @*<div class="swiper menuProductSwiper">
                                         <div class="swiper-wrapper menu-product-bestseller">
                                             @await Component.InvokeAsync("ProductCategories")
                                         </div>
                                         <div class="swiper-button-next"></div>
                                         <div class="swiper-button-prev"></div>
-                                    </div>
+                                    </div>*@
                                 </div>
                             </div>
 
@@ -136,7 +136,7 @@
     });
     */
 
-    $(window).on('load', function () {
+    /*$(window).on('load', function () {
         var swiper2 = new Swiper(".menuProductSwiper", {
             slidesPerView: 8,
             loop: true,
@@ -146,9 +146,9 @@
                 prevEl: ".swiper-button-prev",
             }, 
         });
-    });
+    });*/
 
-    // Use event delegation for category click handlers to ensure they work even if categories load asynchronously
+    /*// Use event delegation for category click handlers to ensure they work even if categories load asynchronously
     $(document).on('click', '.menu-product-bestseller .swiper-slide[data-category-id]', function () {
         var categoryId = $(this).data("category-id");
         if (categoryId) {
@@ -170,6 +170,6 @@
     btn.on('click', function (e) {
         e.preventDefault();
         $('html, body').animate({ scrollTop: 0 }, '300');
-    });
+    });*/
 
 </script>

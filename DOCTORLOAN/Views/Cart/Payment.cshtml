@@ -162,14 +162,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="iprPrice">@price.ToString("N0")</div>
+                                        <div id="iprPrice">@price</div>
                                         <input type="text" name="Price" value="@price" class="form-control" hidden />
                                     </div>
                                 </div>
                                 <div class="total-cart">
                                     <div class="total-info">
                                         <span>Tạm tính</span>
-                                        <span id="cart-subtotal">@Model.SubTotal.ToString("N0")</span>
+                                        <span id="cart-subtotal">@Model.SubTotal</span>
                                     </div>
                                     <div class="total-info">
                                         <span>Phí vận chuyển</span>
@@ -177,7 +177,7 @@
                                     </div>
                                     <div class="total-info totals-item-total">
                                         <span>Tổng cộng</span>
-                                        <span id="cart-total">@Model.TotalPrice.ToString("N0")</span>
+                                        <span id="cart-total">@Model.TotalPrice</span>
                                         <input type="text" name="TotalPrice" value="@Model.TotalPrice" class="form-control" hidden />
                                     </div>
                                 </div>
