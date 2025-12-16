@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers; // Thêm namespace này
 using System.Net.Http.Headers;
+using DOCTORLOAN.Models.Payoo;
+using DOCTORLOAN.Models.NewsModal;
+using DOCTORLOAN.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -31,6 +34,19 @@ builder.Services.AddHttpClient("DoctorLoanApi", client =>
 	client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 	client.Timeout = TimeSpan.FromSeconds(30);
 });
+
+// Configure Payoo settings
+var payooConfig = builder.Configuration.GetSection("Payoo").Get<PayooConfig>() 
+    ?? throw new InvalidOperationException("Payoo configuration is missing");
+builder.Services.AddSingleton(payooConfig);
+
+// Configure NewsModal settings
+var newsModalConfig = builder.Configuration.GetSection("NewsModal").Get<NewsModalConfig>() 
+    ?? new NewsModalConfig { Keyword = "Kinh doanh" }; // Default value nếu không có config
+builder.Services.AddSingleton(newsModalConfig);
+
+// Register PayooService
+builder.Services.AddScoped<PayooService>();
 
 var app = builder.Build();
 

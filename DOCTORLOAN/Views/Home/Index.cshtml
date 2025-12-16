@@ -1801,77 +1801,30 @@
             const _email = getValue("email");
 
             if (_dataRes && _phone && _custommerName && _address) {
-                const _res = JSON.parse(_dataRes);
-
-                // Cấu hình thanh toán Payoo
-                const config = {
-                    baseUrl: "https://payoo.vn/v2/",
-                    businessUsername: "PY8_DOCTORLOAN_ECOM",
-                    shopID: "6587",
-                    shopTitle: "DOCTORLOAN",
-                    checksumKey: "ySpkGehhqJcLuniNYGZZJO8IAftdXc3HxBFvGJgyeMPpPcFk8i+z9ywiCcq53kuv8C8rMm8pnOypibnXIw2/Nw==",
-                    apiUsername: "PY8_DOCTORLOAN_ECOM_BizAPI",
-                    apiPassword: "MTwmyaC3H8FQxCb6",
-                    apiSignature: "h9yQ5+wZC2nEvpCodoW1cnp6JTYz5ezKaJgNoyGzOqerArpKtdiIh+/7oN1i3ncw",
-                    domain: "https://doctorloan.vn/",
-                    shopBackUrl: "https://doctorloan.vn/common/OrderSuccess",
-                    notifyUrl: "https://doctorloan-api.giathaidoctorloan.vn/api/order-module/Order/callback-payoo",
-                };
-
-                // Hàm tạo chuỗi checksum SHA-512
-                const sha512 = (key, data) => CryptoJS.SHA512(key + data).toString();
-
-                // Hàm lấy ngày giờ hiện tại theo định dạng
-                const getFormattedDate = (type) => {
-                    const now = new Date();
-                    const pad = (num) => num.toString().padStart(2, "0");
-
-                    if (type === "datetime") {
-                        return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours() + 1)}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
-                    } else {
-                        return `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
+                // Call API server-side process Payoo payment
+                $.ajax({
+                    url: '/Home/ProcessPayooPayment',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        dataRes: _dataRes,
+                        phone: _phone,
+                        customerName: _custommerName,
+                        addressLine: _address,
+                        email: _email || ''
+                    }),
+                    success: function (response) {
+                        if (response.success && response.paymentUrl) {
+                            window.location.href = response.paymentUrl;
+                        } else {
+                            alert(response.errorMessage || 'Không thể tạo đơn hàng thanh toán. Vui lòng thử lại.');
+                            console.error('Payoo payment error:', response.errorMessage);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Có lỗi khi gửi yêu cầu thanh toán:', error);
+                        alert('Đã xảy ra lỗi khi xử lý thanh toán. Vui lòng thử lại sau.');
                     }
-                };
-
-                const _validityTime = getFormattedDate("datetime");
-                const _orderDate = getFormattedDate("date");
-                const _orderNo = `ORD_${config.shopID}_${_res.data.orderNo}`;
-
-                // Xây dựng dữ liệu gửi API
-                const _data = `
-                        <shops><shop>
-                            <username>${config.businessUsername}</username>
-                            <shop_id>${config.shopID}</shop_id>
-                            <shop_title>${config.shopTitle}</shop_title>
-                            <shop_domain>${config.domain}</shop_domain>
-                            <order_no>${_orderNo}</order_no>
-                            <order_cash_amount>${_res.data.totalPrice}</order_cash_amount>
-                            <order_ship_date>${_orderDate}</order_ship_date>
-                                    <order_ship_days>0</order_ship_days>
-                            <order_description>Mã đơn hàng: ${_res.data.orderNo} Tổng tiền: ${_res.data.totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</order_description>
-                            <shop_back_url>${config.shopBackUrl}</shop_back_url>
-                            <notify_url>${config.notifyUrl}</notify_url>
-                            <validity_time>${_validityTime}</validity_time>
-                            <customer>
-                                <name>${_custommerName}</name>
-                                <phone>${_phone}</phone>
-                                <address>${_address}</address>
-                                <email>${_email}</email>
-                            </customer>
-                            <JsonResponse>true</JsonResponse>
-                            <direct_return_time>5</direct_return_time>
-                        </shop></shops>`.replace(/\s+/g, " "); // Xóa khoảng trắng thừa
-
-                // Gửi yêu cầu API
-                $.post(config.baseUrl + "create-preorder", {
-                    data: _data,
-                    checksum: sha512(config.checksumKey, _data),
-                    refer: config.domain,
-                    payment_group: ""
-                }).done((response) => {
-                    window.location.href = response.order.payment_url;
-                }).fail((xhr, status, error) => {
-                    console.error("Có lỗi khi gửi yêu cầu API:", error);
                 });
             }
         }

@@ -1,4 +1,3 @@
-### Hi there 👋
 # DOCTORLOAN
 
 **DOCTORLOAN** is a clinic management web project, developed with **ASP.NET Core 7.0** and containerized using **Docker**.
@@ -6,10 +5,13 @@
 ---
 
 ## 🚀 Technologies Used
+
 - **ASP.NET Core 7.0**
 - **Docker**
 - **LESS, CSS, JS**
 - **External REST API** (backend data source)
+- **Newtonsoft.Json** for JSON serialization
+- **Bootstrap** for UI framework
 
 ---
 
@@ -48,14 +50,34 @@ npm run build-css
 
 ```
 DOCTORLOAN/
-│── Controllers/           # Controllers for handling logic
-│   └── ProductsController.cs  # Public endpoints for products (no authentication required)
+│── Controllers/           # Controllers for handling business logic
+│   ├── ProductsController.cs     # Product listing and detail pages
+│   ├── CartController.cs         # Shopping cart and payment processing
+│   ├── HomeController.cs         # Home page and Payoo payment processing
+│   ├── NewsController.cs         # News listing and detail pages
+│   ├── ContactController.cs      # Contact form and booking
+│   └── ...
 │── Models/                # Data models
-│── Views/                 # Razor views
+│   ├── Api/               # API response models
+│   ├── Bookings/          # Booking models
+│   ├── Orders/            # Order and payment models
+│   ├── Products/          # Product view models
+│   ├── Payoo/             # Payoo payment configuration
+│   ├── NewsModal/         # News modal configuration
+│   ├── Users/             # User models
+│   └── VMAuth/            # Authentication view models
+│── ViewComponents/        # Reusable UI components
+│   ├── ProductCategoriesViewComponent.cs  # Product categories for header
+│   └── NewsModalViewComponent.cs          # News modal for homepage
+│── Services/              # Business services
+│   └── PayooService.cs    # Payoo payment processing service
 │── Helpers/               # Helper classes
-│   └── LoadingStateHelper.cs  # Loading state management
+│   └── LoadingStateHelper.cs     # Loading state management
+│── Constants/             # Application constants
+│   └── ApiConstants.cs    # Centralized API endpoints
+│── Views/                 # Razor views
 │── wwwroot/               # Static files (CSS, JS, images...)
-│── package.json           # LESS → CSS build configuration
+│── appsettings.json       # Application configuration
 │── docker-compose.yml     # Docker Compose configuration
 │── Dockerfile             # Docker build configuration
 └── README.md
@@ -63,44 +85,72 @@ DOCTORLOAN/
 
 ---
 
-## 🔌 Public Endpoints
+## 🔌 Key Features
 
-### Products Controller
-The `ProductsController` is configured as a **public endpoint** (no authentication required) using `[AllowAnonymous]` attribute.
+### Products Management
+- **GET /Products/Index**: Display list of all products
+- **GET /Products/ProductDetail**: Display detailed product information
+- Server-side rendering with loading states
+- Product categories navigation
 
-#### Available Endpoints:
+### Shopping Cart & Payment
+- Shopping cart management
+- Payment processing via Payoo (server-side for security)
+- Order creation and tracking
 
-1. **GET /Products/Index**
-   - **Description**: Displays the list of all products
-   - **Authentication**: Not required (Public)
-   - **Features**:
-     - Loading state indicator while fetching data
-     - Error handling with user-friendly messages
-     - Server-side rendering (no jQuery AJAX)
+### News System
+- News listing with categories
+- News detail pages
+- Auto-display news modal on homepage (server-side rendered, keyword configurable in appsettings.json)
 
-2. **GET /Products/ProductDetail**
-   - **Description**: Displays detailed information about a specific product
-   - **Authentication**: Not required (Public)
-   - **Parameters**:
-     - `productId` (optional): Product ID
-     - `categoryId` (optional): Category ID (if provided, shows first product in category)
-   - **Features**:
-     - Loading state indicator while fetching data
-     - Product details with images, attributes, and related products
-     - Error handling with user-friendly messages
-     - Server-side rendering (no jQuery AJAX)
+### Contact & Booking
+- Contact forms
+- Medical registration
+- Clinic booking system
 
-#### Example Usage:
+---
+
+## 🔐 Security Features
+
+### Payoo Payment Integration
+- **Server-side processing**: All payment credentials stored securely in `appsettings.json`
+- **SHA-512 checksum**: Secure payment data validation
+- **XML escaping**: Protection against XML injection attacks
+- **Input validation**: Server-side validation for all payment data
+
+### API Configuration
+- Centralized API endpoints in `ApiConstants.cs`
+- Configurable API base URLs
+- Environment-specific configurations
+
+---
+
+## ⚙️ Configuration
+
+### appsettings.json Structure
+
+```json
+{
+  "Payoo": {
+    "BaseUrl": "https://payoo.vn/v2/",
+    "BusinessUsername": "...",
+    "ShopID": "...",
+    "ChecksumKey": "...",
+    ...
+  },
+  "NewsModal": {
+    "Keyword": "Kinh doanh"
+  }
+}
 ```
-# View all products
-http://localhost:8081/Products/Index
 
-# View product detail by ID
-http://localhost:8081/Products/ProductDetail?productId=1
+### API Constants
 
-# View product detail by category
-http://localhost:8081/Products/ProductDetail?categoryId=5
-```
+All API endpoints are centralized in `Constants/ApiConstants.cs`:
+- Product Module APIs
+- Order Module APIs
+- Booking Module APIs
+- News Module APIs
 
 ---
 
@@ -147,10 +197,61 @@ this.SetErrorState(true, "Đã xảy ra lỗi khi tải dữ liệu");
 
 ---
 
-## 📝 Notes
+## 📝 Development Notes
 
-- All Products endpoints are **public** and do not require authentication
-- Data is fetched from external API: `http://localhost:49553/api/product-module`
-- Loading states are automatically managed for better UX
-- Server-side rendering is used instead of client-side AJAX calls
+### Server-Side Rendering
+- Products, News, and Categories are loaded server-side for better performance and SEO
+- ViewComponents are used for reusable UI components
+- No client-side AJAX calls for initial page load
 
+### Security Best Practices
+- Sensitive credentials stored in `appsettings.json` (should use User Secrets in development)
+- Payment processing entirely server-side
+- Input validation on both client and server
+- Anti-forgery tokens for form submissions
+
+### API Integration
+- All external API calls use `IHttpClientFactory`
+- Centralized API endpoints for easy maintenance
+- Consistent error handling across all API calls
+
+---
+
+## 🔄 Recent Updates
+
+- ✅ Centralized API constants for better maintainability
+- ✅ Server-side rendering for product categories and news modal
+- ✅ Secure Payoo payment processing (server-side)
+- ✅ News modal with configurable keywords (via appsettings.json)
+- ✅ Loading state management for better UX
+- ✅ Cleaned up unused files and empty folders (Filters, Repositories, Common, service, NewFolder)
+- ✅ Removed unused SessionHelper and CartItem models
+
+---
+
+## 📚 Additional Resources
+
+- **API Documentation**: External API at `https://doctorloan-api.giathaidoctorloan.vn/api`
+- **Payoo Documentation**: Payment gateway integration
+- **Docker Documentation**: Container deployment guide
+
+---
+
+## 🤝 Contributing
+
+When contributing to this project:
+1. Follow the existing code structure
+2. Use server-side rendering where possible
+3. Maintain security best practices
+4. Update documentation for new features
+5. Test thoroughly before submitting
+
+---
+
+## 📄 License
+
+[Add your license information here]
+
+---
+
+**Last Updated**: 2024
