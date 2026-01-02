@@ -59,8 +59,8 @@ namespace DOCTORLOAN.Controllers
                     ProvinceId = _booking.ProvinceId > 0 ? _booking.ProvinceId : 4, // Default value nếu không có
                     DistrictId = _booking.DistrictId > 0 ? _booking.DistrictId : 1,
                     WardId = _booking.WardId > 0 ? _booking.WardId : 1,
-                    Noted = !string.IsNullOrWhiteSpace(_booking.Noted) 
-                        ? "Đặt lịch Khám: " + _booking.Noted.Trim() 
+                    Noted = !string.IsNullOrWhiteSpace(_booking.Noted)
+                        ? "Đặt lịch Khám: " + _booking.Noted.Trim()
                         : "Đặt lịch Khám",
                 };
 
@@ -80,7 +80,7 @@ namespace DOCTORLOAN.Controllers
                 else
                 {
                     string errorContent = await response.Content.ReadAsStringAsync();
-                    _logger.LogWarning("Booking failed. Status: {Status}, Response: {Response}", 
+                    _logger.LogWarning("Booking failed. Status: {Status}, Response: {Response}",
                         response.StatusCode, errorContent);
                     TempData["AlertMessageError"] = "Đặt lịch thất bại. Vui lòng kiểm tra lại thông tin hoặc thử lại sau.";
                 }

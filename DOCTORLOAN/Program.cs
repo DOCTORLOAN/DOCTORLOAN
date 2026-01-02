@@ -13,36 +13,37 @@ var services = builder.Services;
 // Add services to the container.
 builder.Services.AddControllersWithViews(options =>
 {
-	options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
 }).AddRazorRuntimeCompilation();
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(option => {
+    .AddCookie(option =>
+    {
         option.LoginPath = "/Auth/Login";
-		option.AccessDeniedPath = "/Auth/Login";
-		option.SlidingExpiration = true;
-		option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-		option.Cookie.Name = "DoctorLoan.Auth";
-		option.Cookie.HttpOnly = true;
-		option.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-		option.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
+        option.AccessDeniedPath = "/Auth/Login";
+        option.SlidingExpiration = true;
+        option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        option.Cookie.Name = "DoctorLoan.Auth";
+        option.Cookie.HttpOnly = true;
+        option.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        option.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
     });
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("DoctorLoanApi", client =>
 {
-	//client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
-	client.BaseAddress = new Uri("https://localhost:44333/");
-	client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-	client.Timeout = TimeSpan.FromSeconds(30);
+    //client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
+    client.BaseAddress = new Uri("https://localhost:44333/");
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    client.Timeout = TimeSpan.FromSeconds(30);
 });
 
 // Configure Payoo settings
-var payooConfig = builder.Configuration.GetSection("Payoo").Get<PayooConfig>() 
+var payooConfig = builder.Configuration.GetSection("Payoo").Get<PayooConfig>()
     ?? throw new InvalidOperationException("Payoo configuration is missing");
 builder.Services.AddSingleton(payooConfig);
 
 // Configure NewsModal settings
-var newsModalConfig = builder.Configuration.GetSection("NewsModal").Get<NewsModalConfig>() 
+var newsModalConfig = builder.Configuration.GetSection("NewsModal").Get<NewsModalConfig>()
     ?? new NewsModalConfig { Keyword = "Kinh doanh" };
 builder.Services.AddSingleton(newsModalConfig);
 
@@ -63,21 +64,21 @@ app.UseHttpsRedirection();
 // Security Headers (CSP report-only to avoid breaking while tuning)
 app.Use(async (context, next) =>
 {
-	context.Response.Headers["X-Content-Type-Options"] = "nosniff";
-	context.Response.Headers["X-Frame-Options"] = "DENY";
-	context.Response.Headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
-	context.Response.Headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()";
-	// CSP Report-Only: allow required third-parties while tuning.
-	context.Response.Headers["Content-Security-Policy-Report-Only"] =
-		"default-src 'self'; " +
-		"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.youtube.com https://s.ytimg.com https://za.zdn.vn; " +
-		"style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-		"img-src 'self' data: https://www.google-analytics.com; " +
-		"font-src 'self' https://fonts.gstatic.com data:; " +
-		"connect-src 'self' https://doctorloan-api.giathaidoctorloan.vn https://esgoo.net ws://localhost:* wss://localhost:*; " +
-		"frame-src https://www.youtube.com https://page.widget.zalo.me; " +
-		"frame-ancestors 'none'";
-	await next();
+    context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+    context.Response.Headers["X-Frame-Options"] = "DENY";
+    context.Response.Headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
+    context.Response.Headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()";
+    // CSP Report-Only: allow required third-parties while tuning.
+    context.Response.Headers["Content-Security-Policy-Report-Only"] =
+        "default-src 'self'; " +
+        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.youtube.com https://s.ytimg.com https://za.zdn.vn; " +
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+        "img-src 'self' data: https://www.google-analytics.com; " +
+        "font-src 'self' https://fonts.gstatic.com data:; " +
+        "connect-src 'self' https://doctorloan-api.giathaidoctorloan.vn https://esgoo.net ws://localhost:* wss://localhost:*; " +
+        "frame-src https://www.youtube.com https://page.widget.zalo.me; " +
+        "frame-ancestors 'none'";
+    await next();
 });
 
 app.UseStaticFiles(new StaticFileOptions

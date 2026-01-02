@@ -48,7 +48,7 @@ public class PayooService
     private string GetFormattedDate(string type)
     {
         var now = DateTime.Now;
-        
+
         if (type == "datetime")
         {
             // Format: YYYYMMDDHHmmss
@@ -69,9 +69,9 @@ public class PayooService
         try
         {
             // Validate input
-            if (string.IsNullOrWhiteSpace(request.DataRes) || 
-                string.IsNullOrWhiteSpace(request.Phone) || 
-                string.IsNullOrWhiteSpace(request.CustomerName) || 
+            if (string.IsNullOrWhiteSpace(request.DataRes) ||
+                string.IsNullOrWhiteSpace(request.Phone) ||
+                string.IsNullOrWhiteSpace(request.CustomerName) ||
                 string.IsNullOrWhiteSpace(request.AddressLine))
             {
                 return new PayooPaymentResponse

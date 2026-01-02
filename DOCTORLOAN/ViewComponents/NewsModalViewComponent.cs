@@ -23,7 +23,7 @@ namespace DOCTORLOAN.ViewComponents
             {
                 // Sử dụng keyword từ parameter hoặc config
                 var searchKeyword = keyword ?? _config.Keyword;
-                
+
                 var httpClient = _httpClientFactory.CreateClient();
                 var response = await httpClient.GetAsync($"{ApiConstants.NewsItemFilterNews}?Keyword={Uri.EscapeDataString(searchKeyword)}");
 

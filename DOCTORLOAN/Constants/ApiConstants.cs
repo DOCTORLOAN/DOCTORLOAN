@@ -31,7 +31,7 @@ public static class ApiConstants
     public const string NewsModuleBaseUrl = $"{ApiBaseUrl}/news-module";
 
     // ===== Product Module Endpoints =====
-    
+
     /// <summary>
     /// Filter products endpoint
     /// </summary>
