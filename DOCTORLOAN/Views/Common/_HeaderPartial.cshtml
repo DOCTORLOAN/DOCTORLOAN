@@ -23,13 +23,13 @@
                         <div class="mega-menu side-product">
                             <div class="list-menu">
                                 <div class="container">
-                                    @*<div class="swiper menuProductSwiper">
+                                    <div class="swiper menuProductSwiper">
                                         <div class="swiper-wrapper menu-product-bestseller">
-                                            @await Component.InvokeAsync("ProductCategories")
+                                            @await Component.InvokeAsync("ProductCategories");
                                         </div>
                                         <div class="swiper-button-next"></div>
                                         <div class="swiper-button-prev"></div>
-                                    </div>*@
+                                    </div>
                                 </div>
                             </div>
 
@@ -136,7 +136,8 @@
     });
     */
 
-    /*$(window).on('load', function () {
+    window.addEventListener('load', function () {
+        if (typeof Swiper !== 'undefined') {
         var swiper2 = new Swiper(".menuProductSwiper", {
             slidesPerView: 8,
             loop: true,
@@ -146,30 +147,41 @@
                 prevEl: ".swiper-button-prev",
             }, 
         });
-    });*/
+        }
+    });
 
-    /*// Use event delegation for category click handlers to ensure they work even if categories load asynchronously
-    $(document).on('click', '.menu-product-bestseller .swiper-slide[data-category-id]', function () {
-        var categoryId = $(this).data("category-id");
+    // Use event delegation for category click handlers to ensure they work even if categories load asynchronously
+    document.addEventListener('click', function (e) {
+        var target = e.target;
+        if (!target) return;
+
+        // tìm phần tử slide gần nhất có data-category-id
+        var slide = target.closest('.menu-product-bestseller .swiper-slide[data-category-id]');
+        if (slide) {
+            var categoryId = slide.getAttribute('data-category-id');
         if (categoryId) {
             var redirectUrl = "/Products/ProductDetail?categoryId=" + categoryId;
             window.location.href = redirectUrl;
         }
-    });
-
-    var btn = $('#button');
-
-    $(window).scroll(function () {
-        if ($(window).scrollTop() > 300) {
-            btn.addClass('show');
-        } else {
-            btn.removeClass('show');
         }
     });
 
-    btn.on('click', function (e) {
+    var btn = document.getElementById('button');
+
+    window.addEventListener('scroll', function () {
+        if (!btn) return;
+        if (window.scrollY > 300) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    });
+
+    if (btn) {
+        btn.addEventListener('click', function (e) {
         e.preventDefault();
-        $('html, body').animate({ scrollTop: 0 }, '300');
-    });*/
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
 </script>

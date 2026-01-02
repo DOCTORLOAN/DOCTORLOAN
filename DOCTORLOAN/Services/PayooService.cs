@@ -110,7 +110,7 @@ public class PayooService
     <order_description>Mã đơn hàng: {EscapeXml(orderData.data.orderNo?.ToString() ?? "")} Tổng tiền: {totalPrice:N0} VND</order_description>
     <shop_back_url>{EscapeXml(_config.ShopBackUrl)}</shop_back_url>
     <notify_url>{EscapeXml(_config.NotifyUrl)}</notify_url>
-    <validity_time>{EscapeXml(validityTime)}</validityTime>
+    <validity_time>{EscapeXml(validityTime)}</validity_time>
     <customer>
         <name>{EscapeXml(request.CustomerName)}</name>
         <phone>{EscapeXml(request.Phone)}</phone>

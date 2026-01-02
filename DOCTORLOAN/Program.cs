@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers; // Thêm namespace này
+using Microsoft.Net.Http.Headers;
 using System.Net.Http.Headers;
 using DOCTORLOAN.Models.Payoo;
 using DOCTORLOAN.Models.NewsModal;
@@ -30,7 +30,8 @@ builder.Services.AddAuthentication(
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("DoctorLoanApi", client =>
 {
-	client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
+	//client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
+	client.BaseAddress = new Uri("https://localhost:44333/");
 	client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 	client.Timeout = TimeSpan.FromSeconds(30);
 });
@@ -42,7 +43,7 @@ builder.Services.AddSingleton(payooConfig);
 
 // Configure NewsModal settings
 var newsModalConfig = builder.Configuration.GetSection("NewsModal").Get<NewsModalConfig>() 
-    ?? new NewsModalConfig { Keyword = "Kinh doanh" }; // Default value nếu không có config
+    ?? new NewsModalConfig { Keyword = "Kinh doanh" };
 builder.Services.AddSingleton(newsModalConfig);
 
 // Register PayooService
@@ -54,7 +55,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
