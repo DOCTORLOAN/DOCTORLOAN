@@ -6981,7 +6981,7 @@ body {
 }
 #Reason {
   padding: 5rem 0;
-  background-image: linear-gradient(rgba(255, 247, 140, 0.95) 20%, rgba(255, 117, 0, 0.95) 90%), url(../img/home/bg-solution.jpg);
+  background-image: linear-gradient(rgba(255, 247, 140, 0.95) 20%, rgba(255, 117, 0, 0.95) 90%), url(../img/home/bg-solution.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -7091,7 +7091,7 @@ body {
 }
 #Signal {
   padding: 2rem 0;
-  background-image: linear-gradient(rgba(255, 117, 0, 0.95) 20%, rgba(255, 117, 0, 0.95) 90%), url(../img/home/bg-solution.jpg);
+  background-image: linear-gradient(rgba(255, 117, 0, 0.95) 20%, rgba(255, 117, 0, 0.95) 90%), url(../img/home/bg-solution.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -9680,7 +9680,7 @@ body {
   filter: invert(47%) sepia(37%) saturate(3120%) hue-rotate(1deg) brightness(104%) contrast(104%);
 }
 #License.license-second {
-  background-image: linear-gradient(rgba(225, 225, 225, 0.95) 20%, rgba(225, 225, 225, 0.95) 90%), url(../img/home/bg-solution.jpg);
+  background-image: linear-gradient(rgba(225, 225, 225, 0.95) 20%, rgba(225, 225, 225, 0.95) 90%), url(../img/home/bg-solution.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
