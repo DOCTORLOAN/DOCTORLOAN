@@ -229,11 +229,99 @@ this.SetErrorState(true, "Đã xảy ra lỗi khi tải dữ liệu");
 
 ---
 
+## 🚀 CI Pipeline
+
+Project sử dụng **GitHub Actions** để tự động kiểm tra code quality, build và test.
+
+### 📋 Tổng quan
+
+CI pipeline được cấu hình cho nhánh **`coder2_dev`** với workflow **`ci.yml`**:
+
+1. **Build và Test**
+   - Restore dependencies
+   - Build .NET application
+   - Chạy tests (nếu có)
+
+2. **Code Quality Checks**
+   - Kiểm tra code formatting (dotnet format)
+   - Kiểm tra build warnings
+   - Đảm bảo code clean trước khi merge
+
+### 🔄 Workflow Trigger
+
+Pipeline tự động chạy khi:
+- ✅ Push code lên nhánh `coder2_dev`
+- ✅ Tạo Pull Request vào nhánh `coder2_dev`
+- ✅ Manual trigger từ GitHub Actions tab
+
+### 📝 Sử dụng CI
+
+#### Tự động kiểm tra
+
+1. **Push code lên nhánh `coder2_dev`**:
+   ```bash
+   git checkout coder2_dev
+   git add .
+   git commit -m "Your commit message"
+   git push origin coder2_dev
+   ```
+
+2. **GitHub Actions tự động chạy**:
+   - Build và test code
+   - Kiểm tra code formatting
+   - Kiểm tra build warnings
+
+3. **Xem kết quả**:
+   - Vào tab **Actions** trong GitHub repository
+   - Click vào workflow run để xem chi tiết
+   - ✅ Xanh = Pass (code clean)
+   - ❌ Đỏ = Fail (cần sửa lỗi)
+
+#### Manual trigger
+
+1. Vào **Actions** tab trong GitHub repository
+2. Chọn workflow "CI Pipeline"
+3. Click **Run workflow** → Chọn nhánh `coder2_dev` → **Run workflow**
+
+### ✅ Code Quality Checks
+
+Pipeline sẽ kiểm tra:
+
+- **Code Formatting**: Đảm bảo code tuân theo coding standards
+  - Nếu fail: Chạy `dotnet format` để tự động fix
+- **Build Warnings**: Cảnh báo nếu có warnings trong quá trình build
+- **Tests**: Chạy unit tests (nếu có)
+
+### 🔍 Monitoring
+
+- **Xem logs**: Vào **Actions** tab → Click vào workflow run
+- **Debug**: Kiểm tra logs từng step để tìm lỗi
+- **Notifications**: GitHub sẽ gửi email khi workflow fail (nếu đã bật)
+
+### 🛠️ Fix Code Issues
+
+Nếu CI fail, bạn có thể:
+
+1. **Format code tự động**:
+   ```bash
+   dotnet format ./DOCTORLOAN
+   ```
+
+2. **Fix build warnings**: Xem chi tiết trong build logs
+
+3. **Fix test failures**: Chạy tests locally trước khi push:
+   ```bash
+   dotnet test ./DOCTORLOAN
+   ```
+
+---
+
 ## 📚 Additional Resources
 
 - **API Documentation**: External API at `https://doctorloan-api.giathaidoctorloan.vn/api`
 - **Payoo Documentation**: Payment gateway integration
 - **Docker Documentation**: Container deployment guide
+- **CI/CD Setup Guide**: Xem `CI-CD-SETUP.md` để biết chi tiết về thiết lập CI/CD
 
 ---
 

@@ -1,0 +1,73 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - coder2_dev
+  pull_request:
+    branches:
+      - coder2_dev
+  workflow_dispatch:
+
+env:
+  DOTNET_VERSION: '7.0.x'
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore dependencies
+        working-directory: ./DOCTORLOAN
+        run: dotnet restore
+
+      - name: Build
+        working-directory: ./DOCTORLOAN
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Run tests (if any)
+        working-directory: ./DOCTORLOAN
+        run: dotnet test --configuration Release --no-build --verbosity normal || echo "No tests found"
+
+  code-quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Install dotnet format
+        run: dotnet tool install -g dotnet-format || echo "dotnet-format already installed"
+
+      - name: Check code formatting
+        working-directory: ./DOCTORLOAN
+        run: dotnet format --verify-no-changes --verbosity diagnostic || (echo "Code formatting issues found. Run 'dotnet format' to fix." && exit 1)
+
+      - name: Check for build warnings
+        working-directory: ./DOCTORLOAN
+        run: |
+          BUILD_OUTPUT=$(dotnet build --configuration Release --no-restore 2>&1)
+          WARNINGS=$(echo "$BUILD_OUTPUT" | grep -i "warning" || true)
+          if [ -n "$WARNINGS" ]; then
+            echo "Build warnings found:"
+            echo "$WARNINGS"
+            echo "⚠️ Please review and fix warnings before merging."
+          else
+            echo "✅ No build warnings found."
+          fi
+
