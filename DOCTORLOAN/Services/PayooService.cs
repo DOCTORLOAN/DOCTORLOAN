@@ -12,19 +12,14 @@ namespace DOCTORLOAN.Services;
 public class PayooService
 {
     private readonly ILogger<PayooService> _logger;
-
-    public PayooService(ILogger<PayooService> logger)
-    {
-        _logger = logger;
-    }
-
     private readonly PayooConfig config;
     private readonly IHttpClientFactory httpClientFactory;
 
-    public PayooService(PayooConfig config, IHttpClientFactory httpClientFactory)
+    public PayooService(PayooConfig config, IHttpClientFactory httpClientFactory, ILogger<PayooService> logger)
     {
         this.config = config;
         this.httpClientFactory = httpClientFactory;
+        _logger = logger;
     }
 
     /// <summary>

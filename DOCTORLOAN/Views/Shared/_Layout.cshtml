@@ -33,7 +33,7 @@
     <main>
         @RenderBody()
 
-        <div class="modal" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     @await Component.InvokeAsync("NewsModal")
@@ -76,6 +76,55 @@
         $(document).on('click', '#myModal .close', function () {
             $('#myModal').modal('hide');
         });
+
+        // Fix ARIA accessibility: Ensure aria-hidden is properly managed
+        // Use both 'show' and 'shown' events to catch the modal at different stages
+        $('#myModal').on('show.bs.modal', function () {
+            $(this).removeAttr('aria-hidden');
+        });
+
+        $('#myModal').on('shown.bs.modal', function () {
+            var $modal = $(this);
+            $modal.removeAttr('aria-hidden');
+            // Additional safeguard: check again after a short delay
+            setTimeout(function() {
+                if ($modal.is(':visible') && $modal.attr('aria-hidden') === 'true') {
+                    $modal.removeAttr('aria-hidden');
+                }
+            }, 10);
+        });
+
+        $('#myModal').on('hide.bs.modal', function () {
+            $(this).attr('aria-hidden', 'true');
+        });
+
+        $('#myModal').on('hidden.bs.modal', function () {
+            $(this).attr('aria-hidden', 'true');
+        });
+
+        // MutationObserver to catch any aria-hidden changes made by Bootstrap after our handlers
+        if (typeof MutationObserver !== 'undefined') {
+            var modalElement = document.getElementById('myModal');
+            if (modalElement) {
+                var observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'aria-hidden') {
+                            var modal = mutation.target;
+                            var style = window.getComputedStyle(modal);
+                            var isVisible = style.display !== 'none' && style.visibility !== 'hidden';
+                            // If modal is visible but has aria-hidden="true", remove it
+                            if (isVisible && modal.getAttribute('aria-hidden') === 'true') {
+                                modal.removeAttribute('aria-hidden');
+                            }
+                        }
+                    });
+                });
+                observer.observe(modalElement, {
+                    attributes: true,
+                    attributeFilter: ['aria-hidden']
+                });
+            }
+        }
 
         // Hiển thị modal khi trang load xong (nếu có news data từ server)
         $(document).ready(function () {

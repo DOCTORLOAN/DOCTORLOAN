@@ -35,8 +35,8 @@ builder.Services.AddAuthentication(
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("DoctorLoanApi", client =>
 {
-    //client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
-    client.BaseAddress = new Uri("https://localhost:44333/");
+    client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
+    //client.BaseAddress = new Uri("https://localhost:44333/");
     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     client.Timeout = TimeSpan.FromSeconds(30);
 });
@@ -77,7 +77,7 @@ app.Use(async (context, next) =>
     context.Response.Headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()";
 
     // CSP Report-Only: allow required third-parties while tuning.
-    var connectSrc = "'self' https://doctorloan-api.giathaidoctorloan.vn https://esgoo.net https://www.google-analytics.com https://www.googletagmanager.com https://www.facebook.com ws://localhost:* wss://localhost:*";
+    var connectSrc = "'self' https://doctorloan-api.giathaidoctorloan.vn https://esgoo.net https://www.google-analytics.com https://www.googletagmanager.com https://www.facebook.com https://ws.widget.zalo.me https://sp.zalo.me ws://localhost:* wss://localhost:*";
 
     // Add Browser Link support in Development (Visual Studio Browser Link)
     if (app.Environment.IsDevelopment())
@@ -87,7 +87,7 @@ app.Use(async (context, next) =>
 
     context.Response.Headers["Content-Security-Policy-Report-Only"] =
         "default-src 'self'; " +
-        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.youtube.com https://s.ytimg.com https://za.zdn.vn https://cdn.amcharts.com; " +
+        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.youtube.com https://s.ytimg.com https://za.zdn.vn https://cdn.amcharts.com https://cdn.jsdelivr.net; " +
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
         "img-src 'self' data: https://www.google-analytics.com https://doctorloan-api.giathaidoctorloan.vn; " +
         "font-src 'self' https://fonts.gstatic.com data:; " +
