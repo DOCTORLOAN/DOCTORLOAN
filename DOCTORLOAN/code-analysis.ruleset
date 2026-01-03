@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Code Analysis Rules" Description="Code analysis rules for DOCTORLOAN" ToolsVersion="17.0">
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.NetAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.NetAnalyzers">
+    <!-- Enable all .NET Analyzer rules as warnings -->
+    <Rule Id="CA" Action="Warning" />
+  </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <!-- Enable StyleCop rules as warnings (Suggestion is not a valid Action value) -->
+    <Rule Id="SA" Action="Warning" />
+  </Rules>
+</RuleSet>
+

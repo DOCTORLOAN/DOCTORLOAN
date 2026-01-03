@@ -1,47 +1,327 @@
-name: CI Pipeline
+name: CI Pipeline - Code Quality, Security & Performance
 
 on:
   push:
     branches:
-      - coder2_dev
+      - '**'
   pull_request:
     branches:
-      - coder2_dev
+      - '**'
   workflow_dispatch:
 
 env:
   DOTNET_VERSION: '7.0.x'
+  SOLUTION_FILE: 'DOCTORLOAN.sln'
+  PROJECT_FILE: 'DOCTORLOAN/DOCTORLOAN.csproj'
 
 jobs:
-  build-and-test:
-    name: Build and Test
+  # Job 1: Code Quality Checks (chạy song song với security)
+  code-quality:
+    name: Code Quality & Formatting
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 10
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
 
       - name: Restore dependencies
-        working-directory: ./DOCTORLOAN
-        run: dotnet restore
+        run: dotnet restore ${{ env.SOLUTION_FILE }}
 
-      - name: Build
-        working-directory: ./DOCTORLOAN
-        run: dotnet build --configuration Release --no-restore
+      - name: Install .NET Format Tool
+        run: dotnet tool install -g dotnet-format || dotnet tool update -g dotnet-format
 
-      - name: Run tests (if any)
-        working-directory: ./DOCTORLOAN
-        run: dotnet test --configuration Release --no-build --verbosity normal || echo "No tests found"
+      - name: Check Code Formatting
+        id: format-check
+        run: |
+          echo "Checking code formatting..."
+          set +e
+          dotnet format ${{ env.SOLUTION_FILE }} --verify-no-changes --verbosity diagnostic 2>&1 | tee format-output.txt
+          FORMAT_EXIT_CODE=${PIPESTATUS[0]}
+          set -e
+          
+          # Count files that need formatting (look for error messages about formatting)
+          FORMAT_COUNT=$(grep -c "error WHITESPACE\|needs formatting\|files need formatting" format-output.txt 2>/dev/null || echo "0")
+          
+          if [ $FORMAT_EXIT_CODE -ne 0 ]; then
+            echo "format_failed=true" >> $GITHUB_OUTPUT
+            echo "format_issues=${FORMAT_COUNT}" >> $GITHUB_OUTPUT
+            echo "❌ Code formatting check failed - ${FORMAT_COUNT} issue(s) found"
+          else
+            echo "format_failed=false" >> $GITHUB_OUTPUT
+            echo "format_issues=0" >> $GITHUB_OUTPUT
+            echo "✅ Code formatting is correct"
+          fi
 
-  code-quality:
-    name: Code Quality Checks
+      - name: Build Solution
+        id: build
+        run: |
+          echo "Building solution..."
+          dotnet build ${{ env.SOLUTION_FILE }} \
+            --configuration Release \
+            --no-restore \
+            --verbosity minimal \
+            /p:TreatWarningsAsErrors=false \
+            /p:WarningLevel=5 \
+            /p:GenerateDocumentationFile=false 2>&1 | tee build-output.txt
+          
+          WARNINGS=$(grep -iE "warning\s+[A-Z]{2}[0-9]{4}" build-output.txt | wc -l || echo "0")
+          ERRORS=$(grep -iE "error\s+[A-Z]{2}[0-9]{4}" build-output.txt | wc -l || echo "0")
+          
+          echo "warnings_count=$WARNINGS" >> $GITHUB_OUTPUT
+          echo "errors_count=$ERRORS" >> $GITHUB_OUTPUT
+          
+          if [ "$ERRORS" -gt 0 ]; then
+            echo "❌ Build failed with $ERRORS error(s)"
+            exit 1
+          fi
+          
+          if [ "$WARNINGS" -gt 0 ]; then
+            echo "⚠️ Build succeeded with $WARNINGS warning(s)"
+          else
+            echo "✅ Build succeeded with no warnings"
+          fi
+
+      - name: Run Code Analysis
+        id: analyze
+        run: |
+          echo "Running code analysis..."
+          dotnet build ${{ env.SOLUTION_FILE }} \
+            --configuration Release \
+            --no-restore \
+            /p:RunAnalyzersDuringBuild=true \
+            /p:EnableNETAnalyzers=true \
+            /p:AnalysisLevel=latest \
+            /p:EnforceCodeStyleInBuild=true 2>&1 | tee analysis-output.txt || true
+          
+          ANALYSIS_WARNINGS=$(grep -iE "warning\s+[A-Z]{2}[0-9]{4}" analysis-output.txt | wc -l || echo "0")
+          echo "analysis_warnings=$ANALYSIS_WARNINGS" >> $GITHUB_OUTPUT
+          
+          # Extract specific analysis issues
+          grep -iE "warning\s+[A-Z]{2}[0-9]{4}" analysis-output.txt > analysis-issues.txt || true
+
+      - name: Check Code Smells
+        id: code-smells
+        run: |
+          echo "Checking for code smells..."
+          
+          TODO_COUNT=$(grep -r "TODO\|FIXME\|HACK\|XXX" --include="*.cs" DOCTORLOAN/ 2>/dev/null | wc -l || echo "0")
+          COMMENTED_CODE=$(grep -r "^[[:space:]]*//[[:space:]]*[a-zA-Z].*[;}]$" --include="*.cs" DOCTORLOAN/ 2>/dev/null | wc -l || echo "0")
+          LONG_METHODS=$(find DOCTORLOAN -name "*.cs" -not -path "*/obj/*" -not -path "*/bin/*" -exec sh -c 'lines=$(wc -l < "$1"); if [ "$lines" -gt 500 ]; then echo "$1:$lines"; fi' _ {} \; | wc -l || echo "0")
+          
+          echo "todo_count=$TODO_COUNT" >> $GITHUB_OUTPUT
+          echo "commented_code=$COMMENTED_CODE" >> $GITHUB_OUTPUT
+          echo "long_files=$LONG_METHODS" >> $GITHUB_OUTPUT
+          
+          # Export code smell findings
+          {
+            echo "["
+            grep -r "TODO\|FIXME\|HACK" --include="*.cs" DOCTORLOAN/ -n 2>/dev/null | head -20 | while IFS=: read -r file line content; do
+              [ -n "$prev" ] && echo "$prev,"
+              prev="{\"type\":\"code_smell\",\"title\":\"TODO/FIXME comment found\",\"file\":\"$file\",\"line\":\"$line\",\"description\":\"Found TODO/FIXME comment: ${content#*:}\"}"
+            done
+            [ -n "$prev" ] && echo "$prev"
+            echo "]"
+          } > code-smell-findings.json 2>/dev/null || echo "[]" > code-smell-findings.json
+
+      - name: Upload Code Quality Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-quality-logs
+          path: |
+            build-output.txt
+            analysis-output.txt
+            analysis-issues.txt
+            format-output.txt
+            code-smell-findings.json
+          retention-days: 7
+
+  # Job 2: Security Scanning (chạy song song với code-quality)
+  security-scan:
+    name: Security Analysis
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      security-events: write
+      issues: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore dependencies
+        run: dotnet restore ${{ env.SOLUTION_FILE }}
+
+      - name: Check for NuGet Vulnerabilities
+        id: nuget-security
+        run: |
+          echo "Checking for vulnerable NuGet packages..."
+          dotnet list ${{ env.SOLUTION_FILE }} package --vulnerable --include-transitive > nuget-vulnerabilities.txt 2>&1 || true
+          
+          VULN_COUNT=$(grep -c "vulnerable\|known vulnerability" nuget-vulnerabilities.txt || echo "0")
+          echo "vulnerable_packages=$VULN_COUNT" >> $GITHUB_OUTPUT
+          
+          if [ "$VULN_COUNT" -gt 0 ]; then
+            echo "⚠️ Found $VULN_COUNT vulnerable package(s)"
+          else
+            echo "✅ No vulnerable packages found"
+          fi
+
+      - name: Install Python for Scripts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 || true
+
+      - name: Scan for Hardcoded Secrets
+        id: secret-scan
+        run: |
+          echo "Scanning for hardcoded secrets..."
+          
+          # Patterns to detect secrets
+          SECRET_PATTERNS=(
+            "password\s*[=:]\s*[\"'][^\"']+[\"']"
+            "api[_-]?key\s*[=:]\s*[\"'][^\"']+[\"']"
+            "secret\s*[=:]\s*[\"'][^\"']+[\"']"
+            "token\s*[=:]\s*[\"'][^\"']+[\"']"
+            "connectionstring\s*[=:]\s*[\"'][^\"']+[\"']"
+            "apikey\s*[=:]\s*[\"'][^\"']+[\"']"
+          )
+          
+          SECRETS_FOUND=()
+          
+          for pattern in "${SECRET_PATTERNS[@]}"; do
+            while IFS=: read -r file line content; do
+              # Skip comments and test files
+              if ! echo "$content" | grep -q "^\s*//" && ! echo "$file" | grep -qE "(test|spec)"; then
+                SECRETS_FOUND+=("$file:$line:$content")
+              fi
+            done < <(grep -rnE "$pattern" --include="*.cs" DOCTORLOAN/ 2>/dev/null || true)
+          done
+          
+          SECRET_COUNT=${#SECRETS_FOUND[@]}
+          echo "secret_count=$SECRET_COUNT" >> $GITHUB_OUTPUT
+          
+          # Export findings as JSON using Python script
+          if [ "$SECRET_COUNT" -gt 0 ]; then
+            SECRETS_STR=$(printf '%s ' "${SECRETS_FOUND[@]}")
+            export SECRETS_FOUND="$SECRETS_STR"
+            python3 .github/scripts/export-secret-findings.py "$SECRETS_STR" secret-findings.json || echo "[]" > secret-findings.json
+          else
+            echo "[]" > secret-findings.json
+          fi
+          
+          if [ "$SECRET_COUNT" -gt 0 ]; then
+            echo "⚠️ Found $SECRET_COUNT potential hardcoded secret(s)"
+          else
+            echo "✅ No hardcoded secrets detected"
+          fi
+
+      - name: Security Code Analysis
+        id: security-analysis
+        run: |
+          echo "Running security code analysis..."
+          
+          # Build with security analyzers
+          dotnet build ${{ env.SOLUTION_FILE }} \
+            --configuration Release \
+            --no-restore \
+            /p:RunAnalyzersDuringBuild=true \
+            /p:EnableNETAnalyzers=true \
+            /p:AnalysisLevel=latest 2>&1 | tee security-analysis.txt || true
+          
+          # Extract security-related warnings
+          grep -iE "(CA2100|CA2109|CA2111|CA2112|CA2114|CA2115|CA2116|CA2117|CA2118|CA2119|CA2120|CA2121|CA2122|CA2123|CA2124|CA2126|CA2127|CA2128|CA2129|CA2130|CA2131|CA2132|CA2133|CA2134|CA2135|CA2136|CA2137|CA2138|CA2139|CA2140|CA2141|CA2142|CA2143|CA2144|CA2145|CA2146|CA2147|CA2149|CA2151|CA3001|CA3002|CA3003|CA3004|CA3005|CA3006|CA3007|CA3008|CA3009|CA3010|CA3011|CA3012|CA5350|CA5351|CA5358|CA5359|CA5360|CA5361|CA5362|CA5363|CA5364|CA5365|CA5366|CA5367|CA5368|CA5369|CA5370|CA5371|CA5372|CA5373|CA5374|CA5375|CA5376|CA5377|CA5378|CA5379|CA5380|CA5381|CA5382|CA5383|CA5384|CA5385|CA5386|CA5387|CA5388|CA5389|CA5390|CA5391|CA5392|CA5393|CA5394|CA5395|CA5396|CA5397|CA5398|CA5399|CA5400|CA5401|CA5402|CA5403)" security-analysis.txt > security-warnings.txt || true
+          
+          SECURITY_WARNINGS=$(wc -l < security-warnings.txt || echo "0")
+          echo "security_warnings=$SECURITY_WARNINGS" >> $GITHUB_OUTPUT
+
+      - name: Install Node.js for Security Analysis
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Combine Security Findings
+        run: |
+          echo "Combining security findings..."
+          node -e "
+            const fs = require('fs');
+            const secrets = JSON.parse(fs.readFileSync('secret-findings.json', 'utf8') || '[]');
+            const vulnerabilities = fs.readFileSync('nuget-vulnerabilities.txt', 'utf8') || '';
+            const vulnLines = vulnerabilities.split('\n').filter(line => line.includes('@'));
+            const vulnFindings = vulnLines.map(line => {
+              const match = line.match(/(\S+@[\S]+)/);
+              const pkg = match ? match[1] : line.trim();
+              return {
+                type: 'vulnerable_package',
+                category: 'security',
+                title: \`Vulnerable package: \${pkg}\`,
+                description: \`Package \${pkg} has known vulnerabilities\`,
+                recommendation: 'Update package to latest secure version'
+              };
+            }).filter(f => f.title);
+            const allFindings = [...secrets, ...vulnFindings];
+            fs.writeFileSync('security-findings.json', JSON.stringify(allFindings, null, 2));
+            console.log(\`Combined \${allFindings.length} security findings\`);
+          "
+
+      - name: Parse Security Issues
+        run: |
+          chmod +x .github/scripts/parse-security-issues.js
+          node .github/scripts/parse-security-issues.js security-findings.json security-issues.json
+
+      - name: Upload Security Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-logs
+          path: |
+            nuget-vulnerabilities.txt
+            secret-findings.json
+            security-analysis.txt
+            security-warnings.txt
+            security-findings.json
+            security-issues.json
+          retention-days: 7
+
+  # Job 3: Performance Analysis (chạy song song)
+  performance-analysis:
+    name: Performance Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: []  # Chạy độc lập
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -51,23 +331,185 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Install dotnet format
-        run: dotnet tool install -g dotnet-format || echo "dotnet-format already installed"
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
 
-      - name: Check code formatting
-        working-directory: ./DOCTORLOAN
-        run: dotnet format --verify-no-changes --verbosity diagnostic || (echo "Code formatting issues found. Run 'dotnet format' to fix." && exit 1)
+      - name: Restore dependencies
+        run: dotnet restore ${{ env.SOLUTION_FILE }}
 
-      - name: Check for build warnings
-        working-directory: ./DOCTORLOAN
+      - name: Build for Analysis
+        run: dotnet build ${{ env.SOLUTION_FILE }} --configuration Release --no-restore
+
+      - name: Install Python Dependencies
         run: |
-          BUILD_OUTPUT=$(dotnet build --configuration Release --no-restore 2>&1)
-          WARNINGS=$(echo "$BUILD_OUTPUT" | grep -i "warning" || true)
-          if [ -n "$WARNINGS" ]; then
-            echo "Build warnings found:"
-            echo "$WARNINGS"
-            echo "⚠️ Please review and fix warnings before merging."
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip || true
+
+      - name: Analyze Code Complexity & Performance
+        id: complexity
+        run: |
+          echo "Analyzing code complexity and performance patterns..."
+          python3 .github/scripts/analyze-complexity.py DOCTORLOAN performance-findings.json
+          
+          CS_FILES=$(find DOCTORLOAN -name "*.cs" -not -path "*/obj/*" -not -path "*/bin/*" | wc -l)
+          TOTAL_LINES=$(find DOCTORLOAN -name "*.cs" -not -path "*/obj/*" -not -path "*/bin/*" -exec wc -l {} + | tail -1 | awk '{print $1}' || echo "0")
+          
+          echo "cs_files=$CS_FILES" >> $GITHUB_OUTPUT
+          echo "total_lines=$TOTAL_LINES" >> $GITHUB_OUTPUT
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Parse Performance Issues
+        run: |
+          chmod +x .github/scripts/parse-performance-issues.js
+          node .github/scripts/parse-performance-issues.js performance-findings.json performance-issues.json
+
+      - name: Upload Performance Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-logs
+          path: |
+            performance-findings.json
+            performance-issues.json
+          retention-days: 7
+
+  # Job 4: Create GitHub Issues (chạy sau khi tất cả jobs khác hoàn thành)
+  create-issues:
+    name: Create GitHub Issues
+    runs-on: ubuntu-latest
+    needs: [code-quality, security-scan, performance-analysis]
+    if: always() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: '*-logs'
+          merge-multiple: false
+          path: artifacts
+
+      - name: Setup GitHub CLI
+        run: |
+          type gh >/dev/null 2>&1 || { echo "GitHub CLI not installed, installing..."; sudo apt-get update && sudo apt-get install -y gh; }
+          gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip jq || true
+
+      - name: Create Security Issues
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f "artifacts/security-logs/security-issues.json" ]; then
+            echo "Creating security issues..."
+            python3 .github/scripts/create-github-issue.py \
+              artifacts/security-logs/security-issues.json \
+              "${{ github.repository }}" \
+              "${{ secrets.GITHUB_TOKEN }}"
           else
-            echo "✅ No build warnings found."
+            echo "No security issues to create"
           fi
 
+      - name: Create Performance Issues
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f "artifacts/performance-logs/performance-issues.json" ]; then
+            echo "Creating performance issues..."
+            python3 .github/scripts/create-github-issue.py \
+              artifacts/performance-logs/performance-issues.json \
+              "${{ github.repository }}" \
+              "${{ secrets.GITHUB_TOKEN }}"
+          else
+            echo "No performance issues to create"
+          fi
+
+  # Job 5: Generate Final Report
+  generate-report:
+    name: Generate Quality Report
+    runs-on: ubuntu-latest
+    needs: [code-quality, security-scan, performance-analysis]
+    if: always()
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: '*-logs'
+          merge-multiple: false
+          path: artifacts
+
+      - name: Generate Summary Report
+        run: |
+          cat >> $GITHUB_STEP_SUMMARY << 'EOF'
+          # 📊 Comprehensive Code Quality Report
+          
+          ## 🔍 Code Quality
+          EOF
+          
+          if [ -f "artifacts/code-quality-logs/build-output.txt" ]; then
+            ERRORS=$(grep -iE "error\s+[A-Z]{2}[0-9]{4}" artifacts/code-quality-logs/build-output.txt | wc -l || echo "0")
+            WARNINGS=$(grep -iE "warning\s+[A-Z]{2}[0-9]{4}" artifacts/code-quality-logs/build-output.txt | wc -l || echo "0")
+            echo "- **Build Errors:** $ERRORS" >> $GITHUB_STEP_SUMMARY
+            echo "- **Build Warnings:** $WARNINGS" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          cat >> $GITHUB_STEP_SUMMARY << 'EOF'
+          
+          ## 🔒 Security Analysis
+          EOF
+          
+          if [ -f "artifacts/security-logs/security-issues.json" ]; then
+            SECURITY_ISSUES=$(jq 'length' artifacts/security-logs/security-issues.json || echo "0")
+            CRITICAL=$(jq '[.[] | select(.severity == "critical")] | length' artifacts/security-logs/security-issues.json || echo "0")
+            HIGH=$(jq '[.[] | select(.severity == "high")] | length' artifacts/security-logs/security-issues.json || echo "0")
+            echo "- **Total Security Issues:** $SECURITY_ISSUES" >> $GITHUB_STEP_SUMMARY
+            echo "- **Critical:** $CRITICAL" >> $GITHUB_STEP_SUMMARY
+            echo "- **High:** $HIGH" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          cat >> $GITHUB_STEP_SUMMARY << 'EOF'
+          
+          ## ⚡ Performance Analysis
+          EOF
+          
+          if [ -f "artifacts/performance-logs/performance-issues.json" ]; then
+            PERF_ISSUES=$(jq 'length' artifacts/performance-logs/performance-issues.json || echo "0")
+            echo "- **Total Performance Issues:** $PERF_ISSUES" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          cat >> $GITHUB_STEP_SUMMARY << 'EOF'
+          
+          ---
+          *Report generated automatically by CI Pipeline*
+          EOF
+
+      - name: Fail on Critical Issues
+        if: always() && needs.code-quality.result != 'success'
+        run: |
+          echo "❌ Build failed. Please review and fix errors."
+          exit 1

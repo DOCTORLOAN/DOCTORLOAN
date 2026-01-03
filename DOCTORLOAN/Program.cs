@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+// <copyright file="Program.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
+using System.Net.Http.Headers;
+using DOCTORLOAN.Models.NewsModal;
+using DOCTORLOAN.Models.Payoo;
+using DOCTORLOAN.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
-using System.Net.Http.Headers;
-using DOCTORLOAN.Models.Payoo;
-using DOCTORLOAN.Models.NewsModal;
-using DOCTORLOAN.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -31,7 +35,7 @@ builder.Services.AddAuthentication(
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("DoctorLoanApi", client =>
 {
-    //client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
+    // client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
     client.BaseAddress = new Uri("https://localhost:44333/");
     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     client.Timeout = TimeSpan.FromSeconds(30);
@@ -68,6 +72,7 @@ app.Use(async (context, next) =>
     context.Response.Headers["X-Frame-Options"] = "DENY";
     context.Response.Headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
     context.Response.Headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()";
+
     // CSP Report-Only: allow required third-parties while tuning.
     context.Response.Headers["Content-Security-Policy-Report-Only"] =
         "default-src 'self'; " +
@@ -78,7 +83,7 @@ app.Use(async (context, next) =>
         "connect-src 'self' https://doctorloan-api.giathaidoctorloan.vn https://esgoo.net ws://localhost:* wss://localhost:*; " +
         "frame-src https://www.youtube.com https://page.widget.zalo.me; " +
         "frame-ancestors 'none'";
-    await next();
+    await next().ConfigureAwait(false);
 });
 
 app.UseStaticFiles(new StaticFileOptions
@@ -106,7 +111,7 @@ app.UseStaticFiles(new StaticFileOptions
             ctx.Context.Response.Headers[HeaderNames.Pragma] = "no-cache";
             ctx.Context.Response.Headers[HeaderNames.Expires] = "0";
         }
-    }
+    },
 });
 
 app.UseRouting();

@@ -1,3 +1,7 @@
+// <copyright file="ApiResponseModels.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
 using Newtonsoft.Json;
 
 namespace DOCTORLOAN.Models.Api;
@@ -169,4 +173,3 @@ public class CategoryResponse
     [JsonProperty("parentId")]
     public int? ParentId { get; set; }
 }
-

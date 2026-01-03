@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+// <copyright file="CommonController.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
+using Microsoft.AspNetCore.Mvc;
 
 namespace DOCTORLOAN.Controllers
 {
@@ -6,16 +10,17 @@ namespace DOCTORLOAN.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return this.View();
         }
+
         public IActionResult PolicyDetails()
         {
-            return View();
+            return this.View();
         }
 
         public IActionResult OrderSuccess()
         {
-            return View();
+            return this.View();
         }
     }
 }

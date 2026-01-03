@@ -1,20 +1,30 @@
-using Microsoft.AspNetCore.Mvc;
+// <copyright file="NewsModalViewComponent.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
+using DOCTORLOAN.Constants;
 using DOCTORLOAN.Models.Api;
 using DOCTORLOAN.Models.NewsModal;
-using DOCTORLOAN.Constants;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace DOCTORLOAN.ViewComponents
 {
     public class NewsModalViewComponent : ViewComponent
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-        private readonly NewsModalConfig _config;
+        private readonly IHttpClientFactory httpClientFactory;
+        private readonly NewsModalConfig config;
+        private readonly ILogger<NewsModalViewComponent> logger;
 
-        public NewsModalViewComponent(IHttpClientFactory httpClientFactory, NewsModalConfig config)
+        public NewsModalViewComponent(
+            IHttpClientFactory httpClientFactory,
+            NewsModalConfig config,
+            ILogger<NewsModalViewComponent> logger)
         {
-            _httpClientFactory = httpClientFactory;
-            _config = config;
+            this.httpClientFactory = httpClientFactory;
+            this.config = config;
+            this.logger = logger;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(string? keyword = null)
@@ -22,33 +32,44 @@ namespace DOCTORLOAN.ViewComponents
             try
             {
                 // Sử dụng keyword từ parameter hoặc config
-                var searchKeyword = keyword ?? _config.Keyword;
+                var searchKeyword = keyword ?? this.config.Keyword;
 
-                var httpClient = _httpClientFactory.CreateClient();
-                var response = await httpClient.GetAsync($"{ApiConstants.NewsItemFilterNews}?Keyword={Uri.EscapeDataString(searchKeyword)}");
+                using var httpClient = this.httpClientFactory.CreateClient();
+                var uri = new Uri($"{ApiConstants.NewsItemFilterNews}?Keyword={Uri.EscapeDataString(searchKeyword)}");
+                var response = await httpClient.GetAsync(uri).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var jsonContent = await response.Content.ReadAsStringAsync();
+                    var jsonContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var apiResponse = JsonConvert.DeserializeObject<ApiResponse<NewsListResponse>>(jsonContent);
 
                     if (apiResponse?.Data?.Items != null && apiResponse.Data.Items.Count > 0)
                     {
                         // Lấy tin tức đầu tiên
                         var newsItem = apiResponse.Data.Items[0];
-                        return View(newsItem);
+                        return this.View(newsItem);
                     }
                 }
             }
+            catch (HttpRequestException ex)
+            {
+                this.logger.LogError(ex, "HTTP error occurred while loading news for modal");
+            }
+            catch (TaskCanceledException ex)
+            {
+                this.logger.LogError(ex, "Request timeout occurred while loading news for modal");
+            }
+            catch (JsonException ex)
+            {
+                this.logger.LogError(ex, "JSON deserialization error occurred while loading news for modal");
+            }
             catch (Exception ex)
             {
-                // Log error but don't break the request
-                Console.WriteLine($"Error loading news for modal: {ex.Message}");
+                this.logger.LogError(ex, "Unexpected error occurred while loading news for modal");
             }
 
             // Return null nếu không có news để ẩn modal
-            return View((NewsItemResponse?)null);
+            return this.View((NewsItemResponse?)null);
         }
     }
 }
-

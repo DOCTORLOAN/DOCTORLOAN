@@ -1,3 +1,7 @@
+// <copyright file="LoadingStateHelper.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
 namespace DOCTORLOAN.Helpers;
 
 public static class LoadingStateHelper
@@ -19,4 +23,3 @@ public static class LoadingStateHelper
         controller.ViewBag.ErrorMessage = message;
     }
 }
-

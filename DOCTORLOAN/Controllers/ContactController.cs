@@ -1,156 +1,260 @@
-﻿using DOCTORLOAN.Models.Bookings;
+// <copyright file="ContactController.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
+using System.Net;
+using System.Text;
 using DOCTORLOAN.Constants;
+using DOCTORLOAN.Models.Bookings;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Text;
 
 namespace DOCTORLOAN.Controllers
 {
     public class ContactController : Controller
     {
+        private readonly IHttpClientFactory httpClientFactory;
+        private readonly ILogger<ContactController> logger;
+
+        public ContactController(IHttpClientFactory httpClientFactory, ILogger<ContactController> logger)
+        {
+            this.httpClientFactory = httpClientFactory;
+            this.logger = logger;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         public IActionResult MedicalRegister()
         {
-            return View();
+            return this.View();
         }
 
-        public async Task<IActionResult> MedicalRegisterPost(Booking _booking)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> MedicalRegisterPost(Booking booking)
         {
+            if (booking == null)
+            {
+                this.TempData["AlertMessageError"] = "Thông tin đặt lịch không hợp lệ.";
+                return this.RedirectToAction("MedicalRegister");
+            }
+
             try
             {
-                Booking data = new Booking
+                var data = new Booking
                 {
                     Type = 100,
-                    FirstName = _booking.FirstName,
-                    LastName = _booking.LastName,
-                    Phone = _booking.Phone,
-                    BookingDate = _booking.BookingDate,
-                    AddressLine = _booking.AddressLine,
+                    FirstName = booking.FirstName,
+                    LastName = booking.LastName,
+                    Phone = booking.Phone,
+                    BookingDate = booking.BookingDate,
+                    AddressLine = booking.AddressLine,
                     ProvinceId = 4,
                     DistrictId = 1,
                     WardId = 1,
-                    Noted = "Đặt lịch Khám: " + _booking.Noted,
+                    Noted = "Đặt lịch Khám: " + booking.Noted,
                 };
 
-                string jsonData = JsonConvert.SerializeObject(data);
-                HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
-                HttpClient httpClient = new HttpClient();
-                var response = await httpClient.PostAsync(ApiConstants.BookingCreate, content);
+                var jsonData = JsonConvert.SerializeObject(data);
+                using var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                using var httpClient = this.httpClientFactory.CreateClient();
+                
+                var uri = new Uri(ApiConstants.BookingCreate);
+                var response = await httpClient.PostAsync(uri, content).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    TempData["AlertMessageSuccess"] = "Booking thành công!";
-                    return RedirectToAction("MedicalRegister");
+                    var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    this.TempData["AlertMessageSuccess"] = "Booking thành công!";
+                    return this.RedirectToAction("MedicalRegister");
                 }
                 else
                 {
-                    TempData["AlertMessageError"] = "Booking thất bại. vui lòng kiểm tra lại thông tin ";
-                    return RedirectToAction("MedicalRegister");
+                    this.logger.LogWarning("Booking failed with status code: {StatusCode}", response.StatusCode);
+                    this.TempData["AlertMessageError"] = "Booking thất bại. Vui lòng kiểm tra lại thông tin.";
+                    return this.RedirectToAction("MedicalRegister");
                 }
+            }
+            catch (HttpRequestException ex)
+            {
+                this.logger.LogError(ex, "HTTP error occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Không thể kết nối đến server. Vui lòng thử lại sau.";
+                return this.RedirectToAction("MedicalRegister");
+            }
+            catch (TaskCanceledException ex)
+            {
+                this.logger.LogError(ex, "Request timeout occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Request timeout. Vui lòng thử lại sau.";
+                return this.RedirectToAction("MedicalRegister");
+            }
+            catch (JsonException ex)
+            {
+                this.logger.LogError(ex, "JSON serialization error occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Lỗi xử lý dữ liệu. Vui lòng thử lại sau.";
+                return this.RedirectToAction("MedicalRegister");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                this.logger.LogError(ex, "Unexpected error occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Đã xảy ra lỗi. Vui lòng thử lại sau.";
+                return this.RedirectToAction("MedicalRegister");
             }
         }
 
         public IActionResult HealthAdvice()
         {
-            return View();
+            return this.View();
         }
 
-        public async Task<IActionResult> HealthAdvicePost(Booking _booking)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> HealthAdvicePost(Booking booking)
         {
+            if (booking == null)
+            {
+                this.TempData["AlertMessageError"] = "Thông tin đặt lịch không hợp lệ.";
+                return this.RedirectToAction("HealthAdvice");
+            }
+
             try
             {
-                Booking data = new Booking
+                var data = new Booking
                 {
                     Type = 10,
-                    FirstName = _booking.FirstName,
-                    LastName = _booking.LastName,
-                    Phone = _booking.Phone,
-                    BookingDate = _booking.BookingDate,
-                    AddressLine = _booking.AddressLine,
+                    FirstName = booking.FirstName,
+                    LastName = booking.LastName,
+                    Phone = booking.Phone,
+                    BookingDate = booking.BookingDate,
+                    AddressLine = booking.AddressLine,
                     ProvinceId = 4,
                     DistrictId = 1,
                     WardId = 1,
-                    Noted = "Đăng ký tư vấn sức khoẻ: " + _booking.Noted,
+                    Noted = "Đăng ký tư vấn sức khoẻ: " + booking.Noted,
                 };
 
-                string jsonData = JsonConvert.SerializeObject(data);
-                HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
-                HttpClient httpClient = new HttpClient();
-                var response = await httpClient.PostAsync(ApiConstants.BookingCreate, content);
+                var jsonData = JsonConvert.SerializeObject(data);
+                using var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                using var httpClient = this.httpClientFactory.CreateClient();
+                
+                var uri = new Uri(ApiConstants.BookingCreate);
+                var response = await httpClient.PostAsync(uri, content).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    TempData["AlertMessageSuccess"] = "Booking thành công!";
-                    return RedirectToAction("HealthAdvice");
+                    var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    this.TempData["AlertMessageSuccess"] = "Booking thành công!";
+                    return this.RedirectToAction("HealthAdvice");
                 }
                 else
                 {
-                    TempData["AlertMessageError"] = "Booking thất bại. vui lòng kiểm tra lại thông tin ";
-                    return RedirectToAction("HealthAdvice");
+                    this.logger.LogWarning("Booking failed with status code: {StatusCode}", response.StatusCode);
+                    this.TempData["AlertMessageError"] = "Booking thất bại. Vui lòng kiểm tra lại thông tin.";
+                    return this.RedirectToAction("HealthAdvice");
                 }
+            }
+            catch (HttpRequestException ex)
+            {
+                this.logger.LogError(ex, "HTTP error occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Không thể kết nối đến server. Vui lòng thử lại sau.";
+                return this.RedirectToAction("HealthAdvice");
+            }
+            catch (TaskCanceledException ex)
+            {
+                this.logger.LogError(ex, "Request timeout occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Request timeout. Vui lòng thử lại sau.";
+                return this.RedirectToAction("HealthAdvice");
+            }
+            catch (JsonException ex)
+            {
+                this.logger.LogError(ex, "JSON serialization error occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Lỗi xử lý dữ liệu. Vui lòng thử lại sau.";
+                return this.RedirectToAction("HealthAdvice");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                this.logger.LogError(ex, "Unexpected error occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Đã xảy ra lỗi. Vui lòng thử lại sau.";
+                return this.RedirectToAction("HealthAdvice");
             }
         }
 
         public IActionResult ProductConsultation()
         {
-            return View();
+            return this.View();
         }
 
-        public async Task<IActionResult> ProductConsultationPost(Booking _booking)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ProductConsultationPost(Booking booking)
         {
+            if (booking == null)
+            {
+                this.TempData["AlertMessageError"] = "Thông tin đặt lịch không hợp lệ.";
+                return this.RedirectToAction("ProductConsultation");
+            }
+
             try
             {
-                Booking data = new Booking
+                var data = new Booking
                 {
                     Type = 20,
-                    FirstName = _booking.FirstName,
-                    LastName = _booking.LastName,
-                    Phone = _booking.Phone,
-                    BookingDate = _booking.BookingDate,
-                    AddressLine = _booking.AddressLine,
+                    FirstName = booking.FirstName,
+                    LastName = booking.LastName,
+                    Phone = booking.Phone,
+                    BookingDate = booking.BookingDate,
+                    AddressLine = booking.AddressLine,
                     ProvinceId = 4,
                     DistrictId = 1,
                     WardId = 1,
-                    Noted = "Yêu cầu tư vấn về sản phẩm: " + _booking.Noted,
+                    Noted = "Yêu cầu tư vấn về sản phẩm: " + booking.Noted,
                 };
 
-                string jsonData = JsonConvert.SerializeObject(data);
-                HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
-                HttpClient httpClient = new HttpClient();
-                var response = await httpClient.PostAsync(ApiConstants.BookingCreate, content);
+                var jsonData = JsonConvert.SerializeObject(data);
+                using var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                using var httpClient = this.httpClientFactory.CreateClient();
+                
+                var uri = new Uri(ApiConstants.BookingCreate);
+                var response = await httpClient.PostAsync(uri, content).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    TempData["AlertMessageSuccess"] = "Booking thành công!";
-                    return RedirectToAction("ProductConsultation");
+                    var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    this.TempData["AlertMessageSuccess"] = "Booking thành công!";
+                    return this.RedirectToAction("ProductConsultation");
                 }
                 else
                 {
-                    TempData["AlertMessageError"] = "Booking thất bại. vui lòng kiểm tra lại thông tin ";
-                    return RedirectToAction("ProductConsultation");
+                    this.logger.LogWarning("Booking failed with status code: {StatusCode}", response.StatusCode);
+                    this.TempData["AlertMessageError"] = "Booking thất bại. Vui lòng kiểm tra lại thông tin.";
+                    return this.RedirectToAction("ProductConsultation");
                 }
+            }
+            catch (HttpRequestException ex)
+            {
+                this.logger.LogError(ex, "HTTP error occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Không thể kết nối đến server. Vui lòng thử lại sau.";
+                return this.RedirectToAction("ProductConsultation");
+            }
+            catch (TaskCanceledException ex)
+            {
+                this.logger.LogError(ex, "Request timeout occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Request timeout. Vui lòng thử lại sau.";
+                return this.RedirectToAction("ProductConsultation");
+            }
+            catch (JsonException ex)
+            {
+                this.logger.LogError(ex, "JSON serialization error occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Lỗi xử lý dữ liệu. Vui lòng thử lại sau.";
+                return this.RedirectToAction("ProductConsultation");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                this.logger.LogError(ex, "Unexpected error occurred while creating booking");
+                this.TempData["AlertMessageError"] = "Đã xảy ra lỗi. Vui lòng thử lại sau.";
+                return this.RedirectToAction("ProductConsultation");
             }
         }
     }

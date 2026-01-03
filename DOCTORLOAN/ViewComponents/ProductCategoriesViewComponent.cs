@@ -1,29 +1,37 @@
-using Microsoft.AspNetCore.Mvc;
-using DOCTORLOAN.Models.Api;
+// <copyright file="ProductCategoriesViewComponent.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
 using DOCTORLOAN.Constants;
+using DOCTORLOAN.Models.Api;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace DOCTORLOAN.ViewComponents
 {
     public class ProductCategoriesViewComponent : ViewComponent
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IHttpClientFactory httpClientFactory;
+        private readonly ILogger<ProductCategoriesViewComponent> logger;
 
-        public ProductCategoriesViewComponent(IHttpClientFactory httpClientFactory)
+        public ProductCategoriesViewComponent(IHttpClientFactory httpClientFactory, ILogger<ProductCategoriesViewComponent> logger)
         {
-            _httpClientFactory = httpClientFactory;
+            this.httpClientFactory = httpClientFactory;
+            this.logger = logger;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
             try
             {
-                var httpClient = _httpClientFactory.CreateClient();
-                var response = await httpClient.GetAsync(ApiConstants.CategoryFilterCategories);
+                using var httpClient = this.httpClientFactory.CreateClient();
+                var uri = new Uri(ApiConstants.CategoryFilterCategories);
+                var response = await httpClient.GetAsync(uri).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var jsonContent = await response.Content.ReadAsStringAsync();
+                    var jsonContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var apiResponse = JsonConvert.DeserializeObject<ApiResponse<CategoryListResponse>>(jsonContent);
 
                     if (apiResponse?.Data?.Items != null)
@@ -39,19 +47,29 @@ namespace DOCTORLOAN.ViewComponents
                             .Where(c => c.ParentId == bestSellerId)
                             .ToList();
 
-                        ViewBag.BestSellerCategoryId = bestSellerId;
-                        return View(productCategories);
+                        this.ViewBag.BestSellerCategoryId = bestSellerId;
+                        return this.View(productCategories);
                     }
                 }
             }
+            catch (HttpRequestException ex)
+            {
+                this.logger.LogError(ex, "HTTP error occurred while loading categories");
+            }
+            catch (TaskCanceledException ex)
+            {
+                this.logger.LogError(ex, "Request timeout occurred while loading categories");
+            }
+            catch (JsonException ex)
+            {
+                this.logger.LogError(ex, "JSON deserialization error occurred while loading categories");
+            }
             catch (Exception ex)
             {
-                // Log error but don't break the request
-                Console.WriteLine($"Error loading categories: {ex.Message}");
+                this.logger.LogError(ex, "Unexpected error occurred while loading categories");
             }
 
-            return View(new List<CategoryResponse>());
+            return this.View(new List<CategoryResponse>());
         }
     }
 }
-

@@ -1,4 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+// <copyright file="Order.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
+using System.ComponentModel.DataAnnotations;
 
 namespace DOCTORLOAN.Models.Orders;
 
@@ -15,16 +19,21 @@ public class Order
     [Required]
     public PaymentMethod PaymentMethod { get; set; }
 
-    [Required, StringLength(100)]
+    [Required]
+    [StringLength(100)]
     public string FullName { get; set; } = string.Empty;
 
-    [Required, Phone, StringLength(20)]
+    [Required]
+    [Phone]
+    [StringLength(20)]
     public string Phone { get; set; } = string.Empty;
 
-    [EmailAddress, StringLength(256)]
+    [EmailAddress]
+    [StringLength(256)]
     public string? Email { get; set; }
 
-    [Required, StringLength(250)]
+    [Required]
+    [StringLength(250)]
     public string AddressLine { get; set; } = string.Empty;
 
     [StringLength(500)]
@@ -41,7 +50,8 @@ public class ListItem
     [Required]
     public int ProductItemId { get; set; }
 
-    [Required, StringLength(200)]
+    [Required]
+    [StringLength(200)]
     public string Name { get; set; } = string.Empty;
 
     [StringLength(100)]

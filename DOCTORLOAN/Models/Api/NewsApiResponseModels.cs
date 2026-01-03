@@ -1,3 +1,7 @@
+// <copyright file="NewsApiResponseModels.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
 using Newtonsoft.Json;
 
 namespace DOCTORLOAN.Models.Api;
@@ -29,4 +33,3 @@ public class NewsItemResponse
     [JsonProperty("slug")]
     public string? Slug { get; set; }
 }
-

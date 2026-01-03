@@ -1,4 +1,8 @@
-﻿namespace DOCTORLOAN.Models.Users;
+// <copyright file="User.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
+namespace DOCTORLOAN.Models.Users;
 
 public class User
 {
@@ -16,24 +20,20 @@ public class User
 
     public string UserName { get; set; }
 
-    private string _email;
+    private string email;
+
     public string Email
     {
-        get
-        {
-            return string.IsNullOrEmpty(_email) ? string.Empty : _email.Trim();
-        }
-        set { _email = value; }
+        get { return string.IsNullOrEmpty(this.email) ? string.Empty : this.email.Trim(); }
+        set { this.email = value; }
     }
 
-    private string _phone;
+    private string phone;
+
     public string Phone
     {
-        get
-        {
-            return string.IsNullOrEmpty(_phone) ? string.Empty : _phone.Trim();
-        }
-        set { _phone = value; }
+        get { return string.IsNullOrEmpty(this.phone) ? string.Empty : this.phone.Trim(); }
+        set { this.phone = value; }
     }
 
     public int? ParentId { get; set; }
@@ -45,6 +45,7 @@ public class User
     public int Gender { get; set; }
 
     public DateTime? DOB { get; set; }
+
     public string Password { get; set; }
 
     public string PasswordHash { get; set; }
@@ -56,7 +57,6 @@ public class User
     public bool IsSignOut { get; set; } = false;
 
     public int? ValidUnixTime { get; set; }
-
 
     public virtual User ParentUser { get; set; }
 }

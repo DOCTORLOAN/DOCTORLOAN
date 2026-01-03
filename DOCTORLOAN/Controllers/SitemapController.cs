@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+// <copyright file="SitemapController.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
 using System.Text;
 using System.Xml.Linq;
+using Microsoft.AspNetCore.Mvc;
 
 [Route("sitemap.xml")]
 public class SitemapController : Controller
@@ -23,10 +27,10 @@ public class SitemapController : Controller
             ("policydetails", "common", "monthly", "0.6"),
         };
 
-        var baseUrl = $"{Request.Scheme}://{Request.Host}";
+        var baseUrl = $"{this.Request.Scheme}://{this.Request.Host}";
         var validUrls = urls
-            .Select(u => (Url.Action(u.Action, u.Controller, null, Request.Scheme), u.ChangeFreq, u.Priority))
-            .Where(u => !string.IsNullOrEmpty(u.Item1))  // Loại bỏ URL null
+            .Select(u => (this.Url.Action(u.Action, u.Controller, null, this.Request.Scheme), u.ChangeFreq, u.Priority))
+            .Where(u => !string.IsNullOrEmpty(u.Item1)) // Loại bỏ URL null
             .Select(u => (new Uri(new Uri(baseUrl), u.Item1).ToString(), u.ChangeFreq, u.Priority)) // Chuẩn hóa đường dẫn
             .Distinct() // Loại bỏ trùng lặp
             .ToList();
@@ -48,6 +52,6 @@ public class SitemapController : Controller
 
         sb.AppendLine("</urlset>");
 
-        return Content(sb.ToString(), "application/xml", Encoding.UTF8);
+        return this.Content(sb.ToString(), "application/xml", Encoding.UTF8);
     }
 }

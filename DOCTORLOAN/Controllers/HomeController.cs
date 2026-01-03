@@ -1,34 +1,38 @@
-﻿using DOCTORLOAN.Models;
+// <copyright file="HomeController.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
+using System.Diagnostics;
+using DOCTORLOAN.Models;
 using DOCTORLOAN.Models.Payoo;
 using DOCTORLOAN.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace DOCTORLOAN.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly PayooService _payooService;
+        private readonly ILogger<HomeController> logger;
+        private readonly PayooService payooService;
 
         public HomeController(ILogger<HomeController> logger, PayooService payooService)
         {
-            _logger = logger;
-            _payooService = payooService;
+            this.logger = logger;
+            this.payooService = payooService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         public IActionResult Privacy()
         {
-            return View();
+            return this.View();
         }
 
         /// <summary>
-        /// Xử lý thanh toán Payoo - Server-side
+        /// Xử lý thanh toán Payoo - Server-side.
         /// </summary>
         [HttpPost]
         [IgnoreAntiforgeryToken] // API endpoint không cần antiforgery token
@@ -36,35 +40,35 @@ namespace DOCTORLOAN.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (!this.ModelState.IsValid)
                 {
-                    return Json(new PayooPaymentResponse
+                    return this.Json(new PayooPaymentResponse
                     {
                         Success = false,
-                        ErrorMessage = "Thông tin thanh toán không hợp lệ"
+                        ErrorMessage = "Thông tin thanh toán không hợp lệ",
                     });
                 }
 
-                var result = await _payooService.CreatePaymentAsync(request);
+                var result = await payooService.CreatePaymentAsync(request).ConfigureAwait(false);
 
                 if (result.Success && !string.IsNullOrEmpty(result.PaymentUrl))
                 {
-                    return Json(result);
+                    return this.Json(result);
                 }
 
-                return Json(new PayooPaymentResponse
+                return this.Json(new PayooPaymentResponse
                 {
                     Success = false,
-                    ErrorMessage = result.ErrorMessage ?? "Không thể tạo đơn hàng thanh toán"
+                    ErrorMessage = result.ErrorMessage ?? "Không thể tạo đơn hàng thanh toán",
                 });
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error processing Payoo payment");
-                return Json(new PayooPaymentResponse
+                this.logger.LogError(ex, "Error processing Payoo payment");
+                return this.Json(new PayooPaymentResponse
                 {
                     Success = false,
-                    ErrorMessage = "Đã xảy ra lỗi khi xử lý thanh toán. Vui lòng thử lại sau."
+                    ErrorMessage = "Đã xảy ra lỗi khi xử lý thanh toán. Vui lòng thử lại sau.",
                 });
             }
         }
@@ -72,7 +76,7 @@ namespace DOCTORLOAN.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return this.View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
     }
 }

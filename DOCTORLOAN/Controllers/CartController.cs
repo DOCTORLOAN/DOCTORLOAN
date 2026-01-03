@@ -1,54 +1,64 @@
-﻿using DOCTORLOAN.Models.Orders;
-using DOCTORLOAN.Models.Products;
-using DOCTORLOAN.Models.Api;
-using DOCTORLOAN.Helpers;
+// <copyright file="CartController.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
+using System.Text;
 using DOCTORLOAN.Constants;
+using DOCTORLOAN.Helpers;
+using DOCTORLOAN.Models.Api;
+using DOCTORLOAN.Models.Orders;
+using DOCTORLOAN.Models.Products;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Text;
 
 namespace DOCTORLOAN.Controllers
 {
     [AllowAnonymous]
     public class CartController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IHttpClientFactory httpClientFactory;
+        private readonly ILogger<CartController> logger;
 
-        public CartController(IHttpClientFactory httpClientFactory)
+        public CartController(IHttpClientFactory httpClientFactory, ILogger<CartController> logger)
         {
-            _httpClientFactory = httpClientFactory;
+            this.httpClientFactory = httpClientFactory;
+            this.logger = logger;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
+        [HttpGet]
         public IActionResult AddToCart()
         {
-            return View();
+            return this.View();
         }
 
+        [HttpGet]
         public async Task<IActionResult> Payment(int id, int quantity)
         {
             try
             {
                 if (id <= 0 || quantity <= 0)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return this.RedirectToAction("Index", "Home");
                 }
 
                 // Set loading state
                 this.SetLoadingState(true, "Đang tải thông tin sản phẩm...");
                 this.SetErrorState(false);
 
-                var httpClient = _httpClientFactory.CreateClient();
-                var productResponse = await httpClient.GetAsync($"{ApiConstants.ProductGetProduct}?id={id}");
+                using var httpClient = this.httpClientFactory.CreateClient();
+                var productUri = new Uri($"{ApiConstants.ProductGetProduct}?id={id}");
+                var productResponse = await httpClient.GetAsync(productUri).ConfigureAwait(false);
 
                 if (productResponse.IsSuccessStatusCode)
                 {
-                    var productJson = await productResponse.Content.ReadAsStringAsync();
+                    var productJson = await productResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var productApiResponse = JsonConvert.DeserializeObject<ApiResponse<ProductDetailResponse>>(productJson);
 
                     if (productApiResponse?.Data != null)
@@ -67,7 +77,7 @@ namespace DOCTORLOAN.Controllers
                                 ProductId = pm.ProductId,
                                 MediaUrl = pm.MediaUrl,
                                 ItemCode = pm.ItemCode,
-                                OrderBy = pm.OrderBy
+                                OrderBy = pm.OrderBy,
                             }).ToList() ?? new List<ProductMediaViewModel>(),
                             ProductItems = product.ProductItems?.Select(pi => new ProductItemViewModel
                             {
@@ -79,21 +89,21 @@ namespace DOCTORLOAN.Controllers
                                 {
                                     Id = po.Id,
                                     Name = po.Name,
-                                    Value = po.Value
-                                }).ToList() ?? new List<ProductOptionViewModel>()
+                                    Value = po.Value,
+                                }).ToList() ?? new List<ProductOptionViewModel>(),
                             }).ToList() ?? new List<ProductItemViewModel>(),
                             ProductAttributes = product.ProductAttributes?.Select(pa => new ProductAttributeViewModel
                             {
                                 ProductId = pa.ProductId,
                                 AttributeId = pa.AttributeId,
-                                Value = pa.Value
+                                Value = pa.Value,
                             }).ToList() ?? new List<ProductAttributeViewModel>(),
                             ProductDetails = product.ProductDetails?.Select(pd => new ProductDetailInfoViewModel
                             {
                                 ProductId = pd.ProductId,
                                 Description = pd.Description,
-                                Summary = pd.Summary
-                            }).ToList() ?? new List<ProductDetailInfoViewModel>()
+                                Summary = pd.Summary,
+                            }).ToList() ?? new List<ProductDetailInfoViewModel>(),
                         };
 
                         // Get default product item (first one)
@@ -109,110 +119,172 @@ namespace DOCTORLOAN.Controllers
                             SelectedProductItemId = selectedProductItemId,
                             SubTotal = price * quantity,
                             ShippingFee = 0, // Miễn phí vận chuyển
-                            TotalPrice = (price * quantity) + product.PriceDiscount
+                            TotalPrice = (price * quantity) + product.PriceDiscount,
                         };
 
                         // Set loading state to false after data loaded
                         this.SetLoadingState(false);
-                        return View(viewModel);
+                        return this.View(viewModel);
                     }
                 }
 
                 // Set error state
                 this.SetLoadingState(false);
                 this.SetErrorState(true, "Không thể tải thông tin sản phẩm. Vui lòng thử lại sau.");
-                return RedirectToAction("Index", "Home");
+                return this.RedirectToAction("Index", "Home");
+            }
+            catch (HttpRequestException ex)
+            {
+                this.logger.LogError(ex, "HTTP error occurred while loading product for payment");
+                this.SetLoadingState(false);
+                this.SetErrorState(true, "Không thể kết nối đến server. Vui lòng thử lại sau.");
+                return this.RedirectToAction("Index", "Home");
+            }
+            catch (TaskCanceledException ex)
+            {
+                this.logger.LogError(ex, "Request timeout occurred while loading product for payment");
+                this.SetLoadingState(false);
+                this.SetErrorState(true, "Request timeout. Vui lòng thử lại sau.");
+                return this.RedirectToAction("Index", "Home");
+            }
+            catch (JsonException ex)
+            {
+                this.logger.LogError(ex, "JSON deserialization error occurred while loading product for payment");
+                this.SetLoadingState(false);
+                this.SetErrorState(true, "Lỗi xử lý dữ liệu. Vui lòng thử lại sau.");
+                return this.RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
+                this.logger.LogError(ex, "Unexpected error occurred while loading product for payment");
                 // Set error state
                 this.SetLoadingState(false);
                 this.SetErrorState(true, $"Đã xảy ra lỗi: {ex.Message}");
-                return RedirectToAction("Index", "Home");
+                return this.RedirectToAction("Index", "Home");
             }
         }
 
-        public async Task<IActionResult> PaymentPost(Order _order, ListItem _listItem)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PaymentPost(Order order, ListItem listItem)
         {
+            if (listItem == null || order == null)
+            {
+                this.TempData["AlertMessageError"] = "Thông tin đơn hàng không hợp lệ. Vui lòng thử lại.";
+                return this.RedirectToAction("Index", "Home");
+            }
+
             try
             {
-                if (_listItem == null || _order == null)
-                {
-                    TempData["AlertMessageError"] = "Thông tin đơn hàng không hợp lệ. Vui lòng thử lại.";
-                    return RedirectToAction("Index", "Home");
-                }
-
                 // Validate model state
-                if (!ModelState.IsValid)
+                if (!this.ModelState.IsValid)
                 {
-                    TempData["AlertMessageError"] = "Thông tin đơn hàng không hợp lệ. Vui lòng kiểm tra lại các trường bắt buộc.";
-                    TempData["id"] = _listItem.ProductId;
-                    TempData["quantity"] = _listItem.Quantity;
-                    return RedirectToAction("Payment", new { id = _listItem.ProductId, quantity = _listItem.Quantity });
+                    this.TempData["AlertMessageError"] = "Thông tin đơn hàng không hợp lệ. Vui lòng kiểm tra lại các trường bắt buộc.";
+                    this.TempData["id"] = listItem.ProductId;
+                    this.TempData["quantity"] = listItem.Quantity;
+                    return this.RedirectToAction("Payment", new { id = listItem.ProductId, quantity = listItem.Quantity });
                 }
 
-                ListItem item = new ListItem
+                var item = new ListItem
                 {
-                    ProductId = _listItem.ProductId,
-                    ProductItemId = _listItem.ProductItemId,
-                    Name = _listItem.Name,
-                    Price = _listItem.Price,
-                    Quantity = _listItem.Quantity,
-                    TotalPrice = _listItem.TotalPrice, // Sử dụng TotalPrice từ _listItem (đã được tính từ client)
-                    ProductSku = _listItem.ProductSku ?? string.Empty,
+                    ProductId = listItem.ProductId,
+                    ProductItemId = listItem.ProductItemId,
+                    Name = listItem.Name,
+                    Price = listItem.Price,
+                    Quantity = listItem.Quantity,
+                    TotalPrice = listItem.TotalPrice, // Sử dụng TotalPrice từ _listItem (đã được tính từ client)
+                    ProductSku = listItem.ProductSku ?? string.Empty,
                 };
 
-                Order data = new Order
+                var data = new Order
                 {
-                    FullName = _order.FullName,
-                    Phone = _order.Phone,
-                    Email = _order.Email ?? string.Empty,
+                    FullName = order.FullName,
+                    Phone = order.Phone,
+                    Email = order.Email ?? string.Empty,
                     SubTotal = item.Price * item.Quantity,
-                    TotalPrice = _listItem.TotalPrice,
-                    AddressLine = _order.AddressLine,
-                    Remarks = _order.Remarks,
-                    PaymentMethod = _order.PaymentMethod,
+                    TotalPrice = listItem.TotalPrice,
+                    AddressLine = order.AddressLine,
+                    Remarks = order.Remarks,
+                    PaymentMethod = order.PaymentMethod,
                     ListItem =
-                        {
-                            item
-                        }
+                    {
+                        item,
+                    },
                 };
 
-                string jsonData = JsonConvert.SerializeObject(data);
-                HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                var httpClient = _httpClientFactory.CreateClient();
-                var response = await httpClient.PostAsync(ApiConstants.OrderCreate, content);
+                var jsonData = JsonConvert.SerializeObject(data);
+                using var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                using var httpClient = this.httpClientFactory.CreateClient();
+                
+                var uri = new Uri(ApiConstants.OrderCreate);
+                var response = await httpClient.PostAsync(uri, content).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    string responseContent = await response.Content.ReadAsStringAsync();
+                    var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                    TempData["dataRes"] = responseContent;
-                    TempData["phone"] = _order.Phone;
-                    TempData["custommerName"] = _order.FullName;
-                    TempData["addressLine"] = _order.AddressLine;
-                    TempData["email"] = _order.Email;
-                    TempData["paymentMethod"] = _order.PaymentMethod;
+                    this.TempData["dataRes"] = responseContent;
+                    this.TempData["phone"] = order.Phone;
+                    this.TempData["custommerName"] = order.FullName;
+                    this.TempData["addressLine"] = order.AddressLine;
+                    this.TempData["email"] = order.Email;
+                    this.TempData["paymentMethod"] = order.PaymentMethod;
 
-                    return RedirectToAction("Index", "Home");
+                    return this.RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    TempData["AlertMessageError"] = "Đặt đơn hàng thất bại. Vui lòng kiểm tra lại thông tin.";
-                    TempData["id"] = _listItem.ProductId;
-                    TempData["quantity"] = _listItem.Quantity;
+                    this.logger.LogWarning("Order creation failed with status code: {StatusCode}", response.StatusCode);
+                    this.TempData["AlertMessageError"] = "Đặt đơn hàng thất bại. Vui lòng kiểm tra lại thông tin.";
+                    this.TempData["id"] = listItem.ProductId;
+                    this.TempData["quantity"] = listItem.Quantity;
 
-                    return RedirectToAction("Payment", new { id = _listItem.ProductId, quantity = _listItem.Quantity });
+                    return this.RedirectToAction("Payment", new { id = listItem.ProductId, quantity = listItem.Quantity });
                 }
+            }
+            catch (HttpRequestException ex)
+            {
+                this.logger.LogError(ex, "HTTP error occurred while creating order");
+                this.TempData["AlertMessageError"] = "Không thể kết nối đến server. Vui lòng thử lại sau.";
+                if (listItem != null)
+                {
+                    return this.RedirectToAction("Payment", new { id = listItem.ProductId, quantity = listItem.Quantity });
+                }
+
+                return this.RedirectToAction("Index", "Home");
+            }
+            catch (TaskCanceledException ex)
+            {
+                this.logger.LogError(ex, "Request timeout occurred while creating order");
+                this.TempData["AlertMessageError"] = "Request timeout. Vui lòng thử lại sau.";
+                if (listItem != null)
+                {
+                    return this.RedirectToAction("Payment", new { id = listItem.ProductId, quantity = listItem.Quantity });
+                }
+
+                return this.RedirectToAction("Index", "Home");
+            }
+            catch (JsonException ex)
+            {
+                this.logger.LogError(ex, "JSON serialization error occurred while creating order");
+                this.TempData["AlertMessageError"] = "Lỗi xử lý dữ liệu. Vui lòng thử lại sau.";
+                if (listItem != null)
+                {
+                    return this.RedirectToAction("Payment", new { id = listItem.ProductId, quantity = listItem.Quantity });
+                }
+
+                return this.RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-                TempData["AlertMessageError"] = $"Đã xảy ra lỗi: {ex.Message}";
-                if (_listItem != null)
+                this.logger.LogError(ex, "Unexpected error occurred while creating order");
+                this.TempData["AlertMessageError"] = $"Đã xảy ra lỗi: {ex.Message}";
+                if (listItem != null)
                 {
-                    return RedirectToAction("Payment", new { id = _listItem.ProductId, quantity = _listItem.Quantity });
+                    return this.RedirectToAction("Payment", new { id = listItem.ProductId, quantity = listItem.Quantity });
                 }
-                return RedirectToAction("Index", "Home");
+
+                return this.RedirectToAction("Index", "Home");
             }
         }
     }

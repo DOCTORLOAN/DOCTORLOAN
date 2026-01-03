@@ -1,12 +1,16 @@
-﻿using DOCTORLOAN.Models.VMAuth;
-using DOCTORLOAN.Constants;
-using Microsoft.AspNetCore.Mvc;
+// <copyright file="AuthController.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
 using System.Security.Claims;
+using System.Text;
+using DOCTORLOAN.Constants;
+using DOCTORLOAN.Models.Users;
+using DOCTORLOAN.Models.VMAuth;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using DOCTORLOAN.Models.Users;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Text;
 
 namespace DOCTORLOAN.Controllers
 {
@@ -14,11 +18,14 @@ namespace DOCTORLOAN.Controllers
     {
         public IActionResult Login()
         {
-            ClaimsPrincipal claimUser = HttpContext.User;
+            ClaimsPrincipal claimUser = this.HttpContext.User;
 
             if (claimUser.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Home");
-            return View();
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+
+            return this.View();
         }
 
         /*
@@ -60,9 +67,9 @@ namespace DOCTORLOAN.Controllers
             if (claimUser.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Home");*/
 
-
-            return View();
+            return this.View();
         }
+
         /*
         public async Task<IActionResult> RegisterPost(User _user)
         {
@@ -106,9 +113,9 @@ namespace DOCTORLOAN.Controllers
             }
         }*/
 
-        //public IActionResult ForgotPassword()
-        //{
+        // public IActionResult ForgotPassword()
+        // {
         //    return View();
-        //}
+        // }
     }
 }
