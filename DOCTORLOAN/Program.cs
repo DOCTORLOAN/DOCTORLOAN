@@ -1,15 +1,11 @@
-// <copyright file="Program.cs" company="DOCTORLOAN">
-// Copyright (c) DOCTORLOAN. All rights reserved.
-// </copyright>
-
-using System.Net.Http.Headers;
-using DOCTORLOAN.Models.NewsModal;
-using DOCTORLOAN.Models.Payoo;
-using DOCTORLOAN.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
+using System.Net.Http.Headers;
+using DOCTORLOAN.Models.Payoo;
+using DOCTORLOAN.Models.NewsModal;
+using DOCTORLOAN.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -35,7 +31,7 @@ builder.Services.AddAuthentication(
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("DoctorLoanApi", client =>
 {
-    // client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
+    //client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
     client.BaseAddress = new Uri("https://localhost:44333/");
     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     client.Timeout = TimeSpan.FromSeconds(30);
@@ -71,19 +67,30 @@ app.Use(async (context, next) =>
     context.Response.Headers["X-Content-Type-Options"] = "nosniff";
     context.Response.Headers["X-Frame-Options"] = "DENY";
     context.Response.Headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
+
+    // Permissions Policy: Note that 'unload' is not a standard Permissions Policy feature
+    // The violations are from third-party scripts (Facebook SDK) and don't affect functionality
     context.Response.Headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()";
 
     // CSP Report-Only: allow required third-parties while tuning.
+    var connectSrc = "'self' https://doctorloan-api.giathaidoctorloan.vn https://esgoo.net https://www.google-analytics.com https://www.googletagmanager.com https://www.facebook.com ws://localhost:* wss://localhost:*";
+
+    // Add Browser Link support in Development (Visual Studio Browser Link)
+    if (app.Environment.IsDevelopment())
+    {
+        connectSrc += " http://localhost:* http://127.0.0.1:*";
+    }
+
     context.Response.Headers["Content-Security-Policy-Report-Only"] =
         "default-src 'self'; " +
-        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.youtube.com https://s.ytimg.com https://za.zdn.vn; " +
+        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.youtube.com https://s.ytimg.com https://za.zdn.vn https://cdn.amcharts.com; " +
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-        "img-src 'self' data: https://www.google-analytics.com; " +
+        "img-src 'self' data: https://www.google-analytics.com https://doctorloan-api.giathaidoctorloan.vn; " +
         "font-src 'self' https://fonts.gstatic.com data:; " +
-        "connect-src 'self' https://doctorloan-api.giathaidoctorloan.vn https://esgoo.net ws://localhost:* wss://localhost:*; " +
-        "frame-src https://www.youtube.com https://page.widget.zalo.me; " +
+        "connect-src " + connectSrc + "; " +
+        "frame-src https://www.youtube.com https://page.widget.zalo.me https://www.facebook.com https://www.google.com https://maps.google.com; " +
         "frame-ancestors 'none'";
-    await next().ConfigureAwait(false);
+    await next();
 });
 
 app.UseStaticFiles(new StaticFileOptions
@@ -111,7 +118,7 @@ app.UseStaticFiles(new StaticFileOptions
             ctx.Context.Response.Headers[HeaderNames.Pragma] = "no-cache";
             ctx.Context.Response.Headers[HeaderNames.Expires] = "0";
         }
-    },
+    }
 });
 
 app.UseRouting();

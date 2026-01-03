@@ -9,7 +9,8 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    if ($(this).scrollTop() > 100) {
+    // Check initial scroll position
+    if ($(window).scrollTop() > 100) {
         $('header').addClass('header-fixed');
     }
 
@@ -62,7 +63,4 @@ jQuery(document).ready(function ($) {
     }
 
     var lightbox = GLightbox();
-    lightbox.on('open', (target) => {
-        console.log('lightbox opened');
-    });
 });
