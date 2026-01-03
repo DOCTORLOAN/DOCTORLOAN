@@ -20,7 +20,7 @@ namespace DOCTORLOAN.Controllers
         {
             ClaimsPrincipal claimUser = this.HttpContext.User;
 
-            if (claimUser.Identity.IsAuthenticated)
+            if (claimUser.Identity?.IsAuthenticated == true)
             {
                 return this.RedirectToAction("Index", "Home");
             }

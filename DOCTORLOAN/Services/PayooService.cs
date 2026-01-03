@@ -11,6 +11,13 @@ namespace DOCTORLOAN.Services;
 
 public class PayooService
 {
+    private readonly ILogger<PayooService> _logger;
+
+    public PayooService(ILogger<PayooService> logger)
+    {
+        _logger = logger;
+    }
+
     private readonly PayooConfig config;
     private readonly IHttpClientFactory httpClientFactory;
 
@@ -146,7 +153,10 @@ public class PayooService
             };
 
             var formContent = new FormUrlEncodedContent(formData);
-            var response = await httpClient.PostAsync(config.BaseUrl + "create-preorder", formContent).ConfigureAwait(false);
+            var baseUri = new Uri(config.BaseUrl);
+            var requestUri = new Uri(baseUri, "create-preorder");
+
+            var response = await httpClient.PostAsync(requestUri, formContent).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
             {
@@ -169,12 +179,37 @@ public class PayooService
                 ErrorMessage = "Không thể tạo đơn hàng thanh toán. Vui lòng thử lại.",
             };
         }
-        catch (Exception ex)
+        catch (HttpRequestException ex)
         {
+            // Lỗi mạng hoặc server Payoo không phản hồi
+            _logger.LogError(ex, "Lỗi kết nối API Payoo.");
             return new PayooPaymentResponse
             {
                 Success = false,
-                ErrorMessage = $"Đã xảy ra lỗi: {ex.Message}",
+                ErrorMessage = "Không thể kết nối với cổng thanh toán. Vui lòng thử lại sau."
+            };
+        }
+        catch (JsonException ex)
+        {
+            // Lỗi khi dữ liệu trả về không đúng định dạng
+            _logger.LogError(ex, "Lỗi định dạng dữ liệu trả về từ Payoo.");
+            return new PayooPaymentResponse
+            {
+                Success = false,
+                ErrorMessage = "Dữ liệu thanh toán không hợp lệ."
+            };
+        }
+        catch (Exception ex)
+        {
+            // Lỗi không xác định khác
+            _logger.LogError(ex, "Lỗi hệ thống khi xử lý thanh toán Payoo.");
+
+            // Lưu ý: Trong môi trường Production, không nên trả về ex.Message trực tiếp cho khách hàng
+            // vì lý do bảo mật (tránh lộ thông tin hệ thống).
+            return new PayooPaymentResponse
+            {
+                Success = false,
+                ErrorMessage = "Đã xảy ra lỗi hệ thống. Vui lòng liên hệ hỗ trợ."
             };
         }
     }
