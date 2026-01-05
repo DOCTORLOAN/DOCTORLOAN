@@ -16,7 +16,7 @@
 
         .swiper-button-prev, .swiper-button-next {
             width: var(--sp-nav-size);
-            height: var(--s p-nav-size);
+            height: var(--sp-nav-size);
             margin-top: 0;
             color: @main-orange;
             opacity: 0.1;
@@ -284,6 +284,7 @@
 
             input[type="number"] {
                 -moz-appearance: textfield;
+                appearance: textfield;
                 padding: 10px;
                 text-align: center;
             }
@@ -1014,7 +1015,7 @@
         .ipr-item {
             .ipr-optioncheck {
                 max-width: 100px;
-                border: 1pc;
+                border: 1px solid @light-gray;
             }
         }
 
@@ -1137,7 +1138,7 @@
 
 .product-content-wrapper {
     .main-content {
-        /*min-height: 450px;*/
+        position: relative;
     }
 
     .accordion-product {

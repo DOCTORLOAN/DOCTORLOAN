@@ -35,8 +35,8 @@ builder.Services.AddAuthentication(
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("DoctorLoanApi", client =>
 {
-    client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
-    //client.BaseAddress = new Uri("https://localhost:44333/");
+    //client.BaseAddress = new Uri("https://doctorloan-api.giathaidoctorloan.vn/");
+    client.BaseAddress = new Uri("https://localhost:44333/");
     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     client.Timeout = TimeSpan.FromSeconds(30);
 });
@@ -92,7 +92,7 @@ app.Use(async (context, next) =>
         "img-src 'self' data: https://www.google-analytics.com https://doctorloan-api.giathaidoctorloan.vn; " +
         "font-src 'self' https://fonts.gstatic.com data:; " +
         "connect-src " + connectSrc + "; " +
-        "frame-src https://www.youtube.com https://page.widget.zalo.me https://www.facebook.com https://www.google.com https://maps.google.com; " +
+        "frame-src https://www.youtube.com https://page.widget.zalo.me https://www.facebook.com https://www.google.com https://maps.google.com https://drive.google.com https://docs.google.com; " +
         "frame-ancestors 'none'";
     await next();
 });
@@ -101,6 +101,27 @@ app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
     {
+        var path = ctx.File.Name;
+        var extension = System.IO.Path.GetExtension(path).ToLowerInvariant();
+        
+        // Set proper MIME types for CSS and JavaScript files
+        if (extension == ".css")
+        {
+            ctx.Context.Response.ContentType = "text/css; charset=utf-8";
+        }
+        else if (extension == ".js")
+        {
+            ctx.Context.Response.ContentType = "application/javascript; charset=utf-8";
+        }
+        else if (extension == ".json")
+        {
+            ctx.Context.Response.ContentType = "application/json; charset=utf-8";
+        }
+        else if (extension == ".map")
+        {
+            ctx.Context.Response.ContentType = "application/json; charset=utf-8";
+        }
+        
         // Kiểm tra xem đây có phải là môi trường Development không.
         // Trong môi trường Development, có thể không cần cache hoặc cache ngắn hơn
         // để dễ dàng xem các thay đổi ngay lập tức.
