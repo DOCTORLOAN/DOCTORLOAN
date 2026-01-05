@@ -1,3 +1,7 @@
+// <copyright file="AuthController.cs" company="DOCTORLOAN">
+// Copyright (c) DOCTORLOAN. All rights reserved.
+// </copyright>
+
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -73,7 +77,7 @@ app.Use(async (context, next) =>
     context.Response.Headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()";
 
     // CSP Report-Only: allow required third-parties while tuning.
-    var connectSrc = "'self' https://doctorloan-api.giathaidoctorloan.vn https://esgoo.net https://www.google-analytics.com https://www.googletagmanager.com https://www.facebook.com ws://localhost:* wss://localhost:*";
+    var connectSrc = "'self' https://doctorloan-api.giathaidoctorloan.vn https://esgoo.net https://www.google-analytics.com https://www.googletagmanager.com https://www.facebook.com https://ws.widget.zalo.me https://sp.zalo.me ws://localhost:* wss://localhost:*";
 
     // Add Browser Link support in Development (Visual Studio Browser Link)
     if (app.Environment.IsDevelopment())
@@ -83,12 +87,12 @@ app.Use(async (context, next) =>
 
     context.Response.Headers["Content-Security-Policy-Report-Only"] =
         "default-src 'self'; " +
-        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.youtube.com https://s.ytimg.com https://za.zdn.vn https://cdn.amcharts.com; " +
+        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.youtube.com https://s.ytimg.com https://za.zdn.vn https://cdn.amcharts.com https://cdn.jsdelivr.net; " +
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
         "img-src 'self' data: https://www.google-analytics.com https://doctorloan-api.giathaidoctorloan.vn; " +
         "font-src 'self' https://fonts.gstatic.com data:; " +
         "connect-src " + connectSrc + "; " +
-        "frame-src https://www.youtube.com https://page.widget.zalo.me https://www.facebook.com https://www.google.com https://maps.google.com; " +
+        "frame-src https://www.youtube.com https://page.widget.zalo.me https://www.facebook.com https://www.google.com https://maps.google.com https://drive.google.com https://docs.google.com; " +
         "frame-ancestors 'none'";
     await next();
 });
@@ -97,6 +101,27 @@ app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
     {
+        var path = ctx.File.Name;
+        var extension = System.IO.Path.GetExtension(path).ToLowerInvariant();
+
+        // Set proper MIME types for CSS and JavaScript files
+        if (extension == ".css")
+        {
+            ctx.Context.Response.ContentType = "text/css; charset=utf-8";
+        }
+        else if (extension == ".js")
+        {
+            ctx.Context.Response.ContentType = "application/javascript; charset=utf-8";
+        }
+        else if (extension == ".json")
+        {
+            ctx.Context.Response.ContentType = "application/json; charset=utf-8";
+        }
+        else if (extension == ".map")
+        {
+            ctx.Context.Response.ContentType = "application/json; charset=utf-8";
+        }
+
         // Kiểm tra xem đây có phải là môi trường Development không.
         // Trong môi trường Development, có thể không cần cache hoặc cache ngắn hơn
         // để dễ dàng xem các thay đổi ngay lập tức.

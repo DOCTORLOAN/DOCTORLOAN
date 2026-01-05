@@ -116,10 +116,10 @@ public class ProductMediaResponse
     public int ProductId { get; set; }
 
     [JsonProperty("mediaUrl")]
-    public string MediaUrl { get; set; }
+    public string MediaUrl { get; set; } = string.Empty;
 
     [JsonProperty("itemCode")]
-    public string ItemCode { get; set; }
+    public string ItemCode { get; set; } = string.Empty;
 
     [JsonProperty("orderBy")]
     public int OrderBy { get; set; }
@@ -134,7 +134,7 @@ public class ProductAttributeResponse
     public int AttributeId { get; set; }
 
     [JsonProperty("value")]
-    public string Value { get; set; }
+    public string Value { get; set; } = string.Empty;
 }
 
 public class ProductDetailInfoResponse
@@ -143,17 +143,17 @@ public class ProductDetailInfoResponse
     public int ProductId { get; set; }
 
     [JsonProperty("description")]
-    public string Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 
     [JsonProperty("summary")]
-    public string Summary { get; set; }
+    public string Summary { get; set; } = string.Empty;
 }
 
 // Category API Response Models
 public class CategoryListResponse
 {
     [JsonProperty("items")]
-    public List<CategoryResponse> Items { get; set; }
+    public required List<CategoryResponse> Items { get; set; }
 }
 
 public class CategoryResponse

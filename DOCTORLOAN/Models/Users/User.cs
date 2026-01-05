@@ -10,17 +10,17 @@ public class User
 
     public int RoleId { get; set; }
 
-    public string Code { get; set; }
+    public string Code { get; set; } = string.Empty;
 
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } = string.Empty;
 
-    public string LastName { get; set; }
+    public string LastName { get; set; } = string.Empty;
 
-    public string FullName { get; set; }
+    public string FullName { get; set; } = string.Empty;
 
-    public string UserName { get; set; }
+    public string UserName { get; set; } = string.Empty;
 
-    private string email;
+    private string email = string.Empty;
 
     public string Email
     {
@@ -28,7 +28,7 @@ public class User
         set { this.email = value; }
     }
 
-    private string phone;
+    private string phone = string.Empty;
 
     public string Phone
     {
