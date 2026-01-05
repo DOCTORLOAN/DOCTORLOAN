@@ -39,6 +39,13 @@ body {
         max-width: 450px;
         margin: 0 auto;
         display: block;
+        height: auto;
+        // CLS Optimization: Reserve space for banner images
+        min-height: 200px;
+        
+        @media (max-width: 767.98px) {
+            min-height: 150px;
+        }
     }
 
     .content-banner {
@@ -47,6 +54,13 @@ body {
         .img-doctor {
             width: 85%;
             margin-left: 5%;
+            height: auto;
+            // CLS Optimization: Reserve space for doctor images
+            min-height: 200px;
+            
+            @media (max-width: 767.98px) {
+                min-height: 150px;
+            }
         }
 
         #spanSmall {

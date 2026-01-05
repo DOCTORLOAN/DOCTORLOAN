@@ -8,11 +8,23 @@
         width: 85%;
         margin: 0 auto;
         padding-top: 1rem;
+        height: auto;
+        max-height: 100%;
+        object-fit: contain;
     }
 
     .productSwiperMain {
         margin-bottom: 1.5rem;
         --sp-nav-size: 45px;
+        
+        // CLS Optimization: Reserve space for swiper container
+        .swiper-wrapper {
+            min-height: 400px;
+            
+            @media (max-width: 767.98px) {
+                min-height: 300px;
+            }
+        }
 
         .swiper-button-prev, .swiper-button-next {
             width: var(--sp-nav-size);
@@ -39,6 +51,18 @@
 
         .swiper-slide {
             text-align: center;
+            
+            // CLS Optimization: Reserve space for images
+            &:has(.img-product-detail) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 400px;
+                
+                @media (max-width: 767.98px) {
+                    min-height: 300px;
+                }
+            }
         }
     }
 
@@ -55,6 +79,14 @@
             border-radius: .5rem;
             background-color: #DDD4D9;
             cursor: pointer;
+            min-height: 80px; // CLS Optimization: Reserve space for thumbnails
+        }
+        
+        .img-thumb-position {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
         }
 
         .swiper-slide {
@@ -69,6 +101,45 @@
     #productDetail {
         margin-top: 15px;
         border: 1px solid;
+    }
+    
+    // CLS Optimization: Reserve space for Google Drive iframes without affecting layout
+    .accordion-body {
+        iframe[src*="drive.google.com"] {
+            width: 100%;
+            height: 500px;
+            border: none;
+            display: block;
+            min-height: 500px; // Reserve space to prevent CLS
+            
+            @media (max-width: 767.98px) {
+                height: 400px;
+                min-height: 400px;
+            }
+        }
+        
+        // Reserve space for accordion-body containing iframes (fallback for browsers without :has support)
+        &:empty {
+            min-height: 0;
+        }
+    }
+    
+    // Reserve space when accordion-body contains iframe (for browsers with :has support)
+    .accordion-body:has(iframe[src*="drive.google.com"]) {
+        min-height: 500px;
+        
+        @media (max-width: 767.98px) {
+            min-height: 400px;
+        }
+    }
+    
+    // CLS Optimization: Reserve space for dynamically loaded content containers
+    #policyItem1, #policyItem2 {
+        min-height: 50px; // Reserve minimum space for dynamic content
+        
+        .image-group {
+            min-height: 100px; // Reserve space for accordion content
+        }
     }
 
     .view-more {

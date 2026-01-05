@@ -69,6 +69,11 @@ a:focus {
 }
 img {
   width: 100%;
+  height: auto;
+  display: block;
+}
+img[loading="lazy"] {
+  min-height: 1px;
 }
 strong {
   font-family: helveticaneue-Bold;
@@ -2172,6 +2177,13 @@ body {
   max-width: 450px;
   margin: 0 auto;
   display: block;
+  height: auto;
+  min-height: 200px;
+}
+@media (max-width: 767.98px) {
+  #Home_Banner .img-banner-home {
+    min-height: 150px;
+  }
 }
 #Home_Banner .content-banner {
   padding-top: 5rem;
@@ -2179,6 +2191,13 @@ body {
 #Home_Banner .content-banner .img-doctor {
   width: 85%;
   margin-left: 5%;
+  height: auto;
+  min-height: 200px;
+}
+@media (max-width: 767.98px) {
+  #Home_Banner .content-banner .img-doctor {
+    min-height: 150px;
+  }
 }
 #Home_Banner .content-banner #spanSmall {
   font-size: 0.5em;
@@ -9585,6 +9604,23 @@ body {
   border-radius: 1rem;
   padding: 1rem;
 }
+.product-wrapper .img-item > div[id^="product-"] {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 767.98px) {
+  .product-wrapper .img-item > div[id^="product-"] {
+    min-height: 150px;
+  }
+}
+.product-wrapper .img-item > div[id^="product-"] img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
 .product-wrapper .product-item {
   margin: 2rem 0;
   background-color: #f0f2f5;
@@ -13358,10 +13394,21 @@ body {
   width: 85%;
   margin: 0 auto;
   padding-top: 1rem;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
 }
 #infoProduct .productSwiperMain {
   margin-bottom: 1.5rem;
   --sp-nav-size: 45px;
+}
+#infoProduct .productSwiperMain .swiper-wrapper {
+  min-height: 400px;
+}
+@media (max-width: 767.98px) {
+  #infoProduct .productSwiperMain .swiper-wrapper {
+    min-height: 300px;
+  }
 }
 #infoProduct .productSwiperMain .swiper-button-prev,
 #infoProduct .productSwiperMain .swiper-button-next {
@@ -13387,6 +13434,17 @@ body {
 #infoProduct .productSwiperMain .swiper-slide {
   text-align: center;
 }
+#infoProduct .productSwiperMain .swiper-slide:has(.img-product-detail) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+@media (max-width: 767.98px) {
+  #infoProduct .productSwiperMain .swiper-slide:has(.img-product-detail) {
+    min-height: 300px;
+  }
+}
 #infoProduct .productSwiperThumb {
   background-color: #FFF;
   padding: 0.75rem;
@@ -13400,6 +13458,13 @@ body {
   border-radius: 0.5rem;
   background-color: #DDD4D9;
   cursor: pointer;
+  min-height: 80px;
+}
+#infoProduct .productSwiperThumb .img-thumb-position {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
 }
 #infoProduct .productSwiperThumb .swiper-slide {
   opacity: 0.4;
@@ -13410,6 +13475,38 @@ body {
 #infoProduct #productDetail {
   margin-top: 15px;
   border: 1px solid;
+}
+#infoProduct .accordion-body iframe[src*="drive.google.com"] {
+  width: 100%;
+  height: 500px;
+  border: none;
+  display: block;
+  min-height: 500px;
+}
+@media (max-width: 767.98px) {
+  #infoProduct .accordion-body iframe[src*="drive.google.com"] {
+    height: 400px;
+    min-height: 400px;
+  }
+}
+#infoProduct .accordion-body:empty {
+  min-height: 0;
+}
+#infoProduct .accordion-body:has(iframe[src*="drive.google.com"]) {
+  min-height: 500px;
+}
+@media (max-width: 767.98px) {
+  #infoProduct .accordion-body:has(iframe[src*="drive.google.com"]) {
+    min-height: 400px;
+  }
+}
+#infoProduct #policyItem1,
+#infoProduct #policyItem2 {
+  min-height: 50px;
+}
+#infoProduct #policyItem1 .image-group,
+#infoProduct #policyItem2 .image-group {
+  min-height: 100px;
 }
 #infoProduct .view-more {
   margin-top: 1.5rem;
@@ -14433,6 +14530,8 @@ body {
   height: auto;
   border-radius: 0.5rem;
   margin: 1rem 0;
+  display: block;
+  min-height: 1px;
 }
 #NewsDetail .news-content-wrapper .meta-desc-detail p {
   margin-bottom: 1rem;
@@ -14460,12 +14559,21 @@ body {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
 }
+#NewsDetail .interdepend-slide .interdepend-desc {
+  min-height: 200px;
+}
+@media (max-width: 767.98px) {
+  #NewsDetail .interdepend-slide .interdepend-desc {
+    min-height: 150px;
+  }
+}
 #NewsDetail .interdepend-slide .interdepend-desc img {
   width: 100%;
   height: auto;
   border-radius: 0.5rem;
   margin-bottom: 0.75rem;
   object-fit: cover;
+  display: block;
 }
 #NewsDetail .interdepend-slide .interdepend-desc h5 {
   font-size: 1.25rem;
@@ -14504,6 +14612,14 @@ body {
 }
 #NewsDetail .interdependSwiper {
   --sp-nav-size: 40px;
+}
+#NewsDetail .interdependSwiper .swiper-wrapper {
+  min-height: 250px;
+}
+@media (max-width: 767.98px) {
+  #NewsDetail .interdependSwiper .swiper-wrapper {
+    min-height: 200px;
+  }
 }
 #NewsDetail .interdependSwiper .swiper-button-prev,
 #NewsDetail .interdependSwiper .swiper-button-next {

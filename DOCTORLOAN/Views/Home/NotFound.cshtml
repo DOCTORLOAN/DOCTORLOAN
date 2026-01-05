@@ -1,0 +1,119 @@
+@{
+    ViewData["Title"] = "404 - Trang không tìm thấy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="NotFoundPage" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; padding: 3rem 0; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-12 text-center">
+                <div class="notfound-content" style="background: white; padding: 3rem 2rem; border-radius: 1rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                    <!-- 404 Number -->
+                    <div class="notfound-number" style="font-size: 8rem; font-weight: bold; color: #FF7500; line-height: 1; margin-bottom: 1rem; font-family: 'helveticaneue-Black', sans-serif;">
+                        404
+                    </div>
+                    
+                    <!-- Error Message -->
+                    <h1 class="notfound-title" style="font-size: 2rem; color: #013C74; margin-bottom: 1rem; font-family: 'helveticaneue-Bold', sans-serif;">
+                        Trang không tìm thấy
+                    </h1>
+                    
+                    <p class="notfound-description" style="font-size: 1.125rem; color: #666; margin-bottom: 2rem; line-height: 1.6;">
+                        Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.<br />
+                        Vui lòng kiểm tra lại đường dẫn hoặc quay về trang chủ.
+                    </p>
+                    
+                    <!-- Action Buttons -->
+                    <div class="notfound-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="/" class="btn btn-primary" style="background-color: #FF7500; color: white; padding: 0.75rem 2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500; transition: all 0.3s ease; border: none;">
+                            <i class="fas fa-home" style="margin-right: 0.5rem;"></i>
+                            Về trang chủ
+                        </a>
+                        <a href="javascript:history.back()" class="btn btn-secondary" style="background-color: #013C74; color: white; padding: 0.75rem 2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500; transition: all 0.3s ease; border: none;">
+                            <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>
+                            Quay lại
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div class="notfound-links" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e0e0e0;">
+                        <p style="color: #999; margin-bottom: 1rem; font-size: 0.875rem;">Hoặc truy cập các trang phổ biến:</p>
+                        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                            <a href="/Products" style="color: #FF7500; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">
+                                <i class="fas fa-box" style="margin-right: 0.25rem;"></i>
+                                Sản phẩm
+                            </a>
+                            <a href="/News" style="color: #FF7500; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">
+                                <i class="fas fa-newspaper" style="margin-right: 0.25rem;"></i>
+                                Tin tức
+                            </a>
+                            <a href="/About" style="color: #FF7500; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">
+                                <i class="fas fa-info-circle" style="margin-right: 0.25rem;"></i>
+                                Giới thiệu
+                            </a>
+                            <a href="/Contact" style="color: #FF7500; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">
+                                <i class="fas fa-envelope" style="margin-right: 0.25rem;"></i>
+                                Liên hệ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Decorative Elements -->
+                <div style="margin-top: 2rem; opacity: 0.1;">
+                    <svg width="200" height="200" viewBox="0 0 200 200" style="margin: 0 auto; display: block;">
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="#FF7500" stroke-width="2" stroke-dasharray="5,5"/>
+                        <circle cx="100" cy="100" r="50" fill="none" stroke="#013C74" stroke-width="2" stroke-dasharray="5,5"/>
+                        <circle cx="100" cy="100" r="20" fill="#FF7500"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .btn-primary:hover {
+        background-color: #e66800 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 117, 0, 0.3);
+    }
+    
+    .btn-secondary:hover {
+        background-color: #012a5a !important;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(1, 60, 116, 0.3);
+    }
+    
+    .notfound-links a:hover {
+        color: #e66800 !important;
+        text-decoration: underline !important;
+    }
+    
+    @@media (max-width: 767.98px) {
+        .notfound-number {
+            font-size: 5rem !important;
+        }
+        
+        .notfound-title {
+            font-size: 1.5rem !important;
+        }
+        
+        .notfound-description {
+            font-size: 1rem !important;
+        }
+        
+        .notfound-content {
+            padding: 2rem 1.5rem !important;
+        }
+        
+        .notfound-actions {
+            flex-direction: column;
+        }
+        
+        .notfound-actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+

@@ -78,5 +78,15 @@ namespace DOCTORLOAN.Controllers
         {
             return this.View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
+
+        /// <summary>
+        /// Trang 404 Not Found
+        /// </summary>
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult NotFound()
+        {
+            Response.StatusCode = 404;
+            return this.View();
+        }
     }
 }

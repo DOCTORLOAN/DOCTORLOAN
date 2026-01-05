@@ -391,6 +391,25 @@
     .img-item {
         border-radius: 1rem;
         padding: 1rem;
+        
+        // CLS Optimization: Reserve space for product images
+        > div[id^="product-"] {
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            @media (max-width: 767.98px) {
+                min-height: 150px;
+            }
+            
+            img {
+                width: 100%;
+                height: auto;
+                max-height: 100%;
+                object-fit: contain;
+            }
+        }
     }
 
     .product-item {

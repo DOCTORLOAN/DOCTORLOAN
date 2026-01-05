@@ -41,6 +41,14 @@ a {
 
 img {
     width: 100%;
+    height: auto;
+    display: block;
+    
+    // CLS Optimization: Prevent layout shift for lazy-loaded images
+    &[loading="lazy"] {
+        // Reserve minimum space - this won't affect images that are already loaded
+        min-height: 1px; // Minimal height to prevent CLS, actual size comes from content
+    }
 }
 
 strong {

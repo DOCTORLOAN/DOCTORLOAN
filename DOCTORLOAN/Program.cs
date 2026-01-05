@@ -89,7 +89,7 @@ app.Use(async (context, next) =>
         "default-src 'self'; " +
         "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.youtube.com https://s.ytimg.com https://za.zdn.vn https://cdn.amcharts.com https://cdn.jsdelivr.net; " +
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-        "img-src 'self' data: https://www.google-analytics.com https://doctorloan-api.giathaidoctorloan.vn; " +
+        "img-src 'self' data: https://www.google-analytics.com https://doctorloan-api.giathaidoctorloan.vn https://za.zalo.me https://za.zdn.vn; " +
         "font-src 'self' https://fonts.gstatic.com data:; " +
         "connect-src " + connectSrc + "; " +
         "frame-src https://www.youtube.com https://page.widget.zalo.me https://www.facebook.com https://www.google.com https://maps.google.com https://drive.google.com https://docs.google.com; " +
@@ -147,6 +147,9 @@ app.UseStaticFiles(new StaticFileOptions
 });
 
 app.UseRouting();
+
+// Add Route Validation Middleware after routing but before endpoints
+app.UseMiddleware<DOCTORLOAN.Middleware.RouteValidationMiddleware>();
 
 app.UseAuthentication();
 

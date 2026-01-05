@@ -124,6 +124,9 @@
                 height: auto;
                 border-radius: .5rem;
                 margin: 1rem 0;
+                display: block;
+                // CLS Optimization: Reserve space for images
+                min-height: 1px; // Minimal to prevent CLS, actual size from content
             }
 
             p {
@@ -160,12 +163,20 @@
         }
 
         .interdepend-desc {
+            // CLS Optimization: Reserve space for dynamically loaded images
+            min-height: 200px;
+            
+            @media (max-width: 767.98px) {
+                min-height: 150px;
+            }
+            
             img {
                 width: 100%;
                 height: auto;
                 border-radius: .5rem;
                 margin-bottom: .75rem;
                 object-fit: cover;
+                display: block;
             }
 
             h5 {
@@ -212,6 +223,15 @@
 
     .interdependSwiper {
         --sp-nav-size: 40px;
+        
+        // CLS Optimization: Reserve space for swiper wrapper
+        .swiper-wrapper {
+            min-height: 250px;
+            
+            @media (max-width: 767.98px) {
+                min-height: 200px;
+            }
+        }
 
         .swiper-button-prev, .swiper-button-next {
             width: var(--sp-nav-size);
