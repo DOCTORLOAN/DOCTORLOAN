@@ -83,7 +83,7 @@ namespace DOCTORLOAN.Controllers
         /// Trang 404 Not Found
         /// </summary>
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult NotFound()
+        public new IActionResult NotFound()
         {
             Response.StatusCode = 404;
             return this.View();

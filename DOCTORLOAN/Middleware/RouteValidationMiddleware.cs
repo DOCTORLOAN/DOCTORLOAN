@@ -16,13 +16,13 @@ namespace DOCTORLOAN.Middleware
         private readonly ILogger<RouteValidationMiddleware> _logger;
         
         // Danh sách các controllers và actions hợp lệ
-        private static readonly HashSet<string> ValidControllers = new()
+        private static readonly HashSet<string> ValidControllers = new ()
         {
             "Home", "Products", "News", "About", "Auth", "Contact", 
             "Clinic", "Cart", "ShowRoom", "Common", "Sitemap"
         };
 
-        private static readonly Dictionary<string, HashSet<string>> ValidActions = new()
+        private static readonly Dictionary<string, HashSet<string>> ValidActions = new ()
         {
             { "Home", new HashSet<string> { "Index", "Privacy", "Error", "NotFound", "ProcessPayooPayment" } },
             { "Products", new HashSet<string> { "Index", "ProductDetail" } },
@@ -127,4 +127,3 @@ namespace DOCTORLOAN.Middleware
         }
     }
 }
-
